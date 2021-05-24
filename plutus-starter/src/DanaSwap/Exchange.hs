@@ -33,11 +33,13 @@ import Playground.Contract ()
     tokensOut = tokenPool - updatedTokenPool
 -}
 -- TODO proper numeric type
+{-# INLINABLE getInvariant #-}
 getInvariant :: Integer -> Integer -> Integer
 getInvariant adaPoolAmount tokenPoolAmount = 
     adaPoolAmount * tokenPoolAmount
 
 -- TODO proper numeric type
+{-# INLINABLE getUpdatedTokenPoolAmount #-}
 getUpdatedTokenPoolAmount :: Integer -> Integer -> Integer -> Integer
 getUpdatedTokenPoolAmount adaPoolAmount tokenPoolAmount fee =
     let invariant = getInvariant adaPoolAmount tokenPoolAmount
@@ -45,11 +47,13 @@ getUpdatedTokenPoolAmount adaPoolAmount tokenPoolAmount fee =
     in invariant `div` denominator
 
 -- TODO proper numeric type
+{-# INLINABLE getUpdatedAdaPoolAmount #-}
 getUpdatedAdaPoolAmount :: Integer -> Integer -> Integer
 getUpdatedAdaPoolAmount adaPoolAmount adaAmount = 
     adaPoolAmount + adaAmount
 
 -- TODO proper numeric type
+{-# INLINABLE getTokensOutAmount #-}
 getTokensOutAmount :: Integer -> Integer ->  Integer -> Integer
 getTokensOutAmount adaPoolAmount tokenPoolAmount fee =
     let updatedTokenPoolAmount = getUpdatedTokenPoolAmount adaPoolAmount tokenPoolAmount fee
@@ -59,16 +63,19 @@ getTokensOutAmount adaPoolAmount tokenPoolAmount fee =
 
 -- TODO: look into difference between Ledger Address and PubKeyHash
 -- TODO: logic body
+{-# INLINABLE doAdaToTokenSwap #-}
 doAdaToTokenSwap :: Address -> Address 
 doAdaToTokenSwap senderAddress = senderAddress
 
 -- TODO: look into difference between Ledger Address and PubKeyHash
 -- TODO: logic body
+{-# INLINABLE doTokenToAdaSwap #-}
 doTokenToAdaSwap :: Address -> Address 
 doTokenToAdaSwap senderAddress = senderAddress
 
 -- TODO: look into difference between Ledger Address and PubKeyHash
 -- TODO: logic body
+{-# INLINABLE doTokenToTokenSwap #-}
 doTokenToTokenSwap :: Address -> Address 
 doTokenToTokenSwap senderAddress = senderAddress
 
@@ -76,16 +83,19 @@ doTokenToTokenSwap senderAddress = senderAddress
 
 -- TODO: look into difference between Ledger Address and PubKeyHash
 -- TODO: logic body
+{-# INLINABLE doAdaToTokenTransfer #-}
 doAdaToTokenTransfer :: Address -> Address 
 doAdaToTokenTransfer senderAddress = senderAddress
 
 -- TODO: look into difference between Ledger Address and PubKeyHash
 -- TODO: logic body
+{-# INLINABLE doTokenToAdaTransfer #-}
 doTokenToAdaTransfer :: Address -> Address 
 doTokenToAdaTransfer senderAddress = senderAddress
 
 -- TODO: look into difference between Ledger Address and PubKeyHash
 -- TODO: logic body
+{-# INLINABLE doTokenToTokenTransfer #-}
 doTokenToTokenTransfer :: Address -> Address 
 doTokenToTokenTransfer senderAddress = senderAddress
 
@@ -95,11 +105,13 @@ doTokenToTokenTransfer senderAddress = senderAddress
 
 -- TODO: look into difference between Ledger Address and PubKeyHash
 -- TODO: logic body
+{-# INLINABLE addLiquidity #-}
 addLiquidity :: Address -> Address
 addLiquidity senderAddress  = senderAddress
 
 -- TODO: look into difference between Ledger Address and PubKeyHash
 -- TODO: logic body
+{-# INLINABLE removeLiquidity #-}
 removeLiquidity :: Address -> Address
 removeLiquidity senderAddress  = senderAddress
 
@@ -107,10 +119,12 @@ removeLiquidity senderAddress  = senderAddress
 
 -- TODO: look into difference between Ledger Address and PubKeyHash
 -- TODO: logic body
+{-# INLINABLE doTokenToExchangeTransfer #-}
 doTokenToExchangeTransfer :: Address -> Address
 doTokenToExchangeTransfer senderAddress  = senderAddress
 
 -- TODO: look into difference between Ledger Address and PubKeyHash
 -- TODO: logic body
+{-# INLINABLE doTokenToExchangeSwap #-}
 doTokenToExchangeSwap :: Address -> Address
 doTokenToExchangeSwap senderAddress  = senderAddress

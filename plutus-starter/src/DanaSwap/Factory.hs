@@ -25,6 +25,10 @@ import           Ledger                   (PubKeyHash)
 type Address = PubKeyHash
 type ExchangeAddress = Address
 type TokenAddress = Address
+
+-- TODO: look into difference between Ledger Address and PubKeyHash
+-- TODO: logic body
+{-# INLINABLE createExchange #-}
 createExchange :: TokenAddress -> ExchangeAddress
 createExchange tokenAddress = tokenAddress -- TODO
 -- Check that the exchange address doesn't exist
@@ -33,9 +37,11 @@ createExchange tokenAddress = tokenAddress -- TODO
 -- exchangeToToken = tokenAddress
 -- return newExchangeAddress
 
+{-# INLINABLE getExchange #-}
 getExchange :: TokenAddress -> ExchangeAddress
 getExchange a = a -- TODO
 
+{-# INLINABLE getToken #-}
 getToken :: ExchangeAddress -> TokenAddress
 getToken a = a -- TODO
 
