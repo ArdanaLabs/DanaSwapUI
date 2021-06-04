@@ -19,6 +19,11 @@ import qualified Ledger.Typed.Scripts       as Scripts
 import           Ledger.Value               (Value)
 import Playground.Contract ()
 
+-- TODO Nothing here should be considered final
+-- This implementation started with v1 whitepaper as a basis,
+-- but this is also a quick reference conversion from ERC20 contract
+-- Specifically v2 of the protocol is the current target
+
 {--|
     A single contract is associated with a token and 
     holds a liquidity pool of ADA and said token.

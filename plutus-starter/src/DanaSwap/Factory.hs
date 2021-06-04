@@ -7,7 +7,22 @@ module DanaSwap.Factory where
 import qualified PlutusTx
 import PlutusTx.Prelude ()
 import qualified Prelude
-import           Ledger                   (PubKeyHash)
+import           Ledger                   (Address)
+
+-- TODO Nothing here should be considered final
+-- This implementation started with v1 whitepaper as a basis,
+-- but this is also a quick reference conversion from ERC20 contract
+-- Specifically v2 of the protocol is the current target
+
+-- feeTo
+-- feeToSetter
+-- public getPair
+-- public allPairs
+-- Event PairCreated
+-- public allPairsLength
+-- public createPair
+-- public setFeeTo
+-- public setFeeToSetter
 
 {--|
     A factory and registry for exchanges.
@@ -22,8 +37,8 @@ import           Ledger                   (PubKeyHash)
 
     `getToken` returns the token address of exchange address.
 -}
-type Address = PubKeyHash
-type ExchangeAddress = Address
+-- TODO: look into difference between Ledger Address and PubKeyHash
+type ExchangeAddress = Address 
 type TokenAddress = Address
 
 -- TODO: look into difference between Ledger Address and PubKeyHash
@@ -44,5 +59,3 @@ getExchange a = a -- TODO
 {-# INLINABLE getToken #-}
 getToken :: ExchangeAddress -> TokenAddress
 getToken a = a -- TODO
-
-
