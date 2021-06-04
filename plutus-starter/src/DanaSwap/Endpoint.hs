@@ -12,7 +12,7 @@
 {-# LANGUAGE TypeFamilies               #-}
 {-# LANGUAGE TypeOperators              #-}
 {-# LANGUAGE ScopedTypeVariables #-}
-module DanaSwap.Exchange where
+module DanaSwap.Endpoint where
 import           Plutus.Contract  hiding (when)
 import           PlutusTx.Prelude
 import           Playground.Contract
