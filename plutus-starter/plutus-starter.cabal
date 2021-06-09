@@ -23,9 +23,8 @@ maintainer:         Your email
 
 library
     exposed-modules:
-      DanaSwap.Factory
-      DanaSwap.Exchange
       DanaSwap.Endpoint
+      DanaSwap.DanaToken
       Plutus.Contracts.Game
     build-depends:
       base >= 4.9 && < 5,
