@@ -26,15 +26,17 @@ import qualified Ledger.Typed.Scripts      as Scripts
 import           Schema
 import           Wallet.Emulator.Wallet
 
+-- Adapted from Vyper contract - Draft
+
 liqiduityTokenName, liquidityTokenSymbol :: String 
 liqiduityTokenName = "DanaSwap"
 liquidityTokenSymbol = "DSLP"
+-- ^ TODO: set name, symbol, and minter on deploy/init
 
 newtype DanaSwap = DanaSwap { owner :: PubKeyHash }
 
--- Converting from contract states as "spender". Redeemer is the Cardano term,
--- if I remember correctly.
 -- | TODO: check proper numeric type. Probably not integer 
+-- not yet in use
 data ApprovalParams = ApprovalParams { 
     apOwner :: PubKeyHash
     , apSpender :: PubKeyHash
@@ -49,11 +51,8 @@ data TransferParams = TransferParams {
 
 -- TODO: ContractEvent
 -- | TODO: check proper numeric type. Probably not integer 
-doTransfer :: TransferParams -> (PubKeyHash, Integer)
--- ^ TODO: Proper return when type is finally written
-
-doTransfer TransferParams{..} = (tpTo, tpValue)
--- ^ TODO: Proper types && Logic-- end doTransfer
+doTransfer :: TransferParams -> Bool
+doTransfer TransferParams{..} = True -- TODO
 -- sender.balance = balanceOf(from) - tpValue
 -- receiver.balance = balanceOf(to) + tpValue
 -- log transfer
@@ -66,61 +65,80 @@ data TransferFromParams = TransferFromParams {
     } deriving (Show, Generic, ToJSON, FromJSON, ToSchema)
 
 -- TODO: ContractEvent
--- | TODO: check proper numeric type. Probably not integer 
-doTransferFrom :: TransferFromParams -> (PubKeyHash, PubKeyHash, Integer)
--- ^ TODO: Proper return when type is finally written
-
-doTransferFrom TransferFromParams{..} = (tfpFrom, tfpTo, tfpValue)
--- ^ TODO: Proper types && Logic-- end doTransfer
+-- | TODO: check proper numeric type. Probably not integer
+{-# INLINABLE doTransferFrom #-}
+doTransferFrom :: TransferFromParams -> Bool
+doTransferFrom TransferFromParams{..} = True -- TODO
 -- sender.balance = balanceOf(from) - tpValue
 -- receiver.balance = balanceOf(to) + tpValue
 -- log transfer
 
-balanceOf :: PubKeyHash -> Integer
--- ^ TODO: Proper types && Logic
-balanceOf _ = 0
-
-allowance :: PubKeyHash -> PubKeyHash -> Integer
--- ^ TODO: Proper types && Logic
-allowance sender spender = 0
-
-totalSupply :: Integer -> Integer
-totalSupply _ = 0
--- ^ TODO: Proper types && Logic
-
-minter :: PubKeyHash -> Integer
--- ^ TODO: Proper types && Logic
-minter _ = 0
-
-decimals :: Integer
--- ^ TODO: Proper types && Logic
-decimals = 0
-
+{-
+    Approve `spender` to transfer amount for sender
+-}
+{-# INLINABLE doApprove #-}
 doApprove :: PubKeyHash -> Integer -> Bool 
--- ^ TODO: Proper types && Logic
-doApprove spender value = True
+doApprove spender value = True -- TODO
 
+{-
+    Alternative to `approve`
+-}
+{-# INLINABLE doIncreaseAllowance #-}
 doIncreaseAllowance :: PubKeyHash -> Integer -> Bool 
--- ^ TODO: Proper types && Logic
-doIncreaseAllowance spender addedValue = True
+doIncreaseAllowance spender subtractedValue = True -- TODO
+-- look into this and possible race condition via vyper contract line 119
 
-doDeacreaseAllowance :: PubKeyHash -> Integer -> Bool 
--- ^ TODO: Proper types && Logic
-doDeacreaseAllowance spender subtractedValue = True
+{-
+    Alternative to `approve`
+-}
+{-# INLINABLE doDecreaseAllowance #-}
+doDecreaseAllowance :: PubKeyHash -> Integer -> Bool 
+doDecreaseAllowance spender subtractedValue = True -- TODO
+-- look into this and possible race condition via vyper contract line 135
 
+{-
+    Mint token amount to address if sender is minter
+-}
+{-# INLINABLE doMint #-}
 doMint :: PubKeyHash -> Integer -> Bool 
--- ^ TODO: Proper types && Logic
-doMint to value = True
+doMint to value = True -- TODO
+-- totalSupply += ...
+-- toBalance += ...
 
+{-
+    Burn amount from address if sender is minter
+-}
+{-# INLINABLE doBurnFrom #-}
 doBurnFrom :: PubKeyHash -> Integer -> Bool
--- ^ TODO: Proper types && Logic
-doBurnFrom to value = True
+doBurnFrom to value = True -- TODO
+-- totalSupply -= ...
+-- toBalance = ...
 
-doSetMinter :: PubKeyHash -> Bool
--- ^ TODO: Proper types && Logic
-doSetMinter address = True
+{-| 
+    Set minter address
+-}
+{-# INLINABLE setMinter #-}
+setMinter :: PubKeyHash -> Bool
+setMinter minter = True -- TODO
+-- if sender address is minter address => line 184 of vyper contract
 
-doSetName :: PubKeyHash -> Bool
--- ^ TODO: Proper types && Logic
-doSetName address = True
+{-| 
+    Set name and symbol if the sender is the owner address of the minter.
+-}
+{-# INLINABLE setName #-}
+setName :: String -> String -> Bool
+setName name symbol = True -- TODO
+-- if owner of the minter is the sender
+-- set name
 
+getBalanceOf :: PubKeyHash -> Integer
+getBalanceOf _ = 0 -- TODO
+
+setAllowance :: PubKeyHash -> PubKeyHash -> Integer
+setAllowance sender spender = 0 -- TODO
+
+getTotalSupply :: Integer -> Integer
+getTotalSupply _ = 0 -- TODO
+
+getDecimals :: () -> Integer
+getDecimals () = 18
