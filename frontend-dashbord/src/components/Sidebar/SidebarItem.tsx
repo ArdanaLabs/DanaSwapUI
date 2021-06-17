@@ -14,28 +14,28 @@ const useStyles = makeStyles(({ palette }) => ({
       marginRight: 10
     },
     '& svg path': {
-      fill: palette.primary.main
+      fill: palette.common.white
     },
     '& .MuiTypography-root': {
       fontWeight: 400,
       lineHeight: '14px',
       fontSize: '14px',
-      color: palette.primary.main
+      color: palette.common.white,
+      marginLeft: '15px',
     },
     '&:hover': {
-      '& svg path': {
-        fill: '#006DFF'
+      '& $menuIcon': {
+        backgroundColor: palette.primary.main
       },
       '& .MuiTypography-root': {
-        fontWeight: 400,
+        fontWeight: 500,
         fontSize: '14px',
-        color: '#006DFF'
+        color: '#006DFF',
       }
     }
   },
   activeSwitch: {
     cursor: 'default',
-
     '& svg path': {
       fill: '#006DFF'
     },
@@ -51,6 +51,9 @@ const useStyles = makeStyles(({ palette }) => ({
         color: '#006DFF',
         fontWeight: 700
       }
+    },
+    '& .makeStyles-menuIcon-38': {
+      backgroundColor: palette.primary.main
     }
   },
   disabled: {
@@ -72,6 +75,13 @@ const useStyles = makeStyles(({ palette }) => ({
         color: palette.text.secondary
       }
     }
+  },
+  menuIcon: {
+    width: '20px',
+    height: '20px',
+    backgroundColor: palette.common.white,
+    WebkitMaskRepeat: 'no-repeat',
+    WebkitMaskSize: '100%'
   }
 }));
 
@@ -99,6 +109,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
   const location = useLocation();
   const active = location.pathname === link;
   const classes = useStyles({ active });
+  console.log(classes);
   const theme = useTheme();
   const mobile = useMediaQuery(theme.breakpoints.down('sm'));
   const history = useHistory();
@@ -127,16 +138,18 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
         alignItems="center"
         justifyContent="flex-start"
         paddingLeft="30px"
-        width={!mobile ? '214px' : '100%'}
+        width={!mobile ? '215px' : '100%'}
         height="54px"
         className={cx(
           classes.inactiveSwitch,
-          activeCondition && classes.activeSwitch,
+          active && classes.activeSwitch,
           disabled && classes.disabled
         )}
         onClick={disabled ? () => {} : handleClick}
       >
-        {Icon}
+        <div className={cx(
+          classes.menuIcon
+        )} style={{maskImage: `url(${Icon.url})`, WebkitMaskImage: `url(${Icon.url})`}}></div>
         <Typography>{title}</Typography>
       </Box>
     </WrapperComponent>

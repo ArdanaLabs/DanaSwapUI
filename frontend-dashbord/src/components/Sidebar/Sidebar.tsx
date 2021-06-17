@@ -10,10 +10,9 @@ import { useDarkModeManager } from 'state/user/hooks';
 import { SwitchWithGlider, ThemeSwitch } from 'components';
 import SidebarItem from './SidebarItem';
 import MainLogo from 'assets/svg/MainLogo.svg';
-
-import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
-import AccessibleForwardOutlinedIcon from '@material-ui/icons/AccessibleForwardOutlined';
-import AirplanemodeActiveOutlinedIcon from '@material-ui/icons/AirplanemodeActiveOutlined';
+import HomeIcon from 'assets/svg/Home.svg';
+import UserIcon from 'assets/svg/User.svg';
+import HandIcon from 'assets/svg/Hand.svg';
 
 // adding account url for the discord and telegram
 /*
@@ -34,7 +33,7 @@ const insights = [
 
 const useStyles = makeStyles(({ palette }) => ({
   rightBorder: {
-    borderRight: `1px solid ${palette.divider}`
+    // borderRight: `1px solid ${palette.divider}`
   },
 
   subtitle: {
@@ -54,8 +53,9 @@ const useStyles = makeStyles(({ palette }) => ({
     alignItems: 'flex-start',
     justifyContent: 'space-between',
     width: '215',
-    height: '162px'
+    height: '162px',
   },
+  
   switchContainerMobile: {
     display: 'flex',
     marginBottom: '4px',
@@ -65,7 +65,7 @@ const useStyles = makeStyles(({ palette }) => ({
     justifyContent: 'space-between',
     width: '100%',
     height: '162px'
-  }
+  },
 }));
 
 export interface SidebarProps {
@@ -102,17 +102,17 @@ const Sidebar: React.FC<SidebarProps> = ({ mobile, onHide }) => {
     {
       title: 'Home',
       link: '/home',
-      Icon: <HomeOutlinedIcon />
+      Icon: { url: HomeIcon, alt: 'Home' }
     },
     {
       title: 'POOLS',
       link: '/pools',
-      Icon: <AccessibleForwardOutlinedIcon />
+      Icon: { url: HandIcon, alt: 'Hand' }
     },
     {
       title: 'DAO',
       link: '/dao',
-      Icon: <AirplanemodeActiveOutlinedIcon />
+      Icon: { url: UserIcon, alt: 'User' }
     }
   ];
 
