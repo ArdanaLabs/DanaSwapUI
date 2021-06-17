@@ -64,7 +64,7 @@ export interface PageWithSidebarProps {
 
 const PageWithSidebar: React.FC<PageWithSidebarProps> = ({
   children,
-  hideAccountButtons = false
+  hideAccountButtons = true
 }) => {
   const [tradingModalOpen, setTradingModalOpen] = useState(
     localStorage.getItem('tradingModalStatus') !== 'closed'
@@ -153,7 +153,7 @@ const PageWithSidebar: React.FC<PageWithSidebarProps> = ({
                     </Grid>
                   </Box>
                 )}
-                {!mobile && (
+                {/* {!mobile && (
                   <Box
                     display="flex"
                     justifySelf="flex-end"
@@ -161,7 +161,7 @@ const PageWithSidebar: React.FC<PageWithSidebarProps> = ({
                   >
                     <AccountButtons />
                   </Box>
-                )}
+                )} */}
               </Box>
             </Box>
           </Box>
@@ -181,9 +181,9 @@ const PageWithSidebar: React.FC<PageWithSidebarProps> = ({
               overflow="auto"
               style={{ backgroundColor: palette.background.paper }}
             >
-              <Box p={!mobile ? 1 : 0}>
+              {/* <Box p={!mobile ? 1 : 0}>
                 <AccountButtons onHide={hideMobileMenu} mobile />
-              </Box>
+              </Box> */}
               <Divider />
               <Box p={1} pl={1.25}>
                 <Sidebar mobile onHide={hideMobileMenu} />
@@ -206,8 +206,8 @@ const PageWithSidebar: React.FC<PageWithSidebarProps> = ({
               <Box
                 px={mobile ? 0 : 3}
                 width={mobile ? '100vw' : 'calc(100vw - 230px)'}
-                mt={!mobile ? 11 : 10}
-                mb={mobile ? 0 : 16}
+                mt={!mobile ? '18px' : '10px'}
+                mb={mobile ? 0 : '23px'}
               >
                 <Container style={!mobile ? {} : { padding: '0 20px' }}>
                   {children}

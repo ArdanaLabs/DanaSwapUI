@@ -6,11 +6,11 @@ import {
 import { merge } from 'lodash';
 
 // colors
-const primary = '#5294FF';
+const primary = '#235DF4';
 const premiaBlueDay = 'rgba(82, 148, 255, 0.12)';
 const premiaBlueNight = 'rgba(82, 148, 255, 0.2)';
 
-const greySecondaryDay = '#8D97A0';
+const greySecondaryDay = '#F4F4F4';
 const greySecondaryNight = '#646464';
 const searchBarGrey = '#181818';
 
@@ -19,8 +19,8 @@ const white = '#ffffff';
 
 const whiteColor = '#F7FAFF';
 
-const textPrimaryDay = '#29343E';
-const textSecondaryDay = '#8D97A0';
+const textPrimaryDay = '#235DF4';
+const textSecondaryDay = '#979797';
 const textPrimaryNight = '#DCDCDC';
 const textSecondaryNight = '#646464';
 
@@ -33,7 +33,7 @@ const putGradientB = '#8C43F6';
 const hotBadgeGradientA = '#EB7A4A';
 const hotBadgeGradientB = '#F643CF';
 
-const backgroundDay = '#F2F4F5';
+const backgroundDay = '#linear-gradient(104.53deg, #FFFFFF 13.32%, #EFEFEF 87.98%)';
 const backgroundNight = '#000000';
 
 const dividerGreyDay = '#E9E9E9';
@@ -101,7 +101,7 @@ export const lightTheme = responsiveFontSizes(
     },
     typography: {
       htmlFontSize: 16,
-      fontFamily: 'DM Sans',
+      fontFamily: 'Futura,Trebuchet MS,Arial,sans-serif',
       fontSize: 14
     },
     breakpoints: {
@@ -593,7 +593,7 @@ export const darkTheme = responsiveFontSizes(
     },
     typography: {
       htmlFontSize: 16,
-      fontFamily: 'DM Sans',
+      fontFamily: 'Futura,Trebuchet MS,Arial,sans-serif',
       fontSize: 14,
       h1: {},
       h2: {},

@@ -12,7 +12,8 @@ const useStyles = makeStyles(({ palette }) => ({
   },
   activeItem: {
     borderRadius: '100px 0 0 100px',
-    background: '#FFFFFF'
+    background: '#FFFFFF',
+    transition: 'background .3s ease-in',
   }
 
   // glider: {
