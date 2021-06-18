@@ -3,6 +3,7 @@ import { Box, Grid, useMediaQuery } from '@material-ui/core'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import cx from 'classnames'
 import { useIsDarkMode } from 'state/user/hooks'
+import Input from 'components/Input'
 
 const useStyles = makeStyles(({ palette }) => ({
   chooseCoin: {
@@ -44,16 +45,9 @@ const useStyles = makeStyles(({ palette }) => ({
     height: '41px',
     marginTop: '20px',
     padding: '7px 17px',
-    borderRadius: '5px',
-    border: 'unset',
-    color: '#C4C4C4',
-    fontFamily: 'Futura,Trebuchet MS,Arial,sans-serif',
     fontSize: '18px',
     width: '100%',
     maxWidth: '250px',
-    '&:focus-visible': {
-      outline: 'unset'
-    }
   },
   swapInputMobile: {}
 }))
@@ -68,7 +62,7 @@ const SwapForm: React.FC<SwapFormProps> = () => {
 
   return (
     <Grid container spacing={mobile ? 1 : 2}>
-      <Grid container item xs={6} >
+      <Grid container item xs={6}>
         <Box
           position={'sticky'}
           width={'100%'}
@@ -116,16 +110,16 @@ const SwapForm: React.FC<SwapFormProps> = () => {
             >
               Please enter your desired amount
             </Box>
-            <input
+            <Input
               value={'0.00'}
               className={cx(classes.swapInput, {
                 [classes.swapInputMobile]: mobile
               })}
-            ></input>
+            ></Input>
           </Box>
         </Box>
       </Grid>
-      <Grid container item xs={6} >
+      <Grid container item xs={6}>
         <Box
           position={'sticky'}
           width={'100%'}
@@ -173,12 +167,12 @@ const SwapForm: React.FC<SwapFormProps> = () => {
             >
               Please view the swapped amount here:
             </Box>
-            <input
+            <Input
               value={'0.00'}
               className={cx(classes.swapInput, {
                 [classes.swapInputMobile]: mobile
               })}
-            ></input>
+            ></Input>
           </Box>
         </Box>
       </Grid>
