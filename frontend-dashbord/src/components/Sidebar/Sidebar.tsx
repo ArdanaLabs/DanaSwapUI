@@ -7,7 +7,7 @@ import cx from 'classnames';
 
 import { useDarkModeManager } from 'state/user/hooks';
 
-import { SwitchWithGlider, ThemeSwitch } from 'components';
+import { SwitchWithGlider } from 'components';
 import SidebarItem from './SidebarItem';
 import MainLogo from 'assets/svg/MainLogo.svg';
 import HomeIcon from 'assets/svg/Home.svg';
@@ -53,9 +53,9 @@ const useStyles = makeStyles(({ palette }) => ({
     alignItems: 'flex-start',
     justifyContent: 'space-between',
     width: '215',
-    height: '162px',
+    height: '162px'
   },
-  
+
   switchContainerMobile: {
     display: 'flex',
     marginBottom: '4px',
@@ -65,7 +65,7 @@ const useStyles = makeStyles(({ palette }) => ({
     justifyContent: 'space-between',
     width: '100%',
     height: '162px'
-  },
+  }
 }));
 
 export interface SidebarProps {
@@ -199,7 +199,7 @@ const Sidebar: React.FC<SidebarProps> = ({ mobile, onHide }) => {
               />
             ))}
           </Box> */}
-          {!mobile && <ThemeSwitch />}
+          {/* {!mobile && <ThemeSwitch />} */}
         </Box>
       </Box>
     </Box>
