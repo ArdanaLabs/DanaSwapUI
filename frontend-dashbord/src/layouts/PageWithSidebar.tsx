@@ -14,7 +14,7 @@ import cx from 'classnames';
 import { useDarkModeManager } from 'state/user/hooks';
 
 import MainLogo from 'assets/svg/MainLogo.svg';
-import { AccountButtons, Sidebar, Footer, ThemeSwitch } from 'components';
+import { Sidebar, Footer } from 'components';
 
 const useStyles = makeStyles(({ palette }) => ({
   page: {
@@ -189,9 +189,9 @@ const PageWithSidebar: React.FC<PageWithSidebarProps> = ({
                 <Sidebar mobile onHide={hideMobileMenu} />
               </Box>
               <Divider />
-              <Box p={1.5}>
+              {/* <Box p={1.5}>
                 <ThemeSwitch />
-              </Box>
+              </Box> */}
               <Box
                 borderBottom={`1px solid ${palette.divider}`}
                 boxShadow={
