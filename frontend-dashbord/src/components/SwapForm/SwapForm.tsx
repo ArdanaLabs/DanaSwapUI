@@ -27,10 +27,10 @@ const useStyles = makeStyles(({ palette }) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    order: 2
+    order: 1
   },
   coinBoxMobile: {
-    order: 1
+    order: 0
   },
   panel: {
     display: 'flex',
@@ -47,7 +47,7 @@ const useStyles = makeStyles(({ palette }) => ({
     padding: '7px 17px',
     fontSize: '18px',
     width: '100%',
-    maxWidth: '250px',
+    maxWidth: '250px'
   },
   swapInputMobile: {}
 }))
@@ -94,10 +94,14 @@ const SwapForm: React.FC<SwapFormProps> = () => {
               mt={mobile ? '15px' : '24px'}
             >
               Choose Coin
-              {/* <Box width={mobile ? '16.5px' : '18px'}>{'>'}</Box> */}
             </Box>
           </Box>
-          <Box width={'100%'} pr={mobile ? '0px' : '20px'}>
+          <Box
+            width={'100%'}
+            pr={mobile ? '0px' : '20px'}
+            mt={mobile ? '20px' : 0}
+            textAlign={mobile ? 'center' : 'auto'}
+          >
             <Box
               fontSize={mobile ? '13px' : '18px'}
               color={palette.text.primary}
@@ -151,10 +155,14 @@ const SwapForm: React.FC<SwapFormProps> = () => {
               mt={mobile ? '15px' : '24px'}
             >
               Choose Coin
-              {/* <Box width={mobile ? '16.5px' : '18px'}>{'>'}</Box> */}
             </Box>
           </Box>
-          <Box width={'100%'} pr={mobile ? '0px' : '20px'}>
+          <Box
+            width={'100%'}
+            pr={mobile ? '0px' : '20px'}
+            mt={mobile ? '20px' : 0}
+            textAlign={mobile ? 'center' : 'auto'}
+          >
             <Box
               fontSize={mobile ? '13px' : '18px'}
               color={palette.text.primary}

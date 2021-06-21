@@ -20,7 +20,7 @@ const useStyles = makeStyles(({ palette }) => ({
       fontWeight: 400,
       lineHeight: '14px',
       fontSize: '14px',
-      color: palette.common.white,
+      color: palette.text.hint,
       marginLeft: '15px',
     },
     '&:hover': {
@@ -52,7 +52,7 @@ const useStyles = makeStyles(({ palette }) => ({
         fontWeight: 700
       }
     },
-    '& .makeStyles-menuIcon-38': {
+    '& $menuIcon': {
       backgroundColor: palette.primary.main
     }
   },
@@ -138,7 +138,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
         alignItems="center"
         justifyContent="flex-start"
         paddingLeft="30px"
-        width={!mobile ? '215px' : '100%'}
+        width={!mobile ? '215px' : '100vw'}
         height="54px"
         className={cx(
           classes.inactiveSwitch,
