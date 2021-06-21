@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 import {
   Box,
   Container,
@@ -6,15 +6,17 @@ import {
   Grid,
   Divider,
   useMediaQuery
-} from '@material-ui/core';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Hamburger from 'hamburger-react';
-import cx from 'classnames';
+} from '@material-ui/core'
+import { makeStyles, useTheme } from '@material-ui/core/styles'
+import Hamburger from 'hamburger-react'
+import cx from 'classnames'
 
-import { useDarkModeManager } from 'state/user/hooks';
+import { useDarkModeManager } from 'state/user/hooks'
 
-import MainLogo from 'assets/svg/MainLogo.svg';
-import { Sidebar, Footer } from 'components';
+import MainLogo from 'assets/svg/MainLogo.svg'
+import Avatar from 'assets/svg/Avatar.svg'
+import { Sidebar, Footer } from 'components'
+import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles(({ palette }) => ({
   page: {
@@ -47,19 +49,22 @@ const useStyles = makeStyles(({ palette }) => ({
     opacity: 0,
     transform: 'scale(0)',
     transformOrigin: 'center 0',
-    position: 'absolute',
+    position: 'fixed',
     transition:
       'opacity 354ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, transform 236ms cubic-bezier(0.4, 0, 0.2, 1) 0ms'
   },
   transitionOpen: {
     opacity: 1,
     transform: 'scale(1)'
+  },
+  gradBG: {
+    background: 'linear-gradient(90.17deg, #22329C 0.17%, #73D6F1 105.18%)'
   }
-}));
+}))
 
 export interface PageWithSidebarProps {
-  children: any;
-  hideAccountButtons?: boolean;
+  children: any
+  hideAccountButtons?: boolean
 }
 
 const PageWithSidebar: React.FC<PageWithSidebarProps> = ({
@@ -68,74 +73,69 @@ const PageWithSidebar: React.FC<PageWithSidebarProps> = ({
 }) => {
   const [tradingModalOpen, setTradingModalOpen] = useState(
     localStorage.getItem('tradingModalStatus') !== 'closed'
-  );
-  const [mobileSidebarHidden, setMobileSidebarHidden] = useState(true);
-  const theme = useTheme();
-  const { palette } = theme;
-  const [darkMode] = useDarkModeManager();
-  const mobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const classes = useStyles({ darkMode, mobileSidebarHidden });
+  )
+  const [mobileSidebarHidden, setMobileSidebarHidden] = useState(true)
+  const theme = useTheme()
+  const { palette } = theme
+  const [darkMode] = useDarkModeManager()
+  const mobile = useMediaQuery(theme.breakpoints.down('sm'))
+  const classes = useStyles({ darkMode, mobileSidebarHidden })
 
   const hideMobileMenu = () => {
-    setMobileSidebarHidden(true);
-  };
+    setMobileSidebarHidden(true)
+  }
 
   useEffect(() => {
     if (!mobile && !mobileSidebarHidden) {
-      setMobileSidebarHidden(true);
+      setMobileSidebarHidden(true)
     }
-  }, [mobile, mobileSidebarHidden]);
+  }, [mobile, mobileSidebarHidden])
 
   if (
     localStorage.getItem('tradingModalStatus') === 'closed' &&
     tradingModalOpen
   ) {
-    setTradingModalOpen(false);
+    setTradingModalOpen(false)
   }
 
   return (
-    <Box bgcolor="background.default">
+    <Box bgcolor='background.default'>
       <Grid container>
         {!mobile && (
-          <Box position="fixed" left={0} width={210}>
+          <Box position='fixed' left={0} width={210}>
             <Sidebar />
           </Box>
         )}
 
         <Box className={cx(classes.page, mobile && classes.pageMobile)}>
           <Box
-            position="fixed"
+            position='fixed'
             width={mobile ? 1 : 'calc(100vw - 210px)'}
             zIndex={10}
             bgcolor={!mobile ? 'transparent' : palette.background.paper}
-            pt={mobile ? 1 : 3}
-            px={mobile ? 0 : 3}
-            className={cx(mobile && classes.border)}
-            height={mobile ? '60px' : '72px'}
+            pt={mobile ? '36px' : 3}
+            // pr={mobile ? '50px' : 0}
+            // pl={mobile ? '50px' : 0}
+            px={mobile ? '9%' : 3}
+            className={cx(mobile && classes.border && classes.gradBG)}
+            height={mobile ? '152px' : '72px'}
           >
-            <Box width="100%" display="flex" justifyContent="center">
+            <Box width='100%' display='flex' justifyContent='center'>
               <Box
-                display="flex"
-                width="100%"
-                maxWidth="1280px"
+                display='flex'
+                width='100%'
+                maxWidth='1280px'
                 justifyContent={!mobile ? 'flex-end' : 'space-between'}
-                alignItems="center"
+                alignItems='center'
                 pr={!mobile ? 3 : 0}
               >
                 {mobile && (
                   <Box
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="space-between"
-                    width="100%"
+                    display='flex'
+                    alignItems='center'
+                    justifyContent='space-between'
+                    width='100%'
                   >
-                    <Box marginLeft="22px" marginTop="2px">
-                      <img
-                        src={MainLogo}
-                        alt="main logo"
-                        style={{ height: '28px' }}
-                      />
-                    </Box>
                     <Grid style={{ height: '48px', marginRight: '6px' }}>
                       <IconButton
                         style={{ height: '48px', padding: 0 }}
@@ -144,13 +144,22 @@ const PageWithSidebar: React.FC<PageWithSidebarProps> = ({
                         }
                       >
                         <Hamburger
-                          size={20}
-                          color={theme.palette.text.secondary}
+                          size={38}
+                          distance={'lg'}
+                          color={theme.palette.common.white}
                           toggled={!mobileSidebarHidden}
                           toggle={setMobileSidebarHidden}
                         />
                       </IconButton>
                     </Grid>
+                    <Grid container component={Link} to='/' style={{justifyContent: 'center'}}>
+                      <Box marginTop='2px'>
+                        <img src={MainLogo} alt='main logo' width={'68px'} />
+                      </Box>
+                    </Grid>
+                    <Box marginTop='2px'>
+                      <img src={Avatar} alt={Avatar} width={'40px'} />
+                    </Box>
                   </Box>
                 )}
                 {/* {!mobile && (
@@ -173,19 +182,25 @@ const PageWithSidebar: React.FC<PageWithSidebarProps> = ({
                 !mobileSidebarHidden && classes.transitionOpen
               )}
               width={mobile ? 1 : 'calc(100vw - 230px)'}
-              position="relative"
-              mt="60px"
+              position='relative'
+              mt='152px'
               mb={mobile ? 0 : 7}
-              height={1}
-              maxHeight="calc(100vh - 160px)"
-              overflow="auto"
-              style={{ backgroundColor: palette.background.paper }}
+              maxHeight='calc(100vh - 160px)'
+              overflow='auto'
+              style={{
+                background: mobile
+                  ? 'linear-gradient(90.17deg, #22329C 0.17%, #73D6F1 105.18%)'
+                  : 'unset',
+                backgroundColor: palette.background.paper,
+                zIndex: 1000,
+                height: 'unset'
+              }}
             >
               {/* <Box p={!mobile ? 1 : 0}>
                 <AccountButtons onHide={hideMobileMenu} mobile />
               </Box> */}
               <Divider />
-              <Box p={1} pl={1.25}>
+              <Box p={1} pl={1.25} pr={0}>
                 <Sidebar mobile onHide={hideMobileMenu} />
               </Box>
               <Divider />
@@ -201,27 +216,27 @@ const PageWithSidebar: React.FC<PageWithSidebarProps> = ({
             </Box>
           )}
 
-          {mobileSidebarHidden && (
+          {
             <>
               <Box
                 px={mobile ? 0 : 3}
                 width={mobile ? '100vw' : 'calc(100vw - 230px)'}
-                mt={!mobile ? '18px' : '10px'}
+                mt={!mobile ? '18px' : '170px'}
                 mb={mobile ? 0 : '23px'}
               >
                 <Container style={!mobile ? {} : { padding: '0 20px' }}>
                   {children}
                 </Container>
                 {mobile && (
-                  <Box width="100%" zIndex={14}>
+                  <Box width='100%' zIndex={14}>
                     <Footer />
                   </Box>
                 )}
               </Box>
               {!mobile && (
                 <Box
-                  position="fixed"
-                  width="calc(100vw - 230px)"
+                  position='fixed'
+                  width='calc(100vw - 230px)'
                   bottom={0}
                   zIndex={14}
                   bgcolor={palette.background.default}
@@ -230,17 +245,11 @@ const PageWithSidebar: React.FC<PageWithSidebarProps> = ({
                 </Box>
               )}
             </>
-          )}
-
-          {mobile && !mobileSidebarHidden && (
-            <Box position="fixed" width="100%" bottom={0} zIndex={14}>
-              <Footer />
-            </Box>
-          )}
+          }
         </Box>
       </Grid>
     </Box>
-  );
-};
+  )
+}
 
-export default PageWithSidebar;
+export default PageWithSidebar

@@ -60,7 +60,7 @@ const useStyles = makeStyles(({ palette }) => ({
     display: 'flex',
     marginBottom: '4px',
     flexDirection: 'column',
-    backgroundColor: palette.background.paper,
+    // backgroundColor: palette.background.paper,
     alignItems: 'flex-start',
     justifyContent: 'space-between',
     width: '100%',
@@ -131,7 +131,7 @@ const Sidebar: React.FC<SidebarProps> = ({ mobile, onHide }) => {
   return (
     <Box
       clone
-      width={'230px'}
+      width={mobile ? '100%' : '230px'}
       pl={{ sm: 0, md: '15px' }}
       pt={{ sm: 3, md: '30px' }}
       pb={{ sm: 1, md: '15px' }}
@@ -139,7 +139,7 @@ const Sidebar: React.FC<SidebarProps> = ({ mobile, onHide }) => {
       height={mobile ? 'auto' : '100vh'}
       className={cx({
         [classes.rightBorder]: !mobile,
-        [classes.light]: !darkMode
+        [classes.light]: !darkMode && !mobile
       })}
     >
       <Box

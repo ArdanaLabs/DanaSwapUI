@@ -31,10 +31,11 @@ const defaultSize = {
 }
 
 export interface DropdownButtonProps {
-    isOpen?: boolean
+    isOpen?: boolean,
+    style?: object
 }
 
-const DropdownButton: React.FC<DropdownButtonProps> = ({isOpen = false}) => {
+const DropdownButton: React.FC<DropdownButtonProps> = ({isOpen = false, style = {}}) => {
   const { palette, breakpoints } = useTheme()
   const dark = useIsDarkMode()
   const mobile = useMediaQuery(breakpoints.down('xs'))
@@ -49,6 +50,7 @@ const DropdownButton: React.FC<DropdownButtonProps> = ({isOpen = false}) => {
       pt={isOpen ? '5px' : '4px'}
       display={'flex'}
       className={cx(classes.dropdown)}
+      style={style}
     >
       <img
         src={Arrow}

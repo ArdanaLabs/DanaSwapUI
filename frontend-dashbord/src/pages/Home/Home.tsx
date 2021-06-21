@@ -7,9 +7,9 @@ import cx from 'classnames'
 import { useIsDarkMode } from 'state/user/hooks'
 import LandingImage from 'components/LandingImage'
 import SwapForm from 'components/SwapForm'
-import DropdownButton from 'components/DropdownButton'
-import Radio from 'components/Radio'
-import Button from 'components/Button'
+import { Button, Radio, DropdownButton } from 'components/Button'
+import { options } from 'data';
+
 const useStyles = makeStyles(({ palette }) => ({
   homeContainer: {
     height: '100%'
@@ -26,36 +26,6 @@ const useStyles = makeStyles(({ palette }) => ({
     }
   }
 }))
-
-const options = [
-  {
-    title: 'Filter',
-    data: [
-      { label: 'Insert', value: 'Insert' },
-      { label: 'Filter', value: 'Filter' },
-      { label: 'Names', value: 'Names' },
-      { label: 'Here', value: 'Here' },
-      { label: 'Accordingly', value: 'Accordingly' }
-    ]
-  },
-  {
-    title: 'Max Slippage',
-    data: [
-      { label: '0.5%', value: '0.5' },
-      { label: '1%', value: '1' },
-      { label: 'Custom:', value: 'Custom', hasInput: true }
-    ]
-  },
-  {
-    title: 'Gas Prices',
-    data: [
-      { label: '20.5 Slow', value: '20.5' },
-      { label: '25 Standard', value: '25' },
-      { label: '28 Fast', value: '28' },
-      { label: '32 Instant', value: '32' }
-    ]
-  }
-]
 
 const Home: React.FC = () => {
   const { palette, breakpoints } = useTheme()
@@ -120,8 +90,10 @@ const Home: React.FC = () => {
             className={cx(classes.swapPanel)}
           >
             <span>Exchange rate DAI/USDC (including fees): 1.0006</span>
-            <span style={{marginBottom: '15px'}}>Trade routed through: sUSD</span>
-            <Button variant="contained">Swap</Button>
+            <span style={{ marginBottom: '15px' }}>
+              Trade routed through: sUSD
+            </span>
+            <Button variant='contained'>Swap</Button>
           </Box>
         </Grid>
       </Grid>

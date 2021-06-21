@@ -24,9 +24,9 @@ const ThemeProvider: React.FC = ({ children }) => {
   const darkMode = useIsDarkMode();
   let theme = darkMode ? darkTheme : lightTheme;
 
-  if (location.pathname.replace('/', '') === '') {
-    theme = darkTheme;
-  }
+  // if (location.pathname.replace('/', '') === '') {
+  //   theme = darkTheme;
+  // }
 
   return <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>;
 };
