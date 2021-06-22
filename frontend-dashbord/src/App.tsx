@@ -1,5 +1,5 @@
 import React, { Suspense, useState, useEffect } from 'react';
-import { BrowserRouter, Switch, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Provider as StateProvider } from 'react-redux';
 import {
   ThemeProvider as MuiThemeProvider,
@@ -20,7 +20,7 @@ import { Pools } from './pages';
 import { Dao } from './pages';
 
 const ThemeProvider: React.FC = ({ children }) => {
-  const location = useLocation();
+  // const location = useLocation();
   const darkMode = useIsDarkMode();
   let theme = darkMode ? darkTheme : lightTheme;
 

@@ -78,6 +78,10 @@ const SwapForm: React.FC<SwapFormProps> = () => {
     setCoin2(coin1);
   };
 
+  const onCoin1SelectChange = (e: any) => {
+    setCoin1(e.target.value);
+  }
+
   return (
     <Grid container spacing={mobile ? 1 : 2} style={{ position: "relative" }}>
       <Grid container item xs={6}>
@@ -107,7 +111,7 @@ const SwapForm: React.FC<SwapFormProps> = () => {
             ></Box>
             <CoinSelect
               value={coin1}
-              onChange={(e: any): any => setCoin1(e.target.value)}
+              onChange={onCoin1SelectChange}
               displayEmpty={true}
               inputProps={{ "aria-label": "Without label" }}
               className={cx(classes.chooseCoin, {

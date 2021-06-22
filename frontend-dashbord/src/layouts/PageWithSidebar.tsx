@@ -15,7 +15,7 @@ import { useDarkModeManager } from "state/user/hooks";
 
 import MainLogo from "assets/svg/MainLogo.svg";
 import Avatar from "assets/svg/Avatar.svg";
-import { Sidebar, Footer } from "components";
+import { Sidebar } from "components";
 import { Link } from "react-router-dom";
 
 import Ardana_hor_logo from "assets/Ardana_hor color 1.svg";
@@ -268,7 +268,7 @@ const PageWithSidebar: React.FC<PageWithSidebarProps> = ({
               <Box
                 px={mobile ? 0 : 3}
                 width={mobile ? "100vw" : "calc(100vw - 230px)"}
-                mt={!mobile ? "18px" : "230px"}
+                mt={!mobile ? "85px" : "230px"}
                 mb={mobile ? 0 : "23px"}
               >
                 <Container style={!mobile ? {} : { padding: "0 20px" }}>

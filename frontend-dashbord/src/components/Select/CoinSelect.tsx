@@ -39,7 +39,7 @@ const CoinSelect: React.FC<CoinSelectProps> = ({
   inputProps = {},
   children,
 }) => {
-  const { palette, breakpoints } = useTheme();
+  const { breakpoints } = useTheme();
   const dark = useIsDarkMode();
   const mobile = useMediaQuery(breakpoints.down("xs"));
   const classes = useStyles({ dark, mobile });

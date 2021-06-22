@@ -1,5 +1,5 @@
 import {
-  createMuiTheme,
+  unstable_createMuiStrictModeTheme as createMuiTheme,
   responsiveFontSizes,
   ThemeOptions
 } from '@material-ui/core';

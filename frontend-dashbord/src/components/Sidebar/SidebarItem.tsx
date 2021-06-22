@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-import { Box, Typography, Tooltip } from '@material-ui/core';
+import { Box, Typography } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
@@ -109,7 +109,6 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
   const location = useLocation();
   const active = location.pathname === link;
   const classes = useStyles({ active });
-  console.log(classes);
   const theme = useTheme();
   const mobile = useMediaQuery(theme.breakpoints.down('sm'));
   const history = useHistory();
@@ -130,10 +129,10 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
   };
 
   // const WrapperComponent = disabled ? Tooltip : React.Fragment;
-  const WrapperComponent = Tooltip;
+  // const WrapperComponent = Tooltip;
 
   return (
-    <WrapperComponent title="Disabled on testnet">
+    // <WrapperComponent title="Disabled on testnet">
       <Box
         display="flex"
         alignItems="center"
@@ -153,7 +152,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
         )} style={{maskImage: `url(${Icon.url})`, WebkitMaskImage: `url(${Icon.url})`}}></div>
         <Typography>{title}</Typography>
       </Box>
-    </WrapperComponent>
+    // </WrapperComponent>
   );
 };
 

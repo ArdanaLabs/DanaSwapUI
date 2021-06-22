@@ -27,7 +27,7 @@ export interface RecordProps {
 }
 
 const Record: React.FC<RecordProps> = ({ data }) => {
-  const { palette, breakpoints } = useTheme()
+  const { breakpoints } = useTheme()
   const dark = useIsDarkMode()
   const mobile = useMediaQuery(breakpoints.down('xs'))
   const classes = useStyles({ dark, mobile })

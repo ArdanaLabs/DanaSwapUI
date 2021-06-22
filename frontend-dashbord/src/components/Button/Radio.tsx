@@ -83,12 +83,16 @@ const CustomRadio: React.FC<CustomRadioProps> = ({
   value,
   customValue = "",
 }) => {
-  const { palette, breakpoints } = useTheme();
+  const { breakpoints } = useTheme();
   const dark = useIsDarkMode();
   const mobile = useMediaQuery(breakpoints.down("xs"));
   const classes = useStyles({ dark, mobile });
   const [val, setVal] = React.useState(value);
   const [customVal, setCustomVal] = React.useState(customValue);
+
+  const onCustomInputChange = (e: any) => {
+    setCustomVal(e.target.value);
+  }
   const StyledRadio = (props: any) => {
     return (
       <Radio
@@ -103,7 +107,7 @@ const CustomRadio: React.FC<CustomRadioProps> = ({
   };
 
   const handleChange = (event: any) => {
-    console.log(event.target);
+    // console.log(event.target);
     setVal(event.target.value);
   };
 
@@ -129,6 +133,7 @@ const CustomRadio: React.FC<CustomRadioProps> = ({
                 placeholder={"Enter amount"}
                 value={customVal}
                 className={cx(classes.customInput)}
+                onChange={onCustomInputChange}
               />
             ) : null}
           </Box>
