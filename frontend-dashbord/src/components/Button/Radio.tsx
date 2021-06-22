@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import {
   Box,
   useMediaQuery,
@@ -6,102 +6,106 @@ import {
   RadioGroup,
   FormControlLabel,
   FormControl,
-  FormLabel
-} from '@material-ui/core'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-import cx from 'classnames'
-import { useIsDarkMode } from 'state/user/hooks'
-import Check from 'assets/svg/check.svg'
-import Input from 'components/Input'
+  FormLabel,
+} from "@material-ui/core";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import cx from "classnames";
+import { useIsDarkMode } from "state/user/hooks";
+import Check from "assets/svg/check.svg";
+import Input from "components/Input";
 
 const useStyles = makeStyles(({ palette }) => ({
   title: {
-    fontSize: '12px',
+    fontSize: "12px",
     color: palette.text.primary,
-    fontWeight: 'bold',
-    marginBottom: '4px'
+    fontWeight: "bold",
+    marginBottom: "4px",
   },
 
   root: {
-    '&:hover': {
-      backgroundColor: 'transparent'
-    }
+    "&:hover": {
+      backgroundColor: "transparent",
+    },
   },
   icon: {
-    borderRadius: '50%',
+    borderRadius: "50%",
     width: 18,
     height: 18,
-    backgroundColor: '#fff',
-    'input:hover ~ &': {
-      backgroundColor: '#ebf1f5'
+    backgroundColor: "#fff",
+    "input:hover ~ &": {
+      backgroundColor: "#ebf1f5",
     },
-    'input:disabled ~ &': {
-      boxShadow: 'none',
-      background: 'rgba(206,217,224,.5)'
-    }
+    "input:disabled ~ &": {
+      boxShadow: "none",
+      background: "rgba(206,217,224,.5)",
+    },
   },
   checkedIcon: {
     backgroundColor: palette.primary.main,
-    '&:before': {
-      display: 'block',
+    "&:before": {
+      display: "block",
       width: 18,
       height: 18,
       backgroundImage: `url(${Check})`,
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: '4px',
-      content: '""'
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "4px",
+      content: '""',
     },
-    'input:hover ~ &': {
-      backgroundColor: '#206ba3'
-    }
+    "input:hover ~ &": {
+      backgroundColor: "#206ba3",
+    },
   },
   itemLabel: {
-      fontSize: '12px',
-      color: palette.text.secondary
+    fontSize: "12px",
+    color: palette.text.secondary,
   },
   formControl: {
-      '& .MuiRadio-root': {
-          padding: '5px 9px'
-      }
+    "& .MuiRadio-root": {
+      padding: "5px 9px",
+    },
   },
   customInput: {
-      fontSize: '9px',
-      width: 'calc(100% - 30px)',
-      marginLeft: '20px',
-      padding: '4px 2px 4px 9px'
-  }
-}))
+    fontSize: "9px",
+    width: "calc(100% - 30px)",
+    marginLeft: "20px",
+    padding: "4px 2px 4px 9px",
+  },
+}));
 
 export interface CustomRadioProps {
-  option: any
-  value: any,
-  customValue?: any,
+  option: any;
+  value: any;
+  customValue?: any;
 }
 
-const CustomRadio: React.FC<CustomRadioProps> = ({ option, value, customValue = null }) => {
-  const { palette, breakpoints } = useTheme()
-  const dark = useIsDarkMode()
-  const mobile = useMediaQuery(breakpoints.down('xs'))
-  const classes = useStyles({ dark, mobile })
-  const [val, setVal] = React.useState(value)
-    const[customVal, setCustomVal] = React.useState(customValue)
+const CustomRadio: React.FC<CustomRadioProps> = ({
+  option,
+  value,
+  customValue = "",
+}) => {
+  const { palette, breakpoints } = useTheme();
+  const dark = useIsDarkMode();
+  const mobile = useMediaQuery(breakpoints.down("xs"));
+  const classes = useStyles({ dark, mobile });
+  const [val, setVal] = React.useState(value);
+  const [customVal, setCustomVal] = React.useState(customValue);
   const StyledRadio = (props: any) => {
     return (
       <Radio
         className={classes.root}
         disableRipple
-        color='default'
+        color="default"
         checkedIcon={<span className={cx(classes.icon, classes.checkedIcon)} />}
         icon={<span className={classes.icon} />}
         {...props}
       />
-    )
-  }
+    );
+  };
 
   const handleChange = (event: any) => {
-      console.log(event.target)
-    setVal(event.target.value)
-  }
+    console.log(event.target);
+    setVal(event.target.value);
+  };
 
   return (
     <FormControl>
@@ -112,20 +116,26 @@ const CustomRadio: React.FC<CustomRadioProps> = ({ option, value, customValue = 
         value={val}
         onChange={handleChange}
       >
-        {option.data.map((item: any) => (
-           <>
-          <FormControlLabel
-            className={cx(classes.formControl)}
-            value={item.value}
-            control={<StyledRadio />}
-            label={<div className={cx(classes.itemLabel)}>{item.label}</div>}
-          />
-          {item.hasInput ? <Input placeholder={'Enter amount'} value={customVal} className={cx(classes.customInput)}/> : null}
-          </>
+        {option.data.map((item: any, i: any) => (
+          <Box key={i}>
+            <FormControlLabel
+              className={cx(classes.formControl)}
+              value={item.value}
+              control={<StyledRadio />}
+              label={<div className={cx(classes.itemLabel)}>{item.label}</div>}
+            />
+            {item.hasInput ? (
+              <Input
+                placeholder={"Enter amount"}
+                value={customVal}
+                className={cx(classes.customInput)}
+              />
+            ) : null}
+          </Box>
         ))}
       </RadioGroup>
     </FormControl>
-  )
-}
+  );
+};
 
-export default CustomRadio
+export default CustomRadio;

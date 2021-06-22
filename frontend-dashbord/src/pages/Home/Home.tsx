@@ -8,7 +8,8 @@ import { useIsDarkMode } from 'state/user/hooks'
 import LandingImage from 'components/LandingImage'
 import SwapForm from 'components/SwapForm'
 import { Button, Radio, DropdownButton } from 'components/Button'
-import { options } from 'data';
+import { options, pools } from 'data';
+import PoolsPanel from 'components/Table'
 
 const useStyles = makeStyles(({ palette }) => ({
   homeContainer: {
@@ -40,7 +41,7 @@ const Home: React.FC = () => {
 
   return (
     <Box style={mobile ? { backgroundColor: palette.background.paper } : {}}>
-      <LandingImage url={'HOME'} title={'Home'} />
+      <LandingImage url={'HOME'} title={'Swap'} />
       <Box mt='12px'></Box>
       <SwapForm />
       <Box mt='4px'></Box>
@@ -70,8 +71,8 @@ const Home: React.FC = () => {
                 spacing={mobile ? 1 : 2}
                 style={{ marginTop: '10px' }}
               >
-                {options.map(option => (
-                  <Grid container item xs={4}>
+                {options.map((option, i) => (
+                  <Grid container item xs={4} key={i}>
                     <Radio option={option} value={option.data[0].value} />
                   </Grid>
                 ))}
@@ -97,6 +98,8 @@ const Home: React.FC = () => {
           </Box>
         </Grid>
       </Grid>
+      <Box mt='20px'></Box>
+      <PoolsPanel data={pools} overView={true}></PoolsPanel>
     </Box>
   )
 }

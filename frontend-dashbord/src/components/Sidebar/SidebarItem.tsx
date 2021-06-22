@@ -129,7 +129,8 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
     }
   };
 
-  const WrapperComponent = disabled ? Tooltip : React.Fragment;
+  // const WrapperComponent = disabled ? Tooltip : React.Fragment;
+  const WrapperComponent = Tooltip;
 
   return (
     <WrapperComponent title="Disabled on testnet">

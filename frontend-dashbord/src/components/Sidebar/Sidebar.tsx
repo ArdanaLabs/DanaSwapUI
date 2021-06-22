@@ -100,12 +100,12 @@ const Sidebar: React.FC<SidebarProps> = ({ mobile, onHide }) => {
 
   const navigation = [
     {
-      title: 'Home',
+      title: 'Swap',
       link: '/home',
       Icon: { url: HomeIcon, alt: 'Home' }
     },
     {
-      title: 'POOLS',
+      title: 'Pools',
       link: '/pools',
       Icon: { url: HandIcon, alt: 'Hand' }
     },
