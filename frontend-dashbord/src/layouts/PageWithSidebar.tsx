@@ -114,7 +114,7 @@ const PageWithSidebar: React.FC<PageWithSidebarProps> = ({
             position={"fixed"}
             style={{ backgroundColor: "white" }}
           >
-            <Box my={"-10px"}>
+            <Box my={"-10px"} ml={"-10px"}>
               <img
                 height={"100px"}
                 src={Ardana_hor_logo}

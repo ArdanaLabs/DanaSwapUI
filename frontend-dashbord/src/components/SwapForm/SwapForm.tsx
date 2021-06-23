@@ -7,6 +7,25 @@ import Input from "components/Input";
 import SwapButton from "components/Button/SwapButton";
 import CoinSelect from "components/Select";
 
+import IconCoin1 from "assets/coin1.png";
+import IconCoin2 from "assets/coin2.png";
+import IconCoin3 from "assets/coin3.png";
+
+const coinList = [
+  {
+    icon: IconCoin1,
+    label: "Bitcoin (BTC)",
+  },
+  {
+    icon: IconCoin2,
+    label: "Cardano (ADA)",
+  },
+  {
+    icon: IconCoin3,
+    label: "Ethereum (ETH)",
+  },
+];
+
 const useStyles = makeStyles(({ palette }) => ({
   chooseCoin: {
     height: "28px",
@@ -54,6 +73,15 @@ const useStyles = makeStyles(({ palette }) => ({
     maxWidth: "250px",
   },
   swapInputMobile: {},
+  menuItem: {
+    "& img": {
+      width: "20px",
+      height: "20px",
+    },
+    "& span": {
+      padding: "0 10px",
+    },
+  },
 }));
 
 export interface SwapFormProps {}
@@ -73,14 +101,10 @@ const SwapForm: React.FC<SwapFormProps> = () => {
   const onSwapOptions = (): any => {
     setAmount1(amount2);
     setAmount2(amount1);
-    
+
     setCoin1(coin2);
     setCoin2(coin1);
   };
-
-  const onCoin1SelectChange = (e: any) => {
-    setCoin1(e.target.value);
-  }
 
   return (
     <Grid container spacing={mobile ? 1 : 2} style={{ position: "relative" }}>
@@ -111,7 +135,7 @@ const SwapForm: React.FC<SwapFormProps> = () => {
             ></Box>
             <CoinSelect
               value={coin1}
-              onChange={onCoin1SelectChange}
+              onChange={(e: any): any => setCoin1(e.target.value)}
               displayEmpty={true}
               inputProps={{ "aria-label": "Without label" }}
               className={cx(classes.chooseCoin, {
@@ -121,9 +145,16 @@ const SwapForm: React.FC<SwapFormProps> = () => {
               <MenuItem value="" disabled>
                 Choose Coin
               </MenuItem>
-              <MenuItem value={"ten"}>Ten</MenuItem>
-              <MenuItem value={"twenty"}>Twenty</MenuItem>
-              <MenuItem value={"thirty"}>Thirty</MenuItem>
+              {coinList.map((item, index) => (
+                <MenuItem
+                  key={index}
+                  value={item.label}
+                  className={cx(classes.menuItem)}
+                >
+                  <img src={item.icon} alt={item.label} />
+                  <span>{item.label}</span>
+                </MenuItem>
+              ))}
             </CoinSelect>
           </Box>
           <Box
@@ -203,9 +234,16 @@ const SwapForm: React.FC<SwapFormProps> = () => {
               <MenuItem value="" disabled>
                 Choose Coin
               </MenuItem>
-              <MenuItem value={"ten"}>Ten</MenuItem>
-              <MenuItem value={"twenty"}>Twenty</MenuItem>
-              <MenuItem value={"thirty"}>Thirty</MenuItem>
+              {coinList.map((item, index) => (
+                <MenuItem
+                  key={index}
+                  value={item.label}
+                  className={cx(classes.menuItem)}
+                >
+                  <img src={item.icon} alt={item.label} />
+                  <span>{item.label}</span>
+                </MenuItem>
+              ))}
             </CoinSelect>
           </Box>
           <Box

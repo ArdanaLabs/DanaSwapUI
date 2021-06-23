@@ -19,6 +19,8 @@ import { Home } from './pages';
 import { Pools } from './pages';
 import { Dao } from './pages';
 
+import { Landing } from './pages';
+
 const ThemeProvider: React.FC = ({ children }) => {
   // const location = useLocation();
   const darkMode = useIsDarkMode();
@@ -63,7 +65,7 @@ const App: React.FC = () => {
     <Providers>
       <Switch>
         <Route exact path="/">
-          <Home />
+          <Landing />
         </Route>
 
         <Route exact path="/home">

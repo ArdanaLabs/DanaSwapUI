@@ -134,6 +134,7 @@ const CustomRadio: React.FC<CustomRadioProps> = ({
                 value={customVal}
                 className={cx(classes.customInput)}
                 onChange={onCustomInputChange}
+                type={"number"}
               />
             ) : null}
           </Box>

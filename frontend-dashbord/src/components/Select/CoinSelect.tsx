@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, useMediaQuery, Select, InputBase } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
@@ -6,19 +6,19 @@ import { useIsDarkMode } from "state/user/hooks";
 
 import { DropdownButton } from "components/Button";
 
-
 const useStyles = makeStyles(({ palette }) => ({
   select: {
-    '& div:first-child': {
-      paddingRight: 'unset',
+    "& div:first-child": {
+      paddingRight: "unset",
       "&:focus": {
         backgroundColor: "unset !important",
-      }
+      },
+      cursor: "unset",
     },
     "& div:nth-of-type(2)": {
-      marginRight: '5px',
-      'pointer-events': 'none',
-    }
+      marginRight: "5px",
+      cursor: "pointer",
+    },
   },
 }));
 
@@ -43,6 +43,12 @@ const CoinSelect: React.FC<CoinSelectProps> = ({
   const dark = useIsDarkMode();
   const mobile = useMediaQuery(breakpoints.down("xs"));
   const classes = useStyles({ dark, mobile });
+  const [showOptions, setShowOptions] = useState(false);
+
+  const onToggleOptions = () => {
+    setShowOptions((prev) => !prev);
+  };
+
   return (
     <Box className={cx(classes.select)}>
       <Select
@@ -51,10 +57,15 @@ const CoinSelect: React.FC<CoinSelectProps> = ({
         displayEmpty={displayEmpty}
         className={className}
         inputProps={inputProps}
-        input={<InputBase/> }
+        input={<InputBase />}
+        open={showOptions}
+        onClose={() => setShowOptions(false)}
         IconComponent={() => (
-          <DropdownButton />
+          <Box onClick={onToggleOptions}>
+            <DropdownButton />
+          </Box>
         )}
+        renderValue={(option) => <>{option !== "" ? option : "Choose Coin"}</>}
       >
         {children}
       </Select>
