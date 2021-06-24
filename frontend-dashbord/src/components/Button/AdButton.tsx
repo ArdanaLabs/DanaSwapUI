@@ -3,6 +3,7 @@ import Button from "@material-ui/core/Button";
 
 const StyledButton = withStyles({
   root: {
+    margin: "10px",
     padding: "15px 30px",
     borderRadius: "50px",
     fontSize: "18px",

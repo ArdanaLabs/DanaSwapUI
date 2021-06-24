@@ -1,49 +1,52 @@
 import React from "react";
-import { Box, useMediaQuery, Container, Grid } from "@material-ui/core";
+import { Box, useMediaQuery, Container, Grid, Link } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
 
 import { useIsDarkMode } from "state/user/hooks";
 
 import { HeaderSection } from "./";
+import { FeatureBox } from "components/Box";
+import { AdButton } from "components/Button";
 
 import LOGO_WITH_CITY from "assets/img/landing/logos/logo-with-city.png";
 import LOGO_WITH_CITY_W from "assets/img/landing/logos/logo-with-city-white.png";
-import { AdButton } from "components/Button";
 
 import img_fully_decentralized from "assets/img/landing/icons/fully-decentralized.png";
 import img_borrow_lend from "assets/img/landing/icons/borrow-lend.png";
 import img_store_of_value from "assets/img/landing/icons/store-of-value.png";
 import img_powered_by_cardano from "assets/img/landing/icons/powered-by-cardano.png";
-import { FeatureBox } from "components/FeatureBox";
 
 const Ardana_features = [
   {
     image: img_fully_decentralized,
     title: "Fully\nDecentralized",
-    content: "Unbiased, multi-collateral backed pegged to the US Dollar and other currencies.",
+    content:
+      "Unbiased, multi-collateral backed pegged to the US Dollar and other currencies.",
   },
   {
     image: img_borrow_lend,
     title: "Borrow\n& Lend",
-    content: "Allow holders to borrow and lend the asset for use on exchanges like any other crypto asset.",
+    content:
+      "Allow holders to borrow and lend the asset for use on exchanges like any other crypto asset.",
   },
   {
     image: img_store_of_value,
     title: "Store of\nValue",
-    content: "Designed to function as a secure store of value that accrues value even in a volatile market.",
+    content:
+      "Designed to function as a secure store of value that accrues value even in a volatile market.",
   },
   {
     image: img_powered_by_cardano,
     title: "Powered by\nCardano",
-    content: "Ardana stablecoins are designed to function as a store of value even in a volatile market.",
+    content:
+      "Ardana stablecoins are designed to function as a store of value even in a volatile market.",
   },
-]
+];
 
 const useStyles = makeStyles(({ palette }) => ({
   bg: {
     background: `url(${LOGO_WITH_CITY}) right top no-repeat, url(${LOGO_WITH_CITY_W}) right top no-repeat, linear-gradient(90.19deg, #2F3DA0 0.2%, #73D6F1 80.66%)`,
-    paddingBottom: "50px",
   },
 }));
 
@@ -85,12 +88,16 @@ const MainSection: React.FC = () => {
 
         <Box mt="50px"></Box>
         <Box textAlign="center">
-          <AdButton variant="contained">BUY TOKEN</AdButton>
-          <AdButton variant="contained">LAUNCH PLATFORM</AdButton>
+          <Link href="#" underline="none">
+            <AdButton variant="contained">BUY TOKEN</AdButton>
+          </Link>
+          <Link href="#" underline="none">
+            <AdButton variant="contained">LAUNCH PLATFORM</AdButton>
+          </Link>
         </Box>
 
         <Box mt={!mobile ? "100px" : "50px"}></Box>
-        {/* <Box>
+        <Box>
           <Grid container spacing={1}>
             <Grid item xs={12} sm={6}>
               <Box
@@ -120,20 +127,36 @@ const MainSection: React.FC = () => {
         </Box>
 
         <Box mt="100px"></Box>
-        
+
         <Box>
           <Grid container spacing={3} alignItems="stretch">
-            {
-              Ardana_features.map((feature, index) => (
-                <Grid item key={index} xs={12} sm={6} md={3} style={{display: "flex", alignItems: "stretch", flexFlow: "column"}}>
-                  <FeatureBox image={feature.image} title={feature.title} content={feature.content} custom_style={{padding: "20px", background: "linear-gradient(180deg, rgba(115, 214, 241, 0) 0%, #2F3DA0 100%)", flex: 2}} />
-                </Grid>
-              ))
-            }
+            {Ardana_features.map((feature, index) => (
+              <Grid
+                item
+                key={index}
+                xs={12}
+                sm={6}
+                md={3}
+                style={{
+                  display: "flex",
+                  alignItems: "stretch",
+                  flexFlow: "column",
+                }}
+              >
+                <FeatureBox
+                  image={feature.image}
+                  title={feature.title}
+                  content={feature.content}
+                  custom_style={{
+                    padding: "20px",
+                    background:
+                      "linear-gradient(180deg, rgba(115, 214, 241, 0) 0%, #2F3DA0 100%)",
+                  }}
+                />
+              </Grid>
+            ))}
           </Grid>
-        </Box> */}
-
-        <Box mt="30px"></Box>
+        </Box>
       </Container>
     </Box>
   );

@@ -16,14 +16,11 @@ import { useIsDarkMode } from "state/user/hooks";
 import Logo from "assets/img/landing/logos/ardana-hor.png";
 
 const useStyles = makeStyles(({ palette }) => ({
-  bg: {
-    zIndex: 1,
-  },
-  logo_img: {
+  logoImg: {
     width: "287px",
     height: "136px",
   },
-  logo_img_mobile: {
+  mobile_logoImg: {
     width: "187px",
     height: "96px",
   },
@@ -31,25 +28,30 @@ const useStyles = makeStyles(({ palette }) => ({
     padding: "15px",
     color: "white",
     fontSize: "18px",
+    transition: "color .2s",
+
+    "&:hover": {
+      color: "#7A7A7A",
+    }
   },
 }));
 
 const links = [
   {
     label: "HOME",
-    to: "/home",
+    to: "#",
   },
   {
     label: "RESOURCES",
-    to: "/home",
+    to: "#",
   },
   {
     label: "ROADMAP",
-    to: "/home",
+    to: "#",
   },
   {
     label: "BLOG",
-    to: "/home",
+    to: "#",
   },
 ];
 
@@ -68,7 +70,7 @@ const HeaderSection: React.FC = () => {
   return (
     <Grid container direction="row" justify="space-between" alignItems="center">
       <Box>
-        <img src={Logo} className={cx(classes.logo_img, {[classes.logo_img_mobile]: mobile})} alt="logo" />
+        <img src={Logo} className={cx(!mobile ? classes.logoImg : classes.mobile_logoImg)} alt="logo" />
       </Box>
       {!mobile && (
         <Box>
@@ -78,6 +80,7 @@ const HeaderSection: React.FC = () => {
                 href={link.to}
                 className={cx(classes.menuItem)}
                 key={index}
+                underline="none"
               >
                 {link.label}
               </Link>
