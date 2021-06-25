@@ -7,6 +7,8 @@ import {
   DanaSwapSection,
   StableCoinSection,
   TopNotchSection,
+  ProfileSection,
+  FooterSection,
 } from "./sections";
 
 const Landing: React.FC = () => {
@@ -17,6 +19,8 @@ const Landing: React.FC = () => {
       <DanaSwapSection />
       <StableCoinSection />
       <TopNotchSection />
+      <ProfileSection />
+      <FooterSection />
     </Box>
   );
 };
