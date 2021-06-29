@@ -31,9 +31,10 @@ const useStyles = makeStyles(({ palette }) => ({
     borderRadius: "50%",
     width: 18,
     height: 18,
-    backgroundColor: "#fff",
+    backgroundColor: palette.background.default,
+    transition: "background .3s ease-in",
     "input:hover ~ &": {
-      backgroundColor: "#ebf1f5",
+      // backgroundColor: "#ebf1f5",
     },
     "input:disabled ~ &": {
       boxShadow: "none",

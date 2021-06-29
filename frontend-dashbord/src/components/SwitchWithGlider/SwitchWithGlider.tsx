@@ -12,7 +12,7 @@ const useStyles = makeStyles(({ palette }) => ({
   },
   activeItem: {
     borderRadius: '100px 0 0 100px',
-    background: '#FFFFFF',
+    backgroundColor: palette.background.paper,
     transition: 'background .3s ease-in',
   }
 

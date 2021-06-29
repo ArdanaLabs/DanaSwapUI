@@ -79,9 +79,13 @@ const useStyles = makeStyles(({ palette }) => ({
   menuIcon: {
     width: '20px',
     height: '20px',
-    backgroundColor: palette.common.white,
+    backgroundColor: palette.text.hint,
     WebkitMaskRepeat: 'no-repeat',
-    WebkitMaskSize: '100%'
+    WebkitMaskSize: '100%',
+    transition: 'background .3s ease-in',
+  },
+  menuItem: {
+    transition: 'color .3s ease-in',
   }
 }));
 
@@ -150,7 +154,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
         <div className={cx(
           classes.menuIcon
         )} style={{maskImage: `url(${Icon.url})`, WebkitMaskImage: `url(${Icon.url})`}}></div>
-        <Typography>{title}</Typography>
+        <Typography className={cx(classes.menuItem)}>{title}</Typography>
       </Box>
     // </WrapperComponent>
   );

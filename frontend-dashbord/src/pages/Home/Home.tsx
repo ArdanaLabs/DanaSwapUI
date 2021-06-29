@@ -41,7 +41,7 @@ const Home: React.FC = () => {
 
   return (
     <Box style={mobile ? { backgroundColor: palette.background.paper } : {}}>
-      <LandingImage url={'HOME'} title={'Swap'} />
+      <LandingImage url={'HOME > SWAP'} title={'Swap'} />
       <Box mt='12px'></Box>
       <SwapForm />
       <Box mt='4px'></Box>

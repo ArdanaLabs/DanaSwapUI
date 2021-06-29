@@ -16,14 +16,29 @@ import { useDarkModeManager } from "state/user/hooks";
 import MainLogo from "assets/svg/MainLogo.svg";
 import Avatar from "assets/svg/Avatar.svg";
 import { Sidebar } from "components";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import Ardana_hor_logo from "assets/Ardana_hor color 1.svg";
 import { Button } from "components/Button";
 
-const useStyles = makeStyles(({ palette }) => ({
+const useStyles = makeStyles(({ palette, breakpoints }) => ({
+  topBar: {
+    display: "flex",
+    justifyContent: "space-between",
+    width: "100%",
+    alignItems: "center",
+    zIndex: 100,
+    position: "fixed",
+    background: palette.background.default,
+    transition: "background .3s ease-in",
+
+    [breakpoints.down('xs')]: {
+      justifyContent: "flex-end",
+      top: '152px',
+    },
+  },
   page: {
-    backgroundColor: palette.background.default,
+    background: palette.background.default,
     width: "calc(100vw - 230px)",
     position: "relative",
     minHeight: "100vh",
@@ -31,6 +46,7 @@ const useStyles = makeStyles(({ palette }) => ({
     overflowX: "hidden",
     flexDirection: "column",
     marginLeft: 230,
+    transition: "background .3s ease-in",
   },
   pageMobile: {
     width: "100vw",
@@ -83,6 +99,7 @@ const PageWithSidebar: React.FC<PageWithSidebarProps> = ({
   const [darkMode] = useDarkModeManager();
   const mobile = useMediaQuery(theme.breakpoints.down("sm"));
   const classes = useStyles({ darkMode, mobileSidebarHidden });
+  const history = useHistory();
 
   const hideMobileMenu = () => {
     setMobileSidebarHidden(true);
@@ -104,32 +121,28 @@ const PageWithSidebar: React.FC<PageWithSidebarProps> = ({
   return (
     <Box bgcolor="background.default">
       <Grid container>
-        {!mobile && (
-          <Box
-            display={"flex"}
-            justifyContent={"space-between"}
-            width={"100%"}
-            alignItems={"center"}
-            zIndex={"100"}
-            position={"fixed"}
-            style={{ backgroundColor: "white" }}
-          >
-            <Box my={"-10px"} ml={"-10px"}>
+        {(
+          <Box className={cx(classes.topBar)}>
+            <Box
+              onClick={() => history.push("/")}
+              style={{ cursor: "pointer" }}
+              display={!mobile ? "block" : "none"}
+            >
               <img
-                height={"100px"}
+                height={"80px"}
                 src={Ardana_hor_logo}
                 alt="Ardana-hor-color"
               />
             </Box>
-            <Box mr={"20px"}>
+            <Box m={"20px"} >
               <Button variant="contained">Connect Wallet</Button>
             </Box>
           </Box>
         )}
       </Grid>
-      <Grid container>
+      <Grid container style={!mobile ? { marginTop: "80px" } : {}}>
         {!mobile && (
-          <Box mt={"80px"} position="fixed" left={0} width={210}>
+          <Box position="fixed" left={0} width={210}>
             <Sidebar />
           </Box>
         )}
@@ -209,21 +222,6 @@ const PageWithSidebar: React.FC<PageWithSidebarProps> = ({
 
           {mobile && (
             <Box
-              position="fixed"
-              zIndex={20}
-              p={"20px"}
-              top={"152px"}
-              display="flex"
-              justifyContent="flex-end"
-              width="100vw"
-              style={{ backgroundColor: "white" }}
-            >
-              <Button variant="contained">Connect Wallet</Button>
-            </Box>
-          )}
-
-          {mobile && (
-            <Box
               className={cx(
                 classes.transitionItem,
                 !mobileSidebarHidden && classes.transitionOpen
@@ -268,8 +266,8 @@ const PageWithSidebar: React.FC<PageWithSidebarProps> = ({
               <Box
                 px={mobile ? 0 : 3}
                 width={mobile ? "100vw" : "calc(100vw - 230px)"}
-                mt={!mobile ? "85px" : "230px"}
-                mb={mobile ? 0 : "23px"}
+                mt={!mobile ? "25px" : "230px"}
+                mb={mobile ? 0 : "25px"}
               >
                 <Container style={!mobile ? {} : { padding: "0 20px" }}>
                   {children}

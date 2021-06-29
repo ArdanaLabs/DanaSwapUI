@@ -5,9 +5,9 @@ import { Box, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import cx from 'classnames';
 
-import { useDarkModeManager } from 'state/user/hooks';
+// import { useDarkModeManager } from 'state/user/hooks';
 
-import { SwitchWithGlider } from 'components';
+import { SwitchWithGlider, ThemeSwitch } from 'components';
 import SidebarItem from './SidebarItem';
 import MainLogo from 'assets/svg/MainLogo.svg';
 import HomeIcon from 'assets/svg/Home.svg';
@@ -78,7 +78,7 @@ interface PageIndexing {
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ mobile, onHide }) => {
-  const [darkMode] = useDarkModeManager();
+  // const [darkMode] = useDarkModeManager();
   const classes = useStyles();
   const location = useLocation<{ previous: string }>();
   const { pathname } = location;
@@ -136,10 +136,10 @@ const Sidebar: React.FC<SidebarProps> = ({ mobile, onHide }) => {
       pt={{ sm: 3, md: '30px' }}
       pb={{ sm: 1, md: '15px' }}
       position="relative"
-      height={mobile ? 'auto' : '100vh'}
+      height={mobile ? 'auto' : 'calc(100vh - 80px)'}
       className={cx({
         [classes.rightBorder]: !mobile,
-        [classes.light]: !darkMode && !mobile
+        [classes.light]: !mobile
       })}
     >
       <Box
@@ -199,7 +199,7 @@ const Sidebar: React.FC<SidebarProps> = ({ mobile, onHide }) => {
               />
             ))}
           </Box> */}
-          {/* {!mobile && <ThemeSwitch />} */}
+          {!mobile && <ThemeSwitch />}
         </Box>
       </Box>
     </Box>

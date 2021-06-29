@@ -54,7 +54,7 @@ const ThemeSwitch: React.FC = () => {
   const classes = useStyles();
   const theme = useTheme();
   const deviceWidth = useDeviceWidth();
-  const { palette } = theme;
+  // const { palette } = theme;
   const mobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const handleDayClick = () => {
@@ -102,7 +102,7 @@ const ThemeSwitch: React.FC = () => {
       display="flex"
       padding={!mobile ? '0 6px' : '0'}
       justifyContent="space-between"
-      style={{ backgroundColor: palette.background.paper }}
+      style={{ backgroundColor: 'transparent' }}
     >
       {!mobile ? (
         <SwitchWithGlider

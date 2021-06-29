@@ -11,7 +11,7 @@ import IconCoin1 from "assets/coin1.png";
 import IconCoin2 from "assets/coin2.png";
 import IconCoin3 from "assets/coin3.png";
 
-const coinList = [
+const CoinList = [
   {
     icon: IconCoin1,
     label: "Bitcoin (BTC)",
@@ -26,18 +26,19 @@ const coinList = [
   },
 ];
 
-const useStyles = makeStyles(({ palette }) => ({
+const useStyles = makeStyles(({ palette, breakpoints }) => ({
   chooseCoin: {
     height: "28px",
     width: "148px",
     color: palette.text.secondary,
     fontSize: "12px",
     textAlign: "center",
-    backgroundColor: palette.common.white,
+    background: palette.background.default,
     borderRadius: "100px",
     fontWeight: "bold",
     lineHeight: "28px",
     marginTop: "24px",
+    transition: "background .3s ease-in",
   },
   chooseCoinMobile: {
     height: "25.5px",
@@ -59,10 +60,17 @@ const useStyles = makeStyles(({ palette }) => ({
     display: "flex",
     float: "right",
     alignItems: "center",
-  },
-  panelMobile: {
-    display: "flex",
-    flexDirection: "column",
+    position: "sticky",
+    width: "100%",
+    background: palette.secondary.main,
+    padding: "37px",
+    borderRadius: "5px",
+    transition: "background .3s ease-in",
+
+    [breakpoints.down("xs")]: {
+      flexDirection: "column",
+      padding: "14px",
+    },
   },
   swapInput: {
     height: "41px",
@@ -92,36 +100,27 @@ const SwapForm: React.FC<SwapFormProps> = () => {
   const mobile = useMediaQuery(breakpoints.down("xs"));
   const classes = useStyles({ dark, mobile });
 
-  const [amount1, setAmount1] = useState("");
-  const [amount2, setAmount2] = useState("");
+  const [fromAmount, setFromAmount] = useState("");
+  const [toAmount, setToAmount] = useState("");
 
-  const [coin1, setCoin1] = useState("");
-  const [coin2, setCoin2] = useState("");
+  const [fromCoin, setFromCoin] = useState("");
+  const [toCoin, setToCoin] = useState("");
 
   const onSwapOptions = (): any => {
-    setAmount1(amount2);
-    setAmount2(amount1);
+    setFromAmount(toAmount);
+    setToAmount(fromAmount);
 
-    setCoin1(coin2);
-    setCoin2(coin1);
+    setFromCoin(toCoin);
+    setToCoin(fromCoin);
   };
+
+  const getIconByName = (name: String): any =>
+    CoinList.find((coin) => coin.label === name)!.icon;
 
   return (
     <Grid container spacing={mobile ? 1 : 2} style={{ position: "relative" }}>
       <Grid container item xs={6}>
-        <Box
-          position={"sticky"}
-          width={"100%"}
-          bgcolor={palette.secondary.main}
-          pt={mobile ? "15px" : "37px"}
-          pb={mobile ? "28px" : "37px"}
-          pl={mobile ? "14px" : "37px"}
-          pr={mobile ? "14px" : "37px"}
-          borderRadius={"5px"}
-          className={cx(classes.panel, {
-            [classes.panelMobile]: mobile,
-          })}
-        >
+        <Box className={cx(classes.panel)}>
           <Box
             className={cx(classes.coinBox, {
               [classes.coinBoxMobile]: mobile,
@@ -130,12 +129,23 @@ const SwapForm: React.FC<SwapFormProps> = () => {
             <Box
               width={mobile ? "81px" : "138px"}
               height={mobile ? "81px" : "138px"}
-              bgcolor={palette.common.white}
+              bgcolor={palette.background.default}
               borderRadius={"100%"}
-            ></Box>
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+            >
+              {fromCoin && (
+                <img
+                  src={getIconByName(fromCoin)}
+                  width="100%"
+                  alt="From Coin Icon"
+                />
+              )}
+            </Box>
             <CoinSelect
-              value={coin1}
-              onChange={(e: any): any => setCoin1(e.target.value)}
+              value={fromCoin}
+              onChange={(e: any): any => setFromCoin(e.target.value)}
               displayEmpty={true}
               inputProps={{ "aria-label": "Without label" }}
               className={cx(classes.chooseCoin, {
@@ -145,7 +155,7 @@ const SwapForm: React.FC<SwapFormProps> = () => {
               <MenuItem value="" disabled>
                 Choose Coin
               </MenuItem>
-              {coinList.map((item, index) => (
+              {CoinList.map((item, index) => (
                 <MenuItem
                   key={index}
                   value={item.label}
@@ -179,8 +189,8 @@ const SwapForm: React.FC<SwapFormProps> = () => {
               className={cx(classes.swapInput, {
                 [classes.swapInputMobile]: mobile,
               })}
-              value={amount1}
-              onChange={(e: any): any => setAmount1(e.target.value)}
+              value={fromAmount}
+              onChange={(e: any): any => setFromAmount(e.target.value)}
               placeholder={"0.00"}
               type={"number"}
               step={"0.01"}
@@ -198,19 +208,7 @@ const SwapForm: React.FC<SwapFormProps> = () => {
         <SwapButton></SwapButton>
       </Box>
       <Grid container item xs={6}>
-        <Box
-          position={"sticky"}
-          width={"100%"}
-          bgcolor={palette.secondary.main}
-          pt={mobile ? "15px" : "37px"}
-          pb={mobile ? "28px" : "37px"}
-          pl={mobile ? "14px" : "37px"}
-          pr={mobile ? "14px" : "37px"}
-          borderRadius={"5px"}
-          className={cx(classes.panel, {
-            [classes.panelMobile]: mobile,
-          })}
-        >
+        <Box className={cx(classes.panel)}>
           <Box
             className={cx(classes.coinBox, {
               [classes.coinBoxMobile]: mobile,
@@ -219,12 +217,23 @@ const SwapForm: React.FC<SwapFormProps> = () => {
             <Box
               width={mobile ? "81px" : "138px"}
               height={mobile ? "81px" : "138px"}
-              bgcolor={palette.common.white}
+              bgcolor={palette.background.default}
               borderRadius={"100%"}
-            ></Box>
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+            >
+              {toCoin && (
+                <img
+                  src={getIconByName(toCoin)}
+                  width="100%"
+                  alt="To Coin Icon"
+                />
+              )}
+            </Box>
             <CoinSelect
-              value={coin2}
-              onChange={(e: any): any => setCoin2(e.target.value)}
+              value={toCoin}
+              onChange={(e: any): any => setToCoin(e.target.value)}
               displayEmpty={true}
               inputProps={{ "aria-label": "Without label" }}
               className={cx(classes.chooseCoin, {
@@ -234,7 +243,7 @@ const SwapForm: React.FC<SwapFormProps> = () => {
               <MenuItem value="" disabled>
                 Choose Coin
               </MenuItem>
-              {coinList.map((item, index) => (
+              {CoinList.map((item, index) => (
                 <MenuItem
                   key={index}
                   value={item.label}
@@ -268,8 +277,8 @@ const SwapForm: React.FC<SwapFormProps> = () => {
               className={cx(classes.swapInput, {
                 [classes.swapInputMobile]: mobile,
               })}
-              value={amount2}
-              onChange={(e: any): any => setAmount2(e.target.value)}
+              value={toAmount}
+              onChange={(e: any): any => setToAmount(e.target.value)}
               placeholder={"0.00"}
               type={"number"}
               step={"0.01"}

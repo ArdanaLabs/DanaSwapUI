@@ -33,7 +33,7 @@ const putGradientB = '#8C43F6';
 const hotBadgeGradientA = '#EB7A4A';
 const hotBadgeGradientB = '#F643CF';
 
-const backgroundDay = '#linear-gradient(104.53deg, #FFFFFF 13.32%, #EFEFEF 87.98%)';
+const backgroundDay = '#FFFFFF';
 const backgroundNight = '#000000';
 
 const dividerGreyDay = '#E9E9E9';

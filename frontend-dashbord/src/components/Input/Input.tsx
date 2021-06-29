@@ -10,7 +10,8 @@ const useStyles = makeStyles(({ palette }) => ({
       borderRadius: "5px",
       border: "unset",
       color: "#C4C4C4",
-      fontFamily: "Futura,Trebuchet MS,Arial,sans-serif",
+      background: palette.background.default,
+      transition: "background .3s ease-in",
       "&:focus-visible": {
         outline: "unset",
       },

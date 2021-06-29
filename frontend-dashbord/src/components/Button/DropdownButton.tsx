@@ -7,8 +7,7 @@ import Arrow from 'assets/svg/arrow.svg'
 
 const useStyles = makeStyles(({ palette }) => ({
   dropdown: {
-    cursor: 'pointer',
-    color: palette.common.white
+    cursor: 'pointer'
   },
   arrow: {
     width: '12px',

@@ -21,12 +21,16 @@ const useStyles = makeStyles(({ palette }) => ({
   url: {
     fontSize: '14px',
     fontFamily: 'Poppins',
-    margin: 'unset'
+    margin: 'unset',
+    color: palette.text.hint,
+    transition: "color .3s ease-in",
   },
   title: {
     fontSize: '36px',
     margin: 'unset',
-    marginTop: '10px'
+    marginTop: '10px',
+    color: palette.text.hint,
+    transition: "color .3s ease-in",
   }
 }))
 
