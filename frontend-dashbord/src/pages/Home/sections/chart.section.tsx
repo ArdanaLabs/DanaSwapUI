@@ -13,7 +13,7 @@ const useStyles = makeStyles(({ palette }) => ({
 
   title: {
     color: palette.primary.main,
-    fontFamily: "Brandon Grotesque",
+    fontFamily: "Brandon Grotesque Bold",
     fontStyle: "normal",
     fontWeight: 900,
     fontSize: "30px",
@@ -35,6 +35,7 @@ const useStyles = makeStyles(({ palette }) => ({
     fontWeight: 500,
     fontSize: "13px",
     lineHeight: "100%",
+    paddingBottom: "20px",
 
     "& span": {
       padding: "10px",
