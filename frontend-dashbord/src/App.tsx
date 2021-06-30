@@ -1,25 +1,22 @@
-import React, { Suspense, useState, useEffect } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { Provider as StateProvider } from 'react-redux';
+import React, { Suspense, useState, useEffect } from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Provider as StateProvider } from "react-redux";
 import {
   ThemeProvider as MuiThemeProvider,
-  CssBaseline
-} from '@material-ui/core';
-import { ParallaxProvider } from 'react-scroll-parallax';
+  CssBaseline,
+} from "@material-ui/core";
+import { ParallaxProvider } from "react-scroll-parallax";
 
-import 'react-calendar/dist/Calendar.css';
-import 'animate.css/animate.css';
+import "react-calendar/dist/Calendar.css";
+import "animate.css/animate.css";
 
-import { useIsDarkMode } from 'state/user/hooks';
-import { darkTheme, lightTheme } from './theme';
-import store from './state';
+import { useIsDarkMode } from "state/user/hooks";
+import { darkTheme, lightTheme } from "./theme";
+import store from "./state";
 
-import { PageWithSidebar } from 'layouts';
-import { Home } from './pages';
-import { Pools } from './pages';
-import { Dao } from './pages';
-
-import { Landing } from './pages';
+import { PageWithSidebar } from "layouts";
+import { Landing, Home, Swap, Pools, Dao } from "./pages";
+import Layout from "layouts/Layout";
 
 const ThemeProvider: React.FC = ({ children }) => {
   // const location = useLocation();
@@ -69,8 +66,14 @@ const App: React.FC = () => {
         </Route>
 
         <Route exact path="/home">
-          <PageWithSidebar>
+          <Layout>
             <Home />
+          </Layout>
+        </Route>
+
+        <Route exact path="/swap">
+          <PageWithSidebar>
+            <Swap />
           </PageWithSidebar>
         </Route>
 
@@ -88,7 +91,7 @@ const App: React.FC = () => {
 
         <Route path="*">
           <PageWithSidebar>
-            <Home />
+            <Swap />
           </PageWithSidebar>
         </Route>
       </Switch>

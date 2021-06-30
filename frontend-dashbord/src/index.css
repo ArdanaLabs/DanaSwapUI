@@ -1,7 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap'); */
 /* @import url('http://fonts.cdnfonts.com/css/futura'); */
-/* @import url('http://fonts.cdnfonts.com/css/brandon-grotesque-regular'); */
+@import url(//db.onlinewebfonts.com/c/6cec834e2e8f2e4206567ed75e1281d4?family=Brandon+Grotesque+Bold);
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.5.0/css/all.min.css");
+
+@font-face {
+  font-family: 'Brandon Grotesque';
+  src: local('Brandon Grotesque'), url('assets/font/Brandon Grotesque Bold Regular.ttf') format('ttf');
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Museo Sans';
+  src: local('Museo Sans'), url('assets/font/MuseoSans_300_Italic.otf') format('otf');
+  font-weight: 300;
+  font-style: normal;
+}
 
 body {
   margin: 0;

@@ -178,3 +178,45 @@ export const ProfileList = [
     github: "https://github.com/",
   },
 ];
+
+export const navList = [
+  {
+    label: "HOME",
+    link: "/home",
+  },
+  {
+    label: "SWAP",
+    link: "/swap",
+  },
+  {
+    label: "POOLS",
+    link: "/pools",
+  },
+  {
+    label: "DANA",
+    link: "/dana",
+  },
+  {
+    label: "DAO",
+    link: "/dao",
+  },
+  {
+    label: "STATS",
+    link: "/stats",
+  },
+  {
+    label: "RESOURCES",
+    link: "/resources",
+  },
+  {
+    label: "INFO",
+    link: "/info",
+  },
+]
+
+export const ovList = [
+  {
+    label: "TVL",
+    content: "$220.21 M"
+  },
+]

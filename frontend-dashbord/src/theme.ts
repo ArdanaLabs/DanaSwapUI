@@ -5,6 +5,38 @@ import {
 } from '@material-ui/core';
 import { merge } from 'lodash';
 
+// custom colors
+
+const primaryLightDay = "linear-gradient(89.62deg, #000A4F 0.3%, #3C4DC5 99.64%)";
+const primaryLightNight = "linear-gradient(89.62deg, #72D2F2 0.3%, #6077FF 99.64%)";
+
+const primaryMainDay = "#235DF4";
+const primaryMainNight = "#FFFFFF";
+
+const primaryDarkDay = "linear-gradient(180deg, #5F72FF 0%, #202F9A 100%)";
+const primaryDarkNight = "linear-gradient(180deg, #73D6F1 0%, rgba(115, 214, 241, 0) 100%)";
+
+const secondaryMainDay = "#636060";
+const secondaryMainNight = "#FFFFFF";
+
+const secondaryLightDay = "linear-gradient(180deg, #A5A5A5 0%, #A5A5A5 54.17%, #A5A5A5 99.99%)";
+const secondaryLightNight = "linear-gradient(180deg, #73D6F1 0%, #5F72FF 99.99%, #2F3DA0 100%)";
+
+const secondaryDarkDay = "#A5A5A5";
+const secondaryDarkNight = "rgba(24, 33, 100, 0.5)";
+
+const infoMainDay = "#F5F5F5";
+const infoMainNight = "#131B59";
+
+const backgroundDay = 'linear-gradient(89.43deg, #C0C0C0 -0.11%, #F5F5F5 -0.1%)';
+const backgroundNight = 'linear-gradient(89.43deg, #000633 -0.11%, #000526 99.51%)';
+
+const backgroundPaperDay = 'linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%)';
+const backgroundPaperNight = 'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #2F3DA0 100%)';
+
+const textHintDay = '#A5A5A5';
+const textHintNight = '#73D6F1';
+
 // colors
 const primary = '#235DF4';
 const premiaBlueDay = 'rgba(82, 148, 255, 0.12)';
@@ -20,9 +52,10 @@ const white = '#ffffff';
 const whiteColor = '#F7FAFF';
 
 const textPrimaryDay = '#235DF4';
-const textSecondaryDay = '#979797';
-const textPrimaryNight = '#DCDCDC';
-const textSecondaryNight = '#646464';
+const textSecondaryDay = '#636060';
+
+const textPrimaryNight = '#FFFFFF';
+const textSecondaryNight = '#FFFFFF';
 
 const callGradientA = '#5294FF';
 const callGradientB = '#1EFF78';
@@ -32,9 +65,6 @@ const putGradientB = '#8C43F6';
 
 const hotBadgeGradientA = '#EB7A4A';
 const hotBadgeGradientB = '#F643CF';
-
-const backgroundDay = '#FFFFFF';
-const backgroundNight = '#000000';
 
 const dividerGreyDay = '#E9E9E9';
 const dividerGreyNight = '#212121';
@@ -65,12 +95,17 @@ export const lightTheme = responsiveFontSizes(
         disabled: 'set color of text here'
       },
       primary: {
-        main: primary,
-        dark: premiaBlueDay
+        light: primaryLightDay,
+        main: primaryMainDay,
+        dark: primaryDarkDay,
       },
       secondary: {
-        main: greySecondaryDay,
-        dark: backgroundDay
+        light: secondaryLightDay,
+        main: secondaryMainDay,
+        dark: secondaryDarkDay,
+      },
+      info: {
+        main: infoMainDay,
       },
       common: {
         black,
@@ -81,13 +116,13 @@ export const lightTheme = responsiveFontSizes(
         dark: hotBadgeGradientB
       },
       text: {
-        primary: textPrimaryDay,
-        secondary: textSecondaryDay,
-        hint: white
+        primary: primaryMainDay,
+        secondary: secondaryMainDay,
+        hint: textHintDay,
       },
       background: {
         default: backgroundDay,
-        paper: white
+        paper: backgroundPaperDay,
       },
       success: {
         main: callGradientA,
@@ -101,7 +136,13 @@ export const lightTheme = responsiveFontSizes(
     },
     typography: {
       htmlFontSize: 16,
-      fontFamily: 'Futura,Trebuchet MS,Arial,sans-serif',
+      fontFamily: [
+        '"Brandon Grotesque"',
+        '"Museo Sans"',
+        '"Helvetica Neue"',
+        'Arial',
+        'sans-serif'
+      ].join(','),
       fontSize: 14
     },
     breakpoints: {
@@ -553,12 +594,17 @@ export const darkTheme = responsiveFontSizes(
     palette: {
       type: 'dark',
       primary: {
-        main: primary,
-        dark: premiaBlueNight
+        light: primaryLightNight,
+        main: primaryMainNight,
+        dark: primaryDarkNight,
       },
       secondary: {
-        main: greySecondaryNight,
-        dark: searchBarGrey
+        light: secondaryLightNight,
+        main: secondaryMainNight,
+        dark: secondaryDarkNight,
+      },
+      info: {
+        main: infoMainNight,
       },
       common: {
         black,
@@ -569,13 +615,13 @@ export const darkTheme = responsiveFontSizes(
         dark: hotBadgeGradientB
       },
       text: {
-        primary: textPrimaryNight,
-        secondary: textSecondaryNight,
-        hint: black
+        primary: primaryMainNight,
+        secondary: secondaryMainNight,
+        hint: textHintNight,
       },
       background: {
         default: backgroundNight,
-        paper: backgroundNight
+        paper: backgroundPaperNight
       },
       success: {
         main: callGradientA,
