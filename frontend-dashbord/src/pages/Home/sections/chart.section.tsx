@@ -39,6 +39,7 @@ const useStyles = makeStyles(({ palette }) => ({
 
     "& span": {
       padding: "10px",
+      cursor: "pointer",
     },
   },
 
@@ -58,18 +59,35 @@ const ChartSection: React.FC = () => {
       id: "basic-bar",
     },
     xaxis: {
-      categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
+      categories: ["APR 20", "MAY 15", "JUN 02"],
+      labels: {
+        style: {
+          colors: [
+            palette.secondary.main,
+            palette.secondary.main,
+            palette.secondary.main,
+          ],
+          fontSize: "13px",
+          fontFamily: "Museo Sans",
+          fontWeight: 500,
+        },
+      },
     },
     fill: {
       type: "gradient",
-      colors: ["#202F9A"],
+      colors: [!dark ? "#202F9A" : "#73d6f100"],
       gradient: {
         type: "vertical", // The gradient in the horizontal direction
-        gradientToColors: ["#5F72FF"], // The color at the end of the gradient
+        gradientToColors: [!dark ? "#5F72FF" : "#73D6F1"], // The color at the end of the gradient
         opacityFrom: 1, // transparency
         opacityTo: 1,
         stops: [0, 120],
       },
+    },
+    plotOptions: {
+      bar: {
+        borderRadius: 10
+      }
     },
   };
 

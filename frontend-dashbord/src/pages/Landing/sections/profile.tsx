@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, useMediaQuery, Grid, Container, Link } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
+import ScrollAnimation from "react-animate-on-scroll";
 import cx from "classnames";
 
 import { useIsDarkMode } from "state/user/hooks";
@@ -55,28 +56,30 @@ const ProfileSection: React.FC = () => {
                 info={profile.info}
                 custom_style={{}}
               />
-              <Box display="flex" alignItems="stretch">
-                {profile.linkedin && (
-                  <Link href={profile.linkedin}>
-                    <img
-                      src={ICO_Linkedin}
-                      alt="linkedin"
-                      style={{ maxWidth: "max-content" }}
-                      width={!mobile ? "100%" : "75%"}
-                    />
-                  </Link>
-                )}
-                {profile.github && (
-                  <Link href={profile.github}>
-                    <img
-                      src={ICO_Github}
-                      alt="github"
-                      style={{ maxWidth: "max-content" }}
-                      width={!mobile ? "100%" : "75%"}
-                    />
-                  </Link>
-                )}
-              </Box>
+              <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
+                <Box display="flex" alignItems="stretch">
+                  {profile.linkedin && (
+                    <Link href={profile.linkedin}>
+                      <img
+                        src={ICO_Linkedin}
+                        alt="linkedin"
+                        style={{ maxWidth: "max-content" }}
+                        width={!mobile ? "100%" : "75%"}
+                      />
+                    </Link>
+                  )}
+                  {profile.github && (
+                    <Link href={profile.github}>
+                      <img
+                        src={ICO_Github}
+                        alt="github"
+                        style={{ maxWidth: "max-content" }}
+                        width={!mobile ? "100%" : "75%"}
+                      />
+                    </Link>
+                  )}
+                </Box>
+              </ScrollAnimation>
             </Grid>
           ))}
         </Grid>

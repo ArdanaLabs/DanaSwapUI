@@ -3,8 +3,9 @@
 # dependencies
 /node_modules
 /node_modules_
+node_modules.zip
 
-/.pnp
+/.pnpc
 .pnp.js
 
 # testing

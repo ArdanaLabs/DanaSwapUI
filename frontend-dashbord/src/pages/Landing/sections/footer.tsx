@@ -2,6 +2,7 @@ import React from "react";
 import { Box, useMediaQuery, Container, Grid, Link } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
+import ScrollAnimation from "react-animate-on-scroll";
 
 import { useIsDarkMode } from "state/user/hooks";
 
@@ -9,9 +10,9 @@ import LOGO_Ardana_ver from "assets/img/landing/logos/ardana-ver.png";
 
 const useStyles = makeStyles(({ palette }) => ({
   bg: {
-    background: `linear-gradient(90.19deg, #2F3DA0 0.2%, #73D6F1 80.66%)`,
+    background: `#000633`,
     color: "#FFFFFF",
-    padding: "100px 0",
+    padding: "50px 0",
   },
   mobile_bg: {
     background: `linear-gradient(90.19deg, #2F3DA0 0.2%, #73D6F1 80.66%)`,
@@ -57,137 +58,142 @@ const FooterSection: React.FC = () => {
     <Box
       className={cx({ [classes.bg]: !mobile }, { [classes.mobile_bg]: mobile })}
     >
-      <Container>
-        <Grid container>
-          <Grid item xs={12} sm={4}>
-            <Box textAlign="center">
-              <img
-                src={LOGO_Ardana_ver}
-                alt="Ardana logo"
-                style={{ maxWidth: "max-content" }}
-              />
-            </Box>
-          </Grid>
-          <Grid item xs={12} sm={8}>
-            <Box border="1px solid white"></Box>
+      <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
+        <Container>
+          <Grid container>
+            <Grid item xs={12} sm={3}>
+              <Box textAlign="center">
+                <img
+                  src={LOGO_Ardana_ver}
+                  alt="Ardana logo"
+                  style={{ maxWidth: "max-content" }}
+                />
+              </Box>
+            </Grid>
+            <Grid item xs={12} sm={9}>
+              <Box
+                border="1px solid white"
+                width={!mobile ? "80%" : "100%"}
+              ></Box>
 
-            <Box mt={!mobile ? "50px" : "30px"}></Box>
+              <Box mt={!mobile ? "50px" : "30px"}></Box>
 
-            <Grid container spacing={3}>
-              <Grid item xs={12} sm={6}>
-                <Box textAlign="left">
-                  <Grid container>
-                    <Grid item xs={6} sm={4}>
-                      <Box
-                        fontWeight="500"
-                        fontSize={!mobile ? "18px" : "16px"}
-                        lineHeight="23px"
-                      >
-                        Resources
-                      </Box>
-                      <Box mt="20px"></Box>
-                      <Box
-                        fontSize={!mobile ? "18px" : "16px"}
-                        lineHeight="21px"
-                      >
-                        <Link href="#" className={cx(classes.link)}>
-                          Whitepaper
-                        </Link>
-                        <Link href="#" className={cx(classes.link)}>
-                          Pitch Deck
-                        </Link>
-                        <Link href="#" className={cx(classes.link)}>
-                          Roadmap
-                        </Link>
-                        <Link href="#" className={cx(classes.link)}>
-                          Docs
-                        </Link>
-                      </Box>
+              <Grid container spacing={3}>
+                <Grid item xs={12} sm={6}>
+                  <Box textAlign="left">
+                    <Grid container>
+                      <Grid item xs={6} sm={4}>
+                        <Box
+                          fontWeight="500"
+                          fontSize={!mobile ? "18px" : "16px"}
+                          lineHeight="23px"
+                        >
+                          Resources
+                        </Box>
+                        <Box mt="20px"></Box>
+                        <Box
+                          fontSize={!mobile ? "18px" : "16px"}
+                          lineHeight="21px"
+                        >
+                          <Link href="#" className={cx(classes.link)}>
+                            Whitepaper
+                          </Link>
+                          <Link href="#" className={cx(classes.link)}>
+                            Pitch Deck
+                          </Link>
+                          <Link href="#" className={cx(classes.link)}>
+                            Roadmap
+                          </Link>
+                          <Link href="#" className={cx(classes.link)}>
+                            Docs
+                          </Link>
+                        </Box>
+                      </Grid>
+                      <Grid item xs={6} sm={4}>
+                        <Box
+                          fontWeight="500"
+                          fontSize={!mobile ? "18px" : "16px"}
+                          lineHeight="23px"
+                        >
+                          Products
+                        </Box>
+                        <Box mt="20px"></Box>
+                        <Box
+                          fontSize={!mobile ? "18px" : "16px"}
+                          lineHeight="21px"
+                        >
+                          <Link href="#" className={cx(classes.link)}>
+                            DEX
+                          </Link>
+                          <Link href="#" className={cx(classes.link)}>
+                            Stablecoin
+                          </Link>
+                          <Link href="#" className={cx(classes.link)}>
+                            Multisig
+                          </Link>
+                        </Box>
+                      </Grid>
+                      <Grid item xs={6} sm={4}>
+                        <Box
+                          fontWeight="500"
+                          fontSize={!mobile ? "18px" : "16px"}
+                          lineHeight="23px"
+                        >
+                          Foundation
+                        </Box>
+                        <Box mt="20px"></Box>
+                        <Box
+                          fontSize={!mobile ? "18px" : "16px"}
+                          lineHeight="21px"
+                        >
+                          <Link href="#" className={cx(classes.link)}>
+                            Contact Us
+                          </Link>
+                          <Link href="#" className={cx(classes.link)}>
+                            Careers
+                          </Link>
+                        </Box>
+                      </Grid>
                     </Grid>
-                    <Grid item xs={6} sm={4}>
-                      <Box
-                        fontWeight="500"
-                        fontSize={!mobile ? "18px" : "16px"}
-                        lineHeight="23px"
-                      >
-                        Products
-                      </Box>
-                      <Box mt="20px"></Box>
-                      <Box
-                        fontSize={!mobile ? "18px" : "16px"}
-                        lineHeight="21px"
-                      >
-                        <Link href="#" className={cx(classes.link)}>
-                          DEX
-                        </Link>
-                        <Link href="#" className={cx(classes.link)}>
-                          Stablecoin
-                        </Link>
-                        <Link href="#" className={cx(classes.link)}>
-                          Multisig
-                        </Link>
-                      </Box>
-                    </Grid>
-                    <Grid item xs={6} sm={4}>
-                      <Box
-                        fontWeight="500"
-                        fontSize={!mobile ? "18px" : "16px"}
-                        lineHeight="23px"
-                      >
-                        Foundation
-                      </Box>
-                      <Box mt="20px"></Box>
-                      <Box
-                        fontSize={!mobile ? "18px" : "16px"}
-                        lineHeight="21px"
-                      >
-                        <Link href="#" className={cx(classes.link)}>
-                          Contact Us
-                        </Link>
-                        <Link href="#" className={cx(classes.link)}>
-                          Careers
-                        </Link>
-                      </Box>
-                    </Grid>
-                  </Grid>
-                </Box>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <Box pl={!mobile ? "100px" : "0px"}>
-                  <Box
-                    fontWeight="500"
-                    fontSize={!mobile ? "18px" : "16px"}
-                    lineHeight="23px"
-                  >
-                    Our Socials
                   </Box>
-                  <Box mt="20px"></Box>
-                  <Box className={cx(classes.link)}>
-                    Follow us to hear about Ardana updates and events
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Box pl={!mobile ? "100px" : "0px"}>
+                    <Box
+                      fontWeight="500"
+                      fontSize={!mobile ? "18px" : "16px"}
+                      lineHeight="23px"
+                    >
+                      Our Socials
+                    </Box>
+                    <Box mt="20px"></Box>
+                    <Box className={cx(classes.link)}>
+                      Follow us to hear about Ardana updates and events
+                    </Box>
+                    <Box lineHeight="50px">
+                      <Link className={cx(classes.social_link)} href="#">
+                        <i className="fab fa-twitter"></i>
+                      </Link>
+                      <Link className={cx(classes.social_link)} href="#">
+                        <i className="fab fa-instagram"></i>
+                      </Link>
+                      <Link className={cx(classes.social_link)} href="#">
+                        <i className="fab fa-medium"></i>
+                      </Link>
+                      <Link className={cx(classes.social_link)} href="#">
+                        <i className="fab fa-youtube"></i>
+                      </Link>
+                      <Link className={cx(classes.social_link)} href="#">
+                        <i className="fab fa-linkedin"></i>
+                      </Link>
+                    </Box>
                   </Box>
-                  <Box lineHeight="50px">
-                    <Link className={cx(classes.social_link)} href="#">
-                      <i className="fab fa-twitter"></i>
-                    </Link>
-                    <Link className={cx(classes.social_link)} href="#">
-                      <i className="fab fa-instagram"></i>
-                    </Link>
-                    <Link className={cx(classes.social_link)} href="#">
-                      <i className="fab fa-medium"></i>
-                    </Link>
-                    <Link className={cx(classes.social_link)} href="#">
-                      <i className="fab fa-youtube"></i>
-                    </Link>
-                    <Link className={cx(classes.social_link)} href="#">
-                      <i className="fab fa-linkedin"></i>
-                    </Link>
-                  </Box>
-                </Box>
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
-        </Grid>
-      </Container>
+        </Container>
+      </ScrollAnimation>
     </Box>
   );
 };

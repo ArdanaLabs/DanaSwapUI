@@ -2,6 +2,7 @@ import React from "react";
 import { Box, useMediaQuery, Container } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
+import ScrollAnimation from "react-animate-on-scroll";
 
 import { useIsDarkMode } from "state/user/hooks";
 
@@ -41,10 +42,44 @@ const TopNotchTeams = [
   },
 ];
 
-const useStyles = makeStyles(({ palette }) => ({
+const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
     background: "#FFFFFF",
-    padding: "50px 0",
+    padding: "100px 0",
+
+    [breakpoints.down("sm")]: {
+      padding: "50px 0",
+    },
+  },
+
+  title: {
+    fontFamily: "Brandon Grotesque Bold",
+    fontStyle: "normal",
+    fontWeight: 900,
+    fontSize: "64px",
+    lineHeight: "100%",
+    textAlign: "center",
+    color: "#202F9A",
+    padding: "20px",
+
+    [breakpoints.down("sm")]: {
+      fontSize: "48px",
+    },
+  },
+
+  content: {
+    fontFamily: "Museo Sans",
+    fontStyle: "normal",
+    fontWeight: 300,
+    fontSize: "18px",
+    lineHeight: "150%",
+    textAlign: "center",
+    color: "#202020",
+    padding: "20px",
+
+    [breakpoints.down("sm")]: {
+      fontSize: "16px",
+    },
   },
 }));
 
@@ -57,53 +92,46 @@ const TopNotchSection: React.FC = () => {
   return (
     <Box className={cx(classes.bg)}>
       <Container>
-        <Box
-          textAlign="center"
-          fontSize={!mobile ? "64px" : "48px"}
-          color="#202F9A"
-          fontWeight="900"
-          p="20px"
-        >
-          Ardana with our top-notch team
-        </Box>
+        <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
+          <Box className={cx(classes.title)}>
+            Ardana with our top-notch team
+          </Box>
+        </ScrollAnimation>
 
-        <Box
-          textAlign="center"
-          fontSize={!mobile ? "18px" : "16px"}
-          color="#202020"
-          fontWeight="300"
-          lineHeight="27px"
-          p="20px"
-        >
-          Our team is led by accomplished entrepreneurs and top-notch engineers
-          from well-known companies such as Apple, Microsoft, Barclays, Cardano,
-          Emurgo, and IG Index.
-        </Box>
+        <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
+          <Box className={cx(classes.content)}>
+            Our team is led by accomplished entrepreneurs and top-notch
+            engineers from well-known companies such as Apple, Microsoft,
+            Barclays, Cardano, Emurgo, and IG Index.
+          </Box>
+        </ScrollAnimation>
 
-        <Box
-          display="flex"
-          flexWrap="wrap"
-          alignItems="center"
-          justifyContent="center"
-          p="20px"
-        >
-          {TopNotchTeams.map((team, index) => (
-            <Box
-              key={index}
-              p={!mobile ? "0px 30px" : "10px"}
-              width={!mobile ? "auto" : "50%"}
-              textAlign="center"
-            >
-              <img
-                src={team.logo}
-                alt=""
-                width="100%"
-                height="100%"
-                style={{ maxWidth: "max-content" }}
-              />
-            </Box>
-          ))}
-        </Box>
+        <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
+          <Box
+            display="flex"
+            flexWrap="wrap"
+            alignItems="center"
+            justifyContent="center"
+            p="20px"
+          >
+            {TopNotchTeams.map((team, index) => (
+              <Box
+                key={index}
+                p={!mobile ? "0px 30px" : "10px"}
+                width={!mobile ? "auto" : "50%"}
+                textAlign="center"
+              >
+                <img
+                  src={team.logo}
+                  alt=""
+                  width="100%"
+                  height="100%"
+                  style={{ maxWidth: "max-content" }}
+                />
+              </Box>
+            ))}
+          </Box>
+        </ScrollAnimation>
       </Container>
     </Box>
   );

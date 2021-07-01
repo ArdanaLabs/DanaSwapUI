@@ -2,6 +2,7 @@ import React from "react";
 import { Box, useMediaQuery, Container, Grid, Link } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
+import ScrollAnimation from "react-animate-on-scroll";
 
 import { useIsDarkMode } from "state/user/hooks";
 
@@ -44,9 +45,59 @@ const Ardana_features = [
   },
 ];
 
-const useStyles = makeStyles(({ palette }) => ({
+const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
-    background: `url(${LOGO_WITH_CITY}) right top no-repeat, url(${LOGO_WITH_CITY_W}) right top no-repeat, linear-gradient(90.19deg, #2F3DA0 0.2%, #73D6F1 80.66%)`,
+    background: `url(${LOGO_WITH_CITY}) right top no-repeat, url(${LOGO_WITH_CITY_W}) right top no-repeat, linear-gradient(0deg, #000733, #000733);`,
+  },
+
+  title: {
+    fontFamily: "Brandon Grotesque Bold",
+    fontStyle: "normal",
+    fontWeight: 900,
+    fontSize: "100px",
+    lineHeight: "100%",
+    textAlign: "center",
+    color: "white",
+    margin: "50px 0 30px 0",
+
+    [breakpoints.down("sm")]: {
+      fontSize: "64px",
+    },
+  },
+
+  subTitle: {
+    textAlign: "center",
+    color: "white",
+    whiteSpace: "pre-line",
+    fontSize: "24px",
+    fontFamily: "Museo Sans",
+    fontStyle: "normal",
+    fontWeight: 300,
+    lineHeight: "29px",
+
+    [breakpoints.down("sm")]: {
+      fontSize: "18px",
+    },
+  },
+
+  definitionQ: {
+    color: "white",
+    fontSize: "64px",
+    fontWeight: 900,
+    fontFamily: "Brandon Grotesque Bold",
+    fontStyle: "normal",
+    lineHeight: "100%",
+    textAlign: "center",
+  },
+
+  definitionA: {
+    color: "white",
+    whiteSpace: "pre-line",
+    fontWeight: 300,
+    fontSize: "18px",
+    fontFamily: "Museo Sans",
+    fontStyle: "normal",
+    lineHeight: "150%",
   },
 }));
 
@@ -61,67 +112,52 @@ const MainSection: React.FC = () => {
       <Container>
         <HeaderSection />
 
-        <Box
-          component="p"
-          textAlign={"center"}
-          pt={"30px"}
-          color={"white"}
-          whiteSpace={"pre-line"}
-          fontWeight={900}
-          fontSize={!mobile ? "100px" : "2.8em"}
-          m={0}
-        >
-          {"A decentralized\nstablecoin hub."}
-        </Box>
+        <Grid container>
+          <Grid item xs={12} sm={6}>
+            <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
+              <Box className={cx(classes.title)}>
+                {"A decentralized\nstablecoin hub."}
+              </Box>
+              <Box className={cx(classes.subTitle)}>
+                {
+                  "Decentralized Stablecoin and DEX Liquidity Pool. Built on Cardano."
+                }
+              </Box>
+            </ScrollAnimation>
 
-        <Box
-          component="p"
-          textAlign={"center"}
-          color={"white"}
-          whiteSpace={"pre-line"}
-          fontWeight={500}
-          fontSize={!mobile ? "24px" : "1.1em"}
-          m={0}
-        >
-          {"Decentralized Stablecoin and DEX Liquidity Pool. Built on Cardano."}
-        </Box>
+            <Box mt="50px"></Box>
 
-        <Box mt="50px"></Box>
-        <Box textAlign="center">
-          <Link href="#" underline="none">
-            <AdButton variant="contained">BUY TOKEN</AdButton>
-          </Link>
-          <Link href="#" underline="none">
-            <AdButton variant="contained">LAUNCH PLATFORM</AdButton>
-          </Link>
-        </Box>
+            <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
+              <Box textAlign="center">
+                <Link href="#" underline="none">
+                  <AdButton variant="contained">BUY TOKEN</AdButton>
+                </Link>
+                <Link href="#" underline="none">
+                  <AdButton variant="contained">LAUNCH PLATFORM</AdButton>
+                </Link>
+              </Box>
+            </ScrollAnimation>
+          </Grid>
+        </Grid>
 
         <Box mt={!mobile ? "100px" : "50px"}></Box>
         <Box>
           <Grid container spacing={1}>
             <Grid item xs={12} sm={6}>
-              <Box
-                color="white"
-                fontSize={!mobile ? "64px" : "48px"}
-                fontWeight="900"
-              >
-                What is Ardana?
-              </Box>
+              <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
+                <Box className={cx(classes.definitionQ)}>What is Ardana?</Box>
+              </ScrollAnimation>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Box
-                color="white"
-                whiteSpace="pre-line"
-                fontWeight="300"
-                fontSize="18px"
-                lineHeight="27px"
-              >
-                Ardana is a decentralized financial hub and services provider
-                built on Cardano that provides key DeFi primitives including a
-                decentralized stablecoin exchange, stablecoins, a foreign
-                exchange protocol and a multisignature protocol to power users
-                and open finance applications on Cardano and beyond.
-              </Box>
+              <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
+                <Box className={cx(classes.definitionA)}>
+                  Ardana is a decentralized financial hub and services provider
+                  built on Cardano that provides key DeFi primitives including a
+                  decentralized stablecoin exchange, stablecoins, a foreign
+                  exchange protocol and a multisignature protocol to power users
+                  and open finance applications on Cardano and beyond.
+                </Box>
+              </ScrollAnimation>
             </Grid>
           </Grid>
         </Box>
@@ -148,7 +184,9 @@ const MainSection: React.FC = () => {
                   title={feature.title}
                   content={feature.content}
                   custom_style={{
+                    marginBottom: "50px",
                     padding: "20px",
+                    flex: 2,
                     background:
                       "linear-gradient(180deg, rgba(115, 214, 241, 0) 0%, #2F3DA0 100%)",
                   }}

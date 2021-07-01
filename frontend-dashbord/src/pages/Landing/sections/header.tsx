@@ -10,36 +10,46 @@ import {
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
 import Hamburger from "hamburger-react";
+import ScrollAnimation from "react-animate-on-scroll";
 
 import { useIsDarkMode } from "state/user/hooks";
 
 import Logo from "assets/img/landing/logos/ardana-hor.png";
 
-const useStyles = makeStyles(({ palette }) => ({
+const useStyles = makeStyles(({ palette, breakpoints }) => ({
+  self: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
   logoImg: {
     width: "287px",
     height: "136px",
-  },
-  mobile_logoImg: {
-    width: "187px",
-    height: "96px",
+
+    [breakpoints.down("xs")]: {
+      width: "187px",
+      height: "96px",
+    },
   },
   menuItem: {
+    fontFamily: "Brandon Grotesque Bold",
+    fontStyle: "normal",
+    lineHeight: "100%",
     padding: "15px",
     color: "white",
     fontSize: "18px",
-    transition: "color .2s",
+    transition: "all .2s",
 
     "&:hover": {
       color: "#7A7A7A",
-    }
+    },
   },
 }));
 
 const links = [
   {
     label: "HOME",
-    to: "#",
+    to: "/home",
   },
   {
     label: "RESOURCES",
@@ -68,10 +78,8 @@ const HeaderSection: React.FC = () => {
   };
 
   return (
-    <Grid container direction="row" justify="space-between" alignItems="center">
-      <Box>
-        <img src={Logo} className={cx(!mobile ? classes.logoImg : classes.mobile_logoImg)} alt="logo" />
-      </Box>
+    <Box className={cx(classes.self)}>
+      <img src={Logo} className={cx(classes.logoImg)} alt="logo" />
       {!mobile && (
         <Box>
           {links.map((link, index) => {
@@ -92,9 +100,7 @@ const HeaderSection: React.FC = () => {
         <>
           <IconButton
             style={{ height: "48px", padding: 0 }}
-            onClick={() =>
-              setOpenMenu(!openMenu)
-            }
+            onClick={() => setOpenMenu(!openMenu)}
           >
             <Hamburger
               size={24}
@@ -111,7 +117,7 @@ const HeaderSection: React.FC = () => {
                   href={link.to}
                   className={cx(classes.menuItem)}
                   key={index}
-                  style={{color: "black"}}
+                  style={{ color: "black" }}
                 >
                   {link.label}
                 </Link>
@@ -120,7 +126,7 @@ const HeaderSection: React.FC = () => {
           </Drawer>
         </>
       )}
-    </Grid>
+    </Box>
   );
 };
 
