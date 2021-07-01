@@ -27,7 +27,7 @@ export interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const dark = useIsDarkMode();
-  const { palette, breakpoints } = useTheme();
+  const { breakpoints } = useTheme();
   const mobile = useMediaQuery(breakpoints.down("xs"));
   const classes = useStyles({ dark, mobile });
 

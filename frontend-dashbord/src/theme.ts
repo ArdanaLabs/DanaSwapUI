@@ -44,17 +44,14 @@ const premiaBlueNight = 'rgba(82, 148, 255, 0.2)';
 
 const greySecondaryDay = '#F4F4F4';
 const greySecondaryNight = '#646464';
-const searchBarGrey = '#181818';
 
 const black = '#000000';
 const white = '#ffffff';
 
 const whiteColor = '#F7FAFF';
 
-const textPrimaryDay = '#235DF4';
 const textSecondaryDay = '#636060';
 
-const textPrimaryNight = '#FFFFFF';
 const textSecondaryNight = '#FFFFFF';
 
 const callGradientA = '#5294FF';
@@ -136,13 +133,7 @@ export const lightTheme = responsiveFontSizes(
     },
     typography: {
       htmlFontSize: 16,
-      fontFamily: [
-        '"Brandon Grotesque"',
-        '"Museo Sans"',
-        '"Helvetica Neue"',
-        'Arial',
-        'sans-serif'
-      ].join(','),
+      fontFamily: 'Futura,Trebuchet MS,Arial,sans-serif',
       fontSize: 14
     },
     breakpoints: {

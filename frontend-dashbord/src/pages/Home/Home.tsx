@@ -1,6 +1,6 @@
 import React from "react";
 import cx from "classnames";
-import { Box, Container, Grid, useMediaQuery } from "@material-ui/core";
+import { Box, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { useIsDarkMode } from "state/user/hooks";
 
@@ -12,7 +12,7 @@ const useStyles = makeStyles(({ palette }) => ({
 }));
 
 const Home: React.FC = () => {
-  const { palette, breakpoints } = useTheme();
+  const { breakpoints } = useTheme();
   const dark = useIsDarkMode();
   const mobile = useMediaQuery(breakpoints.down("xs"));
   const classes = useStyles({ dark, mobile });

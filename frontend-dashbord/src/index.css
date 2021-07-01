@@ -3,7 +3,7 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.5.0/css/all.min.css");
 
 @font-face {
-  font-family: "Museo Sans";
+  font-family: "Museo Sans 300";
   src: local("Museo Sans"),
     url("./assets/font/MuseoSans_300_Italic.otf") format("otf");
   font-weight: 300;
@@ -12,9 +12,6 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif, "Museo Sans", "Brandon Grotesque";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

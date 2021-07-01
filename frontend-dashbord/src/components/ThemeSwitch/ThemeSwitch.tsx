@@ -1,10 +1,9 @@
 import React from "react";
 import cx from "classnames";
-import { Box, useMediaQuery } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { Box } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
 import { useDarkModeManager } from "state/user/hooks";
-import { useDeviceWidth } from "hooks";
 
 import ICO_Dark from "assets/svg/moon.svg";
 import ICO_Light from "assets/svg/sun.svg";
@@ -49,9 +48,6 @@ const useStyles = makeStyles(({ palette }) => ({
 const ThemeSwitch: React.FC = () => {
   const [darkMode, setDarkMode] = useDarkModeManager();
   const classes = useStyles();
-  const theme = useTheme();
-  const deviceWidth = useDeviceWidth();
-  const mobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const toggleMode = () => {
     setDarkMode(!darkMode);

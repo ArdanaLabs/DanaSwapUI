@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   useMediaQuery,
-  Grid,
   Box,
   Link,
   Drawer,
@@ -10,7 +9,6 @@ import {
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
 import Hamburger from "hamburger-react";
-import ScrollAnimation from "react-animate-on-scroll";
 
 import { useIsDarkMode } from "state/user/hooks";
 

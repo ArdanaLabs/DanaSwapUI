@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Container, Grid, useMediaQuery } from "@material-ui/core";
+import { Box, Grid, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
 
@@ -14,7 +14,7 @@ const useStyles = makeStyles(({ palette }) => ({
 }));
 
 const OverViewSection: React.FC = () => {
-  const { palette, breakpoints } = useTheme();
+  const { breakpoints } = useTheme();
   const dark = useIsDarkMode();
   const mobile = useMediaQuery(breakpoints.down("xs"));
   const classes = useStyles({ dark, mobile });

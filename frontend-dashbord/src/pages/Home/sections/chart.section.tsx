@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Container, Grid, useMediaQuery } from "@material-ui/core";
+import { Box, Grid, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
 
