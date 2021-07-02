@@ -26,7 +26,7 @@ const useStyles = makeStyles(({ palette }) => ({
       fontStyle: "normal",
       fontWeight: "bold",
       fontSize: "18px",
-      lineHeight: "15px",
+      lineHeight: "20px",
       whiteSpace: "pre-line",
       color: palette.secondary.main,
     },

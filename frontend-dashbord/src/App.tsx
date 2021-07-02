@@ -7,14 +7,10 @@ import {
 } from "@material-ui/core";
 import { ParallaxProvider } from "react-scroll-parallax";
 
-import "react-calendar/dist/Calendar.css";
-import "animate.css/animate.css";
-
 import { useIsDarkMode } from "state/user/hooks";
 import { darkTheme, lightTheme } from "./theme";
 import store from "./state";
 
-import { PageWithSidebar } from "layouts";
 import { Landing, Home, Swap, Pools, Dao } from "./pages";
 import Layout from "layouts/Layout";
 
@@ -72,27 +68,27 @@ const App: React.FC = () => {
         </Route>
 
         <Route exact path="/swap">
-          <PageWithSidebar>
+          <Layout>
             <Swap />
-          </PageWithSidebar>
+          </Layout>
         </Route>
 
         <Route exact path="/pools">
-          <PageWithSidebar>
+          <Layout>
             <Pools />
-          </PageWithSidebar>
+          </Layout>
         </Route>
 
         <Route exact path="/dao">
-          <PageWithSidebar>
+          <Layout>
             <Dao />
-          </PageWithSidebar>
+          </Layout>
         </Route>
 
         <Route path="*">
-          <PageWithSidebar>
-            <Swap />
-          </PageWithSidebar>
+          <Layout>
+            <Home />
+          </Layout>
         </Route>
       </Switch>
     </Providers>

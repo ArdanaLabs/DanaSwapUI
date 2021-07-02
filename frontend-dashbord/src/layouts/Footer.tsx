@@ -8,10 +8,11 @@ import { useIsDarkMode } from "state/user/hooks";
 import LOGO_White from "assets/logo_white.png";
 import LOGO_Text from "assets/logo_text.png";
 
-const useStyles = makeStyles(({ palette }) => ({
+const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
     background: palette.primary.dark,
     marginTop: "50px",
+    padding: 10,
   },
 
   logo: {
@@ -28,6 +29,10 @@ const useStyles = makeStyles(({ palette }) => ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
+
+    [breakpoints.down("xs")]: {
+      flexDirection: "column",
+    }
   },
 
   socialIconLink: {
