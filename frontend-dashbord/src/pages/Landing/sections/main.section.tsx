@@ -6,7 +6,7 @@ import ScrollAnimation from "react-animate-on-scroll";
 
 import { useIsDarkMode } from "state/user/hooks";
 
-import { HeaderSection } from "./";
+import { HeaderSection } from ".";
 import { FeatureBox } from "components/Box";
 import { AdButton } from "components/Button";
 

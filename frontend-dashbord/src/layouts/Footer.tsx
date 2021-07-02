@@ -39,6 +39,7 @@ const useStyles = makeStyles(({ palette }) => ({
     color: "gray",
     textAlign: "center",
     transition: "background .2s",
+    fontFamily: "auto",
 
     "& i": {
       width: "16px",
