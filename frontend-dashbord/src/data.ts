@@ -1,6 +1,6 @@
-import Coin1 from 'assets/coin1.png'
-import Coin2 from 'assets/coin2.png'
-import Coin3 from 'assets/coin3.png'
+import Coin1 from "assets/coin1.png";
+import Coin2 from "assets/coin2.png";
+import Coin3 from "assets/coin3.png";
 
 import AVATAR_Callum_Clark from "assets/img/landing/avatars/Callum-Clark.png";
 import AVATAR_Eden_Ovadia from "assets/img/landing/avatars/Eden-Ovadia.png";
@@ -15,74 +15,78 @@ import AVATAR_Unknown from "assets/img/landing/avatars/unknown.png";
 
 export const options = [
   {
-    title: 'Filter',
+    title: "Filter",
     data: [
-      { label: 'Insert', value: 'Insert' },
-      { label: 'Filter', value: 'Filter' },
-      { label: 'Names', value: 'Names' },
-      { label: 'Here', value: 'Here' },
-      { label: 'Accordingly', value: 'Accordingly' }
-    ]
+      { label: "Insert", value: "Insert" },
+      { label: "Filter", value: "Filter" },
+      { label: "Names", value: "Names" },
+      { label: "Here", value: "Here" },
+      { label: "Accordingly", value: "Accordingly" },
+    ],
   },
   {
-    title: 'Max Slippage',
+    title: "Max Slippage",
     data: [
-      { label: '0.5%', value: '0.5' },
-      { label: '1%', value: '1' },
-      { label: 'Custom:', value: 'Custom', hasInput: true }
-    ]
+      { label: "0.5%", value: "0.5" },
+      { label: "1%", value: "1" },
+      { label: "Custom:", value: "Custom", hasInput: true },
+    ],
   },
   {
-    title: 'Gas Prices',
+    title: "Gas Prices",
     data: [
-      { label: '20.5 Slow', value: '20.5' },
-      { label: '25 Standard', value: '25' },
-      { label: '28 Fast', value: '28' },
-      { label: '32 Instant', value: '32' }
-    ]
-  }
-]
+      { label: "20.5 Slow", value: "20.5" },
+      { label: "25 Standard", value: "25" },
+      { label: "28 Fast", value: "28" },
+      { label: "32 Instant", value: "32" },
+    ],
+  },
+];
 
 export const pools = {
   columns: [
-    { name: 'Pool', col: 4 },
-    { name: 'Base APY', col: 3 },
-    { name: 'Rewards APY', col: 3 },
-    { name: 'Volumn', col: 2, sortable: true }
+    { name: "POOL", col: 3, sortable: true },
+    { name: "Base APY", col: 2, sortable: true },
+    { name: "Rewards APY", col: 4, sortable: true },
+    { name: "VOLUME", col: 2, sortable: true },
+    { name: "APY", col: 1, sortable: true },
   ],
   records: [
     {
       pool: {
         icon: Coin1,
-        currency: 'sUSD',
-        description: 'DAI + USDC + USDT + sUSD'
+        currency: "sUSD",
+        description: "DAI + USDC + USDT + sUSD",
       },
-      baseAPY: '2.99%',
-      rewardsAPY: '+4.30% -> 10.76% CRV+1.13% SNX',
-      volumn: '$106.5m'
+      baseAPY: "2.99%",
+      rewardsAPY: "+4.30% -> 10.76% CRV+1.13% SNX",
+      volume: "$106.5m",
+      APY: "29%",
     },
     {
       pool: {
         icon: Coin2,
-        currency: 'sUSD',
-        description: 'DAI + USDC + USDT + sUSD'
+        currency: "sUSD",
+        description: "DAI + USDC + USDT + sUSD",
       },
-      baseAPY: '2.99%',
-      rewardsAPY: '+4.30% -> 10.76% CRV+1.13% SNX',
-      volumn: '$106.5m'
+      baseAPY: "2.99%",
+      rewardsAPY: "+4.30% -> 10.76% CRV+1.13% SNX",
+      volume: "$106.5m",
+      APY: "29%",
     },
     {
       pool: {
         icon: Coin3,
-        currency: 'sUSD',
-        description: 'DAI + USDC + USDT + sUSD'
+        currency: "sUSD",
+        description: "DAI + USDC + USDT + sUSD",
       },
-      baseAPY: '2.99%',
-      rewardsAPY: '+4.30% -> 10.76% CRV+1.13% SNX',
-      volumn: '$106.5m'
-    }
-  ]
-}
+      baseAPY: "2.99%",
+      rewardsAPY: "+4.30% -> 10.76% CRV+1.13% SNX",
+      volume: "$106.5m",
+      APY: "29%",
+    },
+  ],
+};
 
 export const ProfileList = [
   {
@@ -212,11 +216,78 @@ export const navList = [
     label: "INFO",
     link: "/info",
   },
-]
+];
 
 export const ovList = [
   {
     label: "TVL",
-    content: "$220.21 M"
+    content: "$220.21 M",
   },
-]
+  {
+    label: "TOTAL LIQUIDITY",
+    content: "$84.60 M",
+  },
+  {
+    label: "TOTAL BOND",
+    content: "$135.61 M (22.3 M R)",
+  },
+  {
+    label: "FUNDS CAP OVERVIEW",
+    content: "100.6%",
+  },
+  {
+    label: "TOTAL VOLUME",
+    content: "$2.37 B",
+  },
+  {
+    label: "24H VOLUME",
+    content: "$30.24 M",
+  },
+  {
+    label: "TOTAL POOLED",
+    content: "$135.61 M (22.3 M R)",
+  },
+  {
+    label: "LIQUIDITY APY",
+    content: "30.11%",
+  },
+];
+
+export const exDANA_Stats = [
+  {
+    label: "exDANA holder/LP ratio (based on fees)",
+    content: "24.52",
+  },
+  {
+    label: "",
+    content: "",
+  },
+  {
+    label: "",
+    content: "",
+  },
+  {
+    label: "",
+    content: "",
+  },
+  {
+    label: "",
+    content: "",
+  },
+  {
+    label: "",
+    content: "",
+  },
+  {
+    label: "",
+    content: "",
+  },
+  {
+    label: "",
+    content: "",
+  },
+  {
+    label: "",
+    content: "",
+  },
+];

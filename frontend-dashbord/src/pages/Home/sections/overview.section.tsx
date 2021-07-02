@@ -6,6 +6,8 @@ import cx from "classnames";
 import { useIsDarkMode } from "state/user/hooks";
 import { OverViewBox } from "components/Box";
 
+import { ovList } from "data";
+
 const useStyles = makeStyles(({ palette }) => ({
   self: {
     // background: "transparent",
@@ -22,34 +24,27 @@ const OverViewSection: React.FC = () => {
   return (
     <Box className={cx(classes.self)}>
       <Grid container>
-
         <Grid container item sm={12} md={6}>
-          <Grid item xs={6} sm={3}>
-            <OverViewBox label={"TVL"} content={"$220.21 M"} />
-          </Grid>
-          <Grid item xs={6} sm={3}>
-            <OverViewBox label={"TOTAL LIQUIDITY"} content={"$84.60 M"} />
-          </Grid>
-          <Grid item xs={6} sm={3}>
-            <OverViewBox label={"TOTAL BOND"} content={"$135.61 M (22.3 M R)"} />
-          </Grid>
-          <Grid item xs={6} sm={3}>
-            <OverViewBox label={"FUNDS CAP OVERVIEW"} content={"100.6%"} />
-          </Grid>
+          {ovList
+            .filter((value: any, index: any, array: any) => {
+              return index < 4;
+            })
+            .map((ov: any, i: any) => (
+              <Grid item xs={6} sm={3} key={i}>
+                <OverViewBox label={ov.label} content={ov.content} />
+              </Grid>
+            ))}
         </Grid>
         <Grid container item sm={12} md={6}>
-          <Grid item xs={6} sm={3}>
-            <OverViewBox label={"TOTAL VOLUME"} content={"$2.37 B"} />
-          </Grid>
-          <Grid item xs={6} sm={3}>
-            <OverViewBox label={"24H VOLUME"} content={"$30.24 M"} />
-          </Grid>
-          <Grid item xs={6} sm={3}>
-            <OverViewBox label={"TOTAL POOLED"} content={"$135.61 M (22.3 M R)"} />
-          </Grid>
-          <Grid item xs={6} sm={3}>
-            <OverViewBox label={"LIQUIDITY APY"} content={"30.11%"} />
-          </Grid>
+          {ovList
+            .filter((value: any, index: any, array: any) => {
+              return index >= 4;
+            })
+            .map((ov: any, i: any) => (
+              <Grid item xs={6} sm={3} key={i}>
+                <OverViewBox label={ov.label} content={ov.content} />
+              </Grid>
+            ))}
         </Grid>
       </Grid>
     </Box>

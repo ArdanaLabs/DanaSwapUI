@@ -11,7 +11,7 @@ import PSYSS from "assets/img/landing/logos/Platonic-Systems.svg";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
-    background: "#FFFFFF",
+    background: "#F5F5F5",
     padding: "100px 20px",
 
     [breakpoints.down("sm")]: {

@@ -47,7 +47,7 @@ const Ardana_features = [
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
-    background: `url(${LOGO_WITH_CITY}) right top no-repeat, url(${LOGO_WITH_CITY_W}) right top no-repeat, linear-gradient(0deg, #000733, #000733);`,
+    background: `url(${LOGO_WITH_CITY}) right top no-repeat, url(${LOGO_WITH_CITY_W}) right 30px no-repeat, linear-gradient(90.19deg, #2F3DA0 27.19%, #73D6F1 99.87%);`,
   },
 
   title: {
@@ -56,7 +56,6 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontWeight: 900,
     fontSize: "100px",
     lineHeight: "100%",
-    textAlign: "center",
     color: "white",
     margin: "50px 0 30px 0",
 
@@ -66,11 +65,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   subTitle: {
-    textAlign: "center",
     color: "white",
     whiteSpace: "pre-line",
     fontSize: "24px",
-    fontFamily: "Museo Sans",
+    fontFamily: "'Museo Sans 300'",
     fontStyle: "normal",
     fontWeight: 300,
     lineHeight: "29px",
@@ -95,7 +93,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     whiteSpace: "pre-line",
     fontWeight: 300,
     fontSize: "18px",
-    fontFamily: "Museo Sans",
+    fontFamily: "'Museo Sans 300'",
     fontStyle: "normal",
     lineHeight: "150%",
   },
@@ -116,7 +114,7 @@ const MainSection: React.FC = () => {
           <Grid item xs={12} sm={6}>
             <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
               <Box className={cx(classes.title)}>
-                {"A decentralized\nstablecoin hub."}
+                {"Decentralized\nstablecoin hub."}
               </Box>
               <Box className={cx(classes.subTitle)}>
                 {
@@ -128,10 +126,7 @@ const MainSection: React.FC = () => {
             <Box mt="50px"></Box>
 
             <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-              <Box textAlign="center">
-                <Link href="#" underline="none">
-                  <AdButton variant="contained">BUY TOKEN</AdButton>
-                </Link>
+              <Box>
                 <Link href="#" underline="none">
                   <AdButton variant="contained">LAUNCH PLATFORM</AdButton>
                 </Link>
@@ -141,7 +136,7 @@ const MainSection: React.FC = () => {
         </Grid>
 
         <Box mt={!mobile ? "100px" : "50px"}></Box>
-        <Box>
+        <Box mx={!mobile ? "100px" : "0"}>
           <Grid container spacing={1}>
             <Grid item xs={12} sm={6}>
               <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>

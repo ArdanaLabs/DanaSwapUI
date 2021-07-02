@@ -14,7 +14,7 @@ const useStyles = makeStyles(({ palette }) => ({
   bg: {
     width: "100%",
     position: "relative",
-    background: palette.background.paper,
+    background: palette.info.main,
     borderRadius: "10px",
     height: 100,
   },
@@ -24,12 +24,12 @@ const useStyles = makeStyles(({ palette }) => ({
     top: 0,
     bottom: 0,
     height: "100%",
-    background: palette.secondary.light,
+    background: palette.info.dark,
     borderRadius: "10px",
   },
   info: {
     position: "absolute",
-    top: 0,
+    top: 3,
     right: 10,
   },
   display: {
@@ -48,7 +48,7 @@ const useStyles = makeStyles(({ palette }) => ({
       fontSize: "18px",
       lineHeight: "18px",
       color: palette.text.secondary,
-      fontFamily: "Museo Sans",
+      fontFamily: "''Museo Sans 300' 300'",
     },
   },
 }));

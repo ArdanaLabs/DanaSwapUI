@@ -1,128 +1,128 @@
-import React, { Fragment } from "react";
-import { Box, Grid, useMediaQuery, Link } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import React from "react";
+import {
+  Box,
+  useMediaQuery,
+  Link,
+  TableContainer,
+  Table,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+  TableFooter,
+} from "@material-ui/core";
+import { makeStyles, useTheme, withStyles } from "@material-ui/core/styles";
 import cx from "classnames";
 import { useIsDarkMode } from "state/user/hooks";
-import Record from "./Record";
-import { Button } from "components/Button";
+
+const StyledTableCell = withStyles(({ palette }) => ({
+  head: {
+    fontFamily: "'Museo Sans 300'",
+    fontStyle: "normal",
+    fontWeight: 500,
+    fontSize: "18px",
+    lineHeight: "100%",
+    textAlign: "center",
+    cursor: "pointer",
+    color: palette.secondary.main,
+  },
+  body: {
+    fontFamily: "'Museo Sans 300'",
+    fontStyle: "normal",
+    fontWeight: "bold",
+    fontSize: "18px",
+    lineHeight: "115%",
+    textAlign: "center",
+    color: palette.secondary.main,
+  },
+  footer: {
+    width: "100%",
+    height: 30,
+    textAlign: "center",
+    
+    "& a": {
+      fontFamily: "'Museo Sans 300'",
+      fontStyle: 'normal',
+      fontWeight: 'bold',
+      fontSize: '18px',
+      lineHeight: '115%',
+      color: palette.secondary.main,
+    }
+  },
+}))(TableCell);
 
 const useStyles = makeStyles(({ palette }) => ({
   panel: {
-    backgroundColor: palette.secondary.main,
-    borderRadius: "5px",
-    padding: "4% 50px 14px 6%",
-  },
-  panelMobile: {
-    padding: "8px 14px",
-  },
-  filterItem: {
-    fontSize: "15px",
-    borderRadius: "25px",
-    padding: "6px 18px",
-    margin: "0px 5px",
-    color: palette.common.black,
-    cursor: "pointer",
-    transition: "all .3s ease-in",
-    "&:hover": {
-      backgroundColor: "#bcbcbc",
-      color: palette.text.hint,
-      transition: "all .2s ease-in",
-    },
-  },
-  activeItem: {
-    backgroundColor: palette.common.white,
+    background: palette.secondary.light,
+    borderRadius: "10px",
+    padding: "12px",
   },
 }));
 
-const filterTypes = [
-  "All",
-  "USD",
-  "BTC",
-  "ETH",
-  "Crypto",
-  "Others",
-  "My Dashboard",
-];
-
 export interface PoolsPanelProps {
-  data?: any;
-  filterType?: string;
+  data: any;
   overView?: boolean;
 }
 
-const PoolsPanel: React.FC<PoolsPanelProps> = ({
-  data,
-  filterType = "All",
-  overView = false,
-}) => {
-  const { palette, breakpoints } = useTheme();
+const PoolsPanel: React.FC<PoolsPanelProps> = ({ data, overView = false }) => {
+  const { breakpoints } = useTheme();
   const dark = useIsDarkMode();
   const mobile = useMediaQuery(breakpoints.down("xs"));
   const classes = useStyles({ dark, mobile });
-  return (
-    <Box className={cx(classes.panel, mobile && classes.panelMobile)}>
-      {!mobile && (
-        <Fragment>
-          <Box
-            display="flex"
-            justifyContent="space-between"
-            width="100%"
-            alignItems={"flex-start"}
-          >
-            <Box fontSize={"36px"}>Ardada Pools</Box>
-            {!overView && (
-              <Box
-                display={"flex"}
-                bgcolor={"#E5E5E5"}
-                p={"4px 0px"}
-                borderRadius={"50px"}
-              >
-                {filterTypes.map((type, i) => (
-                  <Box
-                    key={i}
-                    className={cx(
-                      classes.filterItem,
-                      filterType === type && classes.activeItem
-                    )}
-                  >
-                    {type}
-                  </Box>
-                ))}
-              </Box>
-            )}
-          </Box>
-          <Box>
-            <Grid
-              container
-              style={{
-                fontSize: "18px",
-                color: palette.text.primary,
-                marginTop: "55px",
-                padding: "0 26px",
-              }}
-              spacing={3}
-            >
-              {data.columns.map((column: any, i: any) => (
-                <Grid container item xs={column.col} key={i}>
-                  {column.name}
-                </Grid>
-              ))}
-            </Grid>
-          </Box>
-        </Fragment>
-      )}
-      {data.records.map((record: any, i: any) => (
-        <Record data={record} key={i}></Record>
-      ))}
 
-      {overView && (
-        <Box textAlign={"right"}>
-          <Link href="/pools">
-            <Button variant="contained">See All Pools</Button>
-          </Link>
-        </Box>
-      )}
-    </Box>
+  const { columns, records } = data;
+  return (
+    <TableContainer component={Box} className={cx(classes.panel)}>
+      <Table aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            {columns.map((column: any, i: any) => (
+              <StyledTableCell key={i}>
+                {column.name}
+                &nbsp;
+                <i className="fas fa-sort" />
+              </StyledTableCell>
+            ))}
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {records.map((row: any, i: any) => (
+            <TableRow key={i}>
+              <StyledTableCell component="th" scope="row">
+                <Box display="flex">
+                  <Box>
+                    <img
+                      src={row.pool.icon}
+                      alt={"coin"}
+                      style={{ marginRight: "15px" }}
+                    />
+                  </Box>
+                  <Box
+                    display={"flex"}
+                    flexDirection={"column"}
+                    justifyContent={"center"}
+                  >
+                    <Box textAlign="left">{row.pool.currency}</Box>
+                    <Box fontWeight={300}>{row.pool.description}</Box>
+                  </Box>
+                </Box>
+              </StyledTableCell>
+              <StyledTableCell>{row.baseAPY}</StyledTableCell>
+              <StyledTableCell>{row.rewardsAPY}</StyledTableCell>
+              <StyledTableCell>{row.volume}</StyledTableCell>
+              <StyledTableCell>{row.APY}</StyledTableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+        <TableFooter>
+          <TableRow>
+            <StyledTableCell colSpan={12}>
+              <Link href="/pools">See All Pools</Link>
+            </StyledTableCell>
+          </TableRow>
+        </TableFooter>
+      </Table>
+    </TableContainer>
   );
 };
 

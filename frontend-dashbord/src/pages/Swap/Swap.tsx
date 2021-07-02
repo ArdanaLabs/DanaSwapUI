@@ -99,7 +99,7 @@ const Swap: React.FC = () => {
         </Grid>
       </Grid>
       <Box mt='20px'></Box>
-      <PoolsPanel data={pools} overView={true}></PoolsPanel>
+      <PoolsPanel data={pools}></PoolsPanel>
     </Box>
   )
 }

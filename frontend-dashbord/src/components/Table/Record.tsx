@@ -10,11 +10,11 @@ import RecordDetails from './RecordDetails'
 const useStyles = makeStyles(({ palette }) => ({
   record: {
     display: 'flex',
-    backgroundColor: palette.common.white,
-    color: palette.text.secondary,
+    backgroundColor: "transparent",
+    color: palette.secondary.main,
     borderRadius: '5px',
-    margin: '18px 0',
-    padding: '17px 26px'
+    padding: '17px 26px',
+    borderTop: "1px solid #E5E5E5",
   },
   recordMobile: {
     margin: '8px 0',
@@ -23,10 +23,11 @@ const useStyles = makeStyles(({ palette }) => ({
 }))
 
 export interface RecordProps {
-  data?: any
+  data: any;
+  widthRatio?: any;
 }
 
-const Record: React.FC<RecordProps> = ({ data }) => {
+const Record: React.FC<RecordProps> = ({ data, widthRatio }) => {
   const { breakpoints } = useTheme()
   const dark = useIsDarkMode()
   const mobile = useMediaQuery(breakpoints.down('xs'))
@@ -39,11 +40,11 @@ const Record: React.FC<RecordProps> = ({ data }) => {
 
   return (
     <Box className={cx(classes.record, mobile && classes.recordMobile)}>
-      <Grid container spacing={3} style={{ alignItems: 'stretch' }}>
+      <Grid container spacing={1} style={{ alignItems: 'stretch' }}>
         <Grid
           container
           item
-          sm={4}
+          sm={widthRatio}
           xs={12}
           onClick={mobile ? onToggleOptions : () => {}}
           style={{ paddingRight: mobile ? '35px' : 0, position: 'sticky' }}

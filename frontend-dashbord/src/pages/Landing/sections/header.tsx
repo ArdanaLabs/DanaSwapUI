@@ -12,7 +12,7 @@ import Hamburger from "hamburger-react";
 
 import { useIsDarkMode } from "state/user/hooks";
 
-import Logo from "assets/img/landing/logos/ardana-hor.png";
+import Logo from "assets/img/landing/logos/ardana-hor.svg";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   self: {
@@ -115,7 +115,7 @@ const HeaderSection: React.FC = () => {
                   href={link.to}
                   className={cx(classes.menuItem)}
                   key={index}
-                  style={{ color: "black" }}
+                  style={{ textAlign: "center", background: "linear-gradient(90.19deg, #2F3DA0 27.19%, #73D6F1 99.87%)" }}
                 >
                   {link.label}
                 </Link>

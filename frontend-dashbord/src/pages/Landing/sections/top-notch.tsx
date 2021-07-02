@@ -68,7 +68,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   content: {
-    fontFamily: "Museo Sans",
+    fontFamily: "'Museo Sans 300'",
     fontStyle: "normal",
     fontWeight: 300,
     fontSize: "18px",

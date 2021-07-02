@@ -42,7 +42,7 @@ const useStyles = makeStyles(({ palette }) => ({
     },
   },
   checkedIcon: {
-    backgroundColor: palette.primary.main,
+    background: palette.primary.main,
     "&:before": {
       display: "block",
       width: 18,

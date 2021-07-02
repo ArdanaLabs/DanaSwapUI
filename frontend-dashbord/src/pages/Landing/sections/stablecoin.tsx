@@ -55,7 +55,7 @@ const StableCoin_features = [
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
-    background: "#000633",
+    background: "linear-gradient(119.89deg, #2F3DA0 52.83%, #73D6F1 103.68%)",
     padding: "100px 20px 50px 20px",
   },
   title: {
@@ -72,7 +72,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   content: {
-    fontFamily: "Museo Sans",
+    fontFamily: "'Museo Sans 300'",
     fontStyle: "normal",
     fontWeight: 300,
     fontSize: "18px",
@@ -137,7 +137,7 @@ const StableCoinSection: React.FC = () => {
                   padding: "40px",
                   flex: 2,
                   background:
-                    "linear-gradient(180deg, rgba(19, 27, 89, 0.5) 0%, #2F3DA0 100%)",
+                    "linear-gradient(180deg, #2F3DA0 0%, #73D6F1 100%)",
                 }}
               />
             </Grid>

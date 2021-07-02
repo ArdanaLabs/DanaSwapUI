@@ -23,7 +23,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   job: {
-    fontFamily: "Museo Sans",
+    fontFamily: "'Museo Sans 300'",
     fontStyle: "normal",
     fontWeight: 300,
     fontSize: "18px",
@@ -36,7 +36,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   info: {
-    fontFamily: "Museo Sans",
+    fontFamily: "'Museo Sans 300'",
     fontStyle: "normal",
     fontWeight: 300,
     fontSize: "18px",

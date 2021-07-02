@@ -25,7 +25,7 @@ const useStyles = makeStyles(({ palette }) => ({
     },
     '&:hover': {
       '& $menuIcon': {
-        backgroundColor: palette.primary.main
+        background: palette.primary.main
       },
       '& .MuiTypography-root': {
         fontWeight: 500,
@@ -53,7 +53,7 @@ const useStyles = makeStyles(({ palette }) => ({
       }
     },
     '& $menuIcon': {
-      backgroundColor: palette.primary.main
+      background: palette.primary.main
     }
   },
   disabled: {

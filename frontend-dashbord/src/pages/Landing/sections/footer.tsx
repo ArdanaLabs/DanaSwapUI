@@ -6,16 +6,11 @@ import ScrollAnimation from "react-animate-on-scroll";
 
 import { useIsDarkMode } from "state/user/hooks";
 
-import LOGO_Ardana_ver from "assets/img/landing/logos/ardana-ver.png";
+import LOGO_Ardana_ver from "assets/img/landing/logos/ardana-ver.svg";
 
 const useStyles = makeStyles(({ palette }) => ({
   bg: {
-    background: `#000633`,
-    color: "#FFFFFF",
-    padding: "50px 0",
-  },
-  mobile_bg: {
-    background: `linear-gradient(90.19deg, #2F3DA0 0.2%, #73D6F1 80.66%)`,
+    background: `linear-gradient(90.19deg, #2F3DA0 48.37%, #73D6F1 99.87%)`,
     color: "#FFFFFF",
     padding: "50px 0",
   },
@@ -27,7 +22,7 @@ const useStyles = makeStyles(({ palette }) => ({
     fontFamily: "Futura",
   },
 
-  social_link: {
+  socialIconLink: {
     borderRadius: "50%",
     backgroundColor: "white",
     padding: "10px",
@@ -56,7 +51,7 @@ const FooterSection: React.FC = () => {
 
   return (
     <Box
-      className={cx({ [classes.bg]: !mobile }, { [classes.mobile_bg]: mobile })}
+      className={cx(classes.bg)}
     >
       <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
         <Container>
@@ -171,19 +166,19 @@ const FooterSection: React.FC = () => {
                       Follow us to hear about Ardana updates and events
                     </Box>
                     <Box lineHeight="50px">
-                      <Link className={cx(classes.social_link)} href="#">
+                      <Link className={cx(classes.socialIconLink)} href="#">
                         <i className="fab fa-twitter"></i>
                       </Link>
-                      <Link className={cx(classes.social_link)} href="#">
+                      <Link className={cx(classes.socialIconLink)} href="#">
                         <i className="fab fa-instagram"></i>
                       </Link>
-                      <Link className={cx(classes.social_link)} href="#">
+                      <Link className={cx(classes.socialIconLink)} href="#">
                         <i className="fab fa-medium"></i>
                       </Link>
-                      <Link className={cx(classes.social_link)} href="#">
+                      <Link className={cx(classes.socialIconLink)} href="#">
                         <i className="fab fa-youtube"></i>
                       </Link>
-                      <Link className={cx(classes.social_link)} href="#">
+                      <Link className={cx(classes.socialIconLink)} href="#">
                         <i className="fab fa-linkedin"></i>
                       </Link>
                     </Box>

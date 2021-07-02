@@ -4,11 +4,15 @@ import { Box, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { useIsDarkMode } from "state/user/hooks";
 
-import { OverViewSection, ChartSection } from "./sections";
+import {
+  OverViewSection,
+  ChartSection,
+  PoolsSection,
+  StatsSection,
+} from "./sections";
 
 const useStyles = makeStyles(({ palette }) => ({
-  self: {
-  },
+  self: {},
 }));
 
 const Home: React.FC = () => {
@@ -20,11 +24,18 @@ const Home: React.FC = () => {
   return (
     <Box className={cx(classes.self)}>
       <OverViewSection />
-      
+
       <Box mt="30px" />
 
       <ChartSection />
 
+      <Box mt="50px" />
+
+      <PoolsSection />
+
+      <Box mt="50px" />
+
+      <StatsSection />
     </Box>
   );
 };

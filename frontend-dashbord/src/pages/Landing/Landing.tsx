@@ -15,11 +15,11 @@ const Landing: React.FC = () => {
   return (
     <Box>
       <MainSection />
-      <PartnerSection />
       <DanaSwapSection />
       <StableCoinSection />
       <TopNotchSection />
       <ProfileSection />
+      <PartnerSection />
       <FooterSection />
     </Box>
   );

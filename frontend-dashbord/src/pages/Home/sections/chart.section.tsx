@@ -2,9 +2,10 @@ import React from "react";
 import { Box, Grid, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
+import Chart from "react-apexcharts";
 
 import { useIsDarkMode } from "state/user/hooks";
-import { Chart } from "components/Chart";
+import { ApexOptions } from "apexcharts";
 
 const useStyles = makeStyles(({ palette }) => ({
   self: {
@@ -12,7 +13,7 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 
   title: {
-    color: palette.primary.main,
+    color: palette.text.primary,
     fontFamily: "Brandon Grotesque Bold",
     fontStyle: "normal",
     fontWeight: 900,
@@ -29,13 +30,13 @@ const useStyles = makeStyles(({ palette }) => ({
   panelFilter: {
     display: "flex",
     justifyContent: "space-between",
-    color: palette.secondary.main,
-    fontFamily: "Museo Sans",
+    color: palette.text.hint,
+    fontFamily: "'Museo Sans 300'",
     fontStyle: "normal",
     fontWeight: 500,
     fontSize: "13px",
     lineHeight: "100%",
-    paddingBottom: "20px",
+    paddingBottom: "30px",
 
     "& span": {
       padding: "10px",
@@ -54,47 +55,76 @@ const ChartSection: React.FC = () => {
   const mobile = useMediaQuery(breakpoints.down("xs"));
   const classes = useStyles({ dark, mobile });
 
-  const options = {
+  const options: ApexOptions = {
     chart: {
       id: "basic-bar",
+      zoom: {
+        enabled: false,
+      },
+      toolbar: {
+        show: false,
+      },
+    },
+    stroke: {
+      width: 0,
+      curve: "smooth",
     },
     xaxis: {
       categories: ["APR 20", "MAY 15", "JUN 02"],
       labels: {
         style: {
-          colors: [
-            palette.secondary.main,
-            palette.secondary.main,
-            palette.secondary.main,
-          ],
+          colors: [palette.text.hint, palette.text.hint, palette.text.hint],
           fontSize: "13px",
-          fontFamily: "Museo Sans",
+          fontFamily: "'Museo Sans 300'",
           fontWeight: 500,
+        },
+      },
+      tickPlacement: "between",
+    },
+    yaxis: {
+      labels: {
+        show: true,
+        align: "left",
+        style: {
+          colors: [palette.secondary.main],
+          fontFamily: "'Museo Sans 300'",
+          fontWeight: "bold",
+          fontSize: "18px",
+          cssClass: "apexcharts-yaxis-label",
+        },
+        formatter: (value: any) => {
+          return "$" + value + (value ? " M" : "");
         },
       },
     },
     fill: {
       type: "gradient",
-      colors: [!dark ? "#202F9A" : "#73d6f100"],
+      colors: [!dark ? "#202F9A" : "#73d6f1"],
       gradient: {
         type: "vertical", // The gradient in the horizontal direction
         gradientToColors: [!dark ? "#5F72FF" : "#73D6F1"], // The color at the end of the gradient
         opacityFrom: 1, // transparency
-        opacityTo: 1,
-        stops: [0, 120],
+        opacityTo: 0.3,
+        stops: [0, 1200],
       },
     },
     plotOptions: {
       bar: {
-        borderRadius: 10
-      }
+        borderRadius: 5,
+      },
+    },
+    dataLabels: {
+      enabled: false,
+    },
+    tooltip: {
+      enabled: false,
     },
   };
 
   const series = [
     {
       name: "series-1",
-      data: [30, 40, 45, 50, 49, 60, 70, 91],
+      data: [30, 40, 45, 50, 49, 60, 70, 91, 30, 40, 45, 50, 49, 60, 70, 91],
     },
   ];
 
@@ -118,7 +148,12 @@ const ChartSection: React.FC = () => {
               </Box>
             </Box>
             <Box>
-              <Chart type="bar" options={options} series={series} />
+              <Chart
+                options={options}
+                series={series}
+                type="bar"
+                width="100%"
+              />
             </Box>
           </Box>
         </Grid>
@@ -139,7 +174,12 @@ const ChartSection: React.FC = () => {
               </Box>
             </Box>
             <Box>
-              <Chart type="area" options={options} series={series} />
+              <Chart
+                options={options}
+                series={series}
+                type="area"
+                width="100%"
+              />
             </Box>
           </Box>
         </Grid>
