@@ -10,9 +10,6 @@ import {
 import { useIsDarkMode } from "state/user/hooks";
 import Header from "./Header";
 
-import { navList } from "data";
-import LOGO_LIGHT from "assets/Ardana_hor_light.svg";
-import LOGO_DARK from "assets/Ardana_hor_dark.svg";
 import Footer from "./Footer";
 
 const useStyles = makeStyles(({ palette }) => ({
@@ -34,7 +31,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   return (
     <Box className={cx(classes.self)}>
-      <Header navList={navList} logo={!dark ? LOGO_LIGHT : LOGO_DARK} />
+      <Header />
       <Container>{children}</Container>
       <Footer />
     </Box>

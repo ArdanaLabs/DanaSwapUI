@@ -5,12 +5,23 @@ import cx from "classnames";
 
 import { useIsDarkMode } from "state/user/hooks";
 
-import LOGO_Ardana_hor from "assets/img/landing/logos/ardana-hor.svg";
+import LOGO_White from "assets/logo_white.png";
+import LOGO_Text from "assets/logo_text.png";
 
 const useStyles = makeStyles(({ palette }) => ({
   bg: {
     background: palette.primary.dark,
     marginTop: "50px",
+  },
+
+  logo: {
+    paddingLeft: "10px",
+    display: "flex",
+    alignItems: "center",
+    cursor: "pointer",
+    "& img": {
+      padding: "20px 10px",
+    },
   },
 
   container: {
@@ -50,12 +61,9 @@ const Footer: React.FC = () => {
     <Box className={cx(classes.bg)}>
       <Container>
         <Box className={cx(classes.container)}>
-          <Box>
-            <img
-              src={LOGO_Ardana_hor}
-              alt="Ardana logo"
-              style={{ maxWidth: "max-content" }}
-            />
+          <Box className={cx(classes.logo)}>
+            <img src={LOGO_White} alt="logo" />
+            <img src={LOGO_Text} alt="logo" />
           </Box>
           <Box>
             <Link className={cx(classes.socialIconLink)} href="#">

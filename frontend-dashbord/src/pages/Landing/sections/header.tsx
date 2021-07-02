@@ -12,7 +12,8 @@ import Hamburger from "hamburger-react";
 
 import { useIsDarkMode } from "state/user/hooks";
 
-import Logo from "assets/img/landing/logos/ardana-hor.svg";
+import LOGO_Blue from "assets/logo_blue.png";
+import LOGO_Text from "assets/logo_text.png";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   self: {
@@ -20,13 +21,13 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     justifyContent: "space-between",
     alignItems: "center",
   },
-  logoImg: {
-    width: "287px",
-    height: "136px",
-
-    [breakpoints.down("xs")]: {
-      width: "187px",
-      height: "96px",
+  logo: {
+    paddingLeft: "10px",
+    display: "flex",
+    alignItems: "center",
+    cursor: "pointer",
+    "& img": {
+      padding: "20px 10px",
     },
   },
   menuItem: {
@@ -77,7 +78,10 @@ const HeaderSection: React.FC = () => {
 
   return (
     <Box className={cx(classes.self)}>
-      <img src={Logo} className={cx(classes.logoImg)} alt="logo" />
+      <Box className={cx(classes.logo)}>
+        <img src={LOGO_Blue} alt="logo" />
+        <img src={LOGO_Text} alt="logo" />
+      </Box>
       {!mobile && (
         <Box>
           {links.map((link, index) => {

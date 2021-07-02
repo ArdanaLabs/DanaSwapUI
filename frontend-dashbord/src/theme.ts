@@ -152,7 +152,7 @@ export const lightTheme = responsiveFontSizes(
     },
     typography: {
       htmlFontSize: 16,
-      fontFamily: '',
+      fontFamily: "'Brandon Grotesque Bold','Museo Sans 300'",
       fontSize: 14,
     },
     breakpoints: {
@@ -650,7 +650,7 @@ export const darkTheme = responsiveFontSizes(
     },
     typography: {
       htmlFontSize: 16,
-      fontFamily: '',
+      fontFamily: "'Brandon Grotesque Bold','Museo Sans 300'",
       fontSize: 14,
       h1: {},
       h2: {},

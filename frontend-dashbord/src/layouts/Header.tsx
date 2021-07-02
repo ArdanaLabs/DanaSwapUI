@@ -16,6 +16,10 @@ import { useHistory, useLocation } from "react-router-dom";
 import ThemeSwitch from "components/ThemeSwitch";
 import { Button } from "components/Button";
 
+import { navList } from "data";
+import LOGO_Blue from "assets/logo_blue.png";
+import LOGO_Text from "assets/logo_text.png";
+
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   self: {
     position: "fixed",
@@ -34,13 +38,15 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   logo: {
+    paddingLeft: "10px",
+    display: "flex",
+    alignItems: "center",
     cursor: "pointer",
     "& img": {
-      width: "300px",
-
-      [breakpoints.down("sm")]: {
-        width: "200px",
-      },
+      padding: "20px 10px",
+    },
+    "& img:last-child": {
+      filter: palette.type === "light" ? "invert(1)" : "invert(0)",
     },
   },
 
@@ -83,17 +89,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 }));
 
-type NavListType = {
-  label: string;
-  link: string;
-};
-
-export interface HeaderProps {
-  logo?: string;
-  navList: Array<NavListType>;
-}
-
-const Header: React.FC<HeaderProps> = ({ logo, navList }) => {
+const Header: React.FC = () => {
   const theme = useTheme();
   const mobile = useMediaQuery(theme.breakpoints.down("sm"));
   const dark = useIsDarkMode();
@@ -120,7 +116,8 @@ const Header: React.FC<HeaderProps> = ({ logo, navList }) => {
       <Container>
         <Box className={cx(classes.container)}>
           <Box className={cx(classes.logo)} onClick={() => history.push("/")}>
-            <img src={logo} alt="Ardana Logo" />
+            <img src={LOGO_Blue} alt="Ardana Logo" />
+            <img src={LOGO_Text} alt="Ardana Logo" />
           </Box>
 
           {!mobile && (
@@ -165,7 +162,11 @@ const Header: React.FC<HeaderProps> = ({ logo, navList }) => {
         </Box>
         <Box className={cx(classes.subHeader)}>
           <ThemeSwitch />
-          <Button variant="contained" onClick={onConnectWallet} style={{background: theme.palette.secondary.dark}}>
+          <Button
+            variant="contained"
+            onClick={onConnectWallet}
+            style={{ background: theme.palette.secondary.dark }}
+          >
             Connect Wallet
           </Button>
         </Box>
