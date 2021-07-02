@@ -3,6 +3,7 @@ import { Box, useMediaQuery, Container, Grid, Link } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
 import ScrollAnimation from "react-animate-on-scroll";
+import { withTranslation  } from 'react-i18next';
 
 import { useIsDarkMode } from "state/user/hooks";
 
@@ -99,7 +100,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 }));
 
-const MainSection: React.FC = () => {
+const MainSection: React.FC<any> = ({t, i18n}) => {
   const { breakpoints } = useTheme();
   const dark = useIsDarkMode();
   const mobile = useMediaQuery(breakpoints.down("xs"));
@@ -195,4 +196,4 @@ const MainSection: React.FC = () => {
   );
 };
 
-export default MainSection;
+export default withTranslation()(MainSection);
