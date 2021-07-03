@@ -3,7 +3,8 @@ import { Box, useMediaQuery, Container, Grid, Link } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
 import ScrollAnimation from "react-animate-on-scroll";
-import { withTranslation  } from 'react-i18next';
+import { withTranslation, WithTranslation } from "react-i18next";
+import i18next from "i18next";
 
 import { useIsDarkMode } from "state/user/hooks";
 
@@ -18,31 +19,28 @@ import img_fully_decentralized from "assets/img/landing/icons/fully-decentralize
 import img_borrow_lend from "assets/img/landing/icons/borrow-lend.png";
 import img_store_of_value from "assets/img/landing/icons/store-of-value.png";
 import img_powered_by_cardano from "assets/img/landing/icons/powered-by-cardano.png";
+import { setLang } from "hooks";
 
 const Ardana_features = [
   {
     image: img_fully_decentralized,
-    title: "Fully\nDecentralized",
-    content:
-      "Unbiased, multi-collateral backed pegged to the US Dollar and other currencies.",
+    title: i18next.t("PAGE.LANDING.ARDANA.FEATURES.0.TITLE"),
+    content: i18next.t("PAGE.LANDING.ARDANA.FEATURES.0.CONTENT"),
   },
   {
     image: img_borrow_lend,
-    title: "Borrow\n& Lend",
-    content:
-      "Allow holders to borrow and lend the asset for use on exchanges like any other crypto asset.",
+    title: i18next.t("PAGE.LANDING.ARDANA.FEATURES.1.TITLE"),
+    content: i18next.t("PAGE.LANDING.ARDANA.FEATURES.1.CONTENT"),
   },
   {
     image: img_store_of_value,
-    title: "Store of\nValue",
-    content:
-      "Designed to function as a secure store of value that accrues value even in a volatile market.",
+    title: i18next.t("PAGE.LANDING.ARDANA.FEATURES.2.TITLE"),
+    content: i18next.t("PAGE.LANDING.ARDANA.FEATURES.2.CONTENT"),
   },
   {
     image: img_powered_by_cardano,
-    title: "Powered by\nCardano",
-    content:
-      "Ardana stablecoins are designed to function as a store of value even in a volatile market.",
+    title: i18next.t("PAGE.LANDING.ARDANA.FEATURES.3.TITLE"),
+    content: i18next.t("PAGE.LANDING.ARDANA.FEATURES.3.CONTENT"),
   },
 ];
 
@@ -100,7 +98,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 }));
 
-const MainSection: React.FC<any> = ({t, i18n}) => {
+const MainSection: React.FC<WithTranslation> = ({ t, i18n }) => {
   const { breakpoints } = useTheme();
   const dark = useIsDarkMode();
   const mobile = useMediaQuery(breakpoints.down("xs"));
@@ -114,22 +112,20 @@ const MainSection: React.FC<any> = ({t, i18n}) => {
         <Grid container>
           <Grid item xs={12} sm={6}>
             <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-              <Box className={cx(classes.title)}>
-                {"Decentralized\nstablecoin hub."}
-              </Box>
+              <Box className={cx(classes.title)}>{t("PAGE.LANDING.TITLE")}</Box>
               <Box className={cx(classes.subTitle)}>
-                {
-                  "Decentralized Stablecoin and DEX Liquidity Pool. Built on Cardano."
-                }
+                {t("PAGE.LANDING.DESCRIPTION")}
               </Box>
             </ScrollAnimation>
 
             <Box mt="50px"></Box>
 
             <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-              <Box>
+              <Box onClick={() => setLang('en')}>
                 <Link href="#" underline="none">
-                  <AdButton variant="contained">LAUNCH PLATFORM</AdButton>
+                  <AdButton variant="contained">
+                    {t("PAGE.LANDING.LAUNCH_PLATFORM")}
+                  </AdButton>
                 </Link>
               </Box>
             </ScrollAnimation>
@@ -141,17 +137,15 @@ const MainSection: React.FC<any> = ({t, i18n}) => {
           <Grid container spacing={1}>
             <Grid item xs={12} sm={6}>
               <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-                <Box className={cx(classes.definitionQ)}>What is Ardana?</Box>
+                <Box className={cx(classes.definitionQ)}>
+                  {t("PAGE.LANDING.ARDANA.QUESTION")}
+                </Box>
               </ScrollAnimation>
             </Grid>
             <Grid item xs={12} sm={6}>
               <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
                 <Box className={cx(classes.definitionA)}>
-                  Ardana is a decentralized financial hub and services provider
-                  built on Cardano that provides key DeFi primitives including a
-                  decentralized stablecoin exchange, stablecoins, a foreign
-                  exchange protocol and a multisignature protocol to power users
-                  and open finance applications on Cardano and beyond.
+                  {t("PAGE.LANDING.ARDANA.DESC")}
                 </Box>
               </ScrollAnimation>
             </Grid>

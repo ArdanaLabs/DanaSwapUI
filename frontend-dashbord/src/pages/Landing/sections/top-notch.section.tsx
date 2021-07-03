@@ -3,6 +3,7 @@ import { Box, useMediaQuery, Container } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
 import ScrollAnimation from "react-animate-on-scroll";
+import { withTranslation, WithTranslation } from "react-i18next";
 
 import { useIsDarkMode } from "state/user/hooks";
 
@@ -83,7 +84,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 }));
 
-const TopNotchSection: React.FC = () => {
+const TopNotchSection: React.FC<WithTranslation> = ({ t }) => {
   const { breakpoints } = useTheme();
   const dark = useIsDarkMode();
   const mobile = useMediaQuery(breakpoints.down("xs"));
@@ -94,15 +95,13 @@ const TopNotchSection: React.FC = () => {
       <Container>
         <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
           <Box className={cx(classes.title)}>
-            Ardana with our top-notch team
+            {t("PAGE.LANDING.TOP-NOTCH.TITLE")}
           </Box>
         </ScrollAnimation>
 
         <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
           <Box className={cx(classes.content)}>
-            Our team is led by accomplished entrepreneurs and top-notch
-            engineers from well-known companies such as Apple, Microsoft,
-            Barclays, Cardano, Emurgo, and IG Index.
+            {t("PAGE.LANDING.TOP-NOTCH.CONTENT")}
           </Box>
         </ScrollAnimation>
 
@@ -137,4 +136,4 @@ const TopNotchSection: React.FC = () => {
   );
 };
 
-export default TopNotchSection;
+export default withTranslation()(TopNotchSection);

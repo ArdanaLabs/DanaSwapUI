@@ -3,6 +3,7 @@ import { Box, useMediaQuery, Container, Grid } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
 import ScrollAnimation from "react-animate-on-scroll";
+import { withTranslation, WithTranslation } from "react-i18next";
 
 import { useIsDarkMode } from "state/user/hooks";
 
@@ -38,7 +39,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 }));
 
-const DanaswapSection: React.FC = () => {
+const DanaswapSection: React.FC<WithTranslation> = ({ t }) => {
   const { breakpoints } = useTheme();
   const dark = useIsDarkMode();
   const mobile = useMediaQuery(breakpoints.down("xs"));
@@ -55,16 +56,14 @@ const DanaswapSection: React.FC = () => {
               }
             >
               <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-                <Box className={cx(classes.title)}>Danaswap</Box>
+                <Box className={cx(classes.title)}>
+                  {t("PAGE.LANDING.DANASWAP.TITLE")}
+                </Box>
               </ScrollAnimation>
               <Box mt="20px" />
               <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
                 <Box className={cx(classes.content)}>
-                  Ardana is a decentralized financial hub and services provider
-                  built on Cardano that provides key DeFi primitives including a
-                  decentralized stablecoin exchange, stablecoins, a foreign
-                  exchange protocol and a multisignature protocol to power users
-                  and open finance applications on Cardano and beyond.
+                  {t("PAGE.LANDING.DANASWAP.CONTENT")}
                 </Box>
               </ScrollAnimation>
             </Box>
@@ -79,4 +78,4 @@ const DanaswapSection: React.FC = () => {
   );
 };
 
-export default DanaswapSection;
+export default withTranslation()(DanaswapSection);

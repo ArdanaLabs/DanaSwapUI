@@ -3,6 +3,7 @@ import { Box, useMediaQuery, Container, Grid, Link } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
 import ScrollAnimation from "react-animate-on-scroll";
+import { withTranslation, WithTranslation } from "react-i18next";
 
 import { useIsDarkMode } from "state/user/hooks";
 
@@ -44,16 +45,14 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 }));
 
-const FooterSection: React.FC = () => {
+const FooterSection: React.FC<WithTranslation> = ({ t }) => {
   const { breakpoints } = useTheme();
   const dark = useIsDarkMode();
   const mobile = useMediaQuery(breakpoints.down("xs"));
   const classes = useStyles({ dark, mobile });
 
   return (
-    <Box
-      className={cx(classes.bg)}
-    >
+    <Box className={cx(classes.bg)}>
       <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
         <Container>
           <Grid container>
@@ -84,7 +83,7 @@ const FooterSection: React.FC = () => {
                           fontSize={!mobile ? "18px" : "16px"}
                           lineHeight="23px"
                         >
-                          Resources
+                          {t("PAGE.LANDING.FOOTER.RESOURCES.LABEL")}
                         </Box>
                         <Box mt="20px"></Box>
                         <Box
@@ -92,16 +91,16 @@ const FooterSection: React.FC = () => {
                           lineHeight="21px"
                         >
                           <Link href="#" className={cx(classes.link)}>
-                            Whitepaper
+                            {t("PAGE.LANDING.FOOTER.RESOURCES.LIST.0")}
                           </Link>
                           <Link href="#" className={cx(classes.link)}>
-                            Pitch Deck
+                            {t("PAGE.LANDING.FOOTER.RESOURCES.LIST.1")}
                           </Link>
                           <Link href="#" className={cx(classes.link)}>
-                            Roadmap
+                            {t("PAGE.LANDING.FOOTER.RESOURCES.LIST.2")}
                           </Link>
                           <Link href="#" className={cx(classes.link)}>
-                            Docs
+                            {t("PAGE.LANDING.FOOTER.RESOURCES.LIST.3")}
                           </Link>
                         </Box>
                       </Grid>
@@ -111,7 +110,7 @@ const FooterSection: React.FC = () => {
                           fontSize={!mobile ? "18px" : "16px"}
                           lineHeight="23px"
                         >
-                          Products
+                          {t("PAGE.LANDING.FOOTER.PRODUCTS.LABEL")}
                         </Box>
                         <Box mt="20px"></Box>
                         <Box
@@ -119,13 +118,13 @@ const FooterSection: React.FC = () => {
                           lineHeight="21px"
                         >
                           <Link href="#" className={cx(classes.link)}>
-                            DEX
+                            {t("PAGE.LANDING.FOOTER.PRODUCTS.LIST.0")}
                           </Link>
                           <Link href="#" className={cx(classes.link)}>
-                            Stablecoin
+                            {t("PAGE.LANDING.FOOTER.PRODUCTS.LIST.1")}
                           </Link>
                           <Link href="#" className={cx(classes.link)}>
-                            Multisig
+                            {t("PAGE.LANDING.FOOTER.PRODUCTS.LIST.2")}
                           </Link>
                         </Box>
                       </Grid>
@@ -135,7 +134,7 @@ const FooterSection: React.FC = () => {
                           fontSize={!mobile ? "18px" : "16px"}
                           lineHeight="23px"
                         >
-                          Foundation
+                          {t("PAGE.LANDING.FOOTER.FOUNDATION.LABEL")}
                         </Box>
                         <Box mt="20px"></Box>
                         <Box
@@ -143,10 +142,10 @@ const FooterSection: React.FC = () => {
                           lineHeight="21px"
                         >
                           <Link href="#" className={cx(classes.link)}>
-                            Contact Us
+                            {t("PAGE.LANDING.FOOTER.FOUNDATION.LIST.0")}
                           </Link>
                           <Link href="#" className={cx(classes.link)}>
-                            Careers
+                            {t("PAGE.LANDING.FOOTER.FOUNDATION.LIST.1")}
                           </Link>
                         </Box>
                       </Grid>
@@ -160,11 +159,11 @@ const FooterSection: React.FC = () => {
                       fontSize={!mobile ? "18px" : "16px"}
                       lineHeight="23px"
                     >
-                      Our Socials
+                      {t("PAGE.LANDING.FOOTER.SOCIAL.LABEL")}
                     </Box>
                     <Box mt="20px"></Box>
                     <Box className={cx(classes.link)}>
-                      Follow us to hear about Ardana updates and events
+                      {t("PAGE.LANDING.FOOTER.SOCIAL.CONTENT")}
                     </Box>
                     <Box lineHeight="50px">
                       <Link className={cx(classes.socialIconLink)} href="#">
@@ -194,4 +193,4 @@ const FooterSection: React.FC = () => {
   );
 };
 
-export default FooterSection;
+export default withTranslation()(FooterSection);

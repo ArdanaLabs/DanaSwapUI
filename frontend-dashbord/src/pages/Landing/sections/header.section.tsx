@@ -9,6 +9,8 @@ import {
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
 import Hamburger from "hamburger-react";
+import { withTranslation, WithTranslation } from "react-i18next";
+import i18next from "i18next";
 
 import { useIsDarkMode } from "state/user/hooks";
 
@@ -47,24 +49,24 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
 const links = [
   {
-    label: "HOME",
+    label: i18next.t("PAGE.LANDING.HEADER.LINKS.0"),
     to: "/home",
   },
   {
-    label: "RESOURCES",
+    label: i18next.t("PAGE.LANDING.HEADER.LINKS.1"),
     to: "#",
   },
   {
-    label: "ROADMAP",
+    label: i18next.t("PAGE.LANDING.HEADER.LINKS.2"),
     to: "#",
   },
   {
-    label: "BLOG",
+    label: i18next.t("PAGE.LANDING.HEADER.LINKS.3"),
     to: "#",
   },
 ];
 
-const HeaderSection: React.FC = () => {
+const HeaderSection: React.FC<WithTranslation> = ({ t }) => {
   const { palette, breakpoints } = useTheme();
   const dark = useIsDarkMode();
   const mobile = useMediaQuery(breakpoints.down("xs"));
@@ -119,7 +121,11 @@ const HeaderSection: React.FC = () => {
                   href={link.to}
                   className={cx(classes.menuItem)}
                   key={index}
-                  style={{ textAlign: "center", background: "linear-gradient(90.19deg, #2F3DA0 27.19%, #73D6F1 99.87%)" }}
+                  style={{
+                    textAlign: "center",
+                    background:
+                      "linear-gradient(90.19deg, #2F3DA0 27.19%, #73D6F1 99.87%)",
+                  }}
                 >
                   {link.label}
                 </Link>
@@ -132,4 +138,4 @@ const HeaderSection: React.FC = () => {
   );
 };
 
-export default HeaderSection;
+export default withTranslation()(HeaderSection);

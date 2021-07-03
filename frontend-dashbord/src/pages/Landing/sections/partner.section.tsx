@@ -3,6 +3,7 @@ import { Box, useMediaQuery, Grid, Container } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
 import ScrollAnimation from "react-animate-on-scroll";
+import { withTranslation, WithTranslation } from "react-i18next";
 
 import { useIsDarkMode } from "state/user/hooks";
 
@@ -41,7 +42,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 }));
 
-const PartnerSection: React.FC = () => {
+const PartnerSection: React.FC<WithTranslation> = ({ t }) => {
   const { breakpoints } = useTheme();
   const dark = useIsDarkMode();
   const mobile = useMediaQuery(breakpoints.down("xs"));
@@ -51,7 +52,9 @@ const PartnerSection: React.FC = () => {
     <Box className={cx(classes.bg)}>
       <Container>
         <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-          <Box className={cx(classes.title)}>Featured Partners</Box>
+          <Box className={cx(classes.title)}>
+            {t("PAGE.LANDING.PARTNERS")}
+          </Box>
         </ScrollAnimation>
 
         <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
@@ -78,4 +81,4 @@ const PartnerSection: React.FC = () => {
   );
 };
 
-export default PartnerSection;
+export default withTranslation()(PartnerSection);

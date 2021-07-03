@@ -3,6 +3,8 @@ import { Box, useMediaQuery, Grid, Container } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
 import ScrollAnimation from "react-animate-on-scroll";
+import { withTranslation, WithTranslation } from "react-i18next";
+import i18next from "i18next";
 
 import { useIsDarkMode } from "state/user/hooks";
 
@@ -17,39 +19,33 @@ import { FeatureBox } from "components/Box";
 const StableCoin_features = [
   {
     image: img_ultra_low_slippage,
-    title: "Ultra-low\nSlippage",
-    content:
-      "Unbiased, multi-collateral backed pegged to the US Dollar and other currencies.",
+    title: i18next.t("PAGE.LANDING.STABLECOIN.FEATURES.0.TITLE"),
+    content: i18next.t("PAGE.LANDING.STABLECOIN.FEATURES.0.CONTENT"),
   },
   {
     image: img_savings_account,
-    title: "Savings\nAccount",
-    content:
-      "Allow holders to borrow and lend the asset for use on exchanges like any other crypto asset.",
+    title: i18next.t("PAGE.LANDING.STABLECOIN.FEATURES.1.TITLE"),
+    content: i18next.t("PAGE.LANDING.STABLECOIN.FEATURES.1.CONTENT"),
   },
   {
     image: img_earn_market_making_fees,
-    title: "Earn Market\nMaking Fees",
-    content:
-      "Allow holders to borrow and lend the asset for use on exchanges like any other crypto asset.",
+    title: i18next.t("PAGE.LANDING.STABLECOIN.FEATURES.2.TITLE"),
+    content: i18next.t("PAGE.LANDING.STABLECOIN.FEATURES.2.CONTENT"),
   },
   {
     image: img_foreign_exchange,
-    title: "Foreign\nExchange",
-    content:
-      "Unbiased, multi-collateral backed pegged to the US Dollar and other currencies.",
+    title: i18next.t("PAGE.LANDING.STABLECOIN.FEATURES.3.TITLE"),
+    content: i18next.t("PAGE.LANDING.STABLECOIN.FEATURES.3.CONTENT"),
   },
   {
     image: img_data_token,
-    title: "DANA Token\n\n",
-    content:
-      "Allow holders to borrow and lend the asset for use on exchanges like any other crypto asset.",
+    title: i18next.t("PAGE.LANDING.STABLECOIN.FEATURES.4.TITLE"),
+    content: i18next.t("PAGE.LANDING.STABLECOIN.FEATURES.4.CONTENT"),
   },
   {
     image: img_governance,
-    title: "Governance\n\n",
-    content:
-      "Allow holders to borrow and lend the asset for use on exchanges like any other crypto asset.",
+    title: i18next.t("PAGE.LANDING.STABLECOIN.FEATURES.5.TITLE"),
+    content: i18next.t("PAGE.LANDING.STABLECOIN.FEATURES.5.CONTENT"),
   },
 ];
 
@@ -85,7 +81,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 }));
 
-const StableCoinSection: React.FC = () => {
+const StableCoinSection: React.FC<WithTranslation> = ({ t }) => {
   const { breakpoints } = useTheme();
   const dark = useIsDarkMode();
   const mobile = useMediaQuery(breakpoints.down("xs"));
@@ -97,16 +93,15 @@ const StableCoinSection: React.FC = () => {
         <Grid container alignItems="center">
           <Grid item xs={12} sm={4}>
             <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-              <Box className={cx(classes.title)}>Stablecoin</Box>
+              <Box className={cx(classes.title)}>
+                {t("PAGE.LANDING.STABLECOIN.TITLE")}
+              </Box>
             </ScrollAnimation>
           </Grid>
           <Grid item xs={12} sm={4}>
             <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
               <Box className={cx(classes.content)}>
-                The Ardana Dollar (dUSD) is a decentralized, unbiased, on-chain,
-                collateral, backed cryptocurrency soft-pegged to the US dollar.
-                dUSD is held in cryptocurrency wallets or within platforms, and
-                is supported on Cardano.
+                {t("PAGE.LANDING.STABLECOIN.CONTENT")}
               </Box>
             </ScrollAnimation>
           </Grid>
@@ -148,4 +143,4 @@ const StableCoinSection: React.FC = () => {
   );
 };
 
-export default StableCoinSection;
+export default withTranslation()(StableCoinSection);
