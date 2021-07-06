@@ -22,9 +22,10 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 
   panel: {
-    background: palette.background.paper,
+    background: palette.type === "light" ? palette.common.white : palette.background.paper,
     borderRadius: "10px",
     padding: "20px",
+    filter: palette.type === "light" ? "drop-shadow(2px 2px 10px rgba(0, 0, 0, 0.1))" : "unset",
   },
 
   panelFilter: {
@@ -130,7 +131,7 @@ const ChartSection: React.FC = () => {
 
   return (
     <Box className={cx(classes.self)}>
-      <Grid container spacing={2}>
+      <Grid container spacing={3}>
         <Grid item sm={12} md={6}>
           <Box className={cx(classes.title)}>Volume</Box>
           <Box mt="20px" />

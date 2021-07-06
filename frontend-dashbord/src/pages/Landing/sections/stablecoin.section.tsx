@@ -51,7 +51,7 @@ const StableCoin_features = [
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
     background: "linear-gradient(119.89deg, #2F3DA0 52.83%, #73D6F1 103.68%)",
-    padding: "100px 20px 50px 20px",
+    padding: "100px 20px",
   },
   title: {
     fontFamily: "Brandon Grotesque Bold",
@@ -89,6 +89,7 @@ const StableCoinSection: React.FC = () => {
   return (
     <Box className={cx(classes.bg)}>
       <Container>
+        <Box mt={!mobile ? "50px" : "0px"}></Box>
         <Grid container alignItems="center">
           <Grid item xs={12} sm={4}>
             <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
@@ -106,9 +107,9 @@ const StableCoinSection: React.FC = () => {
           </Grid>
         </Grid>
 
-        <Box mt="100px"></Box>
+        <Box mt={!mobile ? "150px" : "50px"}></Box>
 
-        <Grid container spacing={3}>
+        <Grid container spacing={1}>
           {StableCoin_features.map((feature, index) => (
             <Grid
               item

@@ -12,8 +12,12 @@ import img_Danaswap from "assets/img/landing/backgrounds/dana-swap-graphic.png";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
-    background: `url(${img_Ellipse}) calc(100% - 30px) calc(100% - 30px) no-repeat, #FFFFFF`,
-    padding: "50px",
+    background: `url(${img_Ellipse}) calc(100% - 30px) calc(100% - 130px) no-repeat, #FFFFFF`,
+    padding: "200px 50px",
+
+    [breakpoints.down("sm")]: {
+      padding: "50px",
+    }
   },
 
   title: {

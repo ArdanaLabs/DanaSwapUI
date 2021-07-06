@@ -55,7 +55,7 @@ const textPrimaryNight = "#FFFFFF";
 const textSecondaryDay = "#636060";
 const textSecondaryNight = "#FFFFFF";
 
-const textHintDay = "#A5A5A5";
+const textHintDay = "#636060";
 const textHintNight = "#73D6F1";
 
 const black = "#131B59";

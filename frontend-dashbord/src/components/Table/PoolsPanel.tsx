@@ -21,7 +21,7 @@ const StyledTableCell = withStyles(({ palette }) => ({
     fontStyle: "normal",
     fontWeight: 500,
     fontSize: "18px",
-    lineHeight: "100%",
+    lineHeight: "300%",
     textAlign: "center",
     cursor: "pointer",
     color: palette.secondary.main,

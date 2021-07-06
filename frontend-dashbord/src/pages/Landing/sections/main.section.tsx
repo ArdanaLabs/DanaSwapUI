@@ -45,6 +45,7 @@ const Ardana_features = [
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
+    paddingBottom: "100px",
     background: `url(${LOGO_WITH_CITY}) right top no-repeat, url(${LOGO_WITH_CITY_W}) right 30px no-repeat, linear-gradient(90.19deg, #2F3DA0 27.19%, #73D6F1 99.87%);`,
   },
 
@@ -70,6 +71,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontStyle: "normal",
     fontWeight: 300,
     lineHeight: "29px",
+    marginRight: "-120px",
 
     [breakpoints.down("sm")]: {
       fontSize: "18px",
@@ -111,7 +113,9 @@ const MainSection: React.FC = () => {
         <Grid container>
           <Grid item xs={12} sm={6}>
             <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-              <Box className={cx(classes.title)}>{i18next.t("PAGE.LANDING.TITLE")}</Box>
+              <Box className={cx(classes.title)}>
+                {i18next.t("PAGE.LANDING.TITLE")}
+              </Box>
               <Box className={cx(classes.subTitle)}>
                 {i18next.t("PAGE.LANDING.DESCRIPTION")}
               </Box>
@@ -120,7 +124,7 @@ const MainSection: React.FC = () => {
             <Box mt="50px"></Box>
 
             <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-              <Box onClick={() => setLang('en')}>
+              <Box onClick={() => setLang("en")}>
                 <Link href="#" underline="none">
                   <AdButton variant="contained">
                     {i18next.t("PAGE.LANDING.LAUNCH_PLATFORM")}
@@ -131,7 +135,7 @@ const MainSection: React.FC = () => {
           </Grid>
         </Grid>
 
-        <Box mt={!mobile ? "100px" : "50px"}></Box>
+        <Box mt={!mobile ? "200px" : "50px"}></Box>
         <Box mx={!mobile ? "100px" : "0"}>
           <Grid container spacing={1}>
             <Grid item xs={12} sm={6}>
@@ -151,7 +155,7 @@ const MainSection: React.FC = () => {
           </Grid>
         </Box>
 
-        <Box mt="100px"></Box>
+        <Box mt={!mobile ? "200px" : "50px"}></Box>
 
         <Box>
           <Grid container spacing={3} alignItems="stretch">

@@ -39,7 +39,7 @@ const ProfileSection: React.FC = () => {
       className={cx({ [classes.bg]: !mobile }, { [classes.mobile_bg]: mobile })}
     >
       <Container>
-        <Grid container spacing={3}>
+        <Grid container spacing={5}>
           {ProfileList.map((profile, index) => (
             <Grid
               item
