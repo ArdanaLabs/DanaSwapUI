@@ -9,7 +9,6 @@ import {
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
 import Hamburger from "hamburger-react";
-import { withTranslation, WithTranslation } from "react-i18next";
 import i18next from "i18next";
 
 import { useIsDarkMode } from "state/user/hooks";
@@ -66,7 +65,7 @@ const links = [
   },
 ];
 
-const HeaderSection: React.FC<WithTranslation> = ({ t }) => {
+const HeaderSection: React.FC = () => {
   const { palette, breakpoints } = useTheme();
   const dark = useIsDarkMode();
   const mobile = useMediaQuery(breakpoints.down("xs"));
@@ -138,4 +137,4 @@ const HeaderSection: React.FC<WithTranslation> = ({ t }) => {
   );
 };
 
-export default withTranslation()(HeaderSection);
+export default (HeaderSection);

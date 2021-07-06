@@ -3,7 +3,7 @@ import { Box, useMediaQuery, Container } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
 import ScrollAnimation from "react-animate-on-scroll";
-import { withTranslation, WithTranslation } from "react-i18next";
+import i18next from "i18next";
 
 import { useIsDarkMode } from "state/user/hooks";
 
@@ -84,7 +84,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 }));
 
-const TopNotchSection: React.FC<WithTranslation> = ({ t }) => {
+const TopNotchSection: React.FC = () => {
   const { breakpoints } = useTheme();
   const dark = useIsDarkMode();
   const mobile = useMediaQuery(breakpoints.down("xs"));
@@ -95,13 +95,13 @@ const TopNotchSection: React.FC<WithTranslation> = ({ t }) => {
       <Container>
         <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
           <Box className={cx(classes.title)}>
-            {t("PAGE.LANDING.TOP-NOTCH.TITLE")}
+            {i18next.t("PAGE.LANDING.TOP-NOTCH.TITLE")}
           </Box>
         </ScrollAnimation>
 
         <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
           <Box className={cx(classes.content)}>
-            {t("PAGE.LANDING.TOP-NOTCH.CONTENT")}
+            {i18next.t("PAGE.LANDING.TOP-NOTCH.CONTENT")}
           </Box>
         </ScrollAnimation>
 
@@ -136,4 +136,4 @@ const TopNotchSection: React.FC<WithTranslation> = ({ t }) => {
   );
 };
 
-export default withTranslation()(TopNotchSection);
+export default (TopNotchSection);

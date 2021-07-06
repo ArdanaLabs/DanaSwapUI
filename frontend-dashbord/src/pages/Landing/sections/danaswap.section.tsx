@@ -3,7 +3,7 @@ import { Box, useMediaQuery, Container, Grid } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
 import ScrollAnimation from "react-animate-on-scroll";
-import { withTranslation, WithTranslation } from "react-i18next";
+import i18next from "i18next";
 
 import { useIsDarkMode } from "state/user/hooks";
 
@@ -39,7 +39,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 }));
 
-const DanaswapSection: React.FC<WithTranslation> = ({ t }) => {
+const DanaswapSection: React.FC = () => {
   const { breakpoints } = useTheme();
   const dark = useIsDarkMode();
   const mobile = useMediaQuery(breakpoints.down("xs"));
@@ -57,13 +57,13 @@ const DanaswapSection: React.FC<WithTranslation> = ({ t }) => {
             >
               <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
                 <Box className={cx(classes.title)}>
-                  {t("PAGE.LANDING.DANASWAP.TITLE")}
+                  {i18next.t("PAGE.LANDING.DANASWAP.TITLE")}
                 </Box>
               </ScrollAnimation>
               <Box mt="20px" />
               <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
                 <Box className={cx(classes.content)}>
-                  {t("PAGE.LANDING.DANASWAP.CONTENT")}
+                  {i18next.t("PAGE.LANDING.DANASWAP.CONTENT")}
                 </Box>
               </ScrollAnimation>
             </Box>
@@ -78,4 +78,4 @@ const DanaswapSection: React.FC<WithTranslation> = ({ t }) => {
   );
 };
 
-export default withTranslation()(DanaswapSection);
+export default (DanaswapSection);

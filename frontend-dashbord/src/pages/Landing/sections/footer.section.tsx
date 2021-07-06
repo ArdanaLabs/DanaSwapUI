@@ -3,7 +3,7 @@ import { Box, useMediaQuery, Container, Grid, Link } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
 import ScrollAnimation from "react-animate-on-scroll";
-import { withTranslation, WithTranslation } from "react-i18next";
+import i18next from "i18next";
 
 import { useIsDarkMode } from "state/user/hooks";
 
@@ -45,7 +45,7 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 }));
 
-const FooterSection: React.FC<WithTranslation> = ({ t }) => {
+const FooterSection: React.FC = () => {
   const { breakpoints } = useTheme();
   const dark = useIsDarkMode();
   const mobile = useMediaQuery(breakpoints.down("xs"));
@@ -83,7 +83,7 @@ const FooterSection: React.FC<WithTranslation> = ({ t }) => {
                           fontSize={!mobile ? "18px" : "16px"}
                           lineHeight="23px"
                         >
-                          {t("PAGE.LANDING.FOOTER.RESOURCES.LABEL")}
+                          {i18next.t("PAGE.LANDING.FOOTER.RESOURCES.LABEL")}
                         </Box>
                         <Box mt="20px"></Box>
                         <Box
@@ -91,16 +91,16 @@ const FooterSection: React.FC<WithTranslation> = ({ t }) => {
                           lineHeight="21px"
                         >
                           <Link href="#" className={cx(classes.link)}>
-                            {t("PAGE.LANDING.FOOTER.RESOURCES.LIST.0")}
+                            {i18next.t("PAGE.LANDING.FOOTER.RESOURCES.LIST.0")}
                           </Link>
                           <Link href="#" className={cx(classes.link)}>
-                            {t("PAGE.LANDING.FOOTER.RESOURCES.LIST.1")}
+                            {i18next.t("PAGE.LANDING.FOOTER.RESOURCES.LIST.1")}
                           </Link>
                           <Link href="#" className={cx(classes.link)}>
-                            {t("PAGE.LANDING.FOOTER.RESOURCES.LIST.2")}
+                            {i18next.t("PAGE.LANDING.FOOTER.RESOURCES.LIST.2")}
                           </Link>
                           <Link href="#" className={cx(classes.link)}>
-                            {t("PAGE.LANDING.FOOTER.RESOURCES.LIST.3")}
+                            {i18next.t("PAGE.LANDING.FOOTER.RESOURCES.LIST.3")}
                           </Link>
                         </Box>
                       </Grid>
@@ -110,7 +110,7 @@ const FooterSection: React.FC<WithTranslation> = ({ t }) => {
                           fontSize={!mobile ? "18px" : "16px"}
                           lineHeight="23px"
                         >
-                          {t("PAGE.LANDING.FOOTER.PRODUCTS.LABEL")}
+                          {i18next.t("PAGE.LANDING.FOOTER.PRODUCTS.LABEL")}
                         </Box>
                         <Box mt="20px"></Box>
                         <Box
@@ -118,13 +118,13 @@ const FooterSection: React.FC<WithTranslation> = ({ t }) => {
                           lineHeight="21px"
                         >
                           <Link href="#" className={cx(classes.link)}>
-                            {t("PAGE.LANDING.FOOTER.PRODUCTS.LIST.0")}
+                            {i18next.t("PAGE.LANDING.FOOTER.PRODUCTS.LIST.0")}
                           </Link>
                           <Link href="#" className={cx(classes.link)}>
-                            {t("PAGE.LANDING.FOOTER.PRODUCTS.LIST.1")}
+                            {i18next.t("PAGE.LANDING.FOOTER.PRODUCTS.LIST.1")}
                           </Link>
                           <Link href="#" className={cx(classes.link)}>
-                            {t("PAGE.LANDING.FOOTER.PRODUCTS.LIST.2")}
+                            {i18next.t("PAGE.LANDING.FOOTER.PRODUCTS.LIST.2")}
                           </Link>
                         </Box>
                       </Grid>
@@ -134,7 +134,7 @@ const FooterSection: React.FC<WithTranslation> = ({ t }) => {
                           fontSize={!mobile ? "18px" : "16px"}
                           lineHeight="23px"
                         >
-                          {t("PAGE.LANDING.FOOTER.FOUNDATION.LABEL")}
+                          {i18next.t("PAGE.LANDING.FOOTER.FOUNDATION.LABEL")}
                         </Box>
                         <Box mt="20px"></Box>
                         <Box
@@ -142,10 +142,10 @@ const FooterSection: React.FC<WithTranslation> = ({ t }) => {
                           lineHeight="21px"
                         >
                           <Link href="#" className={cx(classes.link)}>
-                            {t("PAGE.LANDING.FOOTER.FOUNDATION.LIST.0")}
+                            {i18next.t("PAGE.LANDING.FOOTER.FOUNDATION.LIST.0")}
                           </Link>
                           <Link href="#" className={cx(classes.link)}>
-                            {t("PAGE.LANDING.FOOTER.FOUNDATION.LIST.1")}
+                            {i18next.t("PAGE.LANDING.FOOTER.FOUNDATION.LIST.1")}
                           </Link>
                         </Box>
                       </Grid>
@@ -159,11 +159,11 @@ const FooterSection: React.FC<WithTranslation> = ({ t }) => {
                       fontSize={!mobile ? "18px" : "16px"}
                       lineHeight="23px"
                     >
-                      {t("PAGE.LANDING.FOOTER.SOCIAL.LABEL")}
+                      {i18next.t("PAGE.LANDING.FOOTER.SOCIAL.LABEL")}
                     </Box>
                     <Box mt="20px"></Box>
                     <Box className={cx(classes.link)}>
-                      {t("PAGE.LANDING.FOOTER.SOCIAL.CONTENT")}
+                      {i18next.t("PAGE.LANDING.FOOTER.SOCIAL.CONTENT")}
                     </Box>
                     <Box lineHeight="50px">
                       <Link className={cx(classes.socialIconLink)} href="#">
@@ -193,4 +193,4 @@ const FooterSection: React.FC<WithTranslation> = ({ t }) => {
   );
 };
 
-export default withTranslation()(FooterSection);
+export default (FooterSection);

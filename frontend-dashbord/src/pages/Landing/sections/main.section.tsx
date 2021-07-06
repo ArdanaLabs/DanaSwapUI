@@ -3,7 +3,6 @@ import { Box, useMediaQuery, Container, Grid, Link } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
 import ScrollAnimation from "react-animate-on-scroll";
-import { withTranslation, WithTranslation } from "react-i18next";
 import i18next from "i18next";
 
 import { useIsDarkMode } from "state/user/hooks";
@@ -98,7 +97,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 }));
 
-const MainSection: React.FC<WithTranslation> = ({ t, i18n }) => {
+const MainSection: React.FC = () => {
   const { breakpoints } = useTheme();
   const dark = useIsDarkMode();
   const mobile = useMediaQuery(breakpoints.down("xs"));
@@ -112,9 +111,9 @@ const MainSection: React.FC<WithTranslation> = ({ t, i18n }) => {
         <Grid container>
           <Grid item xs={12} sm={6}>
             <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-              <Box className={cx(classes.title)}>{t("PAGE.LANDING.TITLE")}</Box>
+              <Box className={cx(classes.title)}>{i18next.t("PAGE.LANDING.TITLE")}</Box>
               <Box className={cx(classes.subTitle)}>
-                {t("PAGE.LANDING.DESCRIPTION")}
+                {i18next.t("PAGE.LANDING.DESCRIPTION")}
               </Box>
             </ScrollAnimation>
 
@@ -124,7 +123,7 @@ const MainSection: React.FC<WithTranslation> = ({ t, i18n }) => {
               <Box onClick={() => setLang('en')}>
                 <Link href="#" underline="none">
                   <AdButton variant="contained">
-                    {t("PAGE.LANDING.LAUNCH_PLATFORM")}
+                    {i18next.t("PAGE.LANDING.LAUNCH_PLATFORM")}
                   </AdButton>
                 </Link>
               </Box>
@@ -138,14 +137,14 @@ const MainSection: React.FC<WithTranslation> = ({ t, i18n }) => {
             <Grid item xs={12} sm={6}>
               <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
                 <Box className={cx(classes.definitionQ)}>
-                  {t("PAGE.LANDING.ARDANA.QUESTION")}
+                  {i18next.t("PAGE.LANDING.ARDANA.QUESTION")}
                 </Box>
               </ScrollAnimation>
             </Grid>
             <Grid item xs={12} sm={6}>
               <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
                 <Box className={cx(classes.definitionA)}>
-                  {t("PAGE.LANDING.ARDANA.DESC")}
+                  {i18next.t("PAGE.LANDING.ARDANA.DESC")}
                 </Box>
               </ScrollAnimation>
             </Grid>
@@ -190,4 +189,4 @@ const MainSection: React.FC<WithTranslation> = ({ t, i18n }) => {
   );
 };
 
-export default withTranslation()(MainSection);
+export default MainSection;

@@ -3,7 +3,6 @@ import { Box, useMediaQuery, Grid, Container } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
 import ScrollAnimation from "react-animate-on-scroll";
-import { withTranslation, WithTranslation } from "react-i18next";
 import i18next from "i18next";
 
 import { useIsDarkMode } from "state/user/hooks";
@@ -81,7 +80,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 }));
 
-const StableCoinSection: React.FC<WithTranslation> = ({ t }) => {
+const StableCoinSection: React.FC = () => {
   const { breakpoints } = useTheme();
   const dark = useIsDarkMode();
   const mobile = useMediaQuery(breakpoints.down("xs"));
@@ -94,14 +93,14 @@ const StableCoinSection: React.FC<WithTranslation> = ({ t }) => {
           <Grid item xs={12} sm={4}>
             <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
               <Box className={cx(classes.title)}>
-                {t("PAGE.LANDING.STABLECOIN.TITLE")}
+                {i18next.t("PAGE.LANDING.STABLECOIN.TITLE")}
               </Box>
             </ScrollAnimation>
           </Grid>
           <Grid item xs={12} sm={4}>
             <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
               <Box className={cx(classes.content)}>
-                {t("PAGE.LANDING.STABLECOIN.CONTENT")}
+                {i18next.t("PAGE.LANDING.STABLECOIN.CONTENT")}
               </Box>
             </ScrollAnimation>
           </Grid>
@@ -143,4 +142,4 @@ const StableCoinSection: React.FC<WithTranslation> = ({ t }) => {
   );
 };
 
-export default withTranslation()(StableCoinSection);
+export default (StableCoinSection);
