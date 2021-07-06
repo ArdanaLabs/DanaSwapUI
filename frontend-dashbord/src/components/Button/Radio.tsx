@@ -31,7 +31,7 @@ const useStyles = makeStyles(({ palette }) => ({
     borderRadius: "50%",
     width: 18,
     height: 18,
-    backgroundColor: palette.background.default,
+    backgroundColor: palette.common.white,
     transition: "background .3s ease-in",
     "input:hover ~ &": {
       // backgroundColor: "#ebf1f5",
@@ -42,7 +42,7 @@ const useStyles = makeStyles(({ palette }) => ({
     },
   },
   checkedIcon: {
-    background: palette.primary.main,
+    background: palette.text.hint,
     "&:before": {
       display: "block",
       width: 18,
@@ -53,7 +53,7 @@ const useStyles = makeStyles(({ palette }) => ({
       content: '""',
     },
     "input:hover ~ &": {
-      backgroundColor: "#206ba3",
+      // backgroundColor: "#206ba3",
     },
   },
   itemLabel: {
@@ -68,8 +68,8 @@ const useStyles = makeStyles(({ palette }) => ({
   customInput: {
     fontSize: "9px",
     width: "calc(100% - 30px)",
-    marginLeft: "20px",
     padding: "4px 2px 4px 9px",
+    background: "white",
   },
 }));
 
@@ -93,7 +93,7 @@ const CustomRadio: React.FC<CustomRadioProps> = ({
 
   const onCustomInputChange = (e: any) => {
     setCustomVal(e.target.value);
-  }
+  };
   const StyledRadio = (props: any) => {
     return (
       <Radio
@@ -127,17 +127,20 @@ const CustomRadio: React.FC<CustomRadioProps> = ({
               className={cx(classes.formControl)}
               value={item.value}
               control={<StyledRadio />}
-              label={<div className={cx(classes.itemLabel)}>{item.label}</div>}
+              label={
+                item.hasInput ? (
+                  <Input
+                    placeholder={"Enter amount"}
+                    value={customVal}
+                    className={cx(classes.customInput)}
+                    onChange={onCustomInputChange}
+                    type={"number"}
+                  />
+                ) : (
+                  <div className={cx(classes.itemLabel)}>{item.label}</div>
+                )
+              }
             />
-            {item.hasInput ? (
-              <Input
-                placeholder={"Enter amount"}
-                value={customVal}
-                className={cx(classes.customInput)}
-                onChange={onCustomInputChange}
-                type={"number"}
-              />
-            ) : null}
           </Box>
         ))}
       </RadioGroup>

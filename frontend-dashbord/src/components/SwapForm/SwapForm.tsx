@@ -205,7 +205,7 @@ const SwapForm: React.FC<SwapFormProps> = () => {
         zIndex={"1"}
         onClick={onSwapOptions}
       >
-        <SwapButton></SwapButton>
+        {/* <SwapButton></SwapButton> */}
       </Box>
       <Grid container item xs={6}>
         <Box className={cx(classes.panel)}>

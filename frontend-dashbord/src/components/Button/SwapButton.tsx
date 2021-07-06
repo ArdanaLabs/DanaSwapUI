@@ -3,69 +3,61 @@ import { Box, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
 import { useIsDarkMode } from "state/user/hooks";
-import ArrowLeft from "assets/svg/arrow-left.svg";
-import ArrowRight from "assets/svg/arrow-right.svg";
 
-const useStyles = makeStyles(({ palette }) => ({
+import ICO_ArrowUp from "assets/icons/arrow-up.png";
+import ICO_ArrowDown from "assets/icons/arrow-down.png";
+
+const useStyles = makeStyles(({ palette, breakpoints }) => ({
   dropdown: {
+    width: "40px",
+    height: "40px",
+    borderRadius: "100%",
+    background: "linear-gradient(180deg, #73D6F1 0%, #5F72FF 100%)",
     cursor: "pointer",
     color: palette.common.white,
-    flexDirection: "column",
+    flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-  },
-  arrow: {
-    width: "14px",
-    height: "14px",
-    transition: "all .2s ease-in-out",
-  },
-  arrowMobile: {
-    width: "10px",
-    height: "10px",
-  },
-  isOpen: {
-    transform: "rotate(180deg)",
-    marginTop: "-3px",
-  },
+    display: "flex",
+    padding: "20px",
+
+    "& img": {
+      width: "10px",
+
+      [breakpoints.down("sm")]: {
+        width: "10px",
+      }
+    }
+  }
 }));
 
-const defaultSize = {
-  desktop: "46px",
-  mobile: "46px",
-};
-
 export interface SwapButtonProps {
-  isOpen?: boolean;
   style?: object;
+  onButtonClick: any;
 }
 
 const SwapButton: React.FC<SwapButtonProps> = ({
-  isOpen = false,
   style = {},
+  onButtonClick
 }) => {
-  const { palette, breakpoints } = useTheme();
+  const { breakpoints } = useTheme();
   const dark = useIsDarkMode();
   const mobile = useMediaQuery(breakpoints.down("xs"));
   const classes = useStyles({ dark, mobile });
   return (
     <Box
-      width={mobile ? defaultSize.mobile : defaultSize.desktop}
-      height={mobile ? defaultSize.mobile : defaultSize.desktop}
-      borderRadius={"100%"}
-      bgcolor={palette.primary.main}
-      display={"flex"}
       className={cx(classes.dropdown)}
+      onClick={onButtonClick}
       style={style}
     >
       <img
-        src={ArrowLeft}
+        src={ICO_ArrowUp}
         alt={"<"}
-        className={cx(classes.arrow)}
       />
+      <Box mx="1px"></Box>
       <img
-        src={ArrowRight}
+        src={ICO_ArrowDown}
         alt={">"}
-        className={cx(classes.arrow)}
       />
     </Box>
   );

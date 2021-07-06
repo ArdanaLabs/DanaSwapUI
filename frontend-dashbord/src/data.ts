@@ -25,11 +25,11 @@ export const options = [
     ],
   },
   {
-    title: "Max Slippage",
+    title: "Slippage",
     data: [
       { label: "0.5%", value: "0.5" },
       { label: "1%", value: "1" },
-      { label: "Custom:", value: "Custom", hasInput: true },
+      { label: "", value: "Custom", hasInput: true },
     ],
   },
   {

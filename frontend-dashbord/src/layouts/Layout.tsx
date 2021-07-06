@@ -8,9 +8,7 @@ import {
   useTheme,
 } from "@material-ui/core";
 import { useIsDarkMode } from "state/user/hooks";
-import Header from "./Header";
-
-import Footer from "./Footer";
+import { Footer, Header } from "layouts";
 
 const useStyles = makeStyles(({ palette }) => ({
   self: {

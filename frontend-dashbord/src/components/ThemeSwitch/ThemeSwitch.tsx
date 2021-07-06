@@ -59,11 +59,11 @@ const ThemeSwitch: React.FC = () => {
       flexDirection={!darkMode ? "row" : "row-reverse"}
       onClick={toggleMode}
     >
-      <Box className={cx(classes.switchIcon)}>
-        <img src={!darkMode ? ICO_Dark : ICO_Light} alt="Theme switch icon" />
-      </Box>
       <Box className={cx(classes.switchLabel)}>
         {!darkMode ? "DARK MODE" : "LIGHT MODE"}
+      </Box>
+      <Box className={cx(classes.switchIcon)}>
+        <img src={!darkMode ? ICO_Dark : ICO_Light} alt="Theme switch icon" />
       </Box>
     </Box>
   );

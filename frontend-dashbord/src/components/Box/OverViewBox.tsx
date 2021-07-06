@@ -48,7 +48,7 @@ const useStyles = makeStyles(({ palette }) => ({
       fontSize: "18px",
       lineHeight: "18px",
       color: palette.text.secondary,
-      fontFamily: "''Museo Sans 300' 300'",
+      fontFamily: "'Museo Sans 300'",
     },
   },
 }));

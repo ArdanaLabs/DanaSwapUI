@@ -9,15 +9,14 @@ const useStyles = makeStyles(({ palette }) => ({
     "& input": {
       borderRadius: "5px",
       border: "unset",
-      color: "#C4C4C4",
-      background: palette.background.default,
-      transition: "background .3s ease-in",
+      color: "#979797",
+      // background: palette.background.default,
       "&:focus-visible": {
         outline: "unset",
       },
     },
     "& ::placeholder": {
-      color: "#C4C4C4",
+      color: "#979797",
     },
     "& ::-webkit-outer-spin-button, & ::-webkit-inner-spin-button": {
       "-webkit-appearance": "none",
