@@ -35,7 +35,7 @@ const useStyles = makeStyles(({ palette }) => ({
     color: palette.text.secondary,
 
     "& span": {
-      fontWeight: 400,
+      fontWeight: 300,
     },
   },
 }));

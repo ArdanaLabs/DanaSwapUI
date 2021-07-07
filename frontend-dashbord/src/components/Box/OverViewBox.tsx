@@ -26,6 +26,7 @@ const useStyles = makeStyles(({ palette }) => ({
     height: "100%",
     background: palette.info.dark,
     borderRadius: "10px",
+    fontFamily: "auto",
   },
   info: {
     position: "absolute",

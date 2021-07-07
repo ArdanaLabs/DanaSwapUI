@@ -33,6 +33,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
   menuItem: {
     fontFamily: "Brandon Grotesque",
+    fontWeight: 900,
     fontStyle: "normal",
     lineHeight: "100%",
     padding: "15px",

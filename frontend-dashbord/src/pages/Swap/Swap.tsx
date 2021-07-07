@@ -61,6 +61,7 @@ const useStyles = makeStyles(({ palette }) => ({
     height: "100%",
     background: palette.info.dark,
     borderRadius: "5px",
+    fontFamily: "auto",
   },
 
   panelBody: {
