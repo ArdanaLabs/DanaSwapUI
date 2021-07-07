@@ -3,7 +3,7 @@ import { Box, Grid, MenuItem, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
 import { useIsDarkMode } from "state/user/hooks";
-import Input from "components/Input";
+import { Input } from "components/Input";
 import SwapButton from "components/Button/SwapButton";
 import CoinSelect from "components/Select";
 

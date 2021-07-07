@@ -11,8 +11,7 @@ import {
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
 import { useIsDarkMode } from "state/user/hooks";
-import Check from "assets/svg/check.svg";
-import Input from "components/Input";
+import { Input } from "components/Input";
 
 const useStyles = makeStyles(({ palette }) => ({
   title: {
@@ -31,7 +30,7 @@ const useStyles = makeStyles(({ palette }) => ({
     borderRadius: "50%",
     width: 18,
     height: 18,
-    backgroundColor: palette.common.white,
+    background: palette.type === "light" ? "#E9E9E9" : palette.common.white,
     transition: "background .3s ease-in",
     "input:hover ~ &": {
       // backgroundColor: "#ebf1f5",
@@ -42,16 +41,16 @@ const useStyles = makeStyles(({ palette }) => ({
     },
   },
   checkedIcon: {
-    background: palette.text.hint,
-    "&:before": {
-      display: "block",
-      width: 18,
-      height: 18,
-      backgroundImage: `url(${Check})`,
-      backgroundRepeat: "no-repeat",
-      backgroundPosition: "4px",
-      content: '""',
-    },
+    background: palette.type === "light" ? palette.primary.main : palette.text.hint,
+    // "&:before": {
+    //   display: "block",
+    //   width: 18,
+    //   height: 18,
+    //   backgroundImage: `url(${Check})`,
+    //   backgroundRepeat: "no-repeat",
+    //   backgroundPosition: "4px",
+    //   content: '""',
+    // },
     "input:hover ~ &": {
       // backgroundColor: "#206ba3",
     },

@@ -7,13 +7,12 @@ const StyledButton = withStyles({
     borderRadius: "25px",
     backgroundColor: "#A5A5A5",
     color: "#FFFFFF",
-    whiteSpace: 'nowrap',
+    whiteSpace: "nowrap",
     fontFamily: "'Museo Sans 300'",
     fontStyle: "normal",
     fontWeight: "bold",
     fontSize: "15px",
     lineHeight: "18px",
-    
   },
 })(Button);
 

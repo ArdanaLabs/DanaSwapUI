@@ -7,7 +7,7 @@ import cx from "classnames";
 import { useIsDarkMode } from "state/user/hooks";
 import { TokenBox } from "components/Box";
 import { Slider } from "components";
-import { Radio, DropdownButton, SwapButton } from "components/Button";
+import { Radio, SwapButton } from "components/Button";
 import { options } from "data";
 
 import LOGO_Ardana from "assets/logo_blue.png";
@@ -102,6 +102,7 @@ const useStyles = makeStyles(({ palette }) => ({
     lineHeight: "24px",
     color: palette.type === "light" ? palette.text.primary : palette.text.hint,
     display: "flex",
+    alignItems: "center",
     cursor: "pointer",
   },
 
@@ -141,7 +142,7 @@ const Swap: React.FC = () => {
   });
   const [toToken, setToToken] = useState({
     src: LOGO_Cardano,
-    name: "ANA",
+    name: "ADA",
     subName: "exDANA",
   });
   const [isOptionOpen, setIsOptionOpen] = useState(false);
