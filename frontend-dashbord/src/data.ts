@@ -13,6 +13,9 @@ import AVATAR_Ryan_Kelker from "assets/img/landing/avatars/Ryan-Kelker.png";
 import AVATAR_Ryan_Matovu from "assets/img/landing/avatars/Ryan-Matovu.png";
 import AVATAR_Unknown from "assets/img/landing/avatars/unknown.png";
 
+import LOGO_Ardana from "assets/logos/ardana.png";
+import LOGO_Cardano from "assets/logos/cardano.png";
+
 export const options = [
   {
     title: "Filter",
@@ -253,41 +256,15 @@ export const ovList = [
   },
 ];
 
-export const exDANA_Stats = [
+export const TokenList = [
   {
-    label: "exDANA holder/LP ratio (based on fees)",
-    content: "24.52",
+    src: LOGO_Ardana,
+    name: "DANA",
+    desc: "exDANA",
   },
   {
-    label: "",
-    content: "",
-  },
-  {
-    label: "",
-    content: "",
-  },
-  {
-    label: "",
-    content: "",
-  },
-  {
-    label: "",
-    content: "",
-  },
-  {
-    label: "",
-    content: "",
-  },
-  {
-    label: "",
-    content: "",
-  },
-  {
-    label: "",
-    content: "",
-  },
-  {
-    label: "",
-    content: "",
+    src: LOGO_Cardano,
+    name: "ADA",
+    desc: "exDANA",
   },
 ];

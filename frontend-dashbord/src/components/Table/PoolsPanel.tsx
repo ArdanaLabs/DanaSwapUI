@@ -58,7 +58,7 @@ const StyledTableCell = withStyles(({ palette }) => ({
   },
 }))(TableCell);
 
-const useStyles = makeStyles(({ palette }) => ({
+const useStyles = makeStyles(({ palette, breakpoints }) => ({
   panel: {
     background: palette.secondary.light,
     borderRadius: "10px",
@@ -69,6 +69,13 @@ const useStyles = makeStyles(({ palette }) => ({
     justifyContent: "space-between",
     alignItems: "center",
     margin: "20px 0",
+
+    [breakpoints.down("xs")]: {
+      flexDirection: "column",
+      "& > div": {
+        width: "100%",
+      },
+    },
   },
 
   filterText: {
@@ -84,14 +91,23 @@ const useStyles = makeStyles(({ palette }) => ({
     lineHeight: "100%",
     width: "500px",
     padding: "15px 30px",
+
+    [breakpoints.down("xs")]: {
+      flexDirection: "column",
+      width: "100%",
+    },
   },
   filterType: {
     background: palette.secondary.dark,
-    width: "150px",
     padding: "15px",
     fontSize: "13px",
     lineHeight: "100%",
     marginLeft: "10px",
+    width: "150px",
+
+    [breakpoints.down("xs")]: {
+      width: "auto",
+    }
   },
 
   active: {
@@ -133,7 +149,7 @@ const PoolsPanel: React.FC<PoolsPanelProps> = ({ data, overView = false }) => {
             }}
           />
 
-          <Box>
+          <Box textAlign="center" mt={mobile && "20px"}>
             <Button
               variant="contained"
               onClick={() => {

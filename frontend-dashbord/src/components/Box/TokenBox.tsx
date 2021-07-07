@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import cx from "classnames";
-import { Box, useMediaQuery } from "@material-ui/core";
+import { Box, MenuItem, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { useIsDarkMode } from "state/user/hooks";
+import { Menu } from "components/Menu";
+
+import { TokenList } from "data";
 
 const useStyles = makeStyles(({ palette }) => ({
   label: {
@@ -60,6 +63,7 @@ const useStyles = makeStyles(({ palette }) => ({
   token: {
     display: "flex",
     alignItems: "center",
+    cursor: "pointer",
   },
 
   tokenIcon: {
@@ -75,6 +79,14 @@ const useStyles = makeStyles(({ palette }) => ({
       width: "30px",
       height: "30px",
     },
+  },
+  noTokenIcon: {
+    background: palette.common.white,
+    borderRadius: "50%",
+    padding: "10px",
+    marginRight: "10px",
+    width: "30px",
+    height: "30px",
   },
 
   tokenName: {
@@ -102,6 +114,7 @@ export interface OverViewBoxProps {
   onMaxAmount: any;
   style?: object;
   className?: string;
+  handleTokenSelect: any;
 }
 
 const TokenBox: React.FC<OverViewBoxProps> = ({
@@ -109,13 +122,32 @@ const TokenBox: React.FC<OverViewBoxProps> = ({
   amount,
   token,
   onMaxAmount,
-  style={},
-  className
+  handleTokenSelect,
+  style = {},
+  className,
 }) => {
   const { breakpoints } = useTheme();
   const dark = useIsDarkMode();
   const mobile = useMediaQuery(breakpoints.down("xs"));
   const classes = useStyles({ dark, mobile });
+
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+
+  const handleClickListItem = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuItemClick = (
+    event: React.MouseEvent<HTMLElement>,
+    token: any
+  ) => {
+    setAnchorEl(null);
+    handleTokenSelect(token);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   return (
     <Box className={className} style={style}>
@@ -125,16 +157,56 @@ const TokenBox: React.FC<OverViewBoxProps> = ({
       <Box className={cx(classes.body)}>
         <Box className={cx(classes.amount)}>{amount}</Box>
         <Box className={cx(classes.other)}>
-          <Box className={cx(classes.maxButton)} onClick={onMaxAmount}>MAX</Box>
-          <Box className={cx(classes.token)}>
-            <Box className={cx(classes.tokenIcon)}>
-              <img src={token.src} alt="token icon" />
-            </Box>
-            <Box className={cx(classes.tokenName)}>
-              <Box>{token.name}</Box>
-              <Box>{token.subName}</Box>
-            </Box>
+          <Box className={cx(classes.maxButton)} onClick={onMaxAmount}>
+            MAX
           </Box>
+          <Box className={cx(classes.token)} onClick={handleClickListItem}>
+            {!token.src && <Box className={cx(classes.noTokenIcon)}></Box>}
+            {token.src && (
+              <Box className={cx(classes.tokenIcon)}>
+                {token.src && <img src={token.src} alt="token icon" />}
+              </Box>
+            )}
+            {token.name && (
+              <Box className={cx(classes.tokenName)}>
+                <Box>{token.name}</Box>
+                <Box>{token.desc}</Box>
+              </Box>
+            )}
+          </Box>
+          <Menu
+            id="lock-menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+            elevation={0}
+            getContentAnchorEl={null}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "right",
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "center",
+            }}
+          >
+            <MenuItem key={0} disabled={true}>
+              Select Token
+            </MenuItem>
+            {TokenList.map((item, index) => (
+              <MenuItem
+                key={index + 1}
+                selected={token.name && item.name === token.name}
+                onClick={(event) => handleMenuItemClick(event, item)}
+              >
+                <Box className={cx(classes.tokenIcon)}>
+                  <img src={item.src} alt="token icon" />
+                </Box>
+                <Box>{item.name}</Box>
+              </MenuItem>
+            ))}
+          </Menu>
         </Box>
       </Box>
     </Box>

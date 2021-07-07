@@ -132,7 +132,7 @@ const ChartSection: React.FC = () => {
   return (
     <Box className={cx(classes.self)}>
       <Grid container spacing={3}>
-        <Grid item sm={12} md={6}>
+        <Grid item sm={12} md={6} style={{width: "100%"}}>
           <Box className={cx(classes.title)}>Volume</Box>
           <Box mt="20px" />
           <Box className={cx(classes.panel)}>
@@ -158,7 +158,7 @@ const ChartSection: React.FC = () => {
             </Box>
           </Box>
         </Grid>
-        <Grid item sm={12} md={6}>
+        <Grid item sm={12} md={6} style={{width: "100%"}}>
           <Box className={cx(classes.title)}>Liquidity</Box>
           <Box mt="20px" />
           <Box className={cx(classes.panel)}>

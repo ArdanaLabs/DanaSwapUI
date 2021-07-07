@@ -13,7 +13,6 @@ const useStyles = makeStyles(({ palette }) => ({
   bg: {
     background: `linear-gradient(90.19deg, #2F3DA0 48.37%, #73D6F1 99.87%)`,
     color: "#FFFFFF",
-    padding: "120px 0 100px",
   },
 
   link: {
@@ -52,10 +51,10 @@ const FooterSection: React.FC = () => {
   const classes = useStyles({ dark, mobile });
 
   return (
-    <Box className={cx(classes.bg)}>
+    <Box className={cx(classes.bg)} p={!mobile ? "120px 0 100px" : "50px 0"}>
       <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
         <Container>
-          <Grid container spacing={10}>
+          <Grid container spacing={1}>
             <Grid item xs={12} sm={3}>
               <Box textAlign="center">
                 <img

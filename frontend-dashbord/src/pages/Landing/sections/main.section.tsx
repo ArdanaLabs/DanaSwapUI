@@ -56,7 +56,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontSize: "100px",
     lineHeight: "100%",
     color: "white",
-    margin: "50px -10px 30px 0",
+    margin: "50px 0px 30px 0",
 
     [breakpoints.down("sm")]: {
       fontSize: "64px",
@@ -71,7 +71,6 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontStyle: "normal",
     fontWeight: 300,
     lineHeight: "29px",
-    marginRight: "-120px",
 
     [breakpoints.down("sm")]: {
       fontSize: "18px",
@@ -113,10 +112,10 @@ const MainSection: React.FC = () => {
         <Grid container>
           <Grid item xs={12} sm={6}>
             <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-              <Box className={cx(classes.title)}>
+              <Box className={cx(classes.title)} mr={!mobile && "-10px"} textAlign={mobile && "center"}>
                 {i18next.t("PAGE.LANDING.TITLE")}
               </Box>
-              <Box className={cx(classes.subTitle)}>
+              <Box className={cx(classes.subTitle)} mr={!mobile && "-150px"} textAlign={mobile && "center"}>
                 {i18next.t("PAGE.LANDING.DESCRIPTION")}
               </Box>
             </ScrollAnimation>
@@ -124,7 +123,7 @@ const MainSection: React.FC = () => {
             <Box mt="50px"></Box>
 
             <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-              <Box onClick={() => setLang("en")}>
+              <Box onClick={() => setLang("en")} textAlign={mobile && "center"}>
                 <Link href="#" underline="none">
                   <AdButton variant="contained">
                     {i18next.t("PAGE.LANDING.LAUNCH_PLATFORM")}

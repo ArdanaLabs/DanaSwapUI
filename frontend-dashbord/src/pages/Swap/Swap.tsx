@@ -10,8 +10,6 @@ import { Slider } from "components";
 import { Radio, SwapButton } from "components/Button";
 import { options } from "data";
 
-import LOGO_Ardana from "assets/logo_blue.png";
-import LOGO_Cardano from "assets/logos/cardano.png";
 import ICO_Info_dark from "assets/svg/info_dark.svg";
 
 const useStyles = makeStyles(({ palette }) => ({
@@ -136,16 +134,8 @@ const Swap: React.FC = () => {
   const [fromAmount, setFromAmount] = useState(0);
   const [toAmount, setToAmount] = useState(0);
 
-  const [fromToken, setFromToken] = useState({
-    src: LOGO_Ardana,
-    name: "DANA",
-    subName: "exDANA",
-  });
-  const [toToken, setToToken] = useState({
-    src: LOGO_Cardano,
-    name: "ADA",
-    subName: "exDANA",
-  });
+  const [fromToken, setFromToken] = useState({});
+  const [toToken, setToToken] = useState({});
   const [isOptionOpen, setIsOptionOpen] = useState(false);
 
   const onToggleOptions = () => {
@@ -189,6 +179,9 @@ const Swap: React.FC = () => {
             onMaxAmount={() => {
               setFromAmount(100);
             }}
+            handleTokenSelect={(token: any) => {
+              setFromToken(token);
+            }}
             className={cx(classes.box)}
             style={{ padding: 10 }}
           />
@@ -215,6 +208,9 @@ const Swap: React.FC = () => {
             amount={toAmount}
             onMaxAmount={() => {
               setToAmount(100);
+            }}
+            handleTokenSelect={(token: any) => {
+              setToToken(token);
             }}
             className={cx(classes.box)}
             style={{ padding: 10 }}
