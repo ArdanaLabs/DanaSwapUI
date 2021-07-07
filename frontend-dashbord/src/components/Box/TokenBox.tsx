@@ -6,7 +6,7 @@ import { useIsDarkMode } from "state/user/hooks";
 
 const useStyles = makeStyles(({ palette }) => ({
   label: {
-    fontFamily: "'Museo Sans 300'",
+    fontFamily: "Museo Sans",
     fontStyle: "normal",
     fontWeight: 600,
     fontSize: "13px",
@@ -21,7 +21,7 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 
   amount: {
-    fontFamily: "'Museo Sans 300'",
+    fontFamily: "Museo Sans",
     fontStyle: "normal",
     fontWeight: 600,
     fontSize: "18px",
@@ -42,7 +42,7 @@ const useStyles = makeStyles(({ palette }) => ({
     background:
       "linear-gradient(180deg, #73D6F1 0%, #5F72FF 99.99%, #2F3DA0 100%)",
     borderRadius: "5px",
-    fontFamily: "'Museo Sans 300'",
+    fontFamily: "Museo Sans",
     fontStyle: "normal",
     fontWeight: 500,
     fontSize: "12px",
@@ -78,7 +78,7 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 
   tokenName: {
-    fontFamily: "'Museo Sans 300'",
+    fontFamily: "Museo Sans",
     fontStyle: "normal",
     lineHeight: "100%",
     color: palette.secondary.main,

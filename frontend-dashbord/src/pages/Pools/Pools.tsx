@@ -9,7 +9,7 @@ import cx from "classnames";
 const useStyles = makeStyles(({ palette }) => ({
   label: {
     color: palette.secondary.main,
-    fontFamily: "'Brandon Grotesque Bold'",
+    fontFamily: "'Brandon Grotesque'",
     fontStyle: "normal",
     fontWeight: "normal",
     fontSize: "30px",
@@ -25,7 +25,7 @@ const useStyles = makeStyles(({ palette }) => ({
     border: palette.type === "light" ? "1px solid #C4C4C4" : "unset",
     padding: "50px 70px",
 
-    fontFamily: "'Museo Sans 300'",
+    fontFamily: "Museo Sans",
     fontStyle: "normal",
     fontWeight: 700,
     fontSize: "18px",

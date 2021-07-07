@@ -55,7 +55,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     flexFlow: "wrap",
     alignItems: "center",
     background: palette.background.default,
-    fontFamily: "Brandon Grotesque Bold",
+    fontFamily: "Brandon Grotesque",
 
     "& a": {
       margin: "5px 15px",

@@ -20,7 +20,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     },
   },
   title: {
-    fontFamily: "Brandon Grotesque Bold",
+    fontFamily: "Brandon Grotesque",
     fontStyle: "normal",
     fontWeight: 900,
     fontSize: "64px",

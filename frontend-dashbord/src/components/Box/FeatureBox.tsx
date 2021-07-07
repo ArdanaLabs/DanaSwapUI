@@ -31,7 +31,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     whiteSpace: "pre-line",
     fontSize: "36px",
     fontWeight: 900,
-    fontFamily: "Brandon Grotesque Bold",
+    fontFamily: "Brandon Grotesque",
     fontStyle: "normal",
     lineHeight: "110%",
 
@@ -46,7 +46,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontSize: "18px",
     lineHeight: "22px",
     fontWeight: 300,
-    fontFamily: "'Museo Sans 300'",
+    fontFamily: "Museo Sans",
     fontStyle: "normal",
 
     [breakpoints.down("sm")]: {

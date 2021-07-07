@@ -9,7 +9,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {},
 
   name: {
-    fontFamily: "Brandon Grotesque Bold",
+    fontFamily: "Brandon Grotesque",
     fontStyle: "normal",
     fontWeight: 900,
     fontSize: "32px",
@@ -23,7 +23,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   job: {
-    fontFamily: "'Museo Sans 300'",
+    fontFamily: "Museo Sans",
     fontStyle: "normal",
     fontWeight: 300,
     fontSize: "18px",
@@ -36,7 +36,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   info: {
-    fontFamily: "'Museo Sans 300'",
+    fontFamily: "Museo Sans",
     fontStyle: "normal",
     fontWeight: 300,
     fontSize: "18px",

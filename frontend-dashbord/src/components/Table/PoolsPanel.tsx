@@ -24,7 +24,7 @@ const FILTER_BEP2 = 3;
 
 const StyledTableCell = withStyles(({ palette }) => ({
   head: {
-    fontFamily: "'Museo Sans 300'",
+    fontFamily: "Museo Sans",
     fontStyle: "normal",
     fontWeight: 500,
     fontSize: "18px",
@@ -34,7 +34,7 @@ const StyledTableCell = withStyles(({ palette }) => ({
     color: palette.secondary.main,
   },
   body: {
-    fontFamily: "'Museo Sans 300'",
+    fontFamily: "Museo Sans",
     fontStyle: "normal",
     fontWeight: "bold",
     fontSize: "18px",
@@ -48,7 +48,7 @@ const StyledTableCell = withStyles(({ palette }) => ({
     textAlign: "center",
 
     "& a": {
-      fontFamily: "'Museo Sans 300'",
+      fontFamily: "Museo Sans",
       fontStyle: "normal",
       fontWeight: "bold",
       fontSize: "18px",

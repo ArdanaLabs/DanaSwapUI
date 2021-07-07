@@ -42,7 +42,7 @@ const useStyles = makeStyles(({ palette }) => ({
     borderRadius: "5px",
     boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
 
-    fontFamily: "'Museo Sans 300'",
+    fontFamily: "Museo Sans",
     fontStyle: "normal",
     fontWeight: 500,
     fontSize: "17px",
@@ -86,7 +86,7 @@ const useStyles = makeStyles(({ palette }) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
-    fontFamily: "'Museo Sans 300'",
+    fontFamily: "Museo Sans",
     fontStyle: "normal",
     fontWeight: 500,
     fontSize: "17px",
@@ -95,7 +95,7 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 
   optionTitle: {
-    fontFamily: "'Museo Sans 300'",
+    fontFamily: "Museo Sans",
     fontStyle: "normal",
     fontWeight: 500,
     fontSize: "18px",
@@ -110,7 +110,7 @@ const useStyles = makeStyles(({ palette }) => ({
     background: "linear-gradient(90deg, #5F72FF 0%, #73D6F1 100%)",
     borderRadius: "20px",
     width: "250px",
-    fontFamily: "'Museo Sans 300'",
+    fontFamily: "Museo Sans",
     fontStyle: "normal",
     fontWeight: "bold",
     fontSize: "26px",

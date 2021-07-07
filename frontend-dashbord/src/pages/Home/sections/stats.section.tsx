@@ -8,7 +8,7 @@ import { useIsDarkMode } from "state/user/hooks";
 const useStyles = makeStyles(({ palette }) => ({
   self: {},
   title: {
-    fontFamily: "Brandon Grotesque Bold",
+    fontFamily: "Brandon Grotesque",
     fontStyle: "normal",
     fontWeight: 900,
     fontSize: "30px",
@@ -22,7 +22,7 @@ const useStyles = makeStyles(({ palette }) => ({
     borderRadius: "10px",
 
     "& p": {
-      fontFamily: "'Museo Sans 300'",
+      fontFamily: "Museo Sans",
       fontStyle: "normal",
       fontWeight: "bold",
       fontSize: "18px",
@@ -36,7 +36,7 @@ const useStyles = makeStyles(({ palette }) => ({
       palette.type === "light" ? palette.common.white : palette.common.black
     }`,
     borderRadius: "25px",
-    fontFamily: "Brandon Grotesque Bold",
+    fontFamily: "Brandon Grotesque",
     fontStyle: "normal",
     fontWeight: 900,
     fontSize: "30px",

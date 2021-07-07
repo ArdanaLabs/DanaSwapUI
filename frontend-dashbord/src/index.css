@@ -1,41 +1,45 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap");
-@import url(//db.onlinewebfonts.com/c/6cec834e2e8f2e4206567ed75e1281d4?family=Brandon+Grotesque+Bold);
-@import url(//db.onlinewebfonts.com/c/daaf7e1dffe4ec230866bb0ad8c7c245?family=Museo+Sans+300);
+/* @import url(//db.onlinewebfonts.com/c/6cec834e2e8f2e4206567ed75e1281d4?family=Brandon+Grotesque+Bold); */
+/* @import url(//db.onlinewebfonts.com/c/daaf7e1dffe4ec230866bb0ad8c7c245?family=Museo+Sans+300); */
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.5.0/css/all.min.css");
 
-/* @font-face {
+@font-face {
   font-family: "Museo Sans";
   src: local("Museo Sans 300"),
-    url("./assets/font/MuseoSans_300_Italic.otf") format("otf");
+    url("./assets/font/Museo Sans/MuseoSans_300.otf") format("opentype");
   font-weight: 300;
-  font-style: normal;
+}
+@font-face {
+  font-family: "Museo Sans";
+  src: local("Museo Sans 500"),
+    url("./assets/font/Museo Sans/MuseoSans_500.otf") format("opentype");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Museo Sans";
+  src: local("Museo Sans 700"),
+    url("./assets/font/Museo Sans/MuseoSans_700.otf") format("opentype");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "Museo Sans";
+  src: local("Museo Sans 900"),
+    url("./assets/font/Museo Sans/MuseoSans_900.otf") format("opentype");
+  font-weight: 900;
 }
 
 @font-face {
-  font-family: "Brandon Grotesque Bold";
+  font-family: "Brandon Grotesque";
   src: local("Brandon Grotesque Bold"),
-    url("./assets/font/Brandon Grotesque Bold Regular.ttf") format("ttf");
+    url("./assets/font/Brandon-Grotesque-Font-Family/brandon-grotesque-bold-regular.ttf") format("truetype");
+  font-weight: 900;
+}
+@font-face {
+  font-family: "Brandon Grotesque";
+  src: local("Brandon Grotesque Light"),
+    url("./assets/font/Brandon-Grotesque-Font-Family/brandon-grotesque-light.otf") format("opentype");
   font-weight: 300;
-  font-style: normal;
-} */
-
-/* html {
-  font-family: "Museo Sans";
-} */
-
-* {
-  transition: all .2s;
 }
-
-body {
-  margin: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* .hamburger-react {
-  height: 58px
-} */
 
 .hamburger-react > div {
   height: 5px !important;

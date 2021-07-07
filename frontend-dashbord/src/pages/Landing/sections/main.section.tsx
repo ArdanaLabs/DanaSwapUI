@@ -50,13 +50,13 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   title: {
-    fontFamily: "Brandon Grotesque Bold",
+    fontFamily: "Brandon Grotesque",
     fontStyle: "normal",
     fontWeight: 900,
     fontSize: "100px",
     lineHeight: "100%",
     color: "white",
-    margin: "50px 0 30px 0",
+    margin: "50px -10px 30px 0",
 
     [breakpoints.down("sm")]: {
       fontSize: "64px",
@@ -67,7 +67,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     color: "white",
     whiteSpace: "pre-line",
     fontSize: "24px",
-    fontFamily: "'Museo Sans 300'",
+    fontFamily: "Museo Sans",
     fontStyle: "normal",
     fontWeight: 300,
     lineHeight: "29px",
@@ -82,7 +82,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     color: "white",
     fontSize: "64px",
     fontWeight: 900,
-    fontFamily: "Brandon Grotesque Bold",
+    fontFamily: "Brandon Grotesque",
     fontStyle: "normal",
     lineHeight: "100%",
     textAlign: "center",
@@ -93,7 +93,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     whiteSpace: "pre-line",
     fontWeight: 300,
     fontSize: "18px",
-    fontFamily: "'Museo Sans 300'",
+    fontFamily: "Museo Sans",
     fontStyle: "normal",
     lineHeight: "150%",
   },

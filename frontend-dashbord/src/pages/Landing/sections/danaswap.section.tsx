@@ -21,7 +21,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   title: {
-    fontFamily: "Brandon Grotesque Bold",
+    fontFamily: "Brandon Grotesque",
     fontStyle: "normal",
     fontWeight: 900,
     fontSize: "64px",
@@ -34,7 +34,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   content: {
-    fontFamily: "'Museo Sans 300'",
+    fontFamily: "Museo Sans",
     fontStyle: "normal",
     fontWeight: 300,
     fontSize: "18px",

@@ -8,7 +8,7 @@ const StyledButton = withStyles({
     backgroundColor: "#A5A5A5",
     color: "#FFFFFF",
     whiteSpace: "nowrap",
-    fontFamily: "'Museo Sans 300'",
+    fontFamily: "Museo Sans",
     fontStyle: "normal",
     fontWeight: "bold",
     fontSize: "15px",

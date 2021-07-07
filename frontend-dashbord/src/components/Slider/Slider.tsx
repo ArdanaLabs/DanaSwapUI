@@ -28,7 +28,7 @@ const StyledSlider = withStyles(theme => ({
   markLabel: {
     paddingTop: "5px",
     color: theme.palette.primary.main,
-    fontFamily: "'Museo Sans 300'",
+    fontFamily: "Museo Sans",
     fontStyle: 'normal',
     fontWeight: 300,
     fontSize: '16px',

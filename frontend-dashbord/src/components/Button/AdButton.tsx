@@ -3,7 +3,7 @@ import Button from "@material-ui/core/Button";
 
 const StyledButton = withStyles({
   root: {
-    fontFamily: "Brandon Grotesque Bold",
+    fontFamily: "Brandon Grotesque",
     fontStyle: "normal",
     LineHeight: "26px",
     padding: "20px 50px",

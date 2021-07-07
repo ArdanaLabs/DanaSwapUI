@@ -10,7 +10,7 @@ const useStyles = makeStyles(({ palette }) => ({
       borderRadius: "20px",
       border: "unset",
       color: palette.secondary.main,
-      fontFamily: "'Museo Sans 300'",
+      fontFamily: "Museo Sans",
       fontStyle: "normal",
       fontWeight: 600,
 

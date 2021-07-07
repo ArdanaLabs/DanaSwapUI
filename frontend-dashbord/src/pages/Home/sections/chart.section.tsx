@@ -14,7 +14,7 @@ const useStyles = makeStyles(({ palette }) => ({
 
   title: {
     color: palette.text.primary,
-    fontFamily: "Brandon Grotesque Bold",
+    fontFamily: "Brandon Grotesque",
     fontStyle: "normal",
     fontWeight: 900,
     fontSize: "30px",
@@ -32,7 +32,7 @@ const useStyles = makeStyles(({ palette }) => ({
     display: "flex",
     justifyContent: "space-between",
     color: palette.text.hint,
-    fontFamily: "'Museo Sans 300'",
+    fontFamily: "Museo Sans",
     fontStyle: "normal",
     fontWeight: 500,
     fontSize: "13px",
@@ -76,7 +76,7 @@ const ChartSection: React.FC = () => {
         style: {
           colors: [palette.text.hint, palette.text.hint, palette.text.hint],
           fontSize: "13px",
-          fontFamily: "'Museo Sans 300'",
+          fontFamily: "Museo Sans",
           fontWeight: 500,
         },
       },
@@ -88,7 +88,7 @@ const ChartSection: React.FC = () => {
         align: "left",
         style: {
           colors: [palette.secondary.main],
-          fontFamily: "'Museo Sans 300'",
+          fontFamily: "Museo Sans",
           fontWeight: "bold",
           fontSize: "18px",
           cssClass: "apexcharts-yaxis-label",
