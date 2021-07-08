@@ -41,6 +41,10 @@
   font-weight: 300;
 }
 
+* {
+  transition: all .2s ease-in;
+}
+
 .hamburger-react > div {
   height: 5px !important;
   border-radius: 5px;
