@@ -8,12 +8,12 @@ import {
 import { ParallaxProvider } from "react-scroll-parallax";
 import { I18nextProvider } from "react-i18next";
 
-import i18n from './i18n';
+import i18n from "./i18n";
 import { useIsDarkMode } from "state/user/hooks";
 import { darkTheme, lightTheme } from "./theme";
 import store from "./state";
 
-import { Home, Swap, Pools, Dao } from "./pages";
+import { Home, Swap, Pools, Dao, DANA } from "./pages";
 import Layout from "layouts/Layout";
 
 const ThemeProvider: React.FC = ({ children }) => {
@@ -58,40 +58,38 @@ const App: React.FC = () => {
 
   return (
     <Providers>
-      <Switch>
-        <Route exact path="/">
-          {/* <Landing /> */}
-          <Redirect to="/home" />
-        </Route>
+      <Layout>
+        <Switch>
+          <Route exact path="/">
+            {/* <Landing /> */}
+            <Redirect to="/home" />
+          </Route>
 
-        <Route exact path="/home">
-          <Layout>
+          <Route exact path="/home">
             <Home />
-          </Layout>
-        </Route>
+          </Route>
 
-        <Route exact path="/swap">
-          <Layout>
+          <Route exact path="/swap">
             <Swap />
-          </Layout>
-        </Route>
+          </Route>
 
-        <Route exact path="/pools">
-          <Layout>
+          <Route exact path="/pools">
             <Pools />
-          </Layout>
-        </Route>
+          </Route>
 
-        <Route exact path="/dao">
-          <Layout>
+          <Route exact path="/dao">
             <Dao />
-          </Layout>
-        </Route>
+          </Route>
 
-        <Route path="*">
-          <Redirect to="/home" />
-        </Route>
-      </Switch>
+          <Route exact path="/dana">
+            <DANA />
+          </Route>
+
+          <Route path="*">
+            <Redirect to="/home" />
+          </Route>
+        </Switch>
+      </Layout>
     </Providers>
   );
 };
