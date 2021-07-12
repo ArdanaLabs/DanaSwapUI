@@ -258,7 +258,6 @@ const Swap: React.FC = () => {
           <Box padding="10px">
             <Box className={cx(classes.optionTitle)} onClick={onToggleOptions}>
               <Box mr={"7px"}>Advanced Options</Box>
-              {/* <DropdownButton isOpen={isOptionOpen} /> */}
               <i
                 className={`fa fa-chevron-${!isOptionOpen ? "up" : "down"}`}
                 aria-hidden="true"

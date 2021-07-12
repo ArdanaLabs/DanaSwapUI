@@ -3,7 +3,8 @@ import { Box, Grid, Link, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { useIsDarkMode } from "state/user/hooks";
 import cx from "classnames";
-import { PoolRatePerDANAList, WeeklyFeeList } from "data";
+import { PoolRatePerDANAList, WeeklyFeeList, depositePools } from "data";
+import { CheckGroup } from "components/Button";
 
 const useStyles = makeStyles(({ palette }) => ({
   panel: {
@@ -177,6 +178,10 @@ const DANA: React.FC = () => {
               bigger $ amount per 1 exDANA
             </Box>
             <Box mt="40px"></Box>
+
+            <CheckGroup list={depositePools} />
+
+            <Box mt="30px"></Box>
 
             <Box className={cx(classes.displayText)}>
               Max $ per 1 exDANA to have 2.5x boost: 0$

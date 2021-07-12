@@ -322,3 +322,15 @@ export const WeeklyFeeList = [
     fee: "149,000,100",
   },
 ];
+
+export const depositePools = [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+];
