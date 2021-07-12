@@ -3,7 +3,7 @@ import { Box, Grid, Link, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { useIsDarkMode } from "state/user/hooks";
 import cx from "classnames";
-import { PoolRatePerDANAList } from "data";
+import { PoolRatePerDANAList, WeeklyFeeList } from "data";
 
 const useStyles = makeStyles(({ palette }) => ({
   panel: {
@@ -217,7 +217,35 @@ const DANA: React.FC = () => {
           </Box>
         </Grid>
         <Grid item xs={12}>
-          <Box className={cx(classes.panel)}>D</Box>
+          <Box className={cx(classes.panel)}>
+            <Box className={cx(classes.title)}>Weekly Fees</Box>
+
+            <Box mt="30px"></Box>
+
+            <Grid container>
+              <Grid item xs={6}>
+                <Box className={cx(classes.listHeader)}>Week Start</Box>
+              </Grid>
+              <Grid item xs={6}>
+                <Box className={cx(classes.listHeader)}>Fees</Box>
+              </Grid>
+            </Grid>
+
+            <Box mt="30px"></Box>
+
+            {WeeklyFeeList.map((item, index) => (
+              <Grid container key={index}>
+                <Grid item xs={6}>
+                  <Box className={cx(classes.listContent)}>{item.week}</Box>
+                </Grid>
+                <Grid item xs={6}>
+                  <Box className={cx(classes.listContent)}>
+                    {"$" + item.fee}
+                  </Box>
+                </Grid>
+              </Grid>
+            ))}
+          </Box>
         </Grid>
       </Grid>
     </Box>

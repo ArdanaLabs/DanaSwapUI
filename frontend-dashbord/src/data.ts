@@ -295,3 +295,30 @@ export const PoolRatePerDANAList = [
     rate: 0.793,
   },
 ];
+
+export const WeeklyFeeList = [
+  {
+    week: "Thu Jul 08 2021 (in progress)",
+    fee: "0",
+  },
+  {
+    week: "Thu Jul 1 2021",
+    fee: "149,000,100",
+  },
+  {
+    week: "Thu Jul 1 2021",
+    fee: "149,000,100",
+  },
+  {
+    week: "Thu Jul 1 2021",
+    fee: "149,000,100",
+  },
+  {
+    week: "Thu Jul 1 2021",
+    fee: "149,000,100",
+  },
+  {
+    week: "Thu Jul 1 2021",
+    fee: "149,000,100",
+  },
+];
