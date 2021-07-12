@@ -268,3 +268,30 @@ export const TokenList = [
     desc: "exDANA",
   },
 ];
+
+export const PoolRatePerDANAList = [
+  {
+    pool: "compound",
+    rate: 0.793,
+  },
+  {
+    pool: "compound",
+    rate: 0.793,
+  },
+  {
+    pool: "compound",
+    rate: 0.793,
+  },
+  {
+    pool: "compound",
+    rate: 0.793,
+  },
+  {
+    pool: "compound",
+    rate: 0.793,
+  },
+  {
+    pool: "compound",
+    rate: 0.793,
+  },
+];

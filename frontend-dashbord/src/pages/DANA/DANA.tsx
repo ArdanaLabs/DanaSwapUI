@@ -3,6 +3,7 @@ import { Box, Grid, Link, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { useIsDarkMode } from "state/user/hooks";
 import cx from "classnames";
+import { PoolRatePerDANAList } from "data";
 
 const useStyles = makeStyles(({ palette }) => ({
   panel: {
@@ -78,7 +79,27 @@ const useStyles = makeStyles(({ palette }) => ({
     fontSize: "36px",
     lineHeight: "51px",
     color: palette.secondary.main,
-  }
+  },
+
+  listHeader: {
+    fontFamily: "Museo Sans",
+    fontStyle: "normal",
+    fontWeight: 500,
+    fontSize: "18px",
+    lineHeight: "24px",
+    color: palette.secondary.main,
+    textAlign: "center",
+  },
+
+  listContent: {
+    fontFamily: "Museo Sans",
+    fontStyle: "normal",
+    fontWeight: 100,
+    fontSize: "14px",
+    lineHeight: "30px",
+    color: palette.secondary.main,
+    textAlign: "center",
+  },
 }));
 
 const DANA: React.FC = () => {
@@ -164,11 +185,35 @@ const DANA: React.FC = () => {
         </Grid>
         <Grid item xs={12}>
           <Box className={cx(classes.panel)}>
-            <Box className={cx(classes.title)}>
-              Use DANA
-            </Box>
+            <Box className={cx(classes.title)}>Use DANA</Box>
 
+            <Box mt="30px"></Box>
 
+            <Grid container>
+              <Grid item xs={6}>
+                <Box className={cx(classes.listHeader)}>Pool</Box>
+              </Grid>
+              <Grid item xs={6}>
+                <Box className={cx(classes.listHeader)}>
+                  Max $ per DANA to have 2.5x boost
+                </Box>
+              </Grid>
+            </Grid>
+
+            <Box mt="30px"></Box>
+
+            {PoolRatePerDANAList.map((item, index) => (
+              <Grid container key={index}>
+                <Grid item xs={6}>
+                  <Box className={cx(classes.listContent)}>{item.pool}</Box>
+                </Grid>
+                <Grid item xs={6}>
+                  <Box className={cx(classes.listContent)}>
+                    {item.rate + "$"}
+                  </Box>
+                </Grid>
+              </Grid>
+            ))}
           </Box>
         </Grid>
         <Grid item xs={12}>
