@@ -101,6 +101,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontStyle: "normal",
     lineHeight: "100%",
     color: palette.secondary.main,
+    flexGrow: 2,
 
     "& div:first-child": {
       fontSize: "17px",
@@ -298,9 +299,9 @@ const TokenBox: React.FC<OverViewBoxProps> = ({
                   </Box>
                   <Box className={cx(classes.tokenName)}>
                     <Box>{item.name}</Box>
-                    <Box flexGrow={2}>{item.desc}</Box>
-                    <Box>asdf</Box>
+                    <Box>{item.desc}</Box>
                   </Box>
+                  <Box className={cx(classes.amount)}>0</Box>
                 </ListItem>
               ))}
             </List>
