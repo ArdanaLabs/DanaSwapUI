@@ -1,5 +1,5 @@
 import React, { Suspense, useState, useEffect } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { Provider as StateProvider } from "react-redux";
 import {
   ThemeProvider as MuiThemeProvider,
@@ -13,7 +13,7 @@ import { useIsDarkMode } from "state/user/hooks";
 import { darkTheme, lightTheme } from "./theme";
 import store from "./state";
 
-import { Landing, Home, Swap, Pools, Dao } from "./pages";
+import { Home, Swap, Pools, Dao } from "./pages";
 import Layout from "layouts/Layout";
 
 const ThemeProvider: React.FC = ({ children }) => {
@@ -31,7 +31,7 @@ const ThemeProvider: React.FC = ({ children }) => {
 const Providers: React.FC = ({ children }) => {
   return (
     <ParallaxProvider>
-      <BrowserRouter>
+      <BrowserRouter basename="/">
         <Suspense fallback={null}>
           <StateProvider store={store}>
             <ThemeProvider>
@@ -60,7 +60,8 @@ const App: React.FC = () => {
     <Providers>
       <Switch>
         <Route exact path="/">
-          <Landing />
+          {/* <Landing /> */}
+          <Redirect to="/home" />
         </Route>
 
         <Route exact path="/home">
@@ -88,9 +89,7 @@ const App: React.FC = () => {
         </Route>
 
         <Route path="*">
-          <Layout>
-            <Home />
-          </Layout>
+          <Redirect to="/home" />
         </Route>
       </Switch>
     </Providers>

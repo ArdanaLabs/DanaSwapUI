@@ -1,13 +1,20 @@
 import React, { useState } from "react";
 import cx from "classnames";
-import { Box, MenuItem, useMediaQuery } from "@material-ui/core";
+import { Box, List, ListItem, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { useIsDarkMode } from "state/user/hooks";
-import { Menu } from "components/Menu";
 
 import { TokenList } from "data";
+import { Dialog, DialogTitle } from "components/Dialog";
+import { Button } from "components/Button";
+import { SearchInput } from "components/Input";
 
-const useStyles = makeStyles(({ palette }) => ({
+const FILTER_ALL = 0;
+const FILTER_NATIVE = 1;
+const FILTER_ERC20 = 2;
+const FILTER_BEP2 = 3;
+
+const useStyles = makeStyles(({ palette, breakpoints }) => ({
   label: {
     fontFamily: "Museo Sans",
     fontStyle: "normal",
@@ -105,6 +112,40 @@ const useStyles = makeStyles(({ palette }) => ({
       fontWeight: 500,
     },
   },
+
+  filterText: {
+    background: palette.common.white,
+    fontSize: "12px",
+    fontWeight: 500,
+    lineHeight: "100%",
+    width: "100%",
+    padding: "15px 20px",
+    borderRadius: "10px",
+    color: palette.type === "light" ? palette.primary.main : palette.text.hint,
+
+    "&::placeholder": {
+      color:
+        palette.type === "light" ? palette.primary.main : palette.text.hint,
+    },
+  },
+
+  filterType: {
+    background: "transparent",
+    padding: "5px 10px",
+    fontSize: "12px",
+    lineHeight: "100%",
+    margin: "20px 10px 20px 0px",
+    border: `1px solid ${palette.secondary.main}`,
+  },
+
+  active: {
+    background: palette.primary.light,
+    border: "unset",
+  },
+
+  menuItem: {
+    borderBottom: "1px solid white",
+  },
 }));
 
 export interface OverViewBoxProps {
@@ -130,23 +171,27 @@ const TokenBox: React.FC<OverViewBoxProps> = ({
   const dark = useIsDarkMode();
   const mobile = useMediaQuery(breakpoints.down("xs"));
   const classes = useStyles({ dark, mobile });
+  const [openTokenDlg, setOpenTokenDlg] = useState(false);
 
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [filter, setFilter] = useState({
+    text: "",
+    type: 0,
+  });
 
-  const handleClickListItem = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
+  const onFilterChange = (event: any) => {
+    setFilter({ ...filter, ...event });
   };
 
-  const handleMenuItemClick = (
-    event: React.MouseEvent<HTMLElement>,
-    token: any
-  ) => {
-    setAnchorEl(null);
-    handleTokenSelect(token);
+  const handleClickOpen = () => {
+    setOpenTokenDlg(true);
   };
-
   const handleClose = () => {
-    setAnchorEl(null);
+    setOpenTokenDlg(false);
+  };
+
+  const handleMenuItemClick = (token: any) => {
+    handleTokenSelect(token);
+    setOpenTokenDlg(false);
   };
 
   return (
@@ -160,7 +205,7 @@ const TokenBox: React.FC<OverViewBoxProps> = ({
           <Box className={cx(classes.maxButton)} onClick={onMaxAmount}>
             MAX
           </Box>
-          <Box className={cx(classes.token)} onClick={handleClickListItem}>
+          <Box className={cx(classes.token)} onClick={handleClickOpen}>
             {!token.src && <Box className={cx(classes.noTokenIcon)}></Box>}
             {token.src && (
               <Box className={cx(classes.tokenIcon)}>
@@ -174,39 +219,92 @@ const TokenBox: React.FC<OverViewBoxProps> = ({
               </Box>
             )}
           </Box>
-          <Menu
-            id="lock-menu"
-            anchorEl={anchorEl}
-            keepMounted
-            open={Boolean(anchorEl)}
+          <Dialog
             onClose={handleClose}
-            elevation={0}
-            getContentAnchorEl={null}
-            anchorOrigin={{
-              vertical: "bottom",
-              horizontal: "right",
-            }}
-            transformOrigin={{
-              vertical: "top",
-              horizontal: "center",
-            }}
+            aria-labelledby="simple-dialog-title"
+            open={openTokenDlg}
           >
-            <MenuItem key={0} disabled={true}>
-              Select Token
-            </MenuItem>
-            {TokenList.map((item, index) => (
-              <MenuItem
-                key={index + 1}
-                selected={token.name && item.name === token.name}
-                onClick={(event) => handleMenuItemClick(event, item)}
+            <DialogTitle id="customized-dialog-title" onClose={handleClose}>
+              SELECT ASSET
+            </DialogTitle>
+
+            <Box>
+              <Button
+                variant="contained"
+                onClick={() => {
+                  onFilterChange({ type: FILTER_ALL });
+                }}
+                className={cx(classes.filterType, {
+                  [classes.active]: filter.type === FILTER_ALL,
+                })}
               >
-                <Box className={cx(classes.tokenIcon)}>
-                  <img src={item.src} alt="token icon" />
-                </Box>
-                <Box>{item.name}</Box>
-              </MenuItem>
-            ))}
-          </Menu>
+                All
+              </Button>
+              <Button
+                variant="contained"
+                onClick={() => {
+                  onFilterChange({ type: FILTER_NATIVE });
+                }}
+                className={cx(classes.filterType, {
+                  [classes.active]: filter.type === FILTER_NATIVE,
+                })}
+              >
+                NATIVE
+              </Button>
+              <Button
+                variant="contained"
+                onClick={() => {
+                  onFilterChange({ type: FILTER_ERC20 });
+                }}
+                className={cx(classes.filterType, {
+                  [classes.active]: filter.type === FILTER_ERC20,
+                })}
+              >
+                ERC20
+              </Button>
+              <Button
+                variant="contained"
+                onClick={() => {
+                  onFilterChange({ type: FILTER_BEP2 });
+                }}
+                className={cx(classes.filterType, {
+                  [classes.active]: filter.type === FILTER_BEP2,
+                })}
+              >
+                BEP2
+              </Button>
+            </Box>
+
+            <SearchInput
+              className={cx(classes.filterText)}
+              value={filter.text}
+              placeholder="SEARCH..."
+              isIcon={true}
+              onChange={(e: any) => {
+                onFilterChange({ text: e.target.value });
+              }}
+            />
+
+            <List>
+              {TokenList.map((item, index) => (
+                <ListItem
+                  button
+                  className={cx(classes.menuItem)}
+                  onClick={() => handleMenuItemClick(item)}
+                  key={index + 1}
+                >
+                  <Box className={cx(classes.tokenIcon)}>
+                    <img src={item.src} alt="token icon" />
+                  </Box>
+                  <Box className={cx(classes.tokenName)}>
+                    <Box>{item.name}</Box>
+                    <Box flexGrow={2}>{item.desc}</Box>
+                    <Box>asdf</Box>
+                  </Box>
+                </ListItem>
+              ))}
+            </List>
+          </Dialog>
         </Box>
       </Box>
     </Box>

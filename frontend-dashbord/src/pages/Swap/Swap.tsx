@@ -12,6 +12,9 @@ import { options } from "data";
 
 import ICO_Info_dark from "assets/svg/info_dark.svg";
 
+import LOGO_Ardana from "assets/logos/ardana.png";
+import LOGO_Cardano from "assets/logos/cardano.png";
+
 const useStyles = makeStyles(({ palette }) => ({
   self: {
     display: "flex",
@@ -134,8 +137,16 @@ const Swap: React.FC = () => {
   const [fromAmount, setFromAmount] = useState(0);
   const [toAmount, setToAmount] = useState(0);
 
-  const [fromToken, setFromToken] = useState({});
-  const [toToken, setToToken] = useState({});
+  const [fromToken, setFromToken] = useState({
+    src: LOGO_Ardana,
+    name: "DANA",
+    desc: "exDANA",
+  });
+  const [toToken, setToToken] = useState({
+    src: LOGO_Cardano,
+    name: "ADA",
+    desc: "exDANA",
+  });
   const [isOptionOpen, setIsOptionOpen] = useState(false);
 
   const onToggleOptions = () => {

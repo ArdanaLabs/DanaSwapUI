@@ -88,9 +88,16 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
         ? "unset"
         : "2px 2px 10px rgba(0, 0, 0, 0.1), inset 2px 2px 10px rgba(0, 0, 0, 0.1)",
     fontSize: "13px",
+    fontWeight: 600,
     lineHeight: "100%",
     width: "500px",
     padding: "15px 30px",
+    borderRadius: "20px",
+    color: palette.secondary.main,
+    
+    "& ::placeholder": {
+      color: palette.secondary.main,
+    },
 
     [breakpoints.down("xs")]: {
       flexDirection: "column",

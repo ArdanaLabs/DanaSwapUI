@@ -6,13 +6,11 @@ import { useIsDarkMode } from "state/user/hooks";
 
 const useStyles = makeStyles(({ palette }) => ({
   input: {
+    position: "relative",
     "& input": {
-      borderRadius: "20px",
       border: "unset",
-      color: palette.secondary.main,
       fontFamily: "'Museo Sans 300'",
       fontStyle: "normal",
-      fontWeight: 600,
 
       "&:focus-visible": {
         outline: "unset",
@@ -25,6 +23,14 @@ const useStyles = makeStyles(({ palette }) => ({
       "-webkit-appearance": "none",
       margin: 0,
     },
+
+    "& > i": {
+      position: "absolute",
+      right: "25px",
+      top: "13px",
+      fontSize: "20px",
+      color: palette.common.black,
+    },
   },
 }));
 
@@ -33,12 +39,14 @@ export interface SearchInputProps {
   placeholder?: any;
   className?: any;
   onChange?: any;
+  isIcon?: boolean;
 }
 
 const SearchInput: React.FC<SearchInputProps> = ({
   value = "",
   className = "",
   placeholder = "Search Input",
+  isIcon = false,
   onChange,
 }) => {
   const { breakpoints } = useTheme();
@@ -55,6 +63,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
         value={value}
         onChange={onChange}
       ></input>
+      {isIcon && <i className="fa fa-search" aria-hidden="true"></i>}
     </Box>
   );
 };
