@@ -5,11 +5,9 @@ import cx from "classnames";
 
 import { useIsDarkMode } from "state/user/hooks";
 import PoolsPanel from "components/Table";
-import { pools } from "data";
 
 const useStyles = makeStyles(({ palette }) => ({
-  self: {
-  },
+  self: {},
 }));
 
 const PoolsSection: React.FC = () => {
@@ -20,7 +18,7 @@ const PoolsSection: React.FC = () => {
 
   return (
     <Box className={cx(classes.self)}>
-      <PoolsPanel data={pools} overView={true} />
+      <PoolsPanel overView={true} />
     </Box>
   );
 };

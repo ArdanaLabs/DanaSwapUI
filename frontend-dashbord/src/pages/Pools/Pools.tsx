@@ -1,7 +1,6 @@
 import React from "react";
 import { Box, Fade, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import { pools } from "data";
 import PoolsPanel from "components/Table";
 import { useIsDarkMode } from "state/user/hooks";
 import cx from "classnames";
@@ -54,7 +53,7 @@ const Pools: React.FC = () => {
     <Fade in={true}>
       <Box>
         <Box className={cx(classes.label)}>Dana Pools</Box>
-        <PoolsPanel data={pools}></PoolsPanel>
+        <PoolsPanel />
 
         <Box className={cx(classes.label)}>
           Total pool deposits and daily volume

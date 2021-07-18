@@ -1,6 +1,3 @@
-import Coin1 from "assets/coin1.png";
-import Coin2 from "assets/coin2.png";
-import Coin3 from "assets/coin3.png";
 
 import AVATAR_Callum_Clark from "assets/img/landing/avatars/Callum-Clark.png";
 import AVATAR_Eden_Ovadia from "assets/img/landing/avatars/Eden-Ovadia.png";
@@ -45,51 +42,6 @@ export const options = [
     ],
   },
 ];
-
-export const pools = {
-  columns: [
-    { name: "POOL", col: 3, sortable: true },
-    { name: "Base APY", col: 2, sortable: true },
-    { name: "Rewards APY", col: 4, sortable: true },
-    { name: "VOLUME", col: 2, sortable: true },
-    { name: "APY", col: 1, sortable: true },
-  ],
-  records: [
-    {
-      pool: {
-        icon: Coin1,
-        currency: "sUSD",
-        description: "DAI + USDC + USDT + sUSD",
-      },
-      baseAPY: "2.99%",
-      rewardsAPY: "+4.30% -> 10.76% CRV+1.13% SNX",
-      volume: "$106.5m",
-      APY: "29%",
-    },
-    {
-      pool: {
-        icon: Coin2,
-        currency: "sUSD",
-        description: "DAI + USDC + USDT + sUSD",
-      },
-      baseAPY: "2.99%",
-      rewardsAPY: "+4.30% -> 10.76% CRV+1.13% SNX",
-      volume: "$106.5m",
-      APY: "29%",
-    },
-    {
-      pool: {
-        icon: Coin3,
-        currency: "sUSD",
-        description: "DAI + USDC + USDT + sUSD",
-      },
-      baseAPY: "2.99%",
-      rewardsAPY: "+4.30% -> 10.76% CRV+1.13% SNX",
-      volume: "$106.5m",
-      APY: "29%",
-    },
-  ],
-};
 
 export const ProfileList = [
   {

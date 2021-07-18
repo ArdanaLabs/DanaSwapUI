@@ -125,11 +125,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 }));
 
 export interface PoolsPanelProps {
-  data: any;
   overView?: boolean;
 }
 
-const PoolsPanel: React.FC<PoolsPanelProps> = ({ data, overView = false }) => {
+const PoolsPanel: React.FC<PoolsPanelProps> = ({ overView = false }) => {
   const { breakpoints } = useTheme();
   const dark = useIsDarkMode();
   const mobile = useMediaQuery(breakpoints.down("xs"));
@@ -249,7 +248,7 @@ const PoolsPanel: React.FC<PoolsPanelProps> = ({ data, overView = false }) => {
           </TableHead>
           <TableBody>
             {poolNames.map((poolName: any, i: any) => {
-              let icon = require(`assets/coins/${poolName}.png`).default;
+              const icon = require(`assets/coins/${poolName}.png`).default;
               return (
                 <TableRow key={i}>
                   <StyledTableCell component="th" scope="row">
