@@ -58,11 +58,8 @@ const StatsSection: React.FC = () => {
   const mobile = useMediaQuery(breakpoints.down("xs"));
   const classes = useStyles({ dark, mobile });
 
-  const totalStat = useTotalStats();
-
-  console.log(totalStat);
-  
-  const { totalDepositsAllPoolsUSD, totalDailyVolumeUSD } = totalStat;
+  const totalStats = useTotalStats();
+  const { totalDepositsAllPoolsUSD, totalDailyVolumeUSD } = totalStats;
 
   return (
     <Box className={cx(classes.self)}>

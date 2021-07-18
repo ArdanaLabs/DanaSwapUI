@@ -16,6 +16,8 @@ import cx from "classnames";
 import { useIsDarkMode } from "state/user/hooks";
 import { SearchInput } from "components/Input";
 import { Button } from "components/Button";
+import { usePoolStats } from "state/home/hooks";
+import { keys, values } from "lodash";
 
 const FILTER_ALL = 0;
 const FILTER_NATIVE = 1;
@@ -94,7 +96,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     padding: "15px 30px",
     borderRadius: "20px",
     color: palette.secondary.main,
-    
+
     "& ::placeholder": {
       color: palette.secondary.main,
     },
@@ -114,7 +116,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
     [breakpoints.down("xs")]: {
       width: "auto",
-    }
+    },
   },
 
   active: {
@@ -132,11 +134,39 @@ const PoolsPanel: React.FC<PoolsPanelProps> = ({ data, overView = false }) => {
   const dark = useIsDarkMode();
   const mobile = useMediaQuery(breakpoints.down("xs"));
   const classes = useStyles({ dark, mobile });
-  const { columns, records } = data;
+
+  const columns = ["POOL", "Base APY", "Rewards APY", "VOLUME", "APY"];
+
+  const poolStats = usePoolStats();
+  const poolNames = keys(poolStats);
+  const poolInfos = values(poolStats);
+  const poolReserves = poolInfos.map((val: any) => {
+    let reserves = keys(val.reserves);
+    return reserves.join(" + ");
+  });
+  const poolRewardAPYs = poolInfos.map((val: any) => {
+    const { reserves, totalAPYPercent, recentAnnualAPYPercent } = val;
+    const reserveNames = keys(reserves);
+    const reserveVals = values(reserves);
+    const formattedReserves: string[] = reserveNames.map(
+      (reserveName: string, i: number) => {
+        return reserveVals[i] + "% " + reserveName;
+      }
+    );
+    const changedPercent = totalAPYPercent - recentAnnualAPYPercent;
+
+    return (
+      (changedPercent < 0 ? "" : "+") +
+      changedPercent +
+      "%" +
+      " -> " +
+      formattedReserves.join(" + ")
+    );
+  });
 
   const [filter, setFilter] = useState({
     text: "",
-    type: 0,
+    type: FILTER_ALL,
   });
 
   const onFilterChange = (event: any) => {
@@ -210,7 +240,7 @@ const PoolsPanel: React.FC<PoolsPanelProps> = ({ data, overView = false }) => {
             <TableRow>
               {columns.map((column: any, i: any) => (
                 <StyledTableCell key={i}>
-                  {column.name}
+                  {column}
                   &nbsp;
                   <i className="fas fa-sort" />
                 </StyledTableCell>
@@ -218,33 +248,42 @@ const PoolsPanel: React.FC<PoolsPanelProps> = ({ data, overView = false }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {records.map((row: any, i: any) => (
-              <TableRow key={i}>
-                <StyledTableCell component="th" scope="row">
-                  <Box display="flex">
-                    <Box>
-                      <img
-                        src={row.pool.icon}
-                        alt={"coin"}
-                        style={{ marginRight: "15px" }}
-                      />
+            {poolNames.map((poolName: any, i: any) => {
+              let icon = require(`assets/coins/${poolName}.png`).default;
+              return (
+                <TableRow key={i}>
+                  <StyledTableCell component="th" scope="row">
+                    <Box display="flex">
+                      <Box>
+                        <img
+                          src={icon}
+                          alt={poolName}
+                          style={{ marginRight: "15px" }}
+                        />
+                      </Box>
+                      <Box
+                        display={"flex"}
+                        flexDirection={"column"}
+                        justifyContent={"center"}
+                      >
+                        <Box textAlign="left">{poolName}</Box>
+                        <Box fontWeight={300}>{poolReserves[i]}</Box>
+                      </Box>
                     </Box>
-                    <Box
-                      display={"flex"}
-                      flexDirection={"column"}
-                      justifyContent={"center"}
-                    >
-                      <Box textAlign="left">{row.pool.currency}</Box>
-                      <Box fontWeight={300}>{row.pool.description}</Box>
-                    </Box>
-                  </Box>
-                </StyledTableCell>
-                <StyledTableCell>{row.baseAPY}</StyledTableCell>
-                <StyledTableCell>{row.rewardsAPY}</StyledTableCell>
-                <StyledTableCell>{row.volume}</StyledTableCell>
-                <StyledTableCell>{row.APY}</StyledTableCell>
-              </TableRow>
-            ))}
+                  </StyledTableCell>
+                  <StyledTableCell>
+                    {poolInfos[i].recentDailyAPYPercent}%
+                  </StyledTableCell>
+                  <StyledTableCell>{poolRewardAPYs[i]}</StyledTableCell>
+                  <StyledTableCell>
+                    ${poolInfos[i].recentDailyVolumeUSD}
+                  </StyledTableCell>
+                  <StyledTableCell>
+                    {poolInfos[i].totalAPYPercent}%
+                  </StyledTableCell>
+                </TableRow>
+              );
+            })}
           </TableBody>
           {overView && (
             <TableFooter>
