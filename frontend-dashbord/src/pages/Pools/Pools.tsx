@@ -5,13 +5,14 @@ import { pools } from "data";
 import PoolsPanel from "components/Table";
 import { useIsDarkMode } from "state/user/hooks";
 import cx from "classnames";
+import { useTotalStats } from "state/home/hooks";
 
 const useStyles = makeStyles(({ palette }) => ({
   label: {
     color: palette.secondary.main,
     fontFamily: "'Brandon Grotesque'",
     fontStyle: "normal",
-    fontWeight: "normal",
+    fontWeight: 900,
     fontSize: "30px",
     lineHeight: "110%",
     margin: "30px 0",
@@ -27,7 +28,7 @@ const useStyles = makeStyles(({ palette }) => ({
 
     fontFamily: "Museo Sans",
     fontStyle: "normal",
-    fontWeight: 700,
+    fontWeight: 900,
     fontSize: "18px",
     lineHeight: "115%",
     whiteSpace: "pre-line",
@@ -46,6 +47,9 @@ const Pools: React.FC = () => {
   const dark = useIsDarkMode();
   const classes = useStyles({ dark, mobile });
 
+  const totalStats = useTotalStats();
+  const { totalDepositsAllPoolsUSD, totalDailyVolumeUSD } = totalStats;
+
   return (
     <Box>
       <Box className={cx(classes.label)}>Dana Pools</Box>
@@ -55,8 +59,15 @@ const Pools: React.FC = () => {
         Total pool deposits and daily volume
       </Box>
       <Box className={cx(classes.statsPanel)}>
-        Deposit: <span>$24,000.000,000.56 (includes factory pools)</span>{'\n\n'}
-        Daily Volume: <span>$111,000,000</span>{'\n\n'}
+        Deposit:{" "}
+        <span>
+          ${totalDepositsAllPoolsUSD?.toLocaleString()} (includes factory pools)
+        </span>
+        <br />
+        <br />
+        Daily Volume: <span>${totalDailyVolumeUSD?.toLocaleString()}</span>
+        <br />
+        <br />
         Factory Daily Volume: <span>$8,999,777</span>
       </Box>
     </Box>

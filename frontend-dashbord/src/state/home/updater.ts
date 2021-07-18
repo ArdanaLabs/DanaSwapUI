@@ -10,8 +10,8 @@ export default function Updater(): null {
   useEffect(() => {
     dispatch(
       updateTotalStats({
-        totalDepositsAllPoolsUSD: 20,
-        totalDailyVolumeUSD: 30,
+        totalDepositsAllPoolsUSD: 9006029010.68,
+        totalDailyVolumeUSD: 147471544,
         poolStats: {
           sBTC: {
             recentDailyAPYPercent: 10,
