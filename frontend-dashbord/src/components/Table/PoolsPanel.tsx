@@ -156,7 +156,7 @@ const PoolsPanel: React.FC<PoolsPanelProps> = ({ data, overView = false }) => {
             }}
           />
 
-          <Box textAlign="center" mt={mobile && "20px"}>
+          <Box textAlign="center" mt={mobile ? "20px" : "0px"}>
             <Button
               variant="contained"
               onClick={() => {
