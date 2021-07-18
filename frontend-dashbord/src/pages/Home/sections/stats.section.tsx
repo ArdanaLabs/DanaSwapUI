@@ -4,7 +4,7 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
 
 import { useIsDarkMode } from "state/user/hooks";
-import { useTotalStates } from "state/home/hooks";
+import { useTotalStats } from "state/home/hooks";
 
 const useStyles = makeStyles(({ palette }) => ({
   self: {},
@@ -58,8 +58,11 @@ const StatsSection: React.FC = () => {
   const mobile = useMediaQuery(breakpoints.down("xs"));
   const classes = useStyles({ dark, mobile });
 
-  const totalState = useTotalStates();
-  const { totalDepositsAllPoolsUSD, totalDailyVolumeUSD } = totalState;
+  const totalStat = useTotalStats();
+
+  console.log(totalStat);
+  
+  const { totalDepositsAllPoolsUSD, totalDailyVolumeUSD } = totalStat;
 
   return (
     <Box className={cx(classes.self)}>

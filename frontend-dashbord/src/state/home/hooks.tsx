@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
 
 import { AppState } from "state";
-import { TotalState } from "./actions";
+import { TotalStat } from "./actions";
 
-export function useTotalStates(): TotalState {
-  const state: TotalState = useSelector<AppState, AppState["home"]>(
+export function useTotalStats(): TotalStat {
+  const state: TotalStat = useSelector<AppState, AppState["home"]>(
     (state) => state.home
   );
 
