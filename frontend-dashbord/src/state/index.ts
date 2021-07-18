@@ -1,12 +1,14 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import { save, load } from "redux-localstorage-simple";
 import user from "./user/reducer";
+import home from "./home/reducer";
 
 const PERSISTED_KEYS: string[] = ["user"];
 
 const store = configureStore({
   reducer: {
     user,
+    home,
   },
   middleware: [
     ...getDefaultMiddleware({

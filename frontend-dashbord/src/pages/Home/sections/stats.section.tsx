@@ -4,6 +4,7 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
 
 import { useIsDarkMode } from "state/user/hooks";
+import { useTotalStates } from "state/home/hooks";
 
 const useStyles = makeStyles(({ palette }) => ({
   self: {},
@@ -57,6 +58,9 @@ const StatsSection: React.FC = () => {
   const mobile = useMediaQuery(breakpoints.down("xs"));
   const classes = useStyles({ dark, mobile });
 
+  const totalState = useTotalStates();
+  const { totalDepositsAllPoolsUSD, totalDailyVolumeUSD } = totalState;
+
   return (
     <Box className={cx(classes.self)}>
       <Grid container spacing={3}>
@@ -101,12 +105,14 @@ const StatsSection: React.FC = () => {
             <Box component="p">
               DEPOSITS:
               <br />
-              <span>$9,006,029,010.68 (includes factory pools)</span>
+              {/* <span>$9,006,029,010.68 (includes factory pools)</span> */}
+              <span>${totalDepositsAllPoolsUSD} (includes factory pools)</span>
               <br />
               <br />
               DAILY VOLUME:
               <br />
-              <span>$147,471,544</span>
+              {/* <span>$147,471,544</span> */}
+              <span>${totalDailyVolumeUSD}</span>
               <br />
               <br />
               Factory Daily Volume:
