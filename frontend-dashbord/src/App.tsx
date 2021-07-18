@@ -16,6 +16,18 @@ import store from "./state";
 import { Home, Swap, Pools, Dao, DANA } from "./pages";
 import Layout from "layouts/Layout";
 
+import HomeUpdater from './state/home/updater';
+import UserUpdater from './state/user/updater';
+
+const StateUpdaters: React.FC = () => {
+  return (
+    <>
+      <HomeUpdater />
+      <UserUpdater />
+    </>
+  );
+};
+
 const ThemeProvider: React.FC = ({ children }) => {
   // const location = useLocation();
   const darkMode = useIsDarkMode();
@@ -34,6 +46,8 @@ const Providers: React.FC = ({ children }) => {
       <BrowserRouter basename="/">
         <Suspense fallback={null}>
           <StateProvider store={store}>
+            <StateUpdaters />
+
             <ThemeProvider>
               <CssBaseline />
               <I18nextProvider i18n={i18n}>{children}</I18nextProvider>
