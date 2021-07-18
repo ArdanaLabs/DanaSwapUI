@@ -57,6 +57,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.2",
     "react-scroll-parallax": "^2.4.0",
+    "react-use-websocket": "^2.7.1",
     "react-virtualized-auto-sizer": "^1.0.4",
     "react-window": "^1.8.6",
     "redux-localstorage-simple": "^2.3.1",

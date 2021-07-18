@@ -18,12 +18,14 @@ import Layout from "layouts/Layout";
 
 import HomeUpdater from "./state/home/updater";
 import UserUpdater from "./state/user/updater";
+import WSUpdater from "./state/websocket/updater";
 
 const StateUpdaters: React.FC = () => {
   return (
     <>
       <HomeUpdater />
       <UserUpdater />
+      <WSUpdater />
     </>
   );
 };
