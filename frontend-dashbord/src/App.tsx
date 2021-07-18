@@ -16,8 +16,8 @@ import store from "./state";
 import { Home, Swap, Pools, Dao, DANA } from "./pages";
 import Layout from "layouts/Layout";
 
-import HomeUpdater from './state/home/updater';
-import UserUpdater from './state/user/updater';
+import HomeUpdater from "./state/home/updater";
+import UserUpdater from "./state/user/updater";
 
 const StateUpdaters: React.FC = () => {
   return (

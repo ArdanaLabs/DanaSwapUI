@@ -1,6 +1,6 @@
 import React from "react";
 import cx from "classnames";
-import { Box, useMediaQuery } from "@material-ui/core";
+import { Box, Fade, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { useIsDarkMode } from "state/user/hooks";
 
@@ -22,21 +22,23 @@ const Home: React.FC = () => {
   const classes = useStyles({ dark, mobile });
 
   return (
-    <Box className={cx(classes.self)}>
-      <OverViewSection />
+    <Fade in={true}>
+      <Box className={cx(classes.self)}>
+        <OverViewSection />
 
-      <Box mt="30px" />
+        <Box mt="30px" />
 
-      <ChartSection />
+        <ChartSection />
 
-      <Box mt="50px" />
+        <Box mt="50px" />
 
-      <PoolsSection />
+        <PoolsSection />
 
-      <Box mt="50px" />
+        <Box mt="50px" />
 
-      <StatsSection />
-    </Box>
+        <StatsSection />
+      </Box>
+    </Fade>
   );
 };
 

@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Box, Collapse, Grid, Mark, useMediaQuery } from "@material-ui/core";
+import {
+  Box,
+  Collapse,
+  Fade,
+  Grid,
+  Mark,
+  useMediaQuery,
+} from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 
 import cx from "classnames";
@@ -176,116 +183,121 @@ const Swap: React.FC = () => {
   };
 
   return (
-    <Box className={cx(classes.self)}>
-      <Box className={cx(classes.panel)}>
-        <Box className={cx(classes.panelHeader)}>
-          <Box className={cx(classes.leftBorder)}>&nbsp;&nbsp;</Box>
-          <Box>Swap using all Ardana pools</Box>
-        </Box>
-        <Box className={cx(classes.panelBody)}>
-          <TokenBox
-            label="SEND"
-            token={fromToken}
-            amount={fromAmount}
-            onMaxAmount={() => {
-              setFromAmount(100);
-            }}
-            handleTokenSelect={(token: any) => {
-              setFromToken(token);
-            }}
-            className={cx(classes.box)}
-            style={{ padding: 10 }}
-          />
-
-          <Box className={cx(classes.slider)}>
-            <Slider
-              min={0}
-              max={100}
-              defaultValue={0}
-              value={typeof fromAmount === "number" ? fromAmount : 0}
-              onChange={onAmountChange}
-              step={1}
-              marks={marks}
-            />
-            <SwapButton
-              style={{ margin: "0 40px" }}
-              onButtonClick={onSwapButtonClick}
-            />
+    <Fade in={true}>
+      <Box className={cx(classes.self)}>
+        <Box className={cx(classes.panel)}>
+          <Box className={cx(classes.panelHeader)}>
+            <Box className={cx(classes.leftBorder)}>&nbsp;&nbsp;</Box>
+            <Box>Swap using all Ardana pools</Box>
           </Box>
+          <Box className={cx(classes.panelBody)}>
+            <TokenBox
+              label="SEND"
+              token={fromToken}
+              amount={fromAmount}
+              onMaxAmount={() => {
+                setFromAmount(100);
+              }}
+              handleTokenSelect={(token: any) => {
+                setFromToken(token);
+              }}
+              className={cx(classes.box)}
+              style={{ padding: 10 }}
+            />
 
-          <TokenBox
-            label="RECEIVE"
-            token={toToken}
-            amount={toAmount}
-            onMaxAmount={() => {
-              setToAmount(100);
-            }}
-            handleTokenSelect={(token: any) => {
-              setToToken(token);
-            }}
-            className={cx(classes.box)}
-            style={{ padding: 10 }}
-          />
+            <Box className={cx(classes.slider)}>
+              <Slider
+                min={0}
+                max={100}
+                defaultValue={0}
+                value={typeof fromAmount === "number" ? fromAmount : 0}
+                onChange={onAmountChange}
+                step={1}
+                marks={marks}
+              />
+              <SwapButton
+                style={{ margin: "0 40px" }}
+                onButtonClick={onSwapButtonClick}
+              />
+            </Box>
 
-          <Box mt={"50px"}></Box>
+            <TokenBox
+              label="RECEIVE"
+              token={toToken}
+              amount={toAmount}
+              onMaxAmount={() => {
+                setToAmount(100);
+              }}
+              handleTokenSelect={(token: any) => {
+                setToToken(token);
+              }}
+              className={cx(classes.box)}
+              style={{ padding: 10 }}
+            />
 
-          <Box className={cx(classes.box)} style={{ padding: "30px 20px" }}>
-            <Box className={cx(classes.info)}>
-              <Box>Rate DANA/ANA (including fees):</Box>
-              <Box display="flex" alignItems="center" lineHeight="1">
-                1.005&nbsp;
-                <img src={ICO_Info_dark} width="13px" alt="info" />
+            <Box mt={"50px"}></Box>
+
+            <Box className={cx(classes.box)} style={{ padding: "30px 20px" }}>
+              <Box className={cx(classes.info)}>
+                <Box>Rate DANA/ANA (including fees):</Box>
+                <Box display="flex" alignItems="center" lineHeight="1">
+                  1.005&nbsp;
+                  <img src={ICO_Info_dark} width="13px" alt="info" />
+                </Box>
+              </Box>
+              <Box className={cx(classes.info)}>
+                <Box>Slip:</Box>
+                <Box display="flex" alignItems="center" lineHeight="1">
+                  1%&nbsp;
+                  <img src={ICO_Info_dark} width="13px" alt="info" />
+                </Box>
+              </Box>
+              <Box className={cx(classes.info)}>
+                <Box>Trade routed through:</Box>
+                <Box display="flex" alignItems="center" lineHeight="1">
+                  exDANA&nbsp;
+                  <img src={ICO_Info_dark} width="13px" alt="info" />
+                </Box>
               </Box>
             </Box>
-            <Box className={cx(classes.info)}>
-              <Box>Slip:</Box>
-              <Box display="flex" alignItems="center" lineHeight="1">
-                1%&nbsp;
-                <img src={ICO_Info_dark} width="13px" alt="info" />
-              </Box>
-            </Box>
-            <Box className={cx(classes.info)}>
-              <Box>Trade routed through:</Box>
-              <Box display="flex" alignItems="center" lineHeight="1">
-                exDANA&nbsp;
-                <img src={ICO_Info_dark} width="13px" alt="info" />
-              </Box>
-            </Box>
-          </Box>
 
-          <Box mt={"50px"}></Box>
+            <Box mt={"50px"}></Box>
 
-          <Box padding="10px">
-            <Box className={cx(classes.optionTitle)} onClick={onToggleOptions}>
-              <Box mr={"7px"}>Advanced Options</Box>
-              <i
-                className={`fa fa-chevron-${!isOptionOpen ? "up" : "down"}`}
-                aria-hidden="true"
-              ></i>
-            </Box>
-            <Collapse in={isOptionOpen}>
-              <Grid
-                container
-                spacing={mobile ? 1 : 2}
-                style={{ marginTop: "10px" }}
+            <Box padding="10px">
+              <Box
+                className={cx(classes.optionTitle)}
+                onClick={onToggleOptions}
               >
-                {options.map((option, i) => (
-                  <Grid container item xs={4} key={i}>
-                    <Radio option={option} value={option.data[0].value} />
-                  </Grid>
-                ))}
-              </Grid>
-            </Collapse>
-          </Box>
+                <Box mr={"7px"}>Advanced Options</Box>
+                <i
+                  className={`fa fa-chevron-${!isOptionOpen ? "up" : "down"}`}
+                  aria-hidden="true"
+                ></i>
+              </Box>
+              <Collapse in={isOptionOpen}>
+                <Grid
+                  container
+                  spacing={mobile ? 1 : 2}
+                  style={{ marginTop: "10px" }}
+                >
+                  {options.map((option, i) => (
+                    <Grid container item xs={4} key={i}>
+                      <Radio option={option} value={option.data[0].value} />
+                    </Grid>
+                  ))}
+                </Grid>
+              </Collapse>
+            </Box>
 
-          <Box mt="50px"></Box>
+            <Box mt="50px"></Box>
 
-          <Box display="flex" justifyContent="center">
-            <Box className={cx(classes.submit)}>SWAP</Box>
+            <Box display="flex" justifyContent="center">
+              <Box className={cx(classes.submit)}>SWAP</Box>
+            </Box>
           </Box>
         </Box>
       </Box>
-    </Box>
+    </Fade>
   );
 };
 

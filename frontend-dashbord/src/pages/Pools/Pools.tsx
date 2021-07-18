@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, useMediaQuery } from "@material-ui/core";
+import { Box, Fade, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { pools } from "data";
 import PoolsPanel from "components/Table";
@@ -51,26 +51,29 @@ const Pools: React.FC = () => {
   const { totalDepositsAllPoolsUSD, totalDailyVolumeUSD } = totalStats;
 
   return (
-    <Box>
-      <Box className={cx(classes.label)}>Dana Pools</Box>
-      <PoolsPanel data={pools}></PoolsPanel>
+    <Fade in={true}>
+      <Box>
+        <Box className={cx(classes.label)}>Dana Pools</Box>
+        <PoolsPanel data={pools}></PoolsPanel>
 
-      <Box className={cx(classes.label)}>
-        Total pool deposits and daily volume
+        <Box className={cx(classes.label)}>
+          Total pool deposits and daily volume
+        </Box>
+        <Box className={cx(classes.statsPanel)}>
+          Deposit:{" "}
+          <span>
+            ${totalDepositsAllPoolsUSD?.toLocaleString()} (includes factory
+            pools)
+          </span>
+          <br />
+          <br />
+          Daily Volume: <span>${totalDailyVolumeUSD?.toLocaleString()}</span>
+          <br />
+          <br />
+          Factory Daily Volume: <span>$8,999,777</span>
+        </Box>
       </Box>
-      <Box className={cx(classes.statsPanel)}>
-        Deposit:{" "}
-        <span>
-          ${totalDepositsAllPoolsUSD?.toLocaleString()} (includes factory pools)
-        </span>
-        <br />
-        <br />
-        Daily Volume: <span>${totalDailyVolumeUSD?.toLocaleString()}</span>
-        <br />
-        <br />
-        Factory Daily Volume: <span>$8,999,777</span>
-      </Box>
-    </Box>
+    </Fade>
   );
 };
 

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   Box,
-  Link,
   IconButton,
   Drawer,
   useMediaQuery,
@@ -57,7 +56,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     background: palette.background.default,
     fontFamily: "Brandon Grotesque",
 
-    "& a": {
+    "& > div": {
       margin: "5px 15px",
       color: palette.text.primary,
       fontWeight: 900,
@@ -123,13 +122,15 @@ const Header: React.FC = () => {
           {!mobile && (
             <Box className={cx(classes.navBar)}>
               {navList.map((navItem, index) => (
-                <Link
+                <Box
                   className={isActiveURL(navItem.link) ? "active" : ""}
+                  onClick={() => {
+                    history.push(navItem.link);
+                  }}
                   key={index}
-                  href={navItem.link}
                 >
                   {navItem.label}
-                </Link>
+                </Box>
               ))}
             </Box>
           )}
@@ -151,9 +152,14 @@ const Header: React.FC = () => {
               <Drawer anchor={"top"} open={openMenu} onClose={toggleMenu}>
                 <Box className={cx(classes.navBar)}>
                   {navList.map((navItem, index) => (
-                    <Link key={index} href={navItem.link}>
+                    <Box
+                      key={index}
+                      onClick={() => {
+                        history.push(navItem.link);
+                      }}
+                    >
                       {navItem.label}
-                    </Link>
+                    </Box>
                   ))}
                 </Box>
               </Drawer>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Grid, Link, useMediaQuery } from "@material-ui/core";
+import { Box, Fade, Grid, Link, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { useIsDarkMode } from "state/user/hooks";
 import cx from "classnames";
@@ -110,7 +110,7 @@ const DANA: React.FC = () => {
   const classes = useStyles({ dark, mobile });
 
   return (
-    <Box>
+    <Fade in={true}>
       <Grid container spacing={4}>
         <Grid item xs={12} sm={6}>
           <Box className={cx(classes.panel)}>
@@ -253,7 +253,7 @@ const DANA: React.FC = () => {
           </Box>
         </Grid>
       </Grid>
-    </Box>
+    </Fade>
   );
 };
 
