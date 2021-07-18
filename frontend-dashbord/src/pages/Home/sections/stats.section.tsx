@@ -24,11 +24,15 @@ const useStyles = makeStyles(({ palette }) => ({
     "& p": {
       fontFamily: "Museo Sans",
       fontStyle: "normal",
-      fontWeight: "bold",
+      fontWeight: 900,
       fontSize: "18px",
       lineHeight: "20px",
       whiteSpace: "pre-line",
       color: palette.secondary.main,
+
+      "& > span": {
+        fontWeight: 100,
+      },
     },
   },
   body_ex: {
@@ -60,22 +64,32 @@ const StatsSection: React.FC = () => {
           <Box className={cx(classes.title)}>exDANA Stats</Box>
           <Box className={cx(classes.body)}>
             <Box component="p">
-              {`exDANA holder/LP ratio (based on fees): 24.52
-              \n
-              Having locked $1 in DANA for 4 years is equal to having provided $24.52 as an LP
-              \n
-              exDANA holder APY: 21.37% (4 weeks average: 18.01%)
-              Yearly fee earnings per 1 exDANA: $0.34
-              \n
-              My exDANA balance: 0 Stake DANA
-              \n
-              Averaged daily earnings: $198,244.20
-              \n
-              Weekly earnings: $1,387,709.41
-              \n
-              Weekly volume (including deposits/withdrawals): $6,938,547,054.70
-              \n
-              Next Distribution: Mon, 28 Jun 2021 23:20:50 GMT`}
+              exDANA holder/LP ratio (based on fees): <span>24.52</span>
+              <br />
+              <br />
+              Having locked $1 in DANA for 4 years is equal to having provided
+              $24.52 as an LP
+              <br />
+              <br />
+              exDANA holder APY: <span>21.37% (4 weeks average: 18.01%)</span>
+              <br />
+              Yearly fee earnings per 1 exDANA: <span>$0.34</span>
+              <br />
+              <br />
+              My exDANA balance: <span>0 Stake DANA</span>
+              <br />
+              <br />
+              Averaged daily earnings: <span>$198,244.20</span>
+              <br />
+              <br />
+              Weekly earnings: <span>$1,387,709.41</span>
+              <br />
+              <br />
+              Weekly volume (including deposits/withdrawals):{" "}
+              <span>$6,938,547,054.70</span>
+              <br />
+              <br />
+              Next Distribution: <span>Mon, 28 Jun 2021 23:20:50 GMT</span>
             </Box>
           </Box>
         </Grid>
@@ -85,15 +99,19 @@ const StatsSection: React.FC = () => {
           </Box>
           <Box className={cx(classes.body)}>
             <Box component="p">
-              {`DEPOSITS:
-              $9,006,029,010.68 (includes factory pools)
-              \n
+              DEPOSITS:
+              <br />
+              <span>$9,006,029,010.68 (includes factory pools)</span>
+              <br />
+              <br />
               DAILY VOLUME:
-              $147,471,544
-              \n
+              <br />
+              <span>$147,471,544</span>
+              <br />
+              <br />
               Factory Daily Volume:
-              $3,065,174
-              `}
+              <br />
+              <span>$3,065,174</span>
             </Box>
           </Box>
 
