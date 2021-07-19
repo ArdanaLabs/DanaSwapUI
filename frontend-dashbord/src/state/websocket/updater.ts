@@ -19,12 +19,12 @@ export default function Updater(): null {
   }[readyState];
 
   useEffect(() => {
-    console.log(connectionStatus);
+    console.log('ws', connectionStatus);
   }, [connectionStatus])
 
   useEffect(() => {
     
-    console.log(lastMessage);
+    console.log('ws', lastMessage);
     
     return () => {};
   }, [lastMessage]);

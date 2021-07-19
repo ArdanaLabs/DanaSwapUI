@@ -3,11 +3,21 @@ import { useDispatch } from "react-redux";
 
 import { AppDispatch } from "state";
 import { updateTotalStats } from "./actions";
+import { getStats } from "./hooks";
 
 export default function Updater(): null {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
+
+    const fetchStats = async () => {
+      const totalStats = await getStats();
+
+      console.log(totalStats);
+    };
+
+    fetchStats();
+
     dispatch(
       updateTotalStats({
         totalDepositsAllPoolsUSD: 9006029010.68,
