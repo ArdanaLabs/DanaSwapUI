@@ -9,8 +9,9 @@ import IMG_bg from "assets/backgrounds/launch-bg.png";
 import { useHistory } from "react-router-dom";
 import ReactPlayer from "react-player";
 const heroVideo =
-  "https://file-examples-com.github.io/uploads/2018/04/file_example_MOV_1920_2_2MB.mov";
+  // "https://file-examples-com.github.io/uploads/2018/04/file_example_MOV_1920_2_2MB.mov";
   // "https://background.sfo3.digitaloceanspaces.com/background.mov";
+  "https://multiplatform-f.akamaihd.net/i/multi/will/bunny/big_buck_bunny_,640x360_400,640x360_700,640x360_1000,950x540_1500,.f4v.csmil/master.m3u8";
 
 const useStyles = makeStyles(({ palette }) => ({
   root: {

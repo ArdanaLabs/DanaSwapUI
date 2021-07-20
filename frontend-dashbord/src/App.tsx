@@ -18,14 +18,14 @@ import Layout from "layouts/Layout";
 
 import HomeUpdater from "./state/home/updater";
 import UserUpdater from "./state/user/updater";
-import WSUpdater from "./state/websocket/updater";
+// import WSUpdater from "./state/websocket/updater";
 
 const StateUpdaters: React.FC = () => {
   return (
     <>
       <HomeUpdater />
       <UserUpdater />
-      <WSUpdater />
+      {/* <WSUpdater /> */}
     </>
   );
 };
@@ -100,11 +100,11 @@ const App: React.FC = () => {
           <Route exact path="/dana">
             <DANA />
           </Route>
-        </Layout>
 
-        <Route path="*">
-          <Redirect to="/home" />
-        </Route>
+          <Route path="*">
+            <Redirect to="/home" />
+          </Route>
+        </Layout>
       </Switch>
     </Providers>
   );
