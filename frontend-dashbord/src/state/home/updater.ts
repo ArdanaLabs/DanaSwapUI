@@ -3,20 +3,23 @@ import { useDispatch } from "react-redux";
 
 import { AppDispatch } from "state";
 import { updateTotalStats } from "./actions";
-import { getStats } from "./hooks";
+import { getStats, getProviderProfits } from "./hooks";
 
 export default function Updater(): null {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-
-    const fetchStats = async () => {
-      const totalStats = await getStats();
-
+    const fetchFromEndPoint = async () => {
+      const totalStats: any = await getStats();
       console.log(totalStats);
+
+      const providerProfits: any = await getProviderProfits('2021-03-03', '2021-03-06');
+      console.log(providerProfits);
+
+      // dispatch(updateTotalStats(totalStats));
     };
 
-    fetchStats();
+    fetchFromEndPoint();
 
     dispatch(
       updateTotalStats({

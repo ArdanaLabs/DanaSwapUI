@@ -249,6 +249,7 @@ const PoolsPanel: React.FC<PoolsPanelProps> = ({ overView = false }) => {
           <TableBody>
             {poolNames.map((poolName: any, i: any) => {
               const icon = require(`assets/coins/${poolName}.png`).default;
+              // const icon = require(`assets/coins/bBTC.png`).default;
               return (
                 <TableRow key={i}>
                   <StyledTableCell component="th" scope="row">
