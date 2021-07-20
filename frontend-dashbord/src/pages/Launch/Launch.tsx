@@ -137,6 +137,7 @@ const Launch: React.FC = () => {
         muted
         width="100%"
         height="100%"
+        playbackRate={0.5}
       />
       <Box className={cx(classes.container)}>
         <Container>
