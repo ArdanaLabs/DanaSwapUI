@@ -9,19 +9,14 @@ import IMG_bg from "assets/backgrounds/launch-bg.png";
 import { useHistory } from "react-router-dom";
 import ReactPlayer from "react-player";
 const heroVideo =
-  // "https://file-examples-com.github.io/uploads/2018/04/file_example_MOV_1920_2_2MB.mov";
+  "https://background.sfo3.digitaloceanspaces.com/background/output.m3u8";
   // "https://background.sfo3.digitaloceanspaces.com/background.mov";
-  "https://multiplatform-f.akamaihd.net/i/multi/will/bunny/big_buck_bunny_,640x360_400,640x360_700,640x360_1000,950x540_1500,.f4v.csmil/master.m3u8";
 
 const useStyles = makeStyles(({ palette }) => ({
   root: {
-    background: `linear-gradient(179.02deg, #000633 26.91%, rgba(0, 5, 38, 0.5) 99.11%), url(${IMG_bg})`,
-    mixBlendMode: "normal",
+    background: `url(${IMG_bg})`,
     minHeight: "100vh",
     position: "relative",
-    display: "flex",
-    justifyContent: "center",
-    width: "100%",
     height: "100vh",
     "& video": {
       objectFit: "cover",
@@ -32,6 +27,10 @@ const useStyles = makeStyles(({ palette }) => ({
     top: 0,
     width: "100%",
     height: "100%",
+    background: `linear-gradient(179.02deg, #000633 26.91%, rgba(0, 5, 38, 0.5) 99.11%)`,
+    mixBlendMode: "normal",
+    display: "flex",
+    justifyContent: "center",
   },
 
   header: {
@@ -125,12 +124,13 @@ const Launch: React.FC = () => {
       <ReactPlayer
         url={heroVideo}
         playing
-        loop
+        loop={true}
         muted
         width="100%"
         height="100%"
       />
-      <Container className={cx(classes.container)}>
+      <Box className={cx(classes.container)}>
+      <Container>
         <Box className={cx(classes.header)} onClick={() => history.push("/")}>
           <img src={IMG_logo} alt="Ardana Logo" />
         </Box>
@@ -186,6 +186,7 @@ const Launch: React.FC = () => {
           </Box>
         </Box>
       </Container>
+      </Box>
     </Box>
   );
 };
