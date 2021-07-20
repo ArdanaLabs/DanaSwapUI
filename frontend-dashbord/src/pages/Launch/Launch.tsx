@@ -1,16 +1,15 @@
 import React, { useState } from "react";
-import { Box, Container, useMediaQuery } from "@material-ui/core";
+import { Box, Container, Grid, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { useIsDarkMode } from "state/user/hooks";
 import cx from "classnames";
-import { SwitchWithGlider } from "components";
 import IMG_logo from "assets/logos/Ardana_hor_white.png";
 import IMG_bg from "assets/backgrounds/launch-bg.png";
 import { useHistory } from "react-router-dom";
 import ReactPlayer from "react-player";
 const heroVideo =
   "https://background.sfo3.digitaloceanspaces.com/background/output.m3u8";
-  // "https://background.sfo3.digitaloceanspaces.com/background.mov";
+// "https://background.sfo3.digitaloceanspaces.com/background.mov";
 
 const useStyles = makeStyles(({ palette }) => ({
   root: {
@@ -50,6 +49,11 @@ const useStyles = makeStyles(({ palette }) => ({
 
   navGroup: {
     padding: "30px",
+
+    "& > div": {
+      display: "flex",
+      justifyContent: "center",
+    },
   },
   navItem: {
     borderRadius: "20px",
@@ -84,11 +88,16 @@ const useStyles = makeStyles(({ palette }) => ({
     display: "flex",
     justifyContent: "center",
     marginTop: "50px",
+
+    "& > div": {
+      display: "flex",
+      justifyContent: "center",
+    },
   },
 
   statBox: {
     width: "200px",
-    margin: "20px",
+    // margin: "20px",
     padding: "10px 30px 30px 30px",
     background:
       "linear-gradient(0deg, rgba(47, 61, 160, 0.6), rgba(47, 61, 160, 0.6))",
@@ -130,62 +139,74 @@ const Launch: React.FC = () => {
         height="100%"
       />
       <Box className={cx(classes.container)}>
-      <Container>
-        <Box className={cx(classes.header)} onClick={() => history.push("/")}>
-          <img src={IMG_logo} alt="Ardana Logo" />
-        </Box>
+        <Container>
+          <Box className={cx(classes.header)} onClick={() => history.push("/")}>
+            <img src={IMG_logo} alt="Ardana Logo" />
+          </Box>
 
-        <Box className={cx(classes.title)}>
-          Access to your resources,
-          <br />
-          all in one place.
-        </Box>
+          <Box className={cx(classes.title)}>
+            Access to your resources,
+            <br />
+            all in one place.
+          </Box>
 
-        <Box className={cx(classes.navGroup)}>
-          <SwitchWithGlider
-            elements={[
+          <Grid container spacing={1} className={cx(classes.navGroup)}>
+            <Grid item xs={12} sm={4}>
               <Box
-                className={cx(classes.navItem, { [classes.active]: nav === 0 })}
+                className={cx(classes.navItem, {
+                  [classes.active]: nav === 0,
+                })}
                 onClick={() => setNav(0)}
               >
                 DEX
-              </Box>,
+              </Box>
+            </Grid>
+            <Grid item xs={12} sm={4}>
               <Box
-                className={cx(classes.navItem, { [classes.active]: nav === 1 })}
+                className={cx(classes.navItem, {
+                  [classes.active]: nav === 1,
+                })}
                 onClick={() => setNav(1)}
               >
                 SWAP
-              </Box>,
+              </Box>
+            </Grid>
+            <Grid item xs={12} sm={4}>
               <Box
-                className={cx(classes.navItem, { [classes.active]: nav === 2 })}
+                className={cx(classes.navItem, {
+                  [classes.active]: nav === 2,
+                })}
                 onClick={() => setNav(2)}
               >
                 MY DASHBOARD
-              </Box>,
-            ]}
-            defaultIndex={1}
-            marginBetweenSwitches={2}
-          />
-        </Box>
+              </Box>
+            </Grid>
+          </Grid>
 
-        <Box className={cx(classes.statGroup)}>
-          <Box className={cx(classes.statBox)}>
-            $7.55
-            <br />
-            <span>$DANA Price</span>
-          </Box>
-          <Box className={cx(classes.statBox)}>
-            $2.65b
-            <br />
-            <span>Total Liquidity</span>
-          </Box>
-          <Box className={cx(classes.statBox)}>
-            $92.68b
-            <br />
-            <span>Total Volume</span>
-          </Box>
-        </Box>
-      </Container>
+          <Grid container spacing={1} className={cx(classes.statGroup)}>
+            <Grid item xs={12} sm={4}>
+              <Box className={cx(classes.statBox)}>
+                $7.55
+                <br />
+                <span>$DANA Price</span>
+              </Box>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <Box className={cx(classes.statBox)}>
+                $2.65b
+                <br />
+                <span>Total Liquidity</span>
+              </Box>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <Box className={cx(classes.statBox)}>
+                $92.68b
+                <br />
+                <span>Total Volume</span>
+              </Box>
+            </Grid>
+          </Grid>
+        </Container>
       </Box>
     </Box>
   );
