@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme: Theme) =>
       "& .MuiFormLabel-root": {
         fontStyle: "normal",
         fontWeight: 900,
-        fontSize: "16px",
+        fontSize: "14px",
         lineHeight: "16px",
         color: theme.palette.secondary.main,
         marginBottom: "30px",
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) =>
       "& .MuiTypography-body1": {
         fontStyle: "normal",
         fontWeight: 500,
-        fontSize: "12px",
+        fontSize: "10px",
         lineHeight: "16px",        
         color: theme.palette.secondary.main,
       },

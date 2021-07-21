@@ -39,14 +39,14 @@ const useStyles = makeStyles(({ palette }) => ({
     "& p:first-child": {
       fontWeight: 300,
       fontStyle: "normal",
-      fontSize: "13px",
+      fontSize: "11px",
       lineHeight: "13px",
       color: palette.text.hint,
     },
     "& p:last-child": {
       fontWeight: 700,
       fontStyle: "normal",
-      fontSize: "18px",
+      fontSize: "16px",
       lineHeight: "18px",
       color: palette.text.secondary,
       fontFamily: "Museo Sans",

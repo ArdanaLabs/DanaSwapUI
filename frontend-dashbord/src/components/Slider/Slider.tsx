@@ -1,7 +1,7 @@
 import { Slider } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 
-const StyledSlider = withStyles(theme => ({
+const StyledSlider = withStyles((theme) => ({
   root: {},
   track: {
     height: 6,
@@ -29,10 +29,10 @@ const StyledSlider = withStyles(theme => ({
     paddingTop: "5px",
     color: theme.palette.primary.main,
     fontFamily: "Museo Sans",
-    fontStyle: 'normal',
+    fontStyle: "normal",
     fontWeight: 300,
-    fontSize: '16px',
-    lineHeight: '100%',
+    fontSize: "14px",
+    lineHeight: "100%",
   },
 }))(Slider);
 

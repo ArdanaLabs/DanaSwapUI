@@ -19,7 +19,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontFamily: "Museo Sans",
     fontStyle: "normal",
     fontWeight: 600,
-    fontSize: "13px",
+    fontSize: "11px",
     lineHeight: "100%",
     color: palette.type === "light" ? palette.text.primary : palette.text.hint,
   },
@@ -34,7 +34,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontFamily: "Museo Sans",
     fontStyle: "normal",
     fontWeight: 600,
-    fontSize: "18px",
+    fontSize: "16px",
     lineHeight: "100%",
     color: palette.secondary.main,
   },
@@ -55,7 +55,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontFamily: "Museo Sans",
     fontStyle: "normal",
     fontWeight: 500,
-    fontSize: "12px",
+    fontSize: "10px",
     lineHeight: "100%",
     textAlign: "center",
     color: palette.common.white,
@@ -104,19 +104,19 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     flexGrow: 2,
 
     "& div:first-child": {
-      fontSize: "17px",
+      fontSize: "15px",
       fontWeight: 500,
     },
 
     "& div:last-child": {
-      fontSize: "12px",
+      fontSize: "10px",
       fontWeight: 500,
     },
   },
 
   filterText: {
     background: palette.common.white,
-    fontSize: "12px",
+    fontSize: "8px",
     fontWeight: 500,
     lineHeight: "100%",
     width: "100%",
@@ -133,7 +133,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   filterType: {
     background: "transparent",
     padding: "5px 10px",
-    fontSize: "12px",
+    fontSize: "10px",
     lineHeight: "100%",
     margin: "20px 10px 20px 0px",
     border: `1px solid ${palette.secondary.main}`,

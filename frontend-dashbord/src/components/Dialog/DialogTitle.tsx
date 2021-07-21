@@ -15,7 +15,7 @@ const styles = (theme: Theme) =>
         fontFamily: "Brandon Grotesque",
         fontStyle: "normal",
         fontWeight: 900,
-        fontSize: "17px",
+        fontSize: "15px",
         lineHeight: "100%",
 
       }

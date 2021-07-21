@@ -35,7 +35,7 @@ const useStyles = makeStyles(({ palette }) => ({
     },
   },
   switchLabel: {
-    fontSize: "14px",
+    fontSize: "12px",
     fontWeight: 700,
     fontFamily: "Museo Sans",
     lineHeight: "16px",

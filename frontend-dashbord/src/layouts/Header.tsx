@@ -60,7 +60,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       margin: "5px 15px",
       color: palette.text.primary,
       fontWeight: 900,
-      fontSize: "18px",
+      fontSize: "16px",
       cursor: "pointer",
 
       "&:hover": {

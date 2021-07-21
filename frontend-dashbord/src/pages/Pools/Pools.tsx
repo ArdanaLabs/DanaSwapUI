@@ -12,7 +12,7 @@ const useStyles = makeStyles(({ palette }) => ({
     fontFamily: "'Brandon Grotesque'",
     fontStyle: "normal",
     fontWeight: 900,
-    fontSize: "30px",
+    fontSize: "28px",
     lineHeight: "110%",
     margin: "30px 0",
   },
@@ -28,7 +28,7 @@ const useStyles = makeStyles(({ palette }) => ({
     fontFamily: "Museo Sans",
     fontStyle: "normal",
     fontWeight: 900,
-    fontSize: "18px",
+    fontSize: "16px",
     lineHeight: "115%",
     whiteSpace: "pre-line",
 

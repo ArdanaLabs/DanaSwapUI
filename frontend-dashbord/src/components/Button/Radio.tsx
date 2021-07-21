@@ -15,7 +15,7 @@ import { Input } from "components/Input";
 
 const useStyles = makeStyles(({ palette }) => ({
   title: {
-    fontSize: "12px",
+    fontSize: "10px",
     color: palette.text.primary,
     fontWeight: "bold",
     marginBottom: "4px",
@@ -56,7 +56,7 @@ const useStyles = makeStyles(({ palette }) => ({
     },
   },
   itemLabel: {
-    fontSize: "12px",
+    fontSize: "10px",
     color: palette.text.secondary,
   },
   formControl: {
@@ -65,7 +65,7 @@ const useStyles = makeStyles(({ palette }) => ({
     },
   },
   customInput: {
-    fontSize: "9px",
+    fontSize: "7px",
     width: "calc(100% - 30px)",
     padding: "4px 2px 4px 9px",
     background: "white",

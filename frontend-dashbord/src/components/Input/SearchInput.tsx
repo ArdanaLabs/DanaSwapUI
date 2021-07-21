@@ -28,7 +28,7 @@ const useStyles = makeStyles(({ palette }) => ({
       position: "absolute",
       right: "25px",
       top: "13px",
-      fontSize: "20px",
+      fontSize: "18px",
       color: palette.common.black,
     },
   },
