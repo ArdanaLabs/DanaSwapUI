@@ -77,36 +77,41 @@ const App: React.FC = () => {
   return (
     <Providers>
       <Switch>
+        <Route exact path="/">
+          <Redirect to="/home" />
+        </Route>
+
+        <Route exact path="/home">
+          <Layout>
+            <Home />
+          </Layout>
+        </Route>
+
+        <Route exact path="/swap">
+          <Layout>
+            <Swap />
+          </Layout>
+        </Route>
+
+        <Route exact path="/pools">
+          <Layout>
+            <Pools />
+          </Layout>
+        </Route>
+
+        <Route exact path="/dana">
+          <Layout>
+            <DANA />
+          </Layout>
+        </Route>
+
         <Route exact path="/launch">
           <Launch />
         </Route>
 
-        <Layout>
-          <Route exact path="/">
-            {/* <Landing /> */}
-            <Redirect to="/home" />
-          </Route>
-
-          <Route exact path="/home">
-            <Home />
-          </Route>
-
-          <Route exact path="/swap">
-            <Swap />
-          </Route>
-
-          <Route exact path="/pools">
-            <Pools />
-          </Route>
-
-          <Route exact path="/dana">
-            <DANA />
-          </Route>
-
-          <Route path="*">
-            <Redirect to="/home" />
-          </Route>
-        </Layout>
+        <Route path="*">
+          <Redirect to="/home" />
+        </Route>
       </Switch>
     </Providers>
   );
