@@ -19,6 +19,7 @@ import Layout from "layouts/Layout";
 import HomeUpdater from "./state/home/updater";
 import UserUpdater from "./state/user/updater";
 // import WSUpdater from "./state/websocket/updater";
+import ChartUpdater from "./state/chart/updater";
 
 const StateUpdaters: React.FC = () => {
   return (
@@ -26,6 +27,7 @@ const StateUpdaters: React.FC = () => {
       <HomeUpdater />
       <UserUpdater />
       {/* <WSUpdater /> */}
+      <ChartUpdater />
     </>
   );
 };

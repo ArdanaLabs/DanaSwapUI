@@ -9,20 +9,33 @@ export default function Updater(): null {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    const fetchFromEndPoint = async () => {
+    const fetchTotalStatsFromEndPoint = async () => {
       const totalStats: any = await getStats();
       console.log(totalStats);
 
-      const providerProfits: any = await getProviderProfits('2021-03-03', '2021-03-06');
+      // dispatch(updateTotalStats(totalStats));
+    };
+    const fetchProfitsFromEndPoint = async () => {
+      const providerProfits: any = await getProviderProfits(
+        "2021-03-03",
+        "2021-03-06"
+      );
       console.log(providerProfits);
 
       // dispatch(updateTotalStats(totalStats));
     };
 
-    fetchFromEndPoint();
+    setInterval(async () => {
+      await fetchTotalStatsFromEndPoint();
+    }, 1000 * 60);
+
+    fetchTotalStatsFromEndPoint();
+    fetchProfitsFromEndPoint();
 
     dispatch(
       updateTotalStats({
+        totalDailyTxCount: 323,
+        totalDailyFeeVolumeUSD: 23.33,
         totalDepositsAllPoolsUSD: 9006029010.68,
         totalDailyVolumeUSD: 147471544,
         poolStats: {
@@ -42,7 +55,10 @@ export default function Updater(): null {
             feePercent: 1,
             adminFeePercent: 2,
             virtualPriceUSD: 200,
-            liquidityUtilizationRatio: 0,
+            liquidityUtilization: 0,
+            dailyTxCount: 3,
+            dailyFeeVolumeUSD: 1,
+            navUSD: 12,
           },
           aBTC: {
             recentDailyAPYPercent: 10,
@@ -60,7 +76,10 @@ export default function Updater(): null {
             feePercent: 1,
             adminFeePercent: 2,
             virtualPriceUSD: 200,
-            liquidityUtilizationRatio: 0,
+            liquidityUtilization: 0,
+            dailyTxCount: 3,
+            dailyFeeVolumeUSD: 1,
+            navUSD: 12,
           },
           bBTC: {
             recentDailyAPYPercent: 10,
@@ -78,7 +97,10 @@ export default function Updater(): null {
             feePercent: 1,
             adminFeePercent: 2,
             virtualPriceUSD: 200,
-            liquidityUtilizationRatio: 0,
+            liquidityUtilization: 0,
+            dailyTxCount: 3,
+            dailyFeeVolumeUSD: 1,
+            navUSD: 12,
           },
         },
       })

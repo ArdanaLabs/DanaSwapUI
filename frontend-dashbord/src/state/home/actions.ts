@@ -16,13 +16,18 @@ export interface PoolStat {
     feePercent: number | null; // (unit: %)
     adminFeePercent: number | null; // (unit: %)
     virtualPriceUSD: number | null; // (unit: USD)
-    liquidityUtilizationRatio: number | null; // (unit: USD (volume) / USD (liquidity))
+    liquidityUtilization: number | null; // (unit: USD (volume) / USD (liquidity))
+    dailyTxCount: number | null;
+    dailyFeeVolumeUSD: number | null;
+    navUSD: number | null;
   };
 }
 
 export interface TotalStat {
-  totalDepositsAllPoolsUSD: number | null; // (unit: USD)
+  totalDailyTxCount: number | null;
+  totalDailyFeeVolumeUSD: number| null;
   totalDailyVolumeUSD: number | null; // (unit: USD)
+  totalDepositsAllPoolsUSD: number | null;
   poolStats: PoolStat | null;
 }
 
