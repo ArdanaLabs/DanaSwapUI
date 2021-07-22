@@ -21,6 +21,39 @@ const useStyles = makeStyles(({ palette }) => ({
     display: "flex",
     alignItems: "center",
   },
+
+  carousel: {
+    display: "flex",
+    flexDirection: "column",
+    fontFamily: "Brandon Grotesque",
+    fontStyle: "normal",
+    lineHeight: "120.5%",
+    cursor: "pointer",
+
+    "& > div": {
+      margin: "30px 0px",
+    },
+    "& > div:first-child": {
+      background: "-webkit-linear-gradient(-90deg, #FFFFFF, #ffffff00)",
+      "-webkit-background-clip": "text",
+      "-webkit-text-fill-color": "transparent",
+    },
+    "& > div:last-child": {
+      background: "-webkit-linear-gradient(90deg, #FFFFFF, #ffffff00)",
+      "-webkit-background-clip": "text",
+      "-webkit-text-fill-color": "transparent",
+    }
+  },
+  inactive: {
+    fontSize: "30px",
+    fontWeight: 300,
+    lineHeight: "120.5%",
+  },
+  active: {
+    fontSize: "45px",
+    fontWeight: 900,
+    lineHeight: "120.5%",
+  },
 }));
 
 const StableCoinSection: React.FC = () => {
@@ -33,10 +66,18 @@ const StableCoinSection: React.FC = () => {
     <Box className={cx(classes.root)}>
       <Container style={{marginTop: "50px"}}>
         <Grid container>
-          <Grid item xs={12} sm={6} md={4}>
-            asdf
+          <Grid item xs={12} sm={6} md={4} className={cx(classes.carousel)}>
+            <Box className={cx(classes.inactive)}>
+              DANASWAP
+            </Box>
+            <Box className={cx(classes.active)}>
+              ARDANA<br />STABLECOINS
+            </Box>
+            <Box className={cx(classes.inactive)}>
+              MY DASHBOARD
+            </Box>
           </Grid>
-          <Grid container item xs={12} sm={6} md={8} spacing={3}>
+          <Grid container item xs={12} sm={6} md={8} spacing={3} alignContent="flex-end">
             <Grid item xs={4}>
               <StableCoinInfoBox
                 image={IMG_TVL}
