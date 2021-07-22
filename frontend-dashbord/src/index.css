@@ -31,21 +31,66 @@
 @font-face {
   font-family: "Brandon Grotesque";
   src: local("Brandon Grotesque Bold"),
-    url("./assets/font/Brandon-Grotesque-Font-Family/brandon-grotesque-bold-regular.ttf") format("truetype");
+    url("./assets/font/Brandon-Grotesque-Font-Family/brandon-grotesque-bold-regular.ttf")
+      format("truetype");
   font-weight: 900;
 }
 @font-face {
   font-family: "Brandon Grotesque";
   src: local("Brandon Grotesque Light"),
-    url("./assets/font/Brandon-Grotesque-Font-Family/brandon-grotesque-light.otf") format("opentype");
+    url("./assets/font/Brandon-Grotesque-Font-Family/brandon-grotesque-light.otf")
+      format("opentype");
   font-weight: 300;
 }
 
 * {
-  transition: all .2s ease-in;
+  transition: all 0.2s ease-in;
 }
 
 .hamburger-react > div {
   height: 5px !important;
   border-radius: 5px;
+}
+
+.carousel-inner {
+  position: relative;
+  max-height: 300px;
+  height: 300px;
+}
+
+.carousel-item {
+  position: absolute;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  top: 112px;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  font-family: "Brandon Grotesque";
+  font-style: normal;
+  font-weight: 100;
+  font-size: 32px;
+}
+
+.carousel-item.visible {
+  opacity: 1;
+}
+
+.carousel-item.active {
+  font-size: 45px;
+  text-align: left;
+  font-weight: 900;
+  color: white;
+}
+
+.carousel-item.before {
+  background: -webkit-linear-gradient(-90deg, #ffffff, #ffffff00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.carousel-item.after {
+  background: -webkit-linear-gradient(90deg, #ffffff, #ffffff00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

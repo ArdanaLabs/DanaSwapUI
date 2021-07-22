@@ -3,7 +3,7 @@ import { Box, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { useIsDarkMode } from "state/user/hooks";
 import cx from "classnames";
-import { LaunchDanaSwap, LaunchHeader, LaunchStableCoin } from "./sections";
+import { LaunchTotalStats, LaunchHeader, LaunchPartialStats } from "./sections";
 
 import IMG_ScrollDown from "assets/icons/scroll-down.png";
 
@@ -47,8 +47,8 @@ const Launch: React.FC = () => {
     <Box className={cx(classes.root)}>
       <LaunchHeader nav={nav} updateNav={updateNav} />
 
-      {nav === 0 && <LaunchStableCoin />}
-      {nav === 1 && <LaunchDanaSwap show={nav === 1} />}
+      {nav === 0 && <LaunchPartialStats />}
+      {nav === 1 && <LaunchTotalStats />}
 
       <Box className={cx(classes.scroll)} onClick={handleScrollDown}>
         <img src={IMG_ScrollDown} alt="scroll down" />

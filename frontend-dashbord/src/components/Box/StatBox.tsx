@@ -57,14 +57,14 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   }
 }));
 
-export interface StableCoinInfoBoxProps {
+export interface StatBoxProps {
   image?: any;
   title?: string;
   content?: string;
   custom_style?: object;
 }
 
-const StableCoinInfoBox: React.FC<StableCoinInfoBoxProps> = ({
+const StatBox: React.FC<StatBoxProps> = ({
   image,
   title,
   content,
@@ -99,4 +99,4 @@ const StableCoinInfoBox: React.FC<StableCoinInfoBoxProps> = ({
   );
 };
 
-export default StableCoinInfoBox;
+export default StatBox;

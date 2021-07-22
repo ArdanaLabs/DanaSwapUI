@@ -88,7 +88,7 @@ const useStyles = makeStyles(({ palette }) => ({
     },
   },
 
-  statBox: {
+  StatBox: {
     color: "white",
     fontFamily: "Brandon Grotesque",
     fontStyle: "normal",
@@ -106,11 +106,11 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 }));
 
-export interface DanaSwapSectionProps {
+export interface TotalStatsSectionProps {
   show?: boolean;
 }
 
-const DanaSwapSection: React.FC<DanaSwapSectionProps> = ({ show }) => {
+const TotalStatsSection: React.FC<TotalStatsSectionProps> = ({ show }) => {
   const { breakpoints } = useTheme();
   const mobile = useMediaQuery(breakpoints.down("xs"));
   const dark = useIsDarkMode();
@@ -143,7 +143,7 @@ const DanaSwapSection: React.FC<DanaSwapSectionProps> = ({ show }) => {
             {statInfo.map((stat: any, i: number) => (
               <Grid item xs={6} sm={4} md={2} key={i}>
                 <ScrollAnimation animateIn="flipInY" animateOut="flipOutY">
-                  <Box className={cx(classes.statBox)}>
+                  <Box className={cx(classes.StatBox)}>
                     {stat.content}
                     <br />
                     <span>{stat.label}</span>
@@ -158,4 +158,4 @@ const DanaSwapSection: React.FC<DanaSwapSectionProps> = ({ show }) => {
   );
 };
 
-export default DanaSwapSection;
+export default TotalStatsSection;
