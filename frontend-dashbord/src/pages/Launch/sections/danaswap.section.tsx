@@ -5,6 +5,7 @@ import { useIsDarkMode } from "state/user/hooks";
 import cx from "classnames";
 import IMG_bg from "assets/backgrounds/launch-bg.png";
 import ReactPlayer from "react-player";
+import ScrollAnimation from "react-animate-on-scroll";
 
 const heroVideo =
   "https://background.sfo3.digitaloceanspaces.com/background/output.m3u8";
@@ -105,7 +106,11 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 }));
 
-const DanaSwapSection: React.FC = () => {
+export interface DanaSwapSectionProps {
+  show?: boolean;
+}
+
+const DanaSwapSection: React.FC<DanaSwapSectionProps> = ({ show }) => {
   const { breakpoints } = useTheme();
   const mobile = useMediaQuery(breakpoints.down("xs"));
   const dark = useIsDarkMode();
@@ -124,20 +129,26 @@ const DanaSwapSection: React.FC = () => {
       />
       <Box className={cx(classes.container)}>
         <Container>
-          <Box className={cx(classes.title)}>
-            ALL YOUR RESOURCES,
-            <br />
-            <span>IN ONE PLACE.</span>
-          </Box>
+          <ScrollAnimation animateIn="flipInY" animateOut="flipOutY">
+            {/* <Fade in={show}> */}
+            <Box className={cx(classes.title)}>
+              ALL YOUR RESOURCES,
+              <br />
+              <span>IN ONE PLACE.</span>
+            </Box>
+            {/* </Fade> */}
+          </ScrollAnimation>
 
           <Grid container spacing={1} className={cx(classes.statGroup)}>
             {statInfo.map((stat: any, i: number) => (
               <Grid item xs={6} sm={4} md={2} key={i}>
-                <Box className={cx(classes.statBox)}>
-                  {stat.content}
-                  <br />
-                  <span>{stat.label}</span>
-                </Box>
+                <ScrollAnimation animateIn="flipInY" animateOut="flipOutY">
+                  <Box className={cx(classes.statBox)}>
+                    {stat.content}
+                    <br />
+                    <span>{stat.label}</span>
+                  </Box>
+                </ScrollAnimation>
               </Grid>
             ))}
           </Grid>

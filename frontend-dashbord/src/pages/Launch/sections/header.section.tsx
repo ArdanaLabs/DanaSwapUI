@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Box, Container, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { useIsDarkMode } from "state/user/hooks";
@@ -55,14 +55,17 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 }));
 
-const LaunchHeader: React.FC = () => {
+export interface LaunchHeaderProps {
+  nav: number;
+  updateNav: any;
+}
+
+const LaunchHeader: React.FC<LaunchHeaderProps> = ({ nav, updateNav }) => {
   const { breakpoints } = useTheme();
   const mobile = useMediaQuery(breakpoints.down("xs"));
   const dark = useIsDarkMode();
   const classes = useStyles({ dark, mobile });
   const history = useHistory();
-
-  const [nav, setNav] = useState(1);
 
   return (
     <Box className={cx(classes.header)}>
@@ -75,7 +78,7 @@ const LaunchHeader: React.FC = () => {
             className={cx(classes.navItem, {
               [classes.active]: nav === 0,
             })}
-            onClick={() => setNav(0)}
+            onClick={() => updateNav(0)}
           >
             LAUNCH ARDANA STABLECOINS
           </Box>
@@ -83,7 +86,7 @@ const LaunchHeader: React.FC = () => {
             className={cx(classes.navItem, {
               [classes.active]: nav === 1,
             })}
-            onClick={() => setNav(1)}
+            onClick={() => updateNav(1)}
           >
             LAUNCH DANASWAP
           </Box>
@@ -91,7 +94,7 @@ const LaunchHeader: React.FC = () => {
             className={cx(classes.navItem, {
               [classes.active]: nav === 2,
             })}
-            onClick={() => setNav(2)}
+            onClick={() => updateNav(2)}
           >
             MY DASHBOARD
           </Box>

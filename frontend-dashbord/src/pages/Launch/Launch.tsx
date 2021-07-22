@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { useIsDarkMode } from "state/user/hooks";
 import cx from "classnames";
-import { LaunchDanaSwap, LaunchHeader } from "./sections";
+import { LaunchDanaSwap, LaunchHeader, LaunchStableCoin } from "./sections";
 
 import IMG_ScrollDown from "assets/icons/scroll-down.png";
 
@@ -31,18 +31,30 @@ const Launch: React.FC = () => {
   const dark = useIsDarkMode();
   const classes = useStyles({ dark, mobile });
 
+  const [nav, setNav] = useState(1);
+
+  const updateNav = (newNav: number) => {
+    setNav(newNav);
+  };
+
+  const handleScrollDown = () => {
+    setTimeout(() => {
+      setNav(0);
+    }, 1000);
+  };
+
   return (
     <Box className={cx(classes.root)}>
-      <LaunchHeader />
-      <LaunchDanaSwap />
+      <LaunchHeader nav={nav} updateNav={updateNav} />
 
-      <Box className={cx(classes.scroll)}>
+      {nav === 0 && <LaunchStableCoin />}
+      {nav === 1 && <LaunchDanaSwap show={nav === 1} />}
+
+      <Box className={cx(classes.scroll)} onClick={handleScrollDown}>
         <img src={IMG_ScrollDown} alt="scroll down" />
         <br />
         <br />
-        <Box>
-          Scroll down
-        </Box>
+        <Box>Scroll down</Box>
       </Box>
     </Box>
   );
