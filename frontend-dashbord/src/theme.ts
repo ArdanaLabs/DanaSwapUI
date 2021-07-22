@@ -26,8 +26,7 @@ const secondaryMainNight = "#FFFFFF";
 
 const secondaryLightDay =
   "linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%)";
-const secondaryLightNight =
-  "#131B59";
+const secondaryLightNight = "#131B59";
 
 const secondaryDarkDay = "#A5A5A5";
 const secondaryDarkNight = "rgba(24, 33, 100, 0.5)";
@@ -165,6 +164,11 @@ export const lightTheme = responsiveFontSizes(
       },
     },
     overrides: {
+      MuiBackdrop: {
+        root: {
+          backgroundColor: "#000c",
+        },
+      },
       MuiButton: {
         root: {
           boxSizing: "border-box",
@@ -773,6 +777,11 @@ export const darkTheme = responsiveFontSizes(
         },
         input: {
           padding: 12,
+        },
+      },
+      MuiBackdrop: {
+        root: {
+          backgroundColor: "#000c",
         },
       },
       MuiSelect: {
