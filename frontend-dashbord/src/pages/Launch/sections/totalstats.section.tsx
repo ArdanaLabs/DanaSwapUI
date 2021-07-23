@@ -44,6 +44,7 @@ const useStyles = makeStyles(({ palette }) => ({
     minHeight: "100vh",
     position: "fixed",
     height: "100vh",
+    width: "100vw",
     "& video": {
       objectFit: "cover",
     },

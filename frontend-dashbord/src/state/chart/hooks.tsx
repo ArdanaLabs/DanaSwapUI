@@ -43,7 +43,7 @@ export async function getPoolFees(
   try {
     const result = await fetch(
       API_URL +
-        `/chart/pool/fees?pool=${pool}start=${start}&end=${end}&grain="${grain}"`
+        `/chart/pool/fees?pool="${pool}"&start=${start}&end=${end}&grain="${grain}"`
     );
 
     return result.json();
@@ -62,7 +62,7 @@ export async function getPoolVolume(
   try {
     const result = await fetch(
       API_URL +
-        `/chart/pool/volume?pool=${pool}start=${start}&end=${end}&grain="${grain}"`
+        `/chart/pool/volume?pool="${pool}"&start=${start}&end=${end}&grain="${grain}"`
     );
 
     return result.json();
@@ -81,7 +81,7 @@ export async function getPoolLiquidity(
   try {
     const result = await fetch(
       API_URL +
-        `/chart/pool/liquidity?pool=${pool}start=${start}&end=${end}&grain="${grain}"`
+        `/chart/pool/liquidity?pool="${pool}"&start=${start}&end=${end}&grain="${grain}"`
     );
 
     return result.json();
@@ -100,7 +100,7 @@ export async function getPoolTXCount(
   try {
     const result = await fetch(
       API_URL +
-        `/chart/pool/tx-count?pool=${pool}start=${start}&end=${end}&grain="${grain}"`
+        `/chart/pool/tx-count?pool="${pool}"&start=${start}&end=${end}&grain="${grain}"`
     );
 
     return result.json();

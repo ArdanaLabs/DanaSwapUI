@@ -11,7 +11,7 @@ export default function Updater(): null {
   useEffect(() => {
     const fetchTotalStatsFromEndPoint = async () => {
       const totalStats: any = await getStats();
-      console.log(totalStats);
+      console.log("totalStats", totalStats);
 
       // dispatch(updateTotalStats(totalStats));
     };
@@ -20,7 +20,7 @@ export default function Updater(): null {
         "2021-03-03",
         "2021-03-06"
       );
-      console.log(providerProfits);
+      console.log("providerProfits", providerProfits);
 
       // dispatch(updateTotalStats(totalStats));
     };

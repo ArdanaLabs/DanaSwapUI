@@ -23,14 +23,14 @@ export default function Updater(): null {
         "2020-12-12T00:05:00.0Z",
         FiveMinutes
       );
-      console.log(aggVolume);
+      console.log("aggVolume", aggVolume);
 
       const aggLiquidity: any = await getAggLiquidity(
         "2020-12-12T00:00:00.0Z",
         "2020-12-14T00:00:00.0Z",
         OneDay
       );
-      console.log(aggLiquidity);
+      console.log("aggLiquidity", aggLiquidity);
 
       const poolFees: any = await getPoolFees(
         "foo",
@@ -38,7 +38,7 @@ export default function Updater(): null {
         "2021-01-12T00:00:00.0Z",
         OneWeek
       );
-      console.log(poolFees);
+      console.log("poolFees", poolFees);
 
       const poolVolume: any = await getPoolVolume(
         "foo",
@@ -46,7 +46,7 @@ export default function Updater(): null {
         "2021-01-12T00:00:00.0Z",
         OneWeek
       );
-      console.log(poolVolume);
+      console.log("poolVolume", poolVolume);
 
       const poolLiquidity: any = await getPoolLiquidity(
         "foo",
@@ -54,7 +54,7 @@ export default function Updater(): null {
         "2021-01-12T00:00:00.0Z",
         OneWeek
       );
-      console.log(poolLiquidity);
+      console.log("poolLiquidity", poolLiquidity);
 
       const poolTXCount: any = await getPoolTXCount(
         "foo",
@@ -62,7 +62,7 @@ export default function Updater(): null {
         "2021-01-12T00:00:00.0Z",
         OneWeek
       );
-      console.log(poolTXCount);
+      console.log("poolTXCount", poolTXCount);
     };
 
     fetchFromEndPoint();
