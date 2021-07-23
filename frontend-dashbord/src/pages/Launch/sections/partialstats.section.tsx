@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Container, Grid, Fade, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { useIsDarkMode } from "state/user/hooks";
@@ -16,8 +16,7 @@ const useStyles = makeStyles(({ palette }) => ({
     position: "fixed",
     width: "100vw",
     height: "100vh",
-    top: 0,
-    left: 0,
+    // top: "100vh",
 
     display: "flex",
     alignItems: "center",
@@ -57,16 +56,30 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 }));
 
-const PartialStatsSection: React.FC = () => {
+export interface PartialStatsSectionProps {
+  top?: string;
+  show?: boolean;
+}
+const PartialStatsSection: React.FC<PartialStatsSectionProps> = ({
+  top = "0vh",
+  show = false,
+}) => {
   const { breakpoints } = useTheme();
   const mobile = useMediaQuery(breakpoints.down("xs"));
   const dark = useIsDarkMode();
   const classes = useStyles({ dark, mobile });
 
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(-1);
+
+  useEffect(() => {
+    setTimeout(() => {
+      show && setActiveIndex(0);
+      !show && setActiveIndex(-1);
+    }, 1000);
+  }, [show]);
 
   return (
-    <Box className={cx(classes.root)}>
+    <Box className={cx(classes.root)} top={top}>
       <Container style={{ marginTop: "50px" }}>
         <Grid container>
           <Grid item xs={12} sm={6} md={4} className={cx(classes.carousel)}>
@@ -100,7 +113,9 @@ const PartialStatsSection: React.FC = () => {
               </Fade>
               <Fade
                 in={activeIndex === 0}
-                style={{ transitionDelay: activeIndex === 0 ? "500ms" : "0ms" }}
+                style={{
+                  transitionDelay: activeIndex === 0 ? "500ms" : "0ms",
+                }}
               >
                 <Grid item xs={4}>
                   <StatBox
@@ -128,7 +143,7 @@ const PartialStatsSection: React.FC = () => {
               </Fade>
             </Grid>
           )}
-          
+
           {/* DANASWAP */}
           {activeIndex === 1 && (
             <Grid
@@ -152,7 +167,9 @@ const PartialStatsSection: React.FC = () => {
               </Fade>
               <Fade
                 in={activeIndex === 1}
-                style={{ transitionDelay: activeIndex === 1 ? "500ms" : "0ms" }}
+                style={{
+                  transitionDelay: activeIndex === 1 ? "500ms" : "0ms",
+                }}
               >
                 <Grid item xs={4}>
                   <StatBox
@@ -180,7 +197,7 @@ const PartialStatsSection: React.FC = () => {
               </Fade>
             </Grid>
           )}
-          
+
           {/* MY DASHBOARD */}
           {activeIndex === 2 && (
             <Grid
@@ -204,7 +221,9 @@ const PartialStatsSection: React.FC = () => {
               </Fade>
               <Fade
                 in={activeIndex === 2}
-                style={{ transitionDelay: activeIndex === 2 ? "500ms" : "0ms" }}
+                style={{
+                  transitionDelay: activeIndex === 2 ? "500ms" : "0ms",
+                }}
               >
                 <Grid item xs={4}>
                   <StatBox

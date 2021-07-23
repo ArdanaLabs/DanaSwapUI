@@ -42,7 +42,7 @@ const useStyles = makeStyles(({ palette }) => ({
   root: {
     background: `url(${IMG_bg})`,
     minHeight: "100vh",
-    position: "relative",
+    position: "fixed",
     height: "100vh",
     "& video": {
       objectFit: "cover",
@@ -50,7 +50,7 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 
   container: {
-    position: "fixed",
+    position: "absolute",
     top: 0,
     left: 0,
     width: "100vw",
@@ -107,17 +107,21 @@ const useStyles = makeStyles(({ palette }) => ({
 }));
 
 export interface TotalStatsSectionProps {
+  top?: string;
   show?: boolean;
 }
 
-const TotalStatsSection: React.FC<TotalStatsSectionProps> = ({ show }) => {
+const TotalStatsSection: React.FC<TotalStatsSectionProps> = ({
+  top = "0vh",
+  show = false,
+}) => {
   const { breakpoints } = useTheme();
   const mobile = useMediaQuery(breakpoints.down("xs"));
   const dark = useIsDarkMode();
   const classes = useStyles({ dark, mobile });
 
   return (
-    <Box className={cx(classes.root)}>
+    <Box className={cx(classes.root)} top={top}>
       <ReactPlayer
         url={heroVideo}
         playing
@@ -128,31 +132,33 @@ const TotalStatsSection: React.FC<TotalStatsSectionProps> = ({ show }) => {
         playbackRate={0.5}
       />
       <Box className={cx(classes.container)}>
-        <Container>
-          <ScrollAnimation animateIn="flipInY" animateOut="flipOutY">
-            {/* <Fade in={show}> */}
-            <Box className={cx(classes.title)}>
-              ALL YOUR RESOURCES,
-              <br />
-              <span>IN ONE PLACE.</span>
-            </Box>
-            {/* </Fade> */}
-          </ScrollAnimation>
+        {show && (
+          <Container>
+            <ScrollAnimation animateIn="flipInY" animateOut="flipOutY">
+              {/* <Fade in={show}> */}
+              <Box className={cx(classes.title)}>
+                ALL YOUR RESOURCES,
+                <br />
+                <span>IN ONE PLACE.</span>
+              </Box>
+              {/* </Fade> */}
+            </ScrollAnimation>
 
-          <Grid container spacing={1} className={cx(classes.statGroup)}>
-            {statInfo.map((stat: any, i: number) => (
-              <Grid item xs={6} sm={4} md={2} key={i}>
-                <ScrollAnimation animateIn="flipInY" animateOut="flipOutY">
-                  <Box className={cx(classes.StatBox)}>
-                    {stat.content}
-                    <br />
-                    <span>{stat.label}</span>
-                  </Box>
-                </ScrollAnimation>
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
+            <Grid container spacing={1} className={cx(classes.statGroup)}>
+              {statInfo.map((stat: any, i: number) => (
+                <Grid item xs={6} sm={4} md={2} key={i}>
+                  <ScrollAnimation animateIn="flipInY" animateOut="flipOutY">
+                    <Box className={cx(classes.StatBox)}>
+                      {stat.content}
+                      <br />
+                      <span>{stat.label}</span>
+                    </Box>
+                  </ScrollAnimation>
+                </Grid>
+              ))}
+            </Grid>
+          </Container>
+        )}
       </Box>
     </Box>
   );
