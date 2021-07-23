@@ -35,8 +35,6 @@ const Launch: React.FC = () => {
 
   const [curSection, setCurSection] = useState(0);
 
-  const [y, setY] = useState(window.scrollY);
-
   const updateNav = (newNav: number) => {
     setNav(newNav);
   };
@@ -53,17 +51,9 @@ const Launch: React.FC = () => {
   };
 
   useEffect(() => {
-    setY(window.scrollY);
-  }, []);
-
-  useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      // return a cleanup function to unregister our function since its gonna run multiple times
-      window.removeEventListener("scroll", handleScroll);
-    };
     // eslint-disable-next-line
-  }, [y]);
+  }, []);
 
   return (
     <Box className={cx(classes.root)}>

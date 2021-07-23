@@ -75,7 +75,7 @@ const PartialStatsSection: React.FC<PartialStatsSectionProps> = ({
     setTimeout(() => {
       show && setActiveIndex(0);
       !show && setActiveIndex(-1);
-    }, 1000);
+    }, 300);
   }, [show]);
 
   return (
@@ -83,11 +83,15 @@ const PartialStatsSection: React.FC<PartialStatsSectionProps> = ({
       <Container style={{ marginTop: "50px" }}>
         <Grid container>
           <Grid item xs={12} sm={6} md={4} className={cx(classes.carousel)}>
-            <VerticalCarousel
-              activeIndex={activeIndex}
-              setActiveIndex={setActiveIndex}
-              data={["DANASWAP", `ARDANA\nSTABLECOINS`, "MY DASHBOARD"]}
-            />
+            <Fade in={activeIndex > -1}>
+              <Box>
+                <VerticalCarousel
+                  activeIndex={activeIndex}
+                  setActiveIndex={setActiveIndex}
+                  data={["DANASWAP", `ARDANA\nSTABLECOINS`, "MY DASHBOARD"]}
+                />
+              </Box>
+            </Fade>
           </Grid>
 
           {/* DANASWAP */}
