@@ -45,13 +45,13 @@ const Launch: React.FC = () => {
   };
 
   const handleScroll = (event: any) => {
-    console.log(event);
-    curSection === 0 && setCurSection(1);
-    curSection === 1 && setCurSection(0);
+    let direction: boolean = event.deltaY > 0;
+    direction && setCurSection(1);
+    !direction && setCurSection(0);
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("wheel", (e) => handleScroll(e));
     // eslint-disable-next-line
   }, []);
 
