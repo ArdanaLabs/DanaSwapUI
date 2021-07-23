@@ -33,13 +33,15 @@ const Launch: React.FC = () => {
 
   const [nav, setNav] = useState(1);
 
+  const [curSection, setCurSection] = useState(0);
+
   const updateNav = (newNav: number) => {
     setNav(newNav);
   };
 
   const handleScrollDown = () => {
     setTimeout(() => {
-      setNav(0);
+      setCurSection(1);
     }, 1000);
   };
 
@@ -47,8 +49,8 @@ const Launch: React.FC = () => {
     <Box className={cx(classes.root)}>
       <LaunchHeader nav={nav} updateNav={updateNav} />
 
-      {nav === 0 && <LaunchPartialStats />}
-      {nav === 1 && <LaunchTotalStats />}
+      {curSection === 0 && <LaunchTotalStats />}
+      {curSection === 1 && <LaunchPartialStats />}
 
       <Box className={cx(classes.scroll)} onClick={handleScrollDown}>
         <img src={IMG_ScrollDown} alt="scroll down" />

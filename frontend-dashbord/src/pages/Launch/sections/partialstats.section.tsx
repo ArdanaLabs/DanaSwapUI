@@ -1,5 +1,5 @@
-import React from "react";
-import { Box, Container, Grid, useMediaQuery } from "@material-ui/core";
+import React, { useState } from "react";
+import { Box, Container, Grid, Fade, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { useIsDarkMode } from "state/user/hooks";
 import cx from "classnames";
@@ -57,126 +57,181 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 }));
 
-const slides = [
-    {
-      "introline": "dogs",
-      "id": "dogs",
-      "content": {
-        "image": "https://via.placeholder.com/400x200?text=Dogs",
-        "copy": "Dog ipsum dolor sit amet, consectetur adipiscing elit. Morbi accumsan est ornare, ultricies erat a, dapibus lectus."
-      }
-    },
-    {
-      "introline": "elephants",
-      "id": "elephants",
-      "content": {
-        "image": "https://via.placeholder.com/400x200?text=Elephants",
-        "copy": "Elephant ipsum dolor sit amet, consectetur adipiscing elit. Morbi accumsan est ornare, ultricies erat a, dapibus lectus."
-      }
-    },
-    {
-      "introline": "bears",
-      "id": "bears",
-      "content": {
-        "image": "https://via.placeholder.com/400x200?text=Bears",
-        "copy": "Bears ipsum dolor sit amet, consectetur adipiscing elit. Morbi accumsan est ornare, ultricies erat a, dapibus lectus."
-      }
-    },
-    {
-      "introline": "lizards",
-      "id": "lizards",
-      "content": {
-        "image": "https://via.placeholder.com/400x200?text=Lizards",
-        "copy": "Lizards ipsum dolor sit amet, consectetur adipiscing elit. Morbi accumsan est ornare, ultricies erat a, dapibus lectus."
-      }
-    },
-    {
-      "introline": "snakes",
-      "id": "snakes",
-      "content": {
-        "image": "https://via.placeholder.com/400x200?text=Snakes",
-        "copy": "Snakes ipsum dolor sit amet, consectetur adipiscing elit. Morbi accumsan est ornare, ultricies erat a, dapibus lectus."
-      }
-    },
-    {
-      "introline": "cats",
-      "id": "cats",
-      "content": {
-        "image": "https://via.placeholder.com/400x200?text=Cats",
-        "copy": "Cats ipsum dolor sit amet, consectetur adipiscing elit. Morbi accumsan est ornare, ultricies erat a, dapibus lectus."
-      }
-    },
-    {
-      "introline": "giraffes",
-      "id": "giraffes",
-      "content": {
-        "image": "https://via.placeholder.com/400x200?text=Giraffes",
-        "copy": "Giraffes ipsum dolor sit amet, consectetur adipiscing elit. Morbi accumsan est ornare, ultricies erat a, dapibus lectus."
-      }
-    },
-    {
-      "introline": "owls",
-      "id": "owls",
-      "content": {
-        "image": "https://via.placeholder.com/400x200?text=Owls",
-        "copy": "Owls ipsum dolor sit amet, consectetur adipiscing elit. Morbi accumsan est ornare, ultricies erat a, dapibus lectus."
-      }
-    },
-    {
-      "introline": "horses",
-      "id": "horses",
-      "content": {
-        "image": "https://via.placeholder.com/400x200?text=horses",
-        "copy": "Horses ipsum dolor sit amet, consectetur adipiscing elit. Morbi accumsan est ornare, ultricies erat a, dapibus lectus."
-      }
-    }
-  ]
-
 const PartialStatsSection: React.FC = () => {
   const { breakpoints } = useTheme();
   const mobile = useMediaQuery(breakpoints.down("xs"));
   const dark = useIsDarkMode();
   const classes = useStyles({ dark, mobile });
 
+  const [activeIndex, setActiveIndex] = useState(0);
+
   return (
     <Box className={cx(classes.root)}>
-      <Container style={{marginTop: "50px"}}>
+      <Container style={{ marginTop: "50px" }}>
         <Grid container>
           <Grid item xs={12} sm={6} md={4} className={cx(classes.carousel)}>
-            <VerticalCarousel data={["DANASWAP",`ARDANA\nSTABLECOINS`,"MY DASHBOARD"]}/>
-            {/* <Box className={cx(classes.inactive)}>
-              DANASWAP
-            </Box>
-            <Box className={cx(classes.active)}>
-              ARDANA<br />STABLECOINS
-            </Box>
-            <Box className={cx(classes.inactive)}>
-              MY DASHBOARD
-            </Box> */}
+            <VerticalCarousel
+              activeIndex={activeIndex}
+              setActiveIndex={setActiveIndex}
+              data={["DANASWAP", `ARDANA\nSTABLECOINS`, "MY DASHBOARD"]}
+            />
           </Grid>
-          <Grid container item xs={12} sm={6} md={8} spacing={3} alignContent="flex-end">
-            <Grid item xs={4}>
-              <StatBox
-                image={IMG_TVL}
-                title="TOTAL VALUE LOCKED"
-                content="$1,234,567"
-              />
+
+          {/* DANASWAP */}
+          {activeIndex === 0 && (
+            <Grid
+              container
+              item
+              xs={12}
+              sm={6}
+              md={8}
+              spacing={3}
+              alignContent="flex-end"
+            >
+              <Fade in={activeIndex === 0}>
+                <Grid item xs={4}>
+                  <StatBox
+                    image={IMG_TVL}
+                    title="TOTAL VALUE LOCKED"
+                    content="$1,234,567"
+                    delay={0}
+                  />
+                </Grid>
+              </Fade>
+              <Fade
+                in={activeIndex === 0}
+                style={{ transitionDelay: activeIndex === 0 ? "500ms" : "0ms" }}
+              >
+                <Grid item xs={4}>
+                  <StatBox
+                    image={IMG_Worth}
+                    title={`WORTH OF STABLECOINS\nIN CIRCULATION`}
+                    content="$998,654"
+                    delay={500}
+                  />
+                </Grid>
+              </Fade>
+              <Fade
+                in={activeIndex === 0}
+                style={{
+                  transitionDelay: activeIndex === 0 ? "1000ms" : "0ms",
+                }}
+              >
+                <Grid item xs={4}>
+                  <StatBox
+                    image={IMG_Ratio}
+                    title="TOTAL COLLATERAL-TO-LOAN RATIO"
+                    content="1:1"
+                    delay={1000}
+                  />
+                </Grid>
+              </Fade>
             </Grid>
-            <Grid item xs={4}>
-              <StatBox
-                image={IMG_Worth}
-                title={`WORTH OF STABLECOINS\nIN CIRCULATION`}
-                content="$998,654"
-              />
+          )}
+          
+          {/* DANASWAP */}
+          {activeIndex === 1 && (
+            <Grid
+              container
+              item
+              xs={12}
+              sm={6}
+              md={8}
+              spacing={3}
+              alignContent="flex-end"
+            >
+              <Fade in={activeIndex === 1}>
+                <Grid item xs={4}>
+                  <StatBox
+                    image={IMG_TVL}
+                    title="TOTAL VALUE LOCKED"
+                    content="$1,234,567"
+                    delay={0}
+                  />
+                </Grid>
+              </Fade>
+              <Fade
+                in={activeIndex === 1}
+                style={{ transitionDelay: activeIndex === 1 ? "500ms" : "0ms" }}
+              >
+                <Grid item xs={4}>
+                  <StatBox
+                    image={IMG_Worth}
+                    title={`WORTH OF STABLECOINS\nIN CIRCULATION`}
+                    content="$998,654"
+                    delay={500}
+                  />
+                </Grid>
+              </Fade>
+              <Fade
+                in={activeIndex === 1}
+                style={{
+                  transitionDelay: activeIndex === 1 ? "1000ms" : "0ms",
+                }}
+              >
+                <Grid item xs={4}>
+                  <StatBox
+                    image={IMG_Ratio}
+                    title="TOTAL COLLATERAL-TO-LOAN RATIO"
+                    content="1:1"
+                    delay={1000}
+                  />
+                </Grid>
+              </Fade>
             </Grid>
-            <Grid item xs={4}>
-              <StatBox
-                image={IMG_Ratio}
-                title="TOTAL COLLATERAL-TO-LOAN RATIO"
-                content="1:1"
-              />
+          )}
+          
+          {/* MY DASHBOARD */}
+          {activeIndex === 2 && (
+            <Grid
+              container
+              item
+              xs={12}
+              sm={6}
+              md={8}
+              spacing={3}
+              alignContent="flex-end"
+            >
+              <Fade in={activeIndex === 2}>
+                <Grid item xs={4}>
+                  <StatBox
+                    image={IMG_TVL}
+                    title="TOTAL VALUE LOCKED"
+                    content="$1,234,567"
+                    delay={0}
+                  />
+                </Grid>
+              </Fade>
+              <Fade
+                in={activeIndex === 2}
+                style={{ transitionDelay: activeIndex === 2 ? "500ms" : "0ms" }}
+              >
+                <Grid item xs={4}>
+                  <StatBox
+                    image={IMG_Worth}
+                    title={`WORTH OF STABLECOINS\nIN CIRCULATION`}
+                    content="$998,654"
+                    delay={500}
+                  />
+                </Grid>
+              </Fade>
+              <Fade
+                in={activeIndex === 2}
+                style={{
+                  transitionDelay: activeIndex === 2 ? "1000ms" : "0ms",
+                }}
+              >
+                <Grid item xs={4}>
+                  <StatBox
+                    image={IMG_Ratio}
+                    title="TOTAL COLLATERAL-TO-LOAN RATIO"
+                    content="1:1"
+                    delay={1000}
+                  />
+                </Grid>
+              </Fade>
             </Grid>
-          </Grid>
+          )}
         </Grid>
       </Container>
     </Box>

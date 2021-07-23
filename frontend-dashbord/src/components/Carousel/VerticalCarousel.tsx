@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import cx from "classnames";
 import { makeStyles, useMediaQuery, useTheme } from "@material-ui/core";
 import { useIsDarkMode } from "state/user/hooks";
@@ -30,6 +30,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontSize: "32px",
     color: "white",
     textAlign: "left",
+    cursor: "pointer",
   },
 
   visible: {
@@ -58,15 +59,21 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
 export interface VerticalCarouselProps {
   data: any[];
+  activeIndex: number;
+  setActiveIndex: any;
 }
 
-const VerticalCarousel: React.FC<VerticalCarouselProps> = ({ data }) => {
+const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
+  data,
+  activeIndex,
+  setActiveIndex,
+}) => {
   const { breakpoints } = useTheme();
   const dark = useIsDarkMode();
   const mobile = useMediaQuery(breakpoints.down("xs"));
   const classes = useStyles({ dark, mobile });
-  
-  const [activeIndex, setActiveIndex] = useState(0);
+
+  // const [activeIndex, setActiveIndex] = useState(0);
 
   // Used to determine which items appear above the active item
   const halfwayIndex = Math.ceil(data.length / 2);
@@ -114,10 +121,11 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({ data }) => {
           type="button"
           onClick={() => setActiveIndex(i)}
           className={cx(classes.carouselItem, {
-            active: activeIndex === i,
-            visible: Math.abs(determinePlacement(i)) <= visibleStyleThreshold,
-            before: determinePlacement(i) === -1 * itemHeight,
-            after: determinePlacement(i) === 1 * itemHeight,
+            [classes.active]: activeIndex === i,
+            [classes.visible]:
+              Math.abs(determinePlacement(i)) <= visibleStyleThreshold,
+            [classes.before]: determinePlacement(i) === -1 * itemHeight,
+            [classes.after]: determinePlacement(i) === 1 * itemHeight,
           })}
           key={i}
           style={{

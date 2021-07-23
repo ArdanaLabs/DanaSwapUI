@@ -62,6 +62,7 @@ export interface StatBoxProps {
   title?: string;
   content?: string;
   custom_style?: object;
+  delay?: number;
 }
 
 const StatBox: React.FC<StatBoxProps> = ({
@@ -69,6 +70,7 @@ const StatBox: React.FC<StatBoxProps> = ({
   title,
   content,
   custom_style,
+  delay = 0
 }) => {
   const { breakpoints } = useTheme();
   const dark = useIsDarkMode();
@@ -77,13 +79,14 @@ const StatBox: React.FC<StatBoxProps> = ({
 
   return (
     <ScrollAnimation
+      delay={delay}
       animateIn="flipInY"
       animateOut="flipOutY"
       className={cx(classes.bg)}
       style={custom_style}
     >
       <Box top="-70px" position="absolute">
-        <img width="70px" src={image} alt="title" />
+        <img height="130px" src={image} alt="title" />
       </Box>
 
       <Box mt="50px" />
