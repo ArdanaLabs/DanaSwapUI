@@ -13,7 +13,7 @@ import { useIsDarkMode } from "state/user/hooks";
 import { darkTheme, lightTheme } from "./theme";
 import store from "./state";
 
-import { Home, Swap, Pools, DANA, Launch } from "./pages";
+import { Home, Swap, Pools, DANA, Launch, SpecPool } from "./pages";
 import Layout from "layouts/Layout";
 
 import HomeUpdater from "./state/home/updater";
@@ -102,6 +102,12 @@ const App: React.FC = () => {
         <Route exact path="/dana">
           <Layout>
             <DANA />
+          </Layout>
+        </Route>
+        
+        <Route exact path="/spec">
+          <Layout>
+            <SpecPool />
           </Layout>
         </Route>
 

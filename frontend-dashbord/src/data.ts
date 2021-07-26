@@ -144,28 +144,20 @@ export const navList = [
     link: "/home",
   },
   {
-    label: "SWAP",
-    link: "/swap",
-  },
-  {
     label: "POOLS",
     link: "/pools",
   },
   {
-    label: "DANA",
+    label: "SWAP",
+    link: "/swap",
+  },
+  {
+    label: "USE DANA",
     link: "/dana",
   },
   {
-    label: "DAO",
-    link: "/dao",
-  },
-  {
-    label: "STATS",
-    link: "/stats",
-  },
-  {
-    label: "RESOURCES",
-    link: "/resources",
+    label: "ANALYTICS",
+    link: "/analytics",
   },
   {
     label: "INFO",
