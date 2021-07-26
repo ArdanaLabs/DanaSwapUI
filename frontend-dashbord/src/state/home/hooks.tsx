@@ -30,14 +30,3 @@ export async function getStats() {
     return null;
   }
 }
-
-export async function getProviderProfits(start: string, end: string) {
-  try {
-    const result = await fetch(API_URL + `/averageLiquidityProviderProfit?start=${start}&end=${end}`);
-
-    return result.json();
-  } catch(e) {
-    console.log('error fetching', e);
-    return null;
-  }
-}
