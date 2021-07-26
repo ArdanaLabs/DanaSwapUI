@@ -7,9 +7,6 @@ import { ApexOptions } from 'apexcharts'
 
 import { useIsDarkMode } from 'state/user/hooks'
 
-import IMG_coin1 from 'assets/coins/aBTC.png'
-import IMG_coin2 from 'assets/coins/bBTC.png'
-
 const useStyles = makeStyles(({ palette }) => ({
   root: {},
   panelbg: {
@@ -203,13 +200,16 @@ const StatsSection: React.FC = () => {
             <Box mt={'50px'} />
 
             {lockedTokenList &&
-              lockedTokenList.map((token: any, i: number) => (
-                <Box className={cx(classes.token)} key={i}>
-                  <img src={IMG_coin2} alt='token' />
-                  <span>{token.name}</span>
-                  <span>{token.amount}</span>
-                </Box>
-              ))}
+              lockedTokenList.map((token: any, i: number) => {
+                const icon = require(`assets/coins/${token.name}.png`).default
+                return (
+                  <Box className={cx(classes.token)} key={i}>
+                    <img src={icon} alt='token' />
+                    <span>{token.name}</span>
+                    <span>{token.amount}</span>
+                  </Box>
+                )
+              })}
           </Box>
           {/* <Box display='flex' flexDirection='column' justifyContent='flex-end'> */}
           <Box className={cx(classes.statsBox)}>
