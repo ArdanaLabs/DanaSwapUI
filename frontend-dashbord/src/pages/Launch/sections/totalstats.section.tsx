@@ -135,14 +135,12 @@ const TotalStatsSection: React.FC<TotalStatsSectionProps> = ({
       <Box className={cx(classes.container)}>
         {show && (
           <Container>
-            <ScrollAnimation animateIn="flipInY" animateOut="flipOutY">
-              {/* <Fade in={show}> */}
+            <ScrollAnimation animateIn="fadeInUp">
               <Box className={cx(classes.title)}>
                 ALL YOUR RESOURCES,
                 <br />
                 <span>IN ONE PLACE.</span>
               </Box>
-              {/* </Fade> */}
             </ScrollAnimation>
 
             <Grid container spacing={1} className={cx(classes.statGroup)}>
