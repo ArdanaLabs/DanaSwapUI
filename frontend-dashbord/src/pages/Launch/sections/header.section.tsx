@@ -50,7 +50,8 @@ const useStyles = makeStyles(({ palette }) => ({
     border: "unset",
     background: "linear-gradient(90deg, #5F72FF 0%, #73D6F1 100%)",
     "&:hover": {
-      background: "linear-gradient(90deg, #5F72FF 0%, #73D6F1 100%)",
+      background: "white",
+      color: "#000633",
     },
   },
 }));
