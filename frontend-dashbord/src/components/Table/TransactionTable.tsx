@@ -26,7 +26,7 @@ const StyledTableCellHead = withStyles(({ palette }) => ({
   head: {
     fontFamily: 'Museo Sans',
     fontStyle: 'normal',
-    fontWeight: 700,
+    fontWeight: 500,
     fontSize: '13px',
     lineHeight: '300%',
     textAlign: 'right',
@@ -36,10 +36,10 @@ const StyledTableCellHead = withStyles(({ palette }) => ({
   body: {
     fontFamily: 'Museo Sans',
     fontStyle: 'normal',
-    fontWeight: 700,
+    fontWeight: 500,
     fontSize: '13px',
     lineHeight: '115%',
-    textAlign: 'right',
+    textAlign: 'left',
     cursor: 'pointer',
     color: palette.text.hint
   }
@@ -52,7 +52,7 @@ const StyledTableCell = withStyles(({ palette }) => ({
   body: {
     fontFamily: 'Museo Sans',
     fontStyle: 'normal',
-    fontWeight: 700,
+    fontWeight: 900,
     fontSize: '12px',
     lineHeight: '115%',
     textAlign: 'right',
