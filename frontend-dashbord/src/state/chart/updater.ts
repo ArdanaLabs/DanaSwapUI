@@ -9,6 +9,8 @@ import {
   updatePoolVolume,
   updatePoolLiquidity,
   updatePoolTxCount,
+  updatePoolAPY,
+  updatePoolTransactions
 } from "./actions";
 import {
   getAggVolume,
@@ -17,8 +19,11 @@ import {
   getPoolVolume,
   getPoolLiquidity,
   getPoolTXCount,
+  getPoolAPY,
+  getPoolTransactions,
 } from "./hooks";
 import { FiveMinutes, OneDay, OneWeek } from "config/grains";
+import { Any } from "config/txTypes";
 
 export default function Updater(): null {
   const dispatch = useDispatch<AppDispatch>();
@@ -31,6 +36,7 @@ export default function Updater(): null {
         FiveMinutes
       );
       console.log("aggVolume", aggVolume);
+      if (!aggVolume) return;
       const params = aggVolume.map((volume: any) => {
         return {
           start: volume[0][0],
@@ -50,6 +56,7 @@ export default function Updater(): null {
         OneDay
       );
       console.log("aggLiquidity", aggLiquidity);
+      if (!aggLiquidity) return;
       const params = aggLiquidity.map((volume: any) => {
         return {
           start: volume[0][0],
@@ -67,6 +74,7 @@ export default function Updater(): null {
         OneWeek
       );
       console.log("poolFees", poolFees);
+      if (!poolFees) return;
       const params = poolFees.map((volume: any) => {
         return {
           start: volume[0][0],
@@ -84,6 +92,7 @@ export default function Updater(): null {
         OneWeek
       );
       console.log("poolVolume", poolVolume);
+      if (!poolVolume) return;
       const params = poolVolume.map((volume: any) => {
         return {
           start: volume[0][0],
@@ -104,7 +113,7 @@ export default function Updater(): null {
         OneWeek
       );
       console.log("poolLiquidity", poolLiquidity);
-
+      if (!poolLiquidity) return;
       const params = poolLiquidity.map((volume: any) => {
         return {
           start: volume[0][0],
@@ -122,6 +131,7 @@ export default function Updater(): null {
         OneWeek
       );
       console.log("poolTXCount", poolTXCount);
+      if (!poolTXCount) return;
       const params = poolTXCount.map((volume: any) => {
         return {
           start: volume[0][0],
@@ -134,6 +144,34 @@ export default function Updater(): null {
       });
       dispatch(updatePoolTxCount(params));
     };
+    const fetchPoolAPY = async () => {
+      const poolAPY: any = await getPoolAPY(
+        "foo",
+        "2020-12-12T00:00:00.0Z",
+        "2021-01-12T00:00:00.0Z",
+        OneWeek
+      );
+      console.log("poolAPY", poolAPY);
+      if (!poolAPY) return;
+      const params = poolAPY.map((volume: any) => {
+        return {
+          start: volume[0][0],
+          end: volume[0][1],
+          value: volume[1],
+        }
+      });
+      dispatch(updatePoolAPY(params));
+    };
+    const fetchPoolTransactions = async () => {
+      const poolTransactions: any = await getPoolTransactions(
+        "foo",
+        0,
+        10,
+        Any
+      );
+      console.log("poolTransactions", poolTransactions);
+      poolTransactions && dispatch(updatePoolTransactions(poolTransactions));
+    };
 
     fetchAggVolume();
     fetchAggLiquidity();
@@ -141,6 +179,8 @@ export default function Updater(): null {
     fetchPoolVolume();
     fetchPoolLiquidity();
     fetchPoolTxCount();
+    fetchPoolAPY();
+    fetchPoolTransactions();
     return () => {};
   }, [dispatch]);
 

@@ -38,6 +38,18 @@ export function usePoolTxCount () {
   )
   return poolTxCount
 }
+export function usePoolAPY () {
+  const { poolAPY } = useSelector<AppState, AppState['chart']>(
+    state => state.chart
+  )
+  return poolAPY
+}
+export function usePoolTransactions () {
+  const { poolTransactions } = useSelector<AppState, AppState['chart']>(
+    state => state.chart
+  )
+  return poolTransactions
+}
 
 export async function getAggVolume (start: string, end: string, grain: string) {
   try {
@@ -138,6 +150,44 @@ export async function getPoolTXCount (
     const result = await fetch(
       API_URL +
         `/chart/pool/tx-count?pool="${pool}"&start=${start}&end=${end}&grain="${grain}"`
+    )
+
+    return result.json()
+  } catch (e) {
+    console.log('error fetching', e)
+    return null
+  }
+}
+
+export async function getPoolAPY (
+  pool: string,
+  start: string,
+  end: string,
+  grain: string
+) {
+  try {
+    const result = await fetch(
+      API_URL +
+        `/chart/pool/apy?pool="${pool}"&start=${start}&end=${end}&grain="${grain}"`
+    )
+
+    return result.json()
+  } catch (e) {
+    console.log('error fetching', e)
+    return null
+  }
+}
+
+export async function getPoolTransactions (
+  pool: string,
+  start: number,
+  end: number,
+  type: string
+) {
+  try {
+    const result = await fetch(
+      API_URL +
+        `/chart/pool/transactions?pool="${pool}"&start=${start}&end=${end}&type="${type}"`
     )
 
     return result.json()

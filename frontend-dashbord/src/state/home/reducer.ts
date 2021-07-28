@@ -4,9 +4,10 @@ import { TotalStat, updateTotalStats } from "./actions";
 
 export const initialState: TotalStat = {
   totalDepositsAllPoolsUSD: 0,
-  totalDailyVolumeUSD: 0,
+  totalDailyVolumeUSD: null,
   totalDailyTxCount: 0,
   totalDailyFeeVolumeUSD: 0,
+  totalLiquidityUtilization: 0,
   poolStats: null,
 };
 
@@ -17,6 +18,7 @@ export default createReducer(initialState, (builder) =>
       totalDailyVolumeUSD,
       totalDailyTxCount,
       totalDailyFeeVolumeUSD,
+      totalLiquidityUtilization,
       poolStats,
     } = action.payload;
 
@@ -24,6 +26,7 @@ export default createReducer(initialState, (builder) =>
     state.totalDailyVolumeUSD = totalDailyVolumeUSD;
     state.totalDailyTxCount = totalDailyTxCount;
     state.totalDailyFeeVolumeUSD = totalDailyFeeVolumeUSD;
+    state.totalLiquidityUtilization = totalLiquidityUtilization;
 
     state.poolStats = poolStats;
   })

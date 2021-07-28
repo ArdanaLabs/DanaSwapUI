@@ -7,7 +7,12 @@ export interface PoolStat {
     recentMonthlyAPYPercent: number | null; // (unit: %)
     recentAnnualAPYPercent: number | null; // (unit: %)
     totalAPYPercent: number | null; // (unit: %)
-    recentDailyVolumeUSD: number | null; // (unit: USD)
+    recentDailyVolumeUSD: {
+      addLiquidity: number | null;
+      removeLiquidity: number | null;
+      total: number | null;
+      trade: number | null;
+    };
 
     reserves: {
       [currencyName: string]: number | null;
@@ -17,17 +22,26 @@ export interface PoolStat {
     adminFeePercent: number | null; // (unit: %)
     virtualPriceUSD: number | null; // (unit: USD)
     liquidityUtilization: number | null; // (unit: USD (volume) / USD (liquidity))
+    amplificationCoefficient: number | null;
     dailyTxCount: number | null;
     dailyFeeVolumeUSD: number | null;
     navUSD: number | null;
   };
 }
 
+export interface VolumeUSD {
+  addLiquidity: number | null;
+  removeLiquidity: number | null;
+  total: number | null;
+  trade: number | null;
+}
+
 export interface TotalStat {
   totalDailyTxCount: number | null;
   totalDailyFeeVolumeUSD: number| null;
-  totalDailyVolumeUSD: number | null; // (unit: USD)
+  totalDailyVolumeUSD: VolumeUSD | null; // (unit: USD)
   totalDepositsAllPoolsUSD: number | null;
+  totalLiquidityUtilization: number | null;
   poolStats: PoolStat | null;
 }
 

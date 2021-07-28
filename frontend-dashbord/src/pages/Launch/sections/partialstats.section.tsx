@@ -144,7 +144,7 @@ const PartialStatsSection: React.FC<PartialStatsSectionProps> = ({
                   <StatBox
                     image={IMG_Ratio}
                     title="24HR TRADE VOLUME"
-                    content={nFormatter(totalDailyVolumeUSD, 2)}
+                    content={nFormatter((totalDailyVolumeUSD ? totalDailyVolumeUSD.trade : 0), 2)}
                     delay={1000}
                   />
                 </Grid>

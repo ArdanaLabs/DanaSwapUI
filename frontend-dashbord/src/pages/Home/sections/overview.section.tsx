@@ -22,7 +22,7 @@ const OverViewSection: React.FC = () => {
   const mobile = useMediaQuery(breakpoints.down("xs"));
   const classes = useStyles({ dark, mobile });
 
-  const { totalDepositsAllPoolsUSD, totalDailyVolumeUSD, totalDailyFeeVolumeUSD } = useTotalStats();
+  const { totalDepositsAllPoolsUSD, totalDailyVolumeUSD, totalDailyFeeVolumeUSD, totalLiquidityUtilization } = useTotalStats();
   
   return (
     <Box className={cx(classes.self)}>
@@ -35,10 +35,10 @@ const OverViewSection: React.FC = () => {
             <OverViewBox label={"TOTAL LIQUIDITY\n\n"} content={nFormatter(totalDepositsAllPoolsUSD, 2)} />
           </Grid>
           <Grid item xs={6} sm={3}>
-            <OverViewBox label={"LIQUIDITY UTILIZATION"} content={(totalDailyVolumeUSD && totalDepositsAllPoolsUSD) ? ((100 * (totalDailyVolumeUSD / totalDepositsAllPoolsUSD)).toFixed(2) + "%") : "0%"} />
+            <OverViewBox label={"LIQUIDITY UTILIZATION"} content={totalLiquidityUtilization} />
           </Grid>
           <Grid item xs={6} sm={3}>
-            <OverViewBox label={"24H VOLUME\n\n"} content={nFormatter(totalDailyVolumeUSD, 2)} />
+            <OverViewBox label={"24H VOLUME\n\n"} content={nFormatter((totalDailyVolumeUSD ? totalDailyVolumeUSD.trade : 0), 2)} />
           </Grid>
         </Grid>
         <Grid container item sm={12} md={6}>
