@@ -34,7 +34,7 @@ const useStyles = makeStyles(({ palette }) => ({
     right: 10,
   },
   display: {
-    padding: "10px 0px 10px 30px",
+    padding: "12px 0px 10px 30px",
 
     "& p:first-child": {
       fontWeight: 300,
@@ -42,6 +42,7 @@ const useStyles = makeStyles(({ palette }) => ({
       fontSize: "11px",
       lineHeight: "13px",
       color: palette.text.hint,
+      whiteSpace: "pre-line",
     },
     "& p:last-child": {
       fontWeight: 700,
