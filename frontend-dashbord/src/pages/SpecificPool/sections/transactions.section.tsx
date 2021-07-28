@@ -4,13 +4,21 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
 
 import { useIsDarkMode } from "state/user/hooks";
-import PoolsPanel from "components/Table";
+import { TransactionTable } from "components";
 
 const useStyles = makeStyles(({ palette }) => ({
   self: {},
+  label: {
+    fontFamily: 'Brandon Grotesque',
+    fontStyle: 'normal',
+    fontWeight: 900,
+    fontSize: '18px',
+    lineHeight: '110%',
+    color: palette.secondary.main,
+  }
 }));
 
-const PoolsSection: React.FC = () => {
+const TransactionsSection: React.FC = () => {
   const { breakpoints } = useTheme();
   const dark = useIsDarkMode();
   const mobile = useMediaQuery(breakpoints.down("xs"));
@@ -18,9 +26,10 @@ const PoolsSection: React.FC = () => {
 
   return (
     <Box className={cx(classes.self)}>
-      <PoolsPanel overView={true} />
+      <Box className={cx(classes.label)}>Transactions</Box>
+      <TransactionTable />
     </Box>
   );
 };
 
-export default PoolsSection;
+export default TransactionsSection;

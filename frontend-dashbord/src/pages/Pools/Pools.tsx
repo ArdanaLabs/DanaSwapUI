@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Fade, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import PoolsPanel from "components/Table";
+import { PoolsPanel } from "components";
 import { useIsDarkMode } from "state/user/hooks";
 import cx from "classnames";
 import { useTotalStats } from "state/home/hooks";

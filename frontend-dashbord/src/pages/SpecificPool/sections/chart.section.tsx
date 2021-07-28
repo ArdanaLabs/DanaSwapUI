@@ -18,7 +18,7 @@ const useStyles = makeStyles(({ palette }) => ({
     fontStyle: 'normal',
     fontWeight: 900,
     marginTop: '20px',
-    fontSize: '28px',
+    fontSize: '18px',
     lineHeight: '110%'
   },
 
@@ -33,7 +33,7 @@ const useStyles = makeStyles(({ palette }) => ({
 
     fontFamily: 'Museo Sans',
     fontStyle: 'normal',
-    fontSize: '18px',
+    fontSize: '11px',
     lineHeight: '115%',
     fontWeight: 100,
     color: palette.secondary.main

@@ -4,7 +4,7 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
 
 import { useIsDarkMode } from "state/user/hooks";
-import PoolsPanel from "components/Table";
+import { PoolsPanel } from "components";
 
 const useStyles = makeStyles(({ palette }) => ({
   self: {},

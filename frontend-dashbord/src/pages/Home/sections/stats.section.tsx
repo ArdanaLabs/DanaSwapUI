@@ -37,9 +37,7 @@ const useStyles = makeStyles(({ palette }) => ({
     },
   },
   body_ex: {
-    background: `${
-      palette.type === "light" ? palette.common.white : palette.common.black
-    }`,
+    background: palette.background.paper,
     borderRadius: "25px",
     fontFamily: "Brandon Grotesque",
     fontStyle: "normal",

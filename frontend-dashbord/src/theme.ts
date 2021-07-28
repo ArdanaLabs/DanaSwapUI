@@ -303,11 +303,6 @@ export const lightTheme = responsiveFontSizes(
           },
         },
       },
-      MuiTableCell: {
-        root: {
-          borderBottom: "1px solid #E5E5E5",
-        },
-      },
       MuiContainer: {
         fixed: {
           borderRadius: 12,
@@ -802,11 +797,6 @@ export const darkTheme = responsiveFontSizes(
         groupedHorizontal: {
           "&:not(:last-child) > div > div": {},
           "&:not(:first-child) > div > div": {},
-        },
-      },
-      MuiTableCell: {
-        root: {
-          borderBottom: "1px solid #E5E5E5",
         },
       },
       MuiTableSortLabel: {

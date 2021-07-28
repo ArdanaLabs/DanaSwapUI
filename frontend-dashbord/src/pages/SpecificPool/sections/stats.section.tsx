@@ -11,15 +11,16 @@ const useStyles = makeStyles(({ palette }) => ({
   root: {},
   panelbg: {
     background: palette.background.paper,
-    padding: '30px 25px',
+    padding: '20px',
     borderRadius: '10px',
-    boxShadow: '2px 2px 10px rgba(0, 0, 0, 0.1)'
+    boxShadow: '2px 2px 10px rgba(0, 0, 0, 0.1)',
+    height: '100%'
   },
-  label: {
+  title: {
     fontFamily: 'Brandon Grotesque',
     fontStyle: 'normal',
     fontWeight: 900,
-    fontSize: '28px',
+    fontSize: '18px',
     lineHeight: '110%',
     color: palette.secondary.main
   },
@@ -28,13 +29,11 @@ const useStyles = makeStyles(({ palette }) => ({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    borderBottom: '1px solid gray',
-    marginBottom: '20px',
-    paddingBottom: '10px',
+    padding: '10px 0px',
 
     fontFamily: 'Museo Sans',
     fontStyle: 'normal',
-    fontSize: '16px',
+    fontWeight: 900,
     lineHeight: '115%',
     color: palette.secondary.main,
 
@@ -45,19 +44,21 @@ const useStyles = makeStyles(({ palette }) => ({
 
     '& > span:first-of-type': {
       paddingLeft: '10px',
-      flexGrow: 5,
-      fontWeight: 900
+      fontSize: '12px',
+      flexGrow: 5
     },
     '& > span:last-of-type': {
-      fontWeight: 100
+      fontSize: '11px'
     }
   },
 
+  statsBoxBg: {
+    background: palette.type === 'light' ? '#F5F5F5' : '#25308280',
+    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+    borderRadius: '10px'
+  },
   statsBox: {
     position: 'relative',
-    background: palette.type === 'light' ? 'white' : '#0C1347',
-    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
-    borderRadius: '5px',
     padding: '10px 30px',
     margin: '20px 0px',
 
@@ -67,18 +68,15 @@ const useStyles = makeStyles(({ palette }) => ({
     fontStyle: 'normal',
     lineHeight: '100%',
 
-    '& > span': {
-      margin: '5px 0px'
-    },
-
     '& > span:nth-of-type(1)': {
-      color: '#73D6F1',
+      color: palette.text.hint,
       fontSize: '11px',
       fontWeight: 300
     },
     '& > span:nth-of-type(2)': {
       color: palette.secondary.main,
       fontSize: '17px',
+      margin: '10px 0px',
       fontWeight: 500
     },
     '& > span:nth-of-type(3)': {
@@ -183,11 +181,11 @@ const StatsSection: React.FC = () => {
   const lockedTokenList = [
     {
       name: 'BTC',
-      amount: 12.34
+      amount: '$22.62 M'
     },
     {
       name: 'ARD',
-      amount: 2.99
+      amount: '$22.62 M'
     }
   ]
 
@@ -195,56 +193,62 @@ const StatsSection: React.FC = () => {
     <Box className={cx(classes.root)}>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={4}>
+          <Box className={cx(classes.title)}>Total Tokens Locked</Box>
+        </Grid>
+        <Grid item xs={12} sm={8}>
+          <Box className={cx(classes.title)}>Trade Volume Graph</Box>
+        </Grid>
+      </Grid>
+      <Grid container spacing={3}>
+        <Grid item xs={12} sm={4}>
           <Box className={cx(classes.panelbg)}>
-            <Box className={cx(classes.label)}>Total Tokens Locked</Box>
-            <Box mt={'50px'} />
+            <Box
+              className={cx(classes.statsBoxBg)}
+              paddingX='25px'
+              paddingY='15px'
+            >
+              {lockedTokenList &&
+                lockedTokenList.map((token: any, i: number) => {
+                  const icon = require(`assets/coins/${token.name}.png`).default
+                  return (
+                    <Box className={cx(classes.token)} key={i}>
+                      <img src={icon} alt='token' />
+                      <span>{token.name}</span>
+                      <span>{token.amount}</span>
+                    </Box>
+                  )
+                })}
+            </Box>
+            <Box className={cx(classes.statsBox, classes.statsBoxBg)}>
+              <Box className={cx(classes.leftBorder)}>&nbsp;&nbsp;</Box>
+              <span>TVL</span>
+              <span>$242.90m</span>
+              <Box style={{ color: 'red' }}>
+                <i className='fal fa-long-arrow-down'></i>&nbsp;
+                <span>2.05%</span>
+              </Box>
+            </Box>
 
-            {lockedTokenList &&
-              lockedTokenList.map((token: any, i: number) => {
-                const icon = require(`assets/coins/${token.name}.png`).default
-                return (
-                  <Box className={cx(classes.token)} key={i}>
-                    <img src={icon} alt='token' />
-                    <span>{token.name}</span>
-                    <span>{token.amount}</span>
-                  </Box>
-                )
-              })}
-          </Box>
-          {/* <Box display='flex' flexDirection='column' justifyContent='flex-end'> */}
-          <Box className={cx(classes.statsBox)}>
-            <Box className={cx(classes.leftBorder)}>&nbsp;&nbsp;</Box>
-            <span>TVL</span>
-            <span>$242.90m</span>
-            <Box style={{ color: 'red' }}>
-              <i className='fal fa-long-arrow-down'></i>&nbsp;
-              <span>2.05%</span>
+            <Box className={cx(classes.statsBox, classes.statsBoxBg)}>
+              <Box className={cx(classes.leftBorder)}>&nbsp;&nbsp;</Box>
+              <span>VOLUME 24H</span>
+              <span>$88.30m</span>
+              <Box style={{ color: 'green' }}>
+                <i className='fal fa-long-arrow-up'></i>&nbsp;
+                <span>36.12%</span>
+              </Box>
+            </Box>
+
+            <Box className={cx(classes.statsBox, classes.statsBoxBg)}>
+              <Box className={cx(classes.leftBorder)}>&nbsp;&nbsp;</Box>
+              <span>24H FEES</span>
+              <span>$264.89K</span>
+              <span style={{ color: 'red' }}>&nbsp;</span>
             </Box>
           </Box>
-
-          <Box className={cx(classes.statsBox)}>
-            <Box className={cx(classes.leftBorder)}>&nbsp;&nbsp;</Box>
-            <span>VOLUME 24H</span>
-            <span>$88.30m</span>
-            <Box style={{ color: 'green' }}>
-              <i className='fal fa-long-arrow-up'></i>&nbsp;
-              <span>36.12%</span>
-            </Box>
-          </Box>
-
-          <Box className={cx(classes.statsBox)}>
-            <Box className={cx(classes.leftBorder)}>&nbsp;&nbsp;</Box>
-            <span>24H FEES</span>
-            <span>$264.89K</span>
-            <span style={{ color: 'red' }}>&nbsp;</span>
-          </Box>
-          {/* </Box> */}
         </Grid>
         <Grid item xs={12} sm={8}>
           <Box className={cx(classes.panelbg)}>
-            <Box className={cx(classes.label)}>Trade Volume Graph</Box>
-            <Box mt={'50px'} />
-
             <Chart options={options} series={series} type='bar' width='100%' />
           </Box>
         </Grid>

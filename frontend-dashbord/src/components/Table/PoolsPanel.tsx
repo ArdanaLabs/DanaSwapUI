@@ -24,6 +24,9 @@ const FILTER_STABLECOINS = 0
 const FILTER_DIGITALASSESTS = 1
 
 const StyledTableCell = withStyles(({ palette }) => ({
+  root: {
+    borderBottom: "1px solid #E5E5E5",
+  },
   head: {
     fontFamily: 'Museo Sans',
     fontStyle: 'normal',

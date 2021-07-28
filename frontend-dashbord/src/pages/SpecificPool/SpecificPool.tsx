@@ -4,7 +4,7 @@ import { makeStyles, useTheme } from '@material-ui/core/styles'
 import { useIsDarkMode } from 'state/user/hooks'
 import cx from 'classnames'
 import Button from 'components/Button/Button'
-import { StatsSection, ChartSection, PoolsSection } from './sections'
+import { StatsSection, ChartSection, TransactionsSection } from './sections'
 
 const FILTER_SWAP = 0
 const FILTER_DEPOSIT = 1
@@ -106,7 +106,7 @@ const SpecificPool: React.FC = () => {
 
         <Box mt={'50px'} />
 
-        <PoolsSection />
+        <TransactionsSection />
       </Box>
     </Fade>
   )

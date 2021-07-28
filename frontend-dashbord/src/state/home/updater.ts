@@ -13,7 +13,7 @@ export default function Updater(): null {
       const totalStats: any = await getStats();
       console.log("totalStats", totalStats);
 
-      dispatch(updateTotalStats(totalStats));
+      totalStats && dispatch(updateTotalStats(totalStats));
     };
 
     let timer = setInterval(async () => {
