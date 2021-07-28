@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Grid, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
@@ -6,6 +6,8 @@ import Chart from "react-apexcharts";
 
 import { useIsDarkMode } from "state/user/hooks";
 import { ApexOptions } from "apexcharts";
+import { useAggVolume, useAggLiquidity } from "state/chart/hooks";
+import { extractXAxis, extractYAxis, nFormatter } from "hooks";
 
 const useStyles = makeStyles(({ palette }) => ({
   self: {
@@ -56,7 +58,7 @@ const ChartSection: React.FC = () => {
   const mobile = useMediaQuery(breakpoints.down("xs"));
   const classes = useStyles({ dark, mobile });
 
-  const options: ApexOptions = {
+  let options: ApexOptions = {
     chart: {
       id: "basic-bar",
       zoom: {
@@ -74,29 +76,38 @@ const ChartSection: React.FC = () => {
       categories: ["APR 20", "MAY 15", "JUN 02"],
       labels: {
         style: {
-          colors: [palette.text.hint, palette.text.hint, palette.text.hint],
+          colors: palette.text.hint,
           fontSize: "11px",
           fontFamily: "Museo Sans",
           fontWeight: 500,
         },
       },
       tickPlacement: "between",
+      axisTicks: {
+        show: false,
+      },
+      axisBorder: {
+        show: false,
+      }
     },
     yaxis: {
       labels: {
         show: true,
         align: "left",
         style: {
-          colors: [palette.secondary.main],
+          colors: palette.secondary.main,
           fontFamily: "Museo Sans",
           fontWeight: "bold",
           fontSize: "16px",
           cssClass: "apexcharts-yaxis-label",
         },
         formatter: (value: any) => {
-          return "$" + value + (value ? " M" : "");
+          return nFormatter(value);
         },
       },
+    },
+    grid: {
+      show: false,
     },
     fill: {
       type: "gradient",
@@ -125,9 +136,109 @@ const ChartSection: React.FC = () => {
   const series = [
     {
       name: "series-1",
-      data: [30, 40, 45, 50, 49, 60, 70, 91, 30, 40, 45, 50, 49, 60, 70, 91],
+      data: [],
     },
   ];
+
+  const [volumeOptions, setVolumeOptions] = useState<ApexOptions>(options);
+  const [liquidityOptions, setLiquidityOptions] = useState<ApexOptions>(options);
+  const [volumeSeries, setVolumeSeries] = useState<any[]>(series);
+  const [liquiditySeries, setLiquiditySeries] = useState<any[]>(series);
+
+  const aggVolumeData = useAggVolume();
+  const aggLiquidityData = useAggLiquidity();
+
+  useEffect(() => {
+    if (aggVolumeData) {
+      setVolumeOptions({
+        ...volumeOptions,
+        chart: {
+          id: "chart-agg-volume"
+        },
+        xaxis: {
+          categories: extractXAxis(aggVolumeData),
+          labels: {
+            style: {
+              colors: palette.text.hint
+            }
+          }
+        },
+        yaxis: {
+          labels: {
+            show: true,
+            align: "left",
+            style: {
+              colors: palette.secondary.main,
+              fontFamily: "Museo Sans",
+              fontWeight: "bold",
+              fontSize: "16px",
+              cssClass: "apexcharts-yaxis-label",
+            },
+            formatter: (value: any) => {
+              return nFormatter(value);
+            },
+          },
+        },
+        fill: {
+          colors: [!dark ? "#202F9A" : "#73d6f1"],
+          gradient: {
+            gradientToColors: [!dark ? "#5F72FF" : "#73D6F1"]
+          }
+        }
+      });
+      setVolumeSeries([{
+        name: "Volume",
+        data: extractYAxis(aggVolumeData, "total")
+      }]);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [aggVolumeData, palette]);
+
+  useEffect(() => {
+    if (aggLiquidityData) {
+      setLiquidityOptions({
+        ...liquidityOptions,
+        chart: {
+          id: "chart-agg-liquidity"
+        },
+        xaxis: {
+          categories: extractXAxis(aggLiquidityData),
+          labels: {
+            style: {
+              colors: palette.text.hint
+            }
+          }
+        },
+        yaxis: {
+          labels: {
+            show: true,
+            align: "left",
+            style: {
+              colors: palette.secondary.main,
+              fontFamily: "Museo Sans",
+              fontWeight: "bold",
+              fontSize: "16px",
+              cssClass: "apexcharts-yaxis-label",
+            },
+            formatter: (value: any) => {
+              return nFormatter(value);
+            },
+          },
+        },
+        fill: {
+          colors: [!dark ? "#202F9A" : "#73d6f1"],
+          gradient: {
+            gradientToColors: [!dark ? "#5F72FF" : "#73D6F1"]
+          }
+        }
+      });
+      setLiquiditySeries([{
+        name: "Liquidity",
+        data: extractYAxis(aggLiquidityData, "value")
+      }]);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [aggLiquidityData, palette]);
 
   return (
     <Box className={cx(classes.self)}>
@@ -150,8 +261,8 @@ const ChartSection: React.FC = () => {
             </Box>
             <Box>
               <Chart
-                options={options}
-                series={series}
+                options={volumeOptions}
+                series={volumeSeries}
                 type="bar"
                 width="100%"
               />
@@ -176,8 +287,8 @@ const ChartSection: React.FC = () => {
             </Box>
             <Box>
               <Chart
-                options={options}
-                series={series}
+                options={liquidityOptions}
+                series={liquiditySeries}
                 type="area"
                 width="100%"
               />

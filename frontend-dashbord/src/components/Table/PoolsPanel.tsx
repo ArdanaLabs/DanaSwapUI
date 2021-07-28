@@ -18,6 +18,7 @@ import { Button } from 'components/Button'
 import { usePoolStats } from 'state/home/hooks'
 import { keys, values } from 'lodash'
 import { useHistory } from 'react-router-dom'
+import { nFormatter } from 'hooks'
 
 const FILTER_STABLECOINS = 0
 const FILTER_DIGITALASSESTS = 1
@@ -144,29 +145,29 @@ const PoolsPanel: React.FC<PoolsPanelProps> = ({ overView = false }) => {
   const poolStats = usePoolStats()
   const poolNames = keys(poolStats)
   const poolInfos = values(poolStats)
-  const poolReserves = poolInfos.map((val: any) => {
-    let reserves = keys(val.reserves)
-    return reserves.join(' + ')
-  })
-  const poolRewardAPYs = poolInfos.map((val: any) => {
-    const { reserves, totalAPYPercent, recentAnnualAPYPercent } = val
-    const reserveNames = keys(reserves)
-    const reserveVals = values(reserves)
-    const formattedReserves: string[] = reserveNames.map(
-      (reserveName: string, i: number) => {
-        return reserveVals[i] + '% ' + reserveName
-      }
-    )
-    const changedPercent = totalAPYPercent - recentAnnualAPYPercent
+  // const poolReserves = poolInfos.map((val: any) => {
+  //   let reserves = keys(val.reserves)
+  //   return reserves.join(' + ')
+  // })
+  // const poolRewardAPYs = poolInfos.map((val: any) => {
+  //   const { reserves, totalAPYPercent, recentAnnualAPYPercent } = val
+  //   const reserveNames = keys(reserves)
+  //   const reserveVals = values(reserves)
+  //   const formattedReserves: string[] = reserveNames.map(
+  //     (reserveName: string, i: number) => {
+  //       return reserveVals[i] + '% ' + reserveName
+  //     }
+  //   )
+  //   const changedPercent = totalAPYPercent - recentAnnualAPYPercent
 
-    return (
-      (changedPercent < 0 ? '' : '+') +
-      changedPercent +
-      '%' +
-      ' -> ' +
-      formattedReserves.join(' + ')
-    )
-  })
+  //   return (
+  //     (changedPercent < 0 ? '' : '+') +
+  //     changedPercent +
+  //     '%' +
+  //     ' -> ' +
+  //     formattedReserves.join(' + ')
+  //   )
+  // })
 
   const [filter, setFilter] = useState({
     text: '',
@@ -237,8 +238,8 @@ const PoolsPanel: React.FC<PoolsPanelProps> = ({ overView = false }) => {
           </TableHead>
           <TableBody>
             {poolNames.map((poolName: any, i: any) => {
-              const icon = require(`assets/coins/${poolName}.png`).default
-              // const icon = require(`assets/coins/bBTC.png`).default;
+              // const icon = require(`assets/coins/${poolName}.png`).default
+              const icon = require(`assets/coins/bBTC.png`).default;
               return (
                 <TableRow key={i} onClick={(e: any) => handleRowClick(e, i)}>
                   <StyledTableCell component='th' scope='row'>
@@ -255,20 +256,27 @@ const PoolsPanel: React.FC<PoolsPanelProps> = ({ overView = false }) => {
                         flexDirection={'column'}
                         justifyContent={'center'}
                       >
-                        <Box textAlign='left'>{poolName}</Box>
-                        <Box fontWeight={300}>{poolReserves[i]}</Box>
+                        {/* <Box textAlign='left'>{poolName}</Box>
+                        <Box fontWeight={300}>{poolReserves[i]}</Box> */}
+                        <Box textAlign='left'>sUSD</Box>
+                        <Box fontWeight={300}>DAI + USDC + USDT + sUSD</Box>
                       </Box>
                     </Box>
                   </StyledTableCell>
                   <StyledTableCell>
-                    {poolInfos[i].recentDailyAPYPercent}%
-                  </StyledTableCell>
-                  <StyledTableCell>{poolRewardAPYs[i]}</StyledTableCell>
-                  <StyledTableCell>
-                    ${poolInfos[i].recentDailyVolumeUSD}
+                    {/* {poolInfos[i].recentDailyAPYPercent}% */}
+                    2.99%
                   </StyledTableCell>
                   <StyledTableCell>
-                    {poolInfos[i].totalAPYPercent}%
+                    {/* {poolRewardAPYs[i]} */}
+                    {`+4.30% -> 10.76% DANA + 1.13% BTC`}
+                  </StyledTableCell>
+                  <StyledTableCell>
+                    {nFormatter(poolInfos[i].recentDailyVolumeUSD)}
+                  </StyledTableCell>
+                  <StyledTableCell>
+                    {/* {poolInfos[i].recentDailyVolumeUSD}% */}
+                    29%
                   </StyledTableCell>
                 </TableRow>
               )

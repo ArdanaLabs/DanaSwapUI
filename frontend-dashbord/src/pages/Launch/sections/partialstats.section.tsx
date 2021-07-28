@@ -9,6 +9,8 @@ import IMG_TVL from "assets/icons/tvl.png";
 import IMG_Worth from "assets/icons/worth.png";
 import IMG_Ratio from "assets/icons/ratio.png";
 import VerticalCarousel from "components/Carousel";
+import { useTotalStats } from "state/home/hooks";
+import { nFormatter } from "hooks";
 
 const useStyles = makeStyles(({ palette }) => ({
   root: {
@@ -71,6 +73,8 @@ const PartialStatsSection: React.FC<PartialStatsSectionProps> = ({
 
   const [activeIndex, setActiveIndex] = useState(-1);
 
+  const { totalDepositsAllPoolsUSD, totalDailyVolumeUSD } = useTotalStats();
+
   useEffect(() => {
     setTimeout(() => {
       show && setActiveIndex(0);
@@ -124,8 +128,8 @@ const PartialStatsSection: React.FC<PartialStatsSectionProps> = ({
                 <Grid item xs={4}>
                   <StatBox
                     image={IMG_Worth}
-                    title={`WORTH OF STABLECOINS\nIN CIRCULATION`}
-                    content="$998,654"
+                    title={`TOTAL LIQUIDITY`}
+                    content={nFormatter(totalDepositsAllPoolsUSD, 2)}
                     delay={500}
                   />
                 </Grid>
@@ -139,8 +143,8 @@ const PartialStatsSection: React.FC<PartialStatsSectionProps> = ({
                 <Grid item xs={4}>
                   <StatBox
                     image={IMG_Ratio}
-                    title="TOTAL COLLATERAL-TO-LOAN RATIO"
-                    content="1:1"
+                    title="24HR TRADE VOLUME"
+                    content={nFormatter(totalDailyVolumeUSD, 2)}
                     delay={1000}
                   />
                 </Grid>

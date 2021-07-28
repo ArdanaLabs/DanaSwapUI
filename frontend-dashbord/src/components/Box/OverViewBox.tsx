@@ -56,7 +56,7 @@ const useStyles = makeStyles(({ palette }) => ({
 
 export interface OverViewBoxProps {
   label: string;
-  content: string;
+  content: any;
   info?: string;
 }
 

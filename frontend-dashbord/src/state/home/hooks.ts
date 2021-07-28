@@ -3,12 +3,12 @@ import { AppState } from "state";
 import { API_URL } from "config/endpoints";
 
 export function useTotalStats() {
-  const { totalDepositsAllPoolsUSD, totalDailyVolumeUSD } = useSelector<
+  const { totalDepositsAllPoolsUSD, totalDailyVolumeUSD, totalDailyFeeVolumeUSD } = useSelector<
     AppState,
     AppState["home"]
   >((state) => state.home);
 
-  return { totalDepositsAllPoolsUSD, totalDailyVolumeUSD };
+  return { totalDepositsAllPoolsUSD, totalDailyVolumeUSD, totalDailyFeeVolumeUSD };
 }
 
 export function usePoolStats() {
