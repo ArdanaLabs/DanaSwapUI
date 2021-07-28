@@ -106,13 +106,13 @@ const StatsSection: React.FC = () => {
               DEPOSITS:
               <br />
               {/* <span>$9,006,029,010.68 (includes factory pools)</span> */}
-              <span>${totalDepositsAllPoolsUSD?.toLocaleString()} (includes factory pools)</span>
+              <span>${totalDepositsAllPoolsUSD ? totalDepositsAllPoolsUSD.toLocaleString() : 0} (includes factory pools)</span>
               <br />
               <br />
               DAILY VOLUME:
               <br />
               {/* <span>$147,471,544</span> */}
-              <span>${totalDailyVolumeUSD?.toLocaleString()}</span>
+              <span>${totalDailyVolumeUSD ? totalDailyVolumeUSD.toLocaleString() : 0}</span>
               <br />
               <br />
               Factory Daily Volume:

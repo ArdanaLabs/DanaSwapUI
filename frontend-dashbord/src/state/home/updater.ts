@@ -16,86 +16,15 @@ export default function Updater(): null {
       dispatch(updateTotalStats(totalStats));
     };
 
-    setInterval(async () => {
+    let timer = setInterval(async () => {
       await fetchTotalStatsFromEndPoint();
     }, 1000 * 60);
 
     fetchTotalStatsFromEndPoint();
 
-    // dispatch(
-    //   updateTotalStats({
-    //     totalDailyTxCount: 323,
-    //     totalDailyFeeVolumeUSD: 23.33,
-    //     totalDepositsAllPoolsUSD: 9006029010.68,
-    //     totalDailyVolumeUSD: 147471544,
-    //     poolStats: {
-    //       sBTC: {
-    //         recentDailyAPYPercent: 10,
-    //         recentWeeklyAPYPercent: 20,
-    //         recentMonthlyAPYPercent: 30,
-    //         recentAnnualAPYPercent: 40,
-    //         totalAPYPercent: 50,
-    //         recentDailyVolumeUSD: 2.55,
-    //         reserves: {
-    //           DAI: 1,
-    //           USDC: 2,
-    //           USDT: 3,
-    //           sUSD: 4,
-    //         },
-    //         feePercent: 1,
-    //         adminFeePercent: 2,
-    //         virtualPriceUSD: 200,
-    //         liquidityUtilization: 0,
-    //         dailyTxCount: 3,
-    //         dailyFeeVolumeUSD: 1,
-    //         navUSD: 12,
-    //       },
-    //       aBTC: {
-    //         recentDailyAPYPercent: 10,
-    //         recentWeeklyAPYPercent: 20,
-    //         recentMonthlyAPYPercent: 30,
-    //         recentAnnualAPYPercent: 40,
-    //         totalAPYPercent: 50,
-    //         recentDailyVolumeUSD: 255,
-    //         reserves: {
-    //           DAI: 1,
-    //           USDC: 2,
-    //           USDT: 3,
-    //           sUSD: 4,
-    //         },
-    //         feePercent: 1,
-    //         adminFeePercent: 2,
-    //         virtualPriceUSD: 200,
-    //         liquidityUtilization: 0,
-    //         dailyTxCount: 3,
-    //         dailyFeeVolumeUSD: 1,
-    //         navUSD: 12,
-    //       },
-    //       bBTC: {
-    //         recentDailyAPYPercent: 10,
-    //         recentWeeklyAPYPercent: 20,
-    //         recentMonthlyAPYPercent: 30,
-    //         recentAnnualAPYPercent: 40,
-    //         totalAPYPercent: 50,
-    //         recentDailyVolumeUSD: 255,
-    //         reserves: {
-    //           DAI: 10.76,
-    //           USDC: 2.2,
-    //           USDT: 3,
-    //           sUSD: 4,
-    //         },
-    //         feePercent: 1,
-    //         adminFeePercent: 2,
-    //         virtualPriceUSD: 200,
-    //         liquidityUtilization: 0,
-    //         dailyTxCount: 3,
-    //         dailyFeeVolumeUSD: 1,
-    //         navUSD: 12,
-    //       },
-    //     },
-    //   })
-    // );
-    return () => {};
+    return () => {
+      clearInterval(timer);
+    };
   }, [dispatch]);
 
   return null;

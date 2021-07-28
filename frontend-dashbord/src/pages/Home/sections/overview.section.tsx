@@ -35,7 +35,7 @@ const OverViewSection: React.FC = () => {
             <OverViewBox label={"TOTAL LIQUIDITY"} content={nFormatter(totalDepositsAllPoolsUSD, 2)} />
           </Grid>
           <Grid item xs={6} sm={3}>
-            <OverViewBox label={"TOTAL BOND"} content={(totalDailyVolumeUSD && totalDepositsAllPoolsUSD) ? ((100 * (totalDailyVolumeUSD / totalDepositsAllPoolsUSD)).toFixed(2) + "%") : 0} />
+            <OverViewBox label={"TOTAL BOND"} content={(totalDailyVolumeUSD && totalDepositsAllPoolsUSD) ? ((100 * (totalDailyVolumeUSD / totalDepositsAllPoolsUSD)).toFixed(2) + "%") : "0%"} />
           </Grid>
           <Grid item xs={6} sm={3}>
             <OverViewBox label={"FUNDS CAP OVERVIEW"} content={"100.6%"} />
