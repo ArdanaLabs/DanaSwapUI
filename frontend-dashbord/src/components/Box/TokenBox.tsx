@@ -116,7 +116,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
   filterText: {
     background: palette.common.white,
-    fontSize: "8px",
+    fontSize: "10px",
     fontWeight: 500,
     lineHeight: "100%",
     width: "100%",
@@ -137,11 +137,13 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     lineHeight: "100%",
     margin: "20px 10px 20px 0px",
     border: `1px solid ${palette.secondary.main}`,
+    color: palette.text.secondary,
   },
 
   active: {
     background: palette.primary.light,
     border: "unset",
+    color: palette.common.white,
   },
 
   menuItem: {

@@ -20,7 +20,7 @@ const useStyles = makeStyles(({ palette }) => ({
     background:
       palette.type === "light"
         ? "#F6F6F6"
-        : "linear-gradient(180deg, #131B59 0%, #2F3DA0 100%)",
+        : palette.background.paper,
     borderRadius: "10px",
     border: palette.type === "light" ? "1px solid #C4C4C4" : "unset",
     padding: "50px 70px",

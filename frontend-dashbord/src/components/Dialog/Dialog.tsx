@@ -6,7 +6,7 @@ const StyledDialog = withStyles((theme) => ({
 
   },
   paperScrollPaper: {
-    background: theme.palette.type === "light" ? "#F6F6F6" : "linear-gradient(180deg, rgba(47, 61, 160, 0) 0%, #2F3DA0 58.33%)",
+    background: theme.palette.type === "light" ? "#F6F6F6" : theme.palette.background.paper,
     borderRadius: "10px",
     padding: "25px",
   }

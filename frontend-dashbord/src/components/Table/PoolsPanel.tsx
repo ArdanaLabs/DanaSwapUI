@@ -67,7 +67,7 @@ const StyledTableCell = withStyles(({ palette }) => ({
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   panel: {
-    background: palette.secondary.light,
+    background: palette.background.paper,
     borderRadius: '10px',
     padding: '12px'
   },

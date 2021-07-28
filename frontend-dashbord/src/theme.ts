@@ -32,7 +32,7 @@ const secondaryDarkDay = "#A5A5A5";
 const secondaryDarkNight = "rgba(24, 33, 100, 0.5)";
 
 const infoMainDay = "#F5F5F5";
-const infoMainNight = "#2B3992";
+const infoMainNight = "#25308280";
 
 const infoDarkDay =
   "linear-gradient(180deg, #A5A5A5 0%, #A5A5A5 54.17%, #A5A5A5 99.99%)";
@@ -41,12 +41,10 @@ const infoDarkNight =
 
 const backgroundDay =
   "linear-gradient(89.43deg, #C0C0C0 -0.11%, #F5F5F5 -0.1%)";
-const backgroundNight = "linear-gradient(0deg, #3142A3, #3142A3)";
+const backgroundNight = "#010730";
 
-const backgroundPaperDay =
-  "linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%)";
-const backgroundPaperNight =
-  "linear-gradient(180deg, #131B59 0%, #2F3DA0 100%)";
+const backgroundPaperDay = "#FFFFFF";
+const backgroundPaperNight = "#131B5980";
 
 const textPrimaryDay = "#235DF4";
 const textPrimaryNight = "#FFFFFF";

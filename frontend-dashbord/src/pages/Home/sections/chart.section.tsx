@@ -24,10 +24,10 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 
   panel: {
-    background: palette.type === "light" ? palette.common.white : palette.background.paper,
+    background: palette.background.paper,
     borderRadius: "10px",
-    padding: "20px",
-    filter: palette.type === "light" ? "drop-shadow(2px 2px 10px rgba(0, 0, 0, 0.1))" : "unset",
+    padding: "30px 20px",
+    filter: "drop-shadow(2px 2px 10px rgba(0, 0, 0, 0.1))",
   },
 
   panelFilter: {

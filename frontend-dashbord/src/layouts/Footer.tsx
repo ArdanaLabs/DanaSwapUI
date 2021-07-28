@@ -10,7 +10,7 @@ import LOGO_Text from "assets/logo_text.png";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
-    background: palette.primary.dark,
+    background: palette.type === "light" ? "linear-gradient(90.19deg, #2F3DA0 27.19%, #73D6F1 99.87%)" : palette.background.default,
     marginTop: "50px",
     padding: 10,
   },
