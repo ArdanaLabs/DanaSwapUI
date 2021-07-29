@@ -61,11 +61,11 @@ const Pools: React.FC = () => {
         <Box className={cx(classes.statsPanel)}>
           Deposit:{" "}
           <span>
-          ${totalDepositsAllPoolsUSD ? totalDepositsAllPoolsUSD.toLocaleString() : 0} (includes factory pools)
+          ${totalDepositsAllPoolsUSD?.toLocaleString() ?? 0} (includes factory pools)
           </span>
           <br />
           <br />
-          Daily Volume: <span>${totalDailyVolumeUSD?.trade ? totalDailyVolumeUSD.trade.toLocaleString() : 0}</span>
+          Daily Volume: <span>${totalDailyVolumeUSD?.trade?.toLocaleString() ?? 0}</span>
           <br />
           <br />
           Factory Daily Volume: <span>$8,999,777</span>

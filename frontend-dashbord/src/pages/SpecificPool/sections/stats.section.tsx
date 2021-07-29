@@ -314,9 +314,7 @@ const StatsSection: React.FC = () => {
               <Box className={cx(classes.leftBorder)}>&nbsp;&nbsp;</Box>
               <span>VOLUME 24H</span>
               <span>
-                {poolInfo
-                  ? nFormatter(poolInfo.recentDailyVolumeUSD.trade, 2)
-                  : 0}
+                {nFormatter(poolInfo?.recentDailyVolumeUSD?.trade, 2)}
               </span>
               <Box style={{ color: 'green' }}>
                 <i className='fal fa-long-arrow-up'></i>&nbsp;
@@ -328,7 +326,7 @@ const StatsSection: React.FC = () => {
               <Box className={cx(classes.leftBorder)}>&nbsp;&nbsp;</Box>
               <span>24H FEES</span>
               <span>
-                {poolInfo ? nFormatter(poolInfo.dailyFeeVolumeUSD, 2) : 0}
+                {nFormatter(poolInfo?.dailyFeeVolumeUSD, 2)}
               </span>
               <span style={{ color: 'red' }}>&nbsp;</span>
             </Box>

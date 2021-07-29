@@ -153,30 +153,6 @@ const PoolsPanel: React.FC<PoolsPanelProps> = ({ overView = false }) => {
   ]
 
   const poolStats = usePoolStats()
-  const poolNames = keys(poolStats)
-  // const poolReserves = poolInfos.map((val: any) => {
-  //   let reserves = keys(val.reserves)
-  //   return reserves.join(' + ')
-  // })
-  // const poolRewardAPYs = poolInfos.map((val: any) => {
-  //   const { reserves, totalAPYPercent, recentAnnualAPYPercent } = val
-  //   const reserveNames = keys(reserves)
-  //   const reserveVals = values(reserves)
-  //   const formattedReserves: string[] = reserveNames.map(
-  //     (reserveName: string, i: number) => {
-  //       return reserveVals[i] + '% ' + reserveName
-  //     }
-  //   )
-  //   const changedPercent = totalAPYPercent - recentAnnualAPYPercent
-
-  //   return (
-  //     (changedPercent < 0 ? '' : '+') +
-  //     changedPercent +
-  //     '%' +
-  //     ' -> ' +
-  //     formattedReserves.join(' + ')
-  //   )
-  // })
 
   const [filter, setFilter] = useState({
     text: '',
@@ -251,9 +227,10 @@ const PoolsPanel: React.FC<PoolsPanelProps> = ({ overView = false }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {poolNames.map((poolName: any, i: any) => {
+            {keys(poolStats).map((poolName: any, i: any) => {
               // const icon = require(`assets/coins/${poolName}.png`).default
               const icon = require(`assets/coins/bBTC.png`).default
+              const poolInfo = poolStats![poolName]
               return (
                 <TableRow
                   key={i}
@@ -274,16 +251,14 @@ const PoolsPanel: React.FC<PoolsPanelProps> = ({ overView = false }) => {
                         flexDirection={'column'}
                         justifyContent={'center'}
                       >
-                        {/* <Box textAlign='left'>{poolName}</Box>
-                        <Box fontWeight={300}>{poolReserves[i]}</Box> */}
-                        <Box textAlign='left'>sUSD</Box>
-                        <Box fontWeight={300}>DAI + USDC + USDT + sUSD</Box>
+                        <Box textAlign='left'>{poolName}</Box>
+                        <Box fontWeight={300}>{keys(poolInfo.reserves).join(' + ')}</Box>
                       </Box>
                     </Box>
                   </StyledTableCell>
                   {/* Liquidity */}
                   <StyledTableCell>
-                    {nFormatter(poolStats && poolStats[poolName].navUSD)}
+                    {nFormatter(poolInfo.navUSD)}
                   </StyledTableCell>
                   {/* Base APY */}
                   <StyledTableCell>
@@ -297,13 +272,10 @@ const PoolsPanel: React.FC<PoolsPanelProps> = ({ overView = false }) => {
                   </StyledTableCell>
                   {/* VOLUME */}
                   <StyledTableCell>
-                    {nFormatter(
-                      poolStats &&
-                        poolStats[poolName].recentDailyVolumeUSD.trade
-                    )}
+                    {nFormatter(poolInfo.recentDailyVolumeUSD.trade)}
                   </StyledTableCell>
                   {/* APY */}
-                  <StyledTableCell>29%</StyledTableCell>
+                  <StyledTableCell>{poolInfo.totalAPYPercent?.toFixed(2) ?? 0}%</StyledTableCell>
                 </TableRow>
               )
             })}

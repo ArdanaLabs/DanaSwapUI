@@ -103,17 +103,17 @@ const StatsSection: React.FC = () => {
             <Box component="p">
               DAILY DEPOSITS:
               <br />
-              <span>${totalDailyVolumeUSD?.addLiquidity ? totalDailyVolumeUSD.addLiquidity.toLocaleString() : 0} (includes factory pools)</span>
+              <span>${totalDailyVolumeUSD?.addLiquidity?.toLocaleString() ?? 0} (includes factory pools)</span>
               <br />
               <br />
               DAILY WITHDRAWALS:
               <br />
-              <span>${totalDailyVolumeUSD?.removeLiquidity ? totalDailyVolumeUSD.removeLiquidity.toLocaleString() : 0} (includes factory pools)</span>
+              <span>${totalDailyVolumeUSD?.removeLiquidity?.toLocaleString() ?? 0} (includes factory pools)</span>
               <br />
               <br />
               DAILY VOLUME:
               <br />
-              <span>${totalDailyVolumeUSD?.total ? totalDailyVolumeUSD.total.toLocaleString() : 0}</span>
+              <span>${totalDailyVolumeUSD?.total?.toLocaleString() ?? 0}</span>
               <br />
               <br />
               STABLECOIN VOLUME:

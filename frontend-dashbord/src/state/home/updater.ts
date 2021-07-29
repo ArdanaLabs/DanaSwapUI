@@ -18,7 +18,7 @@ export default function Updater(): null {
 
     let timer = setInterval(async () => {
       await fetchTotalStatsFromEndPoint();
-    }, 1000 * 60);
+    }, 1000 * 60 * 100);
 
     fetchTotalStatsFromEndPoint();
 

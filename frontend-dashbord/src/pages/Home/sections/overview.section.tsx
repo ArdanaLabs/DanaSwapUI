@@ -40,10 +40,10 @@ const OverViewSection: React.FC = () => {
             <OverViewBox label={"TOTAL LIQUIDITY\n\n"} content={nFormatter(totalDepositsAllPoolsUSD, 2)} />
           </Grid>
           <Grid item xs={6} sm={3}>
-            <OverViewBox label={"LIQUIDITY UTILIZATION"} content={totalLiquidityUtilization} />
+            <OverViewBox label={"LIQUIDITY UTILIZATION"} content={`${totalLiquidityUtilization ?? 0}%`} />
           </Grid>
           <Grid item xs={6} sm={3}>
-            <OverViewBox label={"24H VOLUME\n\n"} content={nFormatter((totalDailyVolumeUSD ? totalDailyVolumeUSD.trade : 0), 2)} />
+            <OverViewBox label={"24H VOLUME\n\n"} content={nFormatter((totalDailyVolumeUSD?.trade ?? 0), 2)} />
           </Grid>
         </Grid>
         <Grid container item sm={12} md={6}>
