@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Box, Grid, useMediaQuery } from '@material-ui/core'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import cx from 'classnames'
@@ -6,6 +6,8 @@ import Chart from 'react-apexcharts'
 
 import { useIsDarkMode } from 'state/user/hooks'
 import { ApexOptions } from 'apexcharts'
+import { useLocation } from 'react-router-dom'
+import { usePoolStats } from 'state/home/hooks'
 
 const useStyles = makeStyles(({ palette }) => ({
   self: {
@@ -45,6 +47,8 @@ const ChartSection: React.FC = () => {
   const dark = useIsDarkMode()
   const mobile = useMediaQuery(breakpoints.down('xs'))
   const classes = useStyles({ dark, mobile })
+  const location = useLocation()
+  const poolStats = usePoolStats()
 
   const options: ApexOptions = {
     chart: {
@@ -122,6 +126,42 @@ const ChartSection: React.FC = () => {
     }
   ]
 
+  const [poolInfo, setPoolInfo] = useState<any>(null)
+  const [reserves, setReserves] = useState<any[]>([])
+  const [currencySUM, setCurrencySUM] = useState({ label: '', value: 0 })
+
+  useEffect(() => {
+    const { poolName }: any = location.state
+    poolStats && poolStats[poolName] && setPoolInfo(poolStats[poolName])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [poolStats, location.state])
+
+  useEffect(() => {
+    if (poolInfo) {
+      console.log('---------', poolInfo)
+
+      const currencyNames: string[] = Object.keys(poolInfo.reserves)
+      const currencyValues: number[] = Object.values(poolInfo.reserves)
+
+      const _currencySUM: number = currencyValues.reduce(
+        (accumulator: number, current: number) => accumulator + current
+      )
+
+      const parsedReserves: any[] = currencyNames.map(
+        (currencyName: string, index: number) => ({
+          name: currencyName,
+          value: currencyValues[index],
+          ratio: ((100 * currencyValues[index]) / _currencySUM).toFixed(2)
+        })
+      )
+      setReserves(parsedReserves)
+      setCurrencySUM({
+        label: currencyNames.join(' + '),
+        value: _currencySUM
+      });
+    }
+  }, [poolInfo])
+
   return (
     <Box className={cx(classes.self)}>
       <Grid container spacing={3}>
@@ -142,26 +182,34 @@ const ChartSection: React.FC = () => {
         <Grid item sm={12} md={6} style={{ width: '100%' }}>
           <Box className={cx(classes.title)}>Currency Reserves</Box>
           <Box mt='20px' />
-          <Box className={cx(classes.panel)} padding="35px !important">
-            <b>USDT:</b> 3,884.66445394 (40.77%)
+          <Box className={cx(classes.panel)} padding='35px !important'>
+            {/* <b>USDT:</b> 3,884.66445394 (40.77%)
             <br />
             <b>USDC:</b> 3,680.61262405 (38.63%)
             <br />
             <b>DAI:</b> 1,962.26649344 (20.60%)
             <br />
             <b>USDT+USDC+DAI:</b> 9,527.54357143
+            <br /> */}
+            {reserves &&
+              reserves.map((currency: any, i: number) => (
+                <Box component='p' key={i} margin={0}>
+                  <b>{currency.name}:</b>&nbsp;{currency.value}&nbsp;({currency.ratio}%)
+                </Box>
+              ))}
+            <b>{currencySUM.label}:</b>&nbsp;{currencySUM.value}
+            <br/>
+            <b>USD total (NAV):</b> ${(poolInfo && poolInfo.navUSD) ? poolInfo.navUSD.toLocaleString() : 0}
             <br />
-            <b>USD total (NAV):</b> $302,166,044.37
+            <br />
+            <b>Fee:</b> {(poolInfo && poolInfo.feePercent) ? poolInfo.feePercent.toLocaleString() : 0}%
+            <br />
+            <b>Admin fee:</b> {(poolInfo && poolInfo.adminFeePercent) ? poolInfo.adminFeePercent.toLocaleString() : 0}%
             <br />
             <br />
-            <b>Fee:</b> 0.040%
+            <b>Virtual price:</b> {(poolInfo && poolInfo.virtualPriceUSD) ? poolInfo.virtualPriceUSD.toLocaleString() : 0} [?]
             <br />
-            <b>Admin fee:</b> 50.000% of 0.040%
-            <br />
-            <br />
-            <b>Virtual price:</b> 1.0087 [?]
-            <br />
-            <b>A:</b> 100
+            <b>A:</b> {(poolInfo && poolInfo.amplificationCoefficient) ? poolInfo.amplificationCoefficient.toLocaleString() : 0}
           </Box>
         </Grid>
         <Grid item sm={12} md={6} style={{ width: '100%' }}>

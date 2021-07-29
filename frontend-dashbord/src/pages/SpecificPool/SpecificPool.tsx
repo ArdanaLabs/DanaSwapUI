@@ -63,12 +63,16 @@ const SpecificPool: React.FC = () => {
   }
 
   useEffect(() => {
+    if (!location.state) {
+      history.goBack()
+      return
+    }
     const { poolName }: any = location.state
     if (!poolName || !poolStats || !poolStats[poolName]) {
       history.goBack()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [poolStats])
+  }, [poolStats, location.state])
 
   return (
     <Fade in={true}>

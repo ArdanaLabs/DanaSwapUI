@@ -205,12 +205,14 @@ const StatsSection: React.FC = () => {
     }
   ]
 
-  const [poolName, setPoolName] = useState('')
   const [poolInfo, setPoolInfo] = useState<any>(null)
   const [chartOptions, setChartOptions] = useState<ApexOptions>(options)
   const [chartSeries, setChartSeries] = useState<any[]>(series)
 
   useEffect(() => {
+    const { poolName }: any = location.state
+    poolStats && poolStats[poolName] && setPoolInfo(poolStats[poolName])
+
     getPoolVolume(
       poolName,
       '2020-12-12T00:00:00.0Z',
@@ -218,17 +220,7 @@ const StatsSection: React.FC = () => {
       OneWeek
     )
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  useEffect(() => {
-    const { poolName: _poolName }: any = location.state
-    setPoolName(_poolName)
-  }, [location.state])
-
-  useEffect(() => {
-    poolStats && poolStats[poolName] && setPoolInfo(poolStats[poolName])
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [poolStats])
+  }, [poolStats, location.state])
 
   useEffect(() => {
     if (poolVolume) {
