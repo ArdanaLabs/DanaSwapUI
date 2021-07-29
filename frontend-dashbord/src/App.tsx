@@ -15,6 +15,7 @@ import store from "./state";
 
 import { Home, Swap, Pools, DANA, Launch, SpecPool } from "./pages";
 import Layout from "layouts/Layout";
+import { BlockUI } from "components";
 
 import HomeUpdater from "./state/home/updater";
 import UserUpdater from "./state/user/updater";
@@ -53,6 +54,7 @@ const Providers: React.FC = ({ children }) => {
             <StateUpdaters />
 
             <ThemeProvider>
+              <BlockUI />
               <CssBaseline />
               <I18nextProvider i18n={i18n}>{children}</I18nextProvider>
             </ThemeProvider>

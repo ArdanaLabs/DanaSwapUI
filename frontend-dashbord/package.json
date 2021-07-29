@@ -59,6 +59,7 @@
     "react-scripts": "^4.0.2",
     "react-scroll-parallax": "^2.4.0",
     "react-simple-animate": "^3.3.12",
+    "react-spinners": "^0.11.0",
     "react-use-websocket": "^2.7.1",
     "react-virtualized-auto-sizer": "^1.0.4",
     "react-window": "^1.8.6",
