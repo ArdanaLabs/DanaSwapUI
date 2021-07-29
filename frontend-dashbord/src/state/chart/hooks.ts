@@ -60,7 +60,7 @@ export async function getAggVolume (start: string, end: string, grain: string) {
 
     return result.json()
   } catch (e) {
-    console.log('error fetching', e)
+    console.log('getAggVolume: error fetching', e)
     return null
   }
 }
@@ -78,7 +78,7 @@ export async function getAggLiquidity (
 
     return result.json()
   } catch (e) {
-    console.log('error fetching', e)
+    console.log('getAggLiquidity: error fetching', e)
     return null
   }
 }
@@ -97,7 +97,7 @@ export async function getPoolFees (
 
     return result.json()
   } catch (e) {
-    console.log('error fetching', e)
+    console.log('getPoolFees: error fetching', e)
     return null
   }
 }
@@ -116,7 +116,7 @@ export async function getPoolVolume (
 
     return result.json()
   } catch (e) {
-    console.log('error fetching', e)
+    console.log('getPoolVolume: error fetching', e)
     return null
   }
 }
@@ -135,7 +135,7 @@ export async function getPoolLiquidity (
 
     return result.json()
   } catch (e) {
-    console.log('error fetching', e)
+    console.log('getPoolLiquidity: error fetching', e)
     return null
   }
 }
@@ -154,7 +154,7 @@ export async function getPoolTXCount (
 
     return result.json()
   } catch (e) {
-    console.log('error fetching', e)
+    console.log('getPoolTXCount: error fetching', e)
     return null
   }
 }
@@ -173,7 +173,7 @@ export async function getPoolAPY (
 
     return result.json()
   } catch (e) {
-    console.log('error fetching', e)
+    console.log('getPoolAPY: error fetching', e)
     return null
   }
 }
@@ -187,12 +187,12 @@ export async function getPoolTransactions (
   try {
     const result = await fetch(
       API_URL +
-        `/chart/pool/transactions?pool="${pool}"&start=${start}&end=${end}&type="${type}"`
+        `/transactions?pool="${pool}"&start=${start}&end=${end}&type="${type}"`
     )
 
     return result.json()
   } catch (e) {
-    console.log('error fetching', e)
+    console.log('getPoolTransactions: error fetching', e)
     return null
   }
 }
