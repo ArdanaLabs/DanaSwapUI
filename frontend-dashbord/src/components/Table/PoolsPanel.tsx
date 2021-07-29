@@ -275,7 +275,7 @@ const PoolsPanel: React.FC<PoolsPanelProps> = ({ overView = false }) => {
                     {`+4.30% -> 10.76% DANA + 1.13% BTC`}
                   </StyledTableCell>
                   <StyledTableCell>
-                    {nFormatter(poolInfos[i].recentDailyVolumeUSD)}
+                    {nFormatter(poolInfos[i].recentDailyVolumeUSD.trade)}
                   </StyledTableCell>
                   <StyledTableCell>
                     {/* {poolInfos[i].recentDailyVolumeUSD}% */}
