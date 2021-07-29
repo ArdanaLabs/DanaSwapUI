@@ -9,7 +9,7 @@ import { useIsDarkMode } from 'state/user/hooks'
 import { useLocation } from 'react-router-dom'
 import { extractXAxis, extractYAxis, nFormatter } from 'hooks'
 import { usePoolStats } from 'state/home/hooks'
-import { usePoolVolume } from 'state/chart/hooks'
+import { usePoolVolume, usePoolLiquidity } from 'state/chart/hooks'
 
 import { OneWeek } from 'config/grains'
 
@@ -111,6 +111,7 @@ const StatsSection: React.FC = () => {
 
   const poolStats = usePoolStats()
   const { poolVolume, getPoolVolume } = usePoolVolume()
+  const { poolLiquidity, getPoolLiquidity } = usePoolLiquidity()
 
   let options: ApexOptions = {
     chart: {
@@ -219,11 +220,17 @@ const StatsSection: React.FC = () => {
       '2021-01-12T00:00:00.0Z',
       OneWeek
     )
+    getPoolLiquidity(
+      poolName,
+      '2020-12-12T00:00:00.0Z',
+      '2021-01-12T00:00:00.0Z',
+      OneWeek
+    )
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [poolStats, location.state])
 
   useEffect(() => {
-    if (poolVolume) {
+    if (poolVolume && poolLiquidity) {
       setChartOptions({
         ...chartOptions,
         chart: {
@@ -264,11 +271,19 @@ const StatsSection: React.FC = () => {
         {
           name: 'Volume',
           data: extractYAxis(poolVolume, 'total')
-        }
+        },
+        {
+          name: 'Liquidity',
+          data: extractYAxis(poolLiquidity, 'value')
+        },
+        // {
+        //   name: 'TVL',
+        //   data: extractYAxis(poolVolume, 'total')
+        // },
       ])
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [poolVolume, palette])
+  }, [palette, poolVolume, poolLiquidity])
 
   return (
     <Box className={cx(classes.root)}>
