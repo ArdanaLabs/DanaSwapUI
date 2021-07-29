@@ -5,8 +5,8 @@ import { useIsDarkMode } from 'state/user/hooks'
 import cx from 'classnames'
 import Button from 'components/Button/Button'
 import { StatsSection, ChartSection, TransactionsSection } from './sections'
-import { useHistory, useParams } from 'react-router-dom'
-import * as _ from 'lodash'
+import { useHistory, useLocation } from 'react-router-dom'
+import { usePoolStats } from 'state/home/hooks'
 
 const FILTER_SWAP = 0
 const FILTER_DEPOSIT = 1
@@ -49,8 +49,9 @@ const SpecificPool: React.FC = () => {
   const mobile = useMediaQuery(breakpoints.down('xs'))
   const dark = useIsDarkMode()
   const classes = useStyles({ dark, mobile })
-  const params = useParams();
-  const history = useHistory();
+  const location = useLocation()
+  const history = useHistory()
+  const poolStats = usePoolStats()
 
   const [filter, setFilter] = useState({
     text: '',
@@ -62,11 +63,12 @@ const SpecificPool: React.FC = () => {
   }
 
   useEffect(() => {
-    if (_.isEmpty(params)) {
+    const { poolName }: any = location.state
+    if (!poolName || !poolStats || !poolStats[poolName]) {
       history.goBack()
     }
-    console.log(params);
-  }, [params, history])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [poolStats])
 
   return (
     <Fade in={true}>

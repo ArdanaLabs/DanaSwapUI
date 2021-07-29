@@ -8,6 +8,7 @@ import { useIsDarkMode } from "state/user/hooks";
 import { ApexOptions } from "apexcharts";
 import { useAggVolume, useAggLiquidity } from "state/chart/hooks";
 import { extractXAxis, extractYAxis, nFormatter } from "hooks";
+import { FiveMinutes, OneDay } from "config/grains";
 
 const useStyles = makeStyles(({ palette }) => ({
   self: {
@@ -145,18 +146,24 @@ const ChartSection: React.FC = () => {
   const [volumeSeries, setVolumeSeries] = useState<any[]>(series);
   const [liquiditySeries, setLiquiditySeries] = useState<any[]>(series);
 
-  const aggVolumeData = useAggVolume();
-  const aggLiquidityData = useAggLiquidity();
+  const { aggVolume, getAggVolume } = useAggVolume();
+  const { aggLiquidity, getAggLiquidity } = useAggLiquidity();
 
   useEffect(() => {
-    if (aggVolumeData) {
+    getAggVolume("2020-12-12T00:00:00.0Z", "2020-12-12T00:05:00.0Z", FiveMinutes)
+    getAggLiquidity("2020-12-12T00:00:00.0Z", "2020-12-14T00:00:00.0Z", OneDay)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  useEffect(() => {
+    if (aggVolume) {
       setVolumeOptions({
         ...volumeOptions,
         chart: {
           id: "chart-agg-volume"
         },
         xaxis: {
-          categories: extractXAxis(aggVolumeData),
+          categories: extractXAxis(aggVolume),
           labels: {
             style: {
               colors: palette.text.hint
@@ -188,21 +195,21 @@ const ChartSection: React.FC = () => {
       });
       setVolumeSeries([{
         name: "Volume",
-        data: extractYAxis(aggVolumeData, "total")
+        data: extractYAxis(aggVolume, "total")
       }]);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [aggVolumeData, palette]);
+  }, [aggVolume, palette]);
 
   useEffect(() => {
-    if (aggLiquidityData) {
+    if (aggLiquidity) {
       setLiquidityOptions({
         ...liquidityOptions,
         chart: {
           id: "chart-agg-liquidity"
         },
         xaxis: {
-          categories: extractXAxis(aggLiquidityData),
+          categories: extractXAxis(aggLiquidity),
           labels: {
             style: {
               colors: palette.text.hint
@@ -234,11 +241,11 @@ const ChartSection: React.FC = () => {
       });
       setLiquiditySeries([{
         name: "Liquidity",
-        data: extractYAxis(aggLiquidityData, "value")
+        data: extractYAxis(aggLiquidity, "value")
       }]);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [aggLiquidityData, palette]);
+  }, [aggLiquidity, palette]);
 
   return (
     <Box className={cx(classes.self)}>

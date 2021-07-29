@@ -69,8 +69,8 @@ export const updatePoolLiquidity = createAction<RangedLiquidity[]>(
   "home/updatePoolLiquidity"
 );
 
-export const updatePoolTxCount = createAction<RangedTxCount[]>(
-  "home/updatePoolTxCount"
+export const updatePoolTXCount = createAction<RangedTxCount[]>(
+  "home/updatePoolTXCount"
 );
 
 export const updatePoolAPY = createAction<RangedAPY[]>(

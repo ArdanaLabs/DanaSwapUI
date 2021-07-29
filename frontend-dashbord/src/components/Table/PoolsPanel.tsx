@@ -143,7 +143,14 @@ const PoolsPanel: React.FC<PoolsPanelProps> = ({ overView = false }) => {
   const classes = useStyles({ dark, mobile })
   const history = useHistory()
 
-  const columns = ['POOL', 'Liquidity', 'Base APY', 'Rewards APY', 'VOLUME', 'APY']
+  const columns = [
+    'POOL',
+    'Liquidity',
+    'Base APY',
+    'Rewards APY',
+    'VOLUME',
+    'APY'
+  ]
 
   const poolStats = usePoolStats()
   const poolNames = keys(poolStats)
@@ -184,8 +191,7 @@ const PoolsPanel: React.FC<PoolsPanelProps> = ({ overView = false }) => {
     history.push({
       pathname: '/spec',
       state: {
-        poolName: poolName,
-        poolInfo: (poolStats && poolStats[poolName])
+        poolName: poolName
       }
     })
   }
@@ -249,7 +255,10 @@ const PoolsPanel: React.FC<PoolsPanelProps> = ({ overView = false }) => {
               // const icon = require(`assets/coins/${poolName}.png`).default
               const icon = require(`assets/coins/bBTC.png`).default
               return (
-                <TableRow key={i} onClick={(e: any) => handleRowClick(e, poolName)}>
+                <TableRow
+                  key={i}
+                  onClick={(e: any) => handleRowClick(e, poolName)}
+                >
                   {/* POOL */}
                   <StyledTableCell component='th' scope='row'>
                     <Box display='flex'>
@@ -288,7 +297,10 @@ const PoolsPanel: React.FC<PoolsPanelProps> = ({ overView = false }) => {
                   </StyledTableCell>
                   {/* VOLUME */}
                   <StyledTableCell>
-                    {nFormatter(poolStats && poolStats[poolName].recentDailyVolumeUSD.trade)}
+                    {nFormatter(
+                      poolStats &&
+                        poolStats[poolName].recentDailyVolumeUSD.trade
+                    )}
                   </StyledTableCell>
                   {/* APY */}
                   <StyledTableCell>29%</StyledTableCell>

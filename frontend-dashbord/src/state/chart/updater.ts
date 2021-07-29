@@ -1,17 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-
 import { AppDispatch } from "state";
-import { 
-  updateAggVolume,
-  updateAggLiquidity,
-  updatePoolFees,
-  updatePoolVolume,
-  updatePoolLiquidity,
-  updatePoolTxCount,
-  updatePoolAPY,
-  updatePoolTransactions
-} from "./actions";
 import {
   getAggVolume,
   getAggLiquidity,
@@ -36,18 +25,6 @@ export default function Updater(): null {
         FiveMinutes
       );
       console.log("aggVolume", aggVolume);
-      if (!aggVolume) return;
-      const params = aggVolume.map((volume: any) => {
-        return {
-          start: volume[0][0],
-          end: volume[0][1],
-          addLiquidity: volume[1].addLiquidity,
-          removeLiquidity: volume[1].removeLiquidity,
-          total: volume[1].total,
-          trade: volume[1].trade,
-        }
-      });
-      dispatch(updateAggVolume(params));
     };
     const fetchAggLiquidity = async () => {
       const aggLiquidity: any = await getAggLiquidity(
@@ -56,15 +33,6 @@ export default function Updater(): null {
         OneDay
       );
       console.log("aggLiquidity", aggLiquidity);
-      if (!aggLiquidity) return;
-      const params = aggLiquidity.map((volume: any) => {
-        return {
-          start: volume[0][0],
-          end: volume[0][1],
-          value: volume[1],
-        }
-      });
-      dispatch(updateAggLiquidity(params));
     };
     const fetchPoolFees = async () => {
       const poolFees: any = await getPoolFees(
@@ -74,15 +42,6 @@ export default function Updater(): null {
         OneWeek
       );
       console.log("poolFees", poolFees);
-      if (!poolFees) return;
-      const params = poolFees.map((volume: any) => {
-        return {
-          start: volume[0][0],
-          end: volume[0][1],
-          value: volume[1],
-        }
-      });
-      dispatch(updatePoolFees(params));
     };
     const fetchPoolVolume = async () => {
       const poolVolume: any = await getPoolVolume(
@@ -92,18 +51,6 @@ export default function Updater(): null {
         OneWeek
       );
       console.log("poolVolume", poolVolume);
-      if (!poolVolume) return;
-      const params = poolVolume.map((volume: any) => {
-        return {
-          start: volume[0][0],
-          end: volume[0][1],
-          addLiquidity: volume[1].addLiquidity,
-          removeLiquidity: volume[1].removeLiquidity,
-          total: volume[1].total,
-          trade: volume[1].trade,
-        }
-      });
-      dispatch(updatePoolVolume(params));
     };
     const fetchPoolLiquidity = async () => {
       const poolLiquidity: any = await getPoolLiquidity(
@@ -113,15 +60,6 @@ export default function Updater(): null {
         OneWeek
       );
       console.log("poolLiquidity", poolLiquidity);
-      if (!poolLiquidity) return;
-      const params = poolLiquidity.map((volume: any) => {
-        return {
-          start: volume[0][0],
-          end: volume[0][1],
-          value: volume[1],
-        }
-      });
-      dispatch(updatePoolLiquidity(params));
     };
     const fetchPoolTxCount = async () => {
       const poolTXCount: any = await getPoolTXCount(
@@ -131,18 +69,6 @@ export default function Updater(): null {
         OneWeek
       );
       console.log("poolTXCount", poolTXCount);
-      if (!poolTXCount) return;
-      const params = poolTXCount.map((volume: any) => {
-        return {
-          start: volume[0][0],
-          end: volume[0][1],
-          addLiquidity: volume[1].addLiquidity,
-          removeLiquidity: volume[1].removeLiquidity,
-          total: volume[1].total,
-          trade: volume[1].trade,
-        }
-      });
-      dispatch(updatePoolTxCount(params));
     };
     const fetchPoolAPY = async () => {
       const poolAPY: any = await getPoolAPY(
@@ -152,15 +78,6 @@ export default function Updater(): null {
         OneWeek
       );
       console.log("poolAPY", poolAPY);
-      if (!poolAPY) return;
-      const params = poolAPY.map((volume: any) => {
-        return {
-          start: volume[0][0],
-          end: volume[0][1],
-          value: volume[1],
-        }
-      });
-      dispatch(updatePoolAPY(params));
     };
     const fetchPoolTransactions = async () => {
       const poolTransactions: any = await getPoolTransactions(
@@ -170,7 +87,6 @@ export default function Updater(): null {
         Any
       );
       console.log("poolTransactions", poolTransactions);
-      poolTransactions && dispatch(updatePoolTransactions(poolTransactions));
     };
 
     fetchAggVolume();

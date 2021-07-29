@@ -5,7 +5,7 @@ import {
   updatePoolFees,
   updatePoolVolume,
   updatePoolLiquidity,
-  updatePoolTxCount,
+  updatePoolTXCount,
   updatePoolAPY,
   updatePoolTransactions
 } from "./actions";
@@ -16,7 +16,7 @@ export const initialState: any = {
   poolFees: null,
   poolVolume: null,
   poolLiquidity: null,
-  poolTxCount: null,
+  poolTXCount: null,
   poolAPY: null,
   poolTransactions: null
 };
@@ -32,8 +32,8 @@ export default createReducer(initialState, (builder) =>
     state.poolVolume = action.payload;
   }).addCase(updatePoolLiquidity, (state, action) => {
     state.poolLiquidity = action.payload;
-  }).addCase(updatePoolTxCount, (state, action) => {
-    state.poolTxCount = action.payload;
+  }).addCase(updatePoolTXCount, (state, action) => {
+    state.poolTXCount = action.payload;
   }).addCase(updatePoolAPY, (state, action) => {
     state.poolAPY = action.payload;
   }).addCase(updatePoolTransactions, (state, action) => {

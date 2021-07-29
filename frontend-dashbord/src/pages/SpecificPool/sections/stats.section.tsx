@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Box, Grid, useMediaQuery } from '@material-ui/core'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import cx from 'classnames'
@@ -6,6 +6,12 @@ import Chart from 'react-apexcharts'
 import { ApexOptions } from 'apexcharts'
 
 import { useIsDarkMode } from 'state/user/hooks'
+import { useLocation } from 'react-router-dom'
+import { extractXAxis, extractYAxis, nFormatter } from 'hooks'
+import { usePoolStats } from 'state/home/hooks'
+import { usePoolVolume } from 'state/chart/hooks'
+
+import { OneWeek } from 'config/grains'
 
 const useStyles = makeStyles(({ palette }) => ({
   root: {},
@@ -101,8 +107,12 @@ const StatsSection: React.FC = () => {
   const dark = useIsDarkMode()
   const mobile = useMediaQuery(breakpoints.down('xs'))
   const classes = useStyles({ dark, mobile })
+  const location = useLocation()
 
-  const options: ApexOptions = {
+  const poolStats = usePoolStats()
+  const { poolVolume, getPoolVolume } = usePoolVolume()
+
+  let options: ApexOptions = {
     chart: {
       id: 'basic-bar',
       zoom: {
@@ -120,29 +130,38 @@ const StatsSection: React.FC = () => {
       categories: ['APR 20', 'MAY 15', 'JUN 02'],
       labels: {
         style: {
-          colors: [palette.text.hint, palette.text.hint, palette.text.hint],
+          colors: palette.text.hint,
           fontSize: '11px',
           fontFamily: 'Museo Sans',
           fontWeight: 500
         }
       },
-      tickPlacement: 'between'
+      tickPlacement: 'between',
+      axisTicks: {
+        show: false
+      },
+      axisBorder: {
+        show: false
+      }
     },
     yaxis: {
       labels: {
         show: true,
         align: 'left',
         style: {
-          colors: [palette.secondary.main],
+          colors: palette.secondary.main,
           fontFamily: 'Museo Sans',
           fontWeight: 'bold',
           fontSize: '16px',
           cssClass: 'apexcharts-yaxis-label'
         },
         formatter: (value: any) => {
-          return '$' + value + (value ? ' M' : '')
+          return nFormatter(value)
         }
       }
+    },
+    grid: {
+      show: false
     },
     fill: {
       type: 'gradient',
@@ -155,9 +174,6 @@ const StatsSection: React.FC = () => {
         stops: [0, 1200]
       }
     },
-    grid: {
-      show: false
-    },
     plotOptions: {
       bar: {
         borderRadius: 5
@@ -165,16 +181,16 @@ const StatsSection: React.FC = () => {
     },
     dataLabels: {
       enabled: false
-    },
-    tooltip: {
-      enabled: false
     }
+    // tooltip: {
+    //   enabled: false
+    // }
   }
 
   const series = [
     {
       name: 'series-1',
-      data: [30, 40, 45, 50, 49, 60, 70, 91, 30, 40, 45, 50, 49, 60, 70, 91]
+      data: []
     }
   ]
 
@@ -188,6 +204,79 @@ const StatsSection: React.FC = () => {
       amount: '$22.62 M'
     }
   ]
+
+  const [poolName, setPoolName] = useState('')
+  const [poolInfo, setPoolInfo] = useState<any>(null)
+  const [chartOptions, setChartOptions] = useState<ApexOptions>(options)
+  const [chartSeries, setChartSeries] = useState<any[]>(series)
+
+  useEffect(() => {
+    getPoolVolume(
+      poolName,
+      '2020-12-12T00:00:00.0Z',
+      '2021-01-12T00:00:00.0Z',
+      OneWeek
+    )
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  useEffect(() => {
+    const { poolName: _poolName }: any = location.state
+    setPoolName(_poolName)
+  }, [location.state])
+
+  useEffect(() => {
+    poolStats && poolStats[poolName] && setPoolInfo(poolStats[poolName])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [poolStats])
+
+  useEffect(() => {
+    if (poolVolume) {
+      setChartOptions({
+        ...chartOptions,
+        chart: {
+          id: 'chart-agg-volume'
+        },
+        xaxis: {
+          categories: extractXAxis(poolVolume),
+          labels: {
+            style: {
+              colors: palette.text.hint
+            }
+          }
+        },
+        yaxis: {
+          labels: {
+            show: true,
+            align: 'left',
+            style: {
+              colors: palette.secondary.main,
+              fontFamily: 'Museo Sans',
+              fontWeight: 'bold',
+              fontSize: '16px',
+              cssClass: 'apexcharts-yaxis-label'
+            },
+            formatter: (value: any) => {
+              return nFormatter(value)
+            }
+          }
+        },
+        fill: {
+          colors: [!dark ? '#202F9A' : '#73d6f1'],
+          gradient: {
+            gradientToColors: [!dark ? '#5F72FF' : '#73D6F1']
+          }
+        }
+      })
+      setChartSeries([
+        {
+          name: 'Volume',
+          data: extractYAxis(poolVolume, 'total')
+        }
+      ])
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [poolVolume, palette])
 
   return (
     <Box className={cx(classes.root)}>
@@ -232,7 +321,11 @@ const StatsSection: React.FC = () => {
             <Box className={cx(classes.statsBox, classes.statsBoxBg)}>
               <Box className={cx(classes.leftBorder)}>&nbsp;&nbsp;</Box>
               <span>VOLUME 24H</span>
-              <span>$88.30m</span>
+              <span>
+                {poolInfo
+                  ? nFormatter(poolInfo.recentDailyVolumeUSD.trade, 2)
+                  : 0}
+              </span>
               <Box style={{ color: 'green' }}>
                 <i className='fal fa-long-arrow-up'></i>&nbsp;
                 <span>36.12%</span>
@@ -242,14 +335,21 @@ const StatsSection: React.FC = () => {
             <Box className={cx(classes.statsBox, classes.statsBoxBg)}>
               <Box className={cx(classes.leftBorder)}>&nbsp;&nbsp;</Box>
               <span>24H FEES</span>
-              <span>$264.89K</span>
+              <span>
+                {poolInfo ? nFormatter(poolInfo.dailyFeeVolumeUSD, 2) : 0}
+              </span>
               <span style={{ color: 'red' }}>&nbsp;</span>
             </Box>
           </Box>
         </Grid>
         <Grid item xs={12} sm={8}>
           <Box className={cx(classes.panelbg)}>
-            <Chart options={options} series={series} type='bar' width='100%' />
+            <Chart
+              options={chartOptions}
+              series={chartSeries}
+              type='bar'
+              width='100%'
+            />
           </Box>
         </Grid>
       </Grid>
