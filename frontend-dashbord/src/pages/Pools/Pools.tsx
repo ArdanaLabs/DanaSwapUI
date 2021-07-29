@@ -65,7 +65,7 @@ const Pools: React.FC = () => {
           </span>
           <br />
           <br />
-          Daily Volume: <span>${totalDailyVolumeUSD ? totalDailyVolumeUSD.toLocaleString() : 0}</span>
+          Daily Volume: <span>${totalDailyVolumeUSD?.trade ? totalDailyVolumeUSD.trade.toLocaleString() : 0}</span>
           <br />
           <br />
           Factory Daily Volume: <span>$8,999,777</span>

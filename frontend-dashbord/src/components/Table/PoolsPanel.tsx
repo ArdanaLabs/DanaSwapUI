@@ -16,7 +16,7 @@ import { useIsDarkMode } from 'state/user/hooks'
 import { SearchInput } from 'components/Input'
 import { Button } from 'components/Button'
 import { usePoolStats } from 'state/home/hooks'
-import { keys, values } from 'lodash'
+import { keys } from 'lodash'
 import { useHistory } from 'react-router-dom'
 import { nFormatter } from 'hooks'
 
@@ -25,7 +25,7 @@ const FILTER_DIGITALASSESTS = 1
 
 const StyledTableCell = withStyles(({ palette }) => ({
   root: {
-    borderBottom: "1px solid #E5E5E5",
+    borderBottom: '1px solid #E5E5E5'
   },
   head: {
     fontFamily: 'Museo Sans',
@@ -62,7 +62,7 @@ const StyledTableCell = withStyles(({ palette }) => ({
       color: palette.secondary.main,
 
       '&:hover': {
-        color: 'gray',
+        color: 'gray'
       }
     }
   }
@@ -143,11 +143,10 @@ const PoolsPanel: React.FC<PoolsPanelProps> = ({ overView = false }) => {
   const classes = useStyles({ dark, mobile })
   const history = useHistory()
 
-  const columns = ['POOL', 'Base APY', 'Rewards APY', 'VOLUME', 'APY']
+  const columns = ['POOL', 'Liquidity', 'Base APY', 'Rewards APY', 'VOLUME', 'APY']
 
   const poolStats = usePoolStats()
   const poolNames = keys(poolStats)
-  const poolInfos = values(poolStats)
   // const poolReserves = poolInfos.map((val: any) => {
   //   let reserves = keys(val.reserves)
   //   return reserves.join(' + ')
@@ -181,10 +180,14 @@ const PoolsPanel: React.FC<PoolsPanelProps> = ({ overView = false }) => {
     setFilter({ ...filter, ...event })
   }
 
-  const handleRowClick = (event: any, index: number) => {
-    console.log(event, index)
-
-    history.push('/spec')
+  const handleRowClick = (event: any, poolName: string) => {
+    history.push({
+      pathname: '/spec',
+      state: {
+        poolName: poolName,
+        poolInfo: (poolStats && poolStats[poolName])
+      }
+    })
   }
 
   return (
@@ -230,21 +233,24 @@ const PoolsPanel: React.FC<PoolsPanelProps> = ({ overView = false }) => {
         <Table aria-label='simple table'>
           <TableHead>
             <TableRow>
-              {columns.map((column: any, i: any) => (
-                <StyledTableCell key={i}>
-                  {column}
-                  &nbsp;
-                  <i className='fas fa-sort' />
-                </StyledTableCell>
-              ))}
+              {columns.map((column: any, i: any) => {
+                return (
+                  <StyledTableCell key={i}>
+                    {column}
+                    &nbsp;
+                    <i className='fas fa-sort' />
+                  </StyledTableCell>
+                )
+              })}
             </TableRow>
           </TableHead>
           <TableBody>
             {poolNames.map((poolName: any, i: any) => {
               // const icon = require(`assets/coins/${poolName}.png`).default
-              const icon = require(`assets/coins/bBTC.png`).default;
+              const icon = require(`assets/coins/bBTC.png`).default
               return (
-                <TableRow key={i} onClick={(e: any) => handleRowClick(e, i)}>
+                <TableRow key={i} onClick={(e: any) => handleRowClick(e, poolName)}>
+                  {/* POOL */}
                   <StyledTableCell component='th' scope='row'>
                     <Box display='flex'>
                       <Box>
@@ -266,21 +272,26 @@ const PoolsPanel: React.FC<PoolsPanelProps> = ({ overView = false }) => {
                       </Box>
                     </Box>
                   </StyledTableCell>
+                  {/* Liquidity */}
+                  <StyledTableCell>
+                    {nFormatter(poolStats && poolStats[poolName].navUSD)}
+                  </StyledTableCell>
+                  {/* Base APY */}
                   <StyledTableCell>
                     {/* {poolInfos[i].recentDailyAPYPercent}% */}
                     2.99%
                   </StyledTableCell>
+                  {/* Rewards APY */}
                   <StyledTableCell>
                     {/* {poolRewardAPYs[i]} */}
                     {`+4.30% -> 10.76% DANA + 1.13% BTC`}
                   </StyledTableCell>
+                  {/* VOLUME */}
                   <StyledTableCell>
-                    {nFormatter(poolInfos[i].recentDailyVolumeUSD.trade)}
+                    {nFormatter(poolStats && poolStats[poolName].recentDailyVolumeUSD.trade)}
                   </StyledTableCell>
-                  <StyledTableCell>
-                    {/* {poolInfos[i].recentDailyVolumeUSD}% */}
-                    29%
-                  </StyledTableCell>
+                  {/* APY */}
+                  <StyledTableCell>29%</StyledTableCell>
                 </TableRow>
               )
             })}

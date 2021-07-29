@@ -57,7 +57,7 @@ const StatsSection: React.FC = () => {
   const classes = useStyles({ dark, mobile });
 
   const totalStats = useTotalStats();
-  const { totalDepositsAllPoolsUSD, totalDailyVolumeUSD } = totalStats;
+  const { totalDailyVolumeUSD } = totalStats;
 
   return (
     <Box className={cx(classes.self)}>
@@ -101,19 +101,22 @@ const StatsSection: React.FC = () => {
           </Box>
           <Box className={cx(classes.body)}>
             <Box component="p">
-              DEPOSITS:
+              DAILY DEPOSITS:
               <br />
-              {/* <span>$9,006,029,010.68 (includes factory pools)</span> */}
-              <span>${totalDepositsAllPoolsUSD ? totalDepositsAllPoolsUSD.toLocaleString() : 0} (includes factory pools)</span>
+              <span>${totalDailyVolumeUSD?.addLiquidity ? totalDailyVolumeUSD.addLiquidity.toLocaleString() : 0} (includes factory pools)</span>
+              <br />
+              <br />
+              DAILY WITHDRAWALS:
+              <br />
+              <span>${totalDailyVolumeUSD?.removeLiquidity ? totalDailyVolumeUSD.removeLiquidity.toLocaleString() : 0} (includes factory pools)</span>
               <br />
               <br />
               DAILY VOLUME:
               <br />
-              {/* <span>$147,471,544</span> */}
-              <span>${totalDailyVolumeUSD ? totalDailyVolumeUSD.toLocaleString() : 0}</span>
+              <span>${totalDailyVolumeUSD?.total ? totalDailyVolumeUSD.total.toLocaleString() : 0}</span>
               <br />
               <br />
-              Factory Daily Volume:
+              STABLECOIN VOLUME:
               <br />
               <span>$3,065,174</span>
             </Box>

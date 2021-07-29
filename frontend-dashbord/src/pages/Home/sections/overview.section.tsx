@@ -22,7 +22,12 @@ const OverViewSection: React.FC = () => {
   const mobile = useMediaQuery(breakpoints.down("xs"));
   const classes = useStyles({ dark, mobile });
 
-  const { totalDepositsAllPoolsUSD, totalDailyVolumeUSD, totalDailyFeeVolumeUSD, totalLiquidityUtilization } = useTotalStats();
+  const { 
+    totalDepositsAllPoolsUSD,
+    totalDailyVolumeUSD,
+    totalDailyFeeVolumeUSD,
+    totalLiquidityUtilization
+  } = useTotalStats();
   
   return (
     <Box className={cx(classes.self)}>

@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Box, Fade, useMediaQuery } from '@material-ui/core'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import { useIsDarkMode } from 'state/user/hooks'
 import cx from 'classnames'
 import Button from 'components/Button/Button'
 import { StatsSection, ChartSection, TransactionsSection } from './sections'
+import { useHistory, useParams } from 'react-router-dom'
+import * as _ from 'lodash'
 
 const FILTER_SWAP = 0
 const FILTER_DEPOSIT = 1
@@ -47,6 +49,8 @@ const SpecificPool: React.FC = () => {
   const mobile = useMediaQuery(breakpoints.down('xs'))
   const dark = useIsDarkMode()
   const classes = useStyles({ dark, mobile })
+  const params = useParams();
+  const history = useHistory();
 
   const [filter, setFilter] = useState({
     text: '',
@@ -56,6 +60,13 @@ const SpecificPool: React.FC = () => {
   const onFilterChange = (event: any) => {
     setFilter({ ...filter, ...event })
   }
+
+  useEffect(() => {
+    if (_.isEmpty(params)) {
+      history.goBack()
+    }
+    console.log(params);
+  }, [params, history])
 
   return (
     <Fade in={true}>
