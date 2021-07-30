@@ -12,6 +12,7 @@ import { usePoolStats } from 'state/home/hooks'
 import { usePoolVolume, usePoolLiquidity } from 'state/chart/hooks'
 
 import { OneWeek } from 'config/grains'
+import { SwitchWithGlider } from 'components'
 
 const useStyles = makeStyles(({ palette }) => ({
   root: {},
@@ -99,6 +100,30 @@ const useStyles = makeStyles(({ palette }) => ({
     background: palette.info.dark,
     borderRadius: '10px',
     fontFamily: 'auto'
+  },
+
+  filterNormal: {
+    border: '1px solid #FFFFFF',
+    boxSizing: 'border-box',
+    borderRadius: '20px',
+    padding: '10px 20px',
+    background: palette.type === 'light' ? '#A5A5A5' : '#010730',
+
+    fontFamily: 'Museo Sans',
+    fontStyle: 'normal',
+    fontWeight: 'bold',
+    fontSize: '9px',
+    lineHeight: '100%',
+    textAlign: 'center',
+    color: palette.common.white
+  },
+
+  filterActive: {
+    border: 'unset',
+    background:
+      palette.type === 'light'
+        ? 'linear-gradient(89.62deg, #000A4F 0.3%, #3C4DC5 99.64%)'
+        : 'linear-gradient(90deg, #5F72FF 0%, rgba(115, 214, 241, 0) 100%)'
   }
 }))
 
@@ -147,18 +172,7 @@ const StatsSection: React.FC = () => {
     },
     yaxis: {
       labels: {
-        show: true,
-        align: 'left',
-        style: {
-          colors: palette.secondary.main,
-          fontFamily: 'Museo Sans',
-          fontWeight: 'bold',
-          fontSize: '16px',
-          cssClass: 'apexcharts-yaxis-label'
-        },
-        formatter: (value: any) => {
-          return nFormatter(value)
-        }
+        show: false
       }
     },
     grid: {
@@ -210,6 +224,8 @@ const StatsSection: React.FC = () => {
   const [chartOptions, setChartOptions] = useState<ApexOptions>(options)
   const [chartSeries, setChartSeries] = useState<any[]>(series)
 
+  const [activeChart, setActiveChart] = useState(0)
+
   useEffect(() => {
     const { poolName }: any = location.state
     poolStats && poolStats[poolName] && setPoolInfo(poolStats[poolName])
@@ -245,22 +261,6 @@ const StatsSection: React.FC = () => {
           labels: {
             style: {
               colors: palette.text.hint
-            }
-          }
-        },
-        yaxis: {
-          labels: {
-            show: true,
-            align: 'left',
-            style: {
-              colors: palette.secondary.main,
-              fontFamily: 'Museo Sans',
-              fontWeight: 'bold',
-              fontSize: '16px',
-              cssClass: 'apexcharts-yaxis-label'
-            },
-            formatter: (value: any) => {
-              return nFormatter(value)
             }
           }
         },
@@ -351,6 +351,17 @@ const StatsSection: React.FC = () => {
         </Grid>
         <Grid item xs={12} sm={8}>
           <Box className={cx(classes.panelbg)}>
+            <Box textAlign='right'>
+              <SwitchWithGlider
+                elements={['VOLUME', 'TVL', 'LIQUIDITY']}
+                normalClass={classes.filterNormal}
+                activeClass={classes.filterActive}
+                activeIndex={activeChart}
+                handleSwitch={(i: number) => {
+                  setActiveChart(i)
+                }}
+              />
+            </Box>
             <Chart
               options={chartOptions}
               series={chartSeries}

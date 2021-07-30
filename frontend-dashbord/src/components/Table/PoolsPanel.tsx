@@ -31,7 +31,7 @@ const StyledTableCell = withStyles(({ palette }) => ({
     fontFamily: 'Museo Sans',
     fontStyle: 'normal',
     fontWeight: 500,
-    fontSize: '16px',
+    fontSize: '14px',
     lineHeight: '300%',
     textAlign: 'center',
     cursor: 'pointer',
@@ -41,7 +41,7 @@ const StyledTableCell = withStyles(({ palette }) => ({
     fontFamily: 'Museo Sans',
     fontStyle: 'normal',
     fontWeight: 'bold',
-    fontSize: '16px',
+    fontSize: '14px',
     lineHeight: '115%',
     textAlign: 'center',
     color: palette.secondary.main,
@@ -233,17 +233,18 @@ const PoolsPanel: React.FC<PoolsPanelProps> = ({ overView = false }) => {
               const poolInfo = poolStats![poolName]
               return (
                 <TableRow
+                  hover
                   key={i}
                   onClick={(e: any) => handleRowClick(e, poolName)}
                 >
                   {/* POOL */}
                   <StyledTableCell component='th' scope='row'>
-                    <Box display='flex'>
+                    <Box display='flex' alignItems='center'>
                       <Box>
                         <img
                           src={icon}
                           alt={poolName}
-                          style={{ marginRight: '15px' }}
+                          style={{ width: '30px', marginRight: '15px' }}
                         />
                       </Box>
                       <Box
@@ -252,7 +253,9 @@ const PoolsPanel: React.FC<PoolsPanelProps> = ({ overView = false }) => {
                         justifyContent={'center'}
                       >
                         <Box textAlign='left'>{poolName}</Box>
-                        <Box fontWeight={300}>{keys(poolInfo.reserves).join(' + ')}</Box>
+                        <Box fontWeight={300}>
+                          {keys(poolInfo.reserves).join(' + ')}
+                        </Box>
                       </Box>
                     </Box>
                   </StyledTableCell>
@@ -275,7 +278,9 @@ const PoolsPanel: React.FC<PoolsPanelProps> = ({ overView = false }) => {
                     {nFormatter(poolInfo.recentDailyVolumeUSD.trade)}
                   </StyledTableCell>
                   {/* APY */}
-                  <StyledTableCell>{poolInfo.totalAPYPercent?.toFixed(2) ?? 0}%</StyledTableCell>
+                  <StyledTableCell>
+                    {poolInfo.totalAPYPercent?.toFixed(2) ?? 0}%
+                  </StyledTableCell>
                 </TableRow>
               )
             })}
