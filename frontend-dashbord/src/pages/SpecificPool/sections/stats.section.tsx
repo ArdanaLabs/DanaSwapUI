@@ -213,7 +213,11 @@ const StatsSection: React.FC = () => {
   useEffect(() => {
     const { poolName }: any = location.state
     poolStats && poolStats[poolName] && setPoolInfo(poolStats[poolName])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [poolStats, location.state])
 
+  useEffect(() => {
+    const { poolName }: any = location.state
     getPoolVolume(
       poolName,
       '2020-12-12T00:00:00.0Z',
@@ -227,7 +231,7 @@ const StatsSection: React.FC = () => {
       OneWeek
     )
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [poolStats, location.state])
+  }, [location.state])
 
   useEffect(() => {
     if (poolVolume && poolLiquidity) {
@@ -275,7 +279,7 @@ const StatsSection: React.FC = () => {
         {
           name: 'Liquidity',
           data: extractYAxis(poolLiquidity, 'value')
-        },
+        }
         // {
         //   name: 'TVL',
         //   data: extractYAxis(poolVolume, 'total')
@@ -340,9 +344,7 @@ const StatsSection: React.FC = () => {
             <Box className={cx(classes.statsBox, classes.statsBoxBg)}>
               <Box className={cx(classes.leftBorder)}>&nbsp;&nbsp;</Box>
               <span>24H FEES</span>
-              <span>
-                {nFormatter(poolInfo?.dailyFeeVolumeUSD, 2)}
-              </span>
+              <span>{nFormatter(poolInfo?.dailyFeeVolumeUSD, 2)}</span>
               <span style={{ color: 'red' }}>&nbsp;</span>
             </Box>
           </Box>
