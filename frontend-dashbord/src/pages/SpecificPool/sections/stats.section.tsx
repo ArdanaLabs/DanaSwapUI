@@ -140,7 +140,7 @@ const StatsSection: React.FC = () => {
 
   let options: ApexOptions = {
     chart: {
-      id: 'basic-bar',
+      id: 'chart-trade-volume',
       zoom: {
         enabled: false
       },
@@ -153,7 +153,7 @@ const StatsSection: React.FC = () => {
       curve: 'smooth'
     },
     xaxis: {
-      categories: ['APR 20', 'MAY 15', 'JUN 02'],
+      categories: [],
       labels: {
         style: {
           colors: palette.text.hint,
@@ -196,16 +196,16 @@ const StatsSection: React.FC = () => {
     },
     dataLabels: {
       enabled: false
+    },
+    tooltip: {
+      enabled: false
     }
-    // tooltip: {
-    //   enabled: false
-    // }
   }
 
   const series = [
     {
       name: 'series-1',
-      data: []
+      data: [10]
     }
   ]
 
@@ -250,24 +250,32 @@ const StatsSection: React.FC = () => {
   }, [location.state])
 
   useEffect(() => {
-    if (poolVolume && poolLiquidity) {
+    if (poolVolume) {
       setChartOptions({
         ...chartOptions,
-        chart: {
-          id: 'chart-agg-volume'
-        },
         xaxis: {
           categories: extractXAxis(poolVolume),
           labels: {
             style: {
               colors: palette.text.hint
             }
+          },
+          axisTicks: {
+            show: false
+          },
+          axisBorder: {
+            show: false
           }
         },
         fill: {
+          type: 'gradient',
           colors: [!dark ? '#202F9A' : '#73d6f1'],
           gradient: {
-            gradientToColors: [!dark ? '#5F72FF' : '#73D6F1']
+            type: 'vertical', // The gradient in the horizontal direction
+            gradientToColors: [!dark ? '#5F72FF' : '#73D6F1'], // The color at the end of the gradient
+            opacityFrom: 1, // transparency
+            opacityTo: 0.3,
+            stops: [0, 1200]
           }
         }
       })
@@ -275,19 +283,91 @@ const StatsSection: React.FC = () => {
         {
           name: 'Volume',
           data: extractYAxis(poolVolume, 'total')
-        },
-        {
-          name: 'Liquidity',
-          data: extractYAxis(poolLiquidity, 'value')
         }
-        // {
-        //   name: 'TVL',
-        //   data: extractYAxis(poolVolume, 'total')
-        // },
       ])
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [palette, poolVolume, poolLiquidity])
+  }, [palette, poolVolume])
+
+  const handleSwitch = (index: number) => {
+    setActiveChart(index)
+    switch (index) {
+      case 0:
+      default:
+        setChartOptions({
+          ...chartOptions,
+          xaxis: {
+            categories: extractXAxis(poolVolume),
+            labels: {
+              style: {
+                colors: palette.text.hint
+              }
+            },
+            axisTicks: {
+              show: false
+            },
+            axisBorder: {
+              show: false
+            }
+          },
+          fill: {
+            type: 'gradient',
+            colors: [!dark ? '#202F9A' : '#73d6f1'],
+            gradient: {
+              type: 'vertical', // The gradient in the horizontal direction
+              gradientToColors: [!dark ? '#5F72FF' : '#73D6F1'], // The color at the end of the gradient
+              opacityFrom: 1, // transparency
+              opacityTo: 0.3,
+              stops: [0, 1200]
+            }
+          }
+        })
+        setChartSeries([
+          {
+            name: 'Volume',
+            data: extractYAxis(poolVolume, 'total')
+          }
+        ])
+        break
+      case 1:
+      case 2:
+        setChartOptions({
+          ...chartOptions,
+          xaxis: {
+            categories: extractXAxis(poolLiquidity),
+            labels: {
+              style: {
+                colors: palette.text.hint
+              }
+            },
+            axisTicks: {
+              show: false
+            },
+            axisBorder: {
+              show: false
+            }
+          },
+          fill: {
+            type: 'gradient',
+            colors: [!dark ? '#202F9A' : '#73d6f1'],
+            gradient: {
+              type: 'vertical', // The gradient in the horizontal direction
+              gradientToColors: [!dark ? '#5F72FF' : '#73D6F1'], // The color at the end of the gradient
+              opacityFrom: 1, // transparency
+              opacityTo: 0.3,
+              stops: [0, 1200]
+            }
+          }
+        })
+        setChartSeries([
+          {
+            name: 'Liquidity',
+            data: extractYAxis(poolLiquidity, 'value')
+          }
+        ])
+        break
+    }
+  }
 
   return (
     <Box className={cx(classes.root)}>
@@ -357,17 +437,25 @@ const StatsSection: React.FC = () => {
                 normalClass={classes.filterNormal}
                 activeClass={classes.filterActive}
                 activeIndex={activeChart}
-                handleSwitch={(i: number) => {
-                  setActiveChart(i)
-                }}
+                handleSwitch={handleSwitch}
               />
             </Box>
-            <Chart
-              options={chartOptions}
-              series={chartSeries}
-              type='bar'
-              width='100%'
-            />
+            {activeChart !== 1 && (
+              <Chart
+                options={chartOptions}
+                series={chartSeries}
+                type='bar'
+                width='100%'
+              />
+            )}
+            {activeChart === 1 && (
+              <Chart
+                options={chartOptions}
+                series={chartSeries}
+                type='area'
+                width='100%'
+              />
+            )}
           </Box>
         </Grid>
       </Grid>
