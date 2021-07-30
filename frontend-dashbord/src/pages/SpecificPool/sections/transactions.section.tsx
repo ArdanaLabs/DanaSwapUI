@@ -7,14 +7,14 @@ import { useIsDarkMode } from "state/user/hooks";
 import { TransactionTable } from "components";
 
 const useStyles = makeStyles(({ palette }) => ({
-  self: {},
+  root: {},
   label: {
     fontFamily: 'Brandon Grotesque',
     fontStyle: 'normal',
     fontWeight: 900,
     fontSize: '18px',
     lineHeight: '110%',
-    color: palette.secondary.main,
+    color: palette.primary.main,
   }
 }));
 
@@ -25,9 +25,10 @@ const TransactionsSection: React.FC = () => {
   const classes = useStyles({ dark, mobile });
 
   return (
-    <Box className={cx(classes.self)}>
+    <Box className={cx(classes.root)}>
       <Box className={cx(classes.label)}>Transactions</Box>
       <TransactionTable />
+      {/* <TransactionGrid /> */}
     </Box>
   );
 };

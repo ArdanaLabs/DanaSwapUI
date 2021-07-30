@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 export const extractXAxis = (arr: any[]): string[] => {
   const length = arr.length
   let newAxis: string[] = []
@@ -18,4 +20,20 @@ export const extractYAxis = (arr: any[], filter: string): any[] => {
   }
 
   return newAxis
+}
+
+const fn = (obj: any, key: string): any => {
+  if (_.has(obj, key))
+    // or just (key in obj)
+    return [obj]
+  // elegant:
+  return _.flatten(
+    _.map(obj, function (v) {
+      return typeof v == 'object' ? fn(v, key) : []
+    })
+  )
+}
+
+export const findKeyFromObject = (obj: any, key: string): any => {
+  return fn(obj, key)[0] ? fn(obj, key)[0][key] : undefined
 }

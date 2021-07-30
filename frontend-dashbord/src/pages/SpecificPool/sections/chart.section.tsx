@@ -35,7 +35,7 @@ const useStyles = makeStyles(({ palette }) => ({
 
     fontFamily: 'Museo Sans',
     fontStyle: 'normal',
-    fontSize: '11px',
+    fontSize: '12px',
     lineHeight: '115%',
     fontWeight: 100,
     color: palette.secondary.main
@@ -183,14 +183,6 @@ const ChartSection: React.FC = () => {
           <Box className={cx(classes.title)}>Currency Reserves</Box>
           <Box mt='20px' />
           <Box className={cx(classes.panel)} padding='35px !important'>
-            {/* <b>USDT:</b> 3,884.66445394 (40.77%)
-            <br />
-            <b>USDC:</b> 3,680.61262405 (38.63%)
-            <br />
-            <b>DAI:</b> 1,962.26649344 (20.60%)
-            <br />
-            <b>USDT+USDC+DAI:</b> 9,527.54357143
-            <br /> */}
             {reserves &&
               reserves.map((currency: any, i: number) => (
                 <Box component='p' key={i} margin={0}>

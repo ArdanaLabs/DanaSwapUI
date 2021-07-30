@@ -1,4 +1,8 @@
-export function nFormatter (num: number | null, digits: number = 0) {
+export function nFormatter (
+  num: number | null,
+  digits: number = 0,
+  space: boolean = true
+) {
   if (num === null) {
     return '$0'
   }
@@ -22,7 +26,9 @@ export function nFormatter (num: number | null, digits: number = 0) {
   return (
     '$' +
     (item
-      ? (num / item.value).toFixed(digits).replace(rx, '$1') + ' ' + item.symbol
+      ? (num / item.value).toFixed(digits).replace(rx, '$1') +
+        (space ? ' ' : '') +
+        item.symbol
       : '0')
   )
 }

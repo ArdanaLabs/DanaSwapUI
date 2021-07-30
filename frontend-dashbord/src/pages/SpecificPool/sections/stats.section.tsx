@@ -28,7 +28,7 @@ const useStyles = makeStyles(({ palette }) => ({
     fontWeight: 900,
     fontSize: '18px',
     lineHeight: '110%',
-    color: palette.secondary.main
+    color: palette.primary.main
   },
 
   token: {
