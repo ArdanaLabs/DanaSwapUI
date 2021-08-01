@@ -28,6 +28,7 @@ export const options = [
       { label: "25 Standard", value: "25" },
       { label: "28 Fast", value: "28" },
       { label: "32 Instant", value: "32" },
+      { label: "", value: "Custom", hasInput: true },
     ],
   },
 ];

@@ -39,8 +39,7 @@ const infoDarkDay =
 const infoDarkNight =
   "linear-gradient(180deg, #73D6F1 0%, #5F72FF 99.99%, #2F3DA0 100%)";
 
-const backgroundDay =
-  "linear-gradient(89.43deg, #C0C0C0 -0.11%, #F5F5F5 -0.1%)";
+const backgroundDay = "#F5F5F5";
 const backgroundNight = "#010730";
 
 const backgroundPaperDay = "#FFFFFF";
@@ -151,6 +150,25 @@ export const lightTheme = responsiveFontSizes(
       htmlFontSize: 16,
       fontFamily: "'Brandon Grotesque','Museo Sans'",
       fontSize: 14,
+      h1: {},
+      h2: {
+        fontSize: 17,
+        fontFamily: 'Museo Sans',
+        fontWeight: 500,
+      },
+      h3: {
+        fontSize: 17,
+        fontFamily: 'Museo Sans',
+        fontWeight: 300,
+      },
+      h4: {},
+      h5: {},
+      h6: {},
+      subtitle1: {},
+      subtitle2: {},
+      body1: {},
+      body2: {},
+      colorPrimary: textPrimaryDay
     },
     breakpoints: {
       values: {
@@ -650,8 +668,16 @@ export const darkTheme = responsiveFontSizes(
       fontFamily: "'Brandon Grotesque','Museo Sans'",
       fontSize: 14,
       h1: {},
-      h2: {},
-      h3: {},
+      h2: {
+        fontSize: 17,
+        fontFamily: 'Museo Sans',
+        fontWeight: 500,
+      },
+      h3: {
+        fontSize: 17,
+        fontFamily: 'Museo Sans',
+        fontWeight: 300,
+      },
       h4: {},
       h5: {},
       h6: {},
@@ -659,6 +685,7 @@ export const darkTheme = responsiveFontSizes(
       subtitle2: {},
       body1: {},
       body2: {},
+      colorPrimary: textPrimaryNight
     },
     spacing,
     breakpoints: {

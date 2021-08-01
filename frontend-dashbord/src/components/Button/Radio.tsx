@@ -66,9 +66,9 @@ const useStyles = makeStyles(({ palette }) => ({
   },
   customInput: {
     fontSize: "7px",
-    width: "calc(100% - 30px)",
+    width: "calc(100% - 20px)",
     padding: "4px 2px 4px 9px",
-    background: "white",
+    background: palette.type === 'light' ? '#E5E5E5' : "white",
   },
 }));
 
@@ -129,7 +129,7 @@ const CustomRadio: React.FC<CustomRadioProps> = ({
               label={
                 item.hasInput ? (
                   <Input
-                    placeholder={"Enter amount"}
+                    placeholder={"Custom Amount"}
                     value={customVal}
                     className={cx(classes.customInput)}
                     onChange={onCustomInputChange}
