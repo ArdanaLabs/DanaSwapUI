@@ -6,3 +6,4 @@ export { default as Launch } from './Launch';
 
 export { default as SpecPool } from './SpecificPool';
 export { default as Withdraw } from './Withdraw';
+export { default as Deposit } from './Deposit';

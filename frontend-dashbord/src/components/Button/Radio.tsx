@@ -15,7 +15,7 @@ import { Input } from "components/Input";
 
 const useStyles = makeStyles(({ palette }) => ({
   title: {
-    fontSize: "10px",
+    fontSize: "12px",
     color: palette.text.primary,
     fontWeight: "bold",
     marginBottom: "4px",
@@ -56,8 +56,8 @@ const useStyles = makeStyles(({ palette }) => ({
     },
   },
   itemLabel: {
-    fontSize: "10px",
-    color: palette.text.secondary,
+    fontSize: "12px",
+    color: palette.text.primary,
   },
   formControl: {
     "& .MuiRadio-root": {
@@ -113,7 +113,9 @@ const CustomRadio: React.FC<CustomRadioProps> = ({
 
   return (
     <FormControl>
-      <FormLabel className={cx(classes.title)}>{option.title}</FormLabel>
+      {
+        option.title && <FormLabel className={cx(classes.title)}>{option.title}</FormLabel>
+      }
       <RadioGroup
         aria-label={option.title}
         name={option.title}
