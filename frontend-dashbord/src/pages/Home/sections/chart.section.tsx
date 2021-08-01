@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, Grid, useMediaQuery } from "@material-ui/core";
+import { Box, CircularProgress, Grid, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
 import Chart from "react-apexcharts";
@@ -76,6 +76,7 @@ const ChartSection: React.FC = () => {
     xaxis: {
       categories: ["APR 20", "MAY 15", "JUN 02"],
       labels: {
+        show: false,
         style: {
           colors: palette.text.hint,
           fontSize: "11px",
@@ -93,7 +94,7 @@ const ChartSection: React.FC = () => {
     },
     yaxis: {
       labels: {
-        show: true,
+        show: false,
         align: "left",
         style: {
           colors: palette.secondary.main,
@@ -165,33 +166,14 @@ const ChartSection: React.FC = () => {
         xaxis: {
           categories: extractXAxis(aggVolume),
           labels: {
-            style: {
-              colors: palette.text.hint
-            }
+            show: true,
           }
         },
         yaxis: {
           labels: {
             show: true,
-            align: "left",
-            style: {
-              colors: palette.secondary.main,
-              fontFamily: "Museo Sans",
-              fontWeight: "bold",
-              fontSize: "16px",
-              cssClass: "apexcharts-yaxis-label",
-            },
-            formatter: (value: any) => {
-              return nFormatter(value);
-            },
           },
         },
-        fill: {
-          colors: [!dark ? "#202F9A" : "#73d6f1"],
-          gradient: {
-            gradientToColors: [!dark ? "#5F72FF" : "#73D6F1"]
-          }
-        }
       });
       setVolumeSeries([{
         name: "Volume",
@@ -199,7 +181,7 @@ const ChartSection: React.FC = () => {
       }]);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [aggVolume, palette]);
+  }, [aggVolume]);
 
   useEffect(() => {
     if (aggLiquidity) {
@@ -211,33 +193,14 @@ const ChartSection: React.FC = () => {
         xaxis: {
           categories: extractXAxis(aggLiquidity),
           labels: {
-            style: {
-              colors: palette.text.hint
-            }
+            show: true,
           }
         },
         yaxis: {
           labels: {
             show: true,
-            align: "left",
-            style: {
-              colors: palette.secondary.main,
-              fontFamily: "Museo Sans",
-              fontWeight: "bold",
-              fontSize: "16px",
-              cssClass: "apexcharts-yaxis-label",
-            },
-            formatter: (value: any) => {
-              return nFormatter(value);
-            },
           },
         },
-        fill: {
-          colors: [!dark ? "#202F9A" : "#73d6f1"],
-          gradient: {
-            gradientToColors: [!dark ? "#5F72FF" : "#73D6F1"]
-          }
-        }
       });
       setLiquiditySeries([{
         name: "Liquidity",
@@ -245,7 +208,81 @@ const ChartSection: React.FC = () => {
       }]);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [aggLiquidity, palette]);
+  }, [aggLiquidity]);
+
+  useEffect(() => {
+    setVolumeOptions({
+      ...volumeOptions,
+      chart: {
+        id: "chart-agg-volume"
+      },
+      xaxis: {
+        labels: {
+          style: {
+            colors: palette.text.hint
+          }
+        }
+      },
+      yaxis: {
+        labels: {
+          show: false,
+          align: "left",
+          style: {
+            colors: palette.secondary.main,
+            fontFamily: "Museo Sans",
+            fontWeight: "bold",
+            fontSize: "16px",
+            cssClass: "apexcharts-yaxis-label",
+          },
+          formatter: (value: any) => {
+            return nFormatter(value);
+          },
+        },
+      },
+      fill: {
+        colors: [!dark ? "#202F9A" : "#73d6f1"],
+        gradient: {
+          gradientToColors: [!dark ? "#5F72FF" : "#73D6F1"]
+        }
+      }
+    });
+    setLiquidityOptions({
+      ...liquidityOptions,
+      chart: {
+        id: "chart-agg-liquidity"
+      },
+      xaxis: {
+        labels: {
+          style: {
+            colors: palette.text.hint
+          }
+        }
+      },
+      yaxis: {
+        labels: {
+          show: false,
+          align: "left",
+          style: {
+            colors: palette.secondary.main,
+            fontFamily: "Museo Sans",
+            fontWeight: "bold",
+            fontSize: "16px",
+            cssClass: "apexcharts-yaxis-label",
+          },
+          formatter: (value: any) => {
+            return nFormatter(value);
+          },
+        },
+      },
+      fill: {
+        colors: [!dark ? "#202F9A" : "#73d6f1"],
+        gradient: {
+          gradientToColors: [!dark ? "#5F72FF" : "#73D6F1"]
+        }
+      }
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dark])
 
   return (
     <Box className={cx(classes.self)}>
@@ -266,13 +303,27 @@ const ChartSection: React.FC = () => {
                 <Box component="span">ALL</Box>
               </Box>
             </Box>
-            <Box>
+            <Box position='relative'>
               <Chart
                 options={volumeOptions}
                 series={volumeSeries}
                 type="bar"
                 width="100%"
               />
+              {!aggVolume && (
+                <Box
+                  position='absolute'
+                  top={0}
+                  left={0}
+                  width='100%'
+                  height='100%'
+                  display='flex'
+                  justifyContent='center'
+                  alignItems='center'
+                >
+                  <CircularProgress />
+                </Box>
+              )}
             </Box>
           </Box>
         </Grid>
@@ -292,13 +343,27 @@ const ChartSection: React.FC = () => {
                 <Box component="span">ALL</Box>
               </Box>
             </Box>
-            <Box>
+            <Box position='relative'>
               <Chart
                 options={liquidityOptions}
                 series={liquiditySeries}
                 type="area"
                 width="100%"
               />
+              {!aggLiquidity && (
+                <Box
+                  position='absolute'
+                  top={0}
+                  left={0}
+                  width='100%'
+                  height='100%'
+                  display='flex'
+                  justifyContent='center'
+                  alignItems='center'
+                >
+                  <CircularProgress />
+                </Box>
+              )}
             </Box>
           </Box>
         </Grid>
