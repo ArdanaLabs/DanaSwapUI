@@ -38,6 +38,7 @@ const SwitchWithGlider: React.FC<SwitchWithGliderProps> = ({
       {elements &&
         elements.map((element: any, i: number) => (
           <Button
+            key={i}
             variant='contained'
             onClick={() => handleSwitch(i)}
             className={cx(normalClass, {

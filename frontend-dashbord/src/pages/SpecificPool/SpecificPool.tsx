@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Box, Fade, useMediaQuery } from '@material-ui/core'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import { useIsDarkMode } from 'state/user/hooks'
@@ -7,10 +7,6 @@ import Button from 'components/Button/Button'
 import { StatsSection, ChartSection, TransactionsSection } from './sections'
 import { useHistory, useLocation } from 'react-router-dom'
 import { usePoolStats } from 'state/home/hooks'
-
-const FILTER_SWAP = 0
-const FILTER_DEPOSIT = 1
-const FILTER_WITHDRAW = 2
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   filter: {
@@ -53,15 +49,6 @@ const SpecificPool: React.FC = () => {
   const history = useHistory()
   const poolStats = usePoolStats()
 
-  const [filter, setFilter] = useState({
-    text: '',
-    type: FILTER_SWAP
-  })
-
-  const onFilterChange = (event: any) => {
-    setFilter({ ...filter, ...event })
-  }
-
   useEffect(() => {
     if (!location.state) {
       history.goBack()
@@ -80,34 +67,22 @@ const SpecificPool: React.FC = () => {
         <Box textAlign='right'>
           <Button
             variant='contained'
-            onClick={() => {
-              onFilterChange({ type: FILTER_SWAP })
-            }}
-            className={cx(classes.filterType, {
-              [classes.active]: filter.type === FILTER_SWAP
-            })}
+            onClick={() => history.push('/swap')}
+            className={cx(classes.filterType, classes.active)}
           >
             SWAP
           </Button>
           <Button
             variant='contained'
-            onClick={() => {
-              onFilterChange({ type: FILTER_DEPOSIT })
-            }}
-            className={cx(classes.filterType, {
-              [classes.active]: filter.type === FILTER_DEPOSIT
-            })}
+            onClick={() => history.push('/deposit')}
+            className={cx(classes.filterType)}
           >
             DEPOSIT
           </Button>
           <Button
             variant='contained'
-            onClick={() => {
-              onFilterChange({ type: FILTER_WITHDRAW })
-            }}
-            className={cx(classes.filterType, {
-              [classes.active]: filter.type === FILTER_WITHDRAW
-            })}
+            onClick={() => history.push('/withdraw')}
+            className={cx(classes.filterType)}
           >
             WITHDRAW
           </Button>
