@@ -201,7 +201,7 @@ const Withdraw: React.FC = () => {
               </Box>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Box p='20px'>
+              <Box p='20px' borderLeft='1px solid #C4C4C4'>
                 {currencies &&
                   currencies.map((currency: any, i: number) => (
                     <Box key={i} marginBottom='20px'>
@@ -254,7 +254,7 @@ const Withdraw: React.FC = () => {
             </Grid>
           </Grid>
 
-          <Box display='flex' justifyContent='center'>
+          <Box display='flex' justifyContent='center' pt='20px'>
             <Box className={cx(classes.submit)}>WITHDRAW</Box>
           </Box>
         </Box>
