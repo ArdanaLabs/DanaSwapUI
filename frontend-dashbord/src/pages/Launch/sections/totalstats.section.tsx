@@ -56,7 +56,7 @@ const useStyles = makeStyles(({ palette }) => ({
     left: 0,
     width: "100vw",
     height: "100vh",
-    background: `linear-gradient(179.02deg, #000633 26.91%, rgba(0, 5, 38, 0.5) 99.11%)`,
+    background: `linear-gradient(180deg, #01062F 14.3%, rgba(0, 6, 51, 0.5) 70.55%)`,
     mixBlendMode: "normal",
     display: "flex",
     justifyContent: "center",

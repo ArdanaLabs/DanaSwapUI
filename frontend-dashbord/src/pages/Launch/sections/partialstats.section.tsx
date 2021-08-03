@@ -92,7 +92,7 @@ const PartialStatsSection: React.FC<PartialStatsSectionProps> = ({
                 <VerticalCarousel
                   activeIndex={activeIndex}
                   setActiveIndex={setActiveIndex}
-                  data={["DANASWAP", `ARDANA\nSTABLECOINS`, "MY DASHBOARD"]}
+                  data={["DANASWAP", `ARDANA VAULTS`, "MY DASHBOARD"]}
                 />
               </Box>
             </Fade>

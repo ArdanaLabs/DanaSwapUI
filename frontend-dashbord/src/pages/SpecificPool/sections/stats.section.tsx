@@ -124,6 +124,20 @@ const useStyles = makeStyles(({ palette }) => ({
       palette.type === 'light'
         ? 'linear-gradient(89.62deg, #000A4F 0.3%, #3C4DC5 99.64%)'
         : 'linear-gradient(90deg, #5F72FF 0%, rgba(115, 214, 241, 0) 100%)'
+  },
+
+  currentRatio: {
+    fontFamily: 'Museo Sans',
+    fontStyle: 'normal',
+    fontWeight: 500,
+    fontSize: '13px',
+    lineHeight: '100%',
+    color: palette.text.secondary,
+
+    '& > span': {
+      fontWeight: 700,
+      fontSize: '11px'
+    }
   }
 }))
 
@@ -455,6 +469,16 @@ const StatsSection: React.FC = () => {
                 type='area'
                 width='100%'
               />
+            )}
+            {activeChart === 2 && (
+              <Box className={cx(classes.currentRatio)}>
+                CURRENT PRICE
+                <br />
+                <br />
+                <span>1 USDC = 0.0004 ETH</span>
+                <br />
+                <span>1 ETH = 2,359.0502 USDC</span>
+              </Box>
             )}
           </Box>
         </Grid>

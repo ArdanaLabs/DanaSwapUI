@@ -27,7 +27,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontFamily: "'Brandon Grotesque'",
     fontStyle: "normal",
     fontWeight: 100,
-    fontSize: "32px",
+    fontSize: "28px",
     color: "white",
     textAlign: "left",
     cursor: "pointer",
@@ -89,10 +89,12 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
 
   const determinePlacement = (itemIndex: number): any => {
     // If these match, the item is active
-    if (activeIndex === itemIndex) {
-      if (itemIndex !== 1) return -15;
-      return -45;
-    }
+    // if (activeIndex === itemIndex) {
+    //   if (itemIndex !== 1) return -15;
+    //   return -45;
+    // }
+
+    if (activeIndex === itemIndex) return -15;
 
     if (itemIndex >= halfwayIndex) {
       if (activeIndex > itemIndex - halfwayIndex) {
