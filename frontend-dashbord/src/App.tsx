@@ -13,7 +13,7 @@ import { useIsDarkMode } from "state/user/hooks";
 import { darkTheme, lightTheme } from "./theme";
 import store from "./state";
 
-import { Home, Swap, Pools, DANA, Launch, SpecPool } from "./pages";
+import { Home, Swap, Pools, DANA, Launch, SpecPool, Withdraw, Deposit } from "./pages";
 import Layout from "layouts/Layout";
 import { BlockUI } from "components";
 
@@ -92,6 +92,18 @@ const App: React.FC = () => {
         <Route exact path="/swap">
           <Layout>
             <Swap />
+          </Layout>
+        </Route>
+
+        <Route exact path="/withdraw">
+          <Layout>
+            <Withdraw />
+          </Layout>
+        </Route>
+
+        <Route exact path="/deposit">
+          <Layout>
+            <Deposit />
           </Layout>
         </Route>
 

@@ -15,7 +15,7 @@ import { Input } from "components/Input";
 
 const useStyles = makeStyles(({ palette }) => ({
   title: {
-    fontSize: "10px",
+    fontSize: "12px",
     color: palette.text.primary,
     fontWeight: "bold",
     marginBottom: "4px",
@@ -56,8 +56,8 @@ const useStyles = makeStyles(({ palette }) => ({
     },
   },
   itemLabel: {
-    fontSize: "10px",
-    color: palette.text.secondary,
+    fontSize: "12px",
+    color: palette.text.primary,
   },
   formControl: {
     "& .MuiRadio-root": {
@@ -66,9 +66,9 @@ const useStyles = makeStyles(({ palette }) => ({
   },
   customInput: {
     fontSize: "7px",
-    width: "calc(100% - 30px)",
+    width: "calc(100% - 20px)",
     padding: "4px 2px 4px 9px",
-    background: "white",
+    background: palette.type === 'light' ? '#E5E5E5' : "white",
   },
 }));
 
@@ -113,7 +113,9 @@ const CustomRadio: React.FC<CustomRadioProps> = ({
 
   return (
     <FormControl>
-      <FormLabel className={cx(classes.title)}>{option.title}</FormLabel>
+      {
+        option.title && <FormLabel className={cx(classes.title)}>{option.title}</FormLabel>
+      }
       <RadioGroup
         aria-label={option.title}
         name={option.title}
@@ -129,7 +131,7 @@ const CustomRadio: React.FC<CustomRadioProps> = ({
               label={
                 item.hasInput ? (
                   <Input
-                    placeholder={"Enter amount"}
+                    placeholder={"Custom Amount"}
                     value={customVal}
                     className={cx(classes.customInput)}
                     onChange={onCustomInputChange}
