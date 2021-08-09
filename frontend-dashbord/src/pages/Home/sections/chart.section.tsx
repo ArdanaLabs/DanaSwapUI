@@ -172,6 +172,17 @@ const ChartSection: React.FC = () => {
         yaxis: {
           labels: {
             show: true,
+            align: "left",
+            style: {
+              colors: palette.secondary.main,
+              fontFamily: "Museo Sans",
+              fontWeight: "bold",
+              fontSize: "16px",
+              cssClass: "apexcharts-yaxis-label",
+            },
+            formatter: (value: any) => {
+              return nFormatter(value);
+            },
           },
         },
       });
@@ -199,6 +210,17 @@ const ChartSection: React.FC = () => {
         yaxis: {
           labels: {
             show: true,
+            align: "left",
+            style: {
+              colors: palette.secondary.main,
+              fontFamily: "Museo Sans",
+              fontWeight: "bold",
+              fontSize: "16px",
+              cssClass: "apexcharts-yaxis-label",
+            },
+            formatter: (value: any) => {
+              return nFormatter(value);
+            },
           },
         },
       });
