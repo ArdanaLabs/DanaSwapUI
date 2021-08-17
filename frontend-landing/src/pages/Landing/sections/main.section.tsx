@@ -13,6 +13,7 @@ import { AdButton } from "components/Button";
 
 import LOGO_WITH_CITY from "assets/img/landing/logos/logo-with-city.png";
 import LOGO_WITH_CITY_W from "assets/img/landing/logos/logo-with-city-white.png";
+import LOGO_WHAT_IS_ARDANA from "assets/backgrounds/what-is-ardana.png";
 
 import img_fully_decentralized from "assets/img/landing/icons/fully-decentralized.png";
 import img_borrow_lend from "assets/img/landing/icons/borrow-lend.png";
@@ -82,8 +83,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontWeight: 900,
     fontFamily: "Brandon Grotesque",
     fontStyle: "normal",
-    lineHeight: "100%",
-    textAlign: "center",
+    lineHeight: "200%",
   },
 
   definitionA: {
@@ -135,16 +135,17 @@ const MainSection: React.FC = () => {
 
         <Box mt={!mobile ? "200px" : "50px"}></Box>
         <Box mx={!mobile ? "100px" : "0"}>
-          <Grid container spacing={1}>
+          <Grid container spacing={1} alignItems="center">
+            <Grid item xs={12} sm={6}>
+              <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
+                <img src={LOGO_WHAT_IS_ARDANA} alt="What is Ardana" width="100%" />
+              </ScrollAnimation>
+            </Grid>
             <Grid item xs={12} sm={6}>
               <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
                 <Box className={cx(classes.definitionQ)}>
                   {i18next.t("PAGE.LANDING.ARDANA.QUESTION")}
                 </Box>
-              </ScrollAnimation>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
                 <Box className={cx(classes.definitionA)}>
                   {i18next.t("PAGE.LANDING.ARDANA.DESC")}
                 </Box>
