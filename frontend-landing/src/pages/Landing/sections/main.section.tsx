@@ -123,7 +123,7 @@ const MainSection: React.FC = () => {
 
             <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
               <Box textAlign={mobile ? "center" : "left"}>
-                <Link href="/launch" underline="none">
+                <Link href="http://app.ardana.org/launch" underline="none">
                   <AdButton variant="contained">
                     {i18next.t("PAGE.LANDING.LAUNCH_PLATFORM")}
                   </AdButton>
