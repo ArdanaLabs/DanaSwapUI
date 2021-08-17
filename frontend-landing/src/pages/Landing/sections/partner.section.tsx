@@ -9,6 +9,9 @@ import { useIsDarkMode } from "state/user/hooks";
 
 import MLABS from "assets/img/landing/logos/MLABS.svg";
 import PSYSS from "assets/img/landing/logos/Platonic-Systems.svg";
+import NODESEEDS from "assets/img/landing/logos/Nodeseeds.svg";
+import OCCAM from "assets/img/landing/logos/Occam.svg";
+import EMERGING from "assets/img/landing/logos/Emerging-Star.svg";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
@@ -64,14 +67,29 @@ const PartnerSection: React.FC = () => {
             alignItems="center"
             spacing={3}
           >
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={3}>
               <Box className={cx(classes.partner)}>
                 <img src={PSYSS} alt="Platonic Systems" />
               </Box>
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={3}>
               <Box className={cx(classes.partner)}>
-                <img src={MLABS} alt="MLABS" />
+                <img src={NODESEEDS} alt="NODESEEDS" />
+              </Box>
+            </Grid>
+            <Grid item xs={12} sm={3}>
+              <Box className={cx(classes.partner)}>
+                <img src={MLABS} alt="Platonic Systems" />
+              </Box>
+            </Grid>
+            <Grid item xs={12} sm={3}>
+              <Box className={cx(classes.partner)}>
+                <img src={OCCAM} alt="Occam fi" />
+              </Box>
+            </Grid>
+            <Grid item xs={12}>
+              <Box className={cx(classes.partner)}>
+                <img src={EMERGING} alt="EMERGING-Star" />
               </Box>
             </Grid>
           </Grid>
