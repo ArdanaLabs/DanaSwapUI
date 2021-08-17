@@ -247,7 +247,7 @@ const ChartSection: React.FC = () => {
       },
       yaxis: {
         labels: {
-          show: false,
+          show: true,
           align: "left",
           style: {
             colors: palette.secondary.main,
@@ -282,7 +282,7 @@ const ChartSection: React.FC = () => {
       },
       yaxis: {
         labels: {
-          show: false,
+          show: true,
           align: "left",
           style: {
             colors: palette.secondary.main,
