@@ -137,9 +137,9 @@ const TotalStatsSection: React.FC<TotalStatsSectionProps> = ({
           <Container>
             <ScrollAnimation animateIn="fadeInUp">
               <Box className={cx(classes.title)}>
-                ALL YOUR RESOURCES,
+                DECENTRALIZED
                 <br />
-                <span>IN ONE PLACE.</span>
+                <span>STABLECOIN HUB</span>
               </Box>
             </ScrollAnimation>
 
