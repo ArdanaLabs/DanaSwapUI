@@ -14,7 +14,7 @@ export interface UserState {
 
 export const initialState: UserState = {
   userDarkMode: null,
-  mediaDarkMode: false,
+  mediaDarkMode: true,
   timestamp: currentTimestamp()
 };
 
