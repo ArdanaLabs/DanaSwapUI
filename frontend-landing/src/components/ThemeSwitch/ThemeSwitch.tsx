@@ -17,7 +17,7 @@ const useStyles = makeStyles(({ palette }) => ({
     display: "flex",
     alignItems: "center",
     width: "175px",
-    background: palette.type === 'light' ? 'linear-gradient(89.62deg, #000A4F 0.3%, #3C4DC5 99.64%)' : 'linear-gradient(89.62deg, #72D2F2 0.3%, #6077FF 99.64%)',
+    background: palette.info.light,
   },
   switchIcon: {
     padding: 5,
