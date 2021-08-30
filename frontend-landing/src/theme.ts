@@ -12,7 +12,7 @@ const primaryLightDay =
 const primaryLightNight =
   "linear-gradient(89.62deg, #72D2F2 0.3%, #6077FF 99.64%)";
 
-const primaryMainDay = "#235DF4";
+const primaryMainDay = "#041484";
 const primaryMainNight = "#FFFFFF";
 
 const primaryDarkDay =

@@ -1,22 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {
   Box,
-  Link,
-  IconButton,
-  Drawer,
   useMediaQuery,
   Container
 } from '@material-ui/core'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
-import Hamburger from 'hamburger-react'
 import cx from 'classnames'
 
 import { useIsDarkMode } from 'state/user/hooks'
-import { useHistory, useLocation } from 'react-router-dom'
-import ThemeSwitch from 'components/ThemeSwitch'
-import { Button } from 'components/Button'
-
-import { navList } from 'data'
+import { useHistory } from 'react-router-dom'
+import { ThemeSwitch, ConnectWallet } from 'components'
 import DANA_LOGO_BLACK from 'assets/image/DANA-LOGO-BLACK.png'
 import DANA_LOGO_WHITE from 'assets/image/DANA-LOGO-WHITE.png'
 
@@ -27,7 +20,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     background: palette.background.default,
     zIndex: 100,
     width: '100%',
-    paddingBottom: '10px',
+    filter: 'drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.05))',
     mixBlendMode: 'normal'
   },
 
@@ -61,21 +54,6 @@ const Header: React.FC = () => {
   const dark = useIsDarkMode()
   const classes = useStyles({ dark, mobile })
   const history = useHistory()
-  const { pathname } = useLocation<{ previous: string }>()
-
-  const [openMenu, setOpenMenu] = useState(false)
-
-  const toggleMenu = () => {
-    setOpenMenu(prev => !prev)
-  }
-
-  const isActiveURL = (link: string): boolean => {
-    return pathname.indexOf(link) > -1
-  }
-
-  const onConnectWallet = (event: any) => {
-    console.log('connect wallet button clicked!')
-  }
 
   return (
     <Box className={cx(classes.root)}>
@@ -94,9 +72,7 @@ const Header: React.FC = () => {
 
           <Box className={cx(classes.toolbar)}>
             <ThemeSwitch />
-            <Box>
-              
-            </Box>
+            <ConnectWallet />
           </Box>
         </Box>
       </Container>

@@ -28,7 +28,6 @@ const useStyles = makeStyles(({ palette }) => ({
     fontSize: "14px",
     fontWeight: 700,
     fontFamily: "Museo Sans",
-    lineHeight: "16px",
     color: "#FFFFFF",
     flexGrow: 5,
     textAlign: "center",
