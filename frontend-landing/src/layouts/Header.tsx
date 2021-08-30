@@ -21,7 +21,7 @@ import DANA_LOGO_BLACK from 'assets/image/DANA-LOGO-BLACK.png'
 import DANA_LOGO_WHITE from 'assets/image/DANA-LOGO-WHITE.png'
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
-  self: {
+  root: {
     position: 'fixed',
     top: 0,
     background: palette.background.default,
@@ -48,43 +48,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       width: '60px',
     }
   },
-
-  navBar: {
+  
+  toolbar: { 
     display: 'flex',
-    flexFlow: 'wrap',
-    alignItems: 'center',
-    background: palette.background.default,
-    fontFamily: 'Brandon Grotesque',
-
-    '& a': {
-      margin: '5px 15px',
-      color: palette.text.primary,
-      fontWeight: 900,
-      fontSize: '18px',
-      cursor: 'pointer',
-
-      '&:hover': {
-        'text-decoration-thickness': '2px'
-      }
-    },
-
-    '& .active': {
-      color: '#FFFFFF',
-      borderRadius: '25px',
-      background: palette.primary.light,
-      padding: '5px 20px'
-    },
-
-    [breakpoints.down('sm')]: {
-      flexDirection: 'column',
-      textAlign: 'center'
-    }
-  },
-
-  subHeader: {
-    display: 'flex',
-    justifyContent: 'flex-end',
-    alignItem: 'center'
+    alignItems: 'center'
   }
 }))
 
@@ -111,7 +78,7 @@ const Header: React.FC = () => {
   }
 
   return (
-    <Box className={cx(classes.self)}>
+    <Box className={cx(classes.root)}>
       <Container>
         <Box className={cx(classes.container)}>
           <Box className={cx(classes.logo)} onClick={() => history.push('/')}>
@@ -125,55 +92,12 @@ const Header: React.FC = () => {
             />
           </Box>
 
-          {!mobile && (
-            <Box className={cx(classes.navBar)}>
-              {navList.map((navItem, index) => (
-                <Link
-                  className={isActiveURL(navItem.link) ? 'active' : ''}
-                  key={index}
-                  href={navItem.link}
-                >
-                  {navItem.label}
-                </Link>
-              ))}
+          <Box className={cx(classes.toolbar)}>
+            <ThemeSwitch />
+            <Box>
+              
             </Box>
-          )}
-
-          {mobile && (
-            <>
-              <IconButton
-                style={{ height: '48px', padding: 0 }}
-                onClick={() => setOpenMenu(!openMenu)}
-              >
-                <Hamburger
-                  size={24}
-                  distance={'lg'}
-                  color={theme.palette.text.primary}
-                  toggled={openMenu}
-                  toggle={setOpenMenu}
-                />
-              </IconButton>
-              <Drawer anchor={'top'} open={openMenu} onClose={toggleMenu}>
-                <Box className={cx(classes.navBar)}>
-                  {navList.map((navItem, index) => (
-                    <Link key={index} href={navItem.link}>
-                      {navItem.label}
-                    </Link>
-                  ))}
-                </Box>
-              </Drawer>
-            </>
-          )}
-        </Box>
-        <Box className={cx(classes.subHeader)}>
-          <ThemeSwitch />
-          <Button
-            variant='contained'
-            onClick={onConnectWallet}
-            style={{ background: theme.palette.secondary.dark }}
-          >
-            Connect Wallet
-          </Button>
+          </Box>
         </Box>
       </Container>
     </Box>

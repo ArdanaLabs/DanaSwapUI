@@ -31,13 +31,14 @@ const secondaryLightNight = "#131B59";
 const secondaryDarkDay = "#A5A5A5";
 const secondaryDarkNight = "rgba(24, 33, 100, 0.5)";
 
-const infoMainDay = "#F5F5F5";
-const infoMainNight = "#2B3992";
+const infoLightDay = "#72D2F2";
+const infoLightNight = "#3C4DC5";
 
-const infoDarkDay =
-  "linear-gradient(180deg, #A5A5A5 0%, #A5A5A5 54.17%, #A5A5A5 99.99%)";
-const infoDarkNight =
-  "linear-gradient(180deg, #73D6F1 0%, #5F72FF 99.99%, #2F3DA0 100%)";
+const infoMainDay = "#000000";
+const infoMainNight = "#000000";
+
+const infoDarkDay = "#6077FF";
+const infoDarkNight = "#000A4F";
 
 const backgroundDay = "#F9FBFF";
 const backgroundNight = "#010730";
@@ -118,6 +119,7 @@ export const lightTheme = responsiveFontSizes(
         dark: secondaryDarkDay,
       },
       info: {
+        light: infoLightDay,
         main: infoMainDay,
         dark: infoDarkDay,
       },
@@ -624,6 +626,7 @@ export const darkTheme = responsiveFontSizes(
         dark: secondaryDarkNight,
       },
       info: {
+        light: infoLightNight,
         main: infoMainNight,
         dark: infoDarkNight,
       },

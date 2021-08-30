@@ -5,34 +5,24 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import { useDarkModeManager } from "state/user/hooks";
 
-import ICO_Dark from "assets/svg/moon.svg";
-import ICO_Light from "assets/svg/sun.svg";
+import ICON_SUN from "assets/image/ICON-SUN.png";
+import ICON_MOON from "assets/image/ICON-MOON.png";
 
 const useStyles = makeStyles(({ palette }) => ({
-  self: {
+  root: {
     margin: "0 10px",
-    padding: 5,
+    padding: '0px 15px',
     cursor: "pointer",
     borderRadius: "100px",
     display: "flex",
     alignItems: "center",
     width: "175px",
-    background: palette.primary.light,
+    background: palette.type === 'light' ? 'linear-gradient(89.62deg, #000A4F 0.3%, #3C4DC5 99.64%)' : 'linear-gradient(89.62deg, #72D2F2 0.3%, #6077FF 99.64%)',
   },
   switchIcon: {
-    borderRadius: "50%",
-    background: "#FFFFFF",
     padding: 5,
     width: 28,
     height: 28,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-
-    "& img": {
-      width: "14px",
-      height: "14px",
-    },
   },
   switchLabel: {
     fontSize: "14px",
@@ -55,15 +45,16 @@ const ThemeSwitch: React.FC = () => {
 
   return (
     <Box
-      className={cx(classes.self)}
-      flexDirection={!darkMode ? "row" : "row-reverse"}
+      className={cx(classes.root)}
       onClick={toggleMode}
     >
+      <img
+        className={cx(classes.switchIcon)}
+        src={!darkMode ? ICON_MOON : ICON_SUN}
+        alt="Theme switch icon"
+      />
       <Box className={cx(classes.switchLabel)}>
-        {!darkMode ? "DARK MODE" : "LIGHT MODE"}
-      </Box>
-      <Box className={cx(classes.switchIcon)}>
-        <img src={!darkMode ? ICO_Dark : ICO_Light} alt="Theme switch icon" />
+        {!darkMode ? "DARKMODE" : "LIGHTMODE"}
       </Box>
     </Box>
   );
