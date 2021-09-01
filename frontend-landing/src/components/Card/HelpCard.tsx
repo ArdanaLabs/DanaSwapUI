@@ -35,14 +35,14 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   }
 }))
 
-export interface SwapButtonProps {
+export interface HelpCardProps {
   image: string
   title: string
   content: string
   background: string
 }
 
-const SwapButton: React.FC<SwapButtonProps> = ({
+const HelpCard: React.FC<HelpCardProps> = ({
   image,
   title,
   content,
@@ -76,4 +76,4 @@ const SwapButton: React.FC<SwapButtonProps> = ({
   )
 }
 
-export default SwapButton
+export default HelpCard

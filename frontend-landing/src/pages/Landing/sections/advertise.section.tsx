@@ -17,7 +17,6 @@ import { TokenCard } from 'components'
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
-    paddingBottom: '500px',
     background: `url(${BACKGROUND_COIN}) right top no-repeat, url(${BACKGROUND_WAVE}) left top no-repeat`,
     backgroundSize: '500px, contain'
   },

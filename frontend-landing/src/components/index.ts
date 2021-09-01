@@ -6,3 +6,4 @@ export { default as Slider } from "./Slider";
 export { default as Select } from "./Select";
 export { TokenCard } from "./Card";
 export { HelpCard } from "./Card";
+export { TokenAssetGrid } from './DataGrid';

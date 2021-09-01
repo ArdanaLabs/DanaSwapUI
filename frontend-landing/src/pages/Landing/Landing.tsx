@@ -6,7 +6,13 @@ const Landing: React.FC = () => {
   return (
     <Box>
       <AdSection />
-      {/* <AssetSection /> */}
+
+      <Box mt='120px' />
+
+      <AssetSection />
+
+      <Box mt='150px' />
+
       <HelpSection />
     </Box>
   );

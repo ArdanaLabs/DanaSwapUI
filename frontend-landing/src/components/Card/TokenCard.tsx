@@ -43,7 +43,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   }
 }));
 
-export interface SwapButtonProps {
+export interface TokenCardProps {
   image: string;
   label: string;
   name: string;
@@ -52,7 +52,7 @@ export interface SwapButtonProps {
   background: string;
 }
 
-const SwapButton: React.FC<SwapButtonProps> = ({
+const TokenCard: React.FC<TokenCardProps> = ({
   image,
   label,
   name,
@@ -84,4 +84,4 @@ const SwapButton: React.FC<SwapButtonProps> = ({
   );
 };
 
-export default SwapButton;
+export default TokenCard;

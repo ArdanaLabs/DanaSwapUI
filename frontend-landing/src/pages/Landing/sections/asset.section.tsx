@@ -1,59 +1,63 @@
 import React from 'react'
-import { Box, Container, Grid, useMediaQuery } from '@material-ui/core'
+import { Box, Container, useMediaQuery } from '@material-ui/core'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import cx from 'classnames'
-
 import { useIsDarkMode } from 'state/user/hooks'
+import { TokenAssetGrid } from 'components'
+import { GridColDef, GridValueGetterParams } from '@material-ui/data-grid'
 
-import BACKGROUND_COIN from 'assets/image/BACKGROUND-COIN.png'
-import BACKGROUND_WAVE from 'assets/image/BACKGROUND-WAVE.png'
-import COIN_CARDANO from 'assets/image/COIN1.png'
+const columns: GridColDef[] = [
+  { field: 'id', headerName: 'ID', width: 90 },
+  {
+    field: 'firstName',
+    headerName: 'First name',
+    width: 150,
+    editable: true,
+  },
+  {
+    field: 'lastName',
+    headerName: 'Last name',
+    width: 150,
+    editable: true,
+  },
+  {
+    field: 'age',
+    headerName: 'Age',
+    type: 'number',
+    width: 110,
+    editable: true,
+  },
+  {
+    field: 'fullName',
+    headerName: 'Full name',
+    description: 'This column has a value getter and is not sortable.',
+    sortable: false,
+    width: 160,
+    valueGetter: (params: GridValueGetterParams) =>
+      `${params.getValue(params.id, 'firstName') || ''} ${
+        params.getValue(params.id, 'lastName') || ''
+      }`,
+  },
+];
 
-import COIN_DANA from 'assets/image/COIN-DANA-3D.png'
-import COIN_ETH from 'assets/image/COIN-ETH-3D.png'
-import COIN_HUOBI from 'assets/image/COIN-HUOBI-3D.png'
-
-import { TokenCard } from 'components'
+const rows = [
+  { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
+  { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
+  { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
+  { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
+  { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
+  { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
+  { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
+  { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
+  { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+];
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
-  root: {
-    paddingBottom: '500px',
-    background: `url(${BACKGROUND_COIN}) right top no-repeat, url(${BACKGROUND_WAVE}) left top no-repeat`,
-    backgroundSize: '500px, contain'
-  },
-
-  description: {
-    '& > div:first-child': {
-      color: palette.primary.main,
-      fontFamily: 'Brandon Grotesque',
-      fontWeight: 700,
-      fontSize: '50px',
-      paddingBottom: '20px'
-    },
-    '& > div:last-child': {
-      color: palette.primary.main,
-      fontFamily: 'Museo Sans',
-      fontWeight: 100,
-      fontSize: '20px'
-    }
-  },
-
-  coins: {
-    '& > img': {
-      marginRight: '20px',
-      opacity: '0.5'
-    }
-  },
-
-  connectWallet: {
-    background: palette.info.light,
-    padding: '5px 15px',
-    fontFamily: 'Brandon Grotesque',
-    fontSize: '14px',
-    color: palette.common.white,
-    borderRadius: '100px',
-    display: 'inline-block',
-    fontWeight: 700
+  root: {},
+  filter: {},
+  assetList: {
+    width: '100%',
+    height: '500px',
   }
 }))
 
@@ -66,75 +70,18 @@ const AdSection: React.FC = () => {
   return (
     <Box className={cx(classes.root)}>
       <Container>
-        <Box mt='100px' />
+        <Box className={cx(classes.filter)}>
 
-        <Box className={cx(classes.description)}>
-          <Box>
-            Collateral assets can be leveraged to
-            <br /> mint Ardana Stablecoins.
-          </Box>
-          <Box>
-            Open a Ardana Stablecoin Vault, deposit your
-            <br /> collateral, and generate dUSD against it.
-          </Box>
         </Box>
-
-        <Box mt='50px' />
-
-        <Box className={cx(classes.coins)}>
-          <img src={COIN_CARDANO} alt='cardano coin' />
-          <img src={COIN_CARDANO} alt='cardano coin' />
-          <img src={COIN_CARDANO} alt='cardano coin' />
-          <img src={COIN_CARDANO} alt='cardano coin' />
-          <img src={COIN_CARDANO} alt='cardano coin' />
-          <img src={COIN_CARDANO} alt='cardano coin' />
-          <img src={COIN_CARDANO} alt='cardano coin' />
+        <Box className={cx(classes.assetList)}>
+          <TokenAssetGrid
+            rows={rows}
+            columns={columns}
+            pageSize={5}
+            checkboxSelection
+            disableSelectionOnClick
+          />
         </Box>
-
-        <Box mt='40px' />
-
-        <Box className={cx(classes.connectWallet)}>CONNECT A WALLET</Box>
-
-        <Box mt='200px' />
-
-        <Grid container spacing={4}>
-          <Grid item xs={12} sm={6} md={4}>
-            <TokenCard
-              name='LINK-A'
-              label='NEW'
-              stabilityFee={3}
-              ratio={165}
-              image={COIN_DANA}
-              background={
-                'linear-gradient(180deg, #3142A3 0%, rgba(49, 66, 163, 0) 118.48%)'
-              }
-            />
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <TokenCard
-              name='UNI-A'
-              label='MOST POPULAR'
-              stabilityFee={2}
-              ratio={145}
-              image={COIN_ETH}
-              background={
-                'linear-gradient(180.2deg, #627EFF 0.17%, rgba(77, 97, 210, 0) 116.51%)'
-              }
-            />
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <TokenCard
-              name='GUSD-A'
-              label='CHEAPEST'
-              stabilityFee={0}
-              ratio={101}
-              image={COIN_HUOBI}
-              background={
-                'linear-gradient(180deg, #71CEF3 0%, rgba(113, 206, 243, 0) 110%)'
-              }
-            />
-          </Grid>
-        </Grid>
       </Container>
     </Box>
   )
