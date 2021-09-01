@@ -5,3 +5,4 @@ export { default as SwitchWithGlider } from "./SwitchWithGlider";
 export { default as Slider } from "./Slider";
 export { default as Select } from "./Select";
 export { TokenCard } from "./Card";
+export { HelpCard } from "./Card";
