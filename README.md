@@ -19,16 +19,17 @@ Requirements:
 Download & Install packages:
 - ```npm install``` or ```yarn```
 
+
+## Developer workflow instructions
+
 To Start Server:
 - ```npm start``` or ```yarn start```
 
 To Run Test Suite:
 - ```npm run test``` or ```yarn test```
 
-
-## Developer workflow instructions
-
-
+Linting:
+- ```npm run lint``` or ```yarn lint```
 
 ## Directory structure explanation
 
@@ -36,11 +37,11 @@ To Run Test Suite:
 - ```src/assets``` - the resources contains images, icons, fonts, etc
 - ```src/components``` - the source code for commonly used components
 - ```src/config``` - the contraints
-- ```src/hooks``` - utilities
-- ```src/layouts``` - the source code 
-- ```src/locales``` - translation(en, zh)
-- ```src/pages``` - identified by routes
-- ```src/state``` - redux setting
+- ```src/hooks``` - the source code for utility functions
+- ```src/layouts``` - the source code for theme template
+- ```src/locales``` - the assets for translation
+- ```src/pages``` - the source code for pages
+- ```src/state``` - the source code for redux setup
 
 ## Core branches
 - ```main```
