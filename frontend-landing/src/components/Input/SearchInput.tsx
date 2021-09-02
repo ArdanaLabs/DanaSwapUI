@@ -6,31 +6,24 @@ import { useIsDarkMode } from "state/user/hooks";
 
 const useStyles = makeStyles(({ palette }) => ({
   input: {
-    position: "relative",
-    "& input": {
-      border: "unset",
-      fontFamily: "'Museo Sans 300'",
-      fontStyle: "normal",
+    position: 'relative',
+    "& > input": {
+      background: 'transparent',
+      border: `1px solid ${palette.primary.main}`,
+      borderRadius: '50px',
+      padding: '10px 10px 10px 40px',
+      color: palette.primary.main,
 
       "&:focus-visible": {
         outline: "unset",
       },
     },
-    "& ::placeholder": {
-      color: palette.secondary.main,
-    },
-    "& ::-webkit-outer-spin-button, & ::-webkit-inner-spin-button": {
-      "-webkit-appearance": "none",
-      margin: 0,
-    },
-
-    "& > i": {
-      position: "absolute",
-      right: "25px",
-      top: "13px",
-      fontSize: "20px",
-      color: palette.common.black,
-    },
+    '& > i': {
+      position: 'absolute',
+      left: '20px',
+      top: '12px',
+      color: palette.primary.main
+    }
   },
 }));
 
@@ -39,14 +32,12 @@ export interface SearchInputProps {
   placeholder?: any;
   className?: any;
   onChange?: any;
-  isIcon?: boolean;
 }
 
 const SearchInput: React.FC<SearchInputProps> = ({
   value = "",
   className = "",
-  placeholder = "Search Input",
-  isIcon = false,
+  placeholder = "",
   onChange,
 }) => {
   const { breakpoints } = useTheme();
@@ -56,14 +47,14 @@ const SearchInput: React.FC<SearchInputProps> = ({
 
   return (
     <Box className={cx(classes.input)}>
+      <i className="fa fa-search" aria-hidden="true"></i>
       <input
         type="text"
         className={className}
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-      ></input>
-      {isIcon && <i className="fa fa-search" aria-hidden="true"></i>}
+      />
     </Box>
   );
 };

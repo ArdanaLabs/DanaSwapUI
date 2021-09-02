@@ -7,3 +7,5 @@ export { default as Select } from "./Select";
 export { TokenCard } from "./Card";
 export { HelpCard } from "./Card";
 export { TokenAssetGrid } from './DataGrid';
+export { TokenAssetGridFilter } from './DataGrid';
+export { SearchInput } from './Input';

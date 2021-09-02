@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Box, Container, useMediaQuery } from '@material-ui/core'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import cx from 'classnames'
 import { useIsDarkMode } from 'state/user/hooks'
-import { TokenAssetGrid } from 'components'
+import { TokenAssetGrid, TokenAssetGridFilter } from 'components'
 import { GridColDef, GridValueGetterParams } from '@material-ui/data-grid'
+import { FilterOption, FilterType } from 'components/DataGrid/TokenAssetGridFilter'
 
 const columns: GridColDef[] = [
   { field: 'id', headerName: 'ID', width: 90 },
@@ -66,12 +67,19 @@ const AdSection: React.FC = () => {
   const dark = useIsDarkMode()
   const mobile = useMediaQuery(breakpoints.down('xs'))
   const classes = useStyles({ dark, mobile })
+  const [filterOption, setFilterOption] = useState<FilterOption>({
+    filterType: FilterType.POPULAR,
+    keyword: ''
+  });
 
   return (
     <Box className={cx(classes.root)}>
       <Container>
         <Box className={cx(classes.filter)}>
-
+          <TokenAssetGridFilter
+            filterOption={filterOption}
+            handleFilterChange={(newOption) => setFilterOption(newOption)}
+          />
         </Box>
         <Box className={cx(classes.assetList)}>
           <TokenAssetGrid

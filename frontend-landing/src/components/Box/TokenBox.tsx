@@ -280,7 +280,6 @@ const TokenBox: React.FC<OverViewBoxProps> = ({
               className={cx(classes.filterText)}
               value={filter.text}
               placeholder="SEARCH..."
-              isIcon={true}
               onChange={(e: any) => {
                 onFilterChange({ text: e.target.value });
               }}
