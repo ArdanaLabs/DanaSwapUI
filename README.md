@@ -27,6 +27,22 @@ To Run Test Suite:
 
 
 ## Developer workflow instructions
+
+
+
 ## Directory structure explanation
+
+### frontend-dashboard | frontend-landing
+- ```src/assets``` - the resources contains images, icons, fonts, etc
+- ```src/components``` - the source code for commonly used components
+- ```src/config``` - the contraints
+- ```src/hooks``` - utilities
+- ```src/layouts``` - the source code 
+- ```src/locales``` - translation(en, zh)
+- ```src/pages``` - identified by routes
+- ```src/state``` - redux setting
+
 ## Core branches
-- ```maseter``` - 
+- ```main```
+- ```staging```
+- ```dev```
