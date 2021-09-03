@@ -1,14 +1,14 @@
 import React from "react";
 import cx from "classnames";
-import { Box } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { Box, useMediaQuery } from "@material-ui/core";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 
 import { useDarkModeManager } from "state/user/hooks";
 
 import ICON_SUN from "assets/image/ICON-SUN.png";
 import ICON_MOON from "assets/image/ICON-MOON.png";
 
-const useStyles = makeStyles(({ palette }) => ({
+const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
     margin: "0 10px",
     padding: '0px 15px',
@@ -18,6 +18,14 @@ const useStyles = makeStyles(({ palette }) => ({
     alignItems: "center",
     width: "175px",
     background: palette.info.light,
+
+    [breakpoints.down('sm')]: {
+      width: 'auto',
+      padding: 5,
+      display: 'inline-flex',
+      lineHeight: '100%',
+      boderRadius: '50%',
+    }
   },
   switchIcon: {
     padding: 5,
@@ -35,7 +43,9 @@ const useStyles = makeStyles(({ palette }) => ({
 }));
 
 const ThemeSwitch: React.FC = () => {
+  const { breakpoints } = useTheme()
   const [darkMode, setDarkMode] = useDarkModeManager();
+  const mobile = useMediaQuery(breakpoints.down('xs'))
   const classes = useStyles();
 
   const toggleMode = () => {
@@ -52,9 +62,9 @@ const ThemeSwitch: React.FC = () => {
         src={!darkMode ? ICON_MOON : ICON_SUN}
         alt="Theme switch icon"
       />
-      <Box className={cx(classes.switchLabel)}>
+      {!mobile && (<Box className={cx(classes.switchLabel)}>
         {!darkMode ? "DARKMODE" : "LIGHTMODE"}
-      </Box>
+      </Box>)}
     </Box>
   );
 };

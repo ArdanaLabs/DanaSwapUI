@@ -22,7 +22,7 @@ const AdSection: React.FC = () => {
   return (
     <Box className={cx(classes.root)}>
       <Container>
-        <Grid container spacing={5}>
+        <Grid container spacing={4}>
           <Grid item xs={12} sm={6}>
             <HelpCard
               image={IMG_DANACOIN}

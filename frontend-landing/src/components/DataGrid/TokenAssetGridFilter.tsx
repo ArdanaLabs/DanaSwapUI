@@ -9,7 +9,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
     display: 'flex',
     justifyContent: 'space-between',
-    margin: '20px 0px',
+    margin: '20px 0px'
   },
   typographyPrimary: {
     fontFamily: 'Brandon Grotesque',
@@ -68,7 +68,6 @@ const HelpCard: React.FC<HelpCardProps> = ({
   const { breakpoints } = useTheme()
   const dark = useIsDarkMode()
   const mobile = useMediaQuery(breakpoints.down('xs'))
-  const responsive = useMediaQuery(breakpoints.down('md'))
   const classes = useStyles({ dark, mobile })
   const { filterType, keyword } = filterOption
 
@@ -87,49 +86,46 @@ const HelpCard: React.FC<HelpCardProps> = ({
   }
 
   return (
-    <Box
-      className={cx(classes.root)}
-      flexDirection={responsive ? 'column' : 'row'}
-    >
-      <Box className={cx(classes.filterType)}>
-        <Box
-          className={cx(classes.typographyPrimary, classes.filterItem, {
-            active: filterType === FilterType.POPULAR
-          })}
-          onClick={() => hanldeFilterTypeChange(FilterType.POPULAR)}
-        >
-          {FilterType.POPULAR}
+    <Box className={cx(classes.root)} flexDirection={mobile ? 'column' : 'row'}>
+      {!mobile && (
+        <Box className={cx(classes.filterType)}>
+          <Box
+            className={cx(classes.typographyPrimary, classes.filterItem, {
+              active: filterType === FilterType.POPULAR
+            })}
+            onClick={() => hanldeFilterTypeChange(FilterType.POPULAR)}
+          >
+            {FilterType.POPULAR}
+          </Box>
+          <Box
+            className={cx(classes.typographyPrimary, classes.filterItem, {
+              active: filterType === FilterType.ALL
+            })}
+            onClick={() => hanldeFilterTypeChange(FilterType.ALL)}
+          >
+            {FilterType.ALL}
+          </Box>
+          <Box
+            className={cx(classes.typographyPrimary, classes.filterItem, {
+              active: filterType === FilterType.STABLECOINS
+            })}
+            onClick={() => hanldeFilterTypeChange(FilterType.STABLECOINS)}
+          >
+            {FilterType.STABLECOINS}
+          </Box>
+          <Box
+            className={cx(classes.typographyPrimary, classes.filterItem, {
+              active: filterType === FilterType.LP
+            })}
+            onClick={() => hanldeFilterTypeChange(FilterType.LP)}
+          >
+            {FilterType.LP}
+          </Box>
         </Box>
-        <Box
-          className={cx(classes.typographyPrimary, classes.filterItem, {
-            active: filterType === FilterType.ALL
-          })}
-          onClick={() => hanldeFilterTypeChange(FilterType.ALL)}
-        >
-          {FilterType.ALL}
-        </Box>
-        <Box
-          className={cx(classes.typographyPrimary, classes.filterItem, {
-            active: filterType === FilterType.STABLECOINS
-          })}
-          onClick={() => hanldeFilterTypeChange(FilterType.STABLECOINS)}
-        >
-          {FilterType.STABLECOINS}
-        </Box>
-        <Box
-          className={cx(classes.typographyPrimary, classes.filterItem, {
-            active: filterType === FilterType.LP
-          })}
-          onClick={() => hanldeFilterTypeChange(FilterType.LP)}
-        >
-          {FilterType.LP}
-        </Box>
-      </Box>
+      )}
+
       <Box className={cx(classes.searchBox)}>
-        <SearchInput
-          value={keyword}
-          onChange={handleFilterInputChange}
-        />
+        <SearchInput value={keyword} onChange={handleFilterInputChange} />
       </Box>
     </Box>
   )

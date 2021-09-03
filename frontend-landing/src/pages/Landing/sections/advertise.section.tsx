@@ -6,6 +6,7 @@ import cx from 'classnames'
 import { useIsDarkMode } from 'state/user/hooks'
 
 import BACKGROUND_COIN from 'assets/image/BACKGROUND-COIN.png'
+import BACKGROUND_COIN_MOBILE from 'assets/image/BACKGROUND-COIN-MOBILE.png'
 import BACKGROUND_WAVE from 'assets/image/BACKGROUND-WAVE.png'
 import COIN_CARDANO from 'assets/image/COIN1.png'
 
@@ -13,12 +14,18 @@ import COIN_DANA from 'assets/image/COIN-DANA-3D.png'
 import COIN_ETH from 'assets/image/COIN-ETH-3D.png'
 import COIN_HUOBI from 'assets/image/COIN-HUOBI-3D.png'
 
-import { TokenCard } from 'components'
+import { ThemeSwitch, TokenCard } from 'components'
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
     background: `url(${BACKGROUND_COIN}) right top no-repeat, url(${BACKGROUND_WAVE}) left top no-repeat`,
-    backgroundSize: '500px, contain'
+    backgroundSize: '500px, contain',
+
+    [breakpoints.down('sm')]: {
+      background: `url(${BACKGROUND_COIN_MOBILE}) no-repeat, url(${BACKGROUND_WAVE}) left top no-repeat`,
+      backgroundSize: 'contain',
+      textAlign: 'center'
+    }
   },
 
   description: {
@@ -27,26 +34,39 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       fontFamily: 'Brandon Grotesque',
       fontWeight: 700,
       fontSize: '50px',
-      paddingBottom: '20px'
+      paddingBottom: '20px',
+      lineHeight: '110%',
+
+      [breakpoints.down('sm')]: {
+        fontSize: '30px'
+      }
     },
     '& > div:last-child': {
       color: palette.primary.main,
       fontFamily: 'Museo Sans',
       fontWeight: 100,
-      fontSize: '20px'
+      fontSize: '20px',
+
+      [breakpoints.down('sm')]: {
+        fontSize: '16px'
+      }
     }
   },
 
   coins: {
     '& > img': {
       marginRight: '20px',
-      opacity: '0.5'
+      opacity: '0.5',
+      [breakpoints.down('sm')]: {
+        width: '20px',
+        marginRight: '12px'
+      }
     }
   },
 
   connectWallet: {
     background: palette.info.light,
-    padding: '5px 15px',
+    padding: '5px 40px',
     fontFamily: 'Brandon Grotesque',
     fontSize: '14px',
     color: palette.common.white,
@@ -65,7 +85,7 @@ const AdSection: React.FC = () => {
   return (
     <Box className={cx(classes.root)}>
       <Container>
-        <Box mt='100px' />
+        <Box pt={!mobile ? '100px' : '350px'} />
 
         <Box className={cx(classes.description)}>
           <Box>
@@ -80,7 +100,7 @@ const AdSection: React.FC = () => {
 
         <Box mt='50px' />
 
-        <Box className={cx(classes.coins)}>
+        <Box ml={mobile ? '12px' : 0} className={cx(classes.coins)}>
           <img src={COIN_CARDANO} alt='cardano coin' />
           <img src={COIN_CARDANO} alt='cardano coin' />
           <img src={COIN_CARDANO} alt='cardano coin' />
@@ -90,11 +110,17 @@ const AdSection: React.FC = () => {
           <img src={COIN_CARDANO} alt='cardano coin' />
         </Box>
 
-        <Box mt='40px' />
+        <Box mt={!mobile ? '40px' : '20px'} />
 
         <Box className={cx(classes.connectWallet)}>CONNECT A WALLET</Box>
 
-        <Box mt='200px' />
+        {mobile && (
+          <Box mt='50px' textAlign='left'>
+            <ThemeSwitch />
+          </Box>
+        )}
+
+        <Box mt={!mobile ? '200px' : '50px'} />
 
         <Grid container spacing={4}>
           <Grid item xs={12} sm={6} md={4}>

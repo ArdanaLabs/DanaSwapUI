@@ -71,7 +71,7 @@ const Header: React.FC = () => {
           </Box>
 
           <Box className={cx(classes.toolbar)}>
-            <ThemeSwitch />
+            {!mobile && <ThemeSwitch />}
             <ConnectWallet />
           </Box>
         </Box>

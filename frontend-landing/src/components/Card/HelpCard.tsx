@@ -12,6 +12,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     display: 'flex',
     boxShadow: '10px 10px 30px rgba(0, 0, 0, 0.05)',
     cursor: 'pointer',
+    marginBottom: '30px'
   },
   typographyPrimary: {
     fontFamily: 'Brandon Grotesque',
@@ -24,7 +25,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontWeight: 100
   },
   image: {
-    marginTop: '-80px'
+    marginTop: '-70px'
   },
   title: {
     fontSize: '50px',

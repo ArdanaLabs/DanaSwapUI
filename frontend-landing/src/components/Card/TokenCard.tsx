@@ -10,6 +10,8 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     padding: '20px',
     color: '#FFFFFF',
     position: 'relative',
+    textAlign: 'left',
+    marginBottom: '35px',
   },
   typographyPrimary: {
     fontFamily: 'Brandon Grotesque',
@@ -25,21 +27,40 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontSize: '20px',
     lineHeight: '115%',
     marginTop: '5px',
+
+    [breakpoints.down('sm')]: {
+      fontSize: '14px',
+    }
   },
   name: {
     fontSize: '50px',
     lineHeight: '110%',
     marginTop: '25px',
     marginBottom: '55px',
+
+    [breakpoints.down('sm')]: {
+      fontSize: '30px',
+    }
   },
   status: {
-    fontSize: '15px',
+    fontSize: '16px',
     lineHeight: '115%',
+    opacity: '0.8',
+
+    [breakpoints.down('sm')]: {
+      whiteSpace: 'pre-line'
+    }
   },
   image: {
     position: 'absolute',
-    right: '-10px',
-    top: '-70px',
+    right: '0px',
+    top: '-50px',
+
+    [breakpoints.down('sm')]: {
+      '& img': {
+        width: '160px',
+      }
+    }
   }
 }));
 
@@ -76,8 +97,8 @@ const TokenCard: React.FC<TokenCardProps> = ({
       <Box className={cx(classes.name, classes.typographyPrimary)} component={'p'}>{name}</Box>
 
       <Box display='flex' justifyContent='space-between' className={cx(classes.typographySecondary, classes.status)}>
-        <Box>{`Stability Fee  ${stabilityFee.toFixed(2)}%`}</Box>
-        <Box>{`Min Coll. Ratio  ${ratio.toFixed(0)}%`}</Box>
+        <Box>{`Stability Fee \n${stabilityFee.toFixed(2)}%`}</Box>
+        <Box>{`Min Coll. Ratio \n${ratio.toFixed(0)}%`}</Box>
       </Box>
 
     </Box>
