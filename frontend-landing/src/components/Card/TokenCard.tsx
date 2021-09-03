@@ -38,7 +38,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
   image: {
     position: 'absolute',
-    right: '-30px',
+    right: '-10px',
     top: '-70px',
   }
 }));
