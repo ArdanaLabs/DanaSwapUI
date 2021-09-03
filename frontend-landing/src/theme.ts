@@ -306,11 +306,6 @@ export const lightTheme = responsiveFontSizes(
           width: "100px",
         },
       },
-      MuiTableCell: {
-        root: {
-          borderBottom: "1px solid #E5E5E5",
-        },
-      },
       MuiContainer: {
         fixed: {
           borderRadius: 12,
@@ -443,14 +438,6 @@ export const lightTheme = responsiveFontSizes(
           "& svg": {
             marginBottom: "0px !important",
             marginRight: 6,
-          },
-        },
-      },
-      MuiTableSortLabel: {
-        root: {
-          "& img": {
-            width: 16,
-            marginLeft: 4,
           },
         },
       },
@@ -811,19 +798,6 @@ export const darkTheme = responsiveFontSizes(
         groupedHorizontal: {
           "&:not(:last-child) > div > div": {},
           "&:not(:first-child) > div > div": {},
-        },
-      },
-      MuiTableCell: {
-        root: {
-          borderBottom: "1px solid #E5E5E5",
-        },
-      },
-      MuiTableSortLabel: {
-        root: {
-          "& img": {
-            width: 16,
-            marginLeft: 4,
-          },
         },
       },
       MuiTabs: {

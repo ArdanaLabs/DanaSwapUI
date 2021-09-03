@@ -1,68 +1,117 @@
 import React, { useState } from 'react'
-import { Box, Container, useMediaQuery } from '@material-ui/core'
+import { Box, Button, Container, useMediaQuery } from '@material-ui/core'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import cx from 'classnames'
 import { useIsDarkMode } from 'state/user/hooks'
 import { TokenAssetGrid, TokenAssetGridFilter } from 'components'
-import { GridColDef, GridValueGetterParams } from '@material-ui/data-grid'
-import { FilterOption, FilterType } from 'components/DataGrid/TokenAssetGridFilter'
+import {
+  GridCellParams,
+  GridColDef,
+  GridValueGetterParams
+} from '@material-ui/data-grid'
+import {
+  FilterOption,
+  FilterType
+} from 'components/DataGrid/TokenAssetGridFilter'
 
-const columns: GridColDef[] = [
-  { field: 'id', headerName: 'ID', width: 90 },
-  {
-    field: 'firstName',
-    headerName: 'First name',
-    width: 150,
-    editable: true,
-  },
-  {
-    field: 'lastName',
-    headerName: 'Last name',
-    width: 150,
-    editable: true,
-  },
-  {
-    field: 'age',
-    headerName: 'Age',
-    type: 'number',
-    width: 110,
-    editable: true,
-  },
-  {
-    field: 'fullName',
-    headerName: 'Full name',
-    description: 'This column has a value getter and is not sortable.',
-    sortable: false,
-    width: 160,
-    valueGetter: (params: GridValueGetterParams) =>
-      `${params.getValue(params.id, 'firstName') || ''} ${
-        params.getValue(params.id, 'lastName') || ''
-      }`,
-  },
-];
+import COIN1 from 'assets/image/COIN1.png'
 
 const rows = [
-  { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-  { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-  { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-  { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-  { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-  { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-  { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-  { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-  { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
-];
+  {
+    id: 0,
+    asset: 'Wrapped Bitcoin',
+    type: 'WBTC-A',
+    dUSD: '29.36M',
+    stabilityFee: 2,
+    minColl: 150,
+    assetIcon: COIN1
+  },
+  {
+    id: 17,
+    asset: 'Wrapped Bitcoin',
+    type: 'WBTC-A',
+    dUSD: '29.36M',
+    stabilityFee: 2,
+    minColl: 150,
+    assetIcon: COIN1
+  },
+  {
+    id: 18,
+    asset: 'Wrapped Bitcoin',
+    type: 'WBTC-A',
+    dUSD: '29.36M',
+    stabilityFee: 1,
+    minColl: 150,
+    assetIcon: COIN1
+  },
+  {
+    id: 19,
+    asset: 'Wrapped Bitcoin',
+    type: 'WBTC-A',
+    dUSD: '29.36M',
+    stabilityFee: 3,
+    minColl: 150,
+    assetIcon: COIN1
+  },
+  {
+    id: 10,
+    asset: 'Wrapped Bitcoin',
+    type: 'WBTC-A',
+    dUSD: '29.36M',
+    stabilityFee: 1,
+    minColl: 150,
+    assetIcon: COIN1
+  },
+  {
+    id: 10,
+    asset: 'Wrapped Bitcoin',
+    type: 'WBTC-A',
+    dUSD: '29.36M',
+    stabilityFee: 20,
+    minColl: 150,
+    assetIcon: COIN1
+  },
+  {
+    id: 10,
+    asset: 'Wrapped Bitcoin',
+    type: 'WBTC-A',
+    dUSD: '29.36M',
+    stabilityFee: 2,
+    minColl: 150,
+    assetIcon: COIN1
+  },
+]
+
+export function SortedDescendingIcon() {
+  return <KeyboardArrowDownIcon color="primary"/>;
+}
+
+export function SortedAscendingIcon() {
+  return <KeyboardArrowUpIcon color="primary"/>;
+}
+
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {},
   filter: {},
   assetList: {
-    width: '100%',
-    height: '500px',
+    width: '100%'
+  },
+  openVault: {
+    backgroundColor: '#5297BD',
+    borderRadius: '100px',
+    fontWeight: 900,
+    fontSize: '20px',
+    color: palette.common.white,
+    padding: '10px 25px',
+    minWidth: '150px',
+    lineHeight: '100% !important',
   }
 }))
 
-const AdSection: React.FC = () => {
+const AssetSection: React.FC = () => {
   const { breakpoints } = useTheme()
   const dark = useIsDarkMode()
   const mobile = useMediaQuery(breakpoints.down('xs'))
@@ -70,7 +119,67 @@ const AdSection: React.FC = () => {
   const [filterOption, setFilterOption] = useState<FilterOption>({
     filterType: FilterType.POPULAR,
     keyword: ''
-  });
+  })
+
+  const columns: GridColDef[] = [
+    {
+      field: 'asset',
+      headerName: 'Asset',
+      sortable: false,
+      flex: 2,
+      renderCell: (params: GridCellParams) => {
+        const assetIcon = params.getValue(params.id, 'assetIcon')
+        return (
+          <Box display='flex' alignItems='center'>
+            <img src={assetIcon?.toString()} alt='' />
+            <Box pl='15px'>{params.value}</Box>
+          </Box>
+        )
+      }
+    },
+    {
+      field: 'type',
+      headerName: 'Type',
+      sortable: false,
+      flex: 1
+    },
+    {
+      field: 'dUSD',
+      headerName: 'dUSD Available',
+      flex: 1
+    },
+    {
+      field: 'stabilityFee',
+      headerName: 'Stability Fee',
+      type: 'number',
+      flex: 1,
+      align: 'left',
+      headerAlign: 'left',
+      valueGetter: (params: GridValueGetterParams) =>
+        Number(params.value).toFixed(2) + '%'
+    },
+    {
+      field: 'minColl',
+      headerName: 'Min Coll. Ratio',
+      type: 'number',
+      flex: 1,
+      align: 'left',
+      headerAlign: 'left',
+      valueGetter: (params: GridValueGetterParams) => params.value + '%'
+    },
+    {
+      field: 'action',
+      headerName: ' ',
+      sortable: false,
+      width: 200,
+      align: 'center',
+      renderCell: () => {
+        return (
+          <Button className={cx(classes.openVault)}>Open Vault</Button>
+        )
+      }
+    }
+  ]
 
   return (
     <Box className={cx(classes.root)}>
@@ -78,16 +187,24 @@ const AdSection: React.FC = () => {
         <Box className={cx(classes.filter)}>
           <TokenAssetGridFilter
             filterOption={filterOption}
-            handleFilterChange={(newOption) => setFilterOption(newOption)}
+            handleFilterChange={newOption => setFilterOption(newOption)}
           />
         </Box>
         <Box className={cx(classes.assetList)}>
           <TokenAssetGrid
             rows={rows}
             columns={columns}
-            pageSize={5}
-            checkboxSelection
             disableSelectionOnClick
+            disableColumnSelector
+            disableColumnMenu
+            disableDensitySelector
+            hideFooterPagination
+            rowHeight={70}
+            autoHeight
+            components={{
+              ColumnSortedDescendingIcon: SortedDescendingIcon,
+              ColumnSortedAscendingIcon: SortedAscendingIcon,
+            }}
           />
         </Box>
       </Container>
@@ -95,4 +212,4 @@ const AdSection: React.FC = () => {
   )
 }
 
-export default AdSection
+export default AssetSection
