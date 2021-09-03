@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Box, Button, Container, useMediaQuery } from '@material-ui/core'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
-import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
-import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown'
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
 import cx from 'classnames'
 import { useIsDarkMode } from 'state/user/hooks'
 import { TokenAssetGrid, TokenAssetGridFilter } from 'components'
@@ -81,17 +81,16 @@ const rows = [
     stabilityFee: 2,
     minColl: 150,
     assetIcon: COIN1
-  },
+  }
 ]
 
-export function SortedDescendingIcon() {
-  return <KeyboardArrowDownIcon color="primary"/>;
+export function SortedDescendingIcon () {
+  return <KeyboardArrowDownIcon color='primary' />
 }
 
-export function SortedAscendingIcon() {
-  return <KeyboardArrowUpIcon color="primary"/>;
+export function SortedAscendingIcon () {
+  return <KeyboardArrowUpIcon color='primary' />
 }
-
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {},
@@ -100,14 +99,14 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     width: '100%'
   },
   openVault: {
-    backgroundColor: '#5297BD',
+    backgroundColor: palette.type === 'dark' ? '#5297BD' : '#1273CC',
     borderRadius: '100px',
     fontWeight: 900,
     fontSize: '20px',
     color: palette.common.white,
     padding: '10px 25px',
     minWidth: '150px',
-    lineHeight: '100% !important',
+    lineHeight: '100% !important'
   }
 }))
 
@@ -174,9 +173,7 @@ const AssetSection: React.FC = () => {
       width: 200,
       align: 'center',
       renderCell: () => {
-        return (
-          <Button className={cx(classes.openVault)}>Open Vault</Button>
-        )
+        return <Button className={cx(classes.openVault)}>Open Vault</Button>
       }
     }
   ]
@@ -201,9 +198,12 @@ const AssetSection: React.FC = () => {
             hideFooterPagination
             rowHeight={70}
             autoHeight
+            autoPageSize
+            pageSize={20}
+            rowsPerPageOptions={[20]}
             components={{
               ColumnSortedDescendingIcon: SortedDescendingIcon,
-              ColumnSortedAscendingIcon: SortedAscendingIcon,
+              ColumnSortedAscendingIcon: SortedAscendingIcon
             }}
           />
         </Box>

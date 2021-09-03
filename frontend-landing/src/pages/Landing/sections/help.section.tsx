@@ -28,7 +28,11 @@ const AdSection: React.FC = () => {
               image={IMG_DANACOIN}
               title='Dana Coin'
               content='Buy, send and manage your Dana Coin all in one place. Grow your Dana, and access plenty of providers.'
-              background='linear-gradient(180deg, #1A235B 0%, rgba(49, 66, 163, 0) 118.48%)'
+              background={
+                dark
+                  ? 'linear-gradient(180deg, #1A235B 0%, rgba(49, 66, 163, 0) 118.48%)'
+                  : 'linear-gradient(180deg, #EEF1FF 0%, #F9FBFF 118.48%)'
+              }
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -36,7 +40,11 @@ const AdSection: React.FC = () => {
               image={IMG_QUESTION}
               title='Got questions?'
               content='Learn more about Dana Coin, Danaswap and Stablecoin Vaults by visiting our FAQs page.'
-              background='linear-gradient(180deg, #1A235B 0%, rgba(49, 66, 163, 0) 118.48%)'
+              background={
+                dark 
+                  ? 'linear-gradient(180deg, #1A235B 0%, rgba(49, 66, 163, 0) 118.48%)'
+                  : 'linear-gradient(180deg, #EEF1FF 0%, #F9FBFF 118.48%)'
+              }
             />
           </Grid>
         </Grid>
