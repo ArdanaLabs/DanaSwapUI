@@ -105,7 +105,9 @@ const AdSection: React.FC = () => {
               ratio={165}
               image={COIN_DANA}
               background={
-                'linear-gradient(180deg, #3142A3 0%, rgba(49, 66, 163, 0) 118.48%)'
+                dark
+                  ? 'linear-gradient(180deg, #3142A3 0%, rgba(49, 66, 163, 0) 118.48%)'
+                  : 'linear-gradient(179.9deg, #0D1E7E 0.1%, #4D5EC1 99.98%)'
               }
             />
           </Grid>
@@ -117,7 +119,9 @@ const AdSection: React.FC = () => {
               ratio={145}
               image={COIN_ETH}
               background={
-                'linear-gradient(180.2deg, #627EFF 0.17%, rgba(77, 97, 210, 0) 116.51%)'
+                dark
+                  ? 'linear-gradient(180.2deg, #627EFF 0.17%, rgba(77, 97, 210, 0) 116.51%)'
+                  : 'linear-gradient(180deg, #2E49C5 0%, #6480FF 106.6%)'
               }
             />
           </Grid>
@@ -129,7 +133,9 @@ const AdSection: React.FC = () => {
               ratio={101}
               image={COIN_HUOBI}
               background={
-                'linear-gradient(180deg, #71CEF3 0%, rgba(113, 206, 243, 0) 110%)'
+                dark
+                  ? 'linear-gradient(180deg, #71CEF3 0%, rgba(113, 206, 243, 0) 110%)'
+                  : 'linear-gradient(180deg, #0E70CA 0%, #64B2FA 110%)'
               }
             />
           </Grid>
