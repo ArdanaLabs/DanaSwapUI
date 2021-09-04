@@ -25,6 +25,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     "& img": {
       padding: '20px 10px',
       width: '60px',
+      
+      [breakpoints.down('sm')]: {
+        width: '50px',
+      }
     },
   },
 
@@ -32,10 +36,6 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-
-    [breakpoints.down("xs")]: {
-      flexDirection: "column",
-    }
   },
 
   socialIconLink: {
@@ -50,13 +50,21 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontFamily: "auto",
 
     "& i": {
-      width: "16px",
-      height: "16px",
+      fontSize: '15px',
     },
 
     "&:hover": {
       backgroundColor: "lightgray",
     },
+
+    [breakpoints.down('sm')]: {
+      padding: '6px 8px',
+      marginRight: '15px',
+      
+      "& i": {
+        fontSize: '12px',
+      },
+    }
   },
 }));
 

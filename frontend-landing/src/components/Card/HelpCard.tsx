@@ -12,8 +12,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     display: 'flex',
     boxShadow: '10px 10px 30px rgba(0, 0, 0, 0.05)',
     cursor: 'pointer',
-    marginBottom: '30px',
-    height: '100%'
+    marginBottom: '30px'
   },
   typographyPrimary: {
     fontFamily: 'Brandon Grotesque',

@@ -39,6 +39,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     '& img': {
       padding: '20px 10px',
       width: '60px',
+
+      [breakpoints.down('sm')]: {
+        width: '50px',
+      }
     }
   },
   
