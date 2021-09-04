@@ -14,7 +14,7 @@ const Landing: React.FC = () => {
 
       <AssetSection />
 
-      <Box mt='150px' />
+      <Box mt={!mobile ? '150px' : '100px'} />
 
       <HelpSection />
     </Box>

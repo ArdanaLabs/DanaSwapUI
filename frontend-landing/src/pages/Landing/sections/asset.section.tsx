@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { Box, Button, Container, useMediaQuery } from '@material-ui/core'
+import { Box, Container, useMediaQuery } from '@material-ui/core'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown'
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
 import cx from 'classnames'
 import { useIsDarkMode } from 'state/user/hooks'
-import { TokenAssetGrid, TokenAssetGridFilter } from 'components'
+import { TokenAssetGrid, TokenAssetGridFilter, TokenAssetCard, VaultButton } from 'components'
 import {
   GridCellParams,
   GridColDef,
@@ -98,16 +98,6 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   assetList: {
     width: '100%'
   },
-  openVault: {
-    backgroundColor: palette.type === 'dark' ? '#5297BD' : '#1273CC',
-    borderRadius: '100px',
-    fontWeight: 900,
-    fontSize: '20px',
-    color: palette.common.white,
-    padding: '10px 25px',
-    minWidth: '150px',
-    lineHeight: '100% !important'
-  }
 }))
 
 const AssetSection: React.FC = () => {
@@ -172,9 +162,7 @@ const AssetSection: React.FC = () => {
       sortable: false,
       width: 200,
       align: 'center',
-      renderCell: () => {
-        return <Button className={cx(classes.openVault)}>Open Vault</Button>
-      }
+      renderCell: () => <VaultButton>Open Vault</VaultButton>
     }
   ]
 
@@ -188,24 +176,38 @@ const AssetSection: React.FC = () => {
           />
         </Box>
         <Box className={cx(classes.assetList)}>
-          <TokenAssetGrid
-            rows={rows}
-            columns={columns}
-            disableSelectionOnClick
-            disableColumnSelector
-            disableColumnMenu
-            disableDensitySelector
-            hideFooterPagination
-            rowHeight={70}
-            autoHeight
-            autoPageSize
-            pageSize={20}
-            rowsPerPageOptions={[20]}
-            components={{
-              ColumnSortedDescendingIcon: SortedDescendingIcon,
-              ColumnSortedAscendingIcon: SortedAscendingIcon
-            }}
-          />
+          {!mobile && (
+            <TokenAssetGrid
+              rows={rows}
+              columns={columns}
+              disableSelectionOnClick
+              disableColumnSelector
+              disableColumnMenu
+              disableDensitySelector
+              hideFooterPagination
+              rowHeight={70}
+              autoHeight
+              autoPageSize
+              pageSize={20}
+              rowsPerPageOptions={[20]}
+              components={{
+                ColumnSortedDescendingIcon: SortedDescendingIcon,
+                ColumnSortedAscendingIcon: SortedAscendingIcon
+              }}
+            />
+          )}
+          {mobile && rows.map((row) => (
+            <TokenAssetCard
+              key={row.id}
+              id={row.id}
+              asset={row.asset}
+              type={row.type}
+              dUSD={row.dUSD}
+              stabilityFee={row.stabilityFee}
+              minColl={row.minColl}
+              assetIcon={row.assetIcon}
+            />
+          ))}
         </Box>
       </Container>
     </Box>
