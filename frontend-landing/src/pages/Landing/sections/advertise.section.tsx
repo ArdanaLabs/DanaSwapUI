@@ -22,7 +22,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     backgroundSize: '500px, contain',
 
     [breakpoints.down('sm')]: {
-      background: `url(${BACKGROUND_COIN_MOBILE}) no-repeat, url(${BACKGROUND_WAVE}) left top no-repeat`,
+      background: `url(${BACKGROUND_COIN_MOBILE}) no-repeat, url(${BACKGROUND_WAVE}) left top 350px no-repeat`,
       backgroundSize: 'contain',
       textAlign: 'center'
     }

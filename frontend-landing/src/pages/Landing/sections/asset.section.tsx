@@ -21,7 +21,7 @@ import COIN1 from 'assets/image/COIN1.png'
 const rows = [
   {
     id: 0,
-    asset: 'Wrapped Bitcoin',
+    asset: 'Wrapped Bitcoin1',
     type: 'WBTC-A',
     dUSD: '29.36M',
     stabilityFee: 2,
@@ -30,7 +30,7 @@ const rows = [
   },
   {
     id: 17,
-    asset: 'Wrapped Bitcoin',
+    asset: 'Wrapped Bitcoin2',
     type: 'WBTC-A',
     dUSD: '29.36M',
     stabilityFee: 2,
@@ -39,7 +39,7 @@ const rows = [
   },
   {
     id: 18,
-    asset: 'Wrapped Bitcoin',
+    asset: 'Wrapped Bitcoin3',
     type: 'WBTC-A',
     dUSD: '29.36M',
     stabilityFee: 1,
@@ -48,7 +48,7 @@ const rows = [
   },
   {
     id: 19,
-    asset: 'Wrapped Bitcoin',
+    asset: 'Wrapped Bitcoin4',
     type: 'WBTC-A',
     dUSD: '29.36M',
     stabilityFee: 3,
@@ -56,8 +56,8 @@ const rows = [
     assetIcon: COIN1
   },
   {
-    id: 10,
-    asset: 'Wrapped Bitcoin',
+    id: 110,
+    asset: 'Wrapped Bitcoin5',
     type: 'WBTC-A',
     dUSD: '29.36M',
     stabilityFee: 1,
@@ -65,8 +65,8 @@ const rows = [
     assetIcon: COIN1
   },
   {
-    id: 10,
-    asset: 'Wrapped Bitcoin',
+    id: 120,
+    asset: 'Wrapped Bitcoin6',
     type: 'WBTC-A',
     dUSD: '29.36M',
     stabilityFee: 20,
@@ -74,13 +74,69 @@ const rows = [
     assetIcon: COIN1
   },
   {
-    id: 10,
-    asset: 'Wrapped Bitcoin',
+    id: 130,
+    asset: 'Wrapped Bitcoin7',
     type: 'WBTC-A',
     dUSD: '29.36M',
     stabilityFee: 2,
     minColl: 150,
     assetIcon: COIN1
+  }
+]
+
+const columns: GridColDef[] = [
+  {
+    field: 'asset',
+    headerName: 'Asset',
+    sortable: false,
+    flex: 2,
+    renderCell: (params: GridCellParams) => {
+      const assetIcon = params.getValue(params.id, 'assetIcon')
+      return (
+        <Box display='flex' alignItems='center'>
+          <img src={assetIcon?.toString()} alt='' />
+          <Box pl='15px'>{params.value}</Box>
+        </Box>
+      )
+    }
+  },
+  {
+    field: 'type',
+    headerName: 'Type',
+    sortable: false,
+    flex: 1
+  },
+  {
+    field: 'dUSD',
+    headerName: 'dUSD Available',
+    flex: 1
+  },
+  {
+    field: 'stabilityFee',
+    headerName: 'Stability Fee',
+    type: 'number',
+    flex: 1,
+    align: 'left',
+    headerAlign: 'left',
+    valueGetter: (params: GridValueGetterParams) =>
+      Number(params.value).toFixed(2) + '%'
+  },
+  {
+    field: 'minColl',
+    headerName: 'Min Coll. Ratio',
+    type: 'number',
+    flex: 1,
+    align: 'left',
+    headerAlign: 'left',
+    valueGetter: (params: GridValueGetterParams) => params.value + '%'
+  },
+  {
+    field: 'action',
+    headerName: ' ',
+    sortable: false,
+    width: 200,
+    align: 'center',
+    renderCell: () => <VaultButton>Open Vault</VaultButton>
   }
 ]
 
@@ -110,62 +166,6 @@ const AssetSection: React.FC = () => {
     keyword: ''
   })
 
-  const columns: GridColDef[] = [
-    {
-      field: 'asset',
-      headerName: 'Asset',
-      sortable: false,
-      flex: 2,
-      renderCell: (params: GridCellParams) => {
-        const assetIcon = params.getValue(params.id, 'assetIcon')
-        return (
-          <Box display='flex' alignItems='center'>
-            <img src={assetIcon?.toString()} alt='' />
-            <Box pl='15px'>{params.value}</Box>
-          </Box>
-        )
-      }
-    },
-    {
-      field: 'type',
-      headerName: 'Type',
-      sortable: false,
-      flex: 1
-    },
-    {
-      field: 'dUSD',
-      headerName: 'dUSD Available',
-      flex: 1
-    },
-    {
-      field: 'stabilityFee',
-      headerName: 'Stability Fee',
-      type: 'number',
-      flex: 1,
-      align: 'left',
-      headerAlign: 'left',
-      valueGetter: (params: GridValueGetterParams) =>
-        Number(params.value).toFixed(2) + '%'
-    },
-    {
-      field: 'minColl',
-      headerName: 'Min Coll. Ratio',
-      type: 'number',
-      flex: 1,
-      align: 'left',
-      headerAlign: 'left',
-      valueGetter: (params: GridValueGetterParams) => params.value + '%'
-    },
-    {
-      field: 'action',
-      headerName: ' ',
-      sortable: false,
-      width: 200,
-      align: 'center',
-      renderCell: () => <VaultButton>Open Vault</VaultButton>
-    }
-  ]
-
   return (
     <Box className={cx(classes.root)}>
       <Container>
@@ -183,13 +183,10 @@ const AssetSection: React.FC = () => {
               disableSelectionOnClick
               disableColumnSelector
               disableColumnMenu
-              disableDensitySelector
               hideFooterPagination
               rowHeight={70}
               autoHeight
-              autoPageSize
-              pageSize={20}
-              rowsPerPageOptions={[20]}
+              pageSize={7}
               components={{
                 ColumnSortedDescendingIcon: SortedDescendingIcon,
                 ColumnSortedAscendingIcon: SortedAscendingIcon

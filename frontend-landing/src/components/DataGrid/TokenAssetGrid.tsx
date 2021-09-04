@@ -9,29 +9,27 @@ const StyledDataGrid = withStyles(theme => ({
       fontStyle: 'normal',
       fontWeight: 900,
       fontSize: '15px',
-      color: theme.palette.primary.main
+      color: theme.palette.primary.main,
+
+      '& svg': {
+        color: `${theme.palette.primary.main} !important`,
+      }
     },
     '& .MuiDataGrid-columnSeparator': {
       opacity: '0 !important',
-    },
-
-    '& .MuiDataGrid-columnsContainer': {
       border: 'unset',
     },
-
     '& .MuiDataGrid-cell:focus, & .MuiDataGrid-columnHeader:focus': {
       outline: 'none !important'
     },
     '& .MuiDataGrid-columnHeader:focus-within, & .MuiDataGrid-cell:focus-within':{
       outline: 'none !important'
     },
-
-    '& .MuiDataGrid-renderingZone': {
-      maxHeight: 'unset !important',
+    '& .MuiDataGrid-window, & .MuiDataGrid-viewport': {
+      overflow: 'unset !important',
     },
-
-    '& .MuiDataGrid-window': {
-      overflowX: 'unset !important',
+    '& .MuiDataGrid-cell': {
+      border: 'unset !important'
     }
   },
   columnHeader: {
@@ -50,7 +48,7 @@ const StyledDataGrid = withStyles(theme => ({
     cursor: 'pointer',
   },
   cell: {
-    border: 'unset !important',
+    border: 'unset !important'
   }
 }))(DataGrid);
 
