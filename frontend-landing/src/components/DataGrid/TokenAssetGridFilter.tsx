@@ -1,9 +1,9 @@
 import React from 'react'
-import { Box, useMediaQuery } from '@material-ui/core'
+import { Box, MenuItem, Select, useMediaQuery } from '@material-ui/core'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import cx from 'classnames'
 import { useIsDarkMode } from 'state/user/hooks'
-import { SearchInput } from 'components'
+import { BootstrapInput, SearchInput } from 'components'
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -43,7 +43,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
   searchBox: {
     [breakpoints.down('sm')]: {
-      width: '100%',
+      width: '100%'
     }
   }
 }))
@@ -128,8 +128,29 @@ const HelpCard: React.FC<HelpCardProps> = ({
         </Box>
       )}
 
+      {mobile && (
+        <Box mb='20px' width='100%'>
+          <Select
+            labelId='Filter'
+            id='Filter Select'
+            value={filterOption.filterType}
+            onChange={(event: React.ChangeEvent<{ value: unknown }>) => {
+              hanldeFilterTypeChange(event.target.value as FilterType)
+            }}
+            input={<BootstrapInput />}
+          >
+            <MenuItem value={FilterType.POPULAR}>{FilterType.POPULAR}</MenuItem>
+            <MenuItem value={FilterType.ALL}>{FilterType.ALL}</MenuItem>
+            <MenuItem value={FilterType.STABLECOINS}>
+              {FilterType.STABLECOINS}
+            </MenuItem>
+            <MenuItem value={FilterType.LP}>{FilterType.LP}</MenuItem>
+          </Select>
+        </Box>
+      )}
+
       <Box>
-        <SearchInput 
+        <SearchInput
           value={keyword}
           onChange={handleFilterInputChange}
           className={cx(classes.searchBox)}

@@ -1,13 +1,16 @@
 import React from "react";
-import { Box } from "@material-ui/core";
+import { Box, useMediaQuery, useTheme } from "@material-ui/core";
 import { AdSection, AssetSection, HelpSection } from "./sections";
 
 const Landing: React.FC = () => {
+  const { breakpoints } = useTheme()
+  const mobile = useMediaQuery(breakpoints.down('xs'))
+  
   return (
     <Box>
       <AdSection />
 
-      <Box mt='120px' />
+      <Box mt={!mobile ? '120px' : '30px'} />
 
       <AssetSection />
 
