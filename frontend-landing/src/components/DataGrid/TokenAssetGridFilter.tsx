@@ -41,7 +41,11 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       border: `1px solid ${palette.primary.main}`
     }
   },
-  searchBox: {}
+  searchBox: {
+    [breakpoints.down('sm')]: {
+      width: '100%',
+    }
+  }
 }))
 
 export enum FilterType {
@@ -124,8 +128,12 @@ const HelpCard: React.FC<HelpCardProps> = ({
         </Box>
       )}
 
-      <Box className={cx(classes.searchBox)}>
-        <SearchInput value={keyword} onChange={handleFilterInputChange} />
+      <Box>
+        <SearchInput 
+          value={keyword}
+          onChange={handleFilterInputChange}
+          className={cx(classes.searchBox)}
+        />
       </Box>
     </Box>
   )
