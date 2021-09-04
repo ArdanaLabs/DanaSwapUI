@@ -25,16 +25,31 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontWeight: 100
   },
   image: {
-    marginTop: '-70px'
+    marginTop: '-70px',
+
+    [breakpoints.down('sm')]: {
+      '& img': {
+        width: '150px'
+      }
+    }
   },
   title: {
     fontSize: '50px',
     lineHeight: '110%',
-    marginBottom: '20px'
+    marginBottom: '20px',
+    
+    [breakpoints.down('sm')]: {
+      fontSize: '35px',
+    }
   },
   content: {
     fontSize: '18px',
-    lineHeight: '115%'
+    lineHeight: '115%',
+    opacity: '0.8',
+    
+    [breakpoints.down('sm')]: {
+      fontSize: '16px',
+    }
   }
 }))
 
