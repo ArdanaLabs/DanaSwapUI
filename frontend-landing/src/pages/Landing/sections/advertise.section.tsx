@@ -18,11 +18,23 @@ import { ThemeSwitch, TokenCard } from 'components'
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
-    background: `url(${BACKGROUND_COIN}) right top no-repeat, url(${BACKGROUND_WAVE}) left top no-repeat`,
-    backgroundSize: '500px, contain',
+    background: `url(${BACKGROUND_WAVE}) no-repeat`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center center',
 
     [breakpoints.down('sm')]: {
-      background: `url(${BACKGROUND_COIN_MOBILE}) no-repeat, url(${BACKGROUND_WAVE}) left top 350px no-repeat`,
+      background: `url(${BACKGROUND_WAVE}) left top 350px no-repeat`,
+      backgroundSize: 'contain',
+      textAlign: 'center'
+    }
+  },
+
+  container: {
+    background: `url(${BACKGROUND_COIN}) right top no-repeat`,
+    backgroundSize: '500px',
+
+    [breakpoints.down('sm')]: {
+      background: `url(${BACKGROUND_COIN_MOBILE}) no-repeat`,
       backgroundSize: 'contain',
       textAlign: 'center'
     }
@@ -84,7 +96,7 @@ const AdSection: React.FC = () => {
 
   return (
     <Box className={cx(classes.root)}>
-      <Container>
+      <Container className={cx(classes.container)}>
         <Box pt={!mobile ? '100px' : '350px'} />
 
         <Box className={cx(classes.description)}>

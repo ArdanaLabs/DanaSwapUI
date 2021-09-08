@@ -30,6 +30,9 @@ const StyledDataGrid = withStyles(theme => ({
     },
     '& .MuiDataGrid-cell': {
       border: 'unset !important'
+    },
+    '& .MuiDataGrid-columnsContainer': {
+      border: 'unset !important'
     }
   },
   columnHeader: {
