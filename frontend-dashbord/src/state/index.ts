@@ -24,7 +24,7 @@ const store = configureStore({
   ],
   preloadedState: load({
     states: PERSISTED_KEYS,
-    // disableWarnings: true,
+    disableWarnings: true,
   }),
 });
 
