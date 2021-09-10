@@ -1,4 +1,4 @@
-// import jsc from "jsverify"
+import jsc from "jsverify"
 import {
   RangedAPY,
   RangedFees,
@@ -16,7 +16,43 @@ import {
   updatePoolVolume
 } from './actions'
 
-// const AsteroidType = jsc.record({
+const RangedVolumeType = jsc.record({
+  start: jsc.string,
+  end: jsc.string,
+  addLiquidity: jsc.string,
+  removeLiquidity: jsc.string,
+  total: jsc.string,
+  trade: jsc.string,
+})
+
+const RangedLiquidityType = jsc.record({
+  start: jsc.string,
+  end: jsc.string,
+  value: jsc.number
+})
+
+const RangedFeesType = jsc.record({
+  start: jsc.string,
+  end: jsc.string,
+  value: jsc.number
+})
+
+const RangedTxCountType = jsc.record({
+  start: jsc.string,
+  end: jsc.string,
+  addLiquidity: jsc.string,
+  removeLiquidity: jsc.string,
+  total: jsc.string,
+  trade: jsc.string,
+})
+
+const RangedAPYType = jsc.record({
+  start: jsc.string,
+  end: jsc.string,
+  value: jsc.number
+})
+
+// const RangedTransactions = jsc.record({
 //   start: jsc.string,
 //   end: jsc.string,
 //   addLiquidity: jsc.string,
@@ -25,38 +61,28 @@ import {
 //   trade: jsc.string,
 // })
 
-// const actionType = jsc.record({
-//   toString: jsc.array(jsc.fn(jsc.nat)),
-//   type: jsc.asciistring,
-//   match: jsc.array(jsc.fn(jsc.nat))
-// })
-
-// const test = (strings: RangedVolume[]) => {
-//   return true;
-// }
-
 describe('Chart actions', () => {
   describe('updateAggVolume', () => {
-    let mock: RangedVolume[] = []
-    mock.push({
-      start: null,
-      end: null,
-      addLiquidity: null,
-      removeLiquidity: null,
-      total: null,
-      trade: null
-    })
-
     it('should create action with passed data', () => {
+      let mock: RangedVolume[] = []
+      mock.push({
+        start: null,
+        end: null,
+        addLiquidity: null,
+        removeLiquidity: null,
+        total: null,
+        trade: null
+      })
+
       expect(updateAggVolume(mock)).toEqual({
         type: 'home/updateAggVolume',
         payload: mock
       })
     })
 
-    // describe('basic jsverify usage', () => {
-    //   jsc.checkForall(actionType, updateAggVolume);
-    // })
+    describe('basic jsverify usage', () => {
+      jsc.checkForall(RangedVolumeType, updateAggVolume);
+    })
   })
 
   describe('updateAggLiquidity', () => {
@@ -73,6 +99,10 @@ describe('Chart actions', () => {
         payload: mock
       })
     })
+
+    describe('basic jsverify usage', () => {
+      jsc.checkForall(RangedLiquidityType, updateAggLiquidity);
+    })
   })
 
   describe('updatePoolFees', () => {
@@ -88,6 +118,10 @@ describe('Chart actions', () => {
         type: 'home/updatePoolFees',
         payload: mock
       })
+    })
+
+    describe('basic jsverify usage', () => {
+      jsc.checkForall(RangedFeesType, updatePoolFees);
     })
   })
 
@@ -108,6 +142,10 @@ describe('Chart actions', () => {
         payload: mock
       })
     })
+
+    describe('basic jsverify usage', () => {
+      jsc.checkForall(RangedVolumeType, updatePoolVolume);
+    })
   })
 
   describe('updatePoolLiquidity', () => {
@@ -123,6 +161,10 @@ describe('Chart actions', () => {
         type: 'home/updatePoolLiquidity',
         payload: mock
       })
+    })
+
+    describe('basic jsverify usage', () => {
+      jsc.checkForall(RangedLiquidityType, updatePoolLiquidity);
     })
   })
 
@@ -143,6 +185,10 @@ describe('Chart actions', () => {
         payload: mock
       })
     })
+
+    describe('basic jsverify usage', () => {
+      jsc.checkForall(RangedTxCountType, updatePoolTXCount);
+    })
   })
 
   describe('updatePoolAPY', () => {
@@ -158,6 +204,10 @@ describe('Chart actions', () => {
         type: 'home/updatePoolAPY',
         payload: mock
       })
+    })
+
+    describe('basic jsverify usage', () => {
+      jsc.checkForall(RangedAPYType, updatePoolAPY);
     })
   })
 
@@ -187,5 +237,9 @@ describe('Chart actions', () => {
         payload: mock
       })
     })
+
+    // describe('basic jsverify usage', () => {
+    //   jsc.checkForall(RangedTransactionType, updatePoolTransactions);
+    // })
   })
 })
