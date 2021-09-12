@@ -1,9 +1,26 @@
-import jsc from "jsverify"
+import jsc from 'jsverify'
 import { useSelector } from 'react-redux'
 import configureMockStore from 'redux-mock-store'
-import { FiveMinutes } from 'config/grains'
-import { useAggLiquidity, useAggVolume } from './hooks'
-import { updateAggLiquidity, updateAggVolume } from './actions'
+import { FiveMinutes, OneDay, OneWeek } from 'config/grains'
+import {
+  useAggLiquidity,
+  useAggVolume,
+  usePoolAPY,
+  usePoolFees,
+  usePoolTransactions,
+  usePoolTxCount,
+  usePoolVolume
+} from './hooks'
+import {
+  updateAggLiquidity,
+  updateAggVolume,
+  updatePoolAPY,
+  updatePoolFees,
+  updatePoolTransactions,
+  updatePoolTXCount,
+  updatePoolVolume
+} from './actions'
+import { Any } from 'config/txTypes'
 
 const mockStore = configureMockStore([])
 
@@ -98,7 +115,7 @@ describe('Chart hooks', () => {
   afterEach(() => {
     ;(useSelector as jest.Mock).mockClear()
   })
-  
+
   it('should return stored aggVolume and getAggVolume function', async () => {
     const { aggVolume, getAggVolume } = useAggVolume()
 
@@ -114,7 +131,7 @@ describe('Chart hooks', () => {
     expect(mockDispatch).toHaveBeenCalledTimes(1)
     expect(mockDispatch).toHaveBeenCalledWith(updateAggVolume(result))
 
-    jsc.assert(jsc.forall(jsc.string, jsc.string, jsc.string, getAggVolume));
+    jsc.assert(jsc.forall(jsc.string, jsc.string, jsc.string, getAggVolume))
   })
 
   it('should return stored aggLiquidity and getAggLiquidity function', async () => {
@@ -123,8 +140,8 @@ describe('Chart hooks', () => {
     expect(aggLiquidity).toEqual(store.getState().chart.aggLiquidity)
     const result = await getAggLiquidity(
       '2020-12-12T00:00:00.0Z',
-      '2020-12-12T00:05:00.0Z',
-      FiveMinutes
+      '2020-12-14T00:00:00.0Z',
+      OneDay
     )
     if (!result) {
       return
@@ -132,6 +149,111 @@ describe('Chart hooks', () => {
     expect(mockDispatch).toHaveBeenCalledTimes(1)
     expect(mockDispatch).toHaveBeenCalledWith(updateAggLiquidity(result))
 
-    jsc.assert(jsc.forall(jsc.string, jsc.string, jsc.string, getAggLiquidity));
+    jsc.assert(jsc.forall(jsc.string, jsc.string, jsc.string, getAggLiquidity))
+  })
+
+  it('should return stored poolFees and getPoolFees function', async () => {
+    const { poolFees, getPoolFees } = usePoolFees()
+
+    expect(poolFees).toEqual(store.getState().chart.poolFees)
+    const result = await getPoolFees(
+      'foo',
+      '2020-12-12T00:00:00.0Z',
+      '2021-01-12T00:00:00.0Z',
+      OneWeek
+    )
+    if (!result) {
+      return
+    }
+    expect(mockDispatch).toHaveBeenCalledTimes(1)
+    expect(mockDispatch).toHaveBeenCalledWith(updatePoolFees(result))
+
+    jsc.assert(
+      jsc.forall(jsc.string, jsc.string, jsc.string, jsc.string, getPoolFees)
+    )
+  })
+
+  it('should return stored poolVolume and getPoolVolume function', async () => {
+    const { poolVolume, getPoolVolume } = usePoolVolume()
+
+    expect(poolVolume).toEqual(store.getState().chart.poolVolume)
+    const result = await getPoolVolume(
+      'foo',
+      '2020-12-12T00:00:00.0Z',
+      '2021-01-12T00:00:00.0Z',
+      OneWeek
+    )
+    if (!result) {
+      return
+    }
+    expect(mockDispatch).toHaveBeenCalledTimes(1)
+    expect(mockDispatch).toHaveBeenCalledWith(updatePoolVolume(result))
+
+    jsc.assert(
+      jsc.forall(jsc.string, jsc.string, jsc.string, jsc.string, getPoolVolume)
+    )
+  })
+
+  it('should return stored poolTXCount and getPoolTXCount function', async () => {
+    const { poolTXCount, getPoolTXCount } = usePoolTxCount()
+
+    expect(poolTXCount).toEqual(store.getState().chart.poolTXCount)
+    const result = await getPoolTXCount(
+      'foo',
+      '2020-12-12T00:00:00.0Z',
+      '2021-01-12T00:00:00.0Z',
+      OneWeek
+    )
+    if (!result) {
+      return
+    }
+    expect(mockDispatch).toHaveBeenCalledTimes(1)
+    expect(mockDispatch).toHaveBeenCalledWith(updatePoolTXCount(result))
+
+    jsc.assert(
+      jsc.forall(jsc.string, jsc.string, jsc.string, jsc.string, getPoolTXCount)
+    )
+  })
+
+  it('should return stored poolAPY and getPoolAPY function', async () => {
+    const { poolAPY, getPoolAPY } = usePoolAPY()
+
+    expect(poolAPY).toEqual(store.getState().chart.poolAPY)
+    const result = await getPoolAPY(
+      'foo',
+      '2020-12-12T00:00:00.0Z',
+      '2021-01-12T00:00:00.0Z',
+      OneWeek
+    )
+    if (!result) {
+      return
+    }
+    expect(mockDispatch).toHaveBeenCalledTimes(1)
+    expect(mockDispatch).toHaveBeenCalledWith(updatePoolAPY(result))
+
+    jsc.assert(
+      jsc.forall(jsc.string, jsc.string, jsc.string, jsc.string, getPoolAPY)
+    )
+  })
+  
+  it('should return stored poolTransactions and getPoolTransactions function', async () => {
+    const { poolTransactions, getPoolTransactions } = usePoolTransactions()
+
+    expect(poolTransactions).toEqual(store.getState().chart.poolTransactions)
+    const result = await getPoolTransactions(
+      'foo',
+      0,
+      10,
+      Any
+    )
+    if (!result) {
+      return
+    }
+    expect(mockDispatch).toHaveBeenCalledTimes(1)
+    expect(mockDispatch).toHaveBeenCalledWith(updatePoolTransactions(result))
+
+    jsc.assert(
+      jsc.forall(jsc.string, jsc.number, jsc.number, jsc.string, getPoolTransactions)
+    )
   })
 })

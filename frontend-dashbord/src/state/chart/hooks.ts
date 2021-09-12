@@ -64,6 +64,7 @@ export function usePoolFees () {
   ) => {
     const _poolFees = await getPoolFees(poolName, start, end, grain)
     _poolFees && dispatch(updatePoolFees(_poolFees))
+    return _poolFees;
   }
   return {
     poolFees,
@@ -84,6 +85,7 @@ export function usePoolVolume () {
   ) => {
     const _poolVolume = await getPoolVolume(poolName, start, end, grain)
     _poolVolume && dispatch(updatePoolVolume(_poolVolume))
+    return _poolVolume
   }
 
   return {
@@ -126,6 +128,7 @@ export function usePoolTxCount () {
   ) => {
     const _poolTXCount = await getPoolTXCount(poolName, start, end, grain)
     _poolTXCount && dispatch(updatePoolTXCount(_poolTXCount))
+    return _poolTXCount
   }
 
   return {
@@ -147,6 +150,7 @@ export function usePoolAPY () {
   ) => {
     const _poolAPY = await getPoolAPY(pool, start, end, grain)
     _poolAPY && dispatch(updatePoolAPY(_poolAPY))
+    return _poolAPY
   }
 
   return {
@@ -168,6 +172,7 @@ export function usePoolTransactions () {
   ) => {
     const _poolTransactions = await getPoolTransactions(pool, start, end, type)
     _poolTransactions && dispatch(updatePoolTransactions(_poolTransactions))
+    return _poolTransactions
   }
 
   return {
@@ -177,7 +182,7 @@ export function usePoolTransactions () {
 }
 
 // fetch from api server
-export async function getAggVolume (start: string, end: string, grain: string): Promise<RangedVolume[] | null> {
+export async function getAggVolume (start: string, end: string, grain: string) {
   try {
     const result = await fetch(
       API_URL +
@@ -185,7 +190,7 @@ export async function getAggVolume (start: string, end: string, grain: string): 
     )
     const aggVolume: any[] = await result.json()
 
-    return aggVolume.map((item: any): RangedVolume => ({
+    return aggVolume.map((item: any) => ({
       start: item[0][0],
       end: item[0][1],
       addLiquidity: item[1].addLiquidity,
@@ -194,7 +199,7 @@ export async function getAggVolume (start: string, end: string, grain: string): 
       trade: item[1].trade
     }))
   } catch (e) {
-    console.log('getAggVolume: error fetching', e)
+    // console.log('getAggVolume: error fetching', e)
     return null
   }
 }
@@ -217,7 +222,7 @@ export async function getAggLiquidity (
       value: item[1]
     }))
   } catch (e) {
-    console.log('getAggLiquidity: error fetching', e)
+    // console.log('getAggLiquidity: error fetching', e)
     return null
   }
 }
@@ -240,7 +245,7 @@ export async function getPoolFees (
       value: item[1]
     }))
   } catch (e) {
-    console.log('getPoolFees: error fetching', e)
+    // console.log('getPoolFees: error fetching', e)
     return null
   }
 }
@@ -267,7 +272,7 @@ export async function getPoolVolume (
       trade: item[1].trade
     }))
   } catch (e) {
-    console.log('getPoolVolume: error fetching', e)
+    // console.log('getPoolVolume: error fetching', e)
     return null
   }
 }
@@ -291,7 +296,7 @@ export async function getPoolLiquidity (
       value: item[1]
     }))
   } catch (e) {
-    console.log('getPoolLiquidity: error fetching', e)
+    // console.log('getPoolLiquidity: error fetching', e)
     return null
   }
 }
@@ -317,7 +322,7 @@ export async function getPoolTXCount (
       trade: item[1].trade
     }))
   } catch (e) {
-    console.log('getPoolTXCount: error fetching', e)
+    // console.log('getPoolTXCount: error fetching', e)
     return null
   }
 }
@@ -340,7 +345,7 @@ export async function getPoolAPY (
       value: item[1]
     }))
   } catch (e) {
-    console.log('getPoolAPY: error fetching', e)
+    // console.log('getPoolAPY: error fetching', e)
     return null
   }
 }
@@ -359,7 +364,7 @@ export async function getPoolTransactions (
 
     return result.json()
   } catch (e) {
-    console.log('getPoolTransactions: error fetching', e)
+    // console.log('getPoolTransactions: error fetching', e)
     return null
   }
 }
