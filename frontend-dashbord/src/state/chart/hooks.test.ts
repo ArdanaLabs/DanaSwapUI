@@ -1,102 +1,137 @@
-import { RangedVolume, updateAggVolume } from './actions'
-import { useAggLiquidity, useAggVolume, usePoolAPY, usePoolFees, usePoolLiquidity, usePoolTransactions, usePoolTxCount, usePoolVolume } from './hooks'
-import reducer, { initialState } from './reducer'
-import { Provider } from 'react-redux'
-import { mount, shallow } from 'enzyme'
-// import { useSelector, useDispatch } from 'react-redux';
-
-import * as redux from 'react-redux'
+import jsc from "jsverify"
+import { useSelector } from 'react-redux'
 import configureMockStore from 'redux-mock-store'
-import thunk from 'redux-thunk'
-import App from 'App'
-import { configureStore } from '@reduxjs/toolkit'
+import { FiveMinutes } from 'config/grains'
+import { useAggLiquidity, useAggVolume } from './hooks'
+import { updateAggLiquidity, updateAggVolume } from './actions'
+
+const mockStore = configureMockStore([])
+
+let store: any
+const initialState = {
+  chart: {
+    aggVolume: [
+      {
+        start: null,
+        end: null,
+        addLiquidity: null,
+        removeLiquidity: null,
+        total: null,
+        trade: null
+      }
+    ],
+    aggLiquidity: [
+      {
+        start: null,
+        end: null,
+        value: null
+      }
+    ],
+    poolFees: [
+      {
+        start: null,
+        end: null,
+        value: null
+      }
+    ],
+    poolVolume: [
+      {
+        start: null,
+        end: null,
+        addLiquidity: null,
+        removeLiquidity: null,
+        total: null,
+        trade: null
+      }
+    ],
+    poolLiquidity: [
+      {
+        start: null,
+        end: null,
+        value: null
+      }
+    ],
+    poolTXCount: [
+      {
+        start: null,
+        end: null,
+        addLiquidity: null,
+        removeLiquidity: null,
+        total: null,
+        trade: null
+      }
+    ],
+    poolAPY: [
+      {
+        start: null,
+        end: null,
+        value: null
+      }
+    ],
+    poolTransactions: [
+      {
+        tx: null,
+        navUSD: null
+      }
+    ]
+  }
+}
 
 const mockDispatch = jest.fn()
-const mockSelector = jest.fn()
 jest.mock('react-redux', () => ({
-  useSelector: () => mockSelector,
+  ...jest.requireActual('react-redux'),
+  useSelector: jest.fn(),
   useDispatch: () => mockDispatch
 }))
 
-// function setup() {
-//   const store = configureStore();
-//   const history = createBrowserHistory();
-//   const provider = (
-//     <Provider store={store}>
-//       <ConnectedRouter history={history}>
-//         <CounterPage />
-//       </ConnectedRouter>
-//     </Provider>
-//   );
-//   const app = mount(provider);
-//   return {};
-// }
-
-const spy = jest.spyOn(redux, 'useSelector')
-spy.mockReturnValue({ chart: { aggVolume: 'asdf' } })
-
-let updatedState: any;
+beforeEach(() => {
+  store = mockStore(initialState)
+})
 
 describe('Chart hooks', () => {
   beforeEach(() => {
-    let mock: RangedVolume[] = []
-    mock.push({
-      start: null,
-      end: null,
-      addLiquidity: null,
-      removeLiquidity: null,
-      total: null,
-      trade: null
+    ;(useSelector as jest.Mock).mockImplementation(callback => {
+      return callback(initialState)
     })
-    updatedState = reducer(initialState, updateAggVolume(mock))
-
   })
 
-  it('should return stored aggVolume and getAggVolume function', () => {
-    const { aggVolume } = useAggVolume()
-
-    expect(aggVolume).toEqual(updatedState.aggVolume)
+  afterEach(() => {
+    ;(useSelector as jest.Mock).mockClear()
   })
   
-  it('should return stored aggLiquidity and getAggLiquidity function', () => {
-    const { aggLiquidity } = useAggLiquidity()
+  it('should return stored aggVolume and getAggVolume function', async () => {
+    const { aggVolume, getAggVolume } = useAggVolume()
 
-    expect(aggLiquidity).toEqual(updatedState.aggLiquidity)
-  })
-  
-  it('should return stored poolFees and getPoolFees function', () => {
-    const { poolFees } = usePoolFees()
+    expect(aggVolume).toEqual(store.getState().chart.aggVolume)
+    const result = await getAggVolume(
+      '2020-12-12T00:00:00.0Z',
+      '2020-12-12T00:05:00.0Z',
+      FiveMinutes
+    )
+    if (!result) {
+      return
+    }
+    expect(mockDispatch).toHaveBeenCalledTimes(1)
+    expect(mockDispatch).toHaveBeenCalledWith(updateAggVolume(result))
 
-    expect(poolFees).toEqual(updatedState.poolFees)
-  })
-  
-  it('should return stored poolVolume and getPoolVolume function', () => {
-    const { poolVolume } = usePoolVolume()
-
-    expect(poolVolume).toEqual(updatedState.poolVolume)
-  })
-  
-  it('should return stored poolLiquidity and getPoolLiquidity function', () => {
-    const { poolLiquidity } = usePoolLiquidity()
-
-    expect(poolLiquidity).toEqual(updatedState.poolLiquidity)
+    jsc.assert(jsc.forall(jsc.string, jsc.string, jsc.string, getAggVolume));
   })
 
-  it('should return stored poolTXCount and getPoolTXCount function', () => {
-    const { poolTXCount } = usePoolTxCount()
+  it('should return stored aggLiquidity and getAggLiquidity function', async () => {
+    const { aggLiquidity, getAggLiquidity } = useAggLiquidity()
 
-    expect(poolTXCount).toEqual(updatedState.poolTXCount)
-  })
-  
-  it('should return stored poolAPY and getPoolAPY function', () => {
-    const { poolAPY } = usePoolAPY()
+    expect(aggLiquidity).toEqual(store.getState().chart.aggLiquidity)
+    const result = await getAggLiquidity(
+      '2020-12-12T00:00:00.0Z',
+      '2020-12-12T00:05:00.0Z',
+      FiveMinutes
+    )
+    if (!result) {
+      return
+    }
+    expect(mockDispatch).toHaveBeenCalledTimes(1)
+    expect(mockDispatch).toHaveBeenCalledWith(updateAggLiquidity(result))
 
-    expect(poolAPY).toEqual(updatedState.poolAPY)
-  })
-  
-  it('should return stored poolTransactions and getPoolTransactions function', () => {
-    const { poolTransactions } = usePoolTransactions()
-
-    expect(poolTransactions).toEqual(updatedState.poolTransactions)
+    jsc.assert(jsc.forall(jsc.string, jsc.string, jsc.string, getAggLiquidity));
   })
 })

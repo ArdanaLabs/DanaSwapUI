@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, AppState } from 'state'
 import { API_URL } from 'config/endpoints'
 import {
+  RangedVolume,
   updateAggLiquidity,
   updateAggVolume,
   updatePoolAPY,
@@ -21,6 +22,7 @@ export function useAggVolume () {
   const _getAggVolume = async (start: string, end: string, grain: string) => {
     const _aggVolume = await getAggVolume(start, end, grain)
     _aggVolume && dispatch(updateAggVolume(_aggVolume))
+    return _aggVolume
   }
 
   return {
@@ -41,6 +43,7 @@ export function useAggLiquidity () {
   ) => {
     const _aggLiquidity = await getAggLiquidity(start, end, grain)
     _aggLiquidity && dispatch(updateAggLiquidity(_aggLiquidity))
+    return _aggLiquidity
   }
 
   return {
@@ -174,7 +177,7 @@ export function usePoolTransactions () {
 }
 
 // fetch from api server
-export async function getAggVolume (start: string, end: string, grain: string) {
+export async function getAggVolume (start: string, end: string, grain: string): Promise<RangedVolume[] | null> {
   try {
     const result = await fetch(
       API_URL +
@@ -182,7 +185,7 @@ export async function getAggVolume (start: string, end: string, grain: string) {
     )
     const aggVolume: any[] = await result.json()
 
-    return aggVolume.map((item: any) => ({
+    return aggVolume.map((item: any): RangedVolume => ({
       start: item[0][0],
       end: item[0][1],
       addLiquidity: item[1].addLiquidity,
