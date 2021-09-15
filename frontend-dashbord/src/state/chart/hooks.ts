@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, AppState } from 'state'
 import { API_URL } from 'config/endpoints'
 import {
-  RangedVolume,
   updateAggLiquidity,
   updateAggVolume,
   updatePoolAPY,
@@ -199,7 +198,7 @@ export async function getAggVolume (start: string, end: string, grain: string) {
       trade: item[1].trade
     }))
   } catch (e) {
-    // console.log('getAggVolume: error fetching', e)
+    console.log('getAggVolume: error fetching', e)
     return null
   }
 }
@@ -222,7 +221,7 @@ export async function getAggLiquidity (
       value: item[1]
     }))
   } catch (e) {
-    // console.log('getAggLiquidity: error fetching', e)
+    console.log('getAggLiquidity: error fetching', e)
     return null
   }
 }
@@ -245,7 +244,7 @@ export async function getPoolFees (
       value: item[1]
     }))
   } catch (e) {
-    // console.log('getPoolFees: error fetching', e)
+    console.log('getPoolFees: error fetching', e)
     return null
   }
 }
@@ -272,7 +271,7 @@ export async function getPoolVolume (
       trade: item[1].trade
     }))
   } catch (e) {
-    // console.log('getPoolVolume: error fetching', e)
+    console.log('getPoolVolume: error fetching', e)
     return null
   }
 }
@@ -296,7 +295,7 @@ export async function getPoolLiquidity (
       value: item[1]
     }))
   } catch (e) {
-    // console.log('getPoolLiquidity: error fetching', e)
+    console.log('getPoolLiquidity: error fetching', e)
     return null
   }
 }
@@ -322,7 +321,7 @@ export async function getPoolTXCount (
       trade: item[1].trade
     }))
   } catch (e) {
-    // console.log('getPoolTXCount: error fetching', e)
+    console.log('getPoolTXCount: error fetching', e)
     return null
   }
 }
@@ -345,7 +344,7 @@ export async function getPoolAPY (
       value: item[1]
     }))
   } catch (e) {
-    // console.log('getPoolAPY: error fetching', e)
+    console.log('getPoolAPY: error fetching', e)
     return null
   }
 }
@@ -364,7 +363,7 @@ export async function getPoolTransactions (
 
     return result.json()
   } catch (e) {
-    // console.log('getPoolTransactions: error fetching', e)
+    console.log('getPoolTransactions: error fetching', e)
     return null
   }
 }
