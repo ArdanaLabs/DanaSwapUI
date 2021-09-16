@@ -1,7 +1,7 @@
 import reducer, { initialState } from './reducer'
 import { TotalStat, updateTotalStats } from './actions'
 
-describe('Home reducers', () => {
+describe('Chart reducers', () => {
   it('should return TotalStat object values when dispatch updateTotalStats action', () => {
     const mock: TotalStat = {
       totalDailyTxCount: null,

@@ -23,15 +23,12 @@ export function useDarkModeManager(): [boolean, (darkMode: boolean) => void] {
   const dispatch = useDispatch<AppDispatch>();
   const darkMode = useIsDarkMode();
 
-  // const setDarkMode = useCallback(
-  //   (darkMode: boolean) => {
-  //     dispatch(updateUserDarkMode({ userDarkMode: darkMode }));
-  //   },
-  //   [dispatch]
-  // );
-  const setDarkMode = (darkMode: boolean) => {
-    dispatch(updateUserDarkMode({ userDarkMode: darkMode }));
-  }
+  const setDarkMode = useCallback(
+    (darkMode: boolean) => {
+      dispatch(updateUserDarkMode({ userDarkMode: darkMode }));
+    },
+    [dispatch]
+  );
 
   return [darkMode, setDarkMode];
 }
