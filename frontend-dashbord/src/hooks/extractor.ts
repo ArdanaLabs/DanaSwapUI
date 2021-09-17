@@ -1,12 +1,15 @@
 import _ from 'lodash'
+import { RangedLiquidity, RangedVolume } from 'state/chart/actions'
 
-export const extractXAxis = (arr: any[]): string[] => {
+export const extractXAxis = (
+  arr: RangedVolume[] | RangedLiquidity[]
+): string[] => {
   const length = arr.length
   let newAxis: string[] = []
 
-  newAxis.push(arr[0].start)
+  newAxis.push(arr[0]?.start ?? '')
   for (let i = 0; i < length; i++) {
-    newAxis.push(arr[i].end)
+    newAxis.push(arr[i]?.end ?? '')
   }
   return newAxis
 }
@@ -18,7 +21,6 @@ export const extractYAxis = (arr: any[], filter: string): any[] => {
   for (let i = 0; i < length; i++) {
     newAxis.push(arr[i][filter])
   }
-
   return newAxis
 }
 
