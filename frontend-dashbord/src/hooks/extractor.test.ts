@@ -49,12 +49,17 @@ describe('Hooks extractor.ts', () => {
       expect(newAxis).toEqual(expected)
     })
 
-    describe('basic jsverify usage', () => {
-      jsc.property(
-        'RangedVolumeType fn',
-        jsc.fn(jsc.array(jsc.oneof([RangedVolumeType, RangedLiquidityType]))),
-        jsc.array(jsc.oneof([RangedVolumeType, RangedLiquidityType])),
-        extractXAxis
+    it('should check param property', () => {
+      jsc.check(
+        jsc.forall(
+          jsc.oneof([
+            jsc.array(RangedVolumeType),
+            jsc.array(RangedLiquidityType)
+          ]),
+          arg0 => {
+            return Array.isArray(extractXAxis(arg0))
+          }
+        )
       )
     })
   })
