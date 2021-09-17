@@ -4,12 +4,12 @@ export function nFormatter (
   space: boolean = true
 ) {
   if (num === null) {
-    return '$0'
+    return `$${space ? ' ' : ''}0`
   }
 
   const lookup = [
     { value: 1, symbol: '' },
-    { value: 1e3, symbol: 'k' },
+    { value: 1e3, symbol: 'K' },
     { value: 1e6, symbol: 'M' },
     { value: 1e9, symbol: 'G' },
     { value: 1e12, symbol: 'T' },
@@ -25,10 +25,9 @@ export function nFormatter (
     })
   return (
     '$' +
+    (space ? ' ' : '') +
     (item
-      ? (num / item.value).toFixed(digits).replace(rx, '$1') +
-        (space ? ' ' : '') +
-        item.symbol
+      ? (num / item.value).toFixed(digits).replace(rx, '$1') + item.symbol
       : '0')
   )
 }
