@@ -1,6 +1,6 @@
 import jsc from 'jsverify'
 import { RangedLiquidity, RangedVolume } from 'state/chart/actions'
-import { extractXAxis } from './extractor'
+import { extractXAxis, extractYAxis, findKeyFromObject } from './extractor'
 
 const mock: RangedVolume[] = [
   {
@@ -8,7 +8,7 @@ const mock: RangedVolume[] = [
     end: '2',
     addLiquidity: null,
     removeLiquidity: null,
-    total: null,
+    total: 23,
     trade: null
   },
   {
@@ -16,10 +16,16 @@ const mock: RangedVolume[] = [
     end: '3',
     addLiquidity: null,
     removeLiquidity: null,
-    total: null,
+    total: 56,
     trade: null
   }
 ]
+
+const mockObject = {
+  foo: {
+    bar: 1
+  }
+}
 
 const RangedVolumeType = jsc.record({
   start: jsc.oneof([jsc.string, jsc.constant(null)]),
@@ -58,6 +64,56 @@ describe('Hooks extractor.ts', () => {
           ]),
           arg0 => {
             return Array.isArray(extractXAxis(arg0))
+          }
+        )
+      )
+    })
+  })
+
+  describe('extractYAxis method', () => {
+    const newAxis = extractYAxis(mock, 'total')
+
+    it('should return string array type', () => {
+      expect(newAxis).toBeInstanceOf(Array)
+    })
+
+    it('should return expected string array', () => {
+      const expected = [23, 56]
+      expect(newAxis).toEqual(expected)
+    })
+
+    it('should check param property', () => {
+      jsc.check(
+        jsc.forall(
+          jsc.oneof([
+            jsc.array(RangedVolumeType),
+            jsc.array(RangedLiquidityType)
+          ]),
+          jsc.string,
+          (arg0, arg1) => {
+            return Array.isArray(extractYAxis(arg0, arg1))
+          }
+        )
+      )
+    })
+  })
+
+  describe('findKeyFromObject method', () => {
+    const result = findKeyFromObject(mockObject, 'bar')
+
+    it('should return expected number', () => {
+      const expected = 1
+      expect(result).toEqual(expected)
+    })
+
+    it('should check param property', () => {
+      jsc.check(
+        jsc.forall(
+          jsc.json,
+          jsc.string,
+          (arg0, arg1) => {
+            findKeyFromObject(arg0, arg1)
+            return true;
           }
         )
       )
