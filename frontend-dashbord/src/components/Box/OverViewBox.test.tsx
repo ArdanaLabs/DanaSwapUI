@@ -1,45 +1,42 @@
+import { Box } from "@material-ui/core";
 import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
 import * as Enzyme from "enzyme";
-import configureMockStore, { MockStoreEnhanced } from "redux-mock-store";
 import { shallow } from "enzyme";
-import { Provider, useSelector } from "react-redux";
-import { initialState } from "state/user/reducer";
 import { OverViewBox } from ".";
 
 Enzyme.configure({ adapter: new Adapter() });
 
-const mockDispatch = jest.fn();
-jest.mock("react", () => ({
-  ...jest.requireActual("react"),
-  useEffect: jest.fn((f) => f()),
-}));
 jest.mock("react-redux", () => ({
-  ...jest.requireActual("react-redux"),
-  useSelector: jest.fn(),
-  useDispatch: () => mockDispatch,
+  useDispatch: () => {},
+  useSelector: () => ({
+    user: {
+      userDarkMode: null,
+      mediaDarkMode: false,
+      timestamp: "dfd",
+    },
+  }),
 }));
-const mockStore = configureMockStore([]);
 
-let store: MockStoreEnhanced<unknown>;
+let wrapper: Enzyme.ShallowWrapper;
 
 describe("Components / Box / OverViewBox", () => {
   beforeEach(() => {
-    store = mockStore(initialState);
-    (useSelector as jest.Mock).mockImplementation((callback) => {
-      return callback(initialState);
-    });
-  });
-
-  afterEach(() => {
-    (useSelector as jest.Mock).mockClear();
+    wrapper = shallow(<OverViewBox label={"TVL\n\n"} content={"$220.21 M"} />);
   });
 
   it("renders", () => {
-    const wrapper = shallow(
-      <Provider store={store}>
-        <OverViewBox label={"TVL\n\n"} content={"$220.21 M"} />
-      </Provider>
-    );
     expect(wrapper).toMatchSnapshot();
   });
+  it("should contain two 7 Box component", () => {
+    expect(wrapper.find(Box)).toHaveLength(7);
+  });
+  it("should contain one image tag", () => {
+    expect(wrapper.find("img")).toHaveLength(1);
+  });
+  it("should contain correct label string", () => {
+    expect(wrapper.text().includes('TVL')).toBeTruthy();
+  })
+  it("should contain correct content string", () => {
+    expect(wrapper.text().includes('$220.21 M')).toBeTruthy();
+  })
 });
