@@ -1,50 +1,50 @@
+import { Box } from "@material-ui/core";
 import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
 import * as Enzyme from "enzyme";
-import configureMockStore, { MockStoreEnhanced } from "redux-mock-store";
 import { shallow } from "enzyme";
-import { Provider, useSelector } from "react-redux";
-import { initialState } from "state/user/reducer";
 import { StatBox } from ".";
+import IMG_TVL from "assets/icons/tvl.png";
 
 Enzyme.configure({ adapter: new Adapter() });
 
-const mockDispatch = jest.fn();
-jest.mock("react", () => ({
-  ...jest.requireActual("react"),
-  useEffect: jest.fn((f) => f()),
-}));
 jest.mock("react-redux", () => ({
-  ...jest.requireActual("react-redux"),
-  useSelector: jest.fn(),
-  useDispatch: () => mockDispatch,
+  useDispatch: () => {},
+  useSelector: () => ({
+    user: {
+      userDarkMode: null,
+      mediaDarkMode: false,
+      timestamp: "dfd",
+    },
+  }),
 }));
-const mockStore = configureMockStore([]);
 
-let store: MockStoreEnhanced<unknown>;
+let wrapper: Enzyme.ShallowWrapper;
 
-describe("Components / Box / StatBox", () => {
+describe("Components / Box / OverViewBox", () => {
   beforeEach(() => {
-    store = mockStore(initialState);
-    (useSelector as jest.Mock).mockImplementation((callback) => {
-      return callback(initialState);
-    });
-  });
-
-  afterEach(() => {
-    (useSelector as jest.Mock).mockClear();
+    wrapper = shallow(
+      <StatBox
+        image={IMG_TVL}
+        title="TOTAL VALUE LOCKED"
+        content="$1,234,567"
+        delay={0}
+      />
+    );
   });
 
   it("renders", () => {
-    const wrapper = shallow(
-      <Provider store={store}>
-        <StatBox
-          image={""}
-          title="TOTAL VALUE LOCKED"
-          content="$1,234,567"
-          delay={0}
-        />
-      </Provider>
-    );
     expect(wrapper).toMatchSnapshot();
+  });
+  it("should contain two 6 Box component", () => {
+    expect(wrapper.find(Box)).toHaveLength(6);
+  });
+  it("should contain one image tag", () => {
+    expect(wrapper.find("img")).toHaveLength(1);
+  });
+  it("should contain correct title string", () => {
+    expect(wrapper.find(Box).at(4).text()).toEqual("TOTAL VALUE LOCKED")
+  });
+  it("should contain correct content string", () => {
+    expect(wrapper.find(Box).at(2).text()).toEqual("$1,234,567")
   });
 });
