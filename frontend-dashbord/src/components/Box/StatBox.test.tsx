@@ -20,7 +20,7 @@ jest.mock("react-redux", () => ({
 
 let wrapper: Enzyme.ShallowWrapper;
 
-describe("Components / Box / OverViewBox", () => {
+describe("Components / Box / StatBox", () => {
   beforeEach(() => {
     wrapper = shallow(
       <StatBox
