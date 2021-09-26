@@ -4,7 +4,7 @@ import configureMockStore, { MockStoreEnhanced } from "redux-mock-store";
 import { shallow } from "enzyme";
 import { Provider, useSelector } from "react-redux";
 import { initialState } from "state/user/reducer";
-import { OverViewBox } from ".";
+import { StatBox } from ".";
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -22,7 +22,7 @@ const mockStore = configureMockStore([]);
 
 let store: MockStoreEnhanced<unknown>;
 
-describe("Components / Box / OverViewBox", () => {
+describe("Components / Box / StatBox", () => {
   beforeEach(() => {
     store = mockStore(initialState);
     (useSelector as jest.Mock).mockImplementation((callback) => {
@@ -37,7 +37,12 @@ describe("Components / Box / OverViewBox", () => {
   it("renders", () => {
     const wrapper = shallow(
       <Provider store={store}>
-        <OverViewBox label={"TVL\n\n"} content={"$220.21 M"} />
+        <StatBox
+          image={""}
+          title="TOTAL VALUE LOCKED"
+          content="$1,234,567"
+          delay={0}
+        />
       </Provider>
     );
     expect(wrapper).toMatchSnapshot();

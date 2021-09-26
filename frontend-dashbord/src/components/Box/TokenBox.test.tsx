@@ -1,10 +1,9 @@
 import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
 import * as Enzyme from "enzyme";
 import configureMockStore, { MockStoreEnhanced } from "redux-mock-store";
-import { shallow } from "enzyme";
 import { Provider, useSelector } from "react-redux";
 import { initialState } from "state/user/reducer";
-import { OverViewBox } from ".";
+import { TokenBox } from ".";
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -19,10 +18,9 @@ jest.mock("react-redux", () => ({
   useDispatch: () => mockDispatch,
 }));
 const mockStore = configureMockStore([]);
-
 let store: MockStoreEnhanced<unknown>;
 
-describe("Components / Box / OverViewBox", () => {
+describe("Components / Box / TokenBox", () => {
   beforeEach(() => {
     store = mockStore(initialState);
     (useSelector as jest.Mock).mockImplementation((callback) => {
@@ -35,9 +33,17 @@ describe("Components / Box / OverViewBox", () => {
   });
 
   it("renders", () => {
-    const wrapper = shallow(
+    const wrapper = Enzyme.shallow(
       <Provider store={store}>
-        <OverViewBox label={"TVL\n\n"} content={"$220.21 M"} />
+        <TokenBox
+          label="SEND"
+          token={"token"}
+          amount={11}
+          onMaxAmount={() => {}}
+          handleTokenSelect={() => {}}
+          className={""}
+          style={{ padding: 10 }}
+        />
       </Provider>
     );
     expect(wrapper).toMatchSnapshot();
