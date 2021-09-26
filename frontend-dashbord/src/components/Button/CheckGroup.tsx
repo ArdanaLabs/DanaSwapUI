@@ -5,7 +5,7 @@ import FormControl from "@material-ui/core/FormControl";
 import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox, { CheckboxProps } from "@material-ui/core/Checkbox";
-import { Grid } from "@material-ui/core";
+import { Box, Grid } from "@material-ui/core";
 import cx from "classnames";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -129,7 +129,7 @@ const CheckGroup: React.FC<CheckGroupProps> = ({ list }) => {
   };
 
   return (
-    <div className={cx(classes.root)}>
+    <Box className={cx(classes.root)}>
       <FormControl component="fieldset">
         <FormLabel component="legend">Select pools where you want to deposit:</FormLabel>
         <FormGroup>
@@ -151,7 +151,7 @@ const CheckGroup: React.FC<CheckGroupProps> = ({ list }) => {
           </Grid>
         </FormGroup>
       </FormControl>
-    </div>
+    </Box>
   );
 };
 export default CheckGroup;
