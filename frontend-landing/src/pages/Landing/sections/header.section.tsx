@@ -44,7 +44,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontStyle: "normal",
     lineHeight: "100%",
     margin: "auto 20px",
-    padding: "5px 0px",
+    padding: "8px 0px",
     color: "white",
     fontSize: "13px",
     position: "relative",
