@@ -3,20 +3,32 @@ import Button from "@material-ui/core/Button";
 
 const StyledButton = withStyles({
   root: {
-    fontFamily: "Brandon Grotesque",
+    position: "relative",
+    fontFamily: "Museo Sans",
     fontStyle: "normal",
-    LineHeight: "26px",
-    padding: "20px 50px",
+    padding: "10px 30px",
     borderRadius: "50px",
-    fontSize: "18px",
-    fontWeight: 900,
-    backgroundColor: "#FFFFFF",
-    color: "#202F9A",
-    whiteSpace: 'nowrap',
-    width: "300px",
+    fontSize: "13px",
+    fontWeight: 700,
+    backgroundColor: "#080E42",
+    color: "#F5FCFE",
+    whiteSpace: "nowrap",
+    boxShadow: '0px 0px 14px 0px #2d3ba0',
+    
     "&:hover": {
-      color: "#FFFFFF",
-      backgroundColor: "#202F9A",
+      backgroundColor: "lightgray",
+    },
+
+    "&::after": {
+      position: "absolute",
+      top: "-3px",
+      bottom: "-3.5px",
+      left: "-3px",
+      right: "-3.5px",
+      background: "linear-gradient(90deg, #5F72FF 0%, #73D6F1 100%)",
+      content: "' '",
+      zIndex: -1,
+      borderRadius: "50px",
     },
   },
 })(Button);

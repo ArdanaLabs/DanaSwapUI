@@ -9,16 +9,18 @@ import { useIsDarkMode } from "state/user/hooks";
 
 import { HeaderSection } from ".";
 import { FeatureBox } from "components/Box";
-import { AdButton } from "components/Button";
 
-import LOGO_WITH_CITY from "assets/img/landing/logos/logo-with-city.png";
-import LOGO_WITH_CITY_W from "assets/img/landing/logos/logo-with-city-white.png";
+import BG_PURPLE_RADIAL from "assets/backgrounds/purple-radial-gradient.png";
+import BG_BLUE_RADIAL from "assets/backgrounds/dark-blue-radial-gradient.png";
 import LOGO_WHAT_IS_ARDANA from "assets/backgrounds/what-is-ardana.png";
+import ICON_TWITTER from "assets/icons/Twitter.png";
+import ICON_TELEGRAM from "assets/icons/Telegram.png";
 
 import img_fully_decentralized from "assets/img/landing/icons/fully-decentralized.png";
 import img_borrow_lend from "assets/img/landing/icons/borrow-lend.png";
 import img_store_of_value from "assets/img/landing/icons/store-of-value.png";
 import img_powered_by_cardano from "assets/img/landing/icons/powered-by-cardano.png";
+import { AdButton } from "components/Button";
 
 const Ardana_features = [
   {
@@ -46,17 +48,23 @@ const Ardana_features = [
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
     paddingBottom: "100px",
-    background: `url(${LOGO_WITH_CITY}) right top no-repeat, url(${LOGO_WITH_CITY_W}) right 30px no-repeat, #080E42`,
+    background: ` url(${BG_PURPLE_RADIAL}) right top no-repeat, 
+                  url(${BG_BLUE_RADIAL}) top left no-repeat,
+                  #080E42`,
   },
 
   title: {
     fontFamily: "Brandon Grotesque",
     fontStyle: "normal",
     fontWeight: 900,
-    fontSize: "100px",
+    fontSize: "80px",
     lineHeight: "100%",
-    color: "white",
-    margin: "50px 0px 30px 0",
+    color: "#F5FCFE",
+    margin: "100px 0px 30px 0",
+
+    "& > strong": {
+      color: "#73D6F1",
+    },
 
     [breakpoints.down("sm")]: {
       fontSize: "64px",
@@ -95,6 +103,17 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontStyle: "normal",
     lineHeight: "150%",
   },
+
+  socialIconLink: {
+    marginRight: "50px",
+    cursor: "pointer",
+    color: "#F5FCFE",
+    fontFamily: "auto",
+
+    "& > img": {
+      width: "23px",
+    },
+  },
 }));
 
 const MainSection: React.FC = () => {
@@ -111,10 +130,21 @@ const MainSection: React.FC = () => {
         <Grid container>
           <Grid item xs={12} sm={6}>
             <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-              <Box className={cx(classes.title)} mr={!mobile && "-10px"} textAlign={mobile ? "center" : "left"}>
-                {i18next.t("PAGE.LANDING.TITLE")}
-              </Box>
-              <Box className={cx(classes.subTitle)} mr={!mobile && "-150px"} textAlign={mobile ? "center" : "left"}>
+              <Box
+                className={cx(classes.title)}
+                mr={!mobile && "-10px"}
+                textAlign={mobile ? "center" : "left"}
+                dangerouslySetInnerHTML={{
+                  __html: i18next.t("PAGE.LANDING.TITLE", {
+                    interpolation: { escapeValue: false },
+                  }),
+                }}
+              />
+              <Box
+                className={cx(classes.subTitle)}
+                mr={!mobile && "-150px"}
+                textAlign={mobile ? "center" : "left"}
+              >
                 {i18next.t("PAGE.LANDING.DESCRIPTION")}
               </Box>
             </ScrollAnimation>
@@ -122,10 +152,20 @@ const MainSection: React.FC = () => {
             <Box mt="50px"></Box>
 
             <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-              <Box textAlign={mobile ? "center" : "left"}>
+              <Box
+                display="flex"
+                alignItems="center"
+                textAlign={mobile ? "center" : "left"}
+              >
+                <Link className={cx(classes.socialIconLink)} href="#">
+                  <img src={ICON_TELEGRAM} alt="telegram" />
+                </Link>
+                <Link className={cx(classes.socialIconLink)} href="#">
+                  <img src={ICON_TWITTER} alt="twitter" />
+                </Link>
                 <Link href="http://app.ardana.org/launch" underline="none">
                   <AdButton variant="contained">
-                    {i18next.t("PAGE.LANDING.LAUNCH_PLATFORM")}
+                    {i18next.t("PAGE.LANDING.COMINGSOON")}
                   </AdButton>
                 </Link>
               </Box>
@@ -138,7 +178,11 @@ const MainSection: React.FC = () => {
           <Grid container spacing={1} alignItems="center">
             <Grid item xs={12} sm={6}>
               <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-                <img src={LOGO_WHAT_IS_ARDANA} alt="What is Ardana" width="100%" />
+                <img
+                  src={LOGO_WHAT_IS_ARDANA}
+                  alt="What is Ardana"
+                  width="100%"
+                />
               </ScrollAnimation>
             </Grid>
             <Grid item xs={12} sm={6}>
