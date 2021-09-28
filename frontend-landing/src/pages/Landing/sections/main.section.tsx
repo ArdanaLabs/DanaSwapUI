@@ -46,7 +46,7 @@ const Ardana_features = [
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
     paddingBottom: "100px",
-    background: `url(${LOGO_WITH_CITY}) right top no-repeat, url(${LOGO_WITH_CITY_W}) right 30px no-repeat, linear-gradient(90.19deg, #2F3DA0 27.19%, #73D6F1 99.87%);`,
+    background: `url(${LOGO_WITH_CITY}) right top no-repeat, url(${LOGO_WITH_CITY_W}) right 30px no-repeat, #080E42`,
   },
 
   title: {

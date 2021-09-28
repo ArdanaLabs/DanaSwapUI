@@ -13,7 +13,7 @@ import i18next from "i18next";
 
 import { useIsDarkMode } from "state/user/hooks";
 
-import LOGO_Blue from "assets/logo_blue.png";
+import LOGO_White from "assets/logo_white.png";
 import LOGO_Text from "assets/logo_text.png";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
@@ -21,6 +21,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
+    paddingTop: "10px",
   },
   logo: {
     paddingLeft: "10px",
@@ -28,21 +29,42 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     alignItems: "center",
     cursor: "pointer",
     "& img": {
-      padding: "20px 10px",
+      padding: "20px 5px",
+      "&:first-child": {
+        width: "55px",
+      },
+      "&:last-child": {
+        height: "55px",
+      },
     },
   },
   menuItem: {
-    fontFamily: "Brandon Grotesque",
+    fontFamily: "Museo Sans",
     fontWeight: 900,
     fontStyle: "normal",
     lineHeight: "100%",
-    padding: "15px",
+    margin: "auto 20px",
+    padding: "5px 0px",
     color: "white",
-    fontSize: "18px",
-    transition: "all .2s",
+    fontSize: "13px",
+    position: "relative",
 
     "&:hover": {
-      color: "#7A7A7A",
+      color: "#73D6F1",
+    },
+
+    "&.active": {
+      color: "#73D6F1",
+      "&::before": {
+        content: "' '",
+        position: "absolute",
+        top: "100%",
+        width: "100%",
+        left: 0,
+        height: "2.5px",
+        borderRadius: "2px",
+        background: "linear-gradient(90deg, #5F72FF 0%, #73D6F1 100%)",
+      },
     },
   },
 }));
@@ -50,7 +72,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 const links = [
   {
     label: i18next.t("PAGE.LANDING.HEADER.LINKS.0"),
-    to: "/home",
+    to: "#",
   },
   {
     label: i18next.t("PAGE.LANDING.HEADER.LINKS.1"),
@@ -62,6 +84,10 @@ const links = [
   },
   {
     label: i18next.t("PAGE.LANDING.HEADER.LINKS.3"),
+    to: "#",
+  },
+  {
+    label: i18next.t("PAGE.LANDING.HEADER.LINKS.4"),
     to: "#",
   },
 ];
@@ -81,7 +107,7 @@ const HeaderSection: React.FC = () => {
   return (
     <Box className={cx(classes.self)}>
       <Box className={cx(classes.logo)}>
-        <img src={LOGO_Blue} alt="logo" />
+        <img src={LOGO_White} alt="logo" />
         <img src={LOGO_Text} alt="logo" />
       </Box>
       {!mobile && (
@@ -90,7 +116,7 @@ const HeaderSection: React.FC = () => {
             return (
               <Link
                 href={link.to}
-                className={cx(classes.menuItem)}
+                className={cx(classes.menuItem, { active: index === 0 })}
                 key={index}
                 underline="none"
               >
@@ -119,7 +145,7 @@ const HeaderSection: React.FC = () => {
               return (
                 <Link
                   href={link.to}
-                  className={cx(classes.menuItem)}
+                  className={cx(classes.menuItem, "active")}
                   key={index}
                   style={{
                     textAlign: "center",
@@ -138,4 +164,4 @@ const HeaderSection: React.FC = () => {
   );
 };
 
-export default (HeaderSection);
+export default HeaderSection;

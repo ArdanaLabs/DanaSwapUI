@@ -13,7 +13,7 @@ import { useIsDarkMode } from "state/user/hooks";
 import { darkTheme, lightTheme } from "./theme";
 import store from "./state";
 
-import { Landing, Launch } from "./pages";
+import { Landing } from "./pages";
 
 const ThemeProvider: React.FC = ({ children }) => {
   // const location = useLocation();
@@ -60,10 +60,6 @@ const App: React.FC = () => {
       <Switch>
         <Route exact path="/">
           <Landing />
-        </Route>
-
-        <Route exact path="/launch">
-          <Launch />
         </Route>
 
         <Route path="*">
