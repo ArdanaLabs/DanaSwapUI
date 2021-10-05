@@ -3,7 +3,7 @@ export function nFormatter (
   digits: number = 0,
   space: boolean = true
 ) {
-  if (num === null) {
+  if (num === null || num <= 0) {
     return `$${space ? ' ' : ''}0`
   }
 

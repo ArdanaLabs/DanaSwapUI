@@ -6,7 +6,7 @@ describe('App.tsx', () => {
     const div = document.createElement('div')
     ReactDOM.render(<App />, div)
     ReactDOM.unmountComponentAtNode(div)
-    expect(true).toBe(true)
+    // expect(true).toBe(true)
   })  
 })
 

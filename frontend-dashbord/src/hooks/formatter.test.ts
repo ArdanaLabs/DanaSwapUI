@@ -1,3 +1,4 @@
+import jsc from 'jsverify';
 import { nFormatter } from "hooks";
 
 describe('Hooks formatter', () => {
@@ -41,6 +42,11 @@ describe('Hooks formatter', () => {
       const result = nFormatter(1543765876789456323, 2)
       const expected = '$ 1.54E'
       expect(result).toBe(expected)
+    })
+
+    jsc.property('should check the properties of nFormatter method', jsc.nat, jsc.nat, jsc.bool, (num, digits, space) => {
+      nFormatter(num, digits, space)
+      return true;
     })
   })
 })

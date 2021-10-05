@@ -63,7 +63,8 @@ describe('Hooks extractor.ts', () => {
             jsc.array(RangedLiquidityType)
           ]),
           arg0 => {
-            return Array.isArray(extractXAxis(arg0))
+            extractXAxis(arg0)
+            return true;
           }
         )
       )
