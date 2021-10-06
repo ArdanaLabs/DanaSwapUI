@@ -7,6 +7,7 @@ const StyledButton = withStyles({
     fontFamily: "Museo Sans",
     fontStyle: "normal",
     padding: "10px 30px",
+    lineHeight: '100%',
     borderRadius: "50px",
     fontSize: "13px",
     fontWeight: 700,

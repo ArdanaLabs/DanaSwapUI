@@ -12,6 +12,7 @@ import { FeatureBox } from "components/Box";
 
 import BG_PURPLE_RADIAL from "assets/backgrounds/purple-radial-gradient.png";
 import BG_BLUE_RADIAL from "assets/backgrounds/dark-blue-radial-gradient.png";
+import BG_WAVE from "assets/backgrounds/wave.png";
 import LOGO_WHAT_IS_ARDANA from "assets/backgrounds/what-is-ardana.png";
 import ICON_TWITTER from "assets/icons/Twitter.png";
 import ICON_TELEGRAM from "assets/icons/Telegram.png";
@@ -48,8 +49,9 @@ const Ardana_features = [
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
     paddingBottom: "100px",
-    background: ` url(${BG_PURPLE_RADIAL}) right top no-repeat, 
+    background: ` url(${BG_PURPLE_RADIAL}) right top no-repeat,
                   url(${BG_BLUE_RADIAL}) top left no-repeat,
+                  url(${BG_WAVE}) top 600px left no-repeat,
                   #080E42`,
   },
 
@@ -86,22 +88,26 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   definitionQ: {
-    color: "white",
-    fontSize: "64px",
+    color: "#F5FCFE",
+    fontSize: "80px",
     fontWeight: 900,
     fontFamily: "Brandon Grotesque",
     fontStyle: "normal",
     lineHeight: "200%",
+
+    "& > .cyan": {
+      color: "#73D6F1",
+    },
   },
 
   definitionA: {
     color: "white",
     whiteSpace: "pre-line",
     fontWeight: 300,
-    fontSize: "18px",
+    fontSize: "24px",
     fontFamily: "Museo Sans",
     fontStyle: "normal",
-    lineHeight: "150%",
+    lineHeight: "30px",
   },
 
   socialIconLink: {
@@ -173,9 +179,19 @@ const MainSection: React.FC = () => {
           </Grid>
         </Grid>
 
-        <Box mt={!mobile ? "200px" : "50px"}></Box>
-        <Box mx={!mobile ? "100px" : "0"}>
+        <Box mt={!mobile ? "250px" : "50px"}></Box>
+        <Box>
           <Grid container spacing={1} alignItems="center">
+            <Grid item xs={12} sm={6}>
+              <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
+                <Box className={cx(classes.definitionQ)}>
+                  What is <span className="cyan">Ardana</span>?
+                </Box>
+                <Box className={cx(classes.definitionA)}>
+                  {i18next.t("PAGE.LANDING.ARDANA.DESC")}
+                </Box>
+              </ScrollAnimation>
+            </Grid>
             <Grid item xs={12} sm={6}>
               <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
                 <img
@@ -183,16 +199,6 @@ const MainSection: React.FC = () => {
                   alt="What is Ardana"
                   width="100%"
                 />
-              </ScrollAnimation>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-                <Box className={cx(classes.definitionQ)}>
-                  {i18next.t("PAGE.LANDING.ARDANA.QUESTION")}
-                </Box>
-                <Box className={cx(classes.definitionA)}>
-                  {i18next.t("PAGE.LANDING.ARDANA.DESC")}
-                </Box>
               </ScrollAnimation>
             </Grid>
           </Grid>
