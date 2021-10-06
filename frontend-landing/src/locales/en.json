@@ -20,19 +20,19 @@
         "FEATURES": [
           {
             "TITLE": "Fully\nDecentralized",
-            "CONTENT": "Unbiased, multi-collateral backed pegged to the US Dollar and other currencies."
+            "CONTENT": "Unbiased, collateral backed and pegged to the US Dollar."
           },
           {
             "TITLE": "Borrow\n& Lend",
-            "CONTENT": "Allow holders to borrow and lend the asset for use on exchanges like any other crypto asset."
+            "CONTENT": "Allows users to borrow stablecoins against locked collateral."
           },
           {
             "TITLE": "Store of\nValue",
-            "CONTENT": "Designed to function as a secure store of value that accrues value even in a volatile market."
+            "CONTENT": "Secure store of value preserving value even in volatile markets."
           },
           {
             "TITLE": "Powered by\nCardano",
-            "CONTENT": "Ardana stablecoins are designed to function as a store of value even in a volatile market."
+            "CONTENT": "Built utilizing Cardano’s speed, scalability and security."
           }
         ]
       },

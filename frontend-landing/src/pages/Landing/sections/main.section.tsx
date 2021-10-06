@@ -17,10 +17,10 @@ import LOGO_WHAT_IS_ARDANA from "assets/backgrounds/what-is-ardana.png";
 import ICON_TWITTER from "assets/icons/Twitter.png";
 import ICON_TELEGRAM from "assets/icons/Telegram.png";
 
-import img_fully_decentralized from "assets/img/landing/icons/fully-decentralized.png";
-import img_borrow_lend from "assets/img/landing/icons/borrow-lend.png";
-import img_store_of_value from "assets/img/landing/icons/store-of-value.png";
-import img_powered_by_cardano from "assets/img/landing/icons/powered-by-cardano.png";
+import img_fully_decentralized from "assets/logos/fully-decentralized.svg";
+import img_borrow_lend from "assets/logos/borrow-lend.svg";
+import img_store_of_value from "assets/logos/store-of-value.svg";
+import img_powered_by_cardano from "assets/logos/powered-by-cardano.svg";
 import { AdButton } from "components/Button";
 
 const Ardana_features = [
@@ -204,7 +204,7 @@ const MainSection: React.FC = () => {
           </Grid>
         </Box>
 
-        <Box mt={!mobile ? "200px" : "50px"}></Box>
+        <Box mt={!mobile ? "150px" : "50px"}></Box>
 
         <Box>
           <Grid container spacing={3} alignItems="stretch">
@@ -229,8 +229,7 @@ const MainSection: React.FC = () => {
                     marginBottom: "50px",
                     padding: "20px",
                     flex: 2,
-                    background:
-                      "linear-gradient(180deg, rgba(115, 214, 241, 0) 0%, #2F3DA0 100%)",
+                    background: "#1D277A",
                   }}
                 />
               </Grid>

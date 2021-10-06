@@ -20,16 +20,27 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     marginBottom: "30px",
     cursor: "pointer",
     transition: "transform .3s",
+    textAlign: "center",
 
     "&:hover": {
       transform: "scale(1.05)",
     },
   },
 
+  image: {
+    position: "absolute",
+    transform: "translate(-50%, -50%)",
+    left: "50%",
+    top: "0px",
+    "& > img": {
+      width: "150px",
+    },
+  },
+
   title: {
-    color: "white",
-    whiteSpace: "pre-line",
-    fontSize: "36px",
+    color: "#FFFFFF",
+    // whiteSpace: "pre-line",
+    fontSize: "30px",
     fontWeight: 900,
     fontFamily: "Brandon Grotesque",
     fontStyle: "normal",
@@ -42,9 +53,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   content: {
-    color: "white",
-    fontSize: "18px",
-    lineHeight: "22px",
+    color: "#F5FCFE",
+    fontSize: "20px",
+    lineHeight: "30px",
     fontWeight: 300,
     fontFamily: "Museo Sans",
     fontStyle: "normal",
@@ -67,12 +78,17 @@ const FeatureBox: React.FC<FeatureBoxProps> = ({
   const classes = useStyles({ dark, mobile });
 
   return (
-    <ScrollAnimation animateIn="fadeInUp" animateOnce={true} className={cx(classes.bg)} style={custom_style}>
-      <Box top="-50px" position="absolute">
-        <img width={!mobile ? "170px" : "100px"} src={image} alt="title" />
+    <ScrollAnimation
+      animateIn="fadeInUp"
+      animateOnce={true}
+      className={cx(classes.bg)}
+      style={custom_style}
+    >
+      <Box className={cx(classes.image)}>
+        <img src={image} alt="title" />
       </Box>
 
-      <Box mt={!mobile ? "100px": "50px"} />
+      <Box mt={!mobile ? "70px" : "50px"} />
 
       <Box className={cx(classes.title)}>{title}</Box>
 
