@@ -23,7 +23,7 @@
             "CONTENT": "Unbiased, collateral backed and pegged to the US Dollar."
           },
           {
-            "TITLE": "Borrow\n& Lend",
+            "TITLE": "Borrowing",
             "CONTENT": "Allows users to borrow stablecoins against locked collateral."
           },
           {
@@ -42,33 +42,8 @@
       },
       "STABLECOIN": {
         "TITLE": "Stablecoin",
-        "CONTENT": "The Ardana Dollar (dUSD) is a decentralized, unbiased, on-chain, collateral, backed cryptocurrency soft-pegged to the US dollar. dUSD is held in cryptocurrency wallets or within platforms, and is supported on Cardano.",
-        "FEATURES": [
-          {
-            "TITLE": "Ultra-low\nSlippage",
-            "CONTENT": "Unbiased, multi-collateral backed pegged to the US Dollar and other currencies."
-          },
-          {
-            "TITLE": "Savings\nAccount",
-            "CONTENT": "Allow holders to borrow and lend the asset for use on exchanges like any other crypto asset."
-          },
-          {
-            "TITLE": "Earn Market\nMaking Fees",
-            "CONTENT": "Allow holders to borrow and lend the asset for use on exchanges like any other crypto asset."
-          },
-          {
-            "TITLE": "Foreign\nExchange",
-            "CONTENT": "Unbiased, multi-collateral backed pegged to the US Dollar and other currencies."
-          },
-          {
-            "TITLE": "DANA Token\n\n",
-            "CONTENT": "Allow holders to borrow and lend the asset for use on exchanges like any other crypto asset."
-          },
-          {
-            "TITLE": "Governance\n\n",
-            "CONTENT": "Allow holders to borrow and lend the asset for use on exchanges like any other crypto asset."
-          }
-        ]
+        "CONTENT": "<strong>dUSD</strong> is verifiably backed by on-chain collateral and will enable borrowers to take leverage on their ADA or other supported assets.",
+        "BUTTON": "ARDANA STABLECOINS"
       },
       "TOP-NOTCH": {
         "TITLE": "Ardana with our top-notch team",

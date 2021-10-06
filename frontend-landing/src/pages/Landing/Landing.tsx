@@ -15,8 +15,8 @@ const Landing: React.FC = () => {
   return (
     <Box>
       <MainSection />
-      <DanaSwapSection />
       <StableCoinSection />
+      <DanaSwapSection />
       <TopNotchSection />
       <ProfileSection />
       <PartnerSection />
