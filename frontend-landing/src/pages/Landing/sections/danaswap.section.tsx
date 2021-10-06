@@ -6,27 +6,25 @@ import ScrollAnimation from "react-animate-on-scroll";
 import i18next from "i18next";
 
 import { useIsDarkMode } from "state/user/hooks";
-
-import img_Ellipse from "assets/img/landing/backgrounds/ellipse.png";
-import img_Danaswap from "assets/img/landing/backgrounds/dana-swap-graphic.png";
+import { AdButton } from "components/Button";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
-    background: `url(${img_Ellipse}) calc(100% - 30px) calc(100% - 130px) no-repeat, #FFFFFF`,
-    padding: "200px 50px",
+    background: "#080E42",
+    padding: "200px 0px",
 
     [breakpoints.down("sm")]: {
       padding: "50px",
-    }
+    },
   },
 
   title: {
     fontFamily: "Brandon Grotesque",
     fontStyle: "normal",
     fontWeight: 900,
-    fontSize: "64px",
+    fontSize: "80px",
     lineHeight: "100%",
-    color: "#202F9A",
+    color: "#73D6F1",
 
     [breakpoints.down("sm")]: {
       fontSize: "48px",
@@ -37,9 +35,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontFamily: "Museo Sans",
     fontStyle: "normal",
     fontWeight: 300,
-    fontSize: "18px",
-    lineHeight: "150%",
-    color: "#A5A5A5",
+    fontSize: "25px",
+    lineHeight: "30px",
+    color: "#F5FCFE",
   },
 }));
 
@@ -54,11 +52,7 @@ const DanaswapSection: React.FC = () => {
       <Container>
         <Grid container alignItems="center" spacing={3}>
           <Grid item xs={12} sm={6}>
-            <Box
-              style={
-                !mobile ? { padding: "20px 100px 20px" } : { padding: "0" }
-              }
-            >
+            <Box>
               <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
                 <Box className={cx(classes.title)}>
                   {i18next.t("PAGE.LANDING.DANASWAP.TITLE")}
@@ -70,16 +64,20 @@ const DanaswapSection: React.FC = () => {
                   {i18next.t("PAGE.LANDING.DANASWAP.CONTENT")}
                 </Box>
               </ScrollAnimation>
+              <Box mt="50px" />
+              <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
+                <AdButton variant="contained">
+                  {i18next.t("PAGE.LANDING.DANASWAP.BUTTON")}
+                </AdButton>
+              </ScrollAnimation>
             </Box>
           </Grid>
 
-          <Grid item xs={12} sm={6}>
-            <img src={img_Danaswap} alt="Danaswap" width="100%" />
-          </Grid>
+          <Grid item xs={12} sm={6}></Grid>
         </Grid>
       </Container>
     </Box>
   );
 };
 
-export default (DanaswapSection);
+export default DanaswapSection;

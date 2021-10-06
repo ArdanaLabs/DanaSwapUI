@@ -38,7 +38,8 @@
       },
       "DANASWAP": {
         "TITLE": "Danaswap",
-        "CONTENT": "Ardana is a decentralized financial hub and services provider built on Cardano that provides key DeFi primitives including a decentralized stablecoin exchange, stablecoins, a foreign exchange protocol and a multisignature protocol to power users and open finance applications on Cardano and beyond."
+        "CONTENT": "An automated market maker (AMM) decentralized exchange for stable multi-asset pools. Danaswap is highly capital efficient enabling swaps with minimal slippage while providing low-risk yield opportunities for liquidity providers.",
+        "BUTTON": "LAUNCH DANASWAP"
       },
       "STABLECOIN": {
         "TITLE": "Stablecoin",
