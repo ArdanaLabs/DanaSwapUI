@@ -2,33 +2,44 @@ import React from "react";
 import cx from "classnames";
 import { Box, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import ScrollAnimation from "react-animate-on-scroll";
 import { useIsDarkMode } from "state/user/hooks";
+import { Avatar } from "components/Avatar";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
-  bg: {},
+  root: {
+    position: "relative",
+    background: palette.background.paper,
+    borderRadius: "10px",
+    padding: "10px",
+  },
+
+  image: {
+    position: "absolute",
+    top: "-10px",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+  },
 
   name: {
     fontFamily: "Brandon Grotesque",
     fontStyle: "normal",
     fontWeight: 900,
-    fontSize: "32px",
-    lineHeight: "51px",
-    color: "#2F3DA0",
-    paddingTop: "10px",
+    fontSize: "30px",
+    lineHeight: "110%",
+    color: palette.text.primary,
 
     [breakpoints.down("sm")]: {
       fontSize: "24px",
     },
   },
 
-  job: {
+  role: {
     fontFamily: "Museo Sans",
     fontStyle: "normal",
-    fontWeight: 300,
-    fontSize: "18px",
-    lineHeight: "22px",
-    color: "#423F3F",
+    fontWeight: 600,
+    fontSize: "23px",
+    lineHeight: "110%",
+    color: palette.text.secondary,
 
     [breakpoints.down("sm")]: {
       fontSize: "16px",
@@ -38,12 +49,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   info: {
     fontFamily: "Museo Sans",
     fontStyle: "normal",
-    fontWeight: 300,
-    fontSize: "18px",
-    lineHeight: "22px",
-    color: "#000000",
-    whiteSpace: "pre-wrap",
-    padding: "15px 0",
+    fontSize: "21px",
+    lineHeight: "25px",
+    color: palette.text.primary,
+    whiteSpace: "pre-line",
 
     [breakpoints.down("sm")]: {
       fontSize: "16px",
@@ -52,20 +61,23 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 }));
 
+export interface ProfileType {
+  avatar: string;
+  name: string;
+  role: string;
+  info: string;
+  socials: {
+    github?: string;
+    linkedin?: string;
+  };
+}
+
 export interface ProfileBoxProps {
-  image?: any;
-  name?: string;
-  job?: string;
-  info?: string;
-  custom_style?: object;
+  profile: ProfileType;
 }
 
 const ProfileBox: React.FC<ProfileBoxProps> = ({
-  image,
-  name,
-  job,
-  info,
-  custom_style,
+  profile: { avatar, name, role, info },
 }) => {
   const { breakpoints } = useTheme();
   const dark = useIsDarkMode();
@@ -73,18 +85,16 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({
   const classes = useStyles({ dark, mobile });
 
   return (
-    <Box position="relative" flex="2" marginY="20px" style={custom_style}>
-      <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-        <Box borderRadius="30px">
-          <img src={image} alt={name} width="100%" />
-        </Box>
+    <Box className={cx(classes.root)}>
+      <Box className={cx(classes.image)}>
+        <Avatar image={avatar} size={100} />
+      </Box>
 
-        <Box className={cx(classes.name)}>{name}</Box>
+      <Box className={cx(classes.name)}>{name}</Box>
 
-        <Box className={cx(classes.job)}>{job}</Box>
+      <Box className={cx(classes.role)}>{role}</Box>
 
-        <Box className={cx(classes.info)}>{info}</Box>
-      </ScrollAnimation>
+      <Box className={cx(classes.info)}>{info}</Box>
     </Box>
   );
 };

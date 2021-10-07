@@ -8,17 +8,15 @@ import { useIsDarkMode } from "state/user/hooks";
 import { ProfileBox } from "components/Box";
 
 import { ProfileList } from "data";
-
-import ICO_Linkedin from "assets/img/landing/icons/linkedin-ico.png";
-import ICO_Github from "assets/img/landing/icons/github-ico.png";
+import { ProfileType } from "components/Box/ProfileBox";
 
 const useStyles = makeStyles(({ palette }) => ({
   bg: {
-    background: "#FFFFFF",
+    background: palette.background.default,
     padding: "100px 20px 100px 20px",
   },
   mobile_bg: {
-    background: "#FFFFFF",
+    background: palette.background.default,
     padding: "20px",
   },
   alignStretch: {
@@ -49,14 +47,8 @@ const ProfileSection: React.FC = () => {
               md={3}
               className={cx(classes.alignStretch)}
             >
-              <ProfileBox
-                image={profile.avatar}
-                name={profile.name}
-                job={profile.job}
-                info={profile.info}
-                custom_style={{}}
-              />
-              <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
+              <ProfileBox profile={profile} />
+              {/* <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
                 <Box display="flex" alignItems="stretch">
                   {profile.linkedin && (
                     <Link href={profile.linkedin} target="_blank">
@@ -79,7 +71,7 @@ const ProfileSection: React.FC = () => {
                     </Link>
                   )}
                 </Box>
-              </ScrollAnimation>
+              </ScrollAnimation> */}
             </Grid>
           ))}
         </Grid>

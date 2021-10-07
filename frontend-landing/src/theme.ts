@@ -39,20 +39,17 @@ const infoDarkDay =
 const infoDarkNight =
   "linear-gradient(180deg, #73D6F1 0%, #5F72FF 99.99%, #2F3DA0 100%)";
 
-const backgroundDay =
-  "linear-gradient(89.43deg, #C0C0C0 -0.11%, #F5F5F5 -0.1%)";
-const backgroundNight = "linear-gradient(0deg, #3142A3, #3142A3)";
+const backgroundDay = "#080E42";
+const backgroundNight = "#080E42";
 
-const backgroundPaperDay =
-  "linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%)";
-const backgroundPaperNight =
-  "linear-gradient(180deg, #131B59 0%, #2F3DA0 100%)";
+const backgroundPaperDay = "#1D277A";
+const backgroundPaperNight = "#1D277A";
 
-const textPrimaryDay = "#235DF4";
-const textPrimaryNight = "#FFFFFF";
+const textPrimaryDay = "#F5FCFE";
+const textPrimaryNight = "#F5FCFE";
 
-const textSecondaryDay = "#636060";
-const textSecondaryNight = "#FFFFFF";
+const textSecondaryDay = "#73D6F1";
+const textSecondaryNight = "#73D6F1";
 
 const textHintDay = "#636060";
 const textHintNight = "#73D6F1";
@@ -532,7 +529,7 @@ export const lightTheme = responsiveFontSizes(
           background: "white",
           color: "black",
           borderRadius: "5px",
-        }
+        },
       },
       MuiStepButton: {},
       MuiStepConnector: {
@@ -1137,7 +1134,7 @@ export const darkTheme = responsiveFontSizes(
           background: "white",
           color: "black",
           borderRadius: "5px",
-        }
+        },
       },
       MuiStepContent: {
         root: {

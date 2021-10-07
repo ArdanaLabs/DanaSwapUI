@@ -24,4 +24,5 @@ cabal.project.local~
 frontend-dashbord/package-lock.json
 frontend-dashbord/yarn.lock
 nodejs-websocket-example
+frontend-sale
 
