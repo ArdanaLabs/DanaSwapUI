@@ -16,6 +16,7 @@ const useStyles = makeStyles(({ palette }) => ({
   self: {
     background: `url(${BG_WAVE}) top left no-repeat`,
     paddingTop: "100px",
+    backgroundSize: "cover",
   },
 }));
 
