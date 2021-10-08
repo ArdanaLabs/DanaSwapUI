@@ -14,8 +14,8 @@ import BG_PURPLE_RADIAL from "assets/backgrounds/purple-radial-gradient.png";
 import BG_BLUE_RADIAL from "assets/backgrounds/dark-blue-radial-gradient.png";
 import BG_WAVE from "assets/backgrounds/wave.png";
 import LOGO_WHAT_IS_ARDANA from "assets/backgrounds/what-is-ardana.png";
-import ICON_TWITTER from "assets/icons/Twitter.png";
-import ICON_TELEGRAM from "assets/icons/Telegram.png";
+import ICON_TWITTER from "assets/icons/twitter.svg";
+import ICON_TELEGRAM from "assets/icons/telegram.svg";
 
 import img_fully_decentralized from "assets/logos/fully-decentralized.svg";
 import img_borrow_lend from "assets/logos/borrow-lend.svg";

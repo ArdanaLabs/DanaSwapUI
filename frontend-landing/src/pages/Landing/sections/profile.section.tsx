@@ -12,7 +12,7 @@ import { ProfileType } from "components/Box/ProfileBox";
 const useStyles = makeStyles(({ palette }) => ({
   bg: {
     background: palette.background.default,
-    padding: "100px 20px 100px 20px",
+    padding: "0px 20px 100px 20px",
   },
   mobile_bg: {
     background: palette.background.default,
@@ -47,30 +47,6 @@ const ProfileSection: React.FC = () => {
               className={cx(classes.alignStretch)}
             >
               <ProfileBox profile={profile} />
-              {/* <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-                <Box display="flex" alignItems="stretch">
-                  {profile.linkedin && (
-                    <Link href={profile.linkedin} target="_blank">
-                      <img
-                        src={ICO_Linkedin}
-                        alt="linkedin"
-                        style={{ maxWidth: "max-content" }}
-                        width={!mobile ? "100%" : "75%"}
-                      />
-                    </Link>
-                  )}
-                  {profile.github && (
-                    <Link href={profile.github} target="_blank">
-                      <img
-                        src={ICO_Github}
-                        alt="github"
-                        style={{ maxWidth: "max-content" }}
-                        width={!mobile ? "100%" : "75%"}
-                      />
-                    </Link>
-                  )}
-                </Box>
-              </ScrollAnimation> */}
             </Grid>
           ))}
         </Grid>
