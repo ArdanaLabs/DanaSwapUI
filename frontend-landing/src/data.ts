@@ -1,24 +1,18 @@
-import AVATAR_Eden_Ovadia from "assets/img/landing/avatars/Eden-Ovadia.png";
-import AVATAR_Gregory_Santini from "assets/img/landing/avatars/Gregory-Santini.png";
-import AVATAR_Jamie_Caso_Onzain from "assets/img/landing/avatars/Jamie-Caso-Onzain.png";
-import AVATAR_Morgan_Thomas from "assets/img/landing/avatars/Morgan-Thomas.png";
-import AVATAR_Neil_Tiongson from "assets/img/landing/avatars/Neil-Tiongson.png";
-import AVATAR_Oleg_Prutz from "assets/img/landing/avatars/Oleg-Prutz.png";
-import AVATAR_Ryan_Matovu from "assets/img/landing/avatars/Ryan-Matovu.png";
-import AVATAR_Unknown from "assets/img/landing/avatars/unknown.png";
+import { ProfileType } from "components/Box/ProfileBox";
 
-export const ProfileList = [
+export const ProfileList: ProfileType[] = [
   {
-    avatar: AVATAR_Ryan_Matovu,
+    avatar: require('assets/avatars/RyanMatovu.png').default,
     name: "Ryan Matovu",
     role: "Founder & CEO",
     info: `Serial entrepreneur in B2B/B2C sales and e-commerce.\n\nLeadership positions in various Ethereum based projects.`,
     socials: {
       linkedin: "https://www.linkedin.com/in/ryan-matovu-517988203",
+      twitter: "https://twitter.com",
     },
   },
   {
-    avatar: AVATAR_Unknown,
+    avatar: require('assets/avatars/IssacShapira.png').default,
     name: "Isaac Shapira",
     role: "Chief Technology Officer",
     info: `Founder of Platonic.Systems, a lead functional programming firm.\n\nSenior software developer roles at various leading tech firms.`,
@@ -28,14 +22,14 @@ export const ProfileList = [
     },
   },
   {
-    avatar: AVATAR_Unknown,
+    avatar: require('assets/avatars/DerekEvans.png').default,
     name: "Derek Evans",
     role: "Chief Operating Officer",
     info: `20+ years in software leading business and government projects.\n\nPrivate trader and fund manager in the financial derivatives market.`,
     socials: {},
   },
   {
-    avatar: AVATAR_Unknown,
+    avatar: require('assets/avatars/BassamAwad.png').default,
     name: "Bassam Awad, PhD",
     role: "Chief Economist",
     info: `Senior Economist and Head of Risk at the Central Bank of Jordan.\n\nMultiple peer-reviewed papers on macro/computational economics.`,
@@ -44,15 +38,15 @@ export const ProfileList = [
     },
   },
   {
-    avatar: AVATAR_Unknown,
+    avatar: require('assets/avatars/ScottFranklin.png').default,
     name: "Scott Franklin",
     role: "Head of Strategy",
     info: `20+ years experience in equity markets on Wall Street.\n\nCapital raising and advisor to multiple blockchain projects.`,
     socials: {},
   },
   {
-    avatar: AVATAR_Neil_Tiongson,
-    name: "Neil Tiongson",
+    avatar: require('assets/avatars/NeilTionson.png').default,
+    name: "Neil Tionson",
     role: "Head of Design",
     info: `Creative innovator, branding specialist, and design guru with more than 5 years of experience creating meaningful visual brands for high-profile clients.`,
     socials: {
@@ -61,7 +55,7 @@ export const ProfileList = [
     },
   },
   {
-    avatar: AVATAR_Unknown,
+    avatar: require('assets/avatars/ChetanBafna.png').default,
     name: "Chetan Bafna",
     role: "Head of Outreach",
     info: `Fundraising facilitator to multiple blockchain projects.\n\nLeadership positions in multiple philanthropic organisations.`,
@@ -70,7 +64,7 @@ export const ProfileList = [
     },
   },
   {
-    avatar: AVATAR_Morgan_Thomas,
+    avatar: require('assets/avatars/MorganThomas.png').default,
     name: "Morgan Thomas",
     role: "Blockchain Developer",
     info: `Platonic Systems functional programming tech consultant.\n\nDeveloped algorithmic trading systems using Haskell.`,
@@ -80,7 +74,7 @@ export const ProfileList = [
     },
   },
   {
-    avatar: AVATAR_Unknown,
+    avatar: require('assets/avatars/NicVanDenBroeck.png').default,
     name: "Nick Van den Broeck",
     role: "Blockchain Developer",
     info: `Masters degree in Theoretical Physics and research intern at <strong>CERN</strong>.\n\nFounder of Tailer AI, bringing AI to the chemical/brewing industries.`,
@@ -90,7 +84,7 @@ export const ProfileList = [
     },
   },
   {
-    avatar: AVATAR_Gregory_Santini,
+    avatar: require('assets/avatars/GregorySantini.png').default,
     name: "Gregory Santini",
     role: "Front-end Developer",
     info: `Senior front-end developer for Apple and Evernote.\n\nExperienced web developer and Solidity developer.`,
@@ -100,7 +94,7 @@ export const ProfileList = [
     },
   },
   {
-    avatar: AVATAR_Unknown,
+    avatar: require('assets/avatars/MarcinBugaj.png').default,
     name: "Marcin Bugaj",
     role: "Blockchain Developer",
     info: `Senior software developer for <strong>Logitech</strong> and Motorola Solutions.\n\nDesign and implementation of Robotic Process Automation (RPA).`,
@@ -110,7 +104,7 @@ export const ProfileList = [
     },
   },
   {
-    avatar: AVATAR_Jamie_Caso_Onzain,
+    avatar: require('assets/avatars/JaimeCasoOnzain.png').default,
     name: "Jamie Caso Onzain",
     role: "Blackchain Developer",
     info: `<strong>Cardano</strong> ambassador and Cardano stake pool operator.\n\nGenesis Founding Member and tester for <strong>Mina Protocol.</strong>`,
@@ -120,7 +114,7 @@ export const ProfileList = [
     },
   },
   {
-    avatar: AVATAR_Unknown,
+    avatar: require('assets/avatars/AndrzejSwatowski.png').default,
     name: "Andrzej Swatowski",
     role: "Blackchain Developer",
     info: `Game developer at <strong>Unity</strong> working on AI,UI and gameplay elements.\n\nMasters Degree in Computer Science from the University of Warsaw.`,
@@ -130,7 +124,7 @@ export const ProfileList = [
     },
   },
   {
-    avatar: AVATAR_Oleg_Prutz,
+    avatar: require('assets/avatars/OlegPrutz.png').default,
     name: "Oleg Prutz",
     role: "Front-end Developer",
     info: `Data Scientist for Genesys AI ‘Experience as a Service’ company.\n\nExperienced functional programmer and Kaggle competitor.`,
@@ -140,7 +134,7 @@ export const ProfileList = [
     },
   },
   {
-    avatar: AVATAR_Unknown,
+    avatar: require('assets/avatars/EmmaDwyer.png').default,
     name: "Emma Dwyer",
     role: "Writer",
     info: `Risk analyst at <strong>Citi bank</strong> and analyst at <strong>Jane Street.</strong>\n\n7+ years experience in investment banking and wealth management.`,
@@ -150,13 +144,14 @@ export const ProfileList = [
     },
   },
   {
-    avatar: AVATAR_Unknown,
+    avatar: require('assets/avatars/NoamDavidElbaz.png').default,
     name: "Noam David Elbaz",
     role: "Researcher",
     info: `Crypto portfolio management and DeFi enthusiast.`,
+    socials: {},
   },
   {
-    avatar: AVATAR_Eden_Ovadia,
+    avatar: require('assets/avatars/EdenOvadia.png').default,
     name: "Eden Ovadia",
     role: "Intern",
     info: `Full stack software engineer for <strong>Microsoft.</strong>\n\nSoftware and programming, problems solving skills and attention to details.`,
@@ -166,7 +161,7 @@ export const ProfileList = [
     },
   },
   {
-    avatar: AVATAR_Unknown,
+    avatar: require('assets/avatars/GregNwosu.png').default,
     name: "Greg Nwosu",
     role: "Intern",
     info: `Big Data and infrastructure engineer for <strong>Barclays</strong> and RBS.\n\nSenior Java developer for <strong>IG Index</strong> online exchange.`,

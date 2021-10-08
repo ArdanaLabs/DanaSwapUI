@@ -1,7 +1,6 @@
 import React from "react";
-import { Box, useMediaQuery, Grid, Container, Link } from "@material-ui/core";
+import { Box, useMediaQuery, Grid, Container } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import ScrollAnimation from "react-animate-on-scroll";
 import cx from "classnames";
 
 import { useIsDarkMode } from "state/user/hooks";
@@ -38,7 +37,7 @@ const ProfileSection: React.FC = () => {
     >
       <Container>
         <Grid container spacing={5}>
-          {ProfileList.map((profile, index) => (
+          {ProfileList.map((profile: ProfileType, index) => (
             <Grid
               item
               key={index}
