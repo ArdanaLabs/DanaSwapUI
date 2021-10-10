@@ -4,6 +4,7 @@ import { Box, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { useIsDarkMode } from "state/user/hooks";
 
+import BG_RING from "assets/backgrounds/ring.svg";
 export interface AvatarProps {
   image: string;
   size: number;
@@ -11,12 +12,17 @@ export interface AvatarProps {
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
-    boxShadow: "0px 0px 20px 5px #2D3BA0",
-    padding: "10px",
+    // boxShadow: "0px 0px 20px 5px #2D3BA0",
+    padding: "40px",
     borderRadius: "50%",
     display: "inline-flex",
     justifyContent: "center",
     alignItems: "center",
+    // border: "3px solid #73D6F1",
+    background: `url(${BG_RING}) center center no-repeat`,
+    backgroundSize: 'cover',
+    width: '200px',
+    height: '200px',
   },
 
   photo: {
@@ -36,8 +42,6 @@ const Avatar: React.FC<AvatarProps> = ({ image, size }) => {
         className={cx(classes.photo)}
         src={image}
         alt="avatar"
-        width={size + "px"}
-        height={size + "px"}
       />
     </Box>
   );
