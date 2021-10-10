@@ -257,3 +257,17 @@ export const TopNotchTeams = [
   require("assets/logos/emurgo.svg").default,
   require("assets/logos/mina.svg").default,
 ];
+
+export const Partners = [
+  require("assets/logos/platonic-systems.svg").default,
+  require("assets/logos/mlabs.svg").default,
+  require("assets/logos/occamfi.svg").default,
+  require("assets/logos/defire.svg").default,
+  require("assets/logos/israel-bc.svg").default,
+  require("assets/logos/halborn.svg").default,
+  require("assets/logos/prysm.svg").default,
+  require("assets/logos/coti.svg").default,
+  require("assets/logos/synaps.svg").default,
+  require("assets/logos/singularity.svg").default,
+  require("assets/logos/benqi.svg").default,
+];
