@@ -10,6 +10,7 @@ import {
   // ProfileSection,
   FooterSection,
   AdvisorsSection,
+  InvestorsSection,
 } from "./sections";
 
 const Landing: React.FC = () => {
@@ -22,6 +23,7 @@ const Landing: React.FC = () => {
       {/* <ProfileSection /> */}
       <AdvisorsSection />
       <PartnerSection />
+      <InvestorsSection />
       <FooterSection />
     </Box>
   );
