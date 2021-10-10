@@ -21,7 +21,7 @@ import img_fully_decentralized from "assets/logos/fully-decentralized.svg";
 import img_borrow_lend from "assets/logos/borrow-lend.svg";
 import img_store_of_value from "assets/logos/store-of-value.svg";
 import img_powered_by_cardano from "assets/logos/powered-by-cardano.svg";
-import { AdButton } from "components/Button";
+import { GradientButton } from "components/Button";
 
 const Ardana_features = [
   {
@@ -170,9 +170,11 @@ const MainSection: React.FC = () => {
                   <img src={ICON_TWITTER} alt="twitter" />
                 </Link>
                 <Link href="http://app.ardana.org/launch" underline="none">
-                  <AdButton variant="contained">
-                    {i18next.t("PAGE.LANDING.COMINGSOON")}
-                  </AdButton>
+                  <GradientButton
+                    label={i18next.t("PAGE.LANDING.COMINGSOON")}
+                    width={160}
+                    height={40}
+                  />
                 </Link>
               </Box>
             </ScrollAnimation>

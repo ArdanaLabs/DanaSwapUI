@@ -31,9 +31,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     position: "absolute",
     transform: "translate(-50%, -50%)",
     left: "50%",
-    top: "0px",
+    top: "-10px",
     "& > img": {
-      width: "150px",
+      width: "175px",
     },
   },
 

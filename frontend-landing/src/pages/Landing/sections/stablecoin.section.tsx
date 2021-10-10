@@ -6,7 +6,7 @@ import ScrollAnimation from "react-animate-on-scroll";
 import i18next from "i18next";
 
 import { useIsDarkMode } from "state/user/hooks";
-import { AdButton } from "components/Button";
+import { GradientButton } from "components/Button";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
@@ -69,9 +69,11 @@ const StableCoinSection: React.FC = () => {
         </ScrollAnimation>
         <Box mt="50px" />
         <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-          <AdButton variant="contained">
-            {i18next.t("PAGE.LANDING.STABLECOIN.BUTTON")}
-          </AdButton>
+          <GradientButton
+            label={i18next.t("PAGE.LANDING.STABLECOIN.BUTTON")}
+            width={200}
+            height={40}
+          />
         </ScrollAnimation>
       </Container>
     </Box>
