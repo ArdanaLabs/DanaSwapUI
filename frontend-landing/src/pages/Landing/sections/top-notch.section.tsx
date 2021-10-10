@@ -1,16 +1,19 @@
 import React from "react";
-import { Box, useMediaQuery, Container } from "@material-ui/core";
+import { Box, useMediaQuery, Container, Grid } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
 import ScrollAnimation from "react-animate-on-scroll";
 import i18next from "i18next";
 
 import { useIsDarkMode } from "state/user/hooks";
-import { TopNotchTeams } from "data";
+import { ProfileList, TopNotchTeams } from "data";
+import ProfileBox, { ProfileType } from "components/Box/ProfileBox";
+
+// import BG_BLUE_RADIAL from "assets/backgrounds/dark-blue-radial-gradient.png";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
-    background: "#080E42",
+    background: `#080E42`,
     padding: "100px 0",
 
     [breakpoints.down("sm")]: {
@@ -50,6 +53,11 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     [breakpoints.down("sm")]: {
       fontSize: "16px",
     },
+  },
+  alignStretch: {
+    display: "flex",
+    alignItems: "stretch",
+    flexFlow: "column",
   },
 }));
 
@@ -102,6 +110,23 @@ const TopNotchSection: React.FC = () => {
             ))}
           </Box>
         </ScrollAnimation>
+
+        <Box mt="50px" />
+
+        <Grid container spacing={5}>
+          {ProfileList.map((profile: ProfileType, index) => (
+            <Grid
+              item
+              key={index}
+              xs={6}
+              sm={4}
+              md={3}
+              className={cx(classes.alignStretch)}
+            >
+              <ProfileBox profile={profile} />
+            </Grid>
+          ))}
+        </Grid>
       </Container>
     </Box>
   );
