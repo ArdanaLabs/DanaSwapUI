@@ -14,7 +14,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     position: "relative",
     background: palette.background.paper,
     borderRadius: "10px",
-    padding: "75px 20px 50px",
+    padding: "80px 20px 50px",
     textAlign: "center",
     marginTop: "80px",
     height: "400px",
@@ -34,6 +34,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontSize: "25px",
     lineHeight: "110%",
     color: palette.text.primary,
+    marginBottom: "5px",
 
     [breakpoints.down("sm")]: {
       fontSize: "24px",
@@ -89,9 +90,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
         maxWidth: "max-content",
       },
 
-      '&:hover': {
+      "&:hover": {
         opacity: 0.8,
-      }
+      },
     },
   },
 }));

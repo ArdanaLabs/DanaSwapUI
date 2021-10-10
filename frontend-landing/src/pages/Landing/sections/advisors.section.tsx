@@ -6,17 +6,22 @@ import cx from "classnames";
 import { useIsDarkMode } from "state/user/hooks";
 import { ProfileBox } from "components/Box";
 
-import { Members } from "data";
+import { Advisors } from "data";
 import { ProfileType } from "components/Box/ProfileBox";
 
 const useStyles = makeStyles(({ palette }) => ({
-  bg: {
+  root: {
     background: palette.background.default,
     padding: "0px 20px 100px 20px",
   },
-  mobile_bg: {
-    background: palette.background.default,
-    padding: "20px",
+  title: {
+    fontFamily: "Brandon Grotesque",
+    fontWeight: "bold",
+    fontSize: "80px",
+    lineHeight: "100%",
+    color: palette.text.secondary,
+    textAlign: "center",
+    margin: "30px 0 100px",
   },
   alignStretch: {
     display: "flex",
@@ -32,12 +37,11 @@ const ProfileSection: React.FC = () => {
   const classes = useStyles({ dark, mobile });
 
   return (
-    <Box
-      className={cx({ [classes.bg]: !mobile }, { [classes.mobile_bg]: mobile })}
-    >
+    <Box className={cx(classes.root)}>
       <Container>
+        <Box className={cx(classes.title)}>Advisors</Box>
         <Grid container spacing={5}>
-          {Members.map((profile: ProfileType, index) => (
+          {Advisors.map((profile: ProfileType, index) => (
             <Grid
               item
               key={index}

@@ -6,7 +6,7 @@ import ScrollAnimation from "react-animate-on-scroll";
 import i18next from "i18next";
 
 import { useIsDarkMode } from "state/user/hooks";
-import { ProfileList, TopNotchTeams } from "data";
+import { Members, TopNotchTeams } from "data";
 import ProfileBox, { ProfileType } from "components/Box/ProfileBox";
 
 // import BG_BLUE_RADIAL from "assets/backgrounds/dark-blue-radial-gradient.png";
@@ -114,7 +114,7 @@ const TopNotchSection: React.FC = () => {
         <Box mt="50px" />
 
         <Grid container spacing={5}>
-          {ProfileList.map((profile: ProfileType, index) => (
+          {Members.map((profile: ProfileType, index) => (
             <Grid
               item
               key={index}

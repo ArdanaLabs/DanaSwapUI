@@ -1,6 +1,6 @@
 import { ProfileType } from "components/Box/ProfileBox";
 
-export const ProfileList: ProfileType[] = [
+export const Members: ProfileType[] = [
   {
     avatar: require('assets/avatars/RyanMatovu.png').default,
     name: "Ryan Matovu",
@@ -168,6 +168,81 @@ export const ProfileList: ProfileType[] = [
     socials: {
       linkedin: "https://www.linkedin.com/in/greg-nwosu/",
       github: "https://github.com/gregnwosu",
+    },
+  },
+];
+
+export const Advisors: ProfileType[] = [
+  {
+    avatar: require('assets/avatars/JohnOConnor.png').default,
+    name: "John O'Connor",
+    role: "Cardano",
+    info: `Director of <strong>IOHK</strong> leading operations and projects in Africa.\n\nFormer Head of Strategy/Comms for <strong>Cardano Foundation.</strong>`,
+    socials: {
+      linkedin: "https://www.linkedin.com",
+    },
+  },
+  {
+    avatar: require('assets/avatars/ShunsukeMurasaki.png').default,
+    name: "Shunsuke Murasaki",
+    role: "Emurgo",
+    info: `Chief executive officer for <strong>EMURGO</strong> Indonesia.\n\n7+ years experience in Asian markets in B2B overseas sales.`,
+    socials: {
+      linkedin: "https://www.linkedin.com",
+    },
+  },
+  {
+    avatar: require('assets/avatars/DarrenCamas.png').default,
+    name: "Darren Camas",
+    role: "Cardano",
+    info: `Former senior advisor to <strong>Emurgo</strong> and strategy consultant for <strong>IOHK.</strong>\n\nFounder of IPOR Labs, blockchain based derivatives software.`,
+    socials: {
+      linkedin: "https://www.linkedin.com",
+    },
+  },
+  {
+    avatar: require('assets/avatars/JoeriVanGeelen.png').default,
+    name: "Joeri Van Geelen",
+    role: "Economics",
+    info: `Business advisor at <strong>Prysm Group</strong> DLT economic consulting firm.\n\nBusiness Development advisor at Minterest  cross-chain protocol.`,
+    socials: {
+      linkedin: "https://www.linkedin.com",
+    },
+  },
+  {
+    avatar: require('assets/avatars/YosefShaftal.png').default,
+    name: "Yosef Shaftal",
+    role: "Business",
+    info: `Executive director of the <strong>Israeli Blockchain Association.</strong>\n\nStrategic advisor to startups, corporations and governments.`,
+    socials: {
+      linkedin: "https://www.linkedin.com",
+    },
+  },
+  {
+    avatar: require('assets/avatars/JDGagnon.png').default,
+    name: "JD Gagnon",
+    role: "DeFi",
+    info: `Founder of <strong>Benqi</strong>, liquidity market protocol on Avalanche.\nDivision director at IG Wealth Management.`,
+    socials: {
+      linkedin: "https://www.linkedin.com",
+    },
+  },
+  {
+    avatar: require('assets/avatars/CalEvans.png').default,
+    name: "Cal Evans",
+    role: "Legal",
+    info: `Cryptocurrency compliance expert with 50+ ICO/STO contributions.\n\n<strong>British Blockchain Association</strong> board member.`,
+    socials: {
+      linkedin: "https://www.linkedin.com",
+    },
+  },
+  {
+    avatar: require('assets/avatars/JoaoSantos.png').default,
+    name: "Joao Santos",
+    role: "Venture Capital",
+    info: `Senior Principal at Mustard Seed Maze venture capital fund.\n\nMentor at the Catolica Lisbon School of Business and Economics.`,
+    socials: {
+      linkedin: "https://www.linkedin.com",
     },
   },
 ];
