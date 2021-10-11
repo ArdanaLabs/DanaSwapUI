@@ -4,7 +4,7 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
 import ScrollAnimation from "react-animate-on-scroll";
 import i18next from "i18next";
-// import ReactPlayer from "react-player";
+import ReactPlayer from "react-player";
 
 import { useIsDarkMode } from "state/user/hooks";
 
@@ -15,11 +15,12 @@ import { GradientButton } from "components/Button";
 import BG_PURPLE_RADIAL from "assets/backgrounds/purple-radial-gradient.png";
 import BG_BLUE_RADIAL from "assets/backgrounds/dark-blue-radial-gradient.png";
 import BG_WAVE from "assets/backgrounds/wave.png";
-import LOGO_WHAT_IS_ARDANA from "assets/backgrounds/what-is-ardana.png";
 import ICON_TWITTER from "assets/icons/twitter.svg";
 import ICON_TELEGRAM from "assets/icons/telegram.svg";
 
 // const sphereVideo = "assets/videos/sphere/output.m3u8";
+const heroVideo =
+  "https://background.sfo3.digitaloceanspaces.com/about/output.m3u8";
 
 const Ardana_features = [
   {
@@ -118,6 +119,12 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       width: "23px",
     },
   },
+
+  aboutVideo: {
+    "& > div > video": {
+      borderRadius: "10px",
+    },
+  },
 }));
 
 const MainSection: React.FC = () => {
@@ -192,7 +199,7 @@ const MainSection: React.FC = () => {
 
         <Box mt={!mobile ? "250px" : "50px"}></Box>
         <Box>
-          <Grid container spacing={1} alignItems="center">
+          <Grid container spacing={3} alignItems="center">
             <Grid item xs={12} sm={6}>
               <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
                 <Box className={cx(classes.definitionQ)}>
@@ -204,13 +211,16 @@ const MainSection: React.FC = () => {
               </ScrollAnimation>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-                <img
-                  src={LOGO_WHAT_IS_ARDANA}
-                  alt="What is Ardana"
+              <Box className={cx(classes.aboutVideo)}>
+                <ReactPlayer
+                  url={heroVideo}
+                  playing={false}
+                  loop={false}
                   width="100%"
+                  height="100%"
+                  controls
                 />
-              </ScrollAnimation>
+              </Box>
             </Grid>
           </Grid>
         </Box>
@@ -236,8 +246,7 @@ const MainSection: React.FC = () => {
                   image={feature.image}
                   title={feature.title}
                   content={feature.content}
-                  custom_style={{
-                  }}
+                  custom_style={{}}
                 />
               </Grid>
             ))}
