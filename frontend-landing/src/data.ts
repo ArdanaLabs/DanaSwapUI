@@ -8,7 +8,7 @@ export const Members: ProfileType[] = [
     info: `Serial entrepreneur in B2B/B2C sales and e-commerce.\n\nLeadership positions in various Ethereum based projects.`,
     socials: {
       linkedin: "https://www.linkedin.com/in/ryan-matovu-517988203",
-      twitter: "https://twitter.com",
+      twitter: "https://twitter.com/ryanmatovu",
     },
   },
   {
@@ -17,8 +17,8 @@ export const Members: ProfileType[] = [
     role: "Chief Technology Officer",
     info: `Founder of Platonic.Systems, a lead functional programming firm.\n\nSenior software developer roles at various leading tech firms.`,
     socials: {
-      linkedin: "https://www.linkedin.com",
-      github: "https://github.com",
+      linkedin: "https://www.linkedin.com/in/isaacshapira/",
+      github: "https://github.com/Fresheyeball",
     },
   },
   {
@@ -34,7 +34,7 @@ export const Members: ProfileType[] = [
     role: "Chief Economist",
     info: `Senior Economist and Head of Risk at the Central Bank of Jordan.\n\nMultiple peer-reviewed papers on macro/computational economics.`,
     socials: {
-      linkedin: "https://www.linkedin.com",
+      linkedin: "https://www.linkedin.com/in/bassamrawad/",
     },
   },
   {
@@ -51,7 +51,7 @@ export const Members: ProfileType[] = [
     info: `Creative innovator, branding specialist, and design guru with more than 5 years of experience creating meaningful visual brands for high-profile clients.`,
     socials: {
       linkedin: "https://www.linkedin.com/in/neil-tiongson-a83535142/",
-      github: "https://github.com",
+      // github: "https://github.com",
     },
   },
   {
@@ -60,7 +60,7 @@ export const Members: ProfileType[] = [
     role: "Head of Outreach",
     info: `Fundraising facilitator to multiple blockchain projects.\n\nLeadership positions in multiple philanthropic organisations.`,
     socials: {
-      linkedin: "https://www.linkedin.com",
+      linkedin: "https://www.linkedin.com/in/chetanbafna",
     },
   },
   {
@@ -79,8 +79,8 @@ export const Members: ProfileType[] = [
     role: "Blockchain Developer",
     info: `Masters degree in Theoretical Physics and research intern at <strong>CERN</strong>.\n\nFounder of Tailer AI, bringing AI to the chemical/brewing industries.`,
     socials: {
-      linkedin: "https://www.linkedin.com",
-      github: "https://github.com",
+      linkedin: "https://www.linkedin.com/in/nick-van-den-broeck-860861a3/",
+      github: "https://github.com/CSVdB/",
     },
   },
   {
@@ -99,8 +99,8 @@ export const Members: ProfileType[] = [
     role: "Blockchain Developer",
     info: `Senior software developer for <strong>Logitech</strong> and Motorola Solutions.\n\nDesign and implementation of Robotic Process Automation (RPA).`,
     socials: {
-      linkedin: "https://www.linkedin.com",
-      github: "https://github.com",
+      linkedin: "https://pl.linkedin.com/in/mmbugaj/",
+      github: "https://github.com/Josek-dev",
     },
   },
   {
@@ -119,8 +119,8 @@ export const Members: ProfileType[] = [
     role: "Blackchain Developer",
     info: `Game developer at <strong>Unity</strong> working on AI,UI and gameplay elements.\n\nMasters Degree in Computer Science from the University of Warsaw.`,
     socials: {
-      linkedin: "https://www.linkedin.com/in/jaime-caso/",
-      github: "https://github.com/jimcase/",
+      linkedin: "https://www.linkedin.com/in/andrzejswatowski",
+      github: "https://github.com/swtwsk/",
     },
   },
   {
@@ -139,7 +139,7 @@ export const Members: ProfileType[] = [
     role: "Writer",
     info: `Risk analyst at <strong>Citi bank</strong> and analyst at <strong>Jane Street.</strong>\n\n7+ years experience in investment banking and wealth management.`,
     socials: {
-      linkedin: "https://www.linkedin.com/",
+      linkedin: "https://www.linkedin.com/in/emma-dwyer-169630a0/",
       // github: "https://github.com/prutz1311",
     },
   },
@@ -157,7 +157,7 @@ export const Members: ProfileType[] = [
     info: `Full stack software engineer for <strong>Microsoft.</strong>\n\nSoftware and programming, problems solving skills and attention to details.`,
     socials: {
       linkedin: "https://www.linkedin.com/in/eden-ben-ovadia-944053176/",
-      github: "https://github.com/",
+      // github: "https://github.com/",
     },
   },
   {
@@ -179,7 +179,7 @@ export const Advisors: ProfileType[] = [
     role: "Cardano",
     info: `Director of <strong>IOHK</strong> leading operations and projects in Africa.\n\nFormer Head of Strategy/Comms for <strong>Cardano Foundation.</strong>`,
     socials: {
-      linkedin: "https://www.linkedin.com",
+      linkedin: "https://www.linkedin.com/in/jjtoconnor/",
     },
   },
   {
@@ -188,7 +188,7 @@ export const Advisors: ProfileType[] = [
     role: "Emurgo",
     info: `Chief executive officer for <strong>EMURGO</strong> Indonesia.\n\n7+ years experience in Asian markets in B2B overseas sales.`,
     socials: {
-      linkedin: "https://www.linkedin.com",
+      linkedin: "https://www.linkedin.com/in/shunsuke-murasaki-942012ba/",
     },
   },
   {
@@ -197,16 +197,16 @@ export const Advisors: ProfileType[] = [
     role: "Cardano",
     info: `Former senior advisor to <strong>Emurgo</strong> and strategy consultant for <strong>IOHK.</strong>\n\nFounder of IPOR Labs, blockchain based derivatives software.`,
     socials: {
-      linkedin: "https://www.linkedin.com",
+      linkedin: "https://www.linkedin.com/in/dcamas/",
     },
   },
   {
     avatar: require("assets/avatars/JoeriVanGeelen.png").default,
     name: "Joeri Van Geelen",
     role: "Economics",
-    info: `Business advisor at <strong>Prysm Group</strong> DLT economic consulting firm.\n\nBusiness Development advisor at Minterest  cross-chain protocol.`,
+    info: `Business advisor at <strong>Prysm Group</strong> DLT economic consulting firm.\n\nBusiness Development advisor at Minterest cross-chain protocol.`,
     socials: {
-      linkedin: "https://www.linkedin.com",
+      linkedin: "https://www.linkedin.com/in/joerivangeelen/",
     },
   },
   {
@@ -233,7 +233,7 @@ export const Advisors: ProfileType[] = [
     role: "Legal",
     info: `Cryptocurrency compliance expert with 50+ ICO/STO contributions.\n\n<strong>British Blockchain Association</strong> board member.`,
     socials: {
-      linkedin: "https://www.linkedin.com",
+      linkedin: "https://www.linkedin.com/in/mrcalevans/",
     },
   },
   {
@@ -242,7 +242,7 @@ export const Advisors: ProfileType[] = [
     role: "Venture Capital",
     info: `Senior Principal at Mustard Seed Maze venture capital fund.\n\nMentor at the Catolica Lisbon School of Business and Economics.`,
     socials: {
-      linkedin: "https://www.linkedin.com",
+      linkedin: "https://www.linkedin.com/in/joao-ferrao-dos-santos/",
     },
   },
 ];

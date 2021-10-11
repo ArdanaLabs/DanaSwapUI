@@ -4,11 +4,13 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
 import ScrollAnimation from "react-animate-on-scroll";
 import i18next from "i18next";
+// import ReactPlayer from "react-player";
 
 import { useIsDarkMode } from "state/user/hooks";
 
 import { HeaderSection } from ".";
 import { FeatureBox } from "components/Box";
+import { GradientButton } from "components/Button";
 
 import BG_PURPLE_RADIAL from "assets/backgrounds/purple-radial-gradient.png";
 import BG_BLUE_RADIAL from "assets/backgrounds/dark-blue-radial-gradient.png";
@@ -17,30 +19,26 @@ import LOGO_WHAT_IS_ARDANA from "assets/backgrounds/what-is-ardana.png";
 import ICON_TWITTER from "assets/icons/twitter.svg";
 import ICON_TELEGRAM from "assets/icons/telegram.svg";
 
-import img_fully_decentralized from "assets/logos/fully-decentralized.svg";
-import img_borrow_lend from "assets/logos/borrow-lend.svg";
-import img_store_of_value from "assets/logos/store-of-value.svg";
-import img_powered_by_cardano from "assets/logos/powered-by-cardano.svg";
-import { GradientButton } from "components/Button";
+// const sphereVideo = "assets/videos/sphere/output.m3u8";
 
 const Ardana_features = [
   {
-    image: img_fully_decentralized,
+    image: require("assets/logos/fully-decentralized.svg").default,
     title: i18next.t("PAGE.LANDING.ARDANA.FEATURES.0.TITLE"),
     content: i18next.t("PAGE.LANDING.ARDANA.FEATURES.0.CONTENT"),
   },
   {
-    image: img_borrow_lend,
+    image: require("assets/logos/borrow-lend.svg").default,
     title: i18next.t("PAGE.LANDING.ARDANA.FEATURES.1.TITLE"),
     content: i18next.t("PAGE.LANDING.ARDANA.FEATURES.1.CONTENT"),
   },
   {
-    image: img_store_of_value,
+    image: require("assets/logos/store-of-value.svg").default,
     title: i18next.t("PAGE.LANDING.ARDANA.FEATURES.2.TITLE"),
     content: i18next.t("PAGE.LANDING.ARDANA.FEATURES.2.CONTENT"),
   },
   {
-    image: img_powered_by_cardano,
+    image: require("assets/logos/powered-by-cardano.svg").default,
     title: i18next.t("PAGE.LANDING.ARDANA.FEATURES.3.TITLE"),
     content: i18next.t("PAGE.LANDING.ARDANA.FEATURES.3.CONTENT"),
   },
@@ -180,6 +178,17 @@ const MainSection: React.FC = () => {
               </Box>
             </ScrollAnimation>
           </Grid>
+          {/* <Grid item xs={12} sm={6}>
+            <ReactPlayer
+              url={sphereVideo}
+              playing
+              loop={true}
+              muted
+              width="100%"
+              height="100%"
+              playbackRate={0.5}
+            />
+          </Grid> */}
         </Grid>
 
         <Box mt={!mobile ? "250px" : "50px"}></Box>
