@@ -2,16 +2,34 @@ import React from "react";
 import { Box, useMediaQuery, Container } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
+import ReactPlayer from "react-player";
 import ScrollAnimation from "react-animate-on-scroll";
 import i18next from "i18next";
 
 import { useIsDarkMode } from "state/user/hooks";
 import { GradientButton } from "components/Button";
 
+const heroVideo =
+  "https://background.sfo3.digitaloceanspaces.com/stablecoin/output.m3u8";
+
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
+    // background: "rgba(24, 34, 113, 0.6)",
+    padding: "0px",
+    position: "relative",
+    "& video": {
+      objectFit: "cover",
+    },
+  },
+  container: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "calc(100% - 5px)",
+    display: "flex",
+    alignItems: "center",
     background: "rgba(24, 34, 113, 0.6)",
-    padding: "150px 0px",
   },
   title: {
     fontFamily: "Brandon Grotesque",
@@ -50,32 +68,42 @@ const StableCoinSection: React.FC = () => {
 
   return (
     <Box className={cx(classes.bg)}>
-      <Container>
-        <Box mt={!mobile ? "50px" : "0px"}></Box>
-        <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-          <Box className={cx(classes.title)}>
-            {i18next.t("PAGE.LANDING.STABLECOIN.TITLE")}
-          </Box>
-        </ScrollAnimation>
-        <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-          <Box
-            className={cx(classes.content)}
-            dangerouslySetInnerHTML={{
-              __html: i18next.t("PAGE.LANDING.STABLECOIN.CONTENT", {
-                interpolation: { escapeValue: false },
-              }),
-            }}
-          />
-        </ScrollAnimation>
-        <Box mt="50px" />
-        <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-          <GradientButton
-            label={i18next.t("PAGE.LANDING.STABLECOIN.BUTTON")}
-            width={200}
-            height={40}
-          />
-        </ScrollAnimation>
-      </Container>
+      <ReactPlayer
+        url={heroVideo}
+        playing
+        loop={true}
+        muted
+        width="100%"
+        height="100%"
+        playbackRate={0.5}
+      />
+      <Box className={cx(classes.container)}>
+        <Container>
+          <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
+            <Box className={cx(classes.title)}>
+              {i18next.t("PAGE.LANDING.STABLECOIN.TITLE")}
+            </Box>
+          </ScrollAnimation>
+          <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
+            <Box
+              className={cx(classes.content)}
+              dangerouslySetInnerHTML={{
+                __html: i18next.t("PAGE.LANDING.STABLECOIN.CONTENT", {
+                  interpolation: { escapeValue: false },
+                }),
+              }}
+            />
+          </ScrollAnimation>
+          <Box mt="50px" />
+          <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
+            <GradientButton
+              label={i18next.t("PAGE.LANDING.STABLECOIN.BUTTON")}
+              width={200}
+              height={40}
+            />
+          </ScrollAnimation>
+        </Container>
+      </Box>
     </Box>
   );
 };

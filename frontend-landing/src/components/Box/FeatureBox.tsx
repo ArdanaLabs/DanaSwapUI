@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import cx from "classnames";
+import ReactPlayer from "react-player";
 import { Box, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import ScrollAnimation from "react-animate-on-scroll";
 import { useIsDarkMode } from "state/user/hooks";
+
+const heroVideo =
+  "https://background.sfo3.digitaloceanspaces.com/stablecoin/output.m3u8";
 
 export interface FeatureBoxProps {
   image?: any;
@@ -13,18 +16,34 @@ export interface FeatureBoxProps {
 }
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
-  bg: {
+  root: {
     position: "relative",
     borderRadius: "10px",
-    flex: 2,
-    marginBottom: "30px",
     cursor: "pointer",
-    transition: "transform .3s",
-    textAlign: "center",
-
-    "&:hover": {
-      transform: "scale(1.05)",
+    marginBottom: "50px",
+    height: "310px",
+  },
+  video: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    height: "100%",
+    width: "unset !important",
+    "& > div": {
+      "& video": {
+        objectFit: "cover",
+        borderRadius: "10px",
+      },
     },
+  },
+  bg: {
+    flex: 2,
+    textAlign: "center",
+    background: "rgba(24, 34, 113, 0.6)",
+    borderRadius: "10px",
+    padding: "20px",
+    opacity: 0.9,
+    height: "100%",
   },
 
   image: {
@@ -76,28 +95,49 @@ const FeatureBox: React.FC<FeatureBoxProps> = ({
   const dark = useIsDarkMode();
   const mobile = useMediaQuery(breakpoints.down("xs"));
   const classes = useStyles({ dark, mobile });
+  const [hover, setHover] = useState<boolean>(false);
 
   return (
-    <ScrollAnimation
-      animateIn="fadeInUp"
-      animateOnce={true}
-      className={cx(classes.bg)}
-      style={custom_style}
-    >
-      <Box className={cx(classes.image)}>
-        <img src={image} alt="title" />
+    <Box className={cx(classes.root)}>
+      <Box
+        className={cx(classes.video)}
+        visibility={hover ? "visible" : "hidden"}
+      >
+        <ReactPlayer
+          url={heroVideo}
+          playing
+          loop={true}
+          muted
+          width="100%"
+          height="100%"
+          playbackRate={0.5}
+        />
       </Box>
 
-      <Box mt={!mobile ? "70px" : "50px"} />
+      <Box
+        className={cx(classes.bg)}
+        onMouseEnter={() => {
+          setHover(true);
+        }}
+        onMouseLeave={() => {
+          setHover(false);
+        }}
+      >
+        <Box className={cx(classes.image)}>
+          <img src={image} alt="title" />
+        </Box>
 
-      <Box className={cx(classes.title)}>{title}</Box>
+        <Box mt={!mobile ? "70px" : "50px"} />
 
-      <Box mt="30px"></Box>
+        <Box className={cx(classes.title)}>{title}</Box>
 
-      <Box className={cx(classes.content)}>{content}</Box>
+        <Box mt="30px"></Box>
 
-      <Box mt="30px"></Box>
-    </ScrollAnimation>
+        <Box className={cx(classes.content)}>{content}</Box>
+
+        <Box mt="30px"></Box>
+      </Box>
+    </Box>
   );
 };
 

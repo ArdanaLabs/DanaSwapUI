@@ -11,7 +11,7 @@ import { GradientButton } from "components/Button";
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
     background: "#080E42",
-    padding: "200px 0px",
+    padding: "100px 0px",
 
     [breakpoints.down("sm")]: {
       padding: "50px",

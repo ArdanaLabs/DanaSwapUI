@@ -46,7 +46,6 @@ const Ardana_features = [
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
-    paddingBottom: "100px",
     background: ` url(${BG_PURPLE_RADIAL}) right top no-repeat,
                   url(${BG_BLUE_RADIAL}) top left no-repeat,
                   url(${BG_WAVE}) top 600px left no-repeat,
@@ -238,10 +237,6 @@ const MainSection: React.FC = () => {
                   title={feature.title}
                   content={feature.content}
                   custom_style={{
-                    marginBottom: "50px",
-                    padding: "20px",
-                    flex: 2,
-                    background: "#1D277A",
                   }}
                 />
               </Grid>
