@@ -76,7 +76,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   guide: {
-    width: "50vw",
+    width: "50%",
     display: "flex",
     justifyContent: "space-between",
 
