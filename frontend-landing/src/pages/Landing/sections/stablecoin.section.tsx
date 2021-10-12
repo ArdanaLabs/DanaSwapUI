@@ -26,10 +26,14 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     top: 0,
     left: 0,
     width: "100%",
-    height: "calc(100% - 5px)",
+    height: "100%",
     display: "flex",
     alignItems: "center",
     background: "rgba(24, 34, 113, 0.6)",
+
+    [breakpoints.down("xs")]: {
+      textAlign: "center",
+    },
   },
   title: {
     fontFamily: "Brandon Grotesque",
@@ -40,7 +44,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     color: "#73D6F1",
 
     [breakpoints.down("sm")]: {
-      fontSize: "48px",
+      fontSize: "35px",
     },
   },
 
@@ -50,12 +54,16 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontWeight: 300,
     fontSize: "25px",
     lineHeight: "30px",
-    color: "#FFFFFF",
     width: "50%",
+    color: palette.text.primary,
     marginTop: "30px",
 
     [breakpoints.down("sm")]: {
       fontSize: "16px",
+      lineHeight: "18.4px",
+      width: "100%",
+      marginTop: "15px",
+      padding: "0px 10px",
     },
   },
 }));
@@ -73,8 +81,8 @@ const StableCoinSection: React.FC = () => {
         playing
         loop={true}
         muted
-        width="100%"
-        height="100%"
+        width={!mobile ? "100%" : "unset"}
+        height={!mobile ? "100%" : "400px"}
         playbackRate={0.5}
       />
       <Box className={cx(classes.container)}>
@@ -94,7 +102,7 @@ const StableCoinSection: React.FC = () => {
               }}
             />
           </ScrollAnimation>
-          <Box mt="50px" />
+          <Box mt={!mobile ? "50px" : "30px"} />
           <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
             <GradientButton
               label={i18next.t("PAGE.LANDING.STABLECOIN.BUTTON")}

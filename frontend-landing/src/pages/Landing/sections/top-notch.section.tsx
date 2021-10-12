@@ -52,8 +52,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     justifyContent: "center",
     // whiteSpace: "pre-line",
 
-    [breakpoints.down("sm")]: {
+    [breakpoints.down("xs")]: {
       fontSize: "16px",
+      lineHeight: "18.4px",
     },
   },
   alignStretch: {

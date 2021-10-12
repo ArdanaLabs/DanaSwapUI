@@ -13,8 +13,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     background: "#080E42",
     padding: "100px 0px",
 
-    [breakpoints.down("sm")]: {
-      padding: "50px",
+    [breakpoints.down("xs")]: {
+      padding: "40px 10px",
+      textAlign: "center",
     },
   },
 
@@ -26,8 +27,8 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     lineHeight: "100%",
     color: "#73D6F1",
 
-    [breakpoints.down("sm")]: {
-      fontSize: "48px",
+    [breakpoints.down("xs")]: {
+      fontSize: "35px",
     },
   },
 
@@ -38,6 +39,11 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontSize: "25px",
     lineHeight: "30px",
     color: "#F5FCFE",
+
+    [breakpoints.down("xs")]: {
+      fontSize: "16px",
+      lineHeight: "18.4px",
+    },
   },
 }));
 
@@ -64,7 +70,7 @@ const DanaswapSection: React.FC = () => {
                   {i18next.t("PAGE.LANDING.DANASWAP.CONTENT")}
                 </Box>
               </ScrollAnimation>
-              <Box mt="50px" />
+              <Box mt={!mobile ? "50px" : "30px"} />
               <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
                 <GradientButton
                   label={i18next.t("PAGE.LANDING.DANASWAP.BUTTON")}
