@@ -53,7 +53,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     position: "relative",
 
     "&.active": {
-      color: palette.text.secondary,
+      color: palette.text.primary,
     },
   },
 }));

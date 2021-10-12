@@ -14,8 +14,8 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     background: palette.background.default,
     padding: "50px 20px",
 
-    [breakpoints.down("sm")]: {
-      padding: "50px 0",
+    [breakpoints.down("xs")]: {
+      padding: "20px 0",
     },
   },
   title: {
@@ -26,8 +26,8 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     color: palette.text.secondary,
     textAlign: "center",
 
-    [breakpoints.down("sm")]: {
-      fontSize: "48px",
+    [breakpoints.down("xs")]: {
+      fontSize: "35px",
     },
   },
   partner: {
@@ -65,11 +65,11 @@ const PartnerSection: React.FC = () => {
             style={{ opacity: 0.8 }}
           >
             {Partners.map((partner, index) => (
-              <Box key={index} textAlign="center" p="20px">
+              <Box key={index} textAlign="center" p={!mobile ? "20px" : "10px"}>
                 <img
                   src={partner}
                   alt="partner"
-                  height="45px"
+                  height={!mobile ? "45px" : "25px"}
                   style={{ maxWidth: "max-content" }}
                 />
               </Box>
