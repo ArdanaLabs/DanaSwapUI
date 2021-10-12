@@ -82,7 +82,7 @@ const StableCoinSection: React.FC = () => {
         loop={true}
         muted
         width={!mobile ? "100%" : "unset"}
-        height={!mobile ? "100%" : "400px"}
+        height={!mobile ? "100vh" : "400px"}
         playbackRate={0.5}
       />
       <Box className={cx(classes.container)}>

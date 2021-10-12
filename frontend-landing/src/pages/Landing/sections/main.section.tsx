@@ -101,7 +101,8 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontWeight: 900,
     fontFamily: "Brandon Grotesque",
     fontStyle: "normal",
-    lineHeight: "200%",
+    lineHeight: "100%",
+    marginBottom: "30px",
 
     "& > .cyan": {
       color: "#73D6F1",
@@ -109,6 +110,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
     [breakpoints.down("xs")]: {
       fontSize: "35px",
+      marginBottom: "15px",
     },
   },
 
@@ -137,7 +139,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   aboutVideo: {
-    "& > div > video": {
+    "& > div > video, & .react-player__preview": {
       borderRadius: "10px",
     },
     [breakpoints.down("xs")]: {
