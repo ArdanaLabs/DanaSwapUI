@@ -33,6 +33,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       "& video": {
         objectFit: "cover",
         borderRadius: "10px",
+        transform: "rotateY(180deg)",
       },
     },
   },
