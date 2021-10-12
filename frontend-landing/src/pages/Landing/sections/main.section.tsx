@@ -17,6 +17,8 @@ import BG_BLUE_RADIAL from "assets/backgrounds/dark-blue-radial-gradient.png";
 import BG_WAVE from "assets/backgrounds/wave.png";
 import ICON_TWITTER from "assets/icons/twitter.svg";
 import ICON_TELEGRAM from "assets/icons/telegram.svg";
+import ICON_PLAY from "assets/icons/video-play.svg";
+import BG_POSTER from "assets/backgrounds/video-poster.svg";
 
 // const sphereVideo = "assets/videos/sphere/output.m3u8";
 const heroVideo =
@@ -214,11 +216,17 @@ const MainSection: React.FC = () => {
               <Box className={cx(classes.aboutVideo)}>
                 <ReactPlayer
                   url={heroVideo}
-                  playing={false}
+                  playing
                   loop={false}
                   width="100%"
                   height="100%"
                   controls
+                  light={BG_POSTER}
+                  playIcon={
+                    <Box m="100px">
+                      <img src={ICON_PLAY} alt="playIcon" width="100px" />
+                    </Box>
+                  }
                 />
               </Box>
             </Grid>
