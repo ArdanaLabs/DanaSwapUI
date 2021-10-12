@@ -24,6 +24,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "flex-start",
+
     "& span": {
       "&:first-child": {
         fontFamily: "Brandon Grotesque",
@@ -32,18 +33,36 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
         color: palette.text.secondary,
         marginBottom: "10px",
         fontWeight: 900,
+
+        [breakpoints.down("xs")]: {
+          fontSize: "20px",
+          marginBottom: "0px",
+        },
       },
       fontFamily: "Museo Sans",
       fontSize: "20px",
       lineHeight: "30px",
       color: palette.common.white,
+
+      [breakpoints.down("xs")]: {
+        fontSize: "15px",
+      },
+    },
+
+    [breakpoints.down("xs")]: {
+      flexDirection: "column",
+      padding: "40px 20px",
+      textAlign: "center",
+      alignItems: "center",
     },
   },
 
   logo: {
     display: "flex",
     alignItems: "center",
+    justifyContent: "center",
     cursor: "pointer",
+    marginBottom: "20px",
 
     "& > img": {
       "&:first-child": {
@@ -63,6 +82,11 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
     "& > .section": {
       display: "flex",
+      flexDirection: "column",
+      marginBottom: "20px",
+    },
+
+    [breakpoints.down("xs")]: {
       flexDirection: "column",
     },
   },
