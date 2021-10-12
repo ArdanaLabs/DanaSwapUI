@@ -16,8 +16,8 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     background: `#080E42`,
     padding: "100px 0",
 
-    [breakpoints.down("sm")]: {
-      padding: "50px 0",
+    [breakpoints.down("xs")]: {
+      padding: "20px 0",
     },
   },
 
@@ -36,7 +36,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     },
 
     [breakpoints.down("sm")]: {
-      fontSize: "48px",
+      fontSize: "35px",
     },
   },
 
@@ -48,7 +48,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     lineHeight: "30px",
     textAlign: "center",
     color: "#F5FCFE",
-    whiteSpace: "pre-line",
+    display: "flex",
+    justifyContent: "center",
+    // whiteSpace: "pre-line",
 
     [breakpoints.down("sm")]: {
       fontSize: "16px",
@@ -83,8 +85,12 @@ const TopNotchSection: React.FC = () => {
 
         <Box mt="30px" />
 
-        <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-          <Box className={cx(classes.content)}>
+        <ScrollAnimation
+          className={cx(classes.content)}
+          animateIn="fadeInUp"
+          animateOnce={true}
+        >
+          <Box width={!mobile ? "50vw" : "100%"}>
             {i18next.t("PAGE.LANDING.TOP-NOTCH.CONTENT")}
           </Box>
         </ScrollAnimation>
@@ -99,11 +105,11 @@ const TopNotchSection: React.FC = () => {
             style={{ opacity: 0.8 }}
           >
             {TopNotchTeams.map((team, index) => (
-              <Box key={index} textAlign="center" px="10px">
+              <Box key={index} textAlign="center" p="10px">
                 <img
                   src={team}
                   alt="team"
-                  height="45px"
+                  height={!mobile ? "45px" : "35px"}
                   style={{ maxWidth: "max-content" }}
                 />
               </Box>
@@ -111,9 +117,9 @@ const TopNotchSection: React.FC = () => {
           </Box>
         </ScrollAnimation>
 
-        <Box mt="50px" />
+        <Box mt={!mobile ? "50px" : "20px"} />
 
-        <Grid container spacing={5}>
+        <Grid container spacing={!mobile ? 5 : 2}>
           {Members.map((profile: ProfileType, index) => (
             <Grid
               item

@@ -9,10 +9,14 @@ import { ProfileBox } from "components/Box";
 import { Advisors } from "data";
 import { ProfileType } from "components/Box/ProfileBox";
 
-const useStyles = makeStyles(({ palette }) => ({
+const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
     background: palette.background.default,
     padding: "0px 20px 100px 20px",
+
+    [breakpoints.down("xs")]: {
+      padding: "30px 0px 50px",
+    },
   },
   title: {
     fontFamily: "Brandon Grotesque",
@@ -22,6 +26,11 @@ const useStyles = makeStyles(({ palette }) => ({
     color: palette.text.secondary,
     textAlign: "center",
     margin: "30px 0 100px",
+
+    [breakpoints.down("xs")]: {
+      fontSize: "35px",
+      marginBottom: "0px",
+    },
   },
   alignStretch: {
     display: "flex",
@@ -40,7 +49,7 @@ const ProfileSection: React.FC = () => {
     <Box className={cx(classes.root)}>
       <Container>
         <Box className={cx(classes.title)}>Advisors</Box>
-        <Grid container spacing={5}>
+        <Grid container spacing={!mobile ? 5 : 2}>
           {Advisors.map((profile: ProfileType, index) => (
             <Grid
               item

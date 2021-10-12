@@ -127,6 +127,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       borderRadius: "10px",
     },
   },
+
+  playIcon: {
+    margin: "100px",
+  },
 }));
 
 const MainSection: React.FC = () => {
@@ -199,7 +203,7 @@ const MainSection: React.FC = () => {
           </Grid> */}
         </Grid>
 
-        <Box mt={!mobile ? "250px" : "50px"}></Box>
+        <Box mt={!mobile ? "300px" : "50px"}></Box>
         <Box>
           <Grid container spacing={3} alignItems="center">
             <Grid item xs={12} sm={6}>
@@ -223,7 +227,7 @@ const MainSection: React.FC = () => {
                   controls
                   light={BG_POSTER}
                   playIcon={
-                    <Box m="100px">
+                    <Box className={cx(classes.playIcon)}>
                       <img src={ICON_PLAY} alt="playIcon" width="100px" />
                     </Box>
                   }

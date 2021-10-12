@@ -20,13 +20,21 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     alignItems: "center",
     // border: "3px solid #73D6F1",
     background: `url(${BG_RING}) center center no-repeat`,
-    backgroundSize: 'cover',
-    width: '200px',
-    height: '200px',
+    backgroundSize: "cover",
+    width: "200px",
+    height: "200px",
+
+    [breakpoints.down("xs")]: {
+      width: "100px",
+      height: "100px",
+    },
   },
 
   photo: {
     borderRadius: "50%",
+    [breakpoints.down("xs")]: {
+      width: "60px",
+    },
   },
 }));
 
@@ -38,11 +46,7 @@ const Avatar: React.FC<AvatarProps> = ({ image, size }) => {
 
   return (
     <Box className={cx(classes.root)}>
-      <img
-        className={cx(classes.photo)}
-        src={image}
-        alt="avatar"
-      />
+      <img className={cx(classes.photo)} src={image} alt="avatar" />
     </Box>
   );
 };
