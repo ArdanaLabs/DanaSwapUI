@@ -20,15 +20,19 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     position: "relative",
     borderRadius: "10px",
     cursor: "pointer",
-    marginBottom: "50px",
     height: "310px",
+    marginTop: "65px",
+
+    [breakpoints.down("xs")]: {
+      height: "160px",
+    },
   },
   video: {
     position: "absolute",
     top: 0,
     left: 0,
     height: "100%",
-    width: "unset !important",
+    width: "100%",
     "& > div": {
       "& video": {
         objectFit: "cover",
@@ -43,7 +47,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     background: "rgba(24, 34, 113, 0.6)",
     borderRadius: "10px",
     padding: "20px",
-    opacity: 0.9,
+    opacity: 0.99,
     height: "100%",
   },
 
@@ -54,6 +58,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     top: "-10px",
     "& > img": {
       width: "175px",
+
+      [breakpoints.down("xs")]: {
+        width: "100px",
+      },
     },
   },
 
@@ -68,7 +76,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
     [breakpoints.down("sm")]: {
       whiteSpace: "unset",
-      fontSize: "24px",
+      fontSize: "25px",
     },
   },
 
@@ -82,6 +90,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
     [breakpoints.down("sm")]: {
       fontSize: "16px",
+      lineHeight: "19.2px",
     },
   },
 }));
@@ -128,11 +137,11 @@ const FeatureBox: React.FC<FeatureBoxProps> = ({
           <img src={image} alt="title" />
         </Box>
 
-        <Box mt={!mobile ? "70px" : "50px"} />
+        <Box mt={!mobile ? "70px" : "25px"} />
 
         <Box className={cx(classes.title)}>{title}</Box>
 
-        <Box mt="30px"></Box>
+        <Box mt={!mobile ? "30px" : "10px"} />
 
         <Box className={cx(classes.content)}>{content}</Box>
 

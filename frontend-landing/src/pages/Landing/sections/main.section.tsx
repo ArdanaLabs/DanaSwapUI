@@ -54,6 +54,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
                   url(${BG_WAVE}) top 600px left no-repeat,
                   #080E42`,
     backgroundSize: "contain",
+
+    [breakpoints.down("xs")]: {
+      textAlign: "center",
+    },
   },
 
   title: {
@@ -64,19 +68,20 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     lineHeight: "100%",
     color: "#F5FCFE",
     margin: "100px 0px 30px 0",
+    whiteSpace: "pre-line",
 
     "& > strong": {
       color: "#73D6F1",
     },
 
     [breakpoints.down("sm")]: {
-      fontSize: "64px",
+      fontSize: "35px",
+      marginBottom: "10px",
     },
   },
 
   subTitle: {
     color: "white",
-    whiteSpace: "pre-line",
     fontSize: "24px",
     fontFamily: "Museo Sans",
     fontStyle: "normal",
@@ -84,7 +89,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     lineHeight: "29px",
 
     [breakpoints.down("sm")]: {
-      fontSize: "18px",
+      fontSize: "16px",
+      lineHeight: "18.4px",
+      whiteSpace: "pre-line",
     },
   },
 
@@ -99,6 +106,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     "& > .cyan": {
       color: "#73D6F1",
     },
+
+    [breakpoints.down("xs")]: {
+      fontSize: "35px",
+    },
   },
 
   definitionA: {
@@ -109,13 +120,16 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontFamily: "Museo Sans",
     fontStyle: "normal",
     lineHeight: "30px",
+
+    [breakpoints.down("xs")]: {
+      fontSize: "16px",
+      lineHeight: "18.4px",
+    },
   },
 
   socialIconLink: {
-    marginRight: "50px",
     cursor: "pointer",
     color: "#F5FCFE",
-    fontFamily: "auto",
 
     "& > img": {
       width: "23px",
@@ -126,10 +140,18 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     "& > div > video": {
       borderRadius: "10px",
     },
+    [breakpoints.down("xs")]: {
+      marginTop: "20px",
+      marginLeft: "-16px",
+      marginRight: "-16px",
+    },
   },
 
   playIcon: {
     margin: "100px",
+    [breakpoints.down("xs")]: {
+      margin: "60px",
+    },
   },
 }));
 
@@ -159,27 +181,37 @@ const MainSection: React.FC = () => {
               />
               <Box
                 className={cx(classes.subTitle)}
-                mr={!mobile && "-150px"}
                 textAlign={mobile ? "center" : "left"}
               >
                 {i18next.t("PAGE.LANDING.DESCRIPTION")}
               </Box>
             </ScrollAnimation>
 
-            <Box mt="50px"></Box>
+            <Box mt={!mobile ? "50px" : "30px"} />
 
             <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
               <Box
                 display="flex"
                 alignItems="center"
-                textAlign={mobile ? "center" : "left"}
+                justifyContent="space-between"
+                width={!mobile ? "300px" : "100%"}
+                textAlign={!mobile ? "left" : "center"}
+                flexDirection={!mobile ? "row" : "column-reverse"}
               >
-                <Link className={cx(classes.socialIconLink)} href="#">
-                  <img src={ICON_TELEGRAM} alt="telegram" />
-                </Link>
-                <Link className={cx(classes.socialIconLink)} href="#">
-                  <img src={ICON_TWITTER} alt="twitter" />
-                </Link>
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="space-between"
+                  width="100px"
+                  mt={!mobile ? "0px" : "15px"}
+                >
+                  <Link className={cx(classes.socialIconLink)} href="#">
+                    <img src={ICON_TELEGRAM} alt="telegram" />
+                  </Link>
+                  <Link className={cx(classes.socialIconLink)} href="#">
+                    <img src={ICON_TWITTER} alt="twitter" />
+                  </Link>
+                </Box>
                 <Link href="http://app.ardana.org/launch" underline="none">
                   <GradientButton
                     label={i18next.t("PAGE.LANDING.COMINGSOON")}
@@ -237,9 +269,9 @@ const MainSection: React.FC = () => {
           </Grid>
         </Box>
 
-        <Box mt={!mobile ? "150px" : "50px"}></Box>
+        <Box mt={!mobile ? "100px" : "50px"}></Box>
 
-        <Box>
+        <Box mb="50px" mx="10px">
           <Grid container spacing={3} alignItems="stretch">
             {Ardana_features.map((feature, index) => (
               <Grid
