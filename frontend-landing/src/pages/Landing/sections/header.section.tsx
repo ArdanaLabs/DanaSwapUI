@@ -38,6 +38,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       },
     },
   },
+  drawer: {
+    padding: "10px",
+  },
   menuItem: {
     fontFamily: "Museo Sans",
     fontWeight: 900,
@@ -49,22 +52,8 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontSize: "13px",
     position: "relative",
 
-    "&:hover": {
-      color: "#73D6F1",
-    },
-
     "&.active": {
-      color: "#73D6F1",
-      "&::before": {
-        content: "' '",
-        position: "absolute",
-        top: "100%",
-        width: "100%",
-        left: 0,
-        height: "2.5px",
-        borderRadius: "2px",
-        background: "linear-gradient(90deg, #5F72FF 0%, #73D6F1 100%)",
-      },
+      color: palette.text.secondary,
     },
   },
 }));
@@ -140,7 +129,12 @@ const HeaderSection: React.FC = () => {
               toggle={setOpenMenu}
             />
           </IconButton>
-          <Drawer anchor={"top"} open={openMenu} onClose={toggleMenu}>
+          <Drawer
+            className={cx(classes.drawer)}
+            anchor={"top"}
+            open={openMenu}
+            onClose={toggleMenu}
+          >
             {links.map((link, index) => {
               return (
                 <Link
@@ -149,8 +143,6 @@ const HeaderSection: React.FC = () => {
                   key={index}
                   style={{
                     textAlign: "center",
-                    background:
-                      "linear-gradient(90.19deg, #2F3DA0 27.19%, #73D6F1 99.87%)",
                   }}
                 >
                   {link.label}

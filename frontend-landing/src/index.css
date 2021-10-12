@@ -31,21 +31,25 @@
 @font-face {
   font-family: "Brandon Grotesque";
   src: local("Brandon Grotesque Bold"),
-    url("./assets/font/Brandon-Grotesque-Font-Family/brandon-grotesque-bold-regular.ttf") format("truetype");
+    url("./assets/font/Brandon-Grotesque-Font-Family/brandon-grotesque-bold-regular.ttf")
+      format("truetype");
   font-weight: 900;
 }
 @font-face {
   font-family: "Brandon Grotesque";
   src: local("Brandon Grotesque Light"),
-    url("./assets/font/Brandon-Grotesque-Font-Family/brandon-grotesque-light.otf") format("opentype");
+    url("./assets/font/Brandon-Grotesque-Font-Family/brandon-grotesque-light.otf")
+      format("opentype");
   font-weight: 300;
 }
 
 * {
-  transition: all .2s ease-in;
+  transition: all 0.2s ease-in;
 }
 
 .hamburger-react > div {
-  height: 5px !important;
+  height: 4px !important;
   border-radius: 5px;
+  width: 30px !important;
+  background: linear-gradient(90deg, #5f72ff 0%, #73d6f1 100%) !important;
 }
