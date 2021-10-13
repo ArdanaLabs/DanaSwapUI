@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Box, useMediaQuery, Container, Grid } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
@@ -9,6 +9,9 @@ import i18next from "i18next";
 import { useIsDarkMode } from "state/user/hooks";
 import { GradientButton } from "components/Button";
 import { DanaswapFeature } from "components/Box";
+
+import ICO_NEXT from "assets/icons/carousel-next.svg";
+import ICO_PREV from "assets/icons/carousel-prev.svg";
 
 const Ardana_features = [
   {
@@ -75,6 +78,13 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     borderRadius: "10px",
     background: palette.background.paper,
   },
+  carouselAction: {
+    display: "flex",
+    "& img": {
+      cursor: "pointer",
+      width: "100px",
+    },
+  },
 }));
 
 const DanaswapSection: React.FC = () => {
@@ -82,9 +92,18 @@ const DanaswapSection: React.FC = () => {
   const dark = useIsDarkMode();
   const mobile = useMediaQuery(breakpoints.down("xs"));
   const classes = useStyles({ dark, mobile });
+  const carouselRef = useRef<any>(null);
 
   const renderArrow = () => <></>;
   const renderPagination = () => <></>;
+
+  const handleCarousel = (direction: number) => {
+    if (direction > 0) {
+      carouselRef.current.slideNext();
+    } else {
+      carouselRef.current.slidePrev();
+    }
+  };
 
   return (
     <Box className={cx(classes.bg)}>
@@ -116,28 +135,29 @@ const DanaswapSection: React.FC = () => {
 
           <Grid item xs={12} sm={6}>
             <Carousel
+              ref={(ref) => (carouselRef.current = ref)}
               className={cx(classes.carousel)}
               itemsToShow={2}
               isRTL={false}
               renderArrow={renderArrow}
               renderPagination={renderPagination}
             >
-              <DanaswapFeature
-                image={Ardana_features[0].image}
-                title={Ardana_features[0].title}
-                content={Ardana_features[0].content}
-              />
-              <DanaswapFeature
-                image={Ardana_features[0].image}
-                title={Ardana_features[0].title}
-                content={Ardana_features[0].content}
-              />
-              <DanaswapFeature
-                image={Ardana_features[0].image}
-                title={Ardana_features[0].title}
-                content={Ardana_features[0].content}
-              />
+              {Ardana_features.map((feature) => (
+                <DanaswapFeature
+                  image={feature.image}
+                  title={feature.title}
+                  content={feature.content}
+                />
+              ))}
             </Carousel>
+            <Box className={cx(classes.carouselAction)}>
+              <Box onClick={() => handleCarousel(-1)}>
+                <img src={ICO_PREV} alt="prev" />
+              </Box>
+              <Box onClick={() => handleCarousel(1)}>
+                <img src={ICO_NEXT} alt="next" />
+              </Box>
+            </Box>
           </Grid>
         </Grid>
       </Container>
