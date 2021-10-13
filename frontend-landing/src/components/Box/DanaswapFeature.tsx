@@ -18,12 +18,27 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     textAlign: "center",
     cursor: "pointer",
     width: "400px",
-    // height: "500px",
+    height: "500px",
+    background: palette.background.paper,
+
+    [breakpoints.down("xs")]: {
+      width: "100%",
+      height: "230px",
+      marginTop: "80px",
+      paddingTop: "80px",
+    },
   },
 
   image: {
     "& > img": {
       width: "150px",
+    },
+
+    [breakpoints.down("xs")]: {
+      position: "absolute",
+      top: 0,
+      left: "50%",
+      transform: "translate(-50%, -50%)",
     },
   },
 
@@ -32,8 +47,12 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontWeight: 900,
     fontSize: "30px",
     lineHeight: "110%",
-
     color: palette.text.primary,
+
+    [breakpoints.down("xs")]: {
+      fontSize: "25px",
+      lineHeight: "27.5px",
+    },
   },
 
   content: {
@@ -41,6 +60,11 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontSize: "20px",
     lineHeight: "30px",
     color: palette.text.primary,
+
+    [breakpoints.down("xs")]: {
+      fontSize: "16px",
+      lineHeight: "19.2px",
+    },
   },
 
   border: {
@@ -81,7 +105,7 @@ const DanaswapFeature: React.FC<DanaswapFeatureProps> = ({
         <img src={image} alt="" />
       </Box>
       <Box className={cx(classes.title)}>{title}</Box>
-      <Box mt={"30px"} />
+      <Box mt={!mobile ? "30px" : "15px"} />
       <Box className={cx(classes.content)}>{content}</Box>
       <Box className={cx(classes.border, { hover: hover })} />
     </Box>

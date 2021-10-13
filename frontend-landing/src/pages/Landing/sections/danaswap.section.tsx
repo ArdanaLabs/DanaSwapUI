@@ -15,24 +15,24 @@ import ICO_PREV from "assets/icons/carousel-prev.svg";
 
 const Ardana_features = [
   {
-    image: require("assets/logos/fully-decentralized.svg").default,
-    title: i18next.t("PAGE.LANDING.ARDANA.FEATURES.0.TITLE"),
-    content: i18next.t("PAGE.LANDING.ARDANA.FEATURES.0.CONTENT"),
+    image: require("assets/logos/ultra-low-slippage.svg").default,
+    title: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.0.TITLE"),
+    content: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.0.CONTENT"),
   },
   {
-    image: require("assets/logos/borrow-lend.svg").default,
-    title: i18next.t("PAGE.LANDING.ARDANA.FEATURES.1.TITLE"),
-    content: i18next.t("PAGE.LANDING.ARDANA.FEATURES.1.CONTENT"),
+    image: require("assets/logos/saving-account.svg").default,
+    title: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.1.TITLE"),
+    content: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.1.CONTENT"),
   },
   {
-    image: require("assets/logos/store-of-value.svg").default,
-    title: i18next.t("PAGE.LANDING.ARDANA.FEATURES.2.TITLE"),
-    content: i18next.t("PAGE.LANDING.ARDANA.FEATURES.2.CONTENT"),
+    image: require("assets/logos/saving-account.svg").default,
+    title: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.2.TITLE"),
+    content: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.2.CONTENT"),
   },
   {
-    image: require("assets/logos/powered-by-cardano.svg").default,
-    title: i18next.t("PAGE.LANDING.ARDANA.FEATURES.3.TITLE"),
-    content: i18next.t("PAGE.LANDING.ARDANA.FEATURES.3.CONTENT"),
+    image: require("assets/logos/saving-account.svg").default,
+    title: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.3.TITLE"),
+    content: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.3.CONTENT"),
   },
 ];
 
@@ -42,7 +42,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     padding: "100px 0px",
 
     [breakpoints.down("xs")]: {
-      padding: "40px 10px",
+      padding: "40px 0px",
       textAlign: "center",
     },
   },
@@ -77,12 +77,25 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   carousel: {
     borderRadius: "10px",
     background: palette.background.paper,
+
+    [breakpoints.down("xs")]: {
+      background: "transparent",
+      marginLeft: "-16px",
+      width: "100vw !important",
+      "& .rec .rec-slider-container": {
+        margin: "0 !important",
+      },
+    },
   },
   carouselAction: {
     display: "flex",
+    justifyContent: "left",
     "& img": {
       cursor: "pointer",
       width: "100px",
+    },
+    [breakpoints.down("xs")]: {
+      justifyContent: "center",
     },
   },
 }));
@@ -137,7 +150,7 @@ const DanaswapSection: React.FC = () => {
             <Carousel
               ref={(ref) => (carouselRef.current = ref)}
               className={cx(classes.carousel)}
-              itemsToShow={2}
+              itemsToShow={!mobile ? 2 : 1}
               isRTL={false}
               renderArrow={renderArrow}
               renderPagination={renderPagination}

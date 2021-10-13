@@ -39,7 +39,25 @@
       "DANASWAP": {
         "TITLE": "Danaswap",
         "CONTENT": "An automated market maker (AMM) decentralized exchange for stable multi-asset pools. Danaswap is highly capital efficient enabling swaps with minimal slippage while providing low-risk yield opportunities for liquidity providers.",
-        "BUTTON": "LAUNCH DANASWAP"
+        "BUTTON": "LAUNCH DANASWAP",
+        "FEATURES": [
+          {
+            "TITLE": "Ultra-low Slippage",
+            "CONTENT": "Swap between stablecoins and stable assets such as wrapped/synthetic Bitcoin with minimal slippage."
+          },
+          {
+            "TITLE": "Savings Account",
+            "CONTENT": "Deposit Ardana stablecoins to earn passive income through interest payments."
+          },
+          {
+            "TITLE": "Savings Account",
+            "CONTENT": "Deposit Ardana stablecoins to earn passive income through interest payments."
+          },
+          {
+            "TITLE": "Savings Account",
+            "CONTENT": "Deposit Ardana stablecoins to earn passive income through interest payments."
+          }
+        ]
       },
       "STABLECOIN": {
         "TITLE": "Stablecoin",
