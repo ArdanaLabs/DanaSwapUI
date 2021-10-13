@@ -155,8 +155,9 @@ const DanaswapSection: React.FC = () => {
               renderArrow={renderArrow}
               renderPagination={renderPagination}
             >
-              {Ardana_features.map((feature) => (
+              {Ardana_features.map((feature, i: number) => (
                 <DanaswapFeature
+                  key={feature.title + i}
                   image={feature.image}
                   title={feature.title}
                   content={feature.content}

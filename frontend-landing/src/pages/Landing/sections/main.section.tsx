@@ -173,7 +173,6 @@ const MainSection: React.FC = () => {
             <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
               <Box
                 className={cx(classes.title)}
-                mr={!mobile && "-10px"}
                 textAlign={mobile ? "center" : "left"}
                 dangerouslySetInnerHTML={{
                   __html: i18next.t("PAGE.LANDING.TITLE", {
