@@ -304,3 +304,49 @@ export const Investors = [
   // require("assets/logos/indigo.svg").default,
   // require("assets/logos/sundaeswap.svg").default,
 ];
+
+export const externals: any = {
+  Resources: {
+    Whitepaper: "https://docsend.com/view/x29erqedayrufxzb",
+    "Pitch Deck": "https://docsend.com/view/kc5m2snw7t77fs5r",
+    Roadmap: "#",
+    Docs: "https://docs.ardana.org/",
+  },
+  Products: {
+    DEX: "#",
+    Stablecoin: "#",
+    Multisig: "#",
+  },
+  Company: {
+    Team: "/team",
+    "Contact Us": "mailto:enquiries@ardana.org",
+    Careers: "mailto:careers@ardana.org",
+  },
+};
+
+export const socials = [
+  {
+    image: require("assets/icons/twitter.svg").default,
+    url: "https://twitter.com/ardanaproject",
+  },
+  {
+    image: require("assets/icons/discord.svg").default,
+    url: "https://discord.gg/c9skrZvsqH",
+  },
+  {
+    image: require("assets/icons/telegram.svg").default,
+    url: "https://t.me/ardanaofficial",
+  },
+  {
+    image: require("assets/icons/medium.svg").default,
+    url: "https://medium.com/ardana-hub",
+  },
+  {
+    image: require("assets/icons/monkey.svg").default,
+    url: "https://www.youtube.com/channel/UCuVtpKzlmsD6s0ZiC0hakkA",
+  },
+  {
+    image: require("assets/icons/linkedin.svg").default,
+    url: "https://www.linkedin.com/company/ardanalabs/",
+  },
+];

@@ -2,20 +2,13 @@ import React from "react";
 import { Box, useMediaQuery, Link } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
+import _ from "lodash";
 
 import { useIsDarkMode } from "state/user/hooks";
 
+import { externals, socials } from "data";
 import LOGO_White from "assets/logo_white.png";
 import LOGO_Text from "assets/logo_text.png";
-
-const socialLinks = [
-  require("assets/icons/twitter.svg").default,
-  require("assets/icons/discord.svg").default,
-  require("assets/icons/telegram.svg").default,
-  require("assets/icons/medium.svg").default,
-  require("assets/icons/monkey.svg").default,
-  require("assets/icons/linkedin.svg").default,
-];
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -39,10 +32,13 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
           marginBottom: "0px",
         },
       },
+      "& > a": {
+        color: palette.common.white,
+      },
       fontFamily: "Museo Sans",
       fontSize: "20px",
       lineHeight: "30px",
-      color: palette.common.white,
+      cursor: "pointer",
 
       [breakpoints.down("xs")]: {
         fontSize: "15px",
@@ -122,26 +118,23 @@ const Footer: React.FC = () => {
             <img src={LOGO_Text} alt="logo" />
           </Box>
         </Box>
-        <Box className="section">
-          <span>Resources</span>
-          <span>Whitepaper</span>
-          <span>Pitch Deck</span>
-          <span>Roadmap</span>
-          <span>Docs</span>
-        </Box>
 
-        <Box className="section">
-          <span>Products</span>
-          <span>DEX</span>
-          <span>Stablecoin</span>
-          <span>Multisig</span>
-        </Box>
-
-        <Box className="section">
-          <span>Company</span>
-          <span>Conact Us</span>
-          <span>Careers</span>
-        </Box>
+        {_.keys(externals).map((group) => (
+          <Box className="section" key={group}>
+            <span>{group}</span>
+            {_.keys(externals[group]).map((external) => (
+              <span key={external}>
+                <Link
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  href={externals[group][external]}
+                >
+                  {external}
+                </Link>
+              </span>
+            ))}
+          </Box>
+        ))}
       </Box>
       <Box className={cx(classes.socials)}>
         <span>Our Socials</span>
@@ -153,9 +146,15 @@ const Footer: React.FC = () => {
 
         <Box mt="25px" />
         <Box className="link-container">
-          {socialLinks.map((socialLink: string, index: number) => (
-            <Link className="link" href="#" key={index}>
-              <img src={socialLink} alt="social Link" />
+          {socials.map((social: any, index: number) => (
+            <Link
+              className="link"
+              href={social.url}
+              key={index}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <img src={social.image} alt="social Link" />
             </Link>
           ))}
         </Box>
