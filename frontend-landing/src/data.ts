@@ -209,24 +209,24 @@ export const Advisors: ProfileType[] = [
       linkedin: "https://www.linkedin.com/in/joerivangeelen/",
     },
   },
-  {
-    avatar: require("assets/avatars/YosefShaftal.png").default,
-    name: "Yosef Shaftal",
-    role: "Business",
-    info: `Executive director of the <strong>Israeli Blockchain Association.</strong>\n\nStrategic advisor to startups, corporations and governments.`,
-    socials: {
-      linkedin: "https://www.linkedin.com",
-    },
-  },
-  {
-    avatar: require("assets/avatars/JDGagnon.png").default,
-    name: "JD Gagnon",
-    role: "DeFi",
-    info: `Founder of <strong>Benqi</strong>, liquidity market protocol on Avalanche.\nDivision director at IG Wealth Management.`,
-    socials: {
-      linkedin: "https://www.linkedin.com",
-    },
-  },
+  // {
+  //   avatar: require("assets/avatars/YosefShaftal.png").default,
+  //   name: "Yosef Shaftal",
+  //   role: "Business",
+  //   info: `Executive director of the <strong>Israeli Blockchain Association.</strong>\n\nStrategic advisor to startups, corporations and governments.`,
+  //   socials: {
+  //     linkedin: "https://www.linkedin.com",
+  //   },
+  // },
+  // {
+  //   avatar: require("assets/avatars/JDGagnon.png").default,
+  //   name: "JD Gagnon",
+  //   role: "DeFi",
+  //   info: `Founder of <strong>Benqi</strong>, liquidity market protocol on Avalanche.\nDivision director at IG Wealth Management.`,
+  //   socials: {
+  //     linkedin: "https://www.linkedin.com",
+  //   },
+  // },
   {
     avatar: require("assets/avatars/CalEvans.png").default,
     name: "Cal Evans",
