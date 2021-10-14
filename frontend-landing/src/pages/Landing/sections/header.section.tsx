@@ -52,8 +52,22 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontSize: "13px",
     position: "relative",
 
+    "&:hover": {
+      color: "#73D6F1",
+    },
+    
     "&.active": {
-      color: palette.text.primary,
+      color: palette.text.secondary,
+      "&::before": {
+        content: "' '",
+        position: "absolute",
+        top: "100%",
+        width: "100%",
+        left: 0,
+        height: "2.5px",
+        borderRadius: "2px",
+        background: "linear-gradient(90deg, #5F72FF 0%, #73D6F1 100%)",
+      },
     },
   },
 }));
