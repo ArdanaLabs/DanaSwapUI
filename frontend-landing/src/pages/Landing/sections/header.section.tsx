@@ -55,7 +55,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     "&:hover": {
       color: "#73D6F1",
     },
-    
+
     "&.active": {
       color: palette.text.secondary,
       "&::before": {
@@ -67,6 +67,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
         height: "2.5px",
         borderRadius: "2px",
         background: "linear-gradient(90deg, #5F72FF 0%, #73D6F1 100%)",
+
+        [breakpoints.down("xs")]: {
+          display: "none",
+        },
       },
     },
   },
@@ -149,20 +153,18 @@ const HeaderSection: React.FC = () => {
             open={openMenu}
             onClose={toggleMenu}
           >
-            {links.map((link, index) => {
-              return (
-                <Link
-                  href={link.to}
-                  className={cx(classes.menuItem, "active")}
-                  key={index}
-                  style={{
-                    textAlign: "center",
-                  }}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
+            {links.map((link, index) => (
+              <Link
+                href={link.to}
+                className={cx(classes.menuItem)}
+                key={index}
+                style={{
+                  textAlign: "center",
+                }}
+              >
+                {link.label}
+              </Link>
+            ))}
           </Drawer>
         </>
       )}
