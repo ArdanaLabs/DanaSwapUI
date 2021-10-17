@@ -1,5 +1,5 @@
 import jsc from 'jsverify';
-import { nFormatter } from "hooks";
+import { nFormatter, nReader } from "hooks";
 
 describe('Hooks formatter', () => {
   describe('nFormatter method', () => {
@@ -45,8 +45,11 @@ describe('Hooks formatter', () => {
     })
 
     jsc.property('should check the properties of nFormatter method', jsc.nat, jsc.nat, jsc.bool, (num, digits, space) => {
-      nFormatter(num, digits, space)
-      return true;
+      const formattedCurrency = nFormatter(num, digits, space)
+      // console.log(formattedCurrency, nReader(formattedCurrency, digits, space))
+      // console.log("$ 13K", nReader("$ 13K", digits, space))
+      return nReader(formattedCurrency, digits, space) === num
+      // return true;
     })
   })
 })

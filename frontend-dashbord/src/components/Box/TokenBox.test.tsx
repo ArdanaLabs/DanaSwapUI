@@ -62,4 +62,7 @@ describe("Components / Box / TokenBox", () => {
   it("should contain Dialog component", () => {
     expect(wrapper.find(Dialog)).toHaveLength(1);
   });
+  it('should have max amount button', () => {
+    expect(wrapper.find("#max_button")).toHaveLength(1);
+  })
 });
