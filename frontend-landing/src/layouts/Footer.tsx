@@ -9,10 +9,13 @@ import { useIsDarkMode } from "state/user/hooks";
 import { externals, socials } from "data";
 import LOGO_White from "assets/logo_white.png";
 import LOGO_Text from "assets/logo_text.png";
+import BG_WAVE from "assets/backgrounds/wave.png";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
-    background: "#293599",
+    background: ` linear-gradient(0deg, #080E42 32.04%, rgba(8, 14, 66, 0) 95.34%) top left no-repeat, 
+                  url(${BG_WAVE}) top left no-repeat`,
+    backgroundSize: "cover",
     padding: "60px 100px",
     display: "flex",
     justifyContent: "space-between",
