@@ -2,7 +2,6 @@ import React from "react";
 import cx from "classnames";
 import {
   Box,
-  Container,
   makeStyles,
   useMediaQuery,
   useTheme,
@@ -13,7 +12,7 @@ import { Footer, Header } from "layouts";
 const useStyles = makeStyles(({ palette }) => ({
   self: {
     background: palette.background.default,
-    paddingTop: "210px",
+    position: "relative",
   },
 }));
 
@@ -30,7 +29,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <Box className={cx(classes.self)}>
       <Header />
-      <Container>{children}</Container>
+      {children}
       <Footer />
     </Box>
   );

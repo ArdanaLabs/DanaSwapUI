@@ -1,58 +1,104 @@
 import React from "react";
-import { Box, useMediaQuery, Container, Link } from "@material-ui/core";
+import { Box, useMediaQuery, Link } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
+import _ from "lodash";
 
 import { useIsDarkMode } from "state/user/hooks";
 
+import { externals, socials } from "data";
 import LOGO_White from "assets/logo_white.png";
 import LOGO_Text from "assets/logo_text.png";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
-  bg: {
-    background: palette.primary.dark,
-    marginTop: "50px",
-    padding: 10,
-  },
-
-  logo: {
-    paddingLeft: "10px",
-    display: "flex",
-    alignItems: "center",
-    cursor: "pointer",
-    "& img": {
-      padding: "20px 10px",
-    },
-  },
-
-  container: {
+  root: {
+    background: "#293599",
+    padding: "60px 100px",
     display: "flex",
     justifyContent: "space-between",
-    alignItems: "center",
+    alignItems: "flex-start",
+
+    "& span": {
+      "&:first-child": {
+        fontFamily: "Brandon Grotesque",
+        fontSize: "25px",
+        lineHeight: "36px",
+        color: palette.text.secondary,
+        marginBottom: "10px",
+        fontWeight: 900,
+
+        [breakpoints.down("xs")]: {
+          fontSize: "20px",
+          marginBottom: "0px",
+        },
+      },
+      "& > a": {
+        color: palette.common.white,
+      },
+      fontFamily: "Museo Sans",
+      fontSize: "20px",
+      lineHeight: "30px",
+      cursor: "pointer",
+
+      [breakpoints.down("xs")]: {
+        fontSize: "15px",
+      },
+    },
 
     [breakpoints.down("xs")]: {
       flexDirection: "column",
-    }
+      padding: "40px 20px",
+      textAlign: "center",
+      alignItems: "center",
+    },
   },
 
-  socialIconLink: {
-    borderRadius: "50%",
-    backgroundColor: "white",
-    padding: "10px",
-    marginRight: "20px",
+  logo: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
     cursor: "pointer",
-    color: "gray",
-    textAlign: "center",
-    transition: "background .2s",
-    fontFamily: "auto",
+    marginBottom: "20px",
 
-    "& i": {
-      width: "16px",
-      height: "16px",
+    "& > img": {
+      "&:first-child": {
+        height: "40px",
+      },
+      "&:last-child": {
+        marginLeft: "10px",
+        height: "18px",
+      },
+    },
+  },
+
+  guide: {
+    width: "50%",
+    display: "flex",
+    justifyContent: "space-between",
+
+    "& > .section": {
+      display: "flex",
+      flexDirection: "column",
+      marginBottom: "20px",
     },
 
-    "&:hover": {
-      backgroundColor: "lightgray",
+    [breakpoints.down("xs")]: {
+      flexDirection: "column",
+    },
+  },
+
+  socials: {
+    display: "flex",
+    flexDirection: "column",
+    "& > .link-container": {
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      width: "300px",
+
+      "& img": {
+        width: "25px",
+      },
     },
   },
 }));
@@ -64,32 +110,55 @@ const Footer: React.FC = () => {
   const classes = useStyles({ dark, mobile });
 
   return (
-    <Box className={cx(classes.bg)}>
-      <Container>
-        <Box className={cx(classes.container)}>
+    <Box className={cx(classes.root)}>
+      <Box className={cx(classes.guide)}>
+        <Box>
           <Box className={cx(classes.logo)}>
             <img src={LOGO_White} alt="logo" />
             <img src={LOGO_Text} alt="logo" />
           </Box>
-          <Box>
-            <Link className={cx(classes.socialIconLink)} href="#">
-              <i className="fab fa-twitter"></i>
-            </Link>
-            <Link className={cx(classes.socialIconLink)} href="#">
-              <i className="fab fa-instagram"></i>
-            </Link>
-            <Link className={cx(classes.socialIconLink)} href="#">
-              <i className="fab fa-medium"></i>
-            </Link>
-            <Link className={cx(classes.socialIconLink)} href="#">
-              <i className="fab fa-youtube"></i>
-            </Link>
-            <Link className={cx(classes.socialIconLink)} href="#">
-              <i className="fab fa-linkedin"></i>
-            </Link>
-          </Box>
         </Box>
-      </Container>
+
+        {_.keys(externals).map((group) => (
+          <Box className="section" key={group}>
+            <span>{group}</span>
+            {_.keys(externals[group]).map((external) => (
+              <span key={external}>
+                <Link
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  href={externals[group][external]}
+                >
+                  {external}
+                </Link>
+              </span>
+            ))}
+          </Box>
+        ))}
+      </Box>
+      <Box className={cx(classes.socials)}>
+        <span>Our Socials</span>
+        <span>
+          Follow us to hear about
+          <br />
+          Ardana news and events
+        </span>
+
+        <Box mt="25px" />
+        <Box className="link-container">
+          {socials.map((social: any, index: number) => (
+            <Link
+              className="link"
+              href={social.url}
+              key={index}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <img src={social.image} alt="social Link" />
+            </Link>
+          ))}
+        </Box>
+      </Box>
     </Box>
   );
 };

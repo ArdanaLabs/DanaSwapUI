@@ -8,7 +8,6 @@ import ReactPlayer from "react-player";
 
 import { useIsDarkMode } from "state/user/hooks";
 
-import { HeaderSection } from ".";
 import { FeatureBox } from "components/Box";
 import { GradientButton } from "components/Button";
 
@@ -54,6 +53,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
                   url(${BG_WAVE}) top 600px left no-repeat,
                   #080E42`,
     backgroundSize: "contain",
+    paddingTop: "100px",
 
     [breakpoints.down("xs")]: {
       textAlign: "center",
@@ -166,7 +166,7 @@ const MainSection: React.FC = () => {
   return (
     <Box className={cx(classes.bg)}>
       <Container>
-        <HeaderSection />
+        {/* <HeaderSection /> */}
 
         <Grid container>
           <Grid item xs={12} sm={6}>

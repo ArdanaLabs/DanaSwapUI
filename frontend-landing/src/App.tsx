@@ -14,6 +14,7 @@ import { darkTheme, lightTheme } from "./theme";
 import store from "./state";
 
 import { Landing } from "./pages";
+import Layout from "layouts/Layout";
 
 const ThemeProvider: React.FC = ({ children }) => {
   // const location = useLocation();
@@ -59,7 +60,9 @@ const App: React.FC = () => {
     <Providers>
       <Switch>
         <Route exact path="/">
-          <Landing />
+          <Layout>
+            <Landing />
+          </Layout>
         </Route>
 
         <Route path="*">

@@ -8,7 +8,7 @@ import {
   StableCoinSection,
   TopNotchSection,
   // ProfileSection,
-  FooterSection,
+  // FooterSection,
   AdvisorsSection,
   InvestorsSection,
 } from "./sections";
@@ -24,7 +24,7 @@ const Landing: React.FC = () => {
       <AdvisorsSection />
       <PartnerSection />
       <InvestorsSection />
-      <FooterSection />
+      {/* <FooterSection /> */}
     </Box>
   );
 };
