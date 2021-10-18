@@ -45,6 +45,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
       [breakpoints.down("xs")]: {
         fontSize: "15px",
+        lineHeight: "19px",
       },
     },
 
@@ -53,6 +54,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       padding: "40px 20px",
       textAlign: "center",
       alignItems: "center",
+      background: ` linear-gradient(0deg, #080E42 32.04%, rgba(8, 14, 66, 0) 95.34%) top left no-repeat, 
+                    url(${BG_WAVE}) top left no-repeat`,
+      backgroundSize: "100%",
     },
   },
 
@@ -106,8 +110,8 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     },
 
     [breakpoints.down("xs")]: {
-      width: "100px",
-      height: "100px",
+      width: "150px",
+      height: "150px",
     },
   },
 
@@ -141,6 +145,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       "& img": {
         width: "25px",
       },
+      [breakpoints.down("xs")]: {
+        width: "100%",
+      },
     },
   },
 }));
@@ -159,7 +166,7 @@ const Footer: React.FC = () => {
             Ardana is the leading cross-chain stablecoin and DEX available on
             Cardano.
           </Box>
-          <Box mt="30px" />
+          <Box mt={!mobile ? "30px" : "10px"} />
           <Box className={cx(classes.content)}>
             Our mission is to create opportunity and transparency for all with
             groundbreaking DeFi protocols. Our DeFi protocols cross layers and
@@ -168,7 +175,7 @@ const Footer: React.FC = () => {
             developers build the new coordination mechanisms of the Internet age
             as we move toward a radically new vision of the future of work.
           </Box>
-          <Box my="30px" className={cx(classes.logo)}>
+          <Box my={!mobile ? "30px" : "0px"} className={cx(classes.logo)}>
             <img src={LOGO_BLUE} alt="logo" />
           </Box>
           <Box className={cx(classes.guide)}>
