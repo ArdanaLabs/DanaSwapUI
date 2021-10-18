@@ -8,13 +8,15 @@ import { useIsDarkMode } from "state/user/hooks";
 
 import { externals, socials } from "data";
 import BG_WAVE from "assets/backgrounds/wave.png";
+import BG_RING from "assets/backgrounds/ring.svg";
+import LOGO_BLUE from "assets/logo_blue.png";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
     background: ` linear-gradient(0deg, #080E42 32.04%, rgba(8, 14, 66, 0) 95.34%) top left no-repeat, 
                   url(${BG_WAVE}) top left no-repeat`,
     backgroundSize: "100%",
-    padding: "100px 0px",
+    padding: "100px 0px 60px",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "flex-start",
@@ -68,6 +70,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontWeight: 900,
     fontSize: "40px",
     lineHeight: "100%",
+    [breakpoints.down("xs")]: {
+      fontSize: "25px",
+      lineHeight: "27.5px",
+    },
   },
 
   content: {
@@ -75,30 +81,41 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontFamily: "Museo Sans",
     fontSize: "22px",
     lineHeight: "25px",
+    [breakpoints.down("xs")]: {
+      fontSize: "16px",
+      lineHeight: "18.4px",
+    },
   },
 
   logo: {
-    display: "flex",
-    alignItems: "center",
+    display: "inline-flex",
     justifyContent: "center",
-    cursor: "pointer",
-    marginBottom: "20px",
+    alignItems: "center",
+    width: "250px",
+    height: "250px",
+    padding: "40px",
+    borderRadius: "50%",
+    background: `url(${BG_RING}) center center no-repeat`,
+    backgroundSize: "cover",
 
     "& > img": {
-      "&:first-child": {
-        height: "40px",
+      borderRadius: "50%",
+      [breakpoints.down("xs")]: {
+        width: "60px",
       },
-      "&:last-child": {
-        marginLeft: "10px",
-        height: "18px",
-      },
+    },
+
+    [breakpoints.down("xs")]: {
+      width: "100px",
+      height: "100px",
     },
   },
 
   guide: {
-    width: "50%",
+    width: "100%",
     display: "flex",
     justifyContent: "space-between",
+    textAlign: "left",
 
     "& > .section": {
       display: "flex",
@@ -108,6 +125,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
     [breakpoints.down("xs")]: {
       flexDirection: "column",
+      textAlign: "center",
     },
   },
 
@@ -135,7 +153,7 @@ const Footer: React.FC = () => {
 
   return (
     <Box className={cx(classes.root)}>
-      <Container maxWidth="sm">
+      <Container maxWidth="md">
         <Box className={cx(classes.container)}>
           <Box className={cx(classes.title)}>
             Ardana is the leading cross-chain stablecoin and DEX available on
@@ -149,6 +167,50 @@ const Footer: React.FC = () => {
             to a new global economy. We want to support this vision and help
             developers build the new coordination mechanisms of the Internet age
             as we move toward a radically new vision of the future of work.
+          </Box>
+          <Box my="30px" className={cx(classes.logo)}>
+            <img src={LOGO_BLUE} alt="logo" />
+          </Box>
+          <Box className={cx(classes.guide)}>
+            {_.keys(externals).map((group) => (
+              <Box className="section" key={group}>
+                <span>{group}</span>
+                {_.keys(externals[group]).map((external) => (
+                  <span key={external}>
+                    <Link
+                      rel="noopener noreferrer"
+                      target="_blank"
+                      href={externals[group][external]}
+                    >
+                      {external}
+                    </Link>
+                  </span>
+                ))}
+              </Box>
+            ))}
+            <Box className={cx(classes.socials)}>
+              <span>Our Socials</span>
+              <span>
+                Follow us to hear about
+                <br />
+                Ardana news and events
+              </span>
+
+              <Box mt="25px" />
+              <Box className="link-container">
+                {socials.map((social: any, index: number) => (
+                  <Link
+                    className="link"
+                    href={social.url}
+                    key={index}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <img src={social.image} alt="social Link" />
+                  </Link>
+                ))}
+              </Box>
+            </Box>
           </Box>
         </Box>
       </Container>
