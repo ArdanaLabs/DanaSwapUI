@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, useMediaQuery, Link } from "@material-ui/core";
+import { Box, useMediaQuery, Link, Container } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
 import _ from "lodash";
@@ -7,16 +7,14 @@ import _ from "lodash";
 import { useIsDarkMode } from "state/user/hooks";
 
 import { externals, socials } from "data";
-import LOGO_White from "assets/logo_white.png";
-import LOGO_Text from "assets/logo_text.png";
 import BG_WAVE from "assets/backgrounds/wave.png";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
     background: ` linear-gradient(0deg, #080E42 32.04%, rgba(8, 14, 66, 0) 95.34%) top left no-repeat, 
                   url(${BG_WAVE}) top left no-repeat`,
-    backgroundSize: "cover",
-    padding: "60px 100px",
+    backgroundSize: "100%",
+    padding: "100px 0px",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "flex-start",
@@ -54,6 +52,29 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       textAlign: "center",
       alignItems: "center",
     },
+  },
+
+  container: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
+    textAlign: "center",
+  },
+
+  title: {
+    color: palette.text.secondary,
+    fontFamily: "Brandon Grotesque",
+    fontWeight: 900,
+    fontSize: "40px",
+    lineHeight: "100%",
+  },
+
+  content: {
+    color: palette.text.primary,
+    fontFamily: "Museo Sans",
+    fontSize: "22px",
+    lineHeight: "25px",
   },
 
   logo: {
@@ -114,7 +135,24 @@ const Footer: React.FC = () => {
 
   return (
     <Box className={cx(classes.root)}>
-      <Box className={cx(classes.guide)}>
+      <Container maxWidth="sm">
+        <Box className={cx(classes.container)}>
+          <Box className={cx(classes.title)}>
+            Ardana is the leading cross-chain stablecoin and DEX available on
+            Cardano.
+          </Box>
+          <Box mt="30px" />
+          <Box className={cx(classes.content)}>
+            Our mission is to create opportunity and transparency for all with
+            groundbreaking DeFi protocols. Our DeFi protocols cross layers and
+            enable individuals worldwide to contribute their talents and skills
+            to a new global economy. We want to support this vision and help
+            developers build the new coordination mechanisms of the Internet age
+            as we move toward a radically new vision of the future of work.
+          </Box>
+        </Box>
+      </Container>
+      {/* <Box className={cx(classes.guide)}>
         <Box>
           <Box className={cx(classes.logo)}>
             <img src={LOGO_White} alt="logo" />
@@ -161,7 +199,7 @@ const Footer: React.FC = () => {
             </Link>
           ))}
         </Box>
-      </Box>
+      </Box> */}
     </Box>
   );
 };
