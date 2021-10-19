@@ -12,7 +12,7 @@ const primaryLightDay =
 const primaryLightNight =
   "linear-gradient(89.62deg, #72D2F2 0.3%, #6077FF 99.64%)";
 
-const primaryMainDay = "#235DF4";
+const primaryMainDay = "#041484";
 const primaryMainNight = "#FFFFFF";
 
 const primaryDarkDay =
@@ -31,17 +31,17 @@ const secondaryLightNight = "#131B59";
 const secondaryDarkDay = "#A5A5A5";
 const secondaryDarkNight = "rgba(24, 33, 100, 0.5)";
 
-const infoMainDay = "#F5F5F5";
-const infoMainNight = "#2B3992";
+const infoLightDay = "linear-gradient(89.62deg, #000A4F 0.3%, #3C4DC5 99.64%)";
+const infoLightNight = "linear-gradient(89.62deg, #72D2F2 0.3%, #6077FF 99.64%)";
 
-const infoDarkDay =
-  "linear-gradient(180deg, #A5A5A5 0%, #A5A5A5 54.17%, #A5A5A5 99.99%)";
-const infoDarkNight =
-  "linear-gradient(180deg, #73D6F1 0%, #5F72FF 99.99%, #2F3DA0 100%)";
+const infoMainDay = "#000000";
+const infoMainNight = "#000000";
 
-const backgroundDay =
-  "linear-gradient(89.43deg, #C0C0C0 -0.11%, #F5F5F5 -0.1%)";
-const backgroundNight = "linear-gradient(0deg, #3142A3, #3142A3)";
+const infoDarkDay = "#6077FF";
+const infoDarkNight = "#000A4F";
+
+const backgroundDay = "#F9FBFF";
+const backgroundNight = "#010730";
 
 const backgroundPaperDay =
   "linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%)";
@@ -119,6 +119,7 @@ export const lightTheme = responsiveFontSizes(
         dark: secondaryDarkDay,
       },
       info: {
+        light: infoLightDay,
         main: infoMainDay,
         dark: infoDarkDay,
       },
@@ -305,11 +306,6 @@ export const lightTheme = responsiveFontSizes(
           width: "100px",
         },
       },
-      MuiTableCell: {
-        root: {
-          borderBottom: "1px solid #E5E5E5",
-        },
-      },
       MuiContainer: {
         fixed: {
           borderRadius: 12,
@@ -442,14 +438,6 @@ export const lightTheme = responsiveFontSizes(
           "& svg": {
             marginBottom: "0px !important",
             marginRight: 6,
-          },
-        },
-      },
-      MuiTableSortLabel: {
-        root: {
-          "& img": {
-            width: 16,
-            marginLeft: 4,
           },
         },
       },
@@ -625,6 +613,7 @@ export const darkTheme = responsiveFontSizes(
         dark: secondaryDarkNight,
       },
       info: {
+        light: infoLightNight,
         main: infoMainNight,
         dark: infoDarkNight,
       },
@@ -809,19 +798,6 @@ export const darkTheme = responsiveFontSizes(
         groupedHorizontal: {
           "&:not(:last-child) > div > div": {},
           "&:not(:first-child) > div > div": {},
-        },
-      },
-      MuiTableCell: {
-        root: {
-          borderBottom: "1px solid #E5E5E5",
-        },
-      },
-      MuiTableSortLabel: {
-        root: {
-          "& img": {
-            width: 16,
-            marginLeft: 4,
-          },
         },
       },
       MuiTabs: {

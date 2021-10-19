@@ -1,26 +1,22 @@
 import React from "react";
-import { Box } from "@material-ui/core";
-
-import {
-  MainSection,
-  PartnerSection,
-  DanaSwapSection,
-  StableCoinSection,
-  TopNotchSection,
-  ProfileSection,
-  FooterSection,
-} from "./sections";
+import { Box, useMediaQuery, useTheme } from "@material-ui/core";
+import { AdSection, AssetSection, HelpSection } from "./sections";
 
 const Landing: React.FC = () => {
+  const { breakpoints } = useTheme()
+  const mobile = useMediaQuery(breakpoints.down('xs'))
+  
   return (
     <Box>
-      <MainSection />
-      <DanaSwapSection />
-      <StableCoinSection />
-      <TopNotchSection />
-      <ProfileSection />
-      <PartnerSection />
-      <FooterSection />
+      <AdSection />
+
+      <Box mt={!mobile ? '120px' : '30px'} />
+
+      <AssetSection />
+
+      <Box mt={!mobile ? '150px' : '100px'} />
+
+      <HelpSection />
     </Box>
   );
 };

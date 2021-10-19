@@ -59,7 +59,6 @@
     "react-scripts": "^4.0.2",
     "react-scroll-parallax": "^2.4.0",
     "react-simple-animate": "^3.3.12",
-    "react-spinners": "^0.11.0",
     "react-use-websocket": "^2.7.1",
     "react-virtualized-auto-sizer": "^1.0.4",
     "react-window": "^1.8.6",
@@ -109,6 +108,7 @@
     ]
   },
   "devDependencies": {
+    "@emotion/react": "^11.5.0",
     "@types/classnames": "^2.2.11",
     "@types/lodash": "^4.14.168",
     "@types/qs": "^6.9.6",
@@ -119,11 +119,16 @@
     "@types/react-window": "^1.8.2",
     "@types/styled-components": "^5.1.4",
     "@types/utf8": "^2.1.6",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.3",
     "cross-env": "^7.0.3",
+    "enzyme": "^3.11.0",
     "husky": "^6.0.0",
+    "jsverify": "^0.8.4",
     "lint-staged": "^11.0.0",
     "prettier": "^2.3.0",
     "pretty-quick": "^3.1.0",
+    "react-spinners": "^0.11.0",
+    "redux-mock-store": "^1.5.4",
     "typechain": "^4.0.1"
   }
 }

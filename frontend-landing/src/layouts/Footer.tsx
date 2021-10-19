@@ -5,14 +5,16 @@ import cx from "classnames";
 
 import { useIsDarkMode } from "state/user/hooks";
 
-import LOGO_White from "assets/logo_white.png";
-import LOGO_Text from "assets/logo_text.png";
+import DANA_LOGO_BLACK from 'assets/image/DANA-LOGO-BLACK.png'
+import DANA_LOGO_WHITE from 'assets/image/DANA-LOGO-WHITE.png'
+import { useHistory } from "react-router";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
-  bg: {
-    background: palette.primary.dark,
+  root: {
+    background: palette.background.default,
     marginTop: "50px",
     padding: 10,
+    filter: 'drop-shadow(35px 0px 15px rgba(0, 0, 0, 0.12))',
   },
 
   logo: {
@@ -21,7 +23,12 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     alignItems: "center",
     cursor: "pointer",
     "& img": {
-      padding: "20px 10px",
+      padding: '20px 10px',
+      width: '60px',
+      
+      [breakpoints.down('sm')]: {
+        width: '50px',
+      }
     },
   },
 
@@ -29,10 +36,6 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-
-    [breakpoints.down("xs")]: {
-      flexDirection: "column",
-    }
   },
 
   socialIconLink: {
@@ -47,29 +50,44 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontFamily: "auto",
 
     "& i": {
-      width: "16px",
-      height: "16px",
+      fontSize: '15px',
     },
 
     "&:hover": {
       backgroundColor: "lightgray",
     },
+
+    [breakpoints.down('sm')]: {
+      padding: '6px 8px',
+      marginRight: '15px',
+      
+      "& i": {
+        fontSize: '12px',
+      },
+    }
   },
 }));
 
 const Footer: React.FC = () => {
-  const { breakpoints } = useTheme();
+  const theme = useTheme();
   const dark = useIsDarkMode();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
+  const mobile = useMediaQuery(theme.breakpoints.down("xs"));
   const classes = useStyles({ dark, mobile });
+  const history = useHistory();
 
   return (
-    <Box className={cx(classes.bg)}>
+    <Box className={cx(classes.root)}>
       <Container>
         <Box className={cx(classes.container)}>
-          <Box className={cx(classes.logo)}>
-            <img src={LOGO_White} alt="logo" />
-            <img src={LOGO_Text} alt="logo" />
+          <Box className={cx(classes.logo)} onClick={() => history.push('/')}>
+            <img
+              src={
+                theme.palette.type === 'dark'
+                  ? DANA_LOGO_WHITE
+                  : DANA_LOGO_BLACK
+              }
+              alt='DANA Logo'
+            />
           </Box>
           <Box>
             <Link className={cx(classes.socialIconLink)} href="#">
