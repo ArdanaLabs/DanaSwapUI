@@ -6,10 +6,6 @@ import {
   PartnerSection,
   DanaSwapSection,
   StableCoinSection,
-  TopNotchSection,
-  // ProfileSection,
-  // FooterSection,
-  AdvisorsSection,
   InvestorsSection,
 } from "./sections";
 
@@ -19,12 +15,8 @@ const Landing: React.FC = () => {
       <MainSection />
       <StableCoinSection />
       <DanaSwapSection />
-      <TopNotchSection />
-      {/* <ProfileSection /> */}
-      <AdvisorsSection />
       <PartnerSection />
       <InvestorsSection />
-      {/* <FooterSection /> */}
     </Box>
   );
 };
