@@ -4,18 +4,16 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
 import ReactPlayer from "react-player";
 import ScrollAnimation from "react-animate-on-scroll";
-import i18next from "i18next";
 
 import { useIsDarkMode } from "state/user/hooks";
-import { GradientButton } from "components/Button";
+
+import { TopNotchTeams } from "data";
 
 const heroVideo =
   "https://background.sfo3.digitaloceanspaces.com/stablecoin/output.m3u8";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
-    // background: "rgba(24, 34, 113, 0.6)",
-    padding: "0px",
     position: "relative",
     "& video": {
       objectFit: "cover",
@@ -39,9 +37,13 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontFamily: "Brandon Grotesque",
     fontStyle: "normal",
     fontWeight: 900,
-    fontSize: "80px",
+    fontSize: "70px",
     lineHeight: "100%",
-    color: "#73D6F1",
+    color: palette.text.primary,
+
+    "& > span": {
+      color: palette.text.secondary,
+    },
 
     [breakpoints.down("sm")]: {
       fontSize: "35px",
@@ -52,8 +54,8 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontFamily: "Museo Sans",
     fontStyle: "normal",
     fontWeight: 300,
-    fontSize: "25px",
-    lineHeight: "30px",
+    fontSize: "22px",
+    lineHeight: "25px",
     width: "50%",
     color: palette.text.primary,
     marginTop: "30px",
@@ -82,33 +84,47 @@ const MainSection: React.FC = () => {
         loop={true}
         muted
         width={!mobile ? "100%" : "unset"}
-        height={!mobile ? "100vh" : "400px"}
+        height={"100vh"}
         playbackRate={0.5}
       />
       <Box className={cx(classes.container)}>
         <Container>
           <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
             <Box className={cx(classes.title)}>
-              {i18next.t("PAGE.LANDING.STABLECOIN.TITLE")}
+              Ardana has a <br />
+              <span>world class</span> team
             </Box>
           </ScrollAnimation>
           <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-            <Box
-              className={cx(classes.content)}
-              dangerouslySetInnerHTML={{
-                __html: i18next.t("PAGE.LANDING.STABLECOIN.CONTENT", {
-                  interpolation: { escapeValue: false },
-                }),
-              }}
-            />
+            <Box className={cx(classes.content)}>
+              Our team is comprised of technical talent, early contributors,
+              students and ambassadors of reputable companies and blockchain
+              projects such as Apple, Microsoft, Barclays, Citi Bank, Jane
+              Street, Mina Protocol, Cardano, the Plutus Pioneers Program and
+              Emurgo Academy.
+            </Box>
           </ScrollAnimation>
-          <Box mt={!mobile ? "50px" : "30px"} />
+          <Box mt={!mobile ? "30px" : "30px"} />
           <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-            <GradientButton
-              label={i18next.t("PAGE.LANDING.STABLECOIN.BUTTON")}
-              width={200}
-              height={40}
-            />
+            <Box
+              display="flex"
+              flexWrap="wrap"
+              alignItems="center"
+              justifyContent={!mobile ? "flex-start" : "center"}
+              pl="-10px"
+              style={{ opacity: 0.8 }}
+            >
+              {TopNotchTeams.map((team, index) => (
+                <Box key={index} textAlign="center" p="10px">
+                  <img
+                    src={team}
+                    alt="team"
+                    height={"30px"}
+                    style={{ maxWidth: "max-content" }}
+                  />
+                </Box>
+              ))}
+            </Box>
           </ScrollAnimation>
         </Container>
       </Box>
