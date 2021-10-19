@@ -87,11 +87,11 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 const links = [
   {
     label: i18next.t("PAGE.LANDING.HEADER.LINKS.0"),
-    to: "#",
+    to: "/",
   },
   {
     label: i18next.t("PAGE.LANDING.HEADER.LINKS.1"),
-    to: "#",
+    to: "/team",
   },
   {
     label: i18next.t("PAGE.LANDING.HEADER.LINKS.2"),
@@ -103,6 +103,10 @@ const links = [
   },
   {
     label: i18next.t("PAGE.LANDING.HEADER.LINKS.4"),
+    to: "#",
+  },
+  {
+    label: i18next.t("PAGE.LANDING.HEADER.LINKS.5"),
     to: "#",
   },
 ];
