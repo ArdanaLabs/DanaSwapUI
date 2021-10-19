@@ -64,7 +64,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontFamily: "Brandon Grotesque",
     fontStyle: "normal",
     fontWeight: 900,
-    fontSize: "80px",
+    fontSize: "70px",
     lineHeight: "100%",
     color: "#F5FCFE",
     margin: "100px 0px 30px 0",
@@ -97,7 +97,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
   definitionQ: {
     color: "#F5FCFE",
-    fontSize: "80px",
+    fontSize: "70px",
     fontWeight: 900,
     fontFamily: "Brandon Grotesque",
     fontStyle: "normal",
