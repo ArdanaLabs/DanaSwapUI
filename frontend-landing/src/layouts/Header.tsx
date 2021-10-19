@@ -123,6 +123,14 @@ const HeaderSection: React.FC = () => {
     setOpenMenu((prev) => !prev);
   };
 
+  const activeMenu = (to: string): boolean => {
+    const path = "/" + window.location.pathname.split("/").pop();
+    if (to === path) {
+      return true;
+    }
+    return false;
+  };
+
   return (
     <Box className={cx(classes.root)}>
       <Container>
@@ -137,7 +145,9 @@ const HeaderSection: React.FC = () => {
                 return (
                   <Link
                     href={link.to}
-                    className={cx(classes.menuItem, { active: index === 0 })}
+                    className={cx(classes.menuItem, {
+                      active: activeMenu(link.to),
+                    })}
                     key={index}
                     underline="none"
                   >
