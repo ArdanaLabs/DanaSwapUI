@@ -12,7 +12,6 @@ export interface FeatureBoxProps {
   image?: any;
   title?: string;
   content?: string;
-  custom_style?: object;
 }
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
@@ -83,7 +82,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   content: {
     color: "#F5FCFE",
     fontSize: "20px",
-    lineHeight: "30px",
+    lineHeight: "26px",
     fontWeight: 300,
     fontFamily: "Museo Sans",
     fontStyle: "normal",
@@ -99,7 +98,6 @@ const FeatureBox: React.FC<FeatureBoxProps> = ({
   image,
   title,
   content,
-  custom_style,
 }) => {
   const { breakpoints } = useTheme();
   const dark = useIsDarkMode();

@@ -64,8 +64,8 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontFamily: "Museo Sans",
     fontStyle: "normal",
     fontWeight: 300,
-    fontSize: "25px",
-    lineHeight: "30px",
+    fontSize: "22px",
+    lineHeight: "26px",
     color: "#F5FCFE",
 
     [breakpoints.down("xs")]: {

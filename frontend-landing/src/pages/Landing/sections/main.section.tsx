@@ -66,12 +66,12 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontWeight: 900,
     fontSize: "70px",
     lineHeight: "100%",
-    color: "#F5FCFE",
+    color: palette.text.primary,
     margin: "100px 0px 30px 0",
     whiteSpace: "pre-line",
 
     "& > strong": {
-      color: "#73D6F1",
+      color: palette.text.secondary,
     },
 
     [breakpoints.down("sm")]: {
@@ -81,12 +81,12 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   subTitle: {
-    color: "white",
-    fontSize: "24px",
+    color: palette.text.primary,
+    fontSize: "22px",
     fontFamily: "Museo Sans",
     fontStyle: "normal",
     fontWeight: 300,
-    lineHeight: "29px",
+    lineHeight: "26px",
 
     [breakpoints.down("sm")]: {
       fontSize: "16px",
@@ -96,7 +96,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   definitionQ: {
-    color: "#F5FCFE",
+    color: palette.text.primary,
     fontSize: "70px",
     fontWeight: 900,
     fontFamily: "Brandon Grotesque",
@@ -104,8 +104,8 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     lineHeight: "100%",
     marginBottom: "30px",
 
-    "& > .cyan": {
-      color: "#73D6F1",
+    "& > span": {
+      color: palette.text.secondary,
     },
 
     [breakpoints.down("xs")]: {
@@ -115,13 +115,13 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   definitionA: {
-    color: "white",
+    color: palette.text.primary,
     whiteSpace: "pre-line",
     fontWeight: 300,
-    fontSize: "24px",
+    fontSize: "22px",
     fontFamily: "Museo Sans",
     fontStyle: "normal",
-    lineHeight: "30px",
+    lineHeight: "26px",
 
     [breakpoints.down("xs")]: {
       fontSize: "16px",
@@ -242,7 +242,7 @@ const MainSection: React.FC = () => {
             <Grid item xs={12} sm={6}>
               <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
                 <Box className={cx(classes.definitionQ)}>
-                  What is <span className="cyan">Ardana</span>?
+                  What is <span>Ardana</span>?
                 </Box>
                 <Box className={cx(classes.definitionA)}>
                   {i18next.t("PAGE.LANDING.ARDANA.DESC")}
@@ -291,7 +291,6 @@ const MainSection: React.FC = () => {
                   image={feature.image}
                   title={feature.title}
                   content={feature.content}
-                  custom_style={{}}
                 />
               </Grid>
             ))}
