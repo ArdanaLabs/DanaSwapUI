@@ -24,6 +24,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     top: 0,
     width: "100%",
     background: "transparent",
+    zIndex: 1,
   },
   self: {
     display: "flex",
