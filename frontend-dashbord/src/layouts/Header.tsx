@@ -18,6 +18,7 @@ import { Button } from "components/Button";
 import { navList } from "data";
 import LOGO_Blue from "assets/logo_blue.png";
 import LOGO_Text from "assets/logo_text.png";
+import { connectWallet } from "hooks/web3_utils";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   self: {
@@ -108,6 +109,9 @@ const Header: React.FC = () => {
 
   const onConnectWallet = (event: any) => {
     console.log("connect wallet button clicked!");
+
+    connectWallet();
+
   };
 
   return (
