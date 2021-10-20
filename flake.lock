@@ -1,0 +1,108 @@
+{
+  "nodes": {
+    "flake-utils": {
+      "locked": {
+        "lastModified": 1618217525,
+        "narHash": "sha256-WGrhVczjXTiswQaoxQ+0PTfbLNeOQM6M36zvLn78AYg=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "c6169a2772643c4a93a0b5ac1c61e296cba68544",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "make-shell": {
+      "locked": {
+        "lastModified": 1625172355,
+        "narHash": "sha256-+B6thE3Mgx5sz6Lbs2TKwMAB97pvnwHsDuD18cInClk=",
+        "owner": "ursi",
+        "repo": "nix-make-shell",
+        "rev": "a2e0314a8066d7c19cc5a6b5c26dd9167943164a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ursi",
+        "ref": "1",
+        "repo": "nix-make-shell",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1633422745,
+        "narHash": "sha256-gA6Ok64nPbkjHk3Oanq4641EeYkjcKhisDF9wBjLxEk=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "8e1eab9eae4278c9bb1dcae426848a581943db5a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "npm-buildpackage": {
+      "locked": {
+        "lastModified": 1624358188,
+        "narHash": "sha256-e/2p0CYhfs8GHYjDiJ2sdlne1WYF43MCPfZbRP5VmC4=",
+        "owner": "serokell",
+        "repo": "nix-npm-buildpackage",
+        "rev": "3461855a1dbfe844768d5adac29fe0b542d8b296",
+        "type": "github"
+      },
+      "original": {
+        "owner": "serokell",
+        "repo": "nix-npm-buildpackage",
+        "type": "github"
+      }
+    },
+    "npmlock2nix-src": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-7y76dXmMwiX9VzfSLgL/rt+TYgB9agjKpka09aXsB2s=",
+        "path": "/home/mason/git/npmlock2nix",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/mason/git/npmlock2nix",
+        "type": "path"
+      }
+    },
+    "root": {
+      "inputs": {
+        "nixpkgs": "nixpkgs",
+        "npm-buildpackage": "npm-buildpackage",
+        "npmlock2nix-src": "npmlock2nix-src",
+        "utils": "utils"
+      }
+    },
+    "utils": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "make-shell": "make-shell"
+      },
+      "locked": {
+        "lastModified": 1625172510,
+        "narHash": "sha256-Dg/pWpdeL1RGrVZC+NZ/8tyE4AVHN8LQaIsC+5lGet8=",
+        "owner": "ursi",
+        "repo": "flake-utils",
+        "rev": "88f31a4410ad4a682b4d259abc8aeaf87ce97539",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ursi",
+        "ref": "2",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
