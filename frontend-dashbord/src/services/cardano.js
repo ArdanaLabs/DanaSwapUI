@@ -1,14 +1,18 @@
 import CardanoWeb3 from 'publish/cardano-web3-browser'
 
-export const config = process.env.REACT_APP_NETWORK === 'mainnet'
-  ? {
-      network: 'mainnet',
-      graphql: 'https://api-mainnet-graphql.raynet.work',
-    }
-  : {
-      network: 'testnet',
-      graphql: 'https://api-testnet-graphql.raynet.work',
-    }
+// export const config = process.env.REACT_APP_NETWORK === 'mainnet'
+//   ? {
+//       network: 'mainnet',
+//       graphql: 'https://api-mainnet-graphql.raynet.work',
+//     }
+//   : {
+//       network: 'testnet',
+//       graphql: 'https://api-testnet-graphql.raynet.work',
+//     }
+export const config = {
+  network: 'testnet',
+  graphql: 'https://api-testnet-graphql.raynet.work',
+}
 
 
 const Cardano = new CardanoWeb3({

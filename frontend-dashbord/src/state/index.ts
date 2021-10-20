@@ -3,6 +3,7 @@ import { save, load } from "redux-localstorage-simple";
 import user from "./user/reducer";
 import home from "./home/reducer";
 import chart from "./chart/reducer";
+import wallet from "./wallet/reducer";
 import loader from "./loader/reducer";
 
 const PERSISTED_KEYS: string[] = ["user"];
@@ -13,6 +14,7 @@ const store = configureStore({
     home,
     chart,
     loader,
+    wallet,
   },
   middleware: [
     ...getDefaultMiddleware({
