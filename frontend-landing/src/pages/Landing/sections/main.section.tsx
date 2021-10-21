@@ -19,7 +19,8 @@ import ICON_TELEGRAM from "assets/icons/telegram.svg";
 import ICON_PLAY from "assets/icons/video-play.svg";
 import BG_POSTER from "assets/backgrounds/video-poster.svg";
 
-// const sphereVideo = "assets/videos/sphere/output.m3u8";
+const sphereVideo =
+  "https://background.sfo3.digitaloceanspaces.com/sphere/output.webm";
 const heroVideo =
   "https://background.sfo3.digitaloceanspaces.com/about/output.m3u8";
 
@@ -168,7 +169,7 @@ const MainSection: React.FC = () => {
       <Container>
         {/* <HeaderSection /> */}
 
-        <Grid container>
+        <Grid container alignItems="center">
           <Grid item xs={12} sm={6}>
             <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
               <Box
@@ -223,7 +224,7 @@ const MainSection: React.FC = () => {
               </Box>
             </ScrollAnimation>
           </Grid>
-          {/* <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={6}>
             <ReactPlayer
               url={sphereVideo}
               playing
@@ -233,7 +234,7 @@ const MainSection: React.FC = () => {
               height="100%"
               playbackRate={0.5}
             />
-          </Grid> */}
+          </Grid>
         </Grid>
 
         <Box mt={!mobile ? "300px" : "50px"}></Box>
