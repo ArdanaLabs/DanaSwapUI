@@ -51,13 +51,22 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
     background: ` url(${BG_PURPLE_RADIAL}) right top no-repeat,
                   url(${BG_BLUE_RADIAL}) top left no-repeat,
-                  url(${BG_WAVE}) top 600px left no-repeat,
                   #080E42`,
     backgroundSize: "100%",
     paddingTop: "100px",
 
     [breakpoints.down("xs")]: {
       textAlign: "center",
+    },
+  },
+  waveBG: {
+    width: "100%",
+    background: `url(${BG_WAVE}) top left no-repeat`,
+    backgroundSize: "contain",
+    paddingTop: "250px",
+
+    [breakpoints.down("xs")]: {
+      paddingTop: "100px",
     },
   },
 
@@ -68,7 +77,6 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontSize: "70px",
     lineHeight: "100%",
     color: palette.text.primary,
-    margin: "100px 0px 30px 0",
     whiteSpace: "pre-line",
 
     "& > strong": {
@@ -167,9 +175,11 @@ const MainSection: React.FC = () => {
   return (
     <Box className={cx(classes.bg)}>
       <Container>
-        {/* <HeaderSection /> */}
-
-        <Grid container alignItems="center">
+        <Grid
+          container
+          alignItems="center"
+          direction={!mobile ? "row" : "column-reverse"}
+        >
           <Grid item xs={12} sm={6}>
             <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
               <Box
@@ -236,68 +246,70 @@ const MainSection: React.FC = () => {
             />
           </Grid>
         </Grid>
-
-        <Box mt={!mobile ? "300px" : "50px"}></Box>
-        <Box>
-          <Grid container spacing={3} alignItems="center">
-            <Grid item xs={12} sm={6}>
-              <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-                <Box className={cx(classes.definitionQ)}>
-                  What is <span>Ardana</span>?
-                </Box>
-                <Box className={cx(classes.definitionA)}>
-                  {i18next.t("PAGE.LANDING.ARDANA.DESC")}
-                </Box>
-              </ScrollAnimation>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Box className={cx(classes.aboutVideo)}>
-                <ReactPlayer
-                  url={heroVideo}
-                  playing
-                  loop={false}
-                  width="100%"
-                  height="100%"
-                  controls
-                  light={BG_POSTER}
-                  playIcon={
-                    <Box className={cx(classes.playIcon)}>
-                      <img src={ICON_PLAY} alt="playIcon" width="100px" />
-                    </Box>
-                  }
-                />
-              </Box>
-            </Grid>
-          </Grid>
-        </Box>
-
-        <Box mt={!mobile ? "100px" : "50px"}></Box>
-
-        <Box mb="50px" mx="10px">
-          <Grid container spacing={3} alignItems="stretch">
-            {Ardana_features.map((feature, index) => (
-              <Grid
-                item
-                key={index}
-                xs={12}
-                sm={6}
-                md={3}
-                style={{
-                  display: "flex",
-                  alignItems: "stretch",
-                  flexFlow: "column",
-                }}
-              >
-                <FeatureBox
-                  image={feature.image}
-                  title={feature.title}
-                  content={feature.content}
-                />
-              </Grid>
-            ))}
-          </Grid>
-        </Box>
       </Container>
+      <Box className={classes.waveBG}>
+        <Container>
+          <Box>
+            <Grid container spacing={3} alignItems="center">
+              <Grid item xs={12} sm={6}>
+                <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
+                  <Box className={cx(classes.definitionQ)}>
+                    What is <span>Ardana</span>?
+                  </Box>
+                  <Box className={cx(classes.definitionA)}>
+                    {i18next.t("PAGE.LANDING.ARDANA.DESC")}
+                  </Box>
+                </ScrollAnimation>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Box className={cx(classes.aboutVideo)}>
+                  <ReactPlayer
+                    url={heroVideo}
+                    playing
+                    loop={false}
+                    width="100%"
+                    height="100%"
+                    controls
+                    light={BG_POSTER}
+                    playIcon={
+                      <Box className={cx(classes.playIcon)}>
+                        <img src={ICON_PLAY} alt="playIcon" width="100px" />
+                      </Box>
+                    }
+                  />
+                </Box>
+              </Grid>
+            </Grid>
+          </Box>
+
+          <Box mt={!mobile ? "100px" : "50px"}></Box>
+
+          <Box mb="50px" mx="10px">
+            <Grid container spacing={3} alignItems="stretch">
+              {Ardana_features.map((feature, index) => (
+                <Grid
+                  item
+                  key={index}
+                  xs={12}
+                  sm={6}
+                  md={3}
+                  style={{
+                    display: "flex",
+                    alignItems: "stretch",
+                    flexFlow: "column",
+                  }}
+                >
+                  <FeatureBox
+                    image={feature.image}
+                    title={feature.title}
+                    content={feature.content}
+                  />
+                </Grid>
+              ))}
+            </Grid>
+          </Box>
+        </Container>
+      </Box>
     </Box>
   );
 };
