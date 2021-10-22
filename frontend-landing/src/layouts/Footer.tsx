@@ -142,6 +142,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       alignItems: "center",
       width: "300px",
 
+      "& > .link:hover path": {
+        fill: palette.text.secondary,
+      },
+
       "& img": {
         width: "25px",
       },
@@ -213,7 +217,7 @@ const Footer: React.FC = () => {
                     rel="noopener noreferrer"
                     target="_blank"
                   >
-                    <img src={social.image} alt="social Link" />
+                    <social.image />
                   </Link>
                 ))}
               </Box>
@@ -221,54 +225,6 @@ const Footer: React.FC = () => {
           </Box>
         </Box>
       </Container>
-      {/* <Box className={cx(classes.guide)}>
-        <Box>
-          <Box className={cx(classes.logo)}>
-            <img src={LOGO_White} alt="logo" />
-            <img src={LOGO_Text} alt="logo" />
-          </Box>
-        </Box>
-
-        {_.keys(externals).map((group) => (
-          <Box className="section" key={group}>
-            <span>{group}</span>
-            {_.keys(externals[group]).map((external) => (
-              <span key={external}>
-                <Link
-                  rel="noopener noreferrer"
-                  target="_blank"
-                  href={externals[group][external]}
-                >
-                  {external}
-                </Link>
-              </span>
-            ))}
-          </Box>
-        ))}
-      </Box>
-      <Box className={cx(classes.socials)}>
-        <span>Our Socials</span>
-        <span>
-          Follow us to hear about
-          <br />
-          Ardana news and events
-        </span>
-
-        <Box mt="25px" />
-        <Box className="link-container">
-          {socials.map((social: any, index: number) => (
-            <Link
-              className="link"
-              href={social.url}
-              key={index}
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <img src={social.image} alt="social Link" />
-            </Link>
-          ))}
-        </Box>
-      </Box> */}
     </Box>
   );
 };

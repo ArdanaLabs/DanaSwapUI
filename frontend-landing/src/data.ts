@@ -1,4 +1,10 @@
 import { ProfileType } from "components/Box/ProfileBox";
+import { ReactComponent as TwitterIcon } from "assets/icons/twitter.svg";
+import { ReactComponent as DiscordIcon } from "assets/icons/discord.svg";
+import { ReactComponent as TelegramIcon } from "assets/icons/telegram.svg";
+import { ReactComponent as MediumIcon } from "assets/icons/medium.svg";
+import { ReactComponent as MonkeyIcon } from "assets/icons/monkey.svg";
+import { ReactComponent as LinkedinIcon } from "assets/icons/linkedin.svg";
 
 export const Members: ProfileType[] = [
   {
@@ -326,27 +332,27 @@ export const externals: any = {
 
 export const socials = [
   {
-    image: require("assets/icons/twitter.svg").default,
+    image: TwitterIcon,
     url: "https://twitter.com/ardanaproject",
   },
   {
-    image: require("assets/icons/discord.svg").default,
+    image: DiscordIcon,
     url: "https://discord.gg/c9skrZvsqH",
   },
   {
-    image: require("assets/icons/telegram.svg").default,
+    image: TelegramIcon,
     url: "https://t.me/ardanaofficial",
   },
   {
-    image: require("assets/icons/medium.svg").default,
+    image: MediumIcon,
     url: "https://medium.com/ardana-hub",
   },
   {
-    image: require("assets/icons/monkey.svg").default,
+    image: MonkeyIcon,
     url: "https://www.youtube.com/channel/UCuVtpKzlmsD6s0ZiC0hakkA",
   },
   {
-    image: require("assets/icons/linkedin.svg").default,
+    image: LinkedinIcon,
     url: "https://www.linkedin.com/company/ardanalabs/",
   },
 ];
