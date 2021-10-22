@@ -7,16 +7,15 @@ import _ from "lodash";
 import { useIsDarkMode } from "state/user/hooks";
 
 import { externals, socials } from "data";
-import BG_WAVE from "assets/backgrounds/wave.png";
+import BG_WAVE from "assets/backgrounds/wave-gradient.png";
 import BG_RING from "assets/backgrounds/ring.svg";
 import LOGO_BLUE from "assets/logo_blue.png";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
-    background: ` linear-gradient(0deg, #080E42 32.04%, rgba(8, 14, 66, 0) 95.34%) top left no-repeat, 
-                  url(${BG_WAVE}) top left no-repeat`,
+    background: `url(${BG_WAVE}) top left no-repeat`,
     backgroundSize: "100%",
-    padding: "100px 0px 60px",
+    padding: "120px 0px 60px",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "flex-start",
@@ -54,8 +53,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       padding: "40px 20px",
       textAlign: "center",
       alignItems: "center",
-      background: ` linear-gradient(0deg, #080E42 32.04%, rgba(8, 14, 66, 0) 95.34%) top left no-repeat, 
-                    url(${BG_WAVE}) top left no-repeat`,
+      background: `url(${BG_WAVE}) top left no-repeat`,
       backgroundSize: "100%",
     },
   },
