@@ -14,8 +14,8 @@ import { GradientButton } from "components/Button";
 import BG_PURPLE_RADIAL from "assets/backgrounds/purple-radial-gradient.png";
 import BG_BLUE_RADIAL from "assets/backgrounds/dark-blue-radial-gradient.png";
 import BG_WAVE from "assets/backgrounds/wave.png";
-import ICON_TWITTER from "assets/icons/twitter.svg";
-import ICON_TELEGRAM from "assets/icons/telegram.svg";
+import { ReactComponent as TwitterIcon } from "assets/icons/twitter.svg";
+import { ReactComponent as TelegramIcon } from "assets/icons/telegram.svg";
 import ICON_PLAY from "assets/icons/video-play.svg";
 import BG_POSTER from "assets/backgrounds/video-poster.svg";
 
@@ -140,10 +140,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
   socialIconLink: {
     cursor: "pointer",
-    color: "#F5FCFE",
+    color: palette.text.primary,
 
-    "& > img": {
-      width: "23px",
+    "&:hover path": {
+      fill: palette.text.secondary,
     },
   },
 
@@ -218,10 +218,10 @@ const MainSection: React.FC = () => {
                   mt={!mobile ? "0px" : "15px"}
                 >
                   <Link className={cx(classes.socialIconLink)} href="#">
-                    <img src={ICON_TELEGRAM} alt="telegram" />
+                    <TelegramIcon />
                   </Link>
                   <Link className={cx(classes.socialIconLink)} href="#">
-                    <img src={ICON_TWITTER} alt="twitter" />
+                    <TwitterIcon />
                   </Link>
                 </Box>
                 <Link href="http://app.ardana.org/launch" underline="none">
