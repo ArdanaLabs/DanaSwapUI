@@ -60,6 +60,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     color: "white",
     fontSize: "13px",
     position: "relative",
+    textAlign: "center",
 
     "&:hover": {
       color: "#73D6F1",
@@ -100,15 +101,18 @@ const links = [
   },
   {
     label: i18next.t("PAGE.LANDING.HEADER.LINKS.3"),
-    to: "#",
+    to: "https://faceted-wash-97d.notion.site/cb0d147034e6439f8e70b2698ce199f2?v=fbf6185ab5f143eb9e22064fd9647814",
+    blank: true,
   },
   {
     label: i18next.t("PAGE.LANDING.HEADER.LINKS.4"),
-    to: "#",
+    to: "https://docs.ardana.org/?_ga=2.267695815.895783086.1634911974-1488848088.1632832057",
+    blank: true,
   },
   {
     label: i18next.t("PAGE.LANDING.HEADER.LINKS.5"),
-    to: "#",
+    to: "https://medium.com/ardana-hub",
+    blank: true,
   },
 ];
 
@@ -151,6 +155,8 @@ const HeaderSection: React.FC = () => {
                     })}
                     key={index}
                     underline="none"
+                    rel="noopener noreferrer"
+                    target={link.blank ? "_blank" : "_self"}
                   >
                     {link.label}
                   </Link>
@@ -180,12 +186,12 @@ const HeaderSection: React.FC = () => {
               >
                 {links.map((link, index) => (
                   <Link
-                    href={link.to}
-                    className={cx(classes.menuItem)}
                     key={index}
-                    style={{
-                      textAlign: "center",
-                    }}
+                    className={cx(classes.menuItem)}
+                    href={link.to}
+                    underline="none"
+                    rel="noopener noreferrer"
+                    target={link.blank ? "_blank" : "_self"}
                   >
                     {link.label}
                   </Link>
