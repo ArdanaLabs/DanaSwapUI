@@ -8,13 +8,15 @@ import { useIsDarkMode } from "state/user/hooks";
 
 import BG_LEFT from "assets/backgrounds/danatoken-left-bg.png";
 import BG_RIGHT from "assets/backgrounds/danatoken-right-bg.png";
+import BG_CYAN_GRADIENT from "assets/backgrounds/cyan-gradient.png";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
     textAlign: "center",
     background: ` url(${BG_LEFT}) top left no-repeat,
-                  url(${BG_RIGHT}) top 50% right no-repeat`,
-    backgroundSize: "auto 100vh, auto 50vh",
+                  url(${BG_RIGHT}) top 50% right no-repeat,
+                  url(${BG_CYAN_GRADIENT}) top 50% right -400px no-repeat`,
+    backgroundSize: "auto 100vh, auto 50vh, 90%",
     height: "100vh",
     display: "flex",
     alignItems: "center",
@@ -27,7 +29,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontWeight: 900,
     fontSize: "70px",
     lineHeight: "100%",
-    color: "#73D6F1",
+    color: palette.text.secondary,
 
     [breakpoints.down("xs")]: {
       fontSize: "35px",
@@ -40,7 +42,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontWeight: 300,
     fontSize: "22px",
     lineHeight: "26px",
-    color: "#F5FCFE",
+    color: palette.text.primary,
 
     [breakpoints.down("xs")]: {
       fontSize: "16px",
