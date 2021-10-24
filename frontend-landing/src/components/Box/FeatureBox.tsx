@@ -24,6 +24,8 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
     [breakpoints.down("xs")]: {
       height: "160px",
+      marginLeft: "10px",
+      marginRight: "10px",
     },
   },
   video: {
@@ -48,6 +50,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     padding: "20px",
     opacity: 0.99,
     height: "100%",
+    [breakpoints.down("xs")]: {
+      padding: "30px",
+    },
   },
 
   image: {

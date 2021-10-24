@@ -51,7 +51,8 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     paddingBottom: "200px",
 
     [breakpoints.down("xs")]: {
-      paddingTop: "100px",
+      paddingBottom: "100px",
+      backgroundPositionY: "250px, 1000px",
       textAlign: "center",
     },
   },
