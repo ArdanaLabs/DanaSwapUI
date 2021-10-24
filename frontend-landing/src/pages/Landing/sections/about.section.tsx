@@ -14,7 +14,7 @@ import ICON_PLAY from "assets/icons/video-play.svg";
 import BG_POSTER from "assets/backgrounds/video-poster.svg";
 import BG_LEFT from "assets/backgrounds/about-bg.png";
 import BG_RIGHT from "assets/backgrounds/cyan-gradient.png";
-import BG_PURPLE_GRADIENT from 'assets/backgrounds/pink-gradient.png';
+import BG_PURPLE_GRADIENT from "assets/backgrounds/pink-gradient.png";
 
 const aboutVideo =
   "https://background.sfo3.digitaloceanspaces.com/about/output.m3u8";
@@ -60,40 +60,6 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   title: {
-    fontFamily: "Brandon Grotesque",
-    fontStyle: "normal",
-    fontWeight: 900,
-    fontSize: "70px",
-    lineHeight: "100%",
-    color: palette.text.primary,
-    whiteSpace: "pre-line",
-
-    "& > strong": {
-      color: palette.text.secondary,
-    },
-
-    [breakpoints.down("sm")]: {
-      fontSize: "35px",
-      marginBottom: "10px",
-    },
-  },
-
-  subTitle: {
-    color: palette.text.primary,
-    fontSize: "22px",
-    fontFamily: "Museo Sans",
-    fontStyle: "normal",
-    fontWeight: 300,
-    lineHeight: "26px",
-
-    [breakpoints.down("sm")]: {
-      fontSize: "16px",
-      lineHeight: "18.4px",
-      whiteSpace: "pre-line",
-    },
-  },
-
-  definitionQ: {
     color: palette.text.primary,
     fontSize: "70px",
     fontWeight: 900,
@@ -112,7 +78,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     },
   },
 
-  definitionA: {
+  content: {
     color: palette.text.primary,
     whiteSpace: "pre-line",
     fontWeight: 300,
@@ -124,6 +90,8 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     [breakpoints.down("xs")]: {
       fontSize: "16px",
       lineHeight: "18.4px",
+      paddingLeft: "10px",
+      paddingRight: "10px",
     },
   },
 
@@ -168,10 +136,10 @@ const AboutSection: React.FC = () => {
           <Grid container spacing={3} alignItems="center">
             <Grid item xs={12} sm={6}>
               <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-                <Box className={cx(classes.definitionQ)}>
+                <Box className={cx(classes.title)}>
                   What is <span>Ardana</span>?
                 </Box>
-                <Box className={cx(classes.definitionA)}>
+                <Box className={cx(classes.content)}>
                   {i18next.t("PAGE.LANDING.ARDANA.DESC")}
                 </Box>
               </ScrollAnimation>
