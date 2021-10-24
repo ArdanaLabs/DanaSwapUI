@@ -165,6 +165,7 @@ const MainSection: React.FC = () => {
                   }),
                 }}
               />
+              <Box mt={"20px"} />
               <Box
                 className={cx(classes.subTitle)}
                 textAlign={mobile ? "center" : "left"}

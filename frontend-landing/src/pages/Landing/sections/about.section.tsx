@@ -12,6 +12,8 @@ import { FeatureBox } from "components/Box";
 
 import ICON_PLAY from "assets/icons/video-play.svg";
 import BG_POSTER from "assets/backgrounds/video-poster.svg";
+import BG_LEFT from "assets/backgrounds/about-bg.png";
+import BG_RIGHT from "assets/backgrounds/about-blue-gradient-bg.png";
 
 const aboutVideo =
   "https://background.sfo3.digitaloceanspaces.com/about/output.m3u8";
@@ -42,11 +44,15 @@ const Ardana_features = [
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
     width: "100%",
+    background: ` url(${BG_LEFT}) left top no-repeat,
+                  url(${BG_RIGHT}) right bottom -100px no-repeat`,
     backgroundSize: "contain",
-    paddingTop: "50px",
+    paddingTop: "100px",
+    paddingBottom: "200px",
 
     [breakpoints.down("xs")]: {
       paddingTop: "100px",
+      textAlign: "center",
     },
   },
 
@@ -153,69 +159,67 @@ const AboutSection: React.FC = () => {
   const classes = useStyles({ dark, mobile });
 
   return (
-      <Box className={classes.bg}>
-        <Container>
-          <Box>
-            <Grid container spacing={3} alignItems="center">
-              <Grid item xs={12} sm={6}>
-                <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-                  <Box className={cx(classes.definitionQ)}>
-                    What is <span>Ardana</span>?
-                  </Box>
-                  <Box className={cx(classes.definitionA)}>
-                    {i18next.t("PAGE.LANDING.ARDANA.DESC")}
-                  </Box>
-                </ScrollAnimation>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <Box className={cx(classes.aboutVideo)}>
-                  <ReactPlayer
-                    url={aboutVideo}
-                    playing
-                    loop={false}
-                    width="100%"
-                    height="100%"
-                    controls
-                    light={BG_POSTER}
-                    playIcon={
-                      <Box className={cx(classes.playIcon)}>
-                        <img src={ICON_PLAY} alt="playIcon" width="100px" />
-                      </Box>
-                    }
-                  />
+    <Box className={classes.bg}>
+      <Container>
+        <Box>
+          <Grid container spacing={3} alignItems="center">
+            <Grid item xs={12} sm={6}>
+              <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
+                <Box className={cx(classes.definitionQ)}>
+                  What is <span>Ardana</span>?
                 </Box>
-              </Grid>
+                <Box className={cx(classes.definitionA)}>
+                  {i18next.t("PAGE.LANDING.ARDANA.DESC")}
+                </Box>
+              </ScrollAnimation>
             </Grid>
-          </Box>
-
-          <Box mt={!mobile ? "100px" : "50px"}></Box>
-
-          <Box mb="50px" mx="10px">
-            <Grid container spacing={3} alignItems="stretch">
-              {Ardana_features.map((feature, index) => (
-                <Grid
-                  item
-                  key={index}
-                  xs={12}
-                  sm={6}
-                  md={3}
-                  style={{
-                    display: "flex",
-                    alignItems: "stretch",
-                    flexFlow: "column",
-                  }}
-                >
-                  <FeatureBox
-                    image={feature.image}
-                    title={feature.title}
-                    content={feature.content}
-                  />
-                </Grid>
-              ))}
+            <Grid item xs={12} sm={6}>
+              <Box className={cx(classes.aboutVideo)}>
+                <ReactPlayer
+                  url={aboutVideo}
+                  playing
+                  loop={false}
+                  width="100%"
+                  height="100%"
+                  controls
+                  light={BG_POSTER}
+                  playIcon={
+                    <Box className={cx(classes.playIcon)}>
+                      <img src={ICON_PLAY} alt="playIcon" width="100px" />
+                    </Box>
+                  }
+                />
+              </Box>
             </Grid>
-          </Box>
-        </Container>
-      </Box>
+          </Grid>
+        </Box>
+
+        <Box mt={!mobile ? "200px" : "50px"}></Box>
+
+        <Grid container spacing={3} alignItems="stretch">
+          {Ardana_features.map((feature, index) => (
+            <Grid
+              item
+              key={index}
+              xs={12}
+              sm={6}
+              md={3}
+              style={{
+                display: "flex",
+                alignItems: "stretch",
+                flexFlow: "column",
+              }}
+            >
+              <FeatureBox
+                image={feature.image}
+                title={feature.title}
+                content={feature.content}
+              />
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+    </Box>
   );
 };
 
