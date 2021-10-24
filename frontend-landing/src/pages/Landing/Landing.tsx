@@ -6,6 +6,7 @@ import {
   AboutSection,
   PartnerSection,
   DanaSwapSection,
+  DanaTokenSection,
   StableCoinSection,
   InvestorsSection,
 } from "./sections";
@@ -17,6 +18,7 @@ const Landing: React.FC = () => {
       <AboutSection />
       <StableCoinSection />
       <DanaSwapSection />
+      <DanaTokenSection />
       <PartnerSection />
       <InvestorsSection />
     </Box>
