@@ -9,9 +9,12 @@ import { ProfileBox } from "components/Box";
 import { Advisors } from "data";
 import { ProfileType } from "components/Box/ProfileBox";
 
+import BG_BLUE_RADIAL from "assets/backgrounds/cyan-gradient.png";
+
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
-    background: palette.background.default,
+    background: ` url(${BG_BLUE_RADIAL}) top -300px left -1000px no-repeat,
+                  url(${BG_BLUE_RADIAL}) bottom -300px right -1000px no-repeat`,
     padding: "0px 20px 100px 20px",
 
     [breakpoints.down("xs")]: {

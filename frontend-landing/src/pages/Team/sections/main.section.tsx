@@ -6,7 +6,6 @@ import ReactPlayer from "react-player";
 import ScrollAnimation from "react-animate-on-scroll";
 
 import { useIsDarkMode } from "state/user/hooks";
-
 import { TopNotchTeams } from "data";
 
 const heroVideo =
