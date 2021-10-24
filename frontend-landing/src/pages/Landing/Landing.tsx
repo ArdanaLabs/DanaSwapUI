@@ -3,6 +3,7 @@ import { Box } from "@material-ui/core";
 
 import {
   MainSection,
+  AboutSection,
   PartnerSection,
   DanaSwapSection,
   StableCoinSection,
@@ -13,6 +14,7 @@ const Landing: React.FC = () => {
   return (
     <Box>
       <MainSection />
+      <AboutSection />
       <StableCoinSection />
       <DanaSwapSection />
       <PartnerSection />
