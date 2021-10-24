@@ -51,12 +51,20 @@
             "CONTENT": "Deposit Ardana stablecoins to earn passive income through interest payments."
           },
           {
-            "TITLE": "Savings Account",
-            "CONTENT": "Deposit Ardana stablecoins to earn passive income through interest payments."
+            "TITLE": "Earn Trading Fees",
+            "CONTENT": "Deposit your assets into a DanaSwap pool and earn a proportion of the market making fees."
           },
           {
-            "TITLE": "Savings Account",
-            "CONTENT": "Deposit Ardana stablecoins to earn passive income through interest payments."
+            "TITLE": "Foreign Exchange",
+            "CONTENT": "Swap between international stablecoins such as dUSD, dEUR, dGBP and more."
+          },
+          {
+            "TITLE": "DANA Token",
+            "CONTENT": " The governance token rewarded to users for supporting the ecosystem through liquidity provision."
+          },
+          {
+            "TITLE": "Governance",
+            "CONTENT": "DANA token holders can participate in polling and voting to influence the development of Ardana."
           }
         ]
       },

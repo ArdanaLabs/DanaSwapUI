@@ -1,3 +1,4 @@
+import i18next from "i18next";
 import { ProfileType } from "components/Box/ProfileBox";
 import { ReactComponent as TwitterIcon } from "assets/icons/twitter.svg";
 import { ReactComponent as DiscordIcon } from "assets/icons/discord.svg";
@@ -5,6 +6,39 @@ import { ReactComponent as TelegramIcon } from "assets/icons/telegram.svg";
 import { ReactComponent as MediumIcon } from "assets/icons/medium.svg";
 import { ReactComponent as MonkeyIcon } from "assets/icons/monkey.svg";
 import { ReactComponent as LinkedinIcon } from "assets/icons/linkedin.svg";
+
+export const DanaFeatures = [
+  {
+    image: require("assets/logos/ultra-low-slippage.svg").default,
+    title: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.0.TITLE"),
+    content: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.0.CONTENT"),
+  },
+  {
+    image: require("assets/logos/saving-account.svg").default,
+    title: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.1.TITLE"),
+    content: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.1.CONTENT"),
+  },
+  {
+    image: require("assets/logos/earn-trading-fees.svg").default,
+    title: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.2.TITLE"),
+    content: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.2.CONTENT"),
+  },
+  {
+    image: require("assets/logos/foreign-exchange.svg").default,
+    title: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.3.TITLE"),
+    content: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.3.CONTENT"),
+  },
+  {
+    image: require("assets/logos/dana-token.svg").default,
+    title: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.4.TITLE"),
+    content: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.4.CONTENT"),
+  },
+  {
+    image: require("assets/logos/governance.svg").default,
+    title: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.5.TITLE"),
+    content: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.5.CONTENT"),
+  },
+]
 
 export const Members: ProfileType[] = [
   {

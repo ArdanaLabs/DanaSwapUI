@@ -24,21 +24,12 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     background: ` url(${BG_PURPLE_RADIAL}) top -700px right -700px no-repeat,
                   url(${BG_BLUE_RADIAL}) top 50% left 50% no-repeat,
                   url(${BG_WAVE}) bottom left no-repeat`,
+    backgroundSize: "auto, auto, contain",
     paddingTop: "100px",
     paddingBottom: "150px",
 
     [breakpoints.down("xs")]: {
       textAlign: "center",
-    },
-  },
-  waveBG: {
-    width: "100%",
-    background: `url(${BG_WAVE}) top left no-repeat`,
-    backgroundSize: "contain",
-    paddingTop: "250px",
-
-    [breakpoints.down("xs")]: {
-      paddingTop: "100px",
     },
   },
 
@@ -76,64 +67,12 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     },
   },
 
-  definitionQ: {
-    color: palette.text.primary,
-    fontSize: "70px",
-    fontWeight: 900,
-    fontFamily: "Brandon Grotesque",
-    fontStyle: "normal",
-    lineHeight: "100%",
-    marginBottom: "30px",
-
-    "& > span": {
-      color: palette.text.secondary,
-    },
-
-    [breakpoints.down("xs")]: {
-      fontSize: "35px",
-      marginBottom: "15px",
-    },
-  },
-
-  definitionA: {
-    color: palette.text.primary,
-    whiteSpace: "pre-line",
-    fontWeight: 300,
-    fontSize: "22px",
-    fontFamily: "Museo Sans",
-    fontStyle: "normal",
-    lineHeight: "26px",
-
-    [breakpoints.down("xs")]: {
-      fontSize: "16px",
-      lineHeight: "18.4px",
-    },
-  },
-
   socialIconLink: {
     cursor: "pointer",
     color: palette.text.primary,
 
     "&:hover path": {
       fill: palette.text.secondary,
-    },
-  },
-
-  aboutVideo: {
-    "& > div > video, & .react-player__preview": {
-      borderRadius: "10px",
-    },
-    [breakpoints.down("xs")]: {
-      marginTop: "20px",
-      marginLeft: "-16px",
-      marginRight: "-16px",
-    },
-  },
-
-  playIcon: {
-    margin: "100px",
-    [breakpoints.down("xs")]: {
-      margin: "60px",
     },
   },
 }));

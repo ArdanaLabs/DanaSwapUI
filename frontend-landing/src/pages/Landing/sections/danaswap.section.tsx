@@ -10,31 +10,10 @@ import { useIsDarkMode } from "state/user/hooks";
 import { GradientButton } from "components/Button";
 import { DanaswapFeature } from "components/Box";
 
+import { DanaFeatures } from "data";
+
 import ICO_NEXT from "assets/icons/carousel-next.svg";
 import ICO_PREV from "assets/icons/carousel-prev.svg";
-
-const Ardana_features = [
-  {
-    image: require("assets/logos/ultra-low-slippage.svg").default,
-    title: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.0.TITLE"),
-    content: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.0.CONTENT"),
-  },
-  {
-    image: require("assets/logos/saving-account.svg").default,
-    title: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.1.TITLE"),
-    content: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.1.CONTENT"),
-  },
-  {
-    image: require("assets/logos/saving-account.svg").default,
-    title: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.2.TITLE"),
-    content: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.2.CONTENT"),
-  },
-  {
-    image: require("assets/logos/saving-account.svg").default,
-    title: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.3.TITLE"),
-    content: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.3.CONTENT"),
-  },
-];
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
@@ -52,7 +31,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontWeight: 900,
     fontSize: "70px",
     lineHeight: "100%",
-    color: "#73D6F1",
+    color: palette.text.secondary,
 
     [breakpoints.down("xs")]: {
       fontSize: "35px",
@@ -65,7 +44,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontWeight: 300,
     fontSize: "22px",
     lineHeight: "26px",
-    color: "#F5FCFE",
+    color: palette.text.primary,
 
     [breakpoints.down("xs")]: {
       fontSize: "16px",
@@ -154,7 +133,7 @@ const DanaswapSection: React.FC = () => {
               renderArrow={renderArrow}
               renderPagination={renderPagination}
             >
-              {Ardana_features.map((feature, i: number) => (
+              {DanaFeatures.map((feature, i: number) => (
                 <DanaswapFeature
                   key={feature.title + i}
                   image={feature.image}
