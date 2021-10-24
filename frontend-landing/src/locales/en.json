@@ -11,8 +11,8 @@
           "BLOG"
         ]
       },
-      "TITLE": "Mint, Trade, Stake\nand <strong>Earn ADA</strong>",
-      "DESCRIPTION": "The First All-in-One Stablecoin\nEcosystem Built on Cardano",
+      "TITLE": "Mint, Trade, Stake\nand <strong>Store Value</strong>",
+      "DESCRIPTION": "The First All-in-One Stablecoin Ecosystem Built on Cardano",
       "LAUNCH_PLATFORM": "LAUNCH PLATFORM",
       "COMINGSOON": "COMING SOON",
       "ARDANA": {
@@ -21,7 +21,7 @@
         "FEATURES": [
           {
             "TITLE": "Fully\nDecentralized",
-            "CONTENT": "Unibased, collateral backed and pegged to the US Dollar."
+            "CONTENT": "Unbiased, collateral backed and pegged to the US Dollar."
           },
           {
             "TITLE": "Borrowing",
@@ -60,7 +60,7 @@
           },
           {
             "TITLE": "DANA Token",
-            "CONTENT": " The governance token rewarded to users for supporting the ecosystem through liquidity provision."
+            "CONTENT": "The governance token rewarded to users for supporting the ecosystem through liquidity provision."
           },
           {
             "TITLE": "Governance",
