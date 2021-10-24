@@ -38,8 +38,7 @@ const Ardana_features = [
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
-    background: "#080E42",
-    padding: "100px 0px",
+    paddingTop: "100px",
 
     [breakpoints.down("xs")]: {
       padding: "40px 0px",
