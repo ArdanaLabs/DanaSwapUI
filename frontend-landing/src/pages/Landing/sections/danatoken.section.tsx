@@ -10,6 +10,9 @@ import BG_LEFT from "assets/backgrounds/danatoken-left-bg.png";
 import BG_RIGHT from "assets/backgrounds/danatoken-right-bg.png";
 import BG_CYAN_GRADIENT from "assets/backgrounds/cyan-gradient.png";
 
+import BG_LEFT_MOBILE from "assets/backgrounds/danatoken-left-mobile-bg.png";
+import BG_RIGHT_MOBILE from "assets/backgrounds/danatoken-right-mobile-bg.png";
+
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
     textAlign: "center",
@@ -21,6 +24,13 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+
+    [breakpoints.down("xs")]: {
+      background: ` url(${BG_LEFT_MOBILE}) top left no-repeat,
+                    url(${BG_RIGHT_MOBILE}) bottom right no-repeat`,
+      backgroundSize: "50vw, 30vw",
+      padding: "0px 50px",
+    },
   },
 
   title: {
@@ -32,6 +42,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     color: palette.text.secondary,
 
     [breakpoints.down("xs")]: {
+      paddingTop: "200px",
       fontSize: "35px",
     },
   },

@@ -20,7 +20,6 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     paddingTop: "100px",
 
     [breakpoints.down("xs")]: {
-      padding: "40px 0px",
       textAlign: "center",
     },
   },
