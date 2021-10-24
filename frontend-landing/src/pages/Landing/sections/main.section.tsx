@@ -13,6 +13,7 @@ import { GradientButton } from "components/Button";
 import BG_PURPLE_RADIAL from "assets/backgrounds/pink-gradient.png";
 import BG_BLUE_RADIAL from "assets/backgrounds/cyan-gradient.png";
 import BG_WAVE from "assets/backgrounds/wave-gradient.png";
+import BG_WAVE_MOBILE from "assets/backgrounds/wave-mobile-gradient.png";
 import { ReactComponent as TwitterIcon } from "assets/icons/twitter.svg";
 import { ReactComponent as TelegramIcon } from "assets/icons/telegram.svg";
 
@@ -29,6 +30,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     paddingBottom: "150px",
 
     [breakpoints.down("xs")]: {
+      background: ` url(${BG_PURPLE_RADIAL}) top -700px right -700px no-repeat,
+                    url(${BG_BLUE_RADIAL}) top 50% left 50% no-repeat,
+                    url(${BG_WAVE_MOBILE}) bottom left no-repeat`,
+      backgroundSize: "auto, auto, 100%",
       textAlign: "center",
       paddingBottom: "100px",
     },

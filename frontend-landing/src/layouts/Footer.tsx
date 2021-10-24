@@ -8,6 +8,7 @@ import { useIsDarkMode } from "state/user/hooks";
 
 import { externals, socials } from "data";
 import BG_WAVE from "assets/backgrounds/wave-gradient.png";
+import BG_WAVE_MOBILE from "assets/backgrounds/wave-mobile180-bg.png";
 import BG_RING from "assets/backgrounds/ring.svg";
 import LOGO_BLUE from "assets/logo_blue.png";
 
@@ -15,7 +16,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
     background: `url(${BG_WAVE}) top left no-repeat`,
     backgroundSize: "100%",
-    padding: "120px 0px 60px",
+    padding: "150px 0px 60px",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "flex-start",
@@ -43,17 +44,18 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       cursor: "pointer",
 
       [breakpoints.down("xs")]: {
-        fontSize: "15px",
+        fontSize: "16px",
         lineHeight: "19px",
       },
     },
 
     [breakpoints.down("xs")]: {
       flexDirection: "column",
-      padding: "40px 20px",
+      paddingLeft: "20px",
+      paddingRight: "20px",
       textAlign: "center",
       alignItems: "center",
-      background: `url(${BG_WAVE}) top left no-repeat`,
+      background: `url(${BG_WAVE_MOBILE}) top -30px left no-repeat`,
       backgroundSize: "100%",
     },
   },
@@ -177,7 +179,7 @@ const Footer: React.FC = () => {
             developers build the new coordination mechanisms of the Internet age
             as we move toward a radically new vision of the future of work.
           </Box>
-          <Box my={!mobile ? "30px" : "0px"} className={cx(classes.logo)}>
+          <Box my={"30px"} className={cx(classes.logo)}>
             <img src={LOGO_BLUE} alt="logo" />
           </Box>
           <Box className={cx(classes.guide)}>
@@ -205,7 +207,7 @@ const Footer: React.FC = () => {
                 Ardana news and events
               </span>
 
-              <Box mt="25px" />
+              <Box mt={!mobile ? "70px" : "25px"} />
               <Box className="link-container">
                 {socials.map((social: any, index: number) => (
                   <Link
