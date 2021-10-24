@@ -10,8 +10,8 @@ import { useIsDarkMode } from "state/user/hooks";
 
 import { GradientButton } from "components/Button";
 
-import BG_PURPLE_RADIAL from "assets/backgrounds/purple-radial-gradient.png";
-import BG_BLUE_RADIAL from "assets/backgrounds/dark-blue-radial-gradient.png";
+import BG_PURPLE_RADIAL from "assets/backgrounds/pink-gradient.png";
+import BG_BLUE_RADIAL from "assets/backgrounds/cyan-gradient.png";
 import BG_WAVE from "assets/backgrounds/wave-gradient.png";
 import { ReactComponent as TwitterIcon } from "assets/icons/twitter.svg";
 import { ReactComponent as TelegramIcon } from "assets/icons/telegram.svg";
@@ -21,11 +21,9 @@ const sphereVideo =
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
-    background: ` url(${BG_PURPLE_RADIAL}) right top no-repeat,
-                  url(${BG_BLUE_RADIAL}) top left no-repeat,
-                  url(${BG_WAVE}) bottom left no-repeat,
-                  #080E42`,
-    backgroundSize: "700px, 100%, 100%",
+    background: ` url(${BG_PURPLE_RADIAL}) top -700px right -700px no-repeat,
+                  url(${BG_BLUE_RADIAL}) top 50% left 50% no-repeat,
+                  url(${BG_WAVE}) bottom left no-repeat`,
     paddingTop: "100px",
     paddingBottom: "150px",
 

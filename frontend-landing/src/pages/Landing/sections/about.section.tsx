@@ -13,7 +13,7 @@ import { FeatureBox } from "components/Box";
 import ICON_PLAY from "assets/icons/video-play.svg";
 import BG_POSTER from "assets/backgrounds/video-poster.svg";
 import BG_LEFT from "assets/backgrounds/about-bg.png";
-import BG_RIGHT from "assets/backgrounds/about-blue-gradient-bg.png";
+import BG_RIGHT from "assets/backgrounds/cyan-gradient.png";
 
 const aboutVideo =
   "https://background.sfo3.digitaloceanspaces.com/about/output.m3u8";
@@ -44,8 +44,8 @@ const Ardana_features = [
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
     width: "100%",
-    background: ` url(${BG_LEFT}) left top no-repeat,
-                  url(${BG_RIGHT}) right bottom -100px no-repeat`,
+    background: ` url(${BG_LEFT}) top left no-repeat,
+                  url(${BG_RIGHT}) bottom -200px right -500px no-repeat`,
     backgroundSize: "contain",
     paddingTop: "100px",
     paddingBottom: "200px",

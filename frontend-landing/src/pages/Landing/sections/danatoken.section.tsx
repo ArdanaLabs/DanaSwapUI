@@ -6,11 +6,19 @@ import ScrollAnimation from "react-animate-on-scroll";
 
 import { useIsDarkMode } from "state/user/hooks";
 
+import BG_LEFT from "assets/backgrounds/danatoken-left-bg.png";
+import BG_RIGHT from "assets/backgrounds/danatoken-right-bg.png";
+
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
     textAlign: "center",
-    marginTop: "200px",
-    marginBottom: "200px",
+    background: ` url(${BG_LEFT}) top left no-repeat,
+                  url(${BG_RIGHT}) top 50% right no-repeat`,
+    backgroundSize: "auto 100vh, auto 50vh",
+    height: "100vh",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
 
   title: {
