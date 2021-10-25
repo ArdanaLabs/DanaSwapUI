@@ -27,17 +27,19 @@ const useStyles = makeStyles(({ palette }) => ({
 }));
 
 export interface GradientButtonProps {
-  label?: String;
+  label?: string;
   width?: number;
   height?: number;
   strokeWidth?: number;
+  clickable?: boolean;
 }
 
 const GradientButton: React.FC<GradientButtonProps> = ({
-  label = "Button",
+  label,
   width = 200,
   height = 50,
   strokeWidth = 3,
+  clickable = true,
 }) => {
   const { breakpoints } = useTheme();
   const dark = useIsDarkMode();
@@ -71,7 +73,7 @@ const GradientButton: React.FC<GradientButtonProps> = ({
             />
           </g>
         </svg>
-        <Box className={cx(classes.label)}>{label}</Box>
+        {label && <Box className={cx(classes.label)}>{label}</Box>}
       </Box>
       <Box
         position="absolute"
@@ -79,11 +81,11 @@ const GradientButton: React.FC<GradientButtonProps> = ({
         left={strokeWidth + "px"}
         width={`calc(100% - ${strokeWidth * 2}px)`}
         height={`calc(100% - ${strokeWidth * 2}px)`}
-        borderRadius="50px"
+        borderRadius="500px"
         border={`${strokeWidth} solid transparent`}
         boxShadow="0px 0px 10px 3px #2D3BA0"
         zIndex={-1}
-        style={hover ? { background: "#FFFFFF33" } : {}}
+        style={clickable && hover ? { background: "#FFFFFF33" } : {}}
       />
     </Box>
   );

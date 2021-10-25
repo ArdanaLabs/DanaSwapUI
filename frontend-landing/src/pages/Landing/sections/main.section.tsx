@@ -27,7 +27,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
                   url(${BG_WAVE}) bottom left no-repeat`,
     backgroundSize: "auto, auto, contain",
     paddingTop: "100px",
-    paddingBottom: "150px",
+    paddingBottom: "200px",
 
     [breakpoints.down("xs")]: {
       background: ` url(${BG_PURPLE_RADIAL}) top -700px right -700px no-repeat,
