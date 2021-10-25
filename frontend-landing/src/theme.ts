@@ -18,8 +18,6 @@ const primaryMainNight = "#FFFFFF";
 const primaryDarkDay =
   "linear-gradient(90.19deg, #2F3DA0 27.19%, #73D6F1 99.87%)";
 const primaryDarkNight = "linear-gradient(0deg, #3142A3, #3142A3)";
-// const primaryDarkDay = "linear-gradient(180deg, #5F72FF 0%, #202F9A 100%)";
-// const primaryDarkNight = "linear-gradient(180deg, #73D6F1 0%, rgba(115, 214, 241, 0) 100%)";
 
 const secondaryMainDay = "#636060";
 const secondaryMainNight = "#FFFFFF";
