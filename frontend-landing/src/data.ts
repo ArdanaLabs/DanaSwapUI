@@ -32,32 +32,32 @@ export const ArdanaFeatures = [
 
 export const DanaSwapFeatures = [
   {
-    image: require("assets/logos/ultra-low-slippage.svg").default,
+    image: require("assets/logos/ultra-low-slippage.png").default,
     title: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.0.TITLE"),
     content: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.0.CONTENT"),
   },
   {
-    image: require("assets/logos/saving-account.svg").default,
+    image: require("assets/logos/saving-account.png").default,
     title: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.1.TITLE"),
     content: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.1.CONTENT"),
   },
   {
-    image: require("assets/logos/earn-trading-fees.svg").default,
+    image: require("assets/logos/earn-trading-fees.png").default,
     title: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.2.TITLE"),
     content: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.2.CONTENT"),
   },
   {
-    image: require("assets/logos/foreign-exchange.svg").default,
+    image: require("assets/logos/foreign-exchange.png").default,
     title: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.3.TITLE"),
     content: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.3.CONTENT"),
   },
   {
-    image: require("assets/logos/dana-token.svg").default,
+    image: require("assets/logos/dana-token.png").default,
     title: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.4.TITLE"),
     content: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.4.CONTENT"),
   },
   {
-    image: require("assets/logos/governance.svg").default,
+    image: require("assets/logos/governance.png").default,
     title: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.5.TITLE"),
     content: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.5.CONTENT"),
   },

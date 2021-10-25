@@ -3,6 +3,7 @@ import cx from "classnames";
 import { Box, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { useIsDarkMode } from "state/user/hooks";
+import { GradientButton } from "components/Button";
 
 export interface DanaswapFeatureProps {
   image?: any;
@@ -30,15 +31,29 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   image: {
-    "& > img": {
-      width: "150px",
-    },
+    position: "relative",
+    lineHeight: 0,
+    paddingTop: "20px",
+    paddingBottom: "20px",
 
     [breakpoints.down("xs")]: {
       position: "absolute",
-      top: 0,
+      top: "-10px",
       left: "50%",
       transform: "translate(-50%, -50%)",
+    },
+  },
+  photo: {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    display: "inline-flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "80px",
+    [breakpoints.down("xs")]: {
+      width: "60px",
     },
   },
 
@@ -102,7 +117,12 @@ const DanaswapFeature: React.FC<DanaswapFeatureProps> = ({
       onMouseLeave={() => setHover(false)}
     >
       <Box className={cx(classes.image)}>
-        <img src={image} alt="" />
+        <GradientButton
+          width={!mobile ? 121 : 81}
+          height={!mobile ? 121 : 81}
+          clickable={false}
+        />
+        <img className={cx(classes.photo)} src={image} alt="" />
       </Box>
       <Box className={cx(classes.title)}>{title}</Box>
       <Box mt={!mobile ? "30px" : "15px"} />
