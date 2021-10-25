@@ -35,11 +35,9 @@ const ProfileSection: React.FC = () => {
   const classes = useStyles({ dark, mobile });
 
   return (
-    <Box
-      className={cx(classes.bg)}
-    >
+    <Box className={cx(classes.bg)}>
       <Container>
-      <Grid container spacing={!mobile ? 5 : 2}>
+        <Grid container spacing={!mobile ? 5 : 2}>
           {Members.map((profile: ProfileType, index) => (
             <Grid
               item
