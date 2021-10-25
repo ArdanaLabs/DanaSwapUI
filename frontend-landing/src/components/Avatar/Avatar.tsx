@@ -4,7 +4,7 @@ import { Box, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { useIsDarkMode } from "state/user/hooks";
 
-import BG_RING from "assets/backgrounds/ring.svg";
+import { GradientButton } from "components/Button";
 export interface AvatarProps {
   image: string;
   size: number;
@@ -12,25 +12,18 @@ export interface AvatarProps {
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
-    // boxShadow: "0px 0px 20px 5px #2D3BA0",
-    padding: "40px",
-    borderRadius: "50%",
-    display: "inline-flex",
-    justifyContent: "center",
-    alignItems: "center",
-    // border: "3px solid #73D6F1",
-    background: `url(${BG_RING}) center center no-repeat`,
-    backgroundSize: "cover",
-    width: "200px",
-    height: "200px",
-
-    [breakpoints.down("xs")]: {
-      width: "100px",
-      height: "100px",
-    },
+    position: "relative",
+    lineHeight: 0,
   },
 
   photo: {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    display: "inline-flex",
+    justifyContent: "center",
+    alignItems: "center",
     borderRadius: "50%",
     [breakpoints.down("xs")]: {
       width: "60px",
@@ -46,6 +39,7 @@ const Avatar: React.FC<AvatarProps> = ({ image, size }) => {
 
   return (
     <Box className={cx(classes.root)}>
+      <GradientButton width={145} height={145} clickable={false} />
       <img className={cx(classes.photo)} src={image} alt="avatar" />
     </Box>
   );

@@ -16,7 +16,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     position: "relative",
     background: palette.background.paper,
     borderRadius: "10px",
-    padding: "80px 20px 50px",
+    padding: "90px 20px 50px",
     textAlign: "center",
     marginTop: "80px",
     height: "400px",
