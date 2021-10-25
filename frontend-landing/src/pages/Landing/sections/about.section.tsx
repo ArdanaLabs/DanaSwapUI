@@ -15,32 +15,10 @@ import BG_POSTER from "assets/backgrounds/video-poster.svg";
 import BG_LEFT from "assets/backgrounds/about-bg.png";
 import BG_RIGHT from "assets/backgrounds/cyan-gradient.png";
 import BG_PURPLE_GRADIENT from "assets/backgrounds/pink-gradient.png";
+import { ArdanaFeatures } from "data";
 
 const aboutVideo =
   "https://background.sfo3.digitaloceanspaces.com/about/output.m3u8";
-
-const Ardana_features = [
-  {
-    image: require("assets/logos/fully-decentralized.svg").default,
-    title: i18next.t("PAGE.LANDING.ARDANA.FEATURES.0.TITLE"),
-    content: i18next.t("PAGE.LANDING.ARDANA.FEATURES.0.CONTENT"),
-  },
-  {
-    image: require("assets/logos/borrow-lend.svg").default,
-    title: i18next.t("PAGE.LANDING.ARDANA.FEATURES.1.TITLE"),
-    content: i18next.t("PAGE.LANDING.ARDANA.FEATURES.1.CONTENT"),
-  },
-  {
-    image: require("assets/logos/store-of-value.svg").default,
-    title: i18next.t("PAGE.LANDING.ARDANA.FEATURES.2.TITLE"),
-    content: i18next.t("PAGE.LANDING.ARDANA.FEATURES.2.CONTENT"),
-  },
-  {
-    image: require("assets/logos/powered-by-cardano.svg").default,
-    title: i18next.t("PAGE.LANDING.ARDANA.FEATURES.3.TITLE"),
-    content: i18next.t("PAGE.LANDING.ARDANA.FEATURES.3.CONTENT"),
-  },
-];
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
@@ -168,7 +146,7 @@ const AboutSection: React.FC = () => {
         <Box mt={!mobile ? "200px" : "50px"}></Box>
 
         <Grid container spacing={3} alignItems="stretch">
-          {Ardana_features.map((feature, index) => (
+          {ArdanaFeatures.map((feature, index) => (
             <Grid
               item
               key={index}

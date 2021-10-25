@@ -7,7 +7,7 @@ import { useIsDarkMode } from "state/user/hooks";
 import { GradientButton } from "components/Button";
 export interface AvatarProps {
   image: string;
-  size: number;
+  size?: number;
 }
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({

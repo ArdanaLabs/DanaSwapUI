@@ -7,7 +7,30 @@ import { ReactComponent as MediumIcon } from "assets/icons/medium.svg";
 import { ReactComponent as MonkeyIcon } from "assets/icons/monkey.svg";
 import { ReactComponent as LinkedinIcon } from "assets/icons/linkedin.svg";
 
-export const DanaFeatures = [
+export const ArdanaFeatures = [
+  {
+    image: require("assets/logos/fully-decentralized.png").default,
+    title: i18next.t("PAGE.LANDING.ARDANA.FEATURES.0.TITLE"),
+    content: i18next.t("PAGE.LANDING.ARDANA.FEATURES.0.CONTENT"),
+  },
+  {
+    image: require("assets/logos/borrowing.png").default,
+    title: i18next.t("PAGE.LANDING.ARDANA.FEATURES.1.TITLE"),
+    content: i18next.t("PAGE.LANDING.ARDANA.FEATURES.1.CONTENT"),
+  },
+  {
+    image: require("assets/logos/store-of-value.png").default,
+    title: i18next.t("PAGE.LANDING.ARDANA.FEATURES.2.TITLE"),
+    content: i18next.t("PAGE.LANDING.ARDANA.FEATURES.2.CONTENT"),
+  },
+  {
+    image: require("assets/logos/powered-by-cardano.png").default,
+    title: i18next.t("PAGE.LANDING.ARDANA.FEATURES.3.TITLE"),
+    content: i18next.t("PAGE.LANDING.ARDANA.FEATURES.3.CONTENT"),
+  },
+];
+
+export const DanaSwapFeatures = [
   {
     image: require("assets/logos/ultra-low-slippage.svg").default,
     title: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.0.TITLE"),

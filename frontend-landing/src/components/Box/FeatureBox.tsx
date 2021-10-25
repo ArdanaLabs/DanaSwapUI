@@ -4,6 +4,7 @@ import ReactPlayer from "react-player";
 import { Box, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { useIsDarkMode } from "state/user/hooks";
+import { GradientButton } from "components/Button";
 
 const heroVideo =
   "https://background.sfo3.digitaloceanspaces.com/stablecoin/output.m3u8";
@@ -60,12 +61,19 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     transform: "translate(-50%, -50%)",
     left: "50%",
     top: "-10px",
-    "& > img": {
-      width: "175px",
-
-      [breakpoints.down("xs")]: {
-        width: "100px",
-      },
+    lineHeight: 0,
+  },
+  photo: {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    display: "inline-flex",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: "50%",
+    [breakpoints.down("xs")]: {
+      width: "60px",
     },
   },
 
@@ -135,7 +143,12 @@ const FeatureBox: React.FC<FeatureBoxProps> = ({ image, title, content }) => {
         }}
       >
         <Box className={cx(classes.image)}>
-          <img src={image} alt="title" />
+          <GradientButton
+            width={!mobile ? 145 : 81}
+            height={!mobile ? 145 : 81}
+            clickable={false}
+          />
+          <img className={cx(classes.photo)} src={image} alt="title" />
         </Box>
 
         <Box mt={!mobile ? "70px" : "25px"} />

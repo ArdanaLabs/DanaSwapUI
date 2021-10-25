@@ -10,7 +10,7 @@ import { useIsDarkMode } from "state/user/hooks";
 import { GradientButton } from "components/Button";
 import { DanaswapFeature } from "components/Box";
 
-import { DanaFeatures } from "data";
+import { DanaSwapFeatures } from "data";
 
 import ICO_NEXT from "assets/icons/carousel-next.svg";
 import ICO_PREV from "assets/icons/carousel-prev.svg";
@@ -132,7 +132,7 @@ const DanaswapSection: React.FC = () => {
               renderArrow={renderArrow}
               renderPagination={renderPagination}
             >
-              {DanaFeatures.map((feature, i: number) => (
+              {DanaSwapFeatures.map((feature, i: number) => (
                 <DanaswapFeature
                   key={feature.title + i}
                   image={feature.image}
