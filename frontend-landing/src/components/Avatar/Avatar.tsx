@@ -39,7 +39,11 @@ const Avatar: React.FC<AvatarProps> = ({ image, size }) => {
 
   return (
     <Box className={cx(classes.root)}>
-      <GradientButton width={145} height={145} clickable={false} />
+      <GradientButton
+        width={!mobile ? 145 : 81}
+        height={!mobile ? 145 : 81}
+        clickable={false}
+      />
       <img className={cx(classes.photo)} src={image} alt="avatar" />
     </Box>
   );
