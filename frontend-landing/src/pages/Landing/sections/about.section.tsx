@@ -16,6 +16,7 @@ import BG_LEFT from "assets/backgrounds/about-bg.png";
 import BG_RIGHT from "assets/backgrounds/cyan-gradient.png";
 import BG_PURPLE_GRADIENT from "assets/backgrounds/pink-gradient.png";
 import { ArdanaFeatures } from "data";
+import { GradientButton } from "components";
 
 const aboutVideo =
   "https://background.sfo3.digitaloceanspaces.com/about/output.m3u8";
@@ -95,10 +96,25 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
   playIcon: {
     margin: "100px",
+    position: "relative",
+    lineHeight: 0,
     [breakpoints.down("xs")]: {
       margin: "60px",
     },
   },
+  photo: {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    display: "inline-flex",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: "50%",
+    [breakpoints.down("xs")]: {
+      width: "60px",
+    },
+  }
 }));
 
 const AboutSection: React.FC = () => {
@@ -134,7 +150,12 @@ const AboutSection: React.FC = () => {
                   light={BG_POSTER}
                   playIcon={
                     <Box className={cx(classes.playIcon)}>
-                      <img src={ICON_PLAY} alt="playIcon" width="100px" />
+                      <GradientButton
+                        width={!mobile ? 145 : 81}
+                        height={!mobile ? 145 : 81}
+                        clickable={false}
+                      />
+                      <img className={cx(classes.photo)} src={ICON_PLAY} alt="playIcon" width="100px" />
                     </Box>
                   }
                 />
