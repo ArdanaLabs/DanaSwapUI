@@ -67,13 +67,27 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   carouselAction: {
     display: "flex",
     justifyContent: "left",
-    "& img": {
-      cursor: "pointer",
-      width: "100px",
-    },
     [breakpoints.down("xs")]: {
       justifyContent: "center",
     },
+  },
+
+  image: {
+    position: "relative",
+    lineHeight: 0,
+    margin: "20px 10px",
+  },
+
+  photo: {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    display: "inline-flex",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: "50%",
+    width: "25px",
   },
 }));
 
@@ -114,11 +128,7 @@ const DanaswapSection: React.FC = () => {
               </ScrollAnimation>
               <Box mt={!mobile ? "50px" : "30px"} />
               <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-                <GradientButton
-                  label={'COMING SOON'}
-                  width={160}
-                  height={40}
-                />
+                <GradientButton label={"COMING SOON"} width={160} height={40} />
               </ScrollAnimation>
             </Box>
           </Grid>
@@ -142,11 +152,19 @@ const DanaswapSection: React.FC = () => {
               ))}
             </Carousel>
             <Box className={cx(classes.carouselAction)}>
-              <Box onClick={() => handleCarousel(-1)}>
-                <img src={ICO_PREV} alt="prev" />
+              <Box
+                className={cx(classes.image)}
+                onClick={() => handleCarousel(-1)}
+              >
+                <GradientButton width={75} height={75} />
+                <img className={cx(classes.photo)} src={ICO_PREV} alt="prev" />
               </Box>
-              <Box onClick={() => handleCarousel(1)}>
-                <img src={ICO_NEXT} alt="next" />
+              <Box
+                className={cx(classes.image)}
+                onClick={() => handleCarousel(1)}
+              >
+                <GradientButton width={75} height={75} />
+                <img className={cx(classes.photo)} src={ICO_NEXT} alt="next" />
               </Box>
             </Box>
           </Grid>

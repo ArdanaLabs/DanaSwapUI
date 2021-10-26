@@ -10,6 +10,7 @@ const useStyles = makeStyles(({ palette }) => ({
     position: "relative",
     lineHeight: "0px",
     display: "inline-block",
+    zIndex: 102,
   },
   label: {
     position: "absolute",
@@ -83,8 +84,8 @@ const GradientButton: React.FC<GradientButtonProps> = ({
         height={`calc(100% - ${strokeWidth * 2}px)`}
         borderRadius="500px"
         border={`${strokeWidth} solid transparent`}
-        boxShadow="0px 0px 10px 3px #2D3BA0"
-        zIndex={-1}
+        boxShadow="0px 0px 14px 7px #2D3BA0"
+        zIndex={101}
         style={clickable && hover ? { background: "#FFFFFF33" } : {}}
       />
     </Box>

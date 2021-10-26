@@ -27,8 +27,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
     [breakpoints.down("xs")]: {
       background: ` url(${BG_LEFT_MOBILE}) top left no-repeat,
-                    url(${BG_RIGHT_MOBILE}) bottom right no-repeat`,
-      backgroundSize: "50vw, 30vw",
+                    url(${BG_RIGHT_MOBILE}) bottom right no-repeat,
+                    url(${BG_CYAN_GRADIENT}) bottom -300px right -300px no-repeat`,
+      backgroundSize: "50vw, 30vw, cover",
       padding: "0px 50px",
     },
   },

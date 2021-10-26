@@ -153,7 +153,6 @@ const AboutSection: React.FC = () => {
                       <GradientButton
                         width={!mobile ? 145 : 81}
                         height={!mobile ? 145 : 81}
-                        clickable={false}
                       />
                       <img className={cx(classes.photo)} src={ICON_PLAY} alt="playIcon" width="100px" />
                     </Box>
