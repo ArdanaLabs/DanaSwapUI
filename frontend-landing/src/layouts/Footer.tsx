@@ -27,12 +27,12 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
         fontSize: "25px",
         lineHeight: "36px",
         color: palette.text.secondary,
-        marginBottom: "10px",
+        marginBottom: "15px",
         fontWeight: 900,
 
         [breakpoints.down("xs")]: {
           fontSize: "20px",
-          marginBottom: "0px",
+          marginBottom: "10px",
         },
       },
       "& > a": {
@@ -40,12 +40,12 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       },
       fontFamily: "Museo Sans",
       fontSize: "20px",
-      lineHeight: "30px",
+      lineHeight: "26px",
       cursor: "pointer",
 
       [breakpoints.down("xs")]: {
         fontSize: "16px",
-        lineHeight: "19px",
+        lineHeight: "20px",
       },
     },
 
@@ -77,17 +77,6 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     [breakpoints.down("xs")]: {
       fontSize: "25px",
       lineHeight: "27.5px",
-    },
-  },
-
-  content: {
-    color: palette.text.primary,
-    fontFamily: "Museo Sans",
-    fontSize: "22px",
-    lineHeight: "25px",
-    [breakpoints.down("xs")]: {
-      fontSize: "16px",
-      lineHeight: "18.4px",
     },
   },
 
@@ -128,7 +117,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     },
 
     [breakpoints.down("xs")]: {
-      flexDirection: "column",
+      flexFlow: "wrap",
       textAlign: "center",
     },
   },
@@ -153,6 +142,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
         width: "100%",
       },
     },
+
+    [breakpoints.down("xs")]: {
+      width: "100%",
+    },
   },
 }));
 
@@ -167,17 +160,7 @@ const Footer: React.FC = () => {
       <Container maxWidth="md">
         <Box className={cx(classes.container)}>
           <Box className={cx(classes.title)}>
-            Ardana is the leading cross-chain stablecoin and DEX available on
-            Cardano.
-          </Box>
-          <Box mt={!mobile ? "30px" : "10px"} />
-          <Box className={cx(classes.content)}>
-            Our mission is to create opportunity and transparency for all with
-            groundbreaking DeFi protocols. Our DeFi protocols cross layers and
-            enable individuals worldwide to contribute their talents and skills
-            to a new global economy. We want to support this vision and help
-            developers build the new coordination mechanisms of the Internet age
-            as we move toward a radically new vision of the future of work.
+            Ardana is the leading stablecoin and stableswap DEX on Cardano
           </Box>
           <Box my={"30px"} className={cx(classes.logo)}>
             <img src={LOGO_BLUE} alt="logo" />
