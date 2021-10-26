@@ -35,7 +35,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
                     url(${BG_WAVE_MOBILE}) bottom left no-repeat`,
       backgroundSize: "auto, auto, 100%",
       textAlign: "center",
-      paddingBottom: "100px",
+      paddingBottom: "130px",
     },
   },
 
