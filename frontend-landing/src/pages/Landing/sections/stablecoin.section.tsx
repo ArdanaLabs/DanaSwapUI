@@ -105,8 +105,8 @@ const StableCoinSection: React.FC = () => {
           <Box mt={!mobile ? "50px" : "30px"} />
           <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
             <GradientButton
-              label={i18next.t("PAGE.LANDING.STABLECOIN.BUTTON")}
-              width={200}
+              label={'COMING SOON'}
+              width={160}
               height={40}
             />
           </ScrollAnimation>
