@@ -14,7 +14,6 @@ import ICON_PLAY from "assets/icons/video-play.svg";
 import BG_POSTER from "assets/backgrounds/video-poster.png";
 import BG_LEFT from "assets/backgrounds/about-bg.png";
 import BG_RIGHT from "assets/backgrounds/cyan-gradient.png";
-import BG_PURPLE_GRADIENT from "assets/backgrounds/pink-gradient.png";
 import { ArdanaFeatures } from "data";
 import { GradientButton } from "components";
 
@@ -25,8 +24,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
     width: "100%",
     background: ` url(${BG_LEFT}) top left no-repeat,
-                  url(${BG_RIGHT}) bottom -200px right -500px no-repeat,
-                  url(${BG_PURPLE_GRADIENT}) top -700px right -500px no-repeat`,
+                  url(${BG_RIGHT}) bottom -200px right -500px no-repeat`,
     backgroundSize: "contain",
     paddingTop: "100px",
     paddingBottom: "200px",

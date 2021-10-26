@@ -384,7 +384,7 @@ export const externals: any = {
     Stablecoin: "#",
     Multisig: "#",
   },
-  Foundation: {
+  Company: {
     // Team: "/team",
     "Contact Us": "mailto:enquiries@ardana.org",
     Careers: "mailto:careers@ardana.org",

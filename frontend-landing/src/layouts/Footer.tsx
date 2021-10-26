@@ -185,9 +185,9 @@ const Footer: React.FC = () => {
             <Box className={cx(classes.socials)}>
               <span>Our Socials</span>
               <span>
-                Follow us to hear about
+                Follow us to hear about Ardana
                 <br />
-                Ardana news and events
+                news and events
               </span>
 
               <Box mt={!mobile ? "70px" : "25px"} />
