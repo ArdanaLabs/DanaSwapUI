@@ -97,7 +97,7 @@ const MainSection: React.FC = () => {
             <Box className={cx(classes.content)}>
               Our team is comprised of technical talent, early contributors,
               students and ambassadors of reputable companies and blockchain
-              projects such as Apple, Microsoft, Barclays, Citi Bank, Jane
+              projects such as Apple, Microsoft, Barclays, Citi Bank, State
               Street, Mina Protocol, Cardano, the Plutus Pioneers Program and
               Emurgo Academy.
             </Box>

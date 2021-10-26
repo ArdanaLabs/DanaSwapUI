@@ -135,10 +135,18 @@ const MainSection: React.FC = () => {
                   width="100px"
                   mt={!mobile ? "0px" : "15px"}
                 >
-                  <Link className={cx(classes.socialIconLink)} href="#">
+                  <Link
+                    className={cx(classes.socialIconLink)}
+                    href="https://t.me/ardanaofficial"
+                    target="_blank"
+                  >
                     <TelegramIcon />
                   </Link>
-                  <Link className={cx(classes.socialIconLink)} href="#">
+                  <Link
+                    className={cx(classes.socialIconLink)}
+                    href="https://twitter.com/ardanaproject"
+                    target="_blank"
+                  >
                     <TwitterIcon />
                   </Link>
                 </Box>
