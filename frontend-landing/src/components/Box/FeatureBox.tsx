@@ -116,22 +116,24 @@ const FeatureBox: React.FC<FeatureBoxProps> = ({ image, title, content }) => {
 
   return (
     <Box className={cx(classes.root)}>
-      <Box
-        className={cx(classes.video)}
-        visibility={hover ? "visible" : "hidden"}
-        style={hover ? { opacity: 1 } : { opacity: 0 }}
-      >
-        <ReactPlayer
-          url={heroVideo}
-          playing
-          loop={true}
-          muted
-          width="100%"
-          height="100%"
-          playbackRate={0.5}
-          style={hover ? { visibility: "visible" } : { visibility: "hidden" }}
-        />
-      </Box>
+      {!mobile && (
+        <Box
+          className={cx(classes.video)}
+          visibility={hover ? "visible" : "hidden"}
+          style={hover ? { opacity: 1 } : { opacity: 0 }}
+        >
+          <ReactPlayer
+            url={heroVideo}
+            playing
+            loop={true}
+            muted
+            width="100%"
+            height="100%"
+            playbackRate={0.5}
+            style={hover ? { visibility: "visible" } : { visibility: "hidden" }}
+          />
+        </Box>
+      )}
 
       <Box
         className={cx(classes.bg)}

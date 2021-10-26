@@ -10,7 +10,7 @@ import { useIsDarkMode } from "state/user/hooks";
 import { GradientButton } from "components/Button";
 
 const heroVideo =
-  "https://background.sfo3.digitaloceanspaces.com/stablecoin/output.m3u8";
+  "https://background.sfo3.digitaloceanspaces.com/stablecoin/output.webm";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {

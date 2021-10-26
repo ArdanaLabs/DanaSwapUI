@@ -8,7 +8,7 @@ import ScrollAnimation from "react-animate-on-scroll";
 import { useIsDarkMode } from "state/user/hooks";
 
 const heroVideo =
-  "https://background.sfo3.digitaloceanspaces.com/stablecoin/output.m3u8";
+  "https://background.sfo3.digitaloceanspaces.com/stablecoin/output.webm";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
