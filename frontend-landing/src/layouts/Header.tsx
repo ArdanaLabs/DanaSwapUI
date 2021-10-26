@@ -10,9 +10,9 @@ import {
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
 import Hamburger from "hamburger-react";
-import i18next from "i18next";
 
 import { useIsDarkMode } from "state/user/hooks";
+import { Menus } from "data";
 
 import LOGO_White from "assets/logo_white.png";
 import LOGO_Text from "assets/logo_text.png";
@@ -86,36 +86,6 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 }));
 
-const links = [
-  {
-    label: i18next.t("PAGE.LANDING.HEADER.LINKS.0"),
-    to: "/",
-  },
-  {
-    label: i18next.t("PAGE.LANDING.HEADER.LINKS.1"),
-    to: "/team",
-  },
-  {
-    label: i18next.t("PAGE.LANDING.HEADER.LINKS.2"),
-    to: "#",
-  },
-  {
-    label: i18next.t("PAGE.LANDING.HEADER.LINKS.3"),
-    to: "https://faceted-wash-97d.notion.site/cb0d147034e6439f8e70b2698ce199f2?v=fbf6185ab5f143eb9e22064fd9647814",
-    blank: true,
-  },
-  {
-    label: i18next.t("PAGE.LANDING.HEADER.LINKS.4"),
-    to: "https://docs.ardana.org/?_ga=2.267695815.895783086.1634911974-1488848088.1632832057",
-    blank: true,
-  },
-  {
-    label: i18next.t("PAGE.LANDING.HEADER.LINKS.5"),
-    to: "https://medium.com/ardana-hub",
-    blank: true,
-  },
-];
-
 const HeaderSection: React.FC = () => {
   const { palette, breakpoints } = useTheme();
   const dark = useIsDarkMode();
@@ -146,7 +116,7 @@ const HeaderSection: React.FC = () => {
           </Box>
           {!mobile && (
             <Box>
-              {links.map((link, index) => {
+              {Menus.map((link, index) => {
                 return (
                   <Link
                     href={link.to}
@@ -184,7 +154,7 @@ const HeaderSection: React.FC = () => {
                 open={openMenu}
                 onClose={toggleMenu}
               >
-                {links.map((link, index) => (
+                {Menus.map((link, index) => (
                   <Link
                     key={index}
                     className={cx(classes.menuItem)}
