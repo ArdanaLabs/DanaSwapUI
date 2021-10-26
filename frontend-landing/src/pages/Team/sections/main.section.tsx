@@ -6,7 +6,6 @@ import ReactPlayer from "react-player";
 import ScrollAnimation from "react-animate-on-scroll";
 
 import { useIsDarkMode } from "state/user/hooks";
-import { TopNotchTeams } from "data";
 
 const heroVideo =
   "https://background.sfo3.digitaloceanspaces.com/stablecoin/output.m3u8";
@@ -89,7 +88,7 @@ const MainSection: React.FC = () => {
       <Box className={cx(classes.container)}>
         <Container>
           <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-            <Box className={cx(classes.title)}>
+            <Box className={cx(classes.title)} mt="50px">
               Ardana has a <br />
               <span>world class</span> team
             </Box>
@@ -101,28 +100,6 @@ const MainSection: React.FC = () => {
               projects such as Apple, Microsoft, Barclays, Citi Bank, Jane
               Street, Mina Protocol, Cardano, the Plutus Pioneers Program and
               Emurgo Academy.
-            </Box>
-          </ScrollAnimation>
-          <Box mt={!mobile ? "30px" : "30px"} />
-          <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-            <Box
-              display="flex"
-              flexWrap="wrap"
-              alignItems="center"
-              justifyContent={!mobile ? "flex-start" : "center"}
-              pl="-10px"
-              style={{ opacity: 0.8 }}
-            >
-              {TopNotchTeams.map((team, index) => (
-                <Box key={index} textAlign="center" p="10px">
-                  <img
-                    src={team}
-                    alt="team"
-                    height={"30px"}
-                    style={{ maxWidth: "max-content" }}
-                  />
-                </Box>
-              ))}
             </Box>
           </ScrollAnimation>
         </Container>
