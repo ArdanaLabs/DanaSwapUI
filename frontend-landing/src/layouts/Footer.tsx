@@ -173,8 +173,20 @@ const Footer: React.FC = () => {
                   <span key={external}>
                     <Link
                       rel="noopener noreferrer"
-                      target="_blank"
+                      target={
+                        externals[group][external].charAt(0) === "/"
+                          ? "_self"
+                          : "_blank"
+                      }
                       href={externals[group][external]}
+                      underline={
+                        externals[group][external] === "#" ? "none" : "hover"
+                      }
+                      style={
+                        externals[group][external] === "#"
+                          ? { pointerEvents: "none" }
+                          : { pointerEvents: "initial" }
+                      }
                     >
                       {external}
                     </Link>
