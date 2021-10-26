@@ -65,14 +65,21 @@ const PartnerSection: React.FC = () => {
             style={{ opacity: 0.8 }}
           >
             {Investors.map((investor, index) => (
-              <Box key={index} textAlign="center" p={!mobile ? "20px" : "10px"}>
-                <img
-                  src={investor}
-                  alt="investor"
-                  height={!mobile ? "45px" : "25px"}
-                  style={{ maxWidth: "max-content" }}
-                />
-              </Box>
+              <>
+                <Box
+                  key={index}
+                  textAlign="center"
+                  p={!mobile ? "20px" : "10px"}
+                >
+                  <img
+                    src={investor}
+                    alt="investor"
+                    height={!mobile ? "45px" : "25px"}
+                    style={{ maxWidth: "max-content" }}
+                  />
+                </Box>
+                {(index + 1) % 4 === 0 && !mobile && <Box flexBasis="100%" />}
+              </>
             ))}
           </Box>
         </ScrollAnimation>
