@@ -202,7 +202,7 @@ const Footer: React.FC = () => {
                 news and events
               </span>
 
-              <Box mt={!mobile ? "70px" : "25px"} />
+              <Box mt={"25px"} />
               <Box className="link-container">
                 {socials.map((social: any, index: number) => (
                   <Link

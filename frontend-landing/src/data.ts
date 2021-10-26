@@ -121,7 +121,7 @@ export const Members: ProfileType[] = [
     avatar: require("assets/avatars/BassamAwad.png").default,
     name: "Bassam Awad, PhD",
     role: "Chief Economist",
-    info: `Senior Economist and Head of Risk at the Central Bank of Jordan.\n\nMultiple peer-reviewed papers on macro/computational economics.`,
+    info: `Senior Economist and Head of Risk at the <strong>Central Bank of Jordan.</strong>\n\nMultiple peer-reviewed papers on macro/computational economics.`,
     socials: {
       linkedin: "https://www.linkedin.com/in/bassamrawad/",
     },
@@ -176,7 +176,7 @@ export const Members: ProfileType[] = [
     avatar: require("assets/avatars/GregorySantini.png").default,
     name: "Gregory Santini",
     role: "Front-end Developer",
-    info: `Senior front-end developer for Apple and Evernote.\n\nExperienced web developer and Solidity developer.`,
+    info: `Senior front-end developer for <strong>Apple</strong> and Evernote.\n\nExperienced web developer and Solidity developer.`,
     socials: {
       linkedin: "https://www.linkedin.com/in/gregory-santini-28a51619a/",
       github: "https://github.com/elite0226",
@@ -206,7 +206,7 @@ export const Members: ProfileType[] = [
     avatar: require("assets/avatars/AndrzejSwatowski.png").default,
     name: "Andrzej Swatowski",
     role: "Blackchain Developer",
-    info: `Game developer at <strong>Unity</strong> working on AI,UI and gameplay elements.\n\nMasters Degree in Computer Science from the University of Warsaw.`,
+    info: `Game developer at Unity working on AI,UI and gameplay elements.\n\nMasters Degree in Computer Science from the University of Warsaw.`,
     socials: {
       linkedin: "https://www.linkedin.com/in/andrzejswatowski",
       github: "https://github.com/swtwsk/",
@@ -215,7 +215,7 @@ export const Members: ProfileType[] = [
   {
     avatar: require("assets/avatars/OlegPrutz.png").default,
     name: "Oleg Prutz",
-    role: "Front-end Developer",
+    role: "Blockchain Developer",
     info: `Data Scientist for Genesys AI ‘Experience as a Service’ company.\n\nExperienced functional programmer and Kaggle competitor.`,
     socials: {
       // linkedin: "https://www.linkedin.com/",
@@ -226,7 +226,7 @@ export const Members: ProfileType[] = [
     avatar: require("assets/avatars/EmmaDwyer.png").default,
     name: "Emma Dwyer",
     role: "Writer",
-    info: `Risk analyst at <strong>Citi bank</strong> and analyst at <strong>Jane Street.</strong>\n\n7+ years experience in investment banking and wealth management.`,
+    info: `Risk analyst at <strong>Citi bank</strong> and analyst at <strong>State Street.</strong>\n\n7+ years experience in investment banking and wealth management.`,
     socials: {
       linkedin: "https://www.linkedin.com/in/emma-dwyer-169630a0/",
       // github: "https://github.com/prutz1311",
