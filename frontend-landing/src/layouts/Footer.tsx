@@ -114,6 +114,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       display: "flex",
       flexDirection: "column",
       marginBottom: "20px",
+
+      [breakpoints.down("xs")]: {
+        width: "33%",
+      },
     },
 
     [breakpoints.down("xs")]: {

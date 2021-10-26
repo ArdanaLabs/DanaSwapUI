@@ -40,7 +40,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 }));
 
-const PartnerSection: React.FC = () => {
+const InvestorsSection: React.FC = () => {
   const { breakpoints } = useTheme();
   const dark = useIsDarkMode();
   const mobile = useMediaQuery(breakpoints.down("xs"));
@@ -64,23 +64,19 @@ const PartnerSection: React.FC = () => {
             mt="30px"
             style={{ opacity: 0.8 }}
           >
-            {Investors.map((investor, index) => (
-              <>
-                <Box
-                  key={index}
-                  textAlign="center"
-                  p={!mobile ? "20px" : "10px"}
-                >
-                  <img
-                    src={investor}
-                    alt="investor"
-                    height={!mobile ? "45px" : "25px"}
-                    style={{ maxWidth: "max-content" }}
-                  />
-                </Box>
-                {(index + 1) % 4 === 0 && !mobile && <Box flexBasis="100%" />}
-              </>
-            ))}
+            {Investors.flatMap((investor, index) => [
+              <Box key={index} textAlign="center" p={!mobile ? "20px" : "10px"}>
+                <img
+                  src={investor}
+                  alt="investor"
+                  height={!mobile ? "45px" : "25px"}
+                  style={{ maxWidth: "max-content" }}
+                />
+              </Box>,
+              (index + 1) % 4 === 0 && !mobile && (
+                <Box key={"wrap" + index} flexBasis="100%" />
+              ),
+            ])}
           </Box>
         </ScrollAnimation>
       </Container>
@@ -88,4 +84,4 @@ const PartnerSection: React.FC = () => {
   );
 };
 
-export default PartnerSection;
+export default InvestorsSection;
