@@ -150,13 +150,13 @@ const MainSection: React.FC = () => {
                     <TwitterIcon />
                   </Link>
                 </Box>
-                <Link href="http://app.ardana.org/launch" underline="none">
+                {/* <Link href="http://app.ardana.org/launch" underline="none"> */}
                   <GradientButton
                     label={i18next.t("PAGE.LANDING.COMINGSOON")}
                     width={160}
                     height={40}
                   />
-                </Link>
+                {/* </Link> */}
               </Box>
             </ScrollAnimation>
           </Grid>
