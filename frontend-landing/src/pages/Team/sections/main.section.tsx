@@ -43,7 +43,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       color: palette.text.secondary,
     },
 
-    [breakpoints.down("sm")]: {
+    [breakpoints.down("xs")]: {
       fontSize: "35px",
     },
   },
@@ -58,7 +58,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     color: palette.text.primary,
     marginTop: "30px",
 
-    [breakpoints.down("sm")]: {
+    [breakpoints.down("xs")]: {
       fontSize: "16px",
       lineHeight: "18.4px",
       width: "100%",
@@ -82,7 +82,7 @@ const MainSection: React.FC = () => {
         loop={true}
         muted
         width={!mobile ? "100%" : "unset"}
-        height={"100vh"}
+        height={"600px"}
         playbackRate={0.5}
       />
       <Box className={cx(classes.container)}>
