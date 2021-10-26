@@ -400,18 +400,17 @@ export const Investors = [
 
 export const externals: any = {
   Resources: {
-    Whitepaper: "https://docsend.com/view/x29erqedayrufxzb",
+    Documentation: "https://docs.ardana.org/",
     "Pitch Deck": "https://docsend.com/view/kc5m2snw7t77fs5r",
-    Roadmap: "#",
-    Docs: "https://docs.ardana.org/",
+    "Press Kit": "https://ardana.org/presskit/",
   },
   Products: {
+    Dashboard: "#",
     DEX: "#",
     Stablecoin: "#",
-    Multisig: "#",
   },
   Company: {
-    // Team: "/team",
+    Team: "/team",
     "Contact Us": "mailto:enquiries@ardana.org",
     Careers: "mailto:careers@ardana.org",
   },
