@@ -4,7 +4,7 @@ import { ReactComponent as TwitterIcon } from "assets/icons/twitter.svg";
 import { ReactComponent as DiscordIcon } from "assets/icons/discord.svg";
 import { ReactComponent as TelegramIcon } from "assets/icons/telegram.svg";
 import { ReactComponent as MediumIcon } from "assets/icons/medium.svg";
-import { ReactComponent as MonkeyIcon } from "assets/icons/monkey.svg";
+import { ReactComponent as YoutubeIcon } from "assets/icons/youtube.svg";
 import { ReactComponent as LinkedinIcon } from "assets/icons/linkedin.svg";
 
 export const Menus = [
@@ -93,7 +93,7 @@ export const Members: ProfileType[] = [
   {
     avatar: require("assets/avatars/RyanMatovu.png").default,
     name: "Ryan Matovu",
-    role: "Founder & CEO",
+    role: "Founder",
     info: `Serial entrepreneur in B2B/B2C sales and e-commerce.\n\nLeadership positions in various Ethereum based projects.`,
     socials: {
       linkedin: "https://www.linkedin.com/in/ryan-matovu-517988203",
@@ -137,7 +137,7 @@ export const Members: ProfileType[] = [
     avatar: require("assets/avatars/NeilTionson.png").default,
     name: "Neil Tionson",
     role: "Head of Design",
-    info: `Creative innovator, branding specialist, and design guru with more than 5 years of experience creating meaningful visual brands for high-profile clients.`,
+    info: `Marketing coordinator for Five Group Pty Ltd.\n\nWorked with brands such as Cadbury, San Remo.`,
     socials: {
       linkedin: "https://www.linkedin.com/in/neil-tiongson-a83535142/",
       // github: "https://github.com",
@@ -195,7 +195,7 @@ export const Members: ProfileType[] = [
   {
     avatar: require("assets/avatars/JaimeCasoOnzain.png").default,
     name: "Jamie Caso Onzain",
-    role: "Blackchain Developer",
+    role: "Blockchain Developer",
     info: `<strong>Cardano</strong> ambassador and Cardano stake pool operator.\n\nGenesis Founding Member and tester for <strong>Mina Protocol.</strong>`,
     socials: {
       linkedin: "https://www.linkedin.com/in/jaime-caso/",
@@ -205,8 +205,8 @@ export const Members: ProfileType[] = [
   {
     avatar: require("assets/avatars/AndrzejSwatowski.png").default,
     name: "Andrzej Swatowski",
-    role: "Blackchain Developer",
-    info: `Game developer in Unity working on AI,UI and gameplay elements.\n\nMasters Degree in Computer Science from the University of Warsaw.`,
+    role: "Blockchain Developer",
+    info: `Game developer at working on AI,UI and gameplay elements.\n\nMasters Degree in Computer Science from the University of Warsaw.`,
     socials: {
       linkedin: "https://www.linkedin.com/in/andrzejswatowski",
       github: "https://github.com/swtwsk/",
@@ -226,7 +226,7 @@ export const Members: ProfileType[] = [
     avatar: require("assets/avatars/EmmaDwyer.png").default,
     name: "Emma Dwyer",
     role: "Writer",
-    info: `Risk analyst at <strong>Citi bank</strong> and analyst at <strong>State Street.</strong>\n\n7+ years experience in investment banking and wealth management.`,
+    info: `Risk analyst at <strong>Citi bank</strong> and AML analyst at <strong>State Street.</strong>\n\n7+ years experience in investment banking and wealth management.`,
     socials: {
       linkedin: "https://www.linkedin.com/in/emma-dwyer-169630a0/",
       // github: "https://github.com/prutz1311",
@@ -435,7 +435,7 @@ export const socials = [
     url: "https://medium.com/ardana-hub",
   },
   {
-    image: MonkeyIcon,
+    image: YoutubeIcon,
     url: "https://www.youtube.com/channel/UCuVtpKzlmsD6s0ZiC0hakkA",
   },
   {
