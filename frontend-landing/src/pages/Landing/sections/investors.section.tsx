@@ -69,11 +69,11 @@ const InvestorsSection: React.FC = () => {
                 <img
                   src={investor}
                   alt="investor"
-                  height={!mobile ? "45px" : "25px"}
+                  height={!mobile ? "50px" : "25px"}
                   style={{ maxWidth: "max-content" }}
                 />
               </Box>,
-              (index + 1) % 4 === 0 && !mobile && (
+              (index + 1) % (!mobile ? 4 : 3) === 0 && (
                 <Box key={"wrap" + index} flexBasis="100%" />
               ),
             ])}
