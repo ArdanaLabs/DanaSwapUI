@@ -203,7 +203,7 @@ const Footer: React.FC = () => {
               <span>
                 Follow us to hear about Ardana
                 <br />
-                news and events
+                news and events.
               </span>
 
               <Box mt={"25px"} />

@@ -52,7 +52,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
   menuItem: {
     fontFamily: "Museo Sans",
-    fontWeight: 900,
+    fontWeight: 700,
     fontStyle: "normal",
     lineHeight: "100%",
     margin: "auto 20px",
