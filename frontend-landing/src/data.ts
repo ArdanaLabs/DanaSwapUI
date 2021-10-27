@@ -206,7 +206,7 @@ export const Members: ProfileType[] = [
     avatar: require("assets/avatars/AndrzejSwatowski.png").default,
     name: "Andrzej Swatowski",
     role: "Blockchain Developer",
-    info: `Game developer at working on AI,UI and gameplay elements.\n\nMasters Degree in Computer Science from the University of Warsaw.`,
+    info: `Game developer in Unity working on AI,UI and gameplay elements.\n\nMasters Degree in Computer Science from the University of Warsaw.`,
     socials: {
       linkedin: "https://www.linkedin.com/in/andrzejswatowski",
       github: "https://github.com/swtwsk/",
