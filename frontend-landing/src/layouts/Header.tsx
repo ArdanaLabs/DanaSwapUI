@@ -16,6 +16,7 @@ import { Menus } from "data";
 
 import LOGO_White from "assets/logo_white.png";
 import LOGO_Text from "assets/logo_text.png";
+import { useHistory } from "react-router";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -91,6 +92,7 @@ const HeaderSection: React.FC = () => {
   const dark = useIsDarkMode();
   const mobile = useMediaQuery(breakpoints.down("xs"));
   const classes = useStyles({ dark, mobile });
+  const history = useHistory();
 
   const [openMenu, setOpenMenu] = useState(false);
 
@@ -110,7 +112,7 @@ const HeaderSection: React.FC = () => {
     <Box className={cx(classes.root)}>
       <Container>
         <Box className={cx(classes.self)}>
-          <Box className={cx(classes.logo)}>
+          <Box className={cx(classes.logo)} onClick={() => history.push('/')}>
             <img src={LOGO_White} alt="logo" />
             <img src={LOGO_Text} alt="logo" />
           </Box>
