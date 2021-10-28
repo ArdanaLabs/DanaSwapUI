@@ -124,7 +124,7 @@ const FeatureBox: React.FC<FeatureBoxProps> = ({ image, title, content }) => {
         >
           <ReactPlayer
             url={heroVideo}
-            playing
+            playing={false}
             loop={true}
             muted
             width="100%"

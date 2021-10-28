@@ -78,7 +78,7 @@ const MainSection: React.FC = () => {
     <Box className={cx(classes.bg)}>
       <ReactPlayer
         url={heroVideo}
-        playing
+        playing={false}
         loop={true}
         muted
         width={!mobile ? "100%" : "unset"}
