@@ -163,7 +163,7 @@ const MainSection: React.FC = () => {
           <Grid item xs={12} sm={6}>
             <ReactPlayer
               url={sphereVideo}
-              playing
+              playing={false}
               loop={true}
               muted
               width="100%"
