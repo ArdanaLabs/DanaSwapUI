@@ -52,7 +52,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontFamily: "Museo Sans",
     fontStyle: "normal",
     fontWeight: 300,
-    fontSize: "22px",
+    fontSize: "18px",
     lineHeight: "25px",
     width: "50%",
     color: palette.text.primary,
