@@ -137,7 +137,7 @@ export const Members: ProfileType[] = [
     avatar: require("assets/avatars/NeilTionson.png").default,
     name: "Neil Tionson",
     role: "Head of Design",
-    info: `Marketing coordinator for Five Group Pty Ltd.\n\nWorked with brands such as Cadbury, San Remo.`,
+    info: `Creative innovator, branding specialist, and design guru with more than 5 years of experience creating meaningful visual brands for high-profile clients.`,
     socials: {
       linkedin: "https://www.linkedin.com/in/neil-tiongson-a83535142/",
       // github: "https://github.com",
@@ -403,7 +403,7 @@ export const externals: any = {
   Resources: {
     Documentation: "https://docs.ardana.org/",
     "Pitch Deck": "https://docsend.com/view/kc5m2snw7t77fs5r",
-    "Press Kit": "https://ardana.org/presskit/",
+    // "Press Kit": "https://ardana.org/presskit/",
   },
   Products: {
     Dashboard: "#",

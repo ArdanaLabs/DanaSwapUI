@@ -168,7 +168,7 @@ const MainSection: React.FC = () => {
               muted
               width="100%"
               height="100%"
-              playbackRate={0.5}
+              playbackRate={0.2}
             />
           </Grid>
         </Grid>
