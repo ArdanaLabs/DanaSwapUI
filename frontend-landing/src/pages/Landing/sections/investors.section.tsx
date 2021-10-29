@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, useMediaQuery, Container } from "@material-ui/core";
+import { Box, useMediaQuery, Container, Link } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
 import ScrollAnimation from "react-animate-on-scroll";
@@ -66,12 +66,24 @@ const InvestorsSection: React.FC = () => {
           >
             {Investors.flatMap((investor, index) => [
               <Box key={index} textAlign="center" p={!mobile ? "20px" : "10px"}>
-                <img
-                  src={investor}
-                  alt="investor"
-                  height={!mobile ? "50px" : "25px"}
-                  style={{ maxWidth: "max-content" }}
-                />
+                {investor.url && (
+                  <Link href={investor.url} target="_blank" underline="none">
+                    <img
+                      src={investor.src}
+                      alt="investor"
+                      height={!mobile ? "50px" : "25px"}
+                      style={{ maxWidth: "max-content" }}
+                    />
+                  </Link>
+                )}
+                {!investor.url && (
+                  <img
+                    src={investor.src}
+                    alt="investor"
+                    height={!mobile ? "50px" : "25px"}
+                    style={{ maxWidth: "max-content" }}
+                  />
+                )}
               </Box>,
               (index + 1) % (!mobile ? 4 : 3) === 0 && (
                 <Box key={"wrap" + index} flexBasis="100%" />

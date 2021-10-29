@@ -31,7 +31,7 @@ export const Menus = [
     to: "https://medium.com/ardana-hub",
     blank: true,
   },
-]
+];
 
 export const ArdanaFeatures = [
   {
@@ -87,7 +87,7 @@ export const DanaSwapFeatures = [
     title: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.5.TITLE"),
     content: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.5.CONTENT"),
   },
-]
+];
 
 export const Members: ProfileType[] = [
   {
@@ -348,10 +348,19 @@ export const TopNotchTeams = [
 ];
 
 export const Partners = [
-  require("assets/logos/platonic-systems.svg").default,
-  require("assets/logos/coti.svg").default,
-  require("assets/logos/elrond.svg").default,
-  require("assets/logos/liqwid.svg").default,
+  {
+    src: require("assets/logos/platonic-systems.svg").default,
+    url: "https://platonic.systems/",
+  },
+  { src: require("assets/logos/coti.svg").default, url: "https://coti.io/" },
+  {
+    src: require("assets/logos/elrond.svg").default,
+    url: "https://elrond.com/",
+  },
+  {
+    src: require("assets/logos/liqwid.svg").default,
+    url: "https://www.liqwid.finance/",
+  },
   // require("assets/logos/mlabs.svg").default,
   // require("assets/logos/occamfi.svg").default,
   // require("assets/logos/defire.svg").default,
@@ -364,14 +373,29 @@ export const Partners = [
 ];
 
 export const Investors = [
-  require("assets/logos/three-arrow-capital.svg").default,
-  require("assets/logos/cfund.svg").default,
-  require("assets/logos/ascentive-assets.svg").default,
-  require("assets/logos/kronos.svg").default,
-  require("assets/logos/morning-star.svg").default,
-  require("assets/logos/mechanism-capital.svg").default,
-  require("assets/logos/mgnr.svg").default,
-  require("assets/logos/david-post.svg").default,
+  {
+    src: require("assets/logos/three-arrow-capital.svg").default,
+    url: "https://www.threearrowscap.com/select-investments/",
+  },
+  { src: require("assets/logos/cfund.svg").default, url: "https://cfund.vc/" },
+  {
+    src: require("assets/logos/ascentive-assets.svg").default,
+    url: "https://ascensiveassets.com/",
+  },
+  {
+    src: require("assets/logos/kronos.svg").default,
+    url: "https://kronosresearch.com/",
+  },
+  {
+    src: require("assets/logos/morning-star.svg").default,
+    url: "https://www.morningstar.ventures/",
+  },
+  {
+    src: require("assets/logos/mechanism-capital.svg").default,
+    url: "https://www.mechanism.capital/",
+  },
+  { src: require("assets/logos/mgnr.svg").default, url: "https://mgnr.io/" },
+  { src: require("assets/logos/david-post.svg").default, url: "" },
   // require("assets/logos/cryptodorum.svg").default,
   // require("assets/logos/nodeseeds.svg").default,
   // require("assets/logos/tenzor-capital.svg").default,

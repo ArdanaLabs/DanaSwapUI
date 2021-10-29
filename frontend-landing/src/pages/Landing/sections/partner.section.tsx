@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, useMediaQuery, Container } from "@material-ui/core";
+import { Box, useMediaQuery, Container, Link } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
 import ScrollAnimation from "react-animate-on-scroll";
@@ -66,12 +66,14 @@ const PartnerSection: React.FC = () => {
           >
             {Partners.map((partner, index) => (
               <Box key={index} textAlign="center" p={!mobile ? "20px" : "10px"}>
-                <img
-                  src={partner}
-                  alt="partner"
-                  height={!mobile ? "45px" : "25px"}
-                  style={{ maxWidth: "max-content" }}
-                />
+                <Link href={partner.url} target="_blank" underline="none">
+                  <img
+                    src={partner.src}
+                    alt="partner"
+                    height={!mobile ? "45px" : "25px"}
+                    style={{ maxWidth: "max-content" }}
+                  />
+                </Link>
               </Box>
             ))}
           </Box>
