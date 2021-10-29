@@ -16,7 +16,7 @@
       "COMINGSOON": "COMING SOON",
       "ARDANA": {
         "QUESTION": "What is Ardana?",
-        "DESC": "Ardana is a decentralized stablecoin hub which will bring the necessary DeFi primitives needed to bootstrap & maintain any economy to Cardano. Ardana offers an on-chain asset-backed stablecoin and a decentralized stable-asset DEX.",
+        "DESC": "Ardana is a decentralized stablecoin hub which will bring the necessary DeFi primitives needed to bootstrap & maintain any economy to Cardano.",
         "FEATURES": [
           {
             "TITLE": "Fully\nDecentralized",

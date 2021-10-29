@@ -137,7 +137,7 @@ export const Members: ProfileType[] = [
     avatar: require("assets/avatars/NeilTionson.png").default,
     name: "Neil Tionson",
     role: "Head of Design",
-    info: `Creative innovator, branding specialist, and design guru with more than 5 years of experience creating meaningful visual brands for high-profile clients.`,
+    info: `Marketing coordinator for Five Group Pty Ltd.\n\nWorked with brands such as Cadbury, San Remo.`,
     socials: {
       linkedin: "https://www.linkedin.com/in/neil-tiongson-a83535142/",
       // github: "https://github.com",
