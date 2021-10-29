@@ -24,7 +24,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     "& span": {
       "&:first-child": {
         fontFamily: "Brandon Grotesque",
-        fontSize: "25px",
+        fontSize: "22px",
         lineHeight: "36px",
         color: palette.text.secondary,
         marginBottom: "15px",
@@ -39,7 +39,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
         color: palette.common.white,
       },
       fontFamily: "Museo Sans",
-      fontSize: "20px",
+      fontSize: "18px",
       lineHeight: "26px",
       cursor: "pointer",
 
@@ -72,7 +72,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     color: palette.text.secondary,
     fontFamily: "Brandon Grotesque",
     fontWeight: 900,
-    fontSize: "40px",
+    fontSize: "36px",
     lineHeight: "100%",
     [breakpoints.down("xs")]: {
       fontSize: "25px",

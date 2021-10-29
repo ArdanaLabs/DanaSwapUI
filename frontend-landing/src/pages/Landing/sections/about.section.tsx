@@ -38,7 +38,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
   title: {
     color: palette.text.primary,
-    fontSize: "70px",
+    fontSize: "64px",
     fontWeight: 900,
     fontFamily: "Brandon Grotesque",
     fontStyle: "normal",
@@ -59,7 +59,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     color: palette.text.primary,
     whiteSpace: "pre-line",
     fontWeight: 300,
-    fontSize: "22px",
+    fontSize: "18px",
     fontFamily: "Museo Sans",
     fontStyle: "normal",
     lineHeight: "26px",

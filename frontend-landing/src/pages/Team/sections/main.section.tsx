@@ -35,7 +35,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontFamily: "Brandon Grotesque",
     fontStyle: "normal",
     fontWeight: 900,
-    fontSize: "70px",
+    fontSize: "64px",
     lineHeight: "100%",
     color: palette.text.primary,
 
