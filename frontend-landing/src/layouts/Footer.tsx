@@ -9,8 +9,8 @@ import { useIsDarkMode } from "state/user/hooks";
 import { externals, socials } from "data";
 import BG_WAVE from "assets/backgrounds/wave-gradient.png";
 import BG_WAVE_MOBILE from "assets/backgrounds/wave-mobile180-bg.png";
-import BG_RING from "assets/backgrounds/ring.svg";
 import LOGO_BLUE from "assets/logo_blue.png";
+import { GradientButton } from "components";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -87,9 +87,8 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     width: "250px",
     height: "250px",
     padding: "40px",
-    borderRadius: "50%",
-    background: `url(${BG_RING}) center center no-repeat`,
-    backgroundSize: "cover",
+    position: "relative",
+    lineHeight: 0,
 
     "& > img": {
       borderRadius: "50%",
@@ -101,6 +100,20 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     [breakpoints.down("xs")]: {
       width: "150px",
       height: "150px",
+    },
+  },
+
+  photo: {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    display: "inline-flex",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: "50%",
+    [breakpoints.down("xs")]: {
+      width: "60px",
     },
   },
 
@@ -167,7 +180,12 @@ const Footer: React.FC = () => {
             Ardana is the leading stablecoin and stableswap DEX on Cardano
           </Box>
           <Box my={"30px"} className={cx(classes.logo)}>
-            <img src={LOGO_BLUE} alt="logo" />
+            <GradientButton
+              width={!mobile ? 175 : 100}
+              height={!mobile ? 175 : 100}
+              clickable={false}
+            />
+            <img className={cx(classes.photo)} src={LOGO_BLUE} alt="logo" />
           </Box>
           <Box className={cx(classes.guide)}>
             {_.keys(externals).map((group) => (
