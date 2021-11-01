@@ -290,6 +290,15 @@ export const Advisors: ProfileType[] = [
     },
   },
   {
+    avatar: require("assets/avatars/PedroBatista.png").default,
+    name: "Pedro Batista",
+    role: "CBDC",
+    info: `<strong>UK Bank of England</strong> review for Central Bank Digital Currencies.\n\nGlobal Head of Payments/Banking for various financial institutions.`,
+    socials: {
+      linkedin: "https://www.linkedin.com/in/joaopedrobatista/",
+    },
+  },
+  {
     avatar: require("assets/avatars/JoeriVanGeelen.png").default,
     name: "Joeri Van Geelen",
     role: "Economics",

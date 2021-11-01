@@ -25,6 +25,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: "50%",
+    width: "115px",
+    filter: "grayscale(1)",
+
     [breakpoints.down("xs")]: {
       width: "60px",
     },
