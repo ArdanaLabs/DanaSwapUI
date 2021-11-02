@@ -2,6 +2,22 @@
 
 const cardano = (window as any).cardano;
 
+export const checkWalletExtension = () => {
+  return (cardano) && (cardano.yoroi);
+};
+
+export const isWalletEnabled = async () => {
+  if (!checkWalletExtension()) {
+    alert("Install Yoroi wallet!");
+    return;
+  }
+  return await cardano.yoroi.isEnabled()
+}
+
 export const connectWallet = async (): Promise<any> => {
-  return await cardano.yoroi.enable()
+  if (!checkWalletExtension()) {
+    alert("Install Yoroi wallet!");
+    return;
+  }
+  return await cardano.yoroi.enable();
 };

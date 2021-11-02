@@ -109,7 +109,8 @@ const Header: React.FC = () => {
 
   const onConnectWallet = async (event: any) => {
     const api = await connectWallet();
-    console.log(api)
+    api.get_balance().then((balance: any) => console.log("ADA balance", balance));
+    api.get_balance("6b8d07d69639e9413dd637a1a815a7323c69c86abbafb66dbfdb1aa7").then((balance: any) => console.log("balance", balance));
 
   };
 
