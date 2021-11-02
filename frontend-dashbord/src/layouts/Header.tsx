@@ -18,7 +18,7 @@ import { Button } from "components/Button";
 import { navList } from "data";
 import LOGO_Blue from "assets/logo_blue.png";
 import LOGO_Text from "assets/logo_text.png";
-import { connectWallet } from "hooks/web3_utils";
+import { connectWallet } from "hooks/cardano_utils";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   self: {
@@ -107,10 +107,9 @@ const Header: React.FC = () => {
     return pathname.indexOf(link) > -1;
   };
 
-  const onConnectWallet = (event: any) => {
-    console.log("connect wallet button clicked!");
-
-    connectWallet();
+  const onConnectWallet = async (event: any) => {
+    const api = await connectWallet();
+    console.log(api)
 
   };
 

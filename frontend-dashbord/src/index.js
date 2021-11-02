@@ -7,6 +7,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 import Cardano from 'services/cardano'
+import 'services/inject'
 
 Cardano.init().then(() => {
   ReactDOM.render(
