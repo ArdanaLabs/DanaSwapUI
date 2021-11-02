@@ -13,7 +13,7 @@ import { useIsDarkMode } from "state/user/hooks";
 import { darkTheme, lightTheme } from "./theme";
 import store from "./state";
 
-import { Landing, TeamPage } from "./pages";
+import { Landing, TeamPage, MainLogoPage } from "./pages";
 import Layout from "layouts/Layout";
 
 const ThemeProvider: React.FC = ({ children }) => {
@@ -69,6 +69,9 @@ const App: React.FC = () => {
           <Layout>
             <TeamPage />
           </Layout>
+        </Route>
+        <Route exact path="/mainlogo">
+          <MainLogoPage />
         </Route>
 
         <Route path="*">
