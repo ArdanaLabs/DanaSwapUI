@@ -9,6 +9,8 @@ import reportWebVitals from "./reportWebVitals";
 import Cardano from 'services/cardano'
 import 'services/inject'
 
+require('dotenv').config()
+
 Cardano.init().then(() => {
   ReactDOM.render(
     <React.StrictMode>

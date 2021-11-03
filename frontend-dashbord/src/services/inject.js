@@ -257,7 +257,7 @@ function createYoroiPort() {
     yoroiPort.onMessage.addListener(message => {
         // alert("content script message: " + JSON.stringify(message));
         if (message.type === "connector_rpc_response") {
-            window.postMessage(message, window.window.location.origin);
+            window.postMessage(message, window.location.origin);
         } else if (message.type === "yoroi_connect_response/ergo") {
             if (message.success) {
                 if (!ergoApiInjected) {

@@ -1,8 +1,8 @@
-import Cardano from "services/cardano";
+import Axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 
 import { AppDispatch, AppState } from "state";
-import { getAccountKeys as _getAccountKeys } from "./actions";
+import { BalanceType, getBalancesAction } from "./actions";
 
 export function useWallet(): any {
   const dispatch = useDispatch<AppDispatch>();
@@ -10,14 +10,24 @@ export function useWallet(): any {
     (state) => state.wallet
   );
 
-  const getAccountKeys = async (mnemonic: string) => {
-    const accountInfo: any = await Cardano.crypto.getAccountKeys(mnemonic);
-    accountInfo && dispatch(_getAccountKeys(accountInfo));
-    return accountInfo;
+  const getBalances = async (address: string) => {
+    const balances = await fetchBalances(address);
+    dispatch(getBalancesAction(balances));
   };
 
   return {
     wallet,
-    getAccountKeys,
+    getBalances,
   };
 }
+
+const fetchBalances = async (address: string): Promise<BalanceType[]> => {
+  return Axios.get(`${process.env.REACT_APP_REST_URL}/addresses/${address}`, {
+    headers: {
+      project_id: process.env.REACT_APP_API_KEY as string,
+    },
+  })
+    .then((response) => response.data)
+    .then((response: any) => response.amount)
+    .catch(() => []);
+};
