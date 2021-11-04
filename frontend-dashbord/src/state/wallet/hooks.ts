@@ -2,7 +2,7 @@ import Axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 
 import { AppDispatch, AppState } from "state";
-import { BalanceType, getAddressAction, getBalancesAction, getCardanoApiAction } from "./actions";
+import { Currency, getAddressAction, getBalancesAction, getCardanoApiAction } from "./actions";
 
 export function useWallet(): any {
   const dispatch = useDispatch<AppDispatch>();
@@ -34,7 +34,7 @@ export function useWallet(): any {
   };
 }
 
-const fetchBalances = async (address: string): Promise<BalanceType[]> => {
+const fetchBalances = async (address: string): Promise<Currency[]> => {
   return Axios.get(`${process.env.REACT_APP_REST_URL}/addresses/${address}`, {
     headers: {
       project_id: process.env.REACT_APP_API_KEY as string,

@@ -30,7 +30,7 @@ export default function Updater(): null {
           )
         );
         getAddress(
-          addr.to_bech32(NETWORK !== "mainnet" ? "addr" : "addr_test")
+          addr.to_bech32(NETWORK === "mainnet" ? "addr" : "addr_test")
         );
       })();
     }

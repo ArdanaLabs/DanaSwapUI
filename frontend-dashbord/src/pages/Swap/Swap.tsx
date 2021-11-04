@@ -135,6 +135,29 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 }));
 
+const marks: Mark[] = [
+  {
+    value: 0,
+    label: "0%",
+  },
+  {
+    value: 100,
+    label: "100%",
+  },
+];
+const tokens = [
+  {
+    unit: "ADA",
+    quantity: 1000,
+    logo: LOGO_Cardano,
+  },
+  {
+    unit: "DANA",
+    quantity: 1222,
+    logo: LOGO_Ardana,
+  },
+];
+
 const Swap: React.FC = () => {
   const { breakpoints } = useTheme();
   const dark = useIsDarkMode();
@@ -144,32 +167,18 @@ const Swap: React.FC = () => {
   const [fromAmount, setFromAmount] = useState(0);
   const [toAmount, setToAmount] = useState(0);
 
-  const [fromToken, setFromToken] = useState({
-    src: LOGO_Ardana,
-    name: "DANA",
-    desc: "exDANA",
-  });
-  const [toToken, setToToken] = useState({
-    src: LOGO_Cardano,
-    name: "ADA",
-    desc: "exDANA",
-  });
+  const [fromToken, setFromToken] = useState(
+    tokens.find((token) => token.unit === "DANA")
+  );
+  const [toToken, setToToken] = useState(
+    tokens.find((token) => token.unit === "ADA")
+  );
+  
   const [isOptionOpen, setIsOptionOpen] = useState(false);
 
   const onToggleOptions = () => {
     setIsOptionOpen((prev) => !prev);
   };
-
-  const marks: Mark[] = [
-    {
-      value: 0,
-      label: "0%",
-    },
-    {
-      value: 100,
-      label: "100%",
-    },
-  ];
 
   const onAmountChange = (e: any, newValue: any) => {
     setFromAmount(newValue);

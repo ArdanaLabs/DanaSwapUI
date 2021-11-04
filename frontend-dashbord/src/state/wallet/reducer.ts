@@ -1,7 +1,7 @@
 import { createReducer } from "@reduxjs/toolkit";
 
 import {
-  BalanceType,
+  Currency,
   getCardanoApiAction,
   getAddressAction,
   getBalancesAction,
@@ -9,7 +9,7 @@ import {
 
 export interface WalletStateType {
   address: string;
-  balances: BalanceType[];
+  balances: Currency[];
   cardanoApi: any;
 }
 

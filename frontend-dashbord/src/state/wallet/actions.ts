@@ -1,7 +1,7 @@
 import { createAction } from "@reduxjs/toolkit";
 import BigNumber from "bignumber.js";
 
-export interface BalanceType {
+export interface Currency {
   unit: string;
   quantity: BigNumber;
 }
@@ -14,6 +14,6 @@ export const getAddressAction = createAction<string>(
   "wallet/getAddressAction"
 );
 
-export const getBalancesAction = createAction<BalanceType[]>(
+export const getBalancesAction = createAction<Currency[]>(
   "wallet/getBalancesAction"
 );
