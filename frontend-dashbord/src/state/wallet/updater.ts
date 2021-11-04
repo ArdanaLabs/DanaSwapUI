@@ -4,6 +4,7 @@ import { useWallet } from "./hooks";
 
 export default function Updater(): null {
   const { getBalances } = useWallet()
+  
   useEffect(() => {
     // test
     (async () => {

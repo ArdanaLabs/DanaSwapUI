@@ -109,9 +109,12 @@ const Header: React.FC = () => {
 
   const onConnectWallet = async (event: any) => {
     const api = await connectWallet();
-    api.get_balance().then((balance: any) => console.log("ADA balance", balance));
-    api.get_balance("6b8d07d69639e9413dd637a1a815a7323c69c86abbafb66dbfdb1aa7").then((balance: any) => console.log("balance", balance));
-
+    const CardanoWasm = await import('@emurgo/cardano-serialization-lib-browser');
+    const addr = CardanoWasm.Address.from_bytes(
+      Buffer.from('009f3cf1c3b726a3689ae507961a216c01b2d11befaa834d7a861c3485140725376df3c019ad4f254ff47802cf9ced71751d29437b3e8a1d4d', 'hex')
+    )
+    console.log(await api.get_used_addresses())
+    console.log(addr.to_bech32('addr_test'))
   };
 
   return (

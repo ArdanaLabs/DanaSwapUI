@@ -2,7 +2,7 @@ import Axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 
 import { AppDispatch, AppState } from "state";
-import { BalanceType, getBalancesAction } from "./actions";
+import { BalanceType, getAddressAction, getBalancesAction } from "./actions";
 
 export function useWallet(): any {
   const dispatch = useDispatch<AppDispatch>();
@@ -11,13 +11,21 @@ export function useWallet(): any {
   );
 
   const getBalances = async (address: string) => {
+    if (!address) {
+      return;
+    }
     const balances = await fetchBalances(address);
     dispatch(getBalancesAction(balances));
+  };
+
+  const getAddress = async () => {
+    dispatch(getAddressAction(''));
   };
 
   return {
     wallet,
     getBalances,
+    getAddress,
   };
 }
 

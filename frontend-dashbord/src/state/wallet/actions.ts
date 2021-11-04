@@ -6,6 +6,14 @@ export interface BalanceType {
   quantity: BigNumber;
 }
 
+export const getCadanoApiAction = createAction<string>(
+  "wallet/getAddressAction"
+);
+
+export const getAddressAction = createAction<string>(
+  "wallet/getAddressAction"
+);
+
 export const getBalancesAction = createAction<BalanceType[]>(
   "wallet/getBalancesAction"
 );

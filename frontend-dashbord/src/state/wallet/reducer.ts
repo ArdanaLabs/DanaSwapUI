@@ -1,17 +1,25 @@
 import { createReducer } from "@reduxjs/toolkit";
 
-import { BalanceType, getBalancesAction } from "./actions";
+import { BalanceType, getAddressAction, getBalancesAction } from "./actions";
 
 export interface WalletStateType {
-  balances: BalanceType[]
+  address: string;
+  balances: BalanceType[];
+  cardanoApi: any;
 }
 
 export const initialState: WalletStateType = {
-  balances: []
+  address: "",
+  balances: [],
+  cardanoApi: null,
 };
 
 export default createReducer(initialState, (builder) =>
-  builder.addCase(getBalancesAction, (state, action) => {
-    state.balances = action.payload;
-  })
+  builder
+    .addCase(getBalancesAction, (state, action) => {
+      state.balances = action.payload;
+    })
+    .addCase(getAddressAction, (state, action) => {
+      state.address = action.payload;
+    })
 );
