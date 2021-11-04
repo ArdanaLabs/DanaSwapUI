@@ -2,6 +2,8 @@
 import { useEffect } from "react";
 import { useWallet } from "./hooks";
 
+const NETWORK: string = process.env.REACT_APP_NETWORK || "mainnet";
+
 export default function Updater(): null {
   const {
     wallet: { cardanoApi, address },
@@ -27,17 +29,19 @@ export default function Updater(): null {
             "hex"
           )
         );
-        console.log(await cardanoApi.get_used_addresses());
-        console.log(addr.to_bech32("addr_test"));
-        getAddress(addr.to_bech32("addr_test"));
+        getAddress(
+          addr.to_bech32(NETWORK !== "mainnet" ? "addr" : "addr_test")
+        );
       })();
     }
+    // eslint-disable-next-line
   }, [cardanoApi]);
 
   useEffect(() => {
     if (address) {
       getBalances(address);
     }
+    // eslint-disable-next-line
   }, [address]);
 
   return null;
