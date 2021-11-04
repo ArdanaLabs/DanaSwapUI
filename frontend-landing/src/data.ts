@@ -370,8 +370,11 @@ export const Partners = [
     src: require("assets/logos/liqwid.svg").default,
     url: "https://www.liqwid.finance/",
   },
+  {
+    src: require("assets/logos/occamfi.svg").default,
+    url: "https://occam.fi/",
+  },
   // require("assets/logos/mlabs.svg").default,
-  // require("assets/logos/occamfi.svg").default,
   // require("assets/logos/defire.svg").default,
   // require("assets/logos/israel-bc.svg").default,
   // require("assets/logos/halborn.svg").default,

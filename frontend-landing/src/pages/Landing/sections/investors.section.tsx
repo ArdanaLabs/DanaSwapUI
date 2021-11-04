@@ -85,7 +85,7 @@ const InvestorsSection: React.FC = () => {
                   />
                 )}
               </Box>,
-              (index + 1) % (!mobile ? 4 : 3) === 0 && (
+              (index + 1) % 4 === 0 && !mobile && (
                 <Box key={"wrap" + index} flexBasis="100%" />
               ),
             ])}

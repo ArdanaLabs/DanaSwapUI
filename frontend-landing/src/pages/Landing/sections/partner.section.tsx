@@ -64,18 +64,31 @@ const PartnerSection: React.FC = () => {
             mt="30px"
             style={{ opacity: 0.8 }}
           >
-            {Partners.map((partner, index) => (
+            {Partners.flatMap((partner, index) => [
               <Box key={index} textAlign="center" p={!mobile ? "20px" : "10px"}>
-                <Link href={partner.url} target="_blank" underline="none">
+                {partner.url && (
+                  <Link href={partner.url} target="_blank" underline="none">
+                    <img
+                      src={partner.src}
+                      alt="partner"
+                      height={!mobile ? "50px" : "25px"}
+                      style={{ maxWidth: "max-content" }}
+                    />
+                  </Link>
+                )}
+                {!partner.url && (
                   <img
                     src={partner.src}
                     alt="partner"
-                    height={!mobile ? "45px" : "25px"}
+                    height={!mobile ? "50px" : "25px"}
                     style={{ maxWidth: "max-content" }}
                   />
-                </Link>
-              </Box>
-            ))}
+                )}
+              </Box>,
+              (index + 1) % 4 === 0 && !mobile && (
+                <Box key={"wrap" + index} flexBasis="100%" />
+              ),
+            ])}
           </Box>
         </ScrollAnimation>
       </Container>
