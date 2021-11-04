@@ -361,6 +361,10 @@ export const Partners = [
     src: require("assets/logos/platonic-systems.svg").default,
     url: "https://platonic.systems/",
   },
+  {
+    src: require("assets/logos/occamfi.svg").default,
+    url: "https://occam.fi/",
+  },
   { src: require("assets/logos/coti.svg").default, url: "https://coti.io/" },
   {
     src: require("assets/logos/elrond.svg").default,
@@ -369,10 +373,6 @@ export const Partners = [
   {
     src: require("assets/logos/liqwid.svg").default,
     url: "https://www.liqwid.finance/",
-  },
-  {
-    src: require("assets/logos/occamfi.svg").default,
-    url: "https://occam.fi/",
   },
   // require("assets/logos/mlabs.svg").default,
   // require("assets/logos/defire.svg").default,
