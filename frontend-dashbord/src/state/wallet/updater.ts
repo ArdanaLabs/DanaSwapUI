@@ -3,19 +3,42 @@ import { useEffect } from "react";
 import { useWallet } from "./hooks";
 
 export default function Updater(): null {
-  const { getBalances } = useWallet()
-  
+  const {
+    wallet: { cardanoApi, address },
+    getBalances,
+    getAddress,
+  } = useWallet();
+
   useEffect(() => {
     // test
-    (async () => {
-      // if (checkWalletExtension()) {
-      //   console.log(12222)
-      //   console.log(1111, await isWalletEnabled())
-      // }
-      getBalances("addr_test1qz0neuwrkun2x6y6u5revx3pdsqm95gma74gxnt6scwrfpg5qujnwm0ncqv66ne9fl68sqk0nnkhzaga99phk052r4xsh5qdnq");
-    })();
+    (async () => {})();
     // eslint-disable-next-line
   }, []);
+
+  useEffect(() => {
+    if (cardanoApi) {
+      (async () => {
+        const CardanoWasm = await import(
+          "@emurgo/cardano-serialization-lib-browser"
+        );
+        const addr = CardanoWasm.Address.from_bytes(
+          Buffer.from(
+            "009f3cf1c3b726a3689ae507961a216c01b2d11befaa834d7a861c3485140725376df3c019ad4f254ff47802cf9ced71751d29437b3e8a1d4d",
+            "hex"
+          )
+        );
+        console.log(await cardanoApi.get_used_addresses());
+        console.log(addr.to_bech32("addr_test"));
+        getAddress(addr.to_bech32("addr_test"));
+      })();
+    }
+  }, [cardanoApi]);
+
+  useEffect(() => {
+    if (address) {
+      getBalances(address);
+    }
+  }, [address]);
 
   return null;
 }

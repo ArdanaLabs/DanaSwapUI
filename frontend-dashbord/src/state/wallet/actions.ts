@@ -6,8 +6,8 @@ export interface BalanceType {
   quantity: BigNumber;
 }
 
-export const getCadanoApiAction = createAction<string>(
-  "wallet/getAddressAction"
+export const getCardanoApiAction = createAction<any>(
+  "wallet/getCardanoApiAction"
 );
 
 export const getAddressAction = createAction<string>(

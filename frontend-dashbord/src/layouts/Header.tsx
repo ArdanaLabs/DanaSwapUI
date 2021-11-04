@@ -19,6 +19,7 @@ import { navList } from "data";
 import LOGO_Blue from "assets/logo_blue.png";
 import LOGO_Text from "assets/logo_text.png";
 import { connectWallet } from "hooks/cardano_utils";
+import { useWallet } from "state/wallet/hooks";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   self: {
@@ -96,6 +97,7 @@ const Header: React.FC = () => {
   const classes = useStyles({ dark, mobile });
   const history = useHistory();
   const { pathname } = useLocation<{ previous: string }>();
+  const { getCardanoApi } = useWallet()
 
   const [openMenu, setOpenMenu] = useState(false);
 
@@ -109,12 +111,7 @@ const Header: React.FC = () => {
 
   const onConnectWallet = async (event: any) => {
     const api = await connectWallet();
-    const CardanoWasm = await import('@emurgo/cardano-serialization-lib-browser');
-    const addr = CardanoWasm.Address.from_bytes(
-      Buffer.from('009f3cf1c3b726a3689ae507961a216c01b2d11befaa834d7a861c3485140725376df3c019ad4f254ff47802cf9ced71751d29437b3e8a1d4d', 'hex')
-    )
-    console.log(await api.get_used_addresses())
-    console.log(addr.to_bech32('addr_test'))
+    getCardanoApi(api)
   };
 
   return (
