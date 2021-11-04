@@ -82,6 +82,14 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   aboutVideo: {
+    position: "relative",
+    "& > div": {
+      display: "flex",
+
+      "& > video": {
+        objectFit: "cover",
+      },
+    },
     "& > div > video, & .react-player__preview": {
       borderRadius: "10px",
     },
@@ -93,12 +101,18 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   playIcon: {
-    margin: "100px",
-    position: "relative",
+    background: `url(${BG_POSTER}) center center no-repeat`,
+    backgroundSize: "cover",
+    borderRadius: "10px",
+    position: "absolute",
+    left: 0,
+    top: 0,
+    width: "100%",
+    height: "100%",
     lineHeight: 0,
-    [breakpoints.down("xs")]: {
-      margin: "60px",
-    },
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
   photo: {
     position: "absolute",
@@ -112,7 +126,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     [breakpoints.down("xs")]: {
       width: "60px",
     },
-  }
+  },
 }));
 
 const AboutSection: React.FC = () => {
@@ -140,12 +154,13 @@ const AboutSection: React.FC = () => {
               <Box className={cx(classes.aboutVideo)}>
                 <ReactPlayer
                   url={aboutVideo}
-                  playing
+                  playing={true}
                   loop={false}
-                  width="100%"
-                  height="100%"
-                  controls
                   light={BG_POSTER}
+                  width="100%"
+                  // height="100%"
+                  height={!mobile ? "300px" : "250px"}
+                  controls
                   playIcon={
                     <Box className={cx(classes.playIcon)}>
                       <GradientButton
@@ -156,6 +171,23 @@ const AboutSection: React.FC = () => {
                     </Box>
                   }
                 />
+                {/* {!playing && (
+                  <Box
+                    className={cx(classes.playIcon)}
+                    onClick={() => setPlaying(true)}
+                  >
+                    <GradientButton
+                      width={!mobile ? 145 : 81}
+                      height={!mobile ? 145 : 81}
+                    />
+                    <img
+                      className={cx(classes.photo)}
+                      src={ICON_PLAY}
+                      alt="playIcon"
+                      width="100px"
+                    />
+                  </Box>
+                )} */}
               </Box>
             </Grid>
           </Grid>
