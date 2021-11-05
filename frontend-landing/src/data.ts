@@ -371,6 +371,10 @@ export const Partners = [
     url: "https://elrond.com/",
   },
   {
+    src: require("assets/logos/mlabs.svg").default,
+    url: "https://mlabs.city/",
+  },
+  {
     src: require("assets/logos/liqwid.svg").default,
     url: "https://www.liqwid.finance/",
   },
