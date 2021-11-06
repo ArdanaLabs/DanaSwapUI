@@ -30,10 +30,6 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   amount: {
-    display: "flex",
-    justifyContent: "space-between",
-    width: "100%",
-    alignItems: "center",
     fontFamily: "Museo Sans",
     fontStyle: "normal",
     fontWeight: 600,
@@ -152,6 +148,8 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
   menuItem: {
     borderBottom: "1px solid white",
+    display: "flex",
+    justifyContent: "space-between",
   },
 }));
 
@@ -207,7 +205,13 @@ const TokenBox: React.FC<OverViewBoxProps> = ({
         {label}&nbsp;(${(amount * 1.23).toFixed(2)})
       </Box>
       <Box className={cx(classes.body)}>
-        <Box className={cx(classes.amount)}>
+        <Box
+          className={cx(classes.amount)}
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
+          width="100%"
+        >
           {amount}
           <Box
             id="max_button"
@@ -306,12 +310,14 @@ const TokenBox: React.FC<OverViewBoxProps> = ({
                   onClick={() => handleMenuItemClick(item)}
                   key={index + 1}
                 >
-                  <Box className={cx(classes.tokenIcon)}>
-                    <img src={item.logo} alt="token icon" />
-                  </Box>
-                  <Box className={cx(classes.tokenName)}>
-                    <Box>{item.unit}</Box>
-                    <Box>{"exDANA"}</Box>
+                  <Box display="flex" alignItems="center">
+                    <Box className={cx(classes.tokenIcon)}>
+                      <img src={item.logo} alt="token icon" />
+                    </Box>
+                    <Box className={cx(classes.tokenName)}>
+                      <Box>{item.unit}</Box>
+                      <Box>{"exDANA"}</Box>
+                    </Box>
                   </Box>
                   <Box className={cx(classes.amount)}>{item.quantity}</Box>
                 </ListItem>
