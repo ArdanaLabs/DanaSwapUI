@@ -26,11 +26,14 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
   body: {
     display: "flex",
-    justifyContent: "space-between",
     alignItems: "center",
   },
 
   amount: {
+    display: "flex",
+    justifyContent: "space-between",
+    width: "100%",
+    alignItems: "center",
     fontFamily: "Museo Sans",
     fontStyle: "normal",
     fontWeight: 600,
@@ -45,6 +48,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
     "& > div": {
       margin: "0 10px",
+      width: "100px",
     },
   },
 
@@ -203,22 +207,28 @@ const TokenBox: React.FC<OverViewBoxProps> = ({
         {label}&nbsp;(${(amount * 1.23).toFixed(2)})
       </Box>
       <Box className={cx(classes.body)}>
-        <Box className={cx(classes.amount)}>{amount}</Box>
-        <Box className={cx(classes.other)}>
-          <Box id='max_button' className={cx(classes.maxButton)} onClick={onMaxAmount}>
+        <Box className={cx(classes.amount)}>
+          {amount}
+          <Box
+            id="max_button"
+            className={cx(classes.maxButton)}
+            onClick={onMaxAmount}
+          >
             MAX
           </Box>
+        </Box>
+        <Box className={cx(classes.other)}>
           <Box className={cx(classes.token)} onClick={handleClickOpen}>
-            {!token.src && <Box className={cx(classes.noTokenIcon)}></Box>}
-            {token.src && (
+            {!token.logo && <Box className={cx(classes.noTokenIcon)}></Box>}
+            {token.logo && (
               <Box className={cx(classes.tokenIcon)}>
-                {token.src && <img src={token.src} alt="token icon" />}
+                {token.logo && <img src={token.logo} alt="token icon" />}
               </Box>
             )}
-            {token.name && (
+            {token.unit && (
               <Box className={cx(classes.tokenName)}>
-                <Box>{token.name}</Box>
-                <Box>{token.desc}</Box>
+                <Box>{token.unit}</Box>
+                <Box>exDANA</Box>
               </Box>
             )}
           </Box>
@@ -297,13 +307,13 @@ const TokenBox: React.FC<OverViewBoxProps> = ({
                   key={index + 1}
                 >
                   <Box className={cx(classes.tokenIcon)}>
-                    <img src={item.src} alt="token icon" />
+                    <img src={item.logo} alt="token icon" />
                   </Box>
                   <Box className={cx(classes.tokenName)}>
-                    <Box>{item.name}</Box>
-                    <Box>{item.desc}</Box>
+                    <Box>{item.unit}</Box>
+                    <Box>{"exDANA"}</Box>
                   </Box>
-                  <Box className={cx(classes.amount)}>0</Box>
+                  <Box className={cx(classes.amount)}>{item.quantity}</Box>
                 </ListItem>
               ))}
             </List>

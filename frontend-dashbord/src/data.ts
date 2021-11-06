@@ -62,14 +62,14 @@ export const navList = [
 
 export const TokenList = [
   {
-    src: LOGO_Ardana,
-    name: "DANA",
-    desc: "exDANA",
+    unit: "ADA",
+    quantity: 1000,
+    logo: LOGO_Cardano,
   },
   {
-    src: LOGO_Cardano,
-    name: "ADA",
-    desc: "exDANA",
+    unit: "DANA",
+    quantity: 1222,
+    logo: LOGO_Ardana,
   },
 ];
 

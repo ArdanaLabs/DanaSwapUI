@@ -15,12 +15,9 @@ import { useIsDarkMode } from "state/user/hooks";
 import { TokenBox } from "components/Box";
 import { Slider } from "components";
 import { Radio, SwapButton } from "components/Button";
-import { options } from "data";
+import { options, TokenList } from "data";
 
 import ICO_Info_dark from "assets/svg/info_dark.svg";
-
-import LOGO_Ardana from "assets/logos/ardana.png";
-import LOGO_Cardano from "assets/logos/cardano.png";
 
 const useStyles = makeStyles(({ palette }) => ({
   self: {
@@ -135,29 +132,6 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 }));
 
-const marks: Mark[] = [
-  {
-    value: 0,
-    label: "0%",
-  },
-  {
-    value: 100,
-    label: "100%",
-  },
-];
-const tokens = [
-  {
-    unit: "ADA",
-    quantity: 1000,
-    logo: LOGO_Cardano,
-  },
-  {
-    unit: "DANA",
-    quantity: 1222,
-    logo: LOGO_Ardana,
-  },
-];
-
 const Swap: React.FC = () => {
   const { breakpoints } = useTheme();
   const dark = useIsDarkMode();
@@ -168,13 +142,24 @@ const Swap: React.FC = () => {
   const [toAmount, setToAmount] = useState(0);
 
   const [fromToken, setFromToken] = useState(
-    tokens.find((token) => token.unit === "DANA")
+    TokenList.find((token) => token.unit === "DANA")
   );
   const [toToken, setToToken] = useState(
-    tokens.find((token) => token.unit === "ADA")
+    TokenList.find((token) => token.unit === "ADA")
   );
   
   const [isOptionOpen, setIsOptionOpen] = useState(false);
+
+  const marks: Mark[] = [
+    {
+      value: 0,
+      label: "0%",
+    },
+    {
+      value: fromToken?.quantity ?? 0,
+      label: "100%",
+    },
+  ];
 
   const onToggleOptions = () => {
     setIsOptionOpen((prev) => !prev);
@@ -205,7 +190,7 @@ const Swap: React.FC = () => {
               token={fromToken}
               amount={fromAmount}
               onMaxAmount={() => {
-                setFromAmount(100);
+                setFromAmount(fromToken?.quantity ?? 0);
               }}
               handleTokenSelect={(token: any) => {
                 setFromToken(token);
@@ -217,7 +202,7 @@ const Swap: React.FC = () => {
             <Box className={cx(classes.slider)}>
               <Slider
                 min={0}
-                max={100}
+                max={fromToken?.quantity ?? 0}
                 defaultValue={0}
                 value={typeof fromAmount === "number" ? fromAmount : 0}
                 onChange={onAmountChange}
