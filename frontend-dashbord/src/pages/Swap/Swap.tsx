@@ -147,7 +147,7 @@ const Swap: React.FC = () => {
   const [toToken, setToToken] = useState(
     TokenList.find((token) => token.unit === "ADA")
   );
-  
+
   const [isOptionOpen, setIsOptionOpen] = useState(false);
 
   const marks: Mark[] = [
@@ -189,8 +189,8 @@ const Swap: React.FC = () => {
               label="SEND"
               token={fromToken}
               amount={fromAmount}
-              onMaxAmount={() => {
-                setFromAmount(fromToken?.quantity ?? 0);
+              onAmountChange={(amount: number) => {
+                setFromAmount(Number(amount));
               }}
               handleTokenSelect={(token: any) => {
                 setFromToken(token);
@@ -219,8 +219,8 @@ const Swap: React.FC = () => {
               label="RECEIVE"
               token={toToken}
               amount={toAmount}
-              onMaxAmount={() => {
-                setToAmount(100);
+              onAmountChange={(amount: number) => {
+                setToAmount(Number(amount));
               }}
               handleTokenSelect={(token: any) => {
                 setToToken(token);

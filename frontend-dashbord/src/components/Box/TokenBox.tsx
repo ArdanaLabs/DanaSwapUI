@@ -4,6 +4,7 @@ import { Box, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { useIsDarkMode } from "state/user/hooks";
 import { TokenSelectorDialog } from "components/Dialog";
+import { Input } from "components/Input";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   label: {
@@ -26,7 +27,8 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontWeight: 600,
     fontSize: "16px",
     lineHeight: "100%",
-    color: palette.secondary.main,
+    color: `${palette.secondary.main} !important`,
+    background: "transparent",
   },
 
   other: {
@@ -148,7 +150,7 @@ export interface TokenBoxProps {
   label: string;
   amount: number;
   token: any;
-  onMaxAmount: any;
+  onAmountChange: (amount: number) => void;
   style?: object;
   className?: string;
   handleTokenSelect: (token: any) => void;
@@ -158,7 +160,7 @@ const TokenBox: React.FC<TokenBoxProps> = ({
   label,
   amount,
   token,
-  onMaxAmount,
+  onAmountChange,
   style = {},
   className,
   handleTokenSelect,
@@ -177,23 +179,31 @@ const TokenBox: React.FC<TokenBoxProps> = ({
       </Box>
       <Box className={cx(classes.body)}>
         <Box
-          className={cx(classes.amount)}
           display="flex"
           justifyContent="space-between"
           alignItems="center"
           width="100%"
         >
-          {amount}
+          <Input
+            type="number"
+            value={amount}
+            max={token?.quantity ?? 0}
+            className={cx(classes.amount)}
+            onChange={(e: any) => onAmountChange(e.target.value)}
+          />
           <Box
             id="max_button"
             className={cx(classes.maxButton)}
-            onClick={onMaxAmount}
+            onClick={() => onAmountChange(token?.quantity ?? 0)}
           >
             MAX
           </Box>
         </Box>
         <Box className={cx(classes.other)}>
-          <Box className={cx(classes.token)} onClick={() => setTokenSelectorDialogOpen(true)}>
+          <Box
+            className={cx(classes.token)}
+            onClick={() => setTokenSelectorDialogOpen(true)}
+          >
             {!token.logo && <Box className={cx(classes.noTokenIcon)}></Box>}
             {token.logo && (
               <Box className={cx(classes.tokenIcon)}>

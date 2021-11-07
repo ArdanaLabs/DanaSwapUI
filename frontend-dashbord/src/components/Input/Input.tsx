@@ -32,6 +32,7 @@ export interface InputProps {
   type?: any;
   step?: any;
   onChange?: any;
+  max?: any;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -41,6 +42,7 @@ const Input: React.FC<InputProps> = ({
   onChange,
   type = "text",
   step = "0.1",
+  max = "100000000",
 }) => {
   const { breakpoints } = useTheme();
   const dark = useIsDarkMode();
@@ -54,6 +56,7 @@ const Input: React.FC<InputProps> = ({
         className={className}
         type={type}
         step={step}
+        max={max}
         onChange={onChange}
       ></input>
     </Box>
