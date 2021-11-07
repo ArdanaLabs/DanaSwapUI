@@ -2,20 +2,24 @@ import React from "react";
 import { Box, useMediaQuery, Container } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
-import ReactPlayer from "react-player";
+// import ReactPlayer from "react-player";
 import ScrollAnimation from "react-animate-on-scroll";
 
 import { useIsDarkMode } from "state/user/hooks";
 
-const heroVideo =
-  "https://background.sfo3.digitaloceanspaces.com/stablecoin/output.webm";
+import BG_BRAND from "assets/backgrounds/brand.png";
+
+// const heroVideo =
+//   "https://background.sfo3.digitaloceanspaces.com/stablecoin/output.webm";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
     position: "relative",
-    "& video": {
-      objectFit: "cover",
-    },
+    // "& video": {
+    //   objectFit: "cover",
+    // },
+    height: "600px",
+    background: `url(${BG_BRAND}) top left no-repeat`,
   },
   container: {
     position: "absolute",
@@ -76,7 +80,7 @@ const MainSection: React.FC = () => {
 
   return (
     <Box className={cx(classes.bg)}>
-      <ReactPlayer
+      {/* <ReactPlayer
         url={heroVideo}
         playing={false}
         loop={true}
@@ -84,7 +88,7 @@ const MainSection: React.FC = () => {
         width={!mobile ? "100%" : "unset"}
         height={"600px"}
         playbackRate={0.5}
-      />
+      /> */}
       <Box className={cx(classes.container)}>
         <Container>
           <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
