@@ -26,13 +26,14 @@ const useStyles = makeStyles(({ palette }) => ({
 }));
 
 export interface InputProps {
-  value?: any;
-  placeholder?: any;
-  className?: any;
-  type?: any;
-  step?: any;
-  onChange?: any;
-  max?: any;
+  value?: string | number;
+  placeholder?: string;
+  className?: string;
+  type?: string;
+  step?: number;
+  onChange?: (e: any) => void;
+  min?: number;
+  max?: number;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -41,8 +42,9 @@ const Input: React.FC<InputProps> = ({
   placeholder,
   onChange,
   type = "text",
-  step = "0.1",
-  max = "100000000",
+  step = 0.1,
+  min = 0,
+  max = 100000000,
 }) => {
   const { breakpoints } = useTheme();
   const dark = useIsDarkMode();
@@ -56,6 +58,7 @@ const Input: React.FC<InputProps> = ({
         className={className}
         type={type}
         step={step}
+        min={min}
         max={max}
         onChange={onChange}
       ></input>

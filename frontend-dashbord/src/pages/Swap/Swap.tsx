@@ -156,7 +156,7 @@ const Swap: React.FC = () => {
       label: "0%",
     },
     {
-      value: fromToken?.quantity ?? 0,
+      value: fromToken?.quantity ?? 1,
       label: "100%",
     },
   ];
