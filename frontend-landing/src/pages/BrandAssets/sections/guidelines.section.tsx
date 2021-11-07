@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box, useMediaQuery, Container, Grid } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
@@ -24,6 +24,15 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     lineHeight: "150%",
     color: "#202F9A",
   },
+
+  horizen: {
+    background:
+      "linear-gradient(-90deg, rgba(115, 214, 241, 0) -5.46%, #73D6F1 101.08%)",
+    borderRadius: "10px",
+    border: "none",
+    height: "3px",
+    margin: "30px 0",
+  },
 }));
 
 const GuideLinesSection: React.FC = () => {
@@ -32,12 +41,25 @@ const GuideLinesSection: React.FC = () => {
   const mobile = useMediaQuery(breakpoints.down("xs"));
   const classes = useStyles({ dark, mobile });
 
+  const [horizenWidth, setHorizenWidth] = useState(0);
+
+  useEffect(() => {
+    const container = document.querySelector("#container");
+    setHorizenWidth(container?.clientWidth ?? 0);
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <Box className={cx(classes.root)}>
       <Container>
-        <Grid container spacing={2}>
+        <Grid container id="container" spacing={3}>
           <Grid item md={3} xs={12}>
             <Box className={cx(classes.title)}>Guidelines</Box>
+            <hr
+              className={cx(classes.horizen)}
+              style={horizenWidth ? { width: horizenWidth } : {}}
+            />
+            {/* <Box mt="60px" /> */}
             <Box className={cx(classes.content)}>
               We also have separate brand guidelines documents for both our ASPA
               and dUSD brands.
