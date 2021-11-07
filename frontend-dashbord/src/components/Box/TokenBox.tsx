@@ -150,9 +150,9 @@ export interface TokenBoxProps {
   label: string;
   amount: number;
   token: any;
-  onAmountChange: (amount: number) => void;
   style?: object;
   className?: string;
+  onAmountChange: (amount: number) => void;
   handleTokenSelect: (token: any) => void;
 }
 
@@ -160,9 +160,9 @@ const TokenBox: React.FC<TokenBoxProps> = ({
   label,
   amount,
   token,
-  onAmountChange,
   style = {},
   className,
+  onAmountChange,
   handleTokenSelect,
 }) => {
   const { breakpoints } = useTheme();
@@ -204,12 +204,12 @@ const TokenBox: React.FC<TokenBoxProps> = ({
             className={cx(classes.token)}
             onClick={() => setTokenSelectorDialogOpen(true)}
           >
-            {!token.logo && <Box className={cx(classes.noTokenIcon)}></Box>}
-            {token.logo && (
-              <Box className={cx(classes.tokenIcon)}>
-                {token.logo && <img src={token.logo} alt="token icon" />}
-              </Box>
-            )}
+            <Box className={cx(classes.tokenIcon)}>
+              <img
+                src={require(`assets/coins/${token.unit}.png`).default}
+                alt="token icon"
+              />
+            </Box>
             {token.unit && (
               <Box className={cx(classes.tokenName)}>
                 <Box>{token.unit}</Box>

@@ -203,7 +203,10 @@ const TokenSelectorDialog: React.FC<TokenSelectorProps> = ({
           >
             <Box display="flex" alignItems="center">
               <Box className={cx(classes.tokenIcon)}>
-                <img src={item.logo} alt="token icon" />
+                <img
+                  src={require(`assets/coins/${item.unit}.png`).default}
+                  alt="token icon"
+                />
               </Box>
               <Box className={cx(classes.tokenName)}>
                 <Box>{item.unit}</Box>

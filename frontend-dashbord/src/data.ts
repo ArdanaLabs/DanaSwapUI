@@ -1,7 +1,4 @@
 
-import LOGO_Ardana from "assets/logos/ardana.png";
-import LOGO_Cardano from "assets/logos/cardano.png";
-
 export const options = [
   {
     title: "Filter",
@@ -64,12 +61,10 @@ export const TokenList = [
   {
     unit: "ADA",
     quantity: 1000,
-    logo: LOGO_Cardano,
   },
   {
     unit: "DANA",
     quantity: 1222,
-    logo: LOGO_Ardana,
   },
 ];
 
