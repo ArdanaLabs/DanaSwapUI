@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Collapse,
@@ -145,12 +145,8 @@ const Swap: React.FC = () => {
   const [fromAmount, setFromAmount] = useState(0);
   const [toAmount, setToAmount] = useState(0);
 
-  const [fromToken, setFromToken] = useState<Currency | undefined>(
-    TokenList.find((token: Currency) => token.unit === "dana")
-  );
-  const [toToken, setToToken] = useState<Currency | undefined>(
-    TokenList.find((token: Currency) => token.unit === "ada")
-  );
+  const [fromToken, setFromToken] = useState<Currency | undefined>(undefined);
+  const [toToken, setToToken] = useState<Currency | undefined>(undefined);
 
   const [isOptionOpen, setIsOptionOpen] = useState(false);
 
@@ -179,6 +175,13 @@ const Swap: React.FC = () => {
     setFromToken(toToken);
     setToToken(fromToken);
   };
+
+  useEffect(() => {
+    if (TokenList && TokenList.length > 0) {
+      setFromToken(TokenList.find((token: Currency) => token.unit === "ada"));
+      setToToken(TokenList.find((token: Currency) => token.unit === "dana"));
+    }
+  }, [TokenList]);
 
   return (
     <Fade in={true}>

@@ -195,7 +195,7 @@ const TokenBox: React.FC<TokenBoxProps> = ({
           <Box
             id="max_button"
             className={cx(classes.maxButton)}
-            onClick={() => onAmountChange(token?.quantity.toNumber() ?? 0)}
+            onClick={() => onAmountChange(token?.quantity ?? 0)}
           >
             MAX
           </Box>
@@ -208,7 +208,7 @@ const TokenBox: React.FC<TokenBoxProps> = ({
             <Box className={cx(classes.tokenIcon)}>
               <img
                 src={
-                  require(`assets/coins/${token ? token.unit : "ada"}.png`)
+                  require(`assets/coins/${token ? token.unit : "unknown"}.png`)
                     .default
                 }
                 alt="token icon"
