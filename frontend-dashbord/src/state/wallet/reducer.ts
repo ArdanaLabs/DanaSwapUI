@@ -1,4 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
+import { currencyFormatter } from "utils/currency";
 
 import {
   Currency,
@@ -25,7 +26,22 @@ export default createReducer(initialState, (builder) =>
       state.cardanoApi = action.payload;
     })
     .addCase(getBalancesAction, (state, action) => {
-      state.balances = action.payload;
+      state.balances = action.payload.map((balance: Currency) => {
+        switch (balance.unit) {
+          case "lovelace":
+            return {
+              unit: "ada",
+              quantity: currencyFormatter(balance.quantity),
+            };
+          case "6b8d07d69639e9413dd637a1a815a7323c69c86abbafb66dbfdb1aa7":
+            return {
+              unit: "dana",
+              quantity: balance.quantity,
+            };
+          default:
+            return balance;
+        }
+      });
     })
     .addCase(getAddressAction, (state, action) => {
       state.address = action.payload;

@@ -1,9 +1,8 @@
 import { createAction } from "@reduxjs/toolkit";
-import BigNumber from "bignumber.js";
 
 export interface Currency {
   unit: string;
-  quantity: BigNumber;
+  quantity: number;
 }
 
 export const getCardanoApiAction = createAction<any>(

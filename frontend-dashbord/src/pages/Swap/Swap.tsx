@@ -14,10 +14,11 @@ import { useIsDarkMode } from "state/user/hooks";
 import { TokenBox } from "components/Box";
 import { Slider } from "components";
 import { Radio, SwapButton } from "components/Button";
-import { options, TokenList } from "data";
+import { options } from "data";
 
 import ICO_Info_dark from "assets/svg/info_dark.svg";
 import { Currency } from "state/wallet/actions";
+import { useWallet } from "state/wallet/hooks";
 
 const useStyles = makeStyles(({ palette }) => ({
   self: {
@@ -137,15 +138,18 @@ const Swap: React.FC = () => {
   const dark = useIsDarkMode();
   const mobile = useMediaQuery(breakpoints.down("xs"));
   const classes = useStyles({ dark, mobile });
+  const {
+    wallet: { balances: TokenList },
+  } = useWallet();
 
   const [fromAmount, setFromAmount] = useState(0);
   const [toAmount, setToAmount] = useState(0);
 
   const [fromToken, setFromToken] = useState<Currency | undefined>(
-    TokenList.find((token) => token.unit === "dana")
+    TokenList.find((token: Currency) => token.unit === "dana")
   );
   const [toToken, setToToken] = useState<Currency | undefined>(
-    TokenList.find((token) => token.unit === "ada")
+    TokenList.find((token: Currency) => token.unit === "ada")
   );
 
   const [isOptionOpen, setIsOptionOpen] = useState(false);
@@ -156,7 +160,7 @@ const Swap: React.FC = () => {
       label: "0%",
     },
     {
-      value: fromToken?.quantity.toNumber() ?? 0,
+      value: fromToken?.quantity ?? 0,
       label: "100%",
     },
   ];
@@ -205,7 +209,7 @@ const Swap: React.FC = () => {
             <Box className={cx(classes.slider)}>
               <Slider
                 min={0}
-                max={fromToken?.quantity.toNumber() ?? 0}
+                max={fromToken?.quantity ?? 0}
                 defaultValue={0}
                 value={typeof fromAmount === "number" ? fromAmount : 0}
                 onChange={onAmountChange}
@@ -281,7 +285,7 @@ const Swap: React.FC = () => {
                   style={{ marginTop: "10px" }}
                 >
                   {options.map((option, i) => (
-                    <Grid container item xs={4} key={i}>
+                    <Grid container item xs={4} key={`options${i}`}>
                       <Radio option={option} value={option.data[0].value} />
                     </Grid>
                   ))}

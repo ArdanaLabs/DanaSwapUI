@@ -4,11 +4,12 @@ import { Box, List, ListItem, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { useIsDarkMode } from "state/user/hooks";
 
-import { TokenList } from "data";
+// import { TokenList } from "data";
 import { Dialog, DialogTitle } from "components/Dialog";
 import { Button } from "components/Button";
 import { SearchInput } from "components/Input";
 import { Currency } from "state/wallet/actions";
+import { useWallet } from "state/wallet/hooks";
 
 const FILTER_ALL = 0;
 const FILTER_NATIVE = 1;
@@ -113,6 +114,10 @@ const TokenSelectorDialog: React.FC<TokenSelectorProps> = ({
   const mobile = useMediaQuery(breakpoints.down("xs"));
   const classes = useStyles({ dark, mobile });
 
+  const {
+    wallet: { balances: TokenList },
+  } = useWallet();
+
   const [filter, setFilter] = useState({
     text: "",
     type: 0,
@@ -195,7 +200,7 @@ const TokenSelectorDialog: React.FC<TokenSelectorProps> = ({
       />
 
       <List>
-        {TokenList.map((item, index) => (
+        {TokenList.map((item: Currency, index: number) => (
           <ListItem
             button
             className={cx(classes.menuItem)}
@@ -214,7 +219,7 @@ const TokenSelectorDialog: React.FC<TokenSelectorProps> = ({
                 <Box>{"exDANA"}</Box>
               </Box>
             </Box>
-            <Box className={cx(classes.amount)}>{item.quantity.toNumber()}</Box>
+            <Box className={cx(classes.amount)}>{item.quantity}</Box>
           </ListItem>
         ))}
       </List>

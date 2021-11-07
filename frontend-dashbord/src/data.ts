@@ -1,4 +1,3 @@
-import BigNumber from "bignumber.js";
 import { Currency } from "state/wallet/actions";
 
 export const options = [
@@ -62,11 +61,11 @@ export const navList = [
 export const TokenList: Currency[] = [
   {
     unit: "ada",
-    quantity: new BigNumber(1000),
+    quantity: 1000,
   },
   {
     unit: "dana",
-    quantity: new BigNumber(1222),
+    quantity: 1222,
   },
 ];
 
