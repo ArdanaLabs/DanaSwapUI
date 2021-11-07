@@ -1,18 +1,9 @@
 import React, { useState } from "react";
 import cx from "classnames";
-import { Box, List, ListItem, useMediaQuery } from "@material-ui/core";
+import { Box, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { useIsDarkMode } from "state/user/hooks";
-
-import { TokenList } from "data";
-import { Dialog, DialogTitle } from "components/Dialog";
-import { Button } from "components/Button";
-import { SearchInput } from "components/Input";
-
-const FILTER_ALL = 0;
-const FILTER_NATIVE = 1;
-const FILTER_ERC20 = 2;
-const FILTER_BEP2 = 3;
+import { TokenSelectorDialog } from "components/Dialog";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   label: {
@@ -153,51 +144,31 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 }));
 
-export interface OverViewBoxProps {
+export interface TokenBoxProps {
   label: string;
   amount: number;
   token: any;
   onMaxAmount: any;
   style?: object;
   className?: string;
-  handleTokenSelect: any;
+  handleTokenSelect: (token: any) => void;
 }
 
-const TokenBox: React.FC<OverViewBoxProps> = ({
+const TokenBox: React.FC<TokenBoxProps> = ({
   label,
   amount,
   token,
   onMaxAmount,
-  handleTokenSelect,
   style = {},
   className,
+  handleTokenSelect,
 }) => {
   const { breakpoints } = useTheme();
   const dark = useIsDarkMode();
   const mobile = useMediaQuery(breakpoints.down("xs"));
   const classes = useStyles({ dark, mobile });
-  const [openTokenDlg, setOpenTokenDlg] = useState(false);
 
-  const [filter, setFilter] = useState({
-    text: "",
-    type: 0,
-  });
-
-  const onFilterChange = (event: any) => {
-    setFilter({ ...filter, ...event });
-  };
-
-  const handleClickOpen = () => {
-    setOpenTokenDlg(true);
-  };
-  const handleClose = () => {
-    setOpenTokenDlg(false);
-  };
-
-  const handleMenuItemClick = (token: any) => {
-    handleTokenSelect(token);
-    setOpenTokenDlg(false);
-  };
+  const [tokenSelectorDialogOpen, setTokenSelectorDialogOpen] = useState(false);
 
   return (
     <Box className={className} style={style}>
@@ -222,7 +193,7 @@ const TokenBox: React.FC<OverViewBoxProps> = ({
           </Box>
         </Box>
         <Box className={cx(classes.other)}>
-          <Box className={cx(classes.token)} onClick={handleClickOpen}>
+          <Box className={cx(classes.token)} onClick={() => setTokenSelectorDialogOpen(true)}>
             {!token.logo && <Box className={cx(classes.noTokenIcon)}></Box>}
             {token.logo && (
               <Box className={cx(classes.tokenIcon)}>
@@ -236,96 +207,13 @@ const TokenBox: React.FC<OverViewBoxProps> = ({
               </Box>
             )}
           </Box>
-          <Dialog
-            onClose={handleClose}
-            aria-labelledby="simple-dialog-title"
-            open={openTokenDlg}
-          >
-            <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-              SELECT ASSET
-            </DialogTitle>
-
-            <Box>
-              <Button
-                variant="contained"
-                onClick={() => {
-                  onFilterChange({ type: FILTER_ALL });
-                }}
-                className={cx(classes.filterType, {
-                  [classes.active]: filter.type === FILTER_ALL,
-                })}
-              >
-                All
-              </Button>
-              <Button
-                variant="contained"
-                onClick={() => {
-                  onFilterChange({ type: FILTER_NATIVE });
-                }}
-                className={cx(classes.filterType, {
-                  [classes.active]: filter.type === FILTER_NATIVE,
-                })}
-              >
-                NATIVE
-              </Button>
-              <Button
-                variant="contained"
-                onClick={() => {
-                  onFilterChange({ type: FILTER_ERC20 });
-                }}
-                className={cx(classes.filterType, {
-                  [classes.active]: filter.type === FILTER_ERC20,
-                })}
-              >
-                ERC20
-              </Button>
-              <Button
-                variant="contained"
-                onClick={() => {
-                  onFilterChange({ type: FILTER_BEP2 });
-                }}
-                className={cx(classes.filterType, {
-                  [classes.active]: filter.type === FILTER_BEP2,
-                })}
-              >
-                BEP2
-              </Button>
-            </Box>
-
-            <SearchInput
-              className={cx(classes.filterText)}
-              value={filter.text}
-              placeholder="SEARCH..."
-              isIcon={true}
-              onChange={(e: any) => {
-                onFilterChange({ text: e.target.value });
-              }}
-            />
-
-            <List>
-              {TokenList.map((item, index) => (
-                <ListItem
-                  button
-                  className={cx(classes.menuItem)}
-                  onClick={() => handleMenuItemClick(item)}
-                  key={index + 1}
-                >
-                  <Box display="flex" alignItems="center">
-                    <Box className={cx(classes.tokenIcon)}>
-                      <img src={item.logo} alt="token icon" />
-                    </Box>
-                    <Box className={cx(classes.tokenName)}>
-                      <Box>{item.unit}</Box>
-                      <Box>{"exDANA"}</Box>
-                    </Box>
-                  </Box>
-                  <Box className={cx(classes.amount)}>{item.quantity}</Box>
-                </ListItem>
-              ))}
-            </List>
-          </Dialog>
         </Box>
       </Box>
+      <TokenSelectorDialog
+        open={tokenSelectorDialogOpen}
+        handleClose={() => setTokenSelectorDialogOpen(false)}
+        handleTokenSelect={handleTokenSelect}
+      />
     </Box>
   );
 };
