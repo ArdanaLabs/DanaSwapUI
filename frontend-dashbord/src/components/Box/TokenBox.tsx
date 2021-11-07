@@ -208,14 +208,14 @@ const TokenBox: React.FC<TokenBoxProps> = ({
             <Box className={cx(classes.tokenIcon)}>
               <img
                 src={
-                  require(`assets/coins/${token ? token.unit : "ADA"}.png`)
+                  require(`assets/coins/${token ? token.unit : "ada"}.png`)
                     .default
                 }
                 alt="token icon"
               />
             </Box>
             <Box className={cx(classes.tokenName)}>
-              <Box>{token ? token.unit : ""}</Box>
+              <Box>{token ? token.unit.toUpperCase() : ""}</Box>
               <Box>{token ? "exDANA" : ""}</Box>
             </Box>
           </Box>

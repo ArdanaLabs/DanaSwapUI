@@ -210,7 +210,7 @@ const TokenSelectorDialog: React.FC<TokenSelectorProps> = ({
                 />
               </Box>
               <Box className={cx(classes.tokenName)}>
-                <Box>{item.unit}</Box>
+                <Box>{item.unit.toUpperCase()}</Box>
                 <Box>{"exDANA"}</Box>
               </Box>
             </Box>

@@ -142,10 +142,10 @@ const Swap: React.FC = () => {
   const [toAmount, setToAmount] = useState(0);
 
   const [fromToken, setFromToken] = useState<Currency | undefined>(
-    TokenList.find((token) => token.unit === "DANA")
+    TokenList.find((token) => token.unit === "dana")
   );
   const [toToken, setToToken] = useState<Currency | undefined>(
-    TokenList.find((token) => token.unit === "ADA")
+    TokenList.find((token) => token.unit === "ada")
   );
 
   const [isOptionOpen, setIsOptionOpen] = useState(false);

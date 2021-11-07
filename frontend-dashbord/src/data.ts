@@ -61,11 +61,11 @@ export const navList = [
 
 export const TokenList: Currency[] = [
   {
-    unit: "ADA",
+    unit: "ada",
     quantity: new BigNumber(1000),
   },
   {
-    unit: "DANA",
+    unit: "dana",
     quantity: new BigNumber(1222),
   },
 ];
