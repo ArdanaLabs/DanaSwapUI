@@ -23,6 +23,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontSize: "15px",
     lineHeight: "22px",
     color: "#FFFFFF",
+    whiteSpace: "pre-line",
   },
   button: {
     background: "linear-gradient(90deg, #5F72FF 0%, #73D6F1 100%)",
