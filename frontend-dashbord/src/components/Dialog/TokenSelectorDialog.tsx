@@ -8,6 +8,7 @@ import { TokenList } from "data";
 import { Dialog, DialogTitle } from "components/Dialog";
 import { Button } from "components/Button";
 import { SearchInput } from "components/Input";
+import { Currency } from "state/wallet/actions";
 
 const FILTER_ALL = 0;
 const FILTER_NATIVE = 1;
@@ -99,7 +100,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 export interface TokenSelectorProps {
   open: boolean;
   handleClose: () => void;
-  handleTokenSelect: (token: any) => void;
+  handleTokenSelect: (token: Currency) => void;
 }
 
 const TokenSelectorDialog: React.FC<TokenSelectorProps> = ({
@@ -121,7 +122,7 @@ const TokenSelectorDialog: React.FC<TokenSelectorProps> = ({
     setFilter({ ...filter, ...event });
   };
 
-  const handleMenuItemClick = (token: any) => {
+  const handleMenuItemClick = (token: Currency) => {
     handleTokenSelect(token);
     handleClose();
   };
@@ -213,7 +214,7 @@ const TokenSelectorDialog: React.FC<TokenSelectorProps> = ({
                 <Box>{"exDANA"}</Box>
               </Box>
             </Box>
-            <Box className={cx(classes.amount)}>{item.quantity}</Box>
+            <Box className={cx(classes.amount)}>{item.quantity.toNumber()}</Box>
           </ListItem>
         ))}
       </List>

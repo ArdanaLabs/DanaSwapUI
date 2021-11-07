@@ -8,7 +8,6 @@ import {
   useMediaQuery,
 } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-
 import cx from "classnames";
 
 import { useIsDarkMode } from "state/user/hooks";
@@ -18,6 +17,7 @@ import { Radio, SwapButton } from "components/Button";
 import { options, TokenList } from "data";
 
 import ICO_Info_dark from "assets/svg/info_dark.svg";
+import { Currency } from "state/wallet/actions";
 
 const useStyles = makeStyles(({ palette }) => ({
   self: {
@@ -141,10 +141,10 @@ const Swap: React.FC = () => {
   const [fromAmount, setFromAmount] = useState(0);
   const [toAmount, setToAmount] = useState(0);
 
-  const [fromToken, setFromToken] = useState(
+  const [fromToken, setFromToken] = useState<Currency | undefined>(
     TokenList.find((token) => token.unit === "DANA")
   );
-  const [toToken, setToToken] = useState(
+  const [toToken, setToToken] = useState<Currency | undefined>(
     TokenList.find((token) => token.unit === "ADA")
   );
 
@@ -156,7 +156,7 @@ const Swap: React.FC = () => {
       label: "0%",
     },
     {
-      value: fromToken?.quantity ?? 0,
+      value: fromToken?.quantity.toNumber() ?? 0,
       label: "100%",
     },
   ];
@@ -192,8 +192,11 @@ const Swap: React.FC = () => {
               onAmountChange={(amount: number) => {
                 setFromAmount(Number(amount));
               }}
-              handleTokenSelect={(token: any) => {
+              handleTokenSelect={(token: Currency) => {
                 setFromToken(token);
+                if (token === toToken) {
+                  setToToken(fromToken);
+                }
               }}
               className={cx(classes.box)}
               style={{ padding: 10 }}
@@ -202,7 +205,7 @@ const Swap: React.FC = () => {
             <Box className={cx(classes.slider)}>
               <Slider
                 min={0}
-                max={fromToken?.quantity ?? 0}
+                max={fromToken?.quantity.toNumber() ?? 0}
                 defaultValue={0}
                 value={typeof fromAmount === "number" ? fromAmount : 0}
                 onChange={onAmountChange}
@@ -222,8 +225,11 @@ const Swap: React.FC = () => {
               onAmountChange={(amount: number) => {
                 setToAmount(Number(amount));
               }}
-              handleTokenSelect={(token: any) => {
+              handleTokenSelect={(token: Currency) => {
                 setToToken(token);
+                if (token === fromToken) {
+                  setFromToken(toToken);
+                }
               }}
               className={cx(classes.box)}
               style={{ padding: 10 }}

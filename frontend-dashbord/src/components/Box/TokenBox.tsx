@@ -5,6 +5,7 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { useIsDarkMode } from "state/user/hooks";
 import { TokenSelectorDialog } from "components/Dialog";
 import { Input } from "components/Input";
+import { Currency } from "state/wallet/actions";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   label: {
@@ -149,11 +150,11 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 export interface TokenBoxProps {
   label: string;
   amount: number;
-  token: any;
+  token: Currency | undefined;
   style?: object;
   className?: string;
   onAmountChange: (amount: number) => void;
-  handleTokenSelect: (token: any) => void;
+  handleTokenSelect: (token: Currency) => void;
 }
 
 const TokenBox: React.FC<TokenBoxProps> = ({
@@ -194,7 +195,7 @@ const TokenBox: React.FC<TokenBoxProps> = ({
           <Box
             id="max_button"
             className={cx(classes.maxButton)}
-            onClick={() => onAmountChange(token?.quantity ?? 0)}
+            onClick={() => onAmountChange(token?.quantity.toNumber() ?? 0)}
           >
             MAX
           </Box>
@@ -206,16 +207,17 @@ const TokenBox: React.FC<TokenBoxProps> = ({
           >
             <Box className={cx(classes.tokenIcon)}>
               <img
-                src={require(`assets/coins/${token.unit}.png`).default}
+                src={
+                  require(`assets/coins/${token ? token.unit : "ADA"}.png`)
+                    .default
+                }
                 alt="token icon"
               />
             </Box>
-            {token.unit && (
-              <Box className={cx(classes.tokenName)}>
-                <Box>{token.unit}</Box>
-                <Box>exDANA</Box>
-              </Box>
-            )}
+            <Box className={cx(classes.tokenName)}>
+              <Box>{token ? token.unit : ""}</Box>
+              <Box>{token ? "exDANA" : ""}</Box>
+            </Box>
           </Box>
         </Box>
       </Box>
