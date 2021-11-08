@@ -45,9 +45,9 @@ const GuideLinesSection: React.FC = () => {
 
   useEffect(() => {
     const container = document.querySelector("#container");
-    setHorizenWidth(container?.clientWidth ?? 0);
+    setHorizenWidth((container?.clientWidth ?? 0) - 100);
     // eslint-disable-next-line
-  }, []);
+  }, [mobile]);
 
   return (
     <Box className={cx(classes.root)}>
