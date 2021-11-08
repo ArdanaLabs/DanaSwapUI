@@ -18,6 +18,7 @@ import ICO_PREV from "assets/icons/carousel-prev.svg";
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
     paddingTop: "100px",
+    paddingBottom: "20px",
 
     [breakpoints.down("xs")]: {
       textAlign: "center",
