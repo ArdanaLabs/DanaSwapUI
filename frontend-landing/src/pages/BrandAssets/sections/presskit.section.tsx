@@ -10,6 +10,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
     background: "#FFFFFF",
     padding: "100px 0",
+
+    [breakpoints.down("xs")]: {
+      padding: "70px 40px",
+    },
   },
   title: {
     fontFamily: "Brandon Grotesque",
@@ -17,21 +21,35 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontSize: "48px",
     lineHeight: "120.5%",
     color: "#202F9A",
+
+    [breakpoints.down("xs")]: {
+      fontSize: "35px",
+      lineHeight: "38.5px",
+    },
   },
   content: {
     fontFamily: "Museo Sans",
     fontSize: "14px",
     lineHeight: "150%",
-    color: "#202F9A",
+    color: "#636060",
+
+    [breakpoints.down("xs")]: {
+      fontSize: "16px",
+      lineHeight: "18.4px",
+    },
   },
 
-  horizen: {
+  horizon: {
     background:
       "linear-gradient(-90deg, rgba(115, 214, 241, 0) -5.46%, #73D6F1 101.08%)",
     borderRadius: "10px",
     border: "none",
     height: "3px",
     margin: "30px 0",
+
+    [breakpoints.down("xs")]: {
+      margin: "20px 0",
+    },
   },
 }));
 
@@ -41,11 +59,20 @@ const PressKitSection: React.FC = () => {
   const mobile = useMediaQuery(breakpoints.down("xs"));
   const classes = useStyles({ dark, mobile });
 
-  const [horizenWidth, setHorizenWidth] = useState(0);
+  const [horizonWidth, setHorizonWidth] = useState(0);
 
   useEffect(() => {
     const container = document.querySelector("#container");
-    setHorizenWidth((container?.clientWidth ?? 0) - 100);
+    const horizon = document.querySelector("#horizon");
+
+    if (mobile) {
+      const mobileWidth =
+        (document.querySelector("body")?.clientWidth ?? 0) -
+        (horizon?.getBoundingClientRect().left ?? 0);
+      setHorizonWidth(mobileWidth);
+    } else {
+      setHorizonWidth((container?.getBoundingClientRect().width ?? 0) / 2 - 100);
+    }
     // eslint-disable-next-line
   }, [mobile]);
 
@@ -56,8 +83,9 @@ const PressKitSection: React.FC = () => {
           <Grid item md={3} xs={12}>
             <Box className={cx(classes.title)}>Press Kit</Box>
             <hr
-              className={cx(classes.horizen)}
-              style={horizenWidth ? { width: horizenWidth } : {}}
+              id="horizon"
+              className={cx(classes.horizon)}
+              style={horizonWidth ? { width: horizonWidth } : {}}
             />
             {/* <Box mt="60px" /> */}
             <Box className={cx(classes.content)}>
@@ -67,11 +95,12 @@ const PressKitSection: React.FC = () => {
               <br />
               Any queries or questions, please send us an email.
             </Box>
+            {mobile && <Box mt="30px" />}
           </Grid>
           <Grid item md={3} xs={12}>
             <BrandAssetBox
-              title={`Press\nKit`}
-              content={`Contains a full collectiion of our brand logo assets.\n\n`}
+              title={!mobile ? `Press\nKit` : `Press Kit`}
+              content={`Contains a full collectiion of our brand logo assets.`}
               button={{
                 label: "DOWNLOAD PRESS KIT",
               }}

@@ -43,7 +43,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     },
   },
 
-  horizen: {
+  horizon: {
     background:
       "linear-gradient(-90deg, rgba(115, 214, 241, 0) -5.46%, #73D6F1 101.08%)",
     borderRadius: "10px",
@@ -63,11 +63,20 @@ const GuideLinesSection: React.FC = () => {
   const mobile = useMediaQuery(breakpoints.down("xs"));
   const classes = useStyles({ dark, mobile });
 
-  const [horizenWidth, setHorizenWidth] = useState(0);
+  const [horizonWidth, setHorizonWidth] = useState(0);
 
   useEffect(() => {
     const container = document.querySelector("#container");
-    setHorizenWidth((container?.clientWidth ?? 0) - 100);
+    const horizon = document.querySelector("#horizon");
+
+    if (mobile) {
+      const mobileWidth =
+        (document.querySelector("body")?.clientWidth ?? 0) -
+        (horizon?.getBoundingClientRect().left ?? 0);
+      setHorizonWidth(mobileWidth);
+    } else {
+      setHorizonWidth((container?.getBoundingClientRect().width ?? 0) - 100);
+    }
     // eslint-disable-next-line
   }, [mobile]);
 
@@ -78,8 +87,8 @@ const GuideLinesSection: React.FC = () => {
           <Grid item md={3} xs={12}>
             <Box className={cx(classes.title)}>Guidelines</Box>
             <hr
-              className={cx(classes.horizen)}
-              style={horizenWidth ? { width: horizenWidth } : {}}
+              className={cx(classes.horizon)}
+              style={horizonWidth ? { width: horizonWidth } : {}}
             />
             {/* <Box mt="60px" /> */}
             <Box className={cx(classes.content)}>
