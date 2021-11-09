@@ -6,6 +6,10 @@ import cx from "classnames";
 import { useIsDarkMode } from "state/user/hooks";
 import { BrandAssetBox } from "components";
 
+import BRAND_ARDANA from "assets/brands/Ardana.png";
+import BRAND_DUSD from "assets/brands/dUSD.png";
+import BRAND_ASPA from "assets/brands/ASPA.png";
+
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
     background: "#F6F6F6",
@@ -72,6 +76,7 @@ const GuideLinesSection: React.FC = () => {
           </Grid>
           <Grid item md={3} xs={12}>
             <BrandAssetBox
+              brand={BRAND_ARDANA}
               title={`Ardana Brand\nGuidelines`}
               content={`A full document demonstrating how our brand is properly used.`}
               button={{
@@ -81,6 +86,7 @@ const GuideLinesSection: React.FC = () => {
           </Grid>
           <Grid item md={3} xs={12}>
             <BrandAssetBox
+              brand={BRAND_DUSD}
               title={`dUSD Brand\nGuidelines`}
               content={`A full document demonstrating the proper usage of our dUSD brand.`}
               button={{
@@ -90,6 +96,7 @@ const GuideLinesSection: React.FC = () => {
           </Grid>
           <Grid item md={3} xs={12}>
             <BrandAssetBox
+              brand={BRAND_ASPA}
               title={`ASPA Brand\nGuidelines`}
               content={`A full document demonstrating the proper usage of our ASPA brand.`}
               button={{

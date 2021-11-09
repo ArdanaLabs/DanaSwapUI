@@ -10,6 +10,12 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     borderRadius: "20px",
     padding: "40px",
   },
+  brand: {
+    marginBottom: "10px",
+    "& > img": {
+      height: "45px",
+    },
+  },
   title: {
     fontFamily: "Brandon Grotesque",
     fontWeight: 700,
@@ -41,6 +47,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 }));
 
 interface BrandAssetProps {
+  brand?: string;
   title: string;
   content: string;
   button: {
@@ -49,7 +56,12 @@ interface BrandAssetProps {
   };
 }
 
-const BrandAsset: React.FC<BrandAssetProps> = ({ title, content, button }) => {
+const BrandAsset: React.FC<BrandAssetProps> = ({
+  brand = null,
+  title,
+  content,
+  button,
+}) => {
   const { breakpoints } = useTheme();
   const dark = useIsDarkMode();
   const mobile = useMediaQuery(breakpoints.down("xs"));
@@ -57,6 +69,11 @@ const BrandAsset: React.FC<BrandAssetProps> = ({ title, content, button }) => {
 
   return (
     <Box className={cx(classes.root)}>
+      {brand && (
+        <Box className={cx(classes.brand)}>
+          <img src={brand} alt="brand" />
+        </Box>
+      )}
       <Box className={cx(classes.title)}>{title}</Box>
       <Box mt="20px" />
       <Box className={cx(classes.content)}>{content}</Box>
