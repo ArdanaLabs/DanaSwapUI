@@ -96,7 +96,11 @@ const GuideLinesSection: React.FC = () => {
           <Grid item md={3} xs={12}>
             <BrandAssetBox
               brand={BRAND_ARDANA}
-              title={`Ardana Brand\nGuidelines`}
+              title={
+                !mobile
+                  ? `Ardana Brand\nGuidelines`
+                  : `Ardana\nBrand Guidelines`
+              }
               content={`A full document demonstrating how our brand is properly used.`}
               button={{
                 label: "DOWNLOAD BRAND GUIDELINES",
@@ -106,7 +110,9 @@ const GuideLinesSection: React.FC = () => {
           <Grid item md={3} xs={12}>
             <BrandAssetBox
               brand={BRAND_DUSD}
-              title={`dUSD Brand\nGuidelines`}
+              title={
+                !mobile ? `dUSD Brand\nGuidelines` : `dUSD\nBrand Guidelines`
+              }
               content={`A full document demonstrating the proper usage of our dUSD brand.`}
               button={{
                 label: "DOWNLOAD BRAND GUIDELINES",
@@ -116,7 +122,9 @@ const GuideLinesSection: React.FC = () => {
           <Grid item md={3} xs={12}>
             <BrandAssetBox
               brand={BRAND_ASPA}
-              title={`ASPA Brand\nGuidelines`}
+              title={
+                !mobile ? `ASPA Brand\nGuidelines` : `ASPA\nBrand Guidelines`
+              }
               content={`A full document demonstrating the proper usage of our ASPA brand.`}
               button={{
                 label: "DOWNLOAD BRAND GUIDELINES",
