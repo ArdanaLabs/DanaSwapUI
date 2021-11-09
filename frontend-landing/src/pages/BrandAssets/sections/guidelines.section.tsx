@@ -14,6 +14,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
     background: "#F6F6F6",
     padding: "100px 0",
+
+    [breakpoints.down("xs")]: {
+      padding: "70px 40px",
+    },
   },
   title: {
     fontFamily: "Brandon Grotesque",
@@ -21,12 +25,22 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontSize: "48px",
     lineHeight: "120.5%",
     color: "#202F9A",
+
+    [breakpoints.down("xs")]: {
+      fontSize: "35px",
+      lineHeight: "38.5px",
+    },
   },
   content: {
     fontFamily: "Museo Sans",
     fontSize: "14px",
     lineHeight: "150%",
-    color: "#202F9A",
+    color: "#636060",
+
+    [breakpoints.down("xs")]: {
+      fontSize: "16px",
+      lineHeight: "18.4px",
+    },
   },
 
   horizen: {
@@ -36,6 +50,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     border: "none",
     height: "3px",
     margin: "30px 0",
+
+    [breakpoints.down("xs")]: {
+      margin: "20px 0",
+    },
   },
 }));
 
@@ -73,6 +91,7 @@ const GuideLinesSection: React.FC = () => {
               <br />
               Any queries or questions, please send us an email.
             </Box>
+            {mobile && <Box mt="30px" />}
           </Grid>
           <Grid item md={3} xs={12}>
             <BrandAssetBox

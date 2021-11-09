@@ -9,6 +9,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     background: "#1C2679",
     borderRadius: "20px",
     padding: "40px",
+    [breakpoints.down("xs")]: {
+      padding: "30px",
+    },
   },
   brand: {
     marginBottom: "10px",
@@ -23,6 +26,11 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     lineHeight: "110%",
     color: "#FFFFFF",
     whiteSpace: "pre-line",
+
+    [breakpoints.down("xs")]: {
+      fontSize: "25px",
+      lineHeight: "27.5px",
+    },
   },
   content: {
     fontFamily: "Museo Sans",
@@ -30,6 +38,11 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     lineHeight: "22px",
     color: "#FFFFFF",
     whiteSpace: "pre-line",
+
+    [breakpoints.down("xs")]: {
+      fontSize: "16px",
+      lineHeight: "19.2px",
+    },
   },
   button: {
     background: "linear-gradient(90deg, #5F72FF 0%, #73D6F1 100%)",

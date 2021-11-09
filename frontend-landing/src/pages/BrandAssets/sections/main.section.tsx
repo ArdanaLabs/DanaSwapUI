@@ -32,7 +32,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     background: "rgba(24, 34, 113, 0.6)",
 
     [breakpoints.down("xs")]: {
-      padding: "50px",
+      padding: "40px",
     },
   },
   title: {
