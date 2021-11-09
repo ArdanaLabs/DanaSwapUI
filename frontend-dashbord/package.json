@@ -108,6 +108,7 @@
     ]
   },
   "devDependencies": {
+    "@blockfrost/blockfrost-js": "^2.0.2",
     "@craco/craco": "^6.4.0",
     "@emotion/react": "^11.5.0",
     "@emurgo/cardano-serialization-lib-asmjs": "^9.1.0",

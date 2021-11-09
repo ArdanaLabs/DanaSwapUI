@@ -34,6 +34,16 @@ export function useWallet(): any {
   };
 }
 
+// const fetchAssets = async (): Promise<AssetMeta[]> => {
+//   return Axios.get(`${process.env.REACT_APP_REST_URL}/assets`, {
+//     headers: {
+//       project_id: process.env.REACT_APP_API_KEY as string,
+//     },
+//   })
+//     .then((response) => response.data)
+//     .catch(() => []);
+// }
+
 const fetchBalances = async (address: string): Promise<Currency[]> => {
   return Axios.get(`${process.env.REACT_APP_REST_URL}/addresses/${address}`, {
     headers: {
@@ -44,3 +54,11 @@ const fetchBalances = async (address: string): Promise<Currency[]> => {
     .then((response: any) => response.amount)
     .catch(() => []);
 };
+
+// const fetchUSDRate = async (coinId: string): Promise<number> => {
+//   return Axios.get(`${process.env.REACT_APP_COINGECKO_API_URL}/coins/${coinId}`)
+//     .then((response) => response.data)
+//     .then((response: any) => response.market_data)
+//     .then((response: any) => response.current_price)
+//     .then((response: any) => response.usd)
+// }
