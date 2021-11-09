@@ -18,7 +18,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     // "& video": {
     //   objectFit: "cover",
     // },
-    height: "600px",
+    height: "400px",
     background: `url(${BG_BRAND}) top left no-repeat`,
   },
   container: {
@@ -32,7 +32,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     background: "rgba(24, 34, 113, 0.6)",
 
     [breakpoints.down("xs")]: {
-      textAlign: "center",
+      padding: "50px",
     },
   },
   title: {
@@ -67,7 +67,6 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       lineHeight: "18.4px",
       width: "100%",
       marginTop: "15px",
-      padding: "0px 10px",
     },
   },
 }));
