@@ -113,6 +113,7 @@ const GuideLinesSection: React.FC = () => {
               content={`A full document demonstrating how our brand is properly used.`}
               button={{
                 label: "DOWNLOAD BRAND GUIDELINES",
+                link: "https://docsend.com/view/k4xzgh5qafknt8jz",
               }}
             />
           </Grid>
@@ -125,6 +126,7 @@ const GuideLinesSection: React.FC = () => {
               content={`A full document demonstrating the proper usage of our dUSD brand.`}
               button={{
                 label: "DOWNLOAD BRAND GUIDELINES",
+                link: "https://docsend.com/view/qywv6rjwfhvaaa2n",
               }}
             />
           </Grid>

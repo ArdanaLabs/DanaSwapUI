@@ -1,6 +1,6 @@
 import React from "react";
 import cx from "classnames";
-import { Box, useMediaQuery } from "@material-ui/core";
+import { Box, Link, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { useIsDarkMode } from "state/user/hooks";
 
@@ -91,9 +91,12 @@ const BrandAsset: React.FC<BrandAssetProps> = ({
       <Box mt="20px" />
       <Box className={cx(classes.content)}>{content}</Box>
       <Box mt="20px" />
-      {/* <Link href={button.link}> */}
-      <Box className={cx(classes.button)}>{button.label}</Box>
-      {/* </Link> */}
+      {button.link && (
+        <Link href={button.link} target="_blank" underline="none">
+          <Box className={cx(classes.button)}>{button.label}</Box>
+        </Link>
+      )}
+      {!button.link && <Box className={cx(classes.button)}>{button.label}</Box>}
     </Box>
   );
 };

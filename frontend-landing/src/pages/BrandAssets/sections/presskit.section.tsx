@@ -71,7 +71,9 @@ const PressKitSection: React.FC = () => {
         (horizon?.getBoundingClientRect().left ?? 0);
       setHorizonWidth(mobileWidth);
     } else {
-      setHorizonWidth((container?.getBoundingClientRect().width ?? 0) / 2 - 100);
+      setHorizonWidth(
+        (container?.getBoundingClientRect().width ?? 0) / 2 - 100
+      );
     }
     // eslint-disable-next-line
   }, [mobile]);
@@ -103,6 +105,7 @@ const PressKitSection: React.FC = () => {
               content={`Contains a full collectiion of our brand logo assets.`}
               button={{
                 label: "DOWNLOAD PRESS KIT",
+                link: "https://docsend.com/view/3xp5vrdy3p5wwis4",
               }}
             />
           </Grid>
