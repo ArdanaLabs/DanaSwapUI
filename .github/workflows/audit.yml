@@ -1,0 +1,55 @@
+name: npm audit
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - demo
+# on:
+#   schedule:
+#     - cron: '0 10 * * *'
+
+jobs:
+  scan:
+    name: npm audit
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: install dependencies
+        run: npm ci
+      - uses: oke-py/npm-audit-action@v1.8.2
+        with:
+          audit_level: low
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          issue_labels: vulnerability
+          dedupe_issues: true
+          create_issues: false
+          working_directory: frontend-dashboard
+      - uses: oke-py/npm-audit-action@v1.8.2
+        with:
+          audit_level: low
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          issue_labels: vulnerability
+          dedupe_issues: true
+          create_issues: false
+          working_directory: frontend-landing
+# uncomment when `package.json` is added to the following subdirs
+#       - uses: oke-py/npm-audit-action@v1.8.2
+#       with:
+#         audit_level: low
+#         github_token: ${{ secrets.GITHUB_TOKEN }}
+#         issue_labels: vulnerability
+#         dedupe_issues: true
+#         create_issues: false
+#         working_directory: frontend-sale
+#      - uses: oke-py/npm-audit-action@v1.8.2
+#       with:
+#         audit_level: low
+#         github_token: ${{ secrets.GITHUB_TOKEN }}
+#         issue_labels: vulnerability
+#         dedupe_issues: true
+#         create_issues: false
+#         working_directory: frontend-vault
+#
+#
