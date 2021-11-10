@@ -212,7 +212,7 @@ const Swap: React.FC = () => {
             <Box className={cx(classes.slider)}>
               <Slider
                 min={0}
-                max={fromToken?.quantity ?? 0}
+                max={Number(fromToken?.quantity ?? 0)}
                 defaultValue={0}
                 value={typeof fromAmount === "number" ? fromAmount : 0}
                 onChange={onAmountChange}
