@@ -442,6 +442,7 @@ export const Investors = [
 export const externals: any = {
   Resources: {
     Documentation: "https://docs.ardana.org/",
+    Technology: "/team",
     "Pitch Deck": "https://docsend.com/view/kc5m2snw7t77fs5r",
     "Brand Assets": "/brandassets",
   },
