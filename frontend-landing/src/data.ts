@@ -483,3 +483,16 @@ export const socials = [
     url: "https://www.linkedin.com/company/ardanalabs/",
   },
 ];
+
+export const TechnicalPapers = [
+  {
+    title: "eUTXO Models",
+    link: "#",
+    image: require("assets/papers/eUTXOModels.png").default,
+  },
+  {
+    title: "Danaswap\nTechnical Paper",
+    link: "#",
+    image: require("assets/papers/DanaswapTechnicalPaper.png").default,
+  },
+];
