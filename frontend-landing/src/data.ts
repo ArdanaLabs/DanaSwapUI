@@ -412,6 +412,7 @@ export const Investors = [
   },
   { src: require("assets/logos/mgnr.svg").default, url: "https://mgnr.io/" },
   { src: require("assets/logos/david-post.svg").default, url: "" },
+  { src: require("assets/logos/QCP-capital.svg").default, url: "https://qcp.capital/" },
   // require("assets/logos/cryptodorum.svg").default,
   // require("assets/logos/nodeseeds.svg").default,
   // require("assets/logos/tenzor-capital.svg").default,
