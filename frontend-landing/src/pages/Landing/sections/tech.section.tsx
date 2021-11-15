@@ -110,7 +110,7 @@ const TechSection: React.FC = () => {
     <Box className={cx(classes.root)}>
       <Container>
         <Grid container spacing={0} alignItems="flex-start">
-          <Grid item xs={12} sm={4}>
+          <Grid item xs={12} sm={3} md={4}>
             <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
               <Box className={cx(classes.title)}>Explore</Box>
             </ScrollAnimation>
@@ -122,7 +122,7 @@ const TechSection: React.FC = () => {
             </ScrollAnimation>
           </Grid>
 
-          <Grid item xs={12} sm={8}>
+          <Grid item xs={12} sm={9} md={8}>
             <Carousel
               ref={(ref) => (carouselRef.current = ref)}
               className={cx(classes.carousel)}

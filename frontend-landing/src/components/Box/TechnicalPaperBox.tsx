@@ -9,10 +9,15 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
     width: "100%",
   },
+  background: {
+    "& > img": {
+      borderRadius: "10px",
+    },
+  },
   title: {
     fontFamily: "Brandon Grotesque",
     fontWeight: 700,
-    fontSize: "40px",
+    fontSize: "35px",
     lineHeight: "100%",
     color: palette.common.white,
     whiteSpace: "pre-line",
@@ -41,10 +46,10 @@ const TechnicalPaperBox: React.FC<TechnicalPaperBoxProps> = ({
 
   return (
     <Box className={cx(classes.root)} position="relative">
-      <Box>
+      <Box className={cx(classes.background)}>
         <img src={image} alt="background" width="100%" />
       </Box>
-      <Box position="absolute" bottom="40px" left="40px" textAlign="left">
+      <Box position="absolute" bottom="30px" left="30px" textAlign="left">
         <Box className={cx(classes.title)}>{title}</Box>
         <Box mt="20px" />
         <Box>
