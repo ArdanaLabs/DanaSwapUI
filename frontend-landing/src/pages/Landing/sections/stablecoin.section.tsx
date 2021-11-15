@@ -2,23 +2,37 @@ import React from "react";
 import { Box, useMediaQuery, Container } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
-import ReactPlayer from "react-player";
+// import ReactPlayer from "react-player";
 import ScrollAnimation from "react-animate-on-scroll";
 import i18next from "i18next";
 
 import { useIsDarkMode } from "state/user/hooks";
 import { GradientButton } from "components/Button";
 
-const heroVideo =
-  "https://background.sfo3.digitaloceanspaces.com/stablecoin/output.webm";
+import BG_VECTEEZY from "assets/backgrounds/vecteezy.png";
+
+// const heroVideo =
+//   "https://background.sfo3.digitaloceanspaces.com/stablecoin/output.webm";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
-  bg: {
-    // background: "rgba(24, 34, 113, 0.6)",
+  root: {
     padding: "0px",
     position: "relative",
     "& video": {
       objectFit: "cover",
+    },
+  },
+  background: {
+    lineHeight: 0,
+
+    "& > img": {
+      width: "100%",
+      height: "600px",
+
+      [breakpoints.down("xs")]: {
+        width: "unset",
+        height: "400px",
+      },
     },
   },
   container: {
@@ -29,7 +43,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     height: "100%",
     display: "flex",
     alignItems: "center",
-    background: "rgba(24, 34, 113, 0.6)",
+    // background: "rgba(24, 34, 113, 0.6)",
 
     [breakpoints.down("xs")]: {
       textAlign: "center",
@@ -75,8 +89,8 @@ const StableCoinSection: React.FC = () => {
   const classes = useStyles({ dark, mobile });
 
   return (
-    <Box className={cx(classes.bg)}>
-      <ReactPlayer
+    <Box className={cx(classes.root)}>
+      {/* <ReactPlayer
         url={heroVideo}
         playing={false}
         loop={true}
@@ -84,7 +98,10 @@ const StableCoinSection: React.FC = () => {
         width={!mobile ? "100%" : "unset"}
         height={!mobile ? "600px" : "400px"}
         playbackRate={0.5}
-      />
+      /> */}
+      <Box className={cx(classes.background)}>
+        <img src={BG_VECTEEZY} alt="bg" />
+      </Box>
       <Box className={cx(classes.container)}>
         <Container>
           <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
@@ -104,11 +121,7 @@ const StableCoinSection: React.FC = () => {
           </ScrollAnimation>
           <Box mt={!mobile ? "50px" : "30px"} />
           <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-            <GradientButton
-              label={'COMING SOON'}
-              width={160}
-              height={40}
-            />
+            <GradientButton label={"COMING SOON"} width={160} height={40} />
           </ScrollAnimation>
         </Container>
       </Box>

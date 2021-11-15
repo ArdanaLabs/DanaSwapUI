@@ -2,19 +2,34 @@ import React from "react";
 import { Box, useMediaQuery, Container } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
-import ReactPlayer from "react-player";
+// import ReactPlayer from "react-player";
 import ScrollAnimation from "react-animate-on-scroll";
 
 import { useIsDarkMode } from "state/user/hooks";
 
-const heroVideo =
-  "https://background.sfo3.digitaloceanspaces.com/stablecoin/output.webm";
+import BG_VECTEEZY from "assets/backgrounds/vecteezy.png";
+
+// const heroVideo =
+//   "https://background.sfo3.digitaloceanspaces.com/stablecoin/output.webm";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
-  bg: {
+  root: {
     position: "relative",
     "& video": {
       objectFit: "cover",
+    },
+  },
+  background: {
+    lineHeight: 0,
+    
+    "& > img": {
+      width: "100%",
+      height: "600px",
+
+      [breakpoints.down("xs")]: {
+        width: "unset",
+        height: "400px",
+      },
     },
   },
   container: {
@@ -25,7 +40,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     height: "100%",
     display: "flex",
     alignItems: "center",
-    background: "rgba(24, 34, 113, 0.6)",
+    // background: "rgba(24, 34, 113, 0.6)",
 
     [breakpoints.down("xs")]: {
       textAlign: "center",
@@ -75,8 +90,8 @@ const MainSection: React.FC = () => {
   const classes = useStyles({ dark, mobile });
 
   return (
-    <Box className={cx(classes.bg)}>
-      <ReactPlayer
+    <Box className={cx(classes.root)}>
+      {/* <ReactPlayer
         url={heroVideo}
         playing={false}
         loop={true}
@@ -84,7 +99,10 @@ const MainSection: React.FC = () => {
         width={!mobile ? "100%" : "unset"}
         height={"600px"}
         playbackRate={0.5}
-      />
+      /> */}
+      <Box className={cx(classes.background)}>
+        <img src={BG_VECTEEZY} alt="bg" />
+      </Box>
       <Box className={cx(classes.container)}>
         <Container>
           <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
