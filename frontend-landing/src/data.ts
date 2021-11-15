@@ -411,7 +411,14 @@ export const Investors = [
     url: "https://www.mechanism.capital/",
   },
   { src: require("assets/logos/mgnr.svg").default, url: "https://mgnr.io/" },
-  { src: require("assets/logos/QCP-capital.svg").default, url: "https://qcp.capital/" },
+  {
+    src: require("assets/logos/angels.svg").default,
+    url: "https://www.iangels.com/",
+  },
+  {
+    src: require("assets/logos/QCP-capital.svg").default,
+    url: "https://qcp.capital/",
+  },
   { src: require("assets/logos/david-post.svg").default, url: "" },
   // require("assets/logos/cryptodorum.svg").default,
   // require("assets/logos/nodeseeds.svg").default,
@@ -432,7 +439,6 @@ export const Investors = [
   // require("assets/logos/bitscale-capital.svg").default,
   // require("assets/logos/arrington-capital.svg").default,
   // require("assets/logos/autonomy-capital.svg").default,
-  // require("assets/logos/angels.svg").default,
   // require("assets/logos/richard-ma.svg").default,
   // require("assets/logos/two-sigma-ventures.svg").default,
   // require("assets/logos/cardwallet.svg").default,
