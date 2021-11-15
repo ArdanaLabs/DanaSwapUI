@@ -411,8 +411,8 @@ export const Investors = [
     url: "https://www.mechanism.capital/",
   },
   { src: require("assets/logos/mgnr.svg").default, url: "https://mgnr.io/" },
-  { src: require("assets/logos/david-post.svg").default, url: "" },
   { src: require("assets/logos/QCP-capital.svg").default, url: "https://qcp.capital/" },
+  { src: require("assets/logos/david-post.svg").default, url: "" },
   // require("assets/logos/cryptodorum.svg").default,
   // require("assets/logos/nodeseeds.svg").default,
   // require("assets/logos/tenzor-capital.svg").default,
@@ -443,7 +443,7 @@ export const Investors = [
 export const externals: any = {
   Resources: {
     Documentation: "https://docs.ardana.org/",
-    Technology: "/tech",
+    "Technical Papers": "/tech",
     "Pitch Deck": "https://docsend.com/view/kc5m2snw7t77fs5r",
     "Brand Assets": "/brandassets",
   },
