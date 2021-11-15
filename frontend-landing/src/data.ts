@@ -489,12 +489,12 @@ export const socials = [
 export const TechnicalPapers = [
   {
     title: "eUTXO Models",
-    link: "#",
+    link: "https://docsend.com/view/d2g9qajrb4w23eyq",
     image: require("assets/papers/eUTXOModels.png").default,
   },
   {
     title: "Danaswap\nTechnical Paper",
-    link: "#",
+    link: "https://docsend.com/view/v4w3muusi6im3ay2",
     image: require("assets/papers/DanaswapTechnicalPaper.png").default,
   },
 ];
