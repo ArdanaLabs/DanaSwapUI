@@ -414,14 +414,13 @@ export const Investors = [
     src: require("assets/logos/mechanism-capital.svg").default,
     url: "https://www.mechanism.capital/",
   },
-  { src: require("assets/logos/mgnr.svg").default, url: "https://mgnr.io/" },
-  {
-    src: require("assets/logos/angels.svg").default,
-    url: "https://www.iangels.com/",
-  },
   {
     src: require("assets/logos/QCP-capital.svg").default,
     url: "https://qcp.capital/",
+  },
+  {
+    src: require("assets/logos/angels.svg").default,
+    url: "https://www.iangels.com/",
   },
   { src: require("assets/logos/david-post.svg").default, url: "" },
   { src: require("assets/logos/taiyang-zhang.svg").default, url: "" },
