@@ -424,6 +424,8 @@ export const Investors = [
     url: "https://qcp.capital/",
   },
   { src: require("assets/logos/david-post.svg").default, url: "" },
+  { src: require("assets/logos/taiyang-zhang.svg").default, url: "" },
+  { src: require("assets/logos/justin-sun.svg").default, url: "" },
   // require("assets/logos/cryptodorum.svg").default,
   // require("assets/logos/nodeseeds.svg").default,
   // require("assets/logos/tenzor-capital.svg").default,
