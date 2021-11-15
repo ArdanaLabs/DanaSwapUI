@@ -21,13 +21,12 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
   background: {
     lineHeight: 0,
-    
+
     "& > img": {
       width: "100%",
       height: "600px",
 
       [breakpoints.down("xs")]: {
-        width: "unset",
         height: "400px",
       },
     },

@@ -30,7 +30,6 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       height: "600px",
 
       [breakpoints.down("xs")]: {
-        width: "unset",
         height: "400px",
       },
     },
