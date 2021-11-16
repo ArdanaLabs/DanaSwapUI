@@ -204,7 +204,14 @@ const MainSection: React.FC = () => {
                 className={cx(classes.listingItem)}
               >
                 {Listings.map((item, index) => (
-                  <img src={item.image} alt="listing item" key={index} />
+                  <Link
+                    key={index}
+                    href={item.link}
+                    target="_blank"
+                    underline="none"
+                  >
+                    <img src={item.image} alt="listing item" />
+                  </Link>
                 ))}
               </Box>
             </ScrollAnimation>

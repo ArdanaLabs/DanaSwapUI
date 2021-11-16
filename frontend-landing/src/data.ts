@@ -513,11 +513,14 @@ export const TechnicalPapers = [
 export const Listings = [
   {
     image: require("assets/listings/gate.io.svg").default,
+    link: "https://www.gate.io/",
   },
   {
     image: require("assets/listings/BitMart.svg").default,
+    link: "https://www.bitmart.com/",
   },
   {
     image: require("assets/listings/MEXC.svg").default,
+    link: "https://www.mexc.com/",
   },
 ];
