@@ -17,6 +17,8 @@ import BG_WAVE_MOBILE from "assets/backgrounds/wave-mobile-gradient.png";
 import { ReactComponent as TwitterIcon } from "assets/icons/twitter.svg";
 import { ReactComponent as TelegramIcon } from "assets/icons/telegram.svg";
 
+import { Listings } from "data";
+
 const sphereVideo =
   "https://background.sfo3.digitaloceanspaces.com/sphere/output.webm";
 
@@ -73,6 +75,28 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     },
   },
 
+  listingLabel: {
+    fontFamily: "Museo Sans",
+    fontSize: "12px",
+    fontWeight: 100,
+    lineHeight: "100%",
+    color: palette.text.primary,
+  },
+  listingItem: {
+    "& img": {
+      height: "35px",
+      marginRight: "30px",
+
+      [breakpoints.down("xs")]: {
+        height: "30px",
+      },
+
+      "&:last-child": {
+        marginRight: 0,
+      },
+    },
+  },
+
   socialIconLink: {
     cursor: "pointer",
     color: palette.text.primary,
@@ -124,10 +148,21 @@ const MainSection: React.FC = () => {
                 display="flex"
                 alignItems="center"
                 justifyContent="space-between"
-                width={!mobile ? "300px" : "100%"}
+                width={!mobile ? "560px" : "100%"}
                 textAlign={!mobile ? "left" : "center"}
-                flexDirection={!mobile ? "row" : "column-reverse"}
+                flexDirection={!mobile ? "row" : "column"}
               >
+                {/* <Link href="http://app.ardana.org/launch" underline="none"> */}
+                <GradientButton
+                  label={
+                    !mobile
+                      ? "START TRADING ON NOVEMBER 22nd, 2021   |     2PM UTC"
+                      : "START TRADING ON NOV 22nd, 2021 | 2PM UTC"
+                  }
+                  width={!mobile ? 426 : 350}
+                  height={40}
+                />
+                {/* </Link> */}
                 <Box
                   display="flex"
                   alignItems="center"
@@ -150,13 +185,27 @@ const MainSection: React.FC = () => {
                     <TwitterIcon />
                   </Link>
                 </Box>
-                {/* <Link href="http://app.ardana.org/launch" underline="none"> */}
-                  <GradientButton
-                    label={i18next.t("PAGE.LANDING.COMINGSOON")}
-                    width={160}
-                    height={40}
-                  />
-                {/* </Link> */}
+              </Box>
+            </ScrollAnimation>
+
+            <Box mt={!mobile ? "50px" : "30px"} />
+
+            <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
+              <Box className={cx(classes.listingLabel)}>LISTING ON:</Box>
+            </ScrollAnimation>
+
+            <Box mt={!mobile ? "30px" : "10px"} />
+
+            <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
+              <Box
+                display="flex"
+                alignItems="center"
+                justifyContent={!mobile ? "flex-start" : "center"}
+                className={cx(classes.listingItem)}
+              >
+                {Listings.map((item, index) => (
+                  <img src={item.image} alt="listing item" key={index} />
+                ))}
               </Box>
             </ScrollAnimation>
           </Grid>

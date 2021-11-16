@@ -509,3 +509,15 @@ export const TechnicalPapers = [
     image: require("assets/papers/DanaswapTechnicalPaper.png").default,
   },
 ];
+
+export const Listings = [
+  {
+    image: require("assets/listings/gate.io.svg").default,
+  },
+  {
+    image: require("assets/listings/BitMart.svg").default,
+  },
+  {
+    image: require("assets/listings/MEXC.svg").default,
+  },
+];

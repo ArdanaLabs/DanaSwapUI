@@ -24,6 +24,7 @@ const useStyles = makeStyles(({ palette }) => ({
     alignItems: "center",
     width: "100%",
     height: "100%",
+    whiteSpace: "break-spaces",
   },
 }));
 
