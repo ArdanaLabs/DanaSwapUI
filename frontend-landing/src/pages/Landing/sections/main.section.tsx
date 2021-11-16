@@ -83,9 +83,11 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     color: palette.text.primary,
   },
   listingItem: {
+    "& a": {
+      marginRight: "30px",
+    },
     "& img": {
       height: "35px",
-      marginRight: "30px",
 
       [breakpoints.down("xs")]: {
         height: "30px",
