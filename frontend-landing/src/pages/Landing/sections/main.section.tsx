@@ -85,16 +85,16 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   listingItem: {
     "& a": {
       marginRight: "30px",
+
+      "&:last-child": {
+        marginRight: 0,
+      },
     },
     "& img": {
       height: "35px",
 
       [breakpoints.down("xs")]: {
         height: "30px",
-      },
-
-      "&:last-child": {
-        marginRight: 0,
       },
     },
   },
