@@ -150,7 +150,7 @@ const MainSection: React.FC = () => {
                 display="flex"
                 alignItems="center"
                 justifyContent="space-between"
-                width={!mobile ? "560px" : "100%"}
+                width={!mobile ? "540px" : "100%"}
                 textAlign={!mobile ? "left" : "center"}
                 flexDirection={!mobile ? "row" : "column"}
               >
@@ -169,7 +169,7 @@ const MainSection: React.FC = () => {
                   display="flex"
                   alignItems="center"
                   justifyContent="space-between"
-                  width="100px"
+                  width="80px"
                   mt={!mobile ? "0px" : "15px"}
                 >
                   <Link
@@ -218,7 +218,7 @@ const MainSection: React.FC = () => {
               </Box>
             </ScrollAnimation>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={6} style={{ pointerEvents: "none" }}>
             <ReactPlayer
               url={sphereVideo}
               playing
