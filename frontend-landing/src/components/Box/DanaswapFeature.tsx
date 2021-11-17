@@ -33,8 +33,8 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   image: {
     position: "relative",
     lineHeight: 0,
-    paddingTop: "20px",
-    paddingBottom: "40px",
+    marginTop: "20px",
+    marginBottom: "40px",
 
     [breakpoints.down("xs")]: {
       position: "absolute",
