@@ -2,15 +2,15 @@ import React from "react";
 import { Box, useMediaQuery, Container } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
-// import ReactPlayer from "react-player";
+import ReactPlayer from "react-player";
 import ScrollAnimation from "react-animate-on-scroll";
 
 import { useIsDarkMode } from "state/user/hooks";
 
-import BG_VECTEEZY from "assets/backgrounds/vecteezy.png";
+// import BG_VECTEEZY from "assets/backgrounds/vecteezy.png";
 
-// const heroVideo =
-//   "https://background.sfo3.digitaloceanspaces.com/stablecoin/output.webm";
+const heroVideo =
+  "https://background.sfo3.digitaloceanspaces.com/team/output.webm";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -40,6 +40,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     display: "flex",
     alignItems: "center",
     // background: "rgba(24, 34, 113, 0.6)",
+    background: "linear-gradient(180deg, rgba(4, 13, 77, 0.7) -43.4%, rgba(50, 3, 111, 0.7) 222.51%)",
 
     [breakpoints.down("xs")]: {
       textAlign: "center",
@@ -90,18 +91,18 @@ const MainSection: React.FC = () => {
 
   return (
     <Box className={cx(classes.root)}>
-      {/* <ReactPlayer
+      <ReactPlayer
         url={heroVideo}
-        playing={false}
+        playing={true}
         loop={true}
         muted
         width={!mobile ? "100%" : "unset"}
         height={"600px"}
-        playbackRate={0.5}
-      /> */}
-      <Box className={cx(classes.background)}>
+        playbackRate={0.3}
+      />
+      {/* <Box className={cx(classes.background)}>
         <img src={BG_VECTEEZY} alt="bg" />
-      </Box>
+      </Box> */}
       <Box className={cx(classes.container)}>
         <Container>
           <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
