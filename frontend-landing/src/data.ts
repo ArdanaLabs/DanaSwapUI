@@ -18,7 +18,7 @@ export const Menus = [
   },
   {
     label: i18next.t("PAGE.LANDING.HEADER.LINKS.2"),
-    to: "https://docs.ardana.org/?_ga=2.267695815.895783086.1634911974-1488848088.1632832057",
+    to: "https://docs.ardana.org/",
     blank: true,
   },
   {
