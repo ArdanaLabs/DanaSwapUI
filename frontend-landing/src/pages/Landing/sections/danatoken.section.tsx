@@ -63,6 +63,19 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 }));
 
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      // "coingecko-coin-ticker-widget": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "coingecko-coin-ticker-widget": {
+        currency: string;
+        locale: string;
+        width: string;
+      };
+    }
+  }
+}
+
 const DanaswapSection: React.FC = () => {
   const { breakpoints } = useTheme();
   const dark = useIsDarkMode();
@@ -81,6 +94,18 @@ const DanaswapSection: React.FC = () => {
             The DANA token is the utility and governance token of the Ardana
             ecosystem which rewards holders with profits from Ardana and allows
             those who hold it to vote on changes to the project’s parameters.
+          </Box>
+        </ScrollAnimation>
+        <Box mt="20px" />
+        <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
+          <Box display="flex" justifyContent="center">
+            <coingecko-coin-ticker-widget
+              coin-id="ardana"
+              currency="usd"
+              locale="en"
+              background-color="#3d40eb"
+              width="300"
+            />
           </Box>
         </ScrollAnimation>
       </Container>
