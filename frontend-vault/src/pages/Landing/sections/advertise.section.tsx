@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Container, useMediaQuery } from "@material-ui/core";
+import { Box, Grid, Container, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
 
@@ -13,6 +13,8 @@ import COIN_CARDANO from "assets/image/COIN1.png";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
+    paddingTop: "100px",
+    paddingBottom: "50px",
     background: `url(${
       palette.type === "dark" ? BACKGROUND_WAVE_BLUE : BACKGROUND_WAVE_WHITE
     }) no-repeat`,
@@ -24,15 +26,13 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   container: {
-    background: `url(${BACKGROUND_GRAPHIC}) right top no-repeat`,
-
     [breakpoints.down("xs")]: {
-      backgroundSize: "contain",
       textAlign: "center",
     },
   },
 
   description: {
+    width: "700px",
     "& > div:first-child": {
       color: palette.primary.main,
       fontFamily: "Brandon Grotesque",
@@ -69,8 +69,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   connectWallet: {
+    cursor: "pointer",
     background: palette.info.light,
-    padding: "5px 40px",
+    padding: "10px 25px",
     fontFamily: "Brandon Grotesque",
     fontSize: "14px",
     color: palette.common.white,
@@ -89,40 +90,47 @@ const AdSection: React.FC = () => {
   return (
     <Box className={cx(classes.root)}>
       <Container className={cx(classes.container)}>
-        <Box pt={!mobile ? "100px" : "350px"} />
+        <Grid container spacing={0} alignItems="center">
+          <Grid item xs={12} sm={6}>
+            <Box className={cx(classes.description)}>
+              <Box>
+                Collateral assets can be leveraged
+                <br /> to mint Ardana Stablecoins.
+              </Box>
+              <Box>
+                Open a Ardana Stablecoin Vault, deposit your
+                <br /> collateral, and generate dUSD against it.
+              </Box>
+            </Box>
 
-        <Box className={cx(classes.description)}>
-          <Box>
-            Collateral assets can be leveraged to
-            <br /> mint Ardana Stablecoins.
-          </Box>
-          <Box>
-            Open a Ardana Stablecoin Vault, deposit your
-            <br /> collateral, and generate dUSD against it.
-          </Box>
-        </Box>
+            <Box mt="30px" />
 
-        <Box mt="50px" />
+            <Box ml={mobile ? "12px" : 0} className={cx(classes.coins)}>
+              <img src={COIN_CARDANO} alt="cardano coin" />
+              <img src={COIN_CARDANO} alt="cardano coin" />
+              <img src={COIN_CARDANO} alt="cardano coin" />
+              <img src={COIN_CARDANO} alt="cardano coin" />
+              <img src={COIN_CARDANO} alt="cardano coin" />
+              <img src={COIN_CARDANO} alt="cardano coin" />
+              <img src={COIN_CARDANO} alt="cardano coin" />
+            </Box>
 
-        <Box ml={mobile ? "12px" : 0} className={cx(classes.coins)}>
-          <img src={COIN_CARDANO} alt="cardano coin" />
-          <img src={COIN_CARDANO} alt="cardano coin" />
-          <img src={COIN_CARDANO} alt="cardano coin" />
-          <img src={COIN_CARDANO} alt="cardano coin" />
-          <img src={COIN_CARDANO} alt="cardano coin" />
-          <img src={COIN_CARDANO} alt="cardano coin" />
-          <img src={COIN_CARDANO} alt="cardano coin" />
-        </Box>
+            <Box mt={!mobile ? "20px" : "20px"} />
 
-        <Box mt={!mobile ? "40px" : "20px"} />
+            <Box className={cx(classes.connectWallet)}>CONNECT A WALLET</Box>
 
-        <Box className={cx(classes.connectWallet)}>CONNECT A WALLET</Box>
-
-        {mobile && (
-          <Box mt="50px" textAlign="left">
-            <ThemeSwitch />
-          </Box>
-        )}
+            {mobile && (
+              <Box mt="50px" textAlign="left">
+                <ThemeSwitch />
+              </Box>
+            )}
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <Box display="flex" justifyContent="center">
+              <img src={BACKGROUND_GRAPHIC} alt="graphic" />
+            </Box>
+          </Grid>
+        </Grid>
       </Container>
     </Box>
   );
