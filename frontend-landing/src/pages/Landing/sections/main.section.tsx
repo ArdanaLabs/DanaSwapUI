@@ -150,18 +150,14 @@ const MainSection: React.FC = () => {
                 display="flex"
                 alignItems="center"
                 justifyContent="space-between"
-                width={!mobile ? "540px" : "100%"}
+                width={!mobile ? "280px" : "100%"}
                 textAlign={!mobile ? "left" : "center"}
                 flexDirection={!mobile ? "row" : "column"}
               >
                 {/* <Link href="http://app.ardana.org/launch" underline="none"> */}
                 <GradientButton
-                  label={
-                    !mobile
-                      ? "START TRADING ON NOVEMBER 22nd, 2021   |     2PM UTC"
-                      : "START TRADING ON NOV 22nd, 2021 | 2PM UTC"
-                  }
-                  width={!mobile ? 426 : 350}
+                  label={"TRADING NOW"}
+                  width={160}
                   height={40}
                 />
                 {/* </Link> */}
@@ -193,7 +189,7 @@ const MainSection: React.FC = () => {
             <Box mt={!mobile ? "50px" : "30px"} />
 
             <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-              <Box className={cx(classes.listingLabel)}>LISTING ON:</Box>
+              <Box className={cx(classes.listingLabel)}>LISTED ON:</Box>
             </ScrollAnimation>
 
             <Box mt={!mobile ? "30px" : "10px"} />
