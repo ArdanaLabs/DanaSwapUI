@@ -10,8 +10,8 @@ import cx from 'classnames'
 import { useIsDarkMode } from 'state/user/hooks'
 import { useHistory } from 'react-router-dom'
 import { ThemeSwitch, ConnectWallet } from 'components'
-import DANA_LOGO_BLACK from 'assets/image/DANA-LOGO-BLACK.png'
-import DANA_LOGO_WHITE from 'assets/image/DANA-LOGO-WHITE.png'
+import DUSD_LOGO_BLUE from 'assets/image/DUSD-LOGO-BLUE.png'
+import DUSD_LOGO_WHITE from 'assets/image/DUSD-LOGO-WHITE.png'
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -38,7 +38,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     cursor: 'pointer',
     '& img': {
       padding: '20px 10px',
-      width: '60px',
+      width: '65px',
 
       [breakpoints.down('sm')]: {
         width: '50px',
@@ -67,8 +67,8 @@ const Header: React.FC = () => {
             <img
               src={
                 theme.palette.type === 'dark'
-                  ? DANA_LOGO_WHITE
-                  : DANA_LOGO_BLACK
+                  ? DUSD_LOGO_WHITE
+                  : DUSD_LOGO_BLUE
               }
               alt='DANA Logo'
             />
