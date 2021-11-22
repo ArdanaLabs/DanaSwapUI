@@ -9,13 +9,17 @@ const useStyles = makeStyles(({ palette }) => ({
     cursor: "pointer",
     display: "flex",
     alignItems: "center",
+    opacity: 1,
+
+    "&:hover": {
+      opacity: 0.75,
+    },
   },
   label: {
     fontSize: "14px",
     fontWeight: 700,
-    fontFamily: "Museo Sans",
+    fontFamily: "Brandon Grotesque",
     color: palette.primary.main,
-    flexGrow: 5,
     textAlign: "center",
   },
   icon: {
