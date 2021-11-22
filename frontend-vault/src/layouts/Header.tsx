@@ -44,6 +44,8 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   toolbar: {
     display: "flex",
     alignItems: "center",
+    justifyContent: "space-between",
+    width: "265px",
   },
 }));
 
