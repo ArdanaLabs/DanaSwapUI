@@ -2,12 +2,12 @@ import React from "react";
 import { Box, useMediaQuery, Container, Link } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
+import { useHistory } from "react-router-dom";
 
 import { useIsDarkMode } from "state/user/hooks";
 
 import DANA_LOGO_BLACK from 'assets/image/DANA-LOGO-BLACK.png'
 import DANA_LOGO_WHITE from 'assets/image/DANA-LOGO-WHITE.png'
-import { useHistory } from "react-router";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {

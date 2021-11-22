@@ -59,7 +59,7 @@ const App: React.FC = () => {
   return (
     <Providers>
       <Switch>
-        <Route exact path="/">
+        <Route path="/">
           <Layout>
             <Landing />
           </Layout>
