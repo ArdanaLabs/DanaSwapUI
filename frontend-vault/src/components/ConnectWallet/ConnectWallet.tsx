@@ -19,27 +19,22 @@ const useStyles = makeStyles(({ palette }) => ({
     textAlign: "center",
   },
   icon: {
-    marginLeft: '20px',
+    marginLeft: "10px",
     color: palette.primary.main,
-  }
+  },
 }));
 
 const ConnectWallet: React.FC = () => {
   const classes = useStyles();
 
   const handleConnectWallet = () => {
-    console.log('connect wallet button clicked!')
+    console.log("connect wallet button clicked!");
   };
 
   return (
-    <Box
-      className={cx(classes.root)}
-      onClick={handleConnectWallet}
-    >
-      <Box className={cx(classes.label)}>
-        CONNECT A WALLET
-      </Box>
-      <i className={cx(classes.icon, 'fas fa-arrow-right')} />
+    <Box className={cx(classes.root)} onClick={handleConnectWallet}>
+      <Box className={cx(classes.label)}>CONNECT A WALLET</Box>
+      <i className={cx(classes.icon, "fas fa-arrow-right")} />
     </Box>
   );
 };
