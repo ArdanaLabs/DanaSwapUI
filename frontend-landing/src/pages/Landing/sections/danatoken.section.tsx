@@ -99,13 +99,13 @@ const DanaswapSection: React.FC = () => {
         <Box mt="20px" />
         <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
           <Box display="flex" justifyContent="center">
-            <coingecko-coin-ticker-widget
+            {/* <coingecko-coin-ticker-widget
               coin-id="ardana"
               currency="usd"
               locale="en"
               background-color="#3d40eb"
               width="300"
-            />
+            /> */}
           </Box>
         </ScrollAnimation>
       </Container>
