@@ -55,6 +55,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
         fontSize: "16px",
       },
     },
+
+    [breakpoints.down("xs")]: {
+      width: "auto",
+    },
   },
 
   coins: {
@@ -126,7 +130,11 @@ const AdSection: React.FC = () => {
             )}
           </Grid>
           <Grid item xs={12} sm={6}>
-            <Box display="flex" justifyContent="center">
+            <Box
+              display="flex"
+              justifyContent="center"
+              width={!mobile ? "auto" : "100%"}
+            >
               <img src={BACKGROUND_GRAPHIC} alt="graphic" />
             </Box>
           </Grid>
