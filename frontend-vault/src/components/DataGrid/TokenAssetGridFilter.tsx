@@ -1,101 +1,105 @@
-import React from 'react'
-import { Box, MenuItem, Select, useMediaQuery } from '@material-ui/core'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-import cx from 'classnames'
-import { useIsDarkMode } from 'state/user/hooks'
-import { BootstrapInput, SearchInput } from 'components'
+import React from "react";
+import { Box, MenuItem, Select, useMediaQuery } from "@material-ui/core";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import cx from "classnames";
+import { useIsDarkMode } from "state/user/hooks";
+import { BootstrapInput, SearchInput } from "components";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    margin: '20px 0px'
+    display: "flex",
+    justifyContent: "space-between",
+    margin: "20px 0px",
   },
   typographyPrimary: {
-    fontFamily: 'Brandon Grotesque',
-    fontStyle: 'normal',
-    fontWeight: 900
+    fontFamily: "Brandon Grotesque",
+    fontStyle: "normal",
+    fontWeight: 900,
   },
   typographySecondary: {
-    fontFamily: 'Museo Sans',
-    fontStyle: 'normal',
-    fontWeight: 100
+    fontFamily: "Museo Sans",
+    fontStyle: "normal",
+    fontWeight: 100,
   },
   filterType: {
-    display: 'flex'
+    display: "flex",
   },
   filterItem: {
-    border: '1px solid transparent',
-    borderRadius: '20px',
-    fontSize: '18px',
-    background: 'transparent',
-    cursor: 'pointer',
+    border: "1px solid transparent",
+    borderRadius: "20px",
+    fontSize: "16px",
+    lineHeight: "100%",
+    display: "flex",
+    alignItems: "center",
+    background: "transparent",
+    cursor: "pointer",
     color: palette.primary.main,
-    padding: '5px 20px',
-    marginRight: '20px',
+    padding: "5px 20px",
+    marginRight: "20px",
 
-    '&.active': {
-      border: `1px solid ${palette.primary.main}`
+    "&.active": {
+      background: palette.info.light,
+      color: palette.common.white,
     },
-    '&:hover': {
-      border: `1px solid ${palette.primary.main}`
-    }
+    "&:hover": {
+      border: `1px solid ${palette.primary.main}`,
+    },
   },
   searchBox: {
-    [breakpoints.down('sm')]: {
-      width: '100%'
-    }
-  }
-}))
+    [breakpoints.down("xs")]: {
+      width: "100%",
+    },
+  },
+}));
 
 export enum FilterType {
-  POPULAR = 'Popular Assets',
-  ALL = 'All Assets',
-  STABLECOINS = 'Stablecoins',
-  LP = 'LP Token'
+  POPULAR = "Popular Assets",
+  ALL = "All Assets",
+  STABLECOINS = "Stablecoins",
+  LP = "LP Token",
 }
 
 export interface FilterOption {
-  filterType: FilterType
-  keyword: string
+  filterType: FilterType;
+  keyword: string;
 }
 
-export interface HelpCardProps {
-  filterOption: FilterOption
-  handleFilterChange: (filterOption: FilterOption) => void
+export interface TokenAssetGridFilterProps {
+  filterOption: FilterOption;
+  handleFilterChange: (filterOption: FilterOption) => void;
 }
 
-const HelpCard: React.FC<HelpCardProps> = ({
+const TokenAssetGridFilter: React.FC<TokenAssetGridFilterProps> = ({
   filterOption,
-  handleFilterChange
+  handleFilterChange,
 }) => {
-  const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
-  const mobile = useMediaQuery(breakpoints.down('xs'))
-  const classes = useStyles({ dark, mobile })
-  const { filterType, keyword } = filterOption
+  const { breakpoints } = useTheme();
+  const dark = useIsDarkMode();
+  const mobile = useMediaQuery(breakpoints.down("xs"));
+  const classes = useStyles({ dark, mobile });
+  const { filterType, keyword } = filterOption;
 
   const hanldeFilterTypeChange = (type: FilterType) => {
     handleFilterChange({
       ...filterOption,
-      filterType: type
-    })
-  }
+      filterType: type,
+    });
+  };
 
   const handleFilterInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     handleFilterChange({
       ...filterOption,
-      keyword: e.target.value
-    })
-  }
+      keyword: e.target.value,
+    });
+  };
 
   return (
-    <Box className={cx(classes.root)} flexDirection={mobile ? 'column' : 'row'}>
+    <Box className={cx(classes.root)} flexDirection={mobile ? "column" : "row"}>
       {!mobile && (
         <Box className={cx(classes.filterType)}>
           <Box
             className={cx(classes.typographyPrimary, classes.filterItem, {
-              active: filterType === FilterType.POPULAR
+              active: filterType === FilterType.POPULAR,
             })}
             onClick={() => hanldeFilterTypeChange(FilterType.POPULAR)}
           >
@@ -103,7 +107,7 @@ const HelpCard: React.FC<HelpCardProps> = ({
           </Box>
           <Box
             className={cx(classes.typographyPrimary, classes.filterItem, {
-              active: filterType === FilterType.ALL
+              active: filterType === FilterType.ALL,
             })}
             onClick={() => hanldeFilterTypeChange(FilterType.ALL)}
           >
@@ -111,7 +115,7 @@ const HelpCard: React.FC<HelpCardProps> = ({
           </Box>
           <Box
             className={cx(classes.typographyPrimary, classes.filterItem, {
-              active: filterType === FilterType.STABLECOINS
+              active: filterType === FilterType.STABLECOINS,
             })}
             onClick={() => hanldeFilterTypeChange(FilterType.STABLECOINS)}
           >
@@ -119,7 +123,7 @@ const HelpCard: React.FC<HelpCardProps> = ({
           </Box>
           <Box
             className={cx(classes.typographyPrimary, classes.filterItem, {
-              active: filterType === FilterType.LP
+              active: filterType === FilterType.LP,
             })}
             onClick={() => hanldeFilterTypeChange(FilterType.LP)}
           >
@@ -129,13 +133,13 @@ const HelpCard: React.FC<HelpCardProps> = ({
       )}
 
       {mobile && (
-        <Box mb='20px' width='100%'>
+        <Box mb="20px" width="100%">
           <Select
-            labelId='Filter'
-            id='Filter Select'
+            labelId="Filter"
+            id="Filter Select"
             value={filterOption.filterType}
             onChange={(event: React.ChangeEvent<{ value: unknown }>) => {
-              hanldeFilterTypeChange(event.target.value as FilterType)
+              hanldeFilterTypeChange(event.target.value as FilterType);
             }}
             input={<BootstrapInput />}
           >
@@ -157,7 +161,7 @@ const HelpCard: React.FC<HelpCardProps> = ({
         />
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default HelpCard
+export default TokenAssetGridFilter;
