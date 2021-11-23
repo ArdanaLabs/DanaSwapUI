@@ -9,6 +9,8 @@ import { ThemeSwitch } from "components";
 import BACKGROUND_GRAPHIC from "assets/image/backgrounds/BG-GRAPHIC.png";
 import BACKGROUND_WAVE_BLUE from "assets/image/backgrounds/BG-BLUE.png";
 import BACKGROUND_WAVE_WHITE from "assets/image/backgrounds/BG-WHITE.png";
+import BACKGROUND_WAVE_BLUE_M from "assets/image/backgrounds/BG-BLUE-MOBILE.png";
+import BACKGROUND_WAVE_WHITE_M from "assets/image/backgrounds/BG-WHITE-MOBILE.png";
 import COIN_CARDANO from "assets/image/COIN1.png";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
@@ -22,6 +24,14 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
     [breakpoints.down("xs")]: {
       textAlign: "center",
+      paddingBottom: "30px",
+      background: `url(${
+        palette.type === "dark"
+          ? BACKGROUND_WAVE_BLUE_M
+          : BACKGROUND_WAVE_WHITE_M
+      }) no-repeat`,
+      backgroundSize: "auto 100%",
+      backgroundPosition: "right",
     },
   },
 
@@ -40,9 +50,11 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       fontSize: "50px",
       paddingBottom: "20px",
       lineHeight: "110%",
+      whiteSpace: "pre-line",
 
       [breakpoints.down("xs")]: {
         fontSize: "30px",
+        whiteSpace: "unset",
       },
     },
     "& > div:last-child": {
@@ -50,9 +62,11 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       fontFamily: "Museo Sans",
       fontWeight: 100,
       fontSize: "20px",
+      whiteSpace: "pre-line",
 
       [breakpoints.down("xs")]: {
         fontSize: "16px",
+        whiteSpace: "unset",
       },
     },
 
@@ -94,48 +108,53 @@ const AdSection: React.FC = () => {
   return (
     <Box className={cx(classes.root)}>
       <Container className={cx(classes.container)}>
-        <Grid container spacing={0} alignItems="center">
+        <Grid
+          container
+          spacing={0}
+          alignItems="center"
+          direction={!mobile ? "row" : "column-reverse"}
+        >
           <Grid item xs={12} sm={6}>
-            <Box className={cx(classes.description)}>
-              <Box>
-                Collateral assets can be leveraged
-                <br /> to mint Ardana Stablecoins.
+            <Box mx={!mobile ? "0px" : "20px"} mt={!mobile ? "0px" : "20px"}>
+              <Box className={cx(classes.description)}>
+                <Box>
+                  {`Collateral assets can be leveraged\nto mint Ardana Stablecoins.`}
+                </Box>
+                <Box>
+                  {`Open a Ardana Stablecoin Vault, deposit your\ncollateral, and generate dUSD against it.`}
+                </Box>
               </Box>
-              <Box>
-                Open a Ardana Stablecoin Vault, deposit your
-                <br /> collateral, and generate dUSD against it.
+
+              <Box mt="30px" />
+
+              <Box ml={mobile ? "12px" : 0} className={cx(classes.coins)}>
+                <img src={COIN_CARDANO} alt="cardano coin" />
+                <img src={COIN_CARDANO} alt="cardano coin" />
+                <img src={COIN_CARDANO} alt="cardano coin" />
+                <img src={COIN_CARDANO} alt="cardano coin" />
+                <img src={COIN_CARDANO} alt="cardano coin" />
+                <img src={COIN_CARDANO} alt="cardano coin" />
+                <img src={COIN_CARDANO} alt="cardano coin" />
               </Box>
+
+              <Box mt={!mobile ? "20px" : "20px"} />
+
+              <Box className={cx(classes.connectWallet)}>CONNECT A WALLET</Box>
+
+              {mobile && (
+                <Box mt="50px" textAlign="left">
+                  <ThemeSwitch />
+                </Box>
+              )}
             </Box>
-
-            <Box mt="30px" />
-
-            <Box ml={mobile ? "12px" : 0} className={cx(classes.coins)}>
-              <img src={COIN_CARDANO} alt="cardano coin" />
-              <img src={COIN_CARDANO} alt="cardano coin" />
-              <img src={COIN_CARDANO} alt="cardano coin" />
-              <img src={COIN_CARDANO} alt="cardano coin" />
-              <img src={COIN_CARDANO} alt="cardano coin" />
-              <img src={COIN_CARDANO} alt="cardano coin" />
-              <img src={COIN_CARDANO} alt="cardano coin" />
-            </Box>
-
-            <Box mt={!mobile ? "20px" : "20px"} />
-
-            <Box className={cx(classes.connectWallet)}>CONNECT A WALLET</Box>
-
-            {mobile && (
-              <Box mt="50px" textAlign="left">
-                <ThemeSwitch />
-              </Box>
-            )}
           </Grid>
           <Grid item xs={12} sm={6}>
-            <Box
-              display="flex"
-              justifyContent="center"
-              width={!mobile ? "auto" : "100%"}
-            >
-              <img src={BACKGROUND_GRAPHIC} alt="graphic" />
+            <Box display="flex" justifyContent="center">
+              <img
+                src={BACKGROUND_GRAPHIC}
+                alt="graphic"
+                width={!mobile ? "auto" : "80%"}
+              />
             </Box>
           </Grid>
         </Grid>

@@ -36,7 +36,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       width: "60px",
 
       [breakpoints.down("sm")]: {
-        width: "50px",
+        width: "40px",
       },
     },
   },
@@ -46,6 +46,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     alignItems: "center",
     justifyContent: "space-between",
     width: "265px",
+
+    [breakpoints.down("xs")]: {
+      width: "auto",
+    },
   },
 }));
 
