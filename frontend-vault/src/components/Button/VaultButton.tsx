@@ -3,15 +3,14 @@ import { withStyles, Theme } from "@material-ui/core/styles";
 
 const StyledValutButton = withStyles((theme: Theme) => ({
   root: {
-    backgroundColor: theme.palette.type === 'dark' ? '#5297BD' : '#1273CC',
-    borderRadius: '100px',
+    background: theme.palette.info.light,
+    borderRadius: "100px",
     fontWeight: 900,
-    fontSize: '20px',
+    fontSize: "18px",
     color: theme.palette.common.white,
-    padding: '10px 25px',
-    minWidth: '150px',
-    lineHeight: '100% !important'
-    
+    padding: "10px 25px",
+    minWidth: "150px",
+    lineHeight: "100% !important",
   },
 }))(Button);
 
