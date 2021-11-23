@@ -6,62 +6,67 @@ import { useIsDarkMode } from "state/user/hooks";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
-    borderRadius: '30px',
-    padding: '20px',
-    color: '#FFFFFF',
-    position: 'relative',
-    textAlign: 'left',
-    marginBottom: '35px',
+    borderRadius: "30px",
+    padding: "20px",
+    color: "#FFFFFF",
+    position: "relative",
+    textAlign: "left",
+    marginBottom: "35px",
   },
   typographyPrimary: {
-    fontFamily: 'Brandon Grotesque',
-    fontStyle: 'normal',
+    fontFamily: "Brandon Grotesque",
+    fontStyle: "normal",
     fontWeight: 900,
   },
   typographySecondary: {
-    fontFamily: 'Museo Sans',
-    fontStyle: 'normal',
-    fontWeight: 'normal',
+    fontFamily: "Museo Sans",
+    fontStyle: "normal",
+    fontWeight: "normal",
   },
   label: {
-    fontSize: '20px',
-    lineHeight: '115%',
-    marginTop: '5px',
+    fontSize: "18px",
+    lineHeight: "115%",
+    marginTop: "5px",
 
-    [breakpoints.down('sm')]: {
-      fontSize: '14px',
-    }
+    [breakpoints.down("xs")]: {
+      fontSize: "14px",
+    },
   },
   name: {
-    fontSize: '50px',
-    lineHeight: '110%',
-    marginTop: '25px',
-    marginBottom: '55px',
+    fontSize: "40px",
+    lineHeight: "110%",
+    marginTop: "25px",
+    marginBottom: "55px",
 
-    [breakpoints.down('sm')]: {
-      fontSize: '30px',
-    }
+    [breakpoints.down("xs")]: {
+      fontSize: "30px",
+      marginBottom: "35px",
+    },
   },
   status: {
-    fontSize: '16px',
-    lineHeight: '115%',
-    opacity: '0.8',
+    fontSize: "14px",
+    lineHeight: "115%",
+    opacity: "0.8",
 
-    [breakpoints.down('sm')]: {
-      whiteSpace: 'pre-line'
-    }
+    [breakpoints.down("xs")]: {
+      whiteSpace: "pre-line",
+
+      "& > div": {
+        flexBasis: "50%",
+      },
+    },
   },
   image: {
-    position: 'absolute',
-    right: '0px',
-    top: '-50px',
+    position: "absolute",
+    right: "0px",
+    top: "-50px",
 
-    [breakpoints.down('sm')]: {
-      '& img': {
-        width: '160px',
-      }
-    }
-  }
+    [breakpoints.down("xs")]: {
+      "& img": {
+        width: "160px",
+      },
+    },
+  },
 }));
 
 export interface TokenCardProps {
@@ -79,7 +84,7 @@ const TokenCard: React.FC<TokenCardProps> = ({
   name,
   stabilityFee,
   ratio,
-  background
+  background,
 }) => {
   const { breakpoints } = useTheme();
   const dark = useIsDarkMode();
@@ -87,20 +92,33 @@ const TokenCard: React.FC<TokenCardProps> = ({
   const classes = useStyles({ dark, mobile });
 
   return (
-    <Box className={cx(classes.root)} style={{background: background}}>
+    <Box className={cx(classes.root)} style={{ background: background }}>
       <Box className={cx(classes.image)}>
-        <img src={image} alt='token' />
+        <img src={image} alt="token" />
       </Box>
 
-      <Box className={cx(classes.label, classes.typographyPrimary)} component={'p'}>{label}</Box>
+      <Box
+        className={cx(classes.label, classes.typographyPrimary)}
+        component={"p"}
+      >
+        {label}
+      </Box>
 
-      <Box className={cx(classes.name, classes.typographyPrimary)} component={'p'}>{name}</Box>
+      <Box
+        className={cx(classes.name, classes.typographyPrimary)}
+        component={"p"}
+      >
+        {name}
+      </Box>
 
-      <Box display='flex' justifyContent='space-between' className={cx(classes.typographySecondary, classes.status)}>
+      <Box
+        display="flex"
+        justifyContent="space-between"
+        className={cx(classes.typographySecondary, classes.status)}
+      >
         <Box>{`Stability Fee \n${stabilityFee.toFixed(2)}%`}</Box>
         <Box>{`Min Coll. Ratio \n${ratio.toFixed(0)}%`}</Box>
       </Box>
-
     </Box>
   );
 };

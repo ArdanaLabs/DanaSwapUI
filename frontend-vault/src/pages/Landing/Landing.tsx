@@ -15,7 +15,7 @@ const Landing: React.FC = () => {
     <Box>
       <AdSection />
 
-      <Box mt={!mobile ? "120px" : "30px"} />
+      <Box mt={!mobile ? "100px" : "70px"} />
 
       <FeatureSection />
 
