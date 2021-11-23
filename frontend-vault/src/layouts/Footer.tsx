@@ -6,15 +6,20 @@ import { useHistory } from "react-router-dom";
 
 import { useIsDarkMode } from "state/user/hooks";
 
-import DUSD_LOGO_BLUE from 'assets/image/DUSD-LOGO-BLUE.png'
-import DUSD_LOGO_WHITE from 'assets/image/DUSD-LOGO-WHITE.png'
+import DUSD_LOGO_BLUE from "assets/image/DUSD-LOGO-BLUE.png";
+import DUSD_LOGO_WHITE from "assets/image/DUSD-LOGO-WHITE.png";
+import BG_BLUE from "assets/image/backgrounds/BG-FOOTER-BLUE.png";
+import BG_WHITE from "assets/image/backgrounds/BG-FOOTER-WHITE.png";
+import { socials } from "data";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
-    background: palette.background.default,
+    background: `url(${
+      palette.type === "dark" ? BG_BLUE : BG_WHITE
+    }) center center no-repeat`,
+    backgroundSize: "cover",
     marginTop: "50px",
-    padding: 10,
-    filter: 'drop-shadow(35px 0px 15px rgba(0, 0, 0, 0.12))',
+    filter: "drop-shadow(35px 0px 15px rgba(0, 0, 0, 0.12))",
   },
 
   logo: {
@@ -23,12 +28,11 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     alignItems: "center",
     cursor: "pointer",
     "& img": {
-      padding: '20px 10px',
-      width: '65px',
-      
-      [breakpoints.down('sm')]: {
-        width: '50px',
-      }
+      width: "60px",
+
+      [breakpoints.down("xs")]: {
+        marginBottom: "30px",
+      },
     },
   },
 
@@ -36,35 +40,30 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
+    transition: "background .2s ease-in",
+    padding: "20px 0px",
+
+    [breakpoints.down("xs")]: {
+      flexDirection: "column",
+    },
   },
 
-  socialIconLink: {
-    borderRadius: "50%",
-    backgroundColor: "white",
-    padding: "10px",
-    marginRight: "20px",
-    cursor: "pointer",
-    color: "gray",
-    textAlign: "center",
-    transition: "background .2s",
-    fontFamily: "auto",
+  socials: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    width: "300px",
 
-    "& i": {
-      fontSize: '15px',
+    "& > .link": {
+      lineHeight: 0,
     },
 
-    "&:hover": {
-      backgroundColor: "lightgray",
+    "& > .link svg": {
+      width: "25px",
     },
-
-    [breakpoints.down('sm')]: {
-      padding: '6px 8px',
-      marginRight: '15px',
-      
-      "& i": {
-        fontSize: '12px',
-      },
-    }
+    "& > .link path": {
+      fill: palette.primary.main,
+    },
   },
 }));
 
@@ -79,32 +78,26 @@ const Footer: React.FC = () => {
     <Box className={cx(classes.root)}>
       <Container>
         <Box className={cx(classes.container)}>
-          <Box className={cx(classes.logo)} onClick={() => history.push('/')}>
+          <Box className={cx(classes.logo)} onClick={() => history.push("/")}>
             <img
               src={
-                theme.palette.type === 'dark'
-                  ? DUSD_LOGO_WHITE
-                  : DUSD_LOGO_BLUE
+                theme.palette.type === "dark" ? DUSD_LOGO_WHITE : DUSD_LOGO_BLUE
               }
-              alt='DANA Logo'
+              alt="DANA Logo"
             />
           </Box>
-          <Box>
-            <Link className={cx(classes.socialIconLink)} href="#">
-              <i className="fab fa-twitter"></i>
-            </Link>
-            <Link className={cx(classes.socialIconLink)} href="#">
-              <i className="fab fa-instagram"></i>
-            </Link>
-            <Link className={cx(classes.socialIconLink)} href="#">
-              <i className="fab fa-medium"></i>
-            </Link>
-            <Link className={cx(classes.socialIconLink)} href="#">
-              <i className="fab fa-youtube"></i>
-            </Link>
-            <Link className={cx(classes.socialIconLink)} href="#">
-              <i className="fab fa-linkedin"></i>
-            </Link>
+          <Box className={cx(classes.socials)}>
+            {socials.map((social: any, index: number) => (
+              <Link
+                className="link"
+                href={social.url}
+                key={index}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <social.image />
+              </Link>
+            ))}
           </Box>
         </Box>
       </Container>
