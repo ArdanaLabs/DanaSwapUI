@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Box, Container, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
-import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import cx from "classnames";
 import { useIsDarkMode } from "state/user/hooks";
 import {
