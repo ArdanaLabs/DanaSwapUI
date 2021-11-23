@@ -1,88 +1,95 @@
-import React from 'react'
-import { Box, useMediaQuery } from '@material-ui/core'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-import cx from 'classnames'
-import { useIsDarkMode } from 'state/user/hooks'
+import React from "react";
+import { Box, useMediaQuery } from "@material-ui/core";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import cx from "classnames";
+import { useIsDarkMode } from "state/user/hooks";
+
+import ArrowRightIcon from "assets/image/icons/arrow-right-circle.svg";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
-    borderRadius: '30px',
-    padding: '20px',
-    color: palette.primary.main,
-    display: 'flex',
-    boxShadow: '10px 10px 30px rgba(0, 0, 0, 0.05)',
-    cursor: 'pointer',
-    marginBottom: '30px'
+    position: "relative",
+    borderRadius: "30px",
+    padding: "50px 40px",
+    color: palette.common.white,
+    display: "flex",
+    boxShadow: "10px 10px 30px rgba(0, 0, 0, 0.05)",
+    cursor: "pointer",
+    marginBottom: "30px",
+
+    [breakpoints.down("xs")]: {
+      padding: "20px 50px 100px 50px",
+      textAlign: "center",
+    },
   },
   typographyPrimary: {
-    fontFamily: 'Brandon Grotesque',
-    fontStyle: 'normal',
-    fontWeight: 900
+    fontFamily: "Brandon Grotesque",
+    fontStyle: "normal",
+    fontWeight: 900,
   },
   typographySecondary: {
-    fontFamily: 'Museo Sans',
-    fontStyle: 'normal',
-    fontWeight: 100
-  },
-  image: {
-    marginTop: '-70px',
-
-    [breakpoints.down('sm')]: {
-      '& img': {
-        width: '150px'
-      }
-    }
+    fontFamily: "Museo Sans",
+    fontStyle: "normal",
+    fontWeight: 100,
   },
   title: {
-    fontSize: '50px',
-    lineHeight: '110%',
-    marginBottom: '20px',
-    
-    [breakpoints.down('sm')]: {
-      fontSize: '35px',
-    }
+    fontSize: "45px",
+    lineHeight: "110%",
+    marginBottom: "20px",
+
+    [breakpoints.down("sm")]: {
+      fontSize: "35px",
+    },
   },
   content: {
-    fontSize: '18px',
-    lineHeight: '115%',
-    opacity: '0.8',
-    
-    [breakpoints.down('sm')]: {
-      fontSize: '16px',
-    }
-  }
-}))
+    fontSize: "16px",
+    lineHeight: "115%",
+    whiteSpace: "pre-line",
+
+    [breakpoints.down("sm")]: {
+      fontSize: "16px",
+      whiteSpace: "unset",
+    },
+  },
+
+  link: {
+    position: "absolute",
+    top: "50%",
+    right: "0px",
+    transform: "translate(-50%, -50%)",
+
+    "& > img": {
+      width: "50px",
+
+      [breakpoints.down("xs")]: {
+        width: "40px",
+        transform: "rotateZ(90deg)",
+      },
+    },
+
+    [breakpoints.down("xs")]: {
+      top: "unset",
+      bottom: "0px",
+      left: "50%",
+    },
+  },
+}));
 
 export interface HelpCardProps {
-  image: string
-  title: string
-  content: string
-  background: string
+  title: string;
+  content: string;
+  background: string;
 }
 
-const HelpCard: React.FC<HelpCardProps> = ({
-  image,
-  title,
-  content,
-  background
-}) => {
-  const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
-  const mobile = useMediaQuery(breakpoints.down('xs'))
-  const responsive = useMediaQuery(breakpoints.down('md'))
-  const classes = useStyles({ dark, mobile })
+const HelpCard: React.FC<HelpCardProps> = ({ title, content, background }) => {
+  const { breakpoints } = useTheme();
+  const dark = useIsDarkMode();
+  const mobile = useMediaQuery(breakpoints.down("xs"));
+  const classes = useStyles({ dark, mobile });
 
   return (
-    <Box
-      className={cx(classes.root)}
-      style={{ background: background }}
-      flexDirection={responsive ? 'column' : 'row'}
-      textAlign={responsive ? 'center' : 'left'}
-    >
-      <Box className={cx(classes.image)}>
-        <img src={image} alt='' />
-      </Box>
-      <Box display='flex' flexDirection='column' my='30px'>
+    <Box className={cx(classes.root)} style={{ background: background }}>
+      <Box display="flex" flexDirection="column">
         <Box className={cx(classes.typographyPrimary, classes.title)}>
           {title}
         </Box>
@@ -90,8 +97,11 @@ const HelpCard: React.FC<HelpCardProps> = ({
           {content}
         </Box>
       </Box>
+      <Box className={cx(classes.link)}>
+        <img src={ArrowRightIcon} alt="right" />
+      </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default HelpCard
+export default HelpCard;
