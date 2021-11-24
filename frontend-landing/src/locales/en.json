@@ -47,10 +47,6 @@
             "CONTENT": "Swap between stablecoins and stable assets such as wrapped/synthetic Bitcoin with minimal slippage."
           },
           {
-            "TITLE": "Savings Account",
-            "CONTENT": "Deposit Ardana stablecoins to earn passive income through interest payments."
-          },
-          {
             "TITLE": "Earn Trading Fees",
             "CONTENT": "Deposit your assets into a DanaSwap pool and earn a proportion of the market making fees."
           },
