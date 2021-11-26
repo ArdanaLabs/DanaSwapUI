@@ -11,17 +11,17 @@ import { Partners } from "data";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
-    background: palette.background.default,
+    // background: palette.background.default,
     padding: "50px 20px",
 
     [breakpoints.down("xs")]: {
-      padding: "20px 0",
+      padding: "30px 0",
     },
   },
   title: {
     fontFamily: "Brandon Grotesque",
     fontWeight: 900,
-    fontSize: "64px",
+    fontSize: "60px",
     lineHeight: "100%",
     color: palette.text.secondary,
     textAlign: "center",
@@ -76,7 +76,7 @@ const PartnerSection: React.FC = () => {
                     <img
                       src={partner.src}
                       alt="partner"
-                      height={!mobile ? "45px" : "25px"}
+                      height={!mobile ? "40px" : "25px"}
                       style={{ maxWidth: "max-content" }}
                     />
                   </Link>
@@ -85,7 +85,7 @@ const PartnerSection: React.FC = () => {
                   <img
                     src={partner.src}
                     alt="partner"
-                    height={!mobile ? "45px" : "25px"}
+                    height={!mobile ? "40x" : "25px"}
                     style={{ maxWidth: "max-content" }}
                   />
                 )}

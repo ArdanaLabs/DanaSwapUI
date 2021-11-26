@@ -21,8 +21,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     backgroundSize: "auto 100%",
 
     [breakpoints.down("xs")]: {
-      background: `url(${BG_CIRCLE}) top 100px left -70px no-repeat`,
-      backgroundSize: "auto 300px",
+      background: "none !important",
       textAlign: "center",
       paddingTop: "100px",
     },
@@ -32,7 +31,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontFamily: "Brandon Grotesque",
     fontStyle: "normal",
     fontWeight: 900,
-    fontSize: "64px",
+    fontSize: "60px",
     lineHeight: "100%",
     color: palette.text.secondary,
 
@@ -45,7 +44,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontFamily: "Museo Sans",
     fontStyle: "normal",
     fontWeight: 300,
-    fontSize: "18px",
+    fontSize: "16px",
     lineHeight: "25px",
     color: palette.text.primary,
     marginTop: "30px",
@@ -54,7 +53,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       fontSize: "16px",
       lineHeight: "18.4px",
       marginTop: "15px",
-      padding: "0 50px 100px",
+      padding: "0 50px 50px",
     },
   },
 
@@ -66,6 +65,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     paddingTop: "20px",
     [breakpoints.down("xs")]: {
       justifyContent: "center",
+      padding: 0,
     },
   },
 
@@ -85,6 +85,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     alignItems: "center",
     borderRadius: "50%",
     width: "25px",
+
+    [breakpoints.down("xs")]: {
+      width: "18px",
+    },
   },
 }));
 
@@ -141,14 +145,20 @@ const TechSection: React.FC = () => {
                 className={cx(classes.image)}
                 onClick={() => handleCarousel(-1)}
               >
-                <GradientButton width={75} height={75} />
+                <GradientButton
+                  width={!mobile ? 75 : 50}
+                  height={!mobile ? 75 : 50}
+                />
                 <img className={cx(classes.photo)} src={ICO_PREV} alt="prev" />
               </Box>
               <Box
                 className={cx(classes.image)}
                 onClick={() => handleCarousel(1)}
               >
-                <GradientButton width={75} height={75} />
+                <GradientButton
+                  width={!mobile ? 75 : 50}
+                  height={!mobile ? 75 : 50}
+                />
                 <img className={cx(classes.photo)} src={ICO_NEXT} alt="next" />
               </Box>
             </Box>

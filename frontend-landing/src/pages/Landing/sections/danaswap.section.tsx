@@ -29,7 +29,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontFamily: "Brandon Grotesque",
     fontStyle: "normal",
     fontWeight: 900,
-    fontSize: "64px",
+    fontSize: "60px",
     lineHeight: "100%",
     color: palette.text.secondary,
 
@@ -42,7 +42,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontFamily: "Museo Sans",
     fontStyle: "normal",
     fontWeight: 300,
-    fontSize: "18px",
+    fontSize: "16px",
     lineHeight: "26px",
     color: palette.text.primary,
 
@@ -89,6 +89,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     alignItems: "center",
     borderRadius: "50%",
     width: "25px",
+
+    [breakpoints.down("xs")]: {
+      width: "18px",
+    },
   },
 }));
 
@@ -157,14 +161,20 @@ const DanaswapSection: React.FC = () => {
                 className={cx(classes.image)}
                 onClick={() => handleCarousel(-1)}
               >
-                <GradientButton width={75} height={75} />
+                <GradientButton
+                  width={!mobile ? 75 : 50}
+                  height={!mobile ? 75 : 50}
+                />
                 <img className={cx(classes.photo)} src={ICO_PREV} alt="prev" />
               </Box>
               <Box
                 className={cx(classes.image)}
                 onClick={() => handleCarousel(1)}
               >
-                <GradientButton width={75} height={75} />
+                <GradientButton
+                  width={!mobile ? 75 : 50}
+                  height={!mobile ? 75 : 50}
+                />
                 <img className={cx(classes.photo)} src={ICO_NEXT} alt="next" />
               </Box>
             </Box>

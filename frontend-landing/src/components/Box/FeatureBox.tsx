@@ -80,7 +80,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   title: {
     color: "#FFFFFF",
     // whiteSpace: "pre-line",
-    fontSize: "28px",
+    fontSize: "26px",
     fontWeight: 900,
     fontFamily: "Brandon Grotesque",
     fontStyle: "normal",
@@ -94,7 +94,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
   content: {
     color: "#F5FCFE",
-    fontSize: "18px",
+    fontSize: "16px",
     lineHeight: "24px",
     fontWeight: 300,
     fontFamily: "Museo Sans",
@@ -153,7 +153,7 @@ const FeatureBox: React.FC<FeatureBoxProps> = ({ image, title, content }) => {
           <img className={cx(classes.photo)} src={image} alt="title" />
         </Box>
 
-        <Box mt={!mobile ? "70px" : "25px"} />
+        <Box mt={!mobile ? "80px" : "25px"} />
 
         <Box className={cx(classes.title)}>{title}</Box>
 

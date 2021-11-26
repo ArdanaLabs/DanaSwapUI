@@ -24,10 +24,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     "& span": {
       "&:first-child": {
         fontFamily: "Brandon Grotesque",
-        fontSize: "22px",
+        fontSize: "20px",
         lineHeight: "36px",
         color: palette.text.secondary,
-        marginBottom: "15px",
+        marginBottom: "12px",
         fontWeight: 900,
 
         [breakpoints.down("xs")]: {
@@ -39,8 +39,8 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
         color: palette.common.white,
       },
       fontFamily: "Museo Sans",
-      fontSize: "18px",
-      lineHeight: "26px",
+      fontSize: "16px",
+      lineHeight: "24px",
       cursor: "pointer",
 
       [breakpoints.down("xs")]: {
@@ -72,7 +72,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     color: palette.text.secondary,
     fontFamily: "Brandon Grotesque",
     fontWeight: 900,
-    fontSize: "36px",
+    fontSize: "32px",
     lineHeight: "100%",
     [breakpoints.down("xs")]: {
       fontSize: "25px",
@@ -146,15 +146,16 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       display: "flex",
       justifyContent: "space-between",
       alignItems: "center",
-      width: "300px",
+      width: "280px",
 
       "& > .link:hover path": {
         fill: palette.text.secondary,
       },
 
-      "& img": {
-        width: "25px",
+      "& > .link svg": {
+        width: "22px",
       },
+
       [breakpoints.down("xs")]: {
         width: "100%",
       },

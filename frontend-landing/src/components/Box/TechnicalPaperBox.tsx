@@ -17,7 +17,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   title: {
     fontFamily: "Brandon Grotesque",
     fontWeight: 700,
-    fontSize: "35px",
+    fontSize: "32px",
     lineHeight: "100%",
     color: palette.common.white,
     whiteSpace: "pre-line",

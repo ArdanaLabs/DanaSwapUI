@@ -19,7 +19,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     textAlign: "center",
     cursor: "pointer",
     width: "400px",
-    height: "500px",
+    height: "450px",
     background: palette.background.paper,
 
     [breakpoints.down("xs")]: {
@@ -60,7 +60,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   title: {
     fontFamily: "Brandon Grotesque",
     fontWeight: 900,
-    fontSize: "28px",
+    fontSize: "26px",
     lineHeight: "110%",
     color: palette.text.primary,
 
@@ -72,7 +72,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
   content: {
     fontFamily: "Museo Sans",
-    fontSize: "18px",
+    fontSize: "16px",
     lineHeight: "24px",
     color: palette.text.primary,
 

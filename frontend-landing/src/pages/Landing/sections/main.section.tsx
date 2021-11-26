@@ -62,7 +62,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
   subTitle: {
     color: palette.text.primary,
-    fontSize: "22px",
+    fontSize: "20px",
     fontFamily: "Museo Sans",
     fontStyle: "normal",
     fontWeight: 300,
