@@ -512,14 +512,14 @@ export const TechnicalPapers = [
 export const Listings = [
   {
     image: require("assets/listings/gate.io.svg").default,
-    link: "https://www.gate.io/",
+    link: "https://www.gate.io/trade/DANA_USDT",
   },
   {
     image: require("assets/listings/BitMart.svg").default,
-    link: "https://www.bitmart.com/",
+    link: "https://www.bitmart.com/trade/en?symbol=DANA_USDT&layout=basic",
   },
   {
     image: require("assets/listings/MEXC.svg").default,
-    link: "https://www.mexc.com/",
+    link: "https://www.mexc.com/exchange/DANA_USDT",
   },
 ];
