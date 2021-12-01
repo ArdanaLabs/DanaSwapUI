@@ -4,7 +4,7 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { useIsDarkMode } from "state/user/hooks";
 import cx from "classnames";
 import IMG_bg from "assets/backgrounds/launch-bg.png";
-import ReactPlayer from "react-player";
+import { default as ReactPlayer } from "react-player";
 import ScrollAnimation from "react-animate-on-scroll";
 
 const heroVideo =
