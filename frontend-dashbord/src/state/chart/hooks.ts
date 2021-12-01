@@ -21,6 +21,7 @@ export function useAggVolume () {
   const _getAggVolume = async (start: string, end: string, grain: string) => {
     const _aggVolume = await getAggVolume(start, end, grain)
     _aggVolume && dispatch(updateAggVolume(_aggVolume))
+    return _aggVolume
   }
 
   return {
@@ -41,6 +42,7 @@ export function useAggLiquidity () {
   ) => {
     const _aggLiquidity = await getAggLiquidity(start, end, grain)
     _aggLiquidity && dispatch(updateAggLiquidity(_aggLiquidity))
+    return _aggLiquidity
   }
 
   return {
@@ -61,6 +63,7 @@ export function usePoolFees () {
   ) => {
     const _poolFees = await getPoolFees(poolName, start, end, grain)
     _poolFees && dispatch(updatePoolFees(_poolFees))
+    return _poolFees;
   }
   return {
     poolFees,
@@ -81,6 +84,7 @@ export function usePoolVolume () {
   ) => {
     const _poolVolume = await getPoolVolume(poolName, start, end, grain)
     _poolVolume && dispatch(updatePoolVolume(_poolVolume))
+    return _poolVolume
   }
 
   return {
@@ -123,6 +127,7 @@ export function usePoolTxCount () {
   ) => {
     const _poolTXCount = await getPoolTXCount(poolName, start, end, grain)
     _poolTXCount && dispatch(updatePoolTXCount(_poolTXCount))
+    return _poolTXCount
   }
 
   return {
@@ -144,6 +149,7 @@ export function usePoolAPY () {
   ) => {
     const _poolAPY = await getPoolAPY(pool, start, end, grain)
     _poolAPY && dispatch(updatePoolAPY(_poolAPY))
+    return _poolAPY
   }
 
   return {
@@ -165,6 +171,7 @@ export function usePoolTransactions () {
   ) => {
     const _poolTransactions = await getPoolTransactions(pool, start, end, type)
     _poolTransactions && dispatch(updatePoolTransactions(_poolTransactions))
+    return _poolTransactions
   }
 
   return {

@@ -88,7 +88,7 @@ const StyledTablePagination = withStyles(({ palette }) => ({
     lineHeight: '115%',
     color: palette.secondary.main
   }
-}))(TablePagination) as typeof TablePagination
+}))(TablePagination) as any
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   panel: {
