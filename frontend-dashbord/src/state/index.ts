@@ -3,7 +3,6 @@ import { save, load } from "redux-localstorage-simple";
 import user from "./user/reducer";
 import home from "./home/reducer";
 import chart from "./chart/reducer";
-import loader from "./loader/reducer";
 
 const PERSISTED_KEYS: string[] = ["user"];
 
@@ -12,7 +11,6 @@ const store = configureStore({
     user,
     home,
     chart,
-    loader,
   },
   middleware: [
     ...getDefaultMiddleware({
@@ -24,7 +22,7 @@ const store = configureStore({
   ],
   preloadedState: load({
     states: PERSISTED_KEYS,
-    // disableWarnings: true,
+    disableWarnings: true,
   }),
 });
 

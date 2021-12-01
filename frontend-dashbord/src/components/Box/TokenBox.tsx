@@ -205,7 +205,7 @@ const TokenBox: React.FC<OverViewBoxProps> = ({
       <Box className={cx(classes.body)}>
         <Box className={cx(classes.amount)}>{amount}</Box>
         <Box className={cx(classes.other)}>
-          <Box className={cx(classes.maxButton)} onClick={onMaxAmount}>
+          <Box id='max_button' className={cx(classes.maxButton)} onClick={onMaxAmount}>
             MAX
           </Box>
           <Box className={cx(classes.token)} onClick={handleClickOpen}>
