@@ -381,6 +381,10 @@ export const Partners = [
     src: require("assets/logos/near.svg").default,
     url: "https://near.org/",
   },
+  {
+    src: require("assets/logos/chaoslabs.svg").default,
+    url: "https://chaoslabs.xyz/",
+  },
   // require("assets/logos/mlabs.svg").default,
   // require("assets/logos/defire.svg").default,
   // require("assets/logos/israel-bc.svg").default,
