@@ -46,15 +46,9 @@
 
       packages = forAllSystems (system: {
         frontend-dashboard = (dream2nix.riseAndShine {
-          sourceOverrides = oldSources: {
-            "ardana-application"."0.1.0" = ./frontend-dashbord;
-          };
           source = ./frontend-dashbord;
         }).defaultPackage.${system};
         frontend-landing = (dream2nix.riseAndShine {
-          sourceOverrides = oldSources: {
-            "premia-interface"."0.1.0" = ./frontend-landing;
-          };
           source = ./frontend-landing;
         }).defaultPackage.${system};
       });
