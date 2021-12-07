@@ -3,50 +3,35 @@ import cx from "classnames";
 import { Box, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 
-import { useDarkModeManager } from "state/user/hooks";
+import { useDarkModeManager, useIsDarkMode } from "state/user/hooks";
 
-import ICON_SUN from "assets/image/ICON-SUN.png";
-import ICON_MOON from "assets/image/ICON-MOON.png";
+import ICON_SUN from "assets/image/icons/sun.svg";
+import ICON_MOON from "assets/image/icons/moon.svg";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
-    margin: "0 10px",
-    padding: '0px 15px',
+    width: "75px",
     cursor: "pointer",
+    border: `2px solid ${palette.primary.main}`,
+    filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
     borderRadius: "100px",
-    display: "flex",
-    alignItems: "center",
-    width: "175px",
+    padding: "5px",
+  },
+  status: {
+    width: "25px",
+    height: "25px",
     background: palette.info.light,
-
-    [breakpoints.down('sm')]: {
-      width: 'auto',
-      padding: 5,
-      display: 'inline-flex',
-      lineHeight: '100%',
-      boderRadius: '50%',
-    }
-  },
-  switchIcon: {
-    padding: 5,
-    width: 28,
-    height: 28,
-  },
-  switchLabel: {
-    fontSize: "14px",
-    fontWeight: 700,
-    fontFamily: "Museo Sans",
-    color: "#FFFFFF",
-    flexGrow: 5,
-    textAlign: "center",
+    borderRadius: "100px",
+    boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
   },
 }));
 
 const ThemeSwitch: React.FC = () => {
-  const { breakpoints } = useTheme()
+  const { breakpoints } = useTheme();
+  const dark = useIsDarkMode();
   const [darkMode, setDarkMode] = useDarkModeManager();
-  const mobile = useMediaQuery(breakpoints.down('xs'))
-  const classes = useStyles();
+  const mobile = useMediaQuery(breakpoints.down("xs"));
+  const classes = useStyles({ dark, mobile });
 
   const toggleMode = () => {
     setDarkMode(!darkMode);
@@ -54,17 +39,14 @@ const ThemeSwitch: React.FC = () => {
 
   return (
     <Box
+      display="flex"
+      alignItems="center"
+      justifyContent="space-between"
       className={cx(classes.root)}
       onClick={toggleMode}
     >
-      <img
-        className={cx(classes.switchIcon)}
-        src={!darkMode ? ICON_MOON : ICON_SUN}
-        alt="Theme switch icon"
-      />
-      {!mobile && (<Box className={cx(classes.switchLabel)}>
-        {!darkMode ? "DARKMODE" : "LIGHTMODE"}
-      </Box>)}
+      <img src={dark ? ICON_SUN : ICON_MOON} alt="theme" />
+      <Box className={cx(classes.status)} />
     </Box>
   );
 };

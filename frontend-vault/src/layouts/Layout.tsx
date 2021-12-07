@@ -10,9 +10,8 @@ import { useIsDarkMode } from "state/user/hooks";
 import { Footer, Header } from "layouts";
 
 const useStyles = makeStyles(({ palette }) => ({
-  self: {
+  root: {
     background: palette.background.default,
-    paddingTop: "100px",
   },
 }));
 
@@ -27,7 +26,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const classes = useStyles({ dark, mobile });
 
   return (
-    <Box className={cx(classes.self)}>
+    <Box className={cx(classes.root)}>
       <Header />
       <Box>{children}</Box>
       <Footer />

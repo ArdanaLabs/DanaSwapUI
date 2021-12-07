@@ -6,24 +6,25 @@ import { useIsDarkMode } from "state/user/hooks";
 
 const useStyles = makeStyles(({ palette }) => ({
   input: {
-    position: 'relative',
+    position: "relative",
     "& > input": {
-      background: 'transparent',
+      background: "transparent",
       border: `1px solid ${palette.primary.main}`,
-      borderRadius: '50px',
-      padding: '10px 10px 10px 40px',
+      borderRadius: "50px",
+      padding: "10px 10px 10px 40px",
       color: palette.primary.main,
 
       "&:focus-visible": {
         outline: "unset",
       },
     },
-    '& > i': {
-      position: 'absolute',
-      left: '20px',
-      top: '12px',
-      color: palette.primary.main
-    }
+    "& > i": {
+      position: "absolute",
+      left: "20px",
+      top: "13px",
+      fontSize: "12px",
+      color: palette.primary.main,
+    },
   },
 }));
 
