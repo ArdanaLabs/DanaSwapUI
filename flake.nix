@@ -51,6 +51,9 @@
         frontend-landing = (dream2nix.riseAndShine {
           source = ./frontend-landing;
         }).defaultPackage.${system};
+        frontend-vault = (dream2nix.riseAndShine {
+          source = ./frontend-vault;
+        }).defaultPackage.${system};
       });
     };
 }
