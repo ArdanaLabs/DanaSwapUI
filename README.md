@@ -1,7 +1,36 @@
 # DanaSwapUI
 This project serves as the Front-end Web platform for the Ardana Application.
 
-## Build instructions
+## Build via Nix
+
+List all the outputs of the flake.nix with `nix flake show`
+
+1. Build the project of your choice:
+
+   ```
+   nix build .#frontend-landing
+   ```
+
+2. See the contents of the `result` file that is produced in the current
+   directory.
+
+   ```
+   user: matthew swordfish in DanaSwapUI on  flake [?]
+   ❯ tree result/lib/node_modules/ardana-application/build/ -L 2
+   result/lib/node_modules/ardana-application/build/
+   ├── asset-manifest.json
+   ├── favicon.ico
+   ├── index.html
+   ├── logo192.png
+   ├── manifest.json
+   ├── robots.txt
+   └── static
+       ├── css
+       ├── js
+       └── media
+   ```
+
+## Build via Npm
 To obtain an executable file, run:
 
 ```npm run build```
