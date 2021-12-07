@@ -46,7 +46,7 @@
 
       packages = forAllSystems (system: {
         frontend-dashboard = (dream2nix.riseAndShine {
-          source = ./frontend-dashbord;
+          source = ./frontend-dashboard;
         }).defaultPackage.${system};
         frontend-landing = (dream2nix.riseAndShine {
           source = ./frontend-landing;
