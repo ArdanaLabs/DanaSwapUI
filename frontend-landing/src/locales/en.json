@@ -4,73 +4,74 @@
       "HEADER": {
         "LINKS": [
           "HOME",
-          "RESOURCES",
+          "TECHNOLOGY",
+          "DOCUMENTATION",
           "ROADMAP",
+          "TEAM",
           "BLOG"
         ]
       },
-      "TITLE": "Decentralized\nStablecoin Hub",
-      "DESCRIPTION": "Decentralized Stablecoin and DEX Liquidity Pool. Built on Cardano.",
+      "TITLE": "Mint, Trade, Stake\nand <strong>Store Value</strong>",
+      "DESCRIPTION": "The First All-in-One Stablecoin Ecosystem Built on Cardano",
       "LAUNCH_PLATFORM": "LAUNCH PLATFORM",
+      "COMINGSOON": "COMING SOON",
       "ARDANA": {
         "QUESTION": "What is Ardana?",
-        "DESC": "Ardana is a decentralized financial hub and services provider built on Cardano that provides key DeFi primitives including a decentralized stablecoin exchange, stablecoins, a foreign exchange protocol and a multisignature protocol to power users and open finance applications on Cardano and beyond.",
+        "DESC": "Ardana is a decentralized stablecoin hub which will bring the necessary DeFi primitives needed to bootstrap & maintain any economy to Cardano.",
         "FEATURES": [
           {
             "TITLE": "Fully\nDecentralized",
-            "CONTENT": "Unbiased, multi-collateral backed pegged to the US Dollar and other currencies."
+            "CONTENT": "Unbiased, collateral backed and pegged to the US Dollar."
           },
           {
-            "TITLE": "Borrow\n& Lend",
-            "CONTENT": "Allow holders to borrow and lend the asset for use on exchanges like any other crypto asset."
+            "TITLE": "Borrowing",
+            "CONTENT": "Allows users to borrow stablecoins against locked collateral."
           },
           {
             "TITLE": "Store of\nValue",
-            "CONTENT": "Designed to function as a secure store of value that accrues value even in a volatile market."
+            "CONTENT": "Secure store of value preserving value even in volatile markets."
           },
           {
             "TITLE": "Powered by\nCardano",
-            "CONTENT": "Ardana stablecoins are designed to function as a store of value even in a volatile market."
+            "CONTENT": "Built utilizing Cardano’s speed, scalability and security."
           }
         ]
       },
       "DANASWAP": {
         "TITLE": "Danaswap",
-        "CONTENT": "Ardana is a decentralized financial hub and services provider built on Cardano that provides key DeFi primitives including a decentralized stablecoin exchange, stablecoins, a foreign exchange protocol and a multisignature protocol to power users and open finance applications on Cardano and beyond."
-      },
-      "STABLECOIN": {
-        "TITLE": "Stablecoin",
-        "CONTENT": "The Ardana Dollar (dUSD) is a decentralized, unbiased, on-chain, collateral, backed cryptocurrency soft-pegged to the US dollar. dUSD is held in cryptocurrency wallets or within platforms, and is supported on Cardano.",
+        "CONTENT": "An automated market maker (AMM) decentralized exchange for stable multi-asset pools. Danaswap is highly capital efficient enabling swaps with minimal slippage while providing low-risk yield opportunities for liquidity providers.",
+        "BUTTON": "LAUNCH DANASWAP",
         "FEATURES": [
           {
-            "TITLE": "Ultra-low\nSlippage",
-            "CONTENT": "Unbiased, multi-collateral backed pegged to the US Dollar and other currencies."
+            "TITLE": "Ultra-low Slippage",
+            "CONTENT": "Swap between stablecoins and stable assets such as wrapped/synthetic Bitcoin with minimal slippage."
           },
           {
-            "TITLE": "Savings\nAccount",
-            "CONTENT": "Allow holders to borrow and lend the asset for use on exchanges like any other crypto asset."
+            "TITLE": "Earn Trading Fees",
+            "CONTENT": "Deposit your assets into a DanaSwap pool and earn a proportion of the market making fees."
           },
           {
-            "TITLE": "Earn Market\nMaking Fees",
-            "CONTENT": "Allow holders to borrow and lend the asset for use on exchanges like any other crypto asset."
+            "TITLE": "Foreign Exchange",
+            "CONTENT": "Swap between international stablecoins such as dUSD, dEUR, dGBP and more."
           },
           {
-            "TITLE": "Foreign\nExchange",
-            "CONTENT": "Unbiased, multi-collateral backed pegged to the US Dollar and other currencies."
+            "TITLE": "DANA Token",
+            "CONTENT": "The governance token rewarded to users for supporting the ecosystem through liquidity provision."
           },
           {
-            "TITLE": "DANA Token\n\n",
-            "CONTENT": "Allow holders to borrow and lend the asset for use on exchanges like any other crypto asset."
-          },
-          {
-            "TITLE": "Governance\n\n",
-            "CONTENT": "Allow holders to borrow and lend the asset for use on exchanges like any other crypto asset."
+            "TITLE": "Governance",
+            "CONTENT": "DANA token holders can participate in polling and voting to influence the development of Ardana."
           }
         ]
       },
+      "STABLECOIN": {
+        "TITLE": "Stablecoin",
+        "CONTENT": "<strong>dUSD</strong> is verifiably backed by on-chain collateral and will enable borrowers to take leverage on their ADA or other supported assets.",
+        "BUTTON": "ARDANA STABLECOINS"
+      },
       "TOP-NOTCH": {
-        "TITLE": "Ardana with our top-notch team",
-        "CONTENT": "Our team is led by accomplished entrepreneurs and top-notch engineers from well-known companies such as Apple, Microsoft, Barclays, Cardano, Emurgo, and IG Index."
+        "TITLE": "Ardana has a\n<span>world class team</span>",
+        "CONTENT": "Our team is comprised of technical talent, early contributors,\nstudents and ambassadors of reputable companies and\nblockchain projects such as Apple, Microsoft, Barclays, Citi\nBank, Jane Street, Mina Protocol, Cardano, the Plutus Pioneers\nProgram and Emurgo Academy."
       },
       "PARTNERS": "Partners",
       "INVESTORS": "Investors",

@@ -9,12 +9,9 @@ export default function Updater(): null {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    localStorage.setItem(DARK_MODE_LOCALSTORAGE_KEY, '1')
     const userExistingDarkMode = Number(
       localStorage.getItem(DARK_MODE_LOCALSTORAGE_KEY)
-        ? localStorage.getItem(DARK_MODE_LOCALSTORAGE_KEY)
-        : 1
-    ); //  default to dark mode
+    );
 
     dispatch(
       updateUserDarkMode({ userDarkMode: Boolean(userExistingDarkMode) })

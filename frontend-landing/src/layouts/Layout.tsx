@@ -12,7 +12,7 @@ import { Footer, Header } from "layouts";
 const useStyles = makeStyles(({ palette }) => ({
   self: {
     background: palette.background.default,
-    paddingTop: "100px",
+    position: "relative",
   },
 }));
 
@@ -29,7 +29,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <Box className={cx(classes.self)}>
       <Header />
-      <Box>{children}</Box>
+      {children}
       <Footer />
     </Box>
   );

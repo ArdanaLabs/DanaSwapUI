@@ -12,14 +12,12 @@ const primaryLightDay =
 const primaryLightNight =
   "linear-gradient(89.62deg, #72D2F2 0.3%, #6077FF 99.64%)";
 
-const primaryMainDay = "#041484";
+const primaryMainDay = "#235DF4";
 const primaryMainNight = "#FFFFFF";
 
 const primaryDarkDay =
   "linear-gradient(90.19deg, #2F3DA0 27.19%, #73D6F1 99.87%)";
 const primaryDarkNight = "linear-gradient(0deg, #3142A3, #3142A3)";
-// const primaryDarkDay = "linear-gradient(180deg, #5F72FF 0%, #202F9A 100%)";
-// const primaryDarkNight = "linear-gradient(180deg, #73D6F1 0%, rgba(115, 214, 241, 0) 100%)";
 
 const secondaryMainDay = "#636060";
 const secondaryMainNight = "#FFFFFF";
@@ -31,28 +29,25 @@ const secondaryLightNight = "#131B59";
 const secondaryDarkDay = "#A5A5A5";
 const secondaryDarkNight = "rgba(24, 33, 100, 0.5)";
 
-const infoLightDay = "linear-gradient(89.62deg, #000A4F 0.3%, #3C4DC5 99.64%)";
-const infoLightNight = "linear-gradient(89.62deg, #72D2F2 0.3%, #6077FF 99.64%)";
+const infoMainDay = "#F5F5F5";
+const infoMainNight = "#2B3992";
 
-const infoMainDay = "#000000";
-const infoMainNight = "#000000";
+const infoDarkDay =
+  "linear-gradient(180deg, #A5A5A5 0%, #A5A5A5 54.17%, #A5A5A5 99.99%)";
+const infoDarkNight =
+  "linear-gradient(180deg, #73D6F1 0%, #5F72FF 99.99%, #2F3DA0 100%)";
 
-const infoDarkDay = "#6077FF";
-const infoDarkNight = "#000A4F";
+const backgroundDay = "#080E42";
+const backgroundNight = "#080E42";
 
-const backgroundDay = "#F9FBFF";
-const backgroundNight = "#010730";
+const backgroundPaperDay = "#1D277A";
+const backgroundPaperNight = "#1D277A";
 
-const backgroundPaperDay =
-  "linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%)";
-const backgroundPaperNight =
-  "linear-gradient(180deg, #131B59 0%, #2F3DA0 100%)";
+const textPrimaryDay = "#F5FCFE";
+const textPrimaryNight = "#F5FCFE";
 
-const textPrimaryDay = "#235DF4";
-const textPrimaryNight = "#FFFFFF";
-
-const textSecondaryDay = "#636060";
-const textSecondaryNight = "#FFFFFF";
+const textSecondaryDay = "#73D6F1";
+const textSecondaryNight = "#73D6F1";
 
 const textHintDay = "#636060";
 const textHintNight = "#73D6F1";
@@ -119,7 +114,6 @@ export const lightTheme = responsiveFontSizes(
         dark: secondaryDarkDay,
       },
       info: {
-        light: infoLightDay,
         main: infoMainDay,
         dark: infoDarkDay,
       },
@@ -306,6 +300,11 @@ export const lightTheme = responsiveFontSizes(
           width: "100px",
         },
       },
+      MuiTableCell: {
+        root: {
+          borderBottom: "1px solid #E5E5E5",
+        },
+      },
       MuiContainer: {
         fixed: {
           borderRadius: 12,
@@ -441,6 +440,14 @@ export const lightTheme = responsiveFontSizes(
           },
         },
       },
+      MuiTableSortLabel: {
+        root: {
+          "& img": {
+            width: 16,
+            marginLeft: 4,
+          },
+        },
+      },
       MuiBottomNavigation: {
         root: {
           background: "white",
@@ -520,7 +527,7 @@ export const lightTheme = responsiveFontSizes(
           background: "white",
           color: "black",
           borderRadius: "5px",
-        }
+        },
       },
       MuiStepButton: {},
       MuiStepConnector: {
@@ -613,7 +620,6 @@ export const darkTheme = responsiveFontSizes(
         dark: secondaryDarkNight,
       },
       info: {
-        light: infoLightNight,
         main: infoMainNight,
         dark: infoDarkNight,
       },
@@ -798,6 +804,19 @@ export const darkTheme = responsiveFontSizes(
         groupedHorizontal: {
           "&:not(:last-child) > div > div": {},
           "&:not(:first-child) > div > div": {},
+        },
+      },
+      MuiTableCell: {
+        root: {
+          borderBottom: "1px solid #E5E5E5",
+        },
+      },
+      MuiTableSortLabel: {
+        root: {
+          "& img": {
+            width: 16,
+            marginLeft: 4,
+          },
         },
       },
       MuiTabs: {
@@ -1113,7 +1132,7 @@ export const darkTheme = responsiveFontSizes(
           background: "white",
           color: "black",
           borderRadius: "5px",
-        }
+        },
       },
       MuiStepContent: {
         root: {

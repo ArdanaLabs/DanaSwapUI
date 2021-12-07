@@ -1,110 +1,245 @@
 import React from "react";
-import { Box, useMediaQuery, Container, Link } from "@material-ui/core";
+import { Box, useMediaQuery, Link, Container } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
+import _ from "lodash";
 
 import { useIsDarkMode } from "state/user/hooks";
 
-import DANA_LOGO_BLACK from 'assets/image/DANA-LOGO-BLACK.png'
-import DANA_LOGO_WHITE from 'assets/image/DANA-LOGO-WHITE.png'
-import { useHistory } from "react-router";
+import { externals, socials } from "data";
+import BG_WAVE from "assets/backgrounds/wave-gradient.png";
+import BG_WAVE_MOBILE from "assets/backgrounds/wave-mobile180-bg.png";
+import LOGO_BLUE from "assets/logo_blue.png";
+import { GradientButton } from "components";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
-    background: palette.background.default,
-    marginTop: "50px",
-    padding: 10,
-    filter: 'drop-shadow(35px 0px 15px rgba(0, 0, 0, 0.12))',
-  },
-
-  logo: {
-    paddingLeft: "10px",
+    background: `url(${BG_WAVE}) top left no-repeat`,
+    backgroundSize: "100%",
+    padding: "150px 0px 60px",
     display: "flex",
-    alignItems: "center",
-    cursor: "pointer",
-    "& img": {
-      padding: '20px 10px',
-      width: '60px',
-      
-      [breakpoints.down('sm')]: {
-        width: '50px',
-      }
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+
+    "& span": {
+      "&:first-child": {
+        fontFamily: "Brandon Grotesque",
+        fontSize: "20px",
+        lineHeight: "36px",
+        color: palette.text.secondary,
+        marginBottom: "12px",
+        fontWeight: 900,
+
+        [breakpoints.down("xs")]: {
+          fontSize: "20px",
+          marginBottom: "10px",
+        },
+      },
+      "& > a": {
+        color: palette.common.white,
+      },
+      fontFamily: "Museo Sans",
+      fontSize: "16px",
+      lineHeight: "24px",
+      cursor: "pointer",
+
+      [breakpoints.down("xs")]: {
+        fontSize: "16px",
+        lineHeight: "20px",
+      },
+    },
+
+    [breakpoints.down("xs")]: {
+      flexDirection: "column",
+      paddingLeft: "20px",
+      paddingRight: "20px",
+      textAlign: "center",
+      alignItems: "center",
+      background: `url(${BG_WAVE_MOBILE}) top -30px left no-repeat`,
+      backgroundSize: "100%",
     },
   },
 
   container: {
     display: "flex",
-    justifyContent: "space-between",
+    justifyContent: "center",
     alignItems: "center",
+    flexDirection: "column",
+    textAlign: "center",
   },
 
-  socialIconLink: {
-    borderRadius: "50%",
-    backgroundColor: "white",
-    padding: "10px",
-    marginRight: "20px",
-    cursor: "pointer",
-    color: "gray",
-    textAlign: "center",
-    transition: "background .2s",
-    fontFamily: "auto",
-
-    "& i": {
-      fontSize: '15px',
+  title: {
+    color: palette.text.secondary,
+    fontFamily: "Brandon Grotesque",
+    fontWeight: 900,
+    fontSize: "32px",
+    lineHeight: "100%",
+    [breakpoints.down("xs")]: {
+      fontSize: "25px",
+      lineHeight: "27.5px",
     },
+  },
 
-    "&:hover": {
-      backgroundColor: "lightgray",
-    },
+  logo: {
+    display: "inline-flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "250px",
+    height: "250px",
+    padding: "40px",
+    position: "relative",
+    lineHeight: 0,
 
-    [breakpoints.down('sm')]: {
-      padding: '6px 8px',
-      marginRight: '15px',
-      
-      "& i": {
-        fontSize: '12px',
+    "& > img": {
+      borderRadius: "50%",
+      [breakpoints.down("xs")]: {
+        width: "60px",
       },
-    }
+    },
+
+    [breakpoints.down("xs")]: {
+      width: "150px",
+      height: "150px",
+    },
+  },
+
+  photo: {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    display: "inline-flex",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: "50%",
+    [breakpoints.down("xs")]: {
+      width: "60px",
+    },
+  },
+
+  guide: {
+    width: "100%",
+    display: "flex",
+    justifyContent: "space-between",
+    textAlign: "left",
+
+    "& > .section": {
+      display: "flex",
+      flexDirection: "column",
+      marginBottom: "20px",
+
+      [breakpoints.down("xs")]: {
+        width: "33%",
+      },
+    },
+
+    [breakpoints.down("xs")]: {
+      flexFlow: "wrap",
+      textAlign: "center",
+    },
+  },
+
+  socials: {
+    display: "flex",
+    flexDirection: "column",
+    "& > .link-container": {
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      width: "280px",
+
+      "& > .link:hover path": {
+        fill: palette.text.secondary,
+      },
+
+      "& > .link svg": {
+        width: "22px",
+      },
+
+      [breakpoints.down("xs")]: {
+        width: "100%",
+      },
+    },
+
+    [breakpoints.down("xs")]: {
+      width: "100%",
+    },
   },
 }));
 
 const Footer: React.FC = () => {
-  const theme = useTheme();
+  const { breakpoints } = useTheme();
   const dark = useIsDarkMode();
-  const mobile = useMediaQuery(theme.breakpoints.down("xs"));
+  const mobile = useMediaQuery(breakpoints.down("xs"));
   const classes = useStyles({ dark, mobile });
-  const history = useHistory();
 
   return (
     <Box className={cx(classes.root)}>
-      <Container>
+      <Container maxWidth="md">
         <Box className={cx(classes.container)}>
-          <Box className={cx(classes.logo)} onClick={() => history.push('/')}>
-            <img
-              src={
-                theme.palette.type === 'dark'
-                  ? DANA_LOGO_WHITE
-                  : DANA_LOGO_BLACK
-              }
-              alt='DANA Logo'
-            />
+          <Box className={cx(classes.title)}>
+            Ardana is the leading stablecoin and stableswap DEX on Cardano
           </Box>
-          <Box>
-            <Link className={cx(classes.socialIconLink)} href="#">
-              <i className="fab fa-twitter"></i>
-            </Link>
-            <Link className={cx(classes.socialIconLink)} href="#">
-              <i className="fab fa-instagram"></i>
-            </Link>
-            <Link className={cx(classes.socialIconLink)} href="#">
-              <i className="fab fa-medium"></i>
-            </Link>
-            <Link className={cx(classes.socialIconLink)} href="#">
-              <i className="fab fa-youtube"></i>
-            </Link>
-            <Link className={cx(classes.socialIconLink)} href="#">
-              <i className="fab fa-linkedin"></i>
-            </Link>
+          <Box my={"30px"} className={cx(classes.logo)}>
+            <GradientButton
+              width={!mobile ? 175 : 100}
+              height={!mobile ? 175 : 100}
+              clickable={false}
+            />
+            <img className={cx(classes.photo)} src={LOGO_BLUE} alt="logo" />
+          </Box>
+          <Box className={cx(classes.guide)}>
+            {_.keys(externals).map((group) => (
+              <Box className="section" key={group}>
+                <span>{group}</span>
+                {_.keys(externals[group]).map((external) => (
+                  <span key={external}>
+                    <Link
+                      rel="noopener noreferrer"
+                      target={
+                        externals[group][external].charAt(0) === "/"
+                          ? "_self"
+                          : "_blank"
+                      }
+                      href={externals[group][external]}
+                      underline={
+                        externals[group][external] === "#" ? "none" : "hover"
+                      }
+                      style={
+                        externals[group][external] === "#"
+                          ? { pointerEvents: "none" }
+                          : { pointerEvents: "initial" }
+                      }
+                    >
+                      {external}
+                    </Link>
+                  </span>
+                ))}
+              </Box>
+            ))}
+            <Box className={cx(classes.socials)}>
+              <span>Our Socials</span>
+              <span>
+                Follow us to hear about Ardana
+                <br />
+                news and events.
+              </span>
+
+              <Box mt={"25px"} />
+              <Box className="link-container">
+                {socials.map((social: any, index: number) => (
+                  <Link
+                    className="link"
+                    href={social.url}
+                    key={index}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <social.image />
+                  </Link>
+                ))}
+              </Box>
+            </Box>
           </Box>
         </Box>
       </Container>
