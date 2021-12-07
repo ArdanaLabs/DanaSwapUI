@@ -23,5 +23,6 @@ cabal.project.local~
 .ghc.environment.*
 frontend-dashbord/yarn.lock
 nodejs-websocket-example
+*result*
 
 frontend-dashbord/.env
