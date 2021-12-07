@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.5.0/css/all.min.css");
+
+@font-face {
+  font-family: "Museo Sans";
+  src: local("Museo Sans 300"),
+    url("./assets/font/Museo Sans/MuseoSans_300.otf") format("opentype");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Museo Sans";
+  src: local("Museo Sans 500"),
+    url("./assets/font/Museo Sans/MuseoSans_500.otf") format("opentype");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Museo Sans";
+  src: local("Museo Sans 700"),
+    url("./assets/font/Museo Sans/MuseoSans_700.otf") format("opentype");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "Museo Sans";
+  src: local("Museo Sans 900"),
+    url("./assets/font/Museo Sans/MuseoSans_900.otf") format("opentype");
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: "Brandon Grotesque";
+  src: local("Brandon Grotesque Bold"),
+    url("./assets/font/Brandon-Grotesque-Font-Family/brandon-grotesque-bold-regular.ttf")
+      format("truetype");
+  font-weight: 900;
+}
+@font-face {
+  font-family: "Brandon Grotesque";
+  src: local("Brandon Grotesque Light"),
+    url("./assets/font/Brandon-Grotesque-Font-Family/brandon-grotesque-light.otf")
+      format("opentype");
+  font-weight: 300;
+}
+
+* {
+  transition: all 0.2s ease-in;
+}
+
+.hamburger-react > div {
+  height: 4px !important;
+  border-radius: 5px;
+  width: 30px !important;
+  background: linear-gradient(90deg, #5f72ff 0%, #73d6f1 100%) !important;
+}

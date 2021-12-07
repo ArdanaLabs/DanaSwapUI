@@ -1,0 +1,110 @@
+{
+  "PAGE": {
+    "LANDING": {
+      "HEADER": {
+        "LINKS": [
+          "HOME",
+          "TECHNOLOGY",
+          "DOCUMENTATION",
+          "ROADMAP",
+          "TEAM",
+          "BLOG"
+        ]
+      },
+      "TITLE": "Mint, Trade, Stake\nand <strong>Store Value</strong>",
+      "DESCRIPTION": "The First All-in-One Stablecoin Ecosystem Built on Cardano",
+      "LAUNCH_PLATFORM": "LAUNCH PLATFORM",
+      "COMINGSOON": "COMING SOON",
+      "ARDANA": {
+        "QUESTION": "What is Ardana?",
+        "DESC": "Ardana is a decentralized stablecoin hub which will bring the necessary DeFi primitives needed to bootstrap & maintain any economy to Cardano.",
+        "FEATURES": [
+          {
+            "TITLE": "Fully\nDecentralized",
+            "CONTENT": "Unbiased, collateral backed and pegged to the US Dollar."
+          },
+          {
+            "TITLE": "Borrowing",
+            "CONTENT": "Allows users to borrow stablecoins against locked collateral."
+          },
+          {
+            "TITLE": "Store of\nValue",
+            "CONTENT": "Secure store of value preserving value even in volatile markets."
+          },
+          {
+            "TITLE": "Powered by\nCardano",
+            "CONTENT": "Built utilizing Cardano’s speed, scalability and security."
+          }
+        ]
+      },
+      "DANASWAP": {
+        "TITLE": "Danaswap",
+        "CONTENT": "An automated market maker (AMM) decentralized exchange for stable multi-asset pools. Danaswap is highly capital efficient enabling swaps with minimal slippage while providing low-risk yield opportunities for liquidity providers.",
+        "BUTTON": "LAUNCH DANASWAP",
+        "FEATURES": [
+          {
+            "TITLE": "Ultra-low Slippage",
+            "CONTENT": "Swap between stablecoins and stable assets such as wrapped/synthetic Bitcoin with minimal slippage."
+          },
+          {
+            "TITLE": "Earn Trading Fees",
+            "CONTENT": "Deposit your assets into a DanaSwap pool and earn a proportion of the market making fees."
+          },
+          {
+            "TITLE": "Foreign Exchange",
+            "CONTENT": "Swap between international stablecoins such as dUSD, dEUR, dGBP and more."
+          },
+          {
+            "TITLE": "DANA Token",
+            "CONTENT": "The governance token rewarded to users for supporting the ecosystem through liquidity provision."
+          },
+          {
+            "TITLE": "Governance",
+            "CONTENT": "DANA token holders can participate in polling and voting to influence the development of Ardana."
+          }
+        ]
+      },
+      "STABLECOIN": {
+        "TITLE": "Stablecoin",
+        "CONTENT": "<strong>dUSD</strong> is verifiably backed by on-chain collateral and will enable borrowers to take leverage on their ADA or other supported assets.",
+        "BUTTON": "ARDANA STABLECOINS"
+      },
+      "TOP-NOTCH": {
+        "TITLE": "Ardana has a\n<span>world class team</span>",
+        "CONTENT": "Our team is comprised of technical talent, early contributors,\nstudents and ambassadors of reputable companies and\nblockchain projects such as Apple, Microsoft, Barclays, Citi\nBank, Jane Street, Mina Protocol, Cardano, the Plutus Pioneers\nProgram and Emurgo Academy."
+      },
+      "PARTNERS": "Partners",
+      "INVESTORS": "Investors",
+      "FOOTER": {
+        "RESOURCES": {
+          "LABEL": "Resources",
+          "LIST": [
+            "Whitepaper",
+            "Pitch Deek",
+            "Roadmap",
+            "Docs"
+          ]
+        },
+        "PRODUCTS": {
+          "LABEL": "Products",
+          "LIST": [
+            "DEX",
+            "Stablecoin",
+            "Multisig"
+          ]
+        },
+        "FOUNDATION": {
+          "LABEL": "Foundation",
+          "LIST": [
+            "Contact Us",
+            "Careers"
+          ]
+        },
+        "SOCIAL": {
+          "LABEL": "Our Socials",
+          "CONTENT": "Follow us to hear about Ardana updates and events"
+        }
+      }
+    }
+  }
+}
