@@ -33,11 +33,9 @@
           overridesDirs = [ "${inputs.dream2nix}/overrides" ];
         };
       };
-
     in
-
     {
-      overlay = final: prev: {};
+      overlay = final: prev: { };
 
       ciNix = flake-compat-ci.lib.recurseIntoFlakeWith {
         flake = self;
@@ -55,5 +53,19 @@
           source = ./frontend-vault;
         }).defaultPackage.${system};
       });
+
+      devShell = forAllSystems (system:
+        let
+          pkgs = nixpkgsFor."${system}";
+        in
+        pkgs.mkShell {
+          name = "DanaSwapUI";
+          buildInputs = with pkgs; [
+            nodejs
+          ];
+          shellHook = ''
+            export PATH="$PWD/node_modules/.bin/:$PATH"
+          '';
+        });
     };
 }
