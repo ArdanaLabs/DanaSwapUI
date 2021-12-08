@@ -19,7 +19,7 @@ const HelpSection: React.FC = () => {
   return (
     <Box className={cx(classes.root)}>
       <Container>
-        <Grid container spacing={5} alignItems="stretch">
+        <Grid container spacing={!mobile ? 5 : 3} alignItems="stretch">
           <Grid item xs={12} sm={6}>
             <HelpCard
               title="Dana Coin"

@@ -21,7 +21,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   typographySecondary: {
     fontFamily: 'Museo Sans',
     fontStyle: 'normal',
-    fontWeight: 'normal',
+    fontWeight: 100,
     opacity: '0.8'
   },
   row: {
