@@ -26,6 +26,7 @@ nodejs-websocket-example
 *result*
 
 frontend-dashbord/.env
+.direnv/
 
 # OS generated files
 .DS_Store
