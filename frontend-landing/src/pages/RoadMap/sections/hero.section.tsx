@@ -107,7 +107,7 @@ const HeroSection: React.FC = () => {
         loop={true}
         muted
         width={!mobile ? "100%" : "unset"}
-        height={"600px"}
+        height={"500px"}
         playbackRate={0.3}
       />
       <Box className={cx(classes.container)}>
