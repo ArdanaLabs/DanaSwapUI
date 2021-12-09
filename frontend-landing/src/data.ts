@@ -553,4 +553,13 @@ export const Roadmap = {
     "Partnership Project Integrations",
   ],
   "Q4 2022": ["Danaswap Foreign Exchange"],
+  "2023+": [
+    "Tokenized Asset Vaults",
+    "Alternative Stablecoin Currency Vaults",
+    "Mobile Application",
+    "Real World Asset Vaults",
+    "Fiat Gateways",
+    "Institutional Platform Development",
+    "Liquidity Incentives Program",
+  ],
 };
