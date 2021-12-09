@@ -1,18 +1,19 @@
 import React from "react";
-import { Box, useMediaQuery, Container } from "@material-ui/core";
+import { Box, useMediaQuery, Container, Grid } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
-import ReactPlayer from "react-player";
+// import ReactPlayer from "react-player";
 import ScrollAnimation from "react-animate-on-scroll";
 import i18next from "i18next";
 
 import { useIsDarkMode } from "state/user/hooks";
 import { GradientButton } from "components/Button";
 
-// import BG_VECTEEZY from "assets/backgrounds/vecteezy.png";
+import BG_VECTEEZY from "assets/backgrounds/vecteezy.png";
+import IMG_STABLECOIN from "assets/logos/stablecoin-logo.png";
 
-const heroVideo =
-  "https://background.sfo3.digitaloceanspaces.com/team/output.webm";
+// const heroVideo =
+//   "https://background.sfo3.digitaloceanspaces.com/team/output.webm";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -30,7 +31,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       height: "600px",
 
       [breakpoints.down("xs")]: {
-        height: "400px",
+        height: "600px",
       },
     },
   },
@@ -43,7 +44,8 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     display: "flex",
     alignItems: "center",
     // background: "rgba(24, 34, 113, 0.6)",
-    background: "linear-gradient(180deg, rgba(4, 13, 77, 0.7) -43.4%, rgba(50, 3, 111, 0.7) 222.51%)",
+    background:
+      "linear-gradient(180deg, rgba(4, 13, 77, 0.7) -43.4%, rgba(50, 3, 111, 0.7) 222.51%)",
 
     [breakpoints.down("xs")]: {
       textAlign: "center",
@@ -68,7 +70,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontWeight: 300,
     fontSize: "16px",
     lineHeight: "26px",
-    width: "50%",
+    width: "100%",
     color: palette.text.primary,
     marginTop: "30px",
 
@@ -90,7 +92,7 @@ const StableCoinSection: React.FC = () => {
 
   return (
     <Box className={cx(classes.root)}>
-      <ReactPlayer
+      {/* <ReactPlayer
         url={heroVideo}
         playing={true}
         loop={true}
@@ -98,31 +100,40 @@ const StableCoinSection: React.FC = () => {
         width={!mobile ? "100%" : "unset"}
         height={!mobile ? "600px" : "400px"}
         playbackRate={0.3}
-      />
-      {/* <Box className={cx(classes.background)}>
+      /> */}
+      <Box className={cx(classes.background)}>
         <img src={BG_VECTEEZY} alt="bg" />
-      </Box> */}
+      </Box>
       <Box className={cx(classes.container)}>
         <Container>
-          <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-            <Box className={cx(classes.title)}>
-              {i18next.t("PAGE.LANDING.STABLECOIN.TITLE")}
-            </Box>
-          </ScrollAnimation>
-          <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-            <Box
-              className={cx(classes.content)}
-              dangerouslySetInnerHTML={{
-                __html: i18next.t("PAGE.LANDING.STABLECOIN.CONTENT", {
-                  interpolation: { escapeValue: false },
-                }),
-              }}
-            />
-          </ScrollAnimation>
-          <Box mt={!mobile ? "50px" : "30px"} />
-          <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-            <GradientButton label={"COMING SOON"} width={160} height={40} />
-          </ScrollAnimation>
+          <Grid container spacing={2} alignItems="center">
+            <Grid item xs={12} sm={6}>
+              <Box display="flex" justifyContent="center" alignItems={"center"}>
+                <img alt="stablecoin" src={IMG_STABLECOIN} width={"80%"} />
+              </Box>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
+                <Box className={cx(classes.title)}>
+                  {i18next.t("PAGE.LANDING.STABLECOIN.TITLE")}
+                </Box>
+              </ScrollAnimation>
+              <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
+                <Box
+                  className={cx(classes.content)}
+                  dangerouslySetInnerHTML={{
+                    __html: i18next.t("PAGE.LANDING.STABLECOIN.CONTENT", {
+                      interpolation: { escapeValue: false },
+                    }),
+                  }}
+                />
+              </ScrollAnimation>
+              <Box mt={!mobile ? "50px" : "30px"} />
+              <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
+                <GradientButton label={"COMING SOON"} width={160} height={40} />
+              </ScrollAnimation>
+            </Grid>
+          </Grid>
         </Container>
       </Box>
     </Box>
