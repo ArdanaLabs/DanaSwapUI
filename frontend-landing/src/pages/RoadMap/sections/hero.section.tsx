@@ -93,7 +93,11 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 }));
 
-const HeroSection: React.FC = () => {
+interface Props {
+  handleCarousel: (direction: number) => void;
+}
+
+const HeroSection: React.FC<Props> = ({ handleCarousel }) => {
   const { breakpoints } = useTheme();
   const dark = useIsDarkMode();
   const mobile = useMediaQuery(breakpoints.down("xs"));
@@ -118,14 +122,14 @@ const HeroSection: React.FC = () => {
         </Container>
 
         <Box className={cx(classes.actionBar)}>
-          <Box className={cx(classes.image)}>
+          <Box className={cx(classes.image)} onClick={() => handleCarousel(-1)}>
             <GradientButton
               width={!mobile ? 75 : 50}
               height={!mobile ? 75 : 50}
             />
             <img className={cx(classes.photo)} src={ICO_PREV} alt="prev" />
           </Box>
-          <Box className={cx(classes.image)}>
+          <Box className={cx(classes.image)} onClick={() => handleCarousel(1)}>
             <GradientButton
               width={!mobile ? 75 : 50}
               height={!mobile ? 75 : 50}

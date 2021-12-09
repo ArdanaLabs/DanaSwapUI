@@ -8,7 +8,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
     padding: "20px",
     width: "100%",
+
     "& .title": {
+      position: "relative",
       padding: "20px 0px 20px 0px",
 
       "& span": {
