@@ -6,3 +6,4 @@ export { default as StableCoinSection } from "./stablecoin.section";
 export { default as PartnerSection } from "./partner.section";
 export { default as InvestorsSection } from "./investors.section";
 export { default as TechSection } from "./tech.section";
+export { default as RoadMapSection } from "./roadmap.section";

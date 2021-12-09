@@ -23,8 +23,8 @@ export const Menus = [
   },
   {
     label: i18next.t("PAGE.LANDING.HEADER.LINKS.3"),
-    to: "https://faceted-wash-97d.notion.site/cb0d147034e6439f8e70b2698ce199f2?v=fbf6185ab5f143eb9e22064fd9647814",
-    blank: true,
+    // to: "https://faceted-wash-97d.notion.site/cb0d147034e6439f8e70b2698ce199f2?v=fbf6185ab5f143eb9e22064fd9647814",
+    to: "/roadmap",
   },
   {
     label: i18next.t("PAGE.LANDING.HEADER.LINKS.4"),
@@ -527,3 +527,30 @@ export const Listings = [
     link: "https://www.mexc.com/exchange/DANA_USDT",
   },
 ];
+
+export const Roadmap = {
+  "Q1 2021": ["Project Conception", "Danaswap Development"],
+  "Q2 2021": ["Stablecoin Development", "Seed Sale", "Whitepaper Release"],
+  "Q3 2021": ["Plutus Contract Audits", "Private Sale", "AREM Development"],
+  "Q4 2021": [
+    "Public Sale",
+    "Token Generation Event",
+    "CEX Listing",
+    "Ardana Academy Opening",
+  ],
+  "Q1 2022": [
+    "Futher Wallet Integration",
+    "Stablecoin Release",
+    "Danaswap Release",
+  ],
+  "Q2 2022": [
+    "Danaswap V2 Release",
+    "Community Ambassador Program",
+    "Governance Transition",
+  ],
+  "Q3 2022": [
+    "Third Party Integration Expansion",
+    "Partnership Project Integrations",
+  ],
+  "Q4 2022": ["Danaswap Foreign Exchange"],
+};
