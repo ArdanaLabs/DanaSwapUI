@@ -23,8 +23,8 @@ export const Menus = [
   },
   {
     label: i18next.t("PAGE.LANDING.HEADER.LINKS.3"),
-    to: "https://faceted-wash-97d.notion.site/cb0d147034e6439f8e70b2698ce199f2?v=fbf6185ab5f143eb9e22064fd9647814",
-    blank: true,
+    // to: "https://faceted-wash-97d.notion.site/cb0d147034e6439f8e70b2698ce199f2?v=fbf6185ab5f143eb9e22064fd9647814",
+    to: "/roadmap",
   },
   {
     label: i18next.t("PAGE.LANDING.HEADER.LINKS.4"),

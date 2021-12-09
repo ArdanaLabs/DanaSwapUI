@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, useMediaQuery, Container, Grid } from "@material-ui/core";
+import { Box, useMediaQuery, Container, Grid, Link } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
 import ReactPlayer from "react-player";
@@ -119,11 +119,13 @@ const RoadMapSection: React.FC = () => {
               </ScrollAnimation>
               <Box mt={!mobile ? "50px" : "30px"} />
               <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-                <GradientButton
-                  label={"VIEW ROADMAP"}
-                  width={160}
-                  height={40}
-                />
+                <Link href={"/roadmap"}>
+                  <GradientButton
+                    label={"VIEW ROADMAP"}
+                    width={160}
+                    height={40}
+                  />
+                </Link>
               </ScrollAnimation>
             </Grid>
           </Grid>
