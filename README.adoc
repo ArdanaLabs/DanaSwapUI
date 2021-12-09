@@ -1,0 +1,117 @@
+DanaSwapUI
+==========
+
+Ardana application’s front-end web platforms
+
+NOTE: This looks like a monorepo, but doesn’t quack like one. Without
+workspace support for `dream2nix`, this should likely be split out into
+individual repositories as there’s no advantage in keeping these together.
+
+== Build
+
+=== Build Via Nix
+
+List all the outputs of the flake.nix with `nix flake show`
+
+. Build the project of your choice:
++
+[source,shell-session]
+----
+$ nix build .#frontend-{dashboard,landing,…}
+----
+
+. See the contents of the `result` file that is produced in the current
+  directory.
++
+[source,shell-session]
+----
+$ tree result/lib/node_modules/ardana-${application}/build/ -L 2
+result/lib/node_modules/ardana-application/build/
+├── asset-manifest.json
+├── favicon.ico
+├── index.html
+├── logo192.png
+├── manifest.json
+├── robots.txt
+└── static
+    ├── css
+    ├── js
+    └── media
+----
+
+=== Build via Npm
+
+.Obtaining an executable file
+[source,shell-session]
+----
+$ npm run build
+----
+
+== Developer setup
+
+=== Installation
+
+:abbr-LTS: pass:[<abbr title="long-term support">LTS</abbr>]
+:table-caption!:
+
+[%autowidth,frame=none]
+.Requirements
+|===
+|package |version| notes
+
+|nodejs |`>=16` | {abbr-LTS}
+|npm |`>=6` |
+|===
+
+These requirements are provided in the Nix development shell or get them from
+your system’s package manager, then
+
+.From _inside_ each project
+[source,shell-session]
+----
+$ npm install --legacy-peer-deps
+----
+
+This will install the rest of packages from NPM to build the front-end.
+
+NOTE: As of now the `--legacy-peer-deps` is required to resolve certain
+downstream dependencies
+
+=== Workflow instructions
+
+Refer to the projects’ `package.json` for details, but a quick start:
+
+.Start development server from project directories
+[source,shell-session]
+----
+$ npm --workspace=frontend start
+----
+
+.Run test suites from project directories
+[source,shell-session]
+----
+$ npm run test
+----
+
+.Lint files from project directories
+[source,shell-session]
+----
+$ npm run lint
+----
+
+=== Directory structure explanation
+
+`frontend-dashboard` | `frontend-landing`::
+* `src/assets` - the resources contains images, icons, fonts, etc.
+* `src/components` - the source code for commonly used components
+* `src/config` - the contraints
+* `src/hooks` - the source code for utility functions
+* `src/layouts` - the source code for theme template
+* `src/locales` - the assets for translation
+* `src/pages` - the source code for pages
+* `src/state` - the source code for redux setup
+
+Core branches::
+* `main`
+* `staging`
+* `dev`
