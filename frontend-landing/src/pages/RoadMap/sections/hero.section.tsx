@@ -2,12 +2,14 @@ import React from "react";
 import { Box, useMediaQuery, Container } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import cx from "classnames";
+import i18next from "i18next";
 import ReactPlayer from "react-player";
-import ScrollAnimation from "react-animate-on-scroll";
 
 import { useIsDarkMode } from "state/user/hooks";
+import { GradientButton } from "components/Button";
 
-// import BG_VECTEEZY from "assets/backgrounds/vecteezy.png";
+import ICO_NEXT from "assets/icons/carousel-next.svg";
+import ICO_PREV from "assets/icons/carousel-prev.svg";
 
 const heroVideo =
   "https://background.sfo3.digitaloceanspaces.com/team/output.webm";
@@ -39,7 +41,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     height: "100%",
     display: "flex",
     alignItems: "center",
-    // background: "rgba(24, 34, 113, 0.6)",
+    justifyContent: "center",
     background:
       "linear-gradient(180deg, rgba(4, 13, 77, 0.7) -43.4%, rgba(50, 3, 111, 0.7) 222.51%)",
 
@@ -53,33 +55,40 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontWeight: 900,
     fontSize: "60px",
     lineHeight: "100%",
-    color: palette.text.primary,
-
-    "& > span": {
-      color: palette.text.secondary,
-    },
+    color: palette.text.secondary,
 
     [breakpoints.down("xs")]: {
       fontSize: "35px",
     },
   },
 
-  content: {
-    fontFamily: "Museo Sans",
-    fontStyle: "normal",
-    fontWeight: 300,
-    fontSize: "16px",
-    lineHeight: "25px",
-    width: "50%",
-    color: palette.text.primary,
-    marginTop: "30px",
+  actionBar: {
+    display: "flex",
+    position: "absolute",
+    left: "50%",
+    bottom: "20px",
+    transform: "translate(-50%, 0%)",
+  },
+
+  image: {
+    position: "relative",
+    lineHeight: 0,
+    margin: "20px 10px",
+  },
+
+  photo: {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    display: "inline-flex",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: "50%",
+    width: "25px",
 
     [breakpoints.down("xs")]: {
-      fontSize: "16px",
-      lineHeight: "18.4px",
-      width: "100%",
-      marginTop: "15px",
-      padding: "0px 10px",
+      width: "18px",
     },
   },
 }));
@@ -101,27 +110,29 @@ const HeroSection: React.FC = () => {
         height={"600px"}
         playbackRate={0.3}
       />
-      {/* <Box className={cx(classes.background)}>
-        <img src={BG_VECTEEZY} alt="bg" />
-      </Box> */}
       <Box className={cx(classes.container)}>
         <Container>
-          <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-            <Box className={cx(classes.title)} mt="50px">
-              Ardana has a <br />
-              <span>world class</span> team
-            </Box>
-          </ScrollAnimation>
-          <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-            <Box className={cx(classes.content)}>
-              Our team is comprised of technical talent, early contributors,
-              students and ambassadors of reputable companies and blockchain
-              projects such as Apple, Microsoft, Barclays, Citi Bank, State
-              Street, Mina Protocol, Cardano, the Plutus Pioneers Program and
-              Emurgo Academy.
-            </Box>
-          </ScrollAnimation>
+          <Box className={cx(classes.title)} textAlign={"center"}>
+            {i18next.t("PAGE.LANDING.ROADMAP.TITLE")}
+          </Box>
         </Container>
+
+        <Box className={cx(classes.actionBar)}>
+          <Box className={cx(classes.image)}>
+            <GradientButton
+              width={!mobile ? 75 : 50}
+              height={!mobile ? 75 : 50}
+            />
+            <img className={cx(classes.photo)} src={ICO_PREV} alt="prev" />
+          </Box>
+          <Box className={cx(classes.image)}>
+            <GradientButton
+              width={!mobile ? 75 : 50}
+              height={!mobile ? 75 : 50}
+            />
+            <img className={cx(classes.photo)} src={ICO_NEXT} alt="next" />
+          </Box>
+        </Box>
       </Box>
     </Box>
   );
