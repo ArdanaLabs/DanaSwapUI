@@ -458,7 +458,8 @@ export const externals: any = {
   Resources: {
     Technology: "/tech",
     Documentation: "https://docs.ardana.org/",
-    "Pitch Deck": "https://docsend.com/view/kc5m2snw7t77fs5r",
+    // "Pitch Deck": "https://docsend.com/view/kc5m2snw7t77fs5r",
+    "Pitch Deck": "https://docsend.com/view/ps9hsr88m834pj98",
     "Brand Assets": "/brandassets",
   },
   Products: {
