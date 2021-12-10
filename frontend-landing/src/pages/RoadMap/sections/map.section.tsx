@@ -1,16 +1,16 @@
-import React from "react";
-import { Box, useMediaQuery } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import cx from "classnames";
-import Carousel from "react-elastic-carousel";
+import React from "react"
+import { Box, useMediaQuery } from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import cx from "classnames"
+import Carousel from "react-elastic-carousel"
 
-import { useIsDarkMode } from "state/user/hooks";
-import { Roadmap } from "data";
-import RoadmapBox from "components/Box/RoadmapBox";
+import { useIsDarkMode } from "state/user/hooks"
+import { Roadmap } from "data"
+import RoadmapBox from "components/Box/RoadmapBox"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
-    minHeight: "100vh",
+    "minHeight": "100vh",
 
     "& .rec": {
       pointerEvents: "none",
@@ -28,20 +28,20 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       // zIndex: 1000,
     },
   },
-}));
+}))
 
 interface Props {
-  carouselRef: any;
+  carouselRef: any
 }
 
 const MapSection: React.FC<Props> = ({ carouselRef }) => {
-  const { breakpoints } = useTheme();
-  const dark = useIsDarkMode();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const classes = useStyles({ dark, mobile });
+  const { breakpoints } = useTheme()
+  const dark = useIsDarkMode()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark, mobile })
 
-  const renderArrow = () => <></>;
-  const renderPagination = () => <></>;
+  const renderArrow = () => <></>
+  const renderPagination = () => <></>
 
   return (
     <Box className={cx(classes.root)}>
@@ -58,7 +58,7 @@ const MapSection: React.FC<Props> = ({ carouselRef }) => {
         ))}
       </Carousel>
     </Box>
-  );
-};
+  )
+}
 
-export default MapSection;
+export default MapSection

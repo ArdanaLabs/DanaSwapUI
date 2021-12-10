@@ -1,9 +1,9 @@
-import React from "react";
-import cx from "classnames";
-import { Box, Link, useMediaQuery } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import { useIsDarkMode } from "state/user/hooks";
-import { GradientButton } from "components";
+import React from "react"
+import cx from "classnames"
+import { Box, Link, useMediaQuery } from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import { useIsDarkMode } from "state/user/hooks"
+import { GradientButton } from "components"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -26,12 +26,12 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       fontSize: "30px",
     },
   },
-}));
+}))
 
 interface TechnicalPaperBoxProps {
-  image: string;
-  title: string;
-  link: string;
+  image: string
+  title: string
+  link: string
 }
 
 const TechnicalPaperBox: React.FC<TechnicalPaperBoxProps> = ({
@@ -39,10 +39,10 @@ const TechnicalPaperBox: React.FC<TechnicalPaperBoxProps> = ({
   title,
   link,
 }) => {
-  const { breakpoints } = useTheme();
-  const dark = useIsDarkMode();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const classes = useStyles({ dark, mobile });
+  const { breakpoints } = useTheme()
+  const dark = useIsDarkMode()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark, mobile })
 
   return (
     <Box className={cx(classes.root)} position="relative">
@@ -59,7 +59,7 @@ const TechnicalPaperBox: React.FC<TechnicalPaperBoxProps> = ({
         </Box>
       </Box>
     </Box>
-  );
-};
+  )
+}
 
-export default TechnicalPaperBox;
+export default TechnicalPaperBox

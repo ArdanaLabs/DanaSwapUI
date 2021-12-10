@@ -1,8 +1,8 @@
-import React from "react";
-import cx from "classnames";
-import { Box, Link, useMediaQuery } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import { useIsDarkMode } from "state/user/hooks";
+import React from "react"
+import cx from "classnames"
+import { Box, Link, useMediaQuery } from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import { useIsDarkMode } from "state/user/hooks"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -14,7 +14,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     },
   },
   brand: {
-    marginBottom: "10px",
+    "marginBottom": "10px",
     "& > img": {
       height: "45px",
     },
@@ -57,16 +57,16 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     width: "100%",
     cursor: "pointer",
   },
-}));
+}))
 
 interface BrandAssetProps {
-  brand?: string;
-  title: string;
-  content: string;
+  brand?: string
+  title: string
+  content: string
   button: {
-    label: string;
-    link?: string;
-  };
+    label: string
+    link?: string
+  }
 }
 
 const BrandAsset: React.FC<BrandAssetProps> = ({
@@ -75,10 +75,10 @@ const BrandAsset: React.FC<BrandAssetProps> = ({
   content,
   button,
 }) => {
-  const { breakpoints } = useTheme();
-  const dark = useIsDarkMode();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const classes = useStyles({ dark, mobile });
+  const { breakpoints } = useTheme()
+  const dark = useIsDarkMode()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark, mobile })
 
   return (
     <Box className={cx(classes.root)}>
@@ -98,7 +98,7 @@ const BrandAsset: React.FC<BrandAssetProps> = ({
       )}
       {!button.link && <Box className={cx(classes.button)}>{button.label}</Box>}
     </Box>
-  );
-};
+  )
+}
 
-export default BrandAsset;
+export default BrandAsset

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from "react"
 import {
   Box,
   useMediaQuery,
@@ -8,128 +8,128 @@ import {
   TableRow,
   TableCell,
   TableBody,
-  TableFooter
-} from '@material-ui/core'
-import { makeStyles, useTheme, withStyles } from '@material-ui/core/styles'
-import cx from 'classnames'
-import { useIsDarkMode } from 'state/user/hooks'
-import { SearchInput } from 'components/Input'
-import { Button } from 'components/Button'
-import { usePoolStats } from 'state/home/hooks'
-import { keys } from 'lodash'
-import { useHistory } from 'react-router-dom'
-import { nFormatter } from 'hooks'
+  TableFooter,
+} from "@material-ui/core"
+import { makeStyles, useTheme, withStyles } from "@material-ui/core/styles"
+import cx from "classnames"
+import { useIsDarkMode } from "state/user/hooks"
+import { SearchInput } from "components/Input"
+import { Button } from "components/Button"
+import { usePoolStats } from "state/home/hooks"
+import { keys } from "lodash"
+import { useHistory } from "react-router-dom"
+import { nFormatter } from "hooks"
 
 const FILTER_STABLECOINS = 0
 const FILTER_DIGITALASSESTS = 1
 
 const StyledTableCell = withStyles(({ palette }) => ({
   root: {
-    borderBottom: '1px solid #E5E5E5'
+    borderBottom: "1px solid #E5E5E5",
   },
   head: {
-    fontFamily: 'Museo Sans',
-    fontStyle: 'normal',
+    fontFamily: "Museo Sans",
+    fontStyle: "normal",
     fontWeight: 500,
-    fontSize: '14px',
-    lineHeight: '300%',
-    textAlign: 'center',
-    cursor: 'pointer',
-    color: palette.secondary.main
+    fontSize: "14px",
+    lineHeight: "300%",
+    textAlign: "center",
+    cursor: "pointer",
+    color: palette.secondary.main,
   },
   body: {
-    fontFamily: 'Museo Sans',
-    fontStyle: 'normal',
-    fontWeight: 'bold',
-    fontSize: '14px',
-    lineHeight: '115%',
-    textAlign: 'center',
+    fontFamily: "Museo Sans",
+    fontStyle: "normal",
+    fontWeight: "bold",
+    fontSize: "14px",
+    lineHeight: "115%",
+    textAlign: "center",
     color: palette.secondary.main,
-    cursor: 'pointer'
+    cursor: "pointer",
   },
   footer: {
-    width: '100%',
-    height: 30,
-    textAlign: 'center',
+    "width": "100%",
+    "height": 30,
+    "textAlign": "center",
 
-    '& span': {
-      fontFamily: 'Museo Sans',
-      fontStyle: 'normal',
-      fontWeight: 'bold',
-      fontSize: '16px',
-      lineHeight: '115%',
-      cursor: 'pointer',
-      color: palette.secondary.main,
+    "& span": {
+      "fontFamily": "Museo Sans",
+      "fontStyle": "normal",
+      "fontWeight": "bold",
+      "fontSize": "16px",
+      "lineHeight": "115%",
+      "cursor": "pointer",
+      "color": palette.secondary.main,
 
-      '&:hover': {
-        color: 'gray'
-      }
-    }
-  }
+      "&:hover": {
+        color: "gray",
+      },
+    },
+  },
 }))(TableCell)
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   panel: {
     background: palette.background.paper,
-    borderRadius: '10px',
-    padding: '12px'
+    borderRadius: "10px",
+    padding: "12px",
   },
   filter: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    margin: '20px 0',
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    margin: "20px 0",
 
-    [breakpoints.down('xs')]: {
-      flexDirection: 'column',
-      '& > div': {
-        width: '100%'
-      }
-    }
+    [breakpoints.down("xs")]: {
+      "flexDirection": "column",
+      "& > div": {
+        width: "100%",
+      },
+    },
   },
 
   filterText: {
-    background:
-      palette.type === 'light'
-        ? '#E7E7E7'
-        : 'linear-gradient(90deg, #3142A3 0%, #243183 100%)',
-    boxShadow:
-      palette.type === 'light'
-        ? 'unset'
-        : '2px 2px 10px rgba(0, 0, 0, 0.1), inset 2px 2px 10px rgba(0, 0, 0, 0.1)',
-    fontSize: '11px',
-    fontWeight: 600,
-    lineHeight: '100%',
-    width: '500px',
-    padding: '15px 30px',
-    borderRadius: '20px',
-    color: palette.secondary.main,
+    "background":
+      palette.type === "light"
+        ? "#E7E7E7"
+        : "linear-gradient(90deg, #3142A3 0%, #243183 100%)",
+    "boxShadow":
+      palette.type === "light"
+        ? "unset"
+        : "2px 2px 10px rgba(0, 0, 0, 0.1), inset 2px 2px 10px rgba(0, 0, 0, 0.1)",
+    "fontSize": "11px",
+    "fontWeight": 600,
+    "lineHeight": "100%",
+    "width": "500px",
+    "padding": "15px 30px",
+    "borderRadius": "20px",
+    "color": palette.secondary.main,
 
-    '& ::placeholder': {
-      color: palette.secondary.main
+    "& ::placeholder": {
+      color: palette.secondary.main,
     },
 
-    [breakpoints.down('xs')]: {
-      flexDirection: 'column',
-      width: '100%'
-    }
+    [breakpoints.down("xs")]: {
+      flexDirection: "column",
+      width: "100%",
+    },
   },
   filterType: {
     background: palette.secondary.dark,
-    padding: '15px',
-    fontSize: '11px',
-    lineHeight: '100%',
-    marginLeft: '10px',
-    width: '150px',
+    padding: "15px",
+    fontSize: "11px",
+    lineHeight: "100%",
+    marginLeft: "10px",
+    width: "150px",
 
-    [breakpoints.down('xs')]: {
-      width: 'auto'
-    }
+    [breakpoints.down("xs")]: {
+      width: "auto",
+    },
   },
 
   active: {
-    background: palette.primary.light
-  }
+    background: palette.primary.light,
+  },
 }))
 
 export interface PoolsPanelProps {
@@ -139,24 +139,24 @@ export interface PoolsPanelProps {
 const PoolsPanel: React.FC<PoolsPanelProps> = ({ overView = false }) => {
   const { breakpoints } = useTheme()
   const dark = useIsDarkMode()
-  const mobile = useMediaQuery(breakpoints.down('xs'))
+  const mobile = useMediaQuery(breakpoints.down("xs"))
   const classes = useStyles({ dark, mobile })
   const history = useHistory()
 
   const columns = [
-    'POOL',
-    'Liquidity',
-    'Base APY',
-    'Rewards APY',
-    'VOLUME',
-    'APY'
+    "POOL",
+    "Liquidity",
+    "Base APY",
+    "Rewards APY",
+    "VOLUME",
+    "APY",
   ]
 
   const poolStats = usePoolStats()
 
   const [filter, setFilter] = useState({
-    text: '',
-    type: FILTER_STABLECOINS
+    text: "",
+    type: FILTER_STABLECOINS,
   })
 
   const onFilterChange = (event: any) => {
@@ -165,10 +165,10 @@ const PoolsPanel: React.FC<PoolsPanelProps> = ({ overView = false }) => {
 
   const handleRowClick = (event: any, poolName: string) => {
     history.push({
-      pathname: '/spec',
+      pathname: "/spec",
       state: {
-        poolName: poolName
-      }
+        poolName: poolName,
+      },
     })
   }
 
@@ -179,31 +179,31 @@ const PoolsPanel: React.FC<PoolsPanelProps> = ({ overView = false }) => {
           <SearchInput
             className={cx(classes.filterText)}
             value={filter.text}
-            placeholder='Search pool by name, network or type...'
+            placeholder="Search pool by name, network or type..."
             onChange={(e: any) => {
               onFilterChange({ text: e.target.value })
             }}
           />
 
-          <Box textAlign='center' mt={mobile ? '20px' : '0px'}>
+          <Box textAlign="center" mt={mobile ? "20px" : "0px"}>
             <Button
-              variant='contained'
+              variant="contained"
               onClick={() => {
                 onFilterChange({ type: FILTER_STABLECOINS })
               }}
               className={cx(classes.filterType, {
-                [classes.active]: filter.type === FILTER_STABLECOINS
+                [classes.active]: filter.type === FILTER_STABLECOINS,
               })}
             >
               STABLECOINS
             </Button>
             <Button
-              variant='contained'
+              variant="contained"
               onClick={() => {
                 onFilterChange({ type: FILTER_DIGITALASSESTS })
               }}
               className={cx(classes.filterType, {
-                [classes.active]: filter.type === FILTER_DIGITALASSESTS
+                [classes.active]: filter.type === FILTER_DIGITALASSESTS,
               })}
             >
               DIGITAL ASSETS
@@ -212,7 +212,7 @@ const PoolsPanel: React.FC<PoolsPanelProps> = ({ overView = false }) => {
         </Box>
       )}
       <TableContainer component={Box} className={cx(classes.panel)}>
-        <Table aria-label='simple table'>
+        <Table aria-label="simple table">
           <TableHead>
             <TableRow>
               {columns.map((column: any, i: any) => {
@@ -220,7 +220,7 @@ const PoolsPanel: React.FC<PoolsPanelProps> = ({ overView = false }) => {
                   <StyledTableCell key={i}>
                     {column}
                     &nbsp;
-                    <i className='fas fa-sort' />
+                    <i className="fas fa-sort" />
                   </StyledTableCell>
                 )
               })}
@@ -238,23 +238,23 @@ const PoolsPanel: React.FC<PoolsPanelProps> = ({ overView = false }) => {
                   onClick={(e: any) => handleRowClick(e, poolName)}
                 >
                   {/* POOL */}
-                  <StyledTableCell component='th' scope='row'>
-                    <Box display='flex' alignItems='center'>
+                  <StyledTableCell component="th" scope="row">
+                    <Box display="flex" alignItems="center">
                       <Box>
                         <img
                           src={icon}
                           alt={poolName}
-                          style={{ width: '30px', marginRight: '15px' }}
+                          style={{ width: "30px", marginRight: "15px" }}
                         />
                       </Box>
                       <Box
-                        display={'flex'}
-                        flexDirection={'column'}
-                        justifyContent={'center'}
+                        display={"flex"}
+                        flexDirection={"column"}
+                        justifyContent={"center"}
                       >
-                        <Box textAlign='left'>{poolName}</Box>
+                        <Box textAlign="left">{poolName}</Box>
                         <Box fontWeight={300}>
-                          {keys(poolInfo.reserves).join(' + ')}
+                          {keys(poolInfo.reserves).join(" + ")}
                         </Box>
                       </Box>
                     </Box>
@@ -289,7 +289,7 @@ const PoolsPanel: React.FC<PoolsPanelProps> = ({ overView = false }) => {
             <TableFooter>
               <TableRow>
                 <StyledTableCell colSpan={12}>
-                  <Box component='span' onClick={() => history.push('/pools')}>
+                  <Box component="span" onClick={() => history.push("/pools")}>
                     See All Pools
                   </Box>
                 </StyledTableCell>

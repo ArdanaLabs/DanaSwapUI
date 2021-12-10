@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { Box, Container, Grid, Fade, useMediaQuery } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import { useIsDarkMode } from "state/user/hooks";
-import cx from "classnames";
-import { StatBox } from "components/Box";
+import React, { useEffect, useState } from "react"
+import { Box, Container, Grid, Fade, useMediaQuery } from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import { useIsDarkMode } from "state/user/hooks"
+import cx from "classnames"
+import { StatBox } from "components/Box"
 
-import IMG_TVL from "assets/icons/tvl.png";
-import IMG_Worth from "assets/icons/worth.png";
-import IMG_Ratio from "assets/icons/ratio.png";
-import VerticalCarousel from "components/Carousel";
-import { useTotalStats } from "state/home/hooks";
-import { nFormatter } from "hooks";
+import IMG_TVL from "assets/icons/tvl.png"
+import IMG_Worth from "assets/icons/worth.png"
+import IMG_Ratio from "assets/icons/ratio.png"
+import VerticalCarousel from "components/Carousel"
+import { useTotalStats } from "state/home/hooks"
+import { nFormatter } from "hooks"
 
 const useStyles = makeStyles(({ palette }) => ({
   root: {
@@ -25,12 +25,12 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 
   carousel: {
-    display: "flex",
-    flexDirection: "column",
-    fontFamily: "Brandon Grotesque",
-    fontStyle: "normal",
-    lineHeight: "120.5%",
-    cursor: "pointer",
+    "display": "flex",
+    "flexDirection": "column",
+    "fontFamily": "Brandon Grotesque",
+    "fontStyle": "normal",
+    "lineHeight": "120.5%",
+    "cursor": "pointer",
 
     "& > div": {
       margin: "30px 0px",
@@ -56,31 +56,31 @@ const useStyles = makeStyles(({ palette }) => ({
     fontWeight: 900,
     lineHeight: "120.5%",
   },
-}));
+}))
 
 export interface PartialStatsSectionProps {
-  top?: string;
-  show?: boolean;
+  top?: string
+  show?: boolean
 }
 const PartialStatsSection: React.FC<PartialStatsSectionProps> = ({
   top = "0vh",
   show = false,
 }) => {
-  const { breakpoints } = useTheme();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const dark = useIsDarkMode();
-  const classes = useStyles({ dark, mobile });
+  const { breakpoints } = useTheme()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const dark = useIsDarkMode()
+  const classes = useStyles({ dark, mobile })
 
-  const [activeIndex, setActiveIndex] = useState(-1);
+  const [activeIndex, setActiveIndex] = useState(-1)
 
-  const { totalDepositsAllPoolsUSD, totalDailyVolumeUSD } = useTotalStats();
+  const { totalDepositsAllPoolsUSD, totalDailyVolumeUSD } = useTotalStats()
 
   useEffect(() => {
     setTimeout(() => {
-      show && setActiveIndex(0);
-      !show && setActiveIndex(-1);
-    }, 300);
-  }, [show]);
+      show && setActiveIndex(0)
+      !show && setActiveIndex(-1)
+    }, 300)
+  }, [show])
 
   return (
     <Box className={cx(classes.root)} top={top}>
@@ -144,7 +144,10 @@ const PartialStatsSection: React.FC<PartialStatsSectionProps> = ({
                   <StatBox
                     image={IMG_Ratio}
                     title="24HR TRADE VOLUME"
-                    content={nFormatter((totalDailyVolumeUSD ? totalDailyVolumeUSD.trade : 0), 2)}
+                    content={nFormatter(
+                      totalDailyVolumeUSD ? totalDailyVolumeUSD.trade : 0,
+                      2
+                    )}
                     delay={1000}
                   />
                 </Grid>
@@ -262,7 +265,7 @@ const PartialStatsSection: React.FC<PartialStatsSectionProps> = ({
         </Grid>
       </Container>
     </Box>
-  );
-};
+  )
+}
 
-export default PartialStatsSection;
+export default PartialStatsSection

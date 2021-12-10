@@ -1,23 +1,23 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 import {
   Box,
   IconButton,
   Drawer,
   useMediaQuery,
   Container,
-} from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import Hamburger from "hamburger-react";
-import cx from "classnames";
+} from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import Hamburger from "hamburger-react"
+import cx from "classnames"
 
-import { useIsDarkMode } from "state/user/hooks";
-import { useHistory, useLocation } from "react-router-dom";
-import ThemeSwitch from "components/ThemeSwitch";
-import { Button } from "components/Button";
+import { useIsDarkMode } from "state/user/hooks"
+import { useHistory, useLocation } from "react-router-dom"
+import ThemeSwitch from "components/ThemeSwitch"
+import { Button } from "components/Button"
 
-import { navList } from "data";
-import LOGO_Blue from "assets/logo_blue.png";
-import LOGO_Text from "assets/logo_text.png";
+import { navList } from "data"
+import LOGO_Blue from "assets/logo_blue.png"
+import LOGO_Text from "assets/logo_text.png"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   self: {
@@ -37,10 +37,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   logo: {
-    paddingLeft: "10px",
-    display: "flex",
-    alignItems: "center",
-    cursor: "pointer",
+    "paddingLeft": "10px",
+    "display": "flex",
+    "alignItems": "center",
+    "cursor": "pointer",
     "& img": {
       padding: "20px 10px",
     },
@@ -50,18 +50,18 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   navBar: {
-    display: "flex",
-    flexFlow: "wrap",
-    alignItems: "center",
-    background: palette.background.default,
-    fontFamily: "Brandon Grotesque",
+    "display": "flex",
+    "flexFlow": "wrap",
+    "alignItems": "center",
+    "background": palette.background.default,
+    "fontFamily": "Brandon Grotesque",
 
     "& > div": {
-      margin: "5px 15px",
-      color: palette.text.primary,
-      fontWeight: 900,
-      fontSize: "16px",
-      cursor: "pointer",
+      "margin": "5px 15px",
+      "color": palette.text.primary,
+      "fontWeight": 900,
+      "fontSize": "16px",
+      "cursor": "pointer",
 
       "&:hover": {
         "text-decoration-thickness": "2px",
@@ -86,29 +86,29 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     justifyContent: "flex-end",
     alignItem: "center",
   },
-}));
+}))
 
 const Header: React.FC = () => {
-  const theme = useTheme();
-  const mobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const dark = useIsDarkMode();
-  const classes = useStyles({ dark, mobile });
-  const history = useHistory();
-  const { pathname } = useLocation<{ previous: string }>();
+  const theme = useTheme()
+  const mobile = useMediaQuery(theme.breakpoints.down("sm"))
+  const dark = useIsDarkMode()
+  const classes = useStyles({ dark, mobile })
+  const history = useHistory()
+  const { pathname } = useLocation<{ previous: string }>()
 
-  const [openMenu, setOpenMenu] = useState(false);
+  const [openMenu, setOpenMenu] = useState(false)
 
   const toggleMenu = () => {
-    setOpenMenu((prev) => !prev);
-  };
+    setOpenMenu((prev) => !prev)
+  }
 
   const isActiveURL = (link: string): boolean => {
-    return pathname.indexOf(link) > -1;
-  };
+    return pathname.indexOf(link) > -1
+  }
 
   const onConnectWallet = (event: any) => {
-    console.log("connect wallet button clicked!");
-  };
+    console.log("connect wallet button clicked!")
+  }
 
   return (
     <Box className={cx(classes.self)}>
@@ -125,7 +125,7 @@ const Header: React.FC = () => {
                 <Box
                   className={isActiveURL(navItem.link) ? "active" : ""}
                   onClick={() => {
-                    history.push(navItem.link);
+                    history.push(navItem.link)
                   }}
                   key={index}
                 >
@@ -155,7 +155,7 @@ const Header: React.FC = () => {
                     <Box
                       key={index}
                       onClick={() => {
-                        history.push(navItem.link);
+                        history.push(navItem.link)
                       }}
                     >
                       {navItem.label}
@@ -178,7 +178,7 @@ const Header: React.FC = () => {
         </Box>
       </Container>
     </Box>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

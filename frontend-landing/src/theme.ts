@@ -2,97 +2,97 @@ import {
   unstable_createMuiStrictModeTheme as createMuiTheme,
   responsiveFontSizes,
   ThemeOptions,
-} from "@material-ui/core";
-import { merge } from "lodash";
+} from "@material-ui/core"
+import { merge } from "lodash"
 
 // custom colors
 
 const primaryLightDay =
-  "linear-gradient(89.62deg, #000A4F 0.3%, #3C4DC5 99.64%)";
+  "linear-gradient(89.62deg, #000A4F 0.3%, #3C4DC5 99.64%)"
 const primaryLightNight =
-  "linear-gradient(89.62deg, #72D2F2 0.3%, #6077FF 99.64%)";
+  "linear-gradient(89.62deg, #72D2F2 0.3%, #6077FF 99.64%)"
 
-const primaryMainDay = "#235DF4";
-const primaryMainNight = "#FFFFFF";
+const primaryMainDay = "#235DF4"
+const primaryMainNight = "#FFFFFF"
 
 const primaryDarkDay =
-  "linear-gradient(90.19deg, #2F3DA0 27.19%, #73D6F1 99.87%)";
-const primaryDarkNight = "linear-gradient(0deg, #3142A3, #3142A3)";
+  "linear-gradient(90.19deg, #2F3DA0 27.19%, #73D6F1 99.87%)"
+const primaryDarkNight = "linear-gradient(0deg, #3142A3, #3142A3)"
 
-const secondaryMainDay = "#636060";
-const secondaryMainNight = "#FFFFFF";
+const secondaryMainDay = "#636060"
+const secondaryMainNight = "#FFFFFF"
 
 const secondaryLightDay =
-  "linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%)";
-const secondaryLightNight = "#131B59";
+  "linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%)"
+const secondaryLightNight = "#131B59"
 
-const secondaryDarkDay = "#A5A5A5";
-const secondaryDarkNight = "rgba(24, 33, 100, 0.5)";
+const secondaryDarkDay = "#A5A5A5"
+const secondaryDarkNight = "rgba(24, 33, 100, 0.5)"
 
-const infoMainDay = "#F5F5F5";
-const infoMainNight = "#2B3992";
+const infoMainDay = "#F5F5F5"
+const infoMainNight = "#2B3992"
 
 const infoDarkDay =
-  "linear-gradient(180deg, #A5A5A5 0%, #A5A5A5 54.17%, #A5A5A5 99.99%)";
+  "linear-gradient(180deg, #A5A5A5 0%, #A5A5A5 54.17%, #A5A5A5 99.99%)"
 const infoDarkNight =
-  "linear-gradient(180deg, #73D6F1 0%, #5F72FF 99.99%, #2F3DA0 100%)";
+  "linear-gradient(180deg, #73D6F1 0%, #5F72FF 99.99%, #2F3DA0 100%)"
 
-const backgroundDay = "#080E42";
-const backgroundNight = "#080E42";
+const backgroundDay = "#080E42"
+const backgroundNight = "#080E42"
 
-const backgroundPaperDay = "#1D277A";
-const backgroundPaperNight = "#1D277A";
+const backgroundPaperDay = "#1D277A"
+const backgroundPaperNight = "#1D277A"
 
-const textPrimaryDay = "#F5FCFE";
-const textPrimaryNight = "#F5FCFE";
+const textPrimaryDay = "#F5FCFE"
+const textPrimaryNight = "#F5FCFE"
 
-const textSecondaryDay = "#73D6F1";
-const textSecondaryNight = "#73D6F1";
+const textSecondaryDay = "#73D6F1"
+const textSecondaryNight = "#73D6F1"
 
-const textHintDay = "#636060";
-const textHintNight = "#73D6F1";
+const textHintDay = "#636060"
+const textHintNight = "#73D6F1"
 
-const black = "#131B59";
-const white = "#ffffff";
+const black = "#131B59"
+const white = "#ffffff"
 
 // colors
-const primary = "#235DF4";
-const premiaBlueDay = "rgba(82, 148, 255, 0.12)";
-const premiaBlueNight = "rgba(82, 148, 255, 0.2)";
+const primary = "#235DF4"
+const premiaBlueDay = "rgba(82, 148, 255, 0.12)"
+const premiaBlueNight = "rgba(82, 148, 255, 0.2)"
 
-const greySecondaryDay = "#F4F4F4";
-const greySecondaryNight = "#646464";
+const greySecondaryDay = "#F4F4F4"
+const greySecondaryNight = "#646464"
 
-const whiteColor = "#F7FAFF";
+const whiteColor = "#F7FAFF"
 
-const callGradientA = "#5294FF";
-const callGradientB = "#1EFF78";
+const callGradientA = "#5294FF"
+const callGradientB = "#1EFF78"
 
-const putGradientA = "#EB4A97";
-const putGradientB = "#8C43F6";
+const putGradientA = "#EB4A97"
+const putGradientB = "#8C43F6"
 
-const hotBadgeGradientA = "#EB7A4A";
-const hotBadgeGradientB = "#F643CF";
+const hotBadgeGradientA = "#EB7A4A"
+const hotBadgeGradientB = "#F643CF"
 
-const dividerGreyDay = "#E9E9E9";
-const dividerGreyNight = "#212121";
+const dividerGreyDay = "#E9E9E9"
+const dividerGreyNight = "#212121"
 
 // breakpoints
-const xl = 1920;
-const lg = 1280;
-const md = 960;
-const sm = 700;
-const xs = 0;
+const xl = 1920
+const lg = 1280
+const md = 960
+const sm = 700
+const xs = 0
 
 // spacing
-const spacing = 8;
+const spacing = 8
 
 function createTheme(
   custom: any,
   options?: ThemeOptions | undefined,
   ...args: object[]
 ) {
-  return createMuiTheme(merge(custom, options), ...args);
+  return createMuiTheme(merge(custom, options), ...args)
 }
 
 export const lightTheme = responsiveFontSizes(
@@ -184,21 +184,21 @@ export const lightTheme = responsiveFontSizes(
           width: 90,
         },
         textPrimary: {
-          backgroundColor: primary,
-          color: white,
-          border: `1px solid transparent`,
+          "backgroundColor": primary,
+          "color": white,
+          "border": `1px solid transparent`,
 
           "&:hover": {
-            borderColor: primary,
-            color: primary,
+            "borderColor": primary,
+            "color": primary,
             "& svg path": {
               fill: primary,
             },
           },
 
           "&:active": {
-            borderColor: primary,
-            color: primary,
+            "borderColor": primary,
+            "color": primary,
             "& svg path": {
               fill: primary,
             },
@@ -222,9 +222,9 @@ export const lightTheme = responsiveFontSizes(
           lineHeight: "18px",
         },
         contained: {
-          backgroundColor: "transparent",
-          color: greySecondaryDay,
-          boxShadow: "none",
+          "backgroundColor": "transparent",
+          "color": greySecondaryDay,
+          "boxShadow": "none",
           "& svg path": {},
         },
         outlined: {
@@ -232,8 +232,8 @@ export const lightTheme = responsiveFontSizes(
           color: greySecondaryDay,
         },
         containedPrimary: {
-          background: `linear-gradient(121.21deg, ${callGradientA} 7.78%, ${callGradientB} 118.78%);`,
-          color: white,
+          "background": `linear-gradient(121.21deg, ${callGradientA} 7.78%, ${callGradientB} 118.78%);`,
+          "color": white,
           "&:hover": {
             background: `linear-gradient(121.21deg, ${callGradientB} 7.78%, ${callGradientA} 118.78%);`,
           },
@@ -249,8 +249,8 @@ export const lightTheme = responsiveFontSizes(
           },
         },
         containedSecondary: {
-          background: `linear-gradient(316.57deg, ${putGradientA} 18.89%, ${putGradientB} 95.84%);`,
-          color: white,
+          "background": `linear-gradient(316.57deg, ${putGradientA} 18.89%, ${putGradientB} 95.84%);`,
+          "color": white,
           "&:hover": {
             background: `linear-gradient(316.57deg, ${putGradientB} 18.89%, ${putGradientA} 95.84%);`,
           },
@@ -262,18 +262,18 @@ export const lightTheme = responsiveFontSizes(
           },
         },
         outlinedPrimary: {
-          backgroundColor: premiaBlueDay,
-          color: primary,
-          border: "none",
+          "backgroundColor": premiaBlueDay,
+          "color": primary,
+          "border": "none",
           "&:hover": {
             backgroundColor: primary,
             color: white,
             border: "none",
           },
           "&:active": {
-            color: white,
-            backgroundColor: primary,
-            opacity: 1,
+            "color": white,
+            "backgroundColor": primary,
+            "opacity": 1,
 
             "& .MuiButton-label > svg path": {
               fill: white,
@@ -281,9 +281,9 @@ export const lightTheme = responsiveFontSizes(
           },
         },
         outlinedSecondary: {
-          backgroundColor: white,
-          color: textSecondaryDay,
-          border: `1px solid ${dividerGreyDay}`,
+          "backgroundColor": white,
+          "color": textSecondaryDay,
+          "border": `1px solid ${dividerGreyDay}`,
           "&:hover": {
             backgroundColor: white,
             color: greySecondaryNight,
@@ -363,23 +363,23 @@ export const lightTheme = responsiveFontSizes(
       },
       MuiOutlinedInput: {
         root: {
-          border: `1px solid ${dividerGreyDay}`,
-          background: "white",
-          borderRadius: 12,
-          height: 45,
+          "border": `1px solid ${dividerGreyDay}`,
+          "background": "white",
+          "borderRadius": 12,
+          "height": 45,
 
           "& .MuiSelect-root": {
-            paddingLeft: 12,
-            alignItems: "center",
-            display: "flex",
-            zIndex: 100,
+            "paddingLeft": 12,
+            "alignItems": "center",
+            "display": "flex",
+            "zIndex": 100,
 
             "& svg": {
-              width: 20,
-              marginRight: 2,
-              position: "relative",
-              height: 20,
-              top: -2,
+              "width": 20,
+              "marginRight": 2,
+              "position": "relative",
+              "height": 20,
+              "top": -2,
 
               "& path": {
                 fill: primary,
@@ -414,12 +414,12 @@ export const lightTheme = responsiveFontSizes(
       },
       MuiTab: {
         labelIcon: {
-          minWidth: 98,
-          minHeight: 55,
-          paddingTop: 0,
-          padding: 0,
+          "minWidth": 98,
+          "minHeight": 55,
+          "paddingTop": 0,
+          "padding": 0,
           "&.Mui-selected": {
-            color: primary,
+            "color": primary,
 
             "& svg:first-child": {
               "& path": {
@@ -429,10 +429,10 @@ export const lightTheme = responsiveFontSizes(
           },
         },
         wrapper: {
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          position: "relative",
+          "display": "flex",
+          "flexDirection": "row",
+          "alignItems": "center",
+          "position": "relative",
 
           "& svg": {
             marginBottom: "0px !important",
@@ -460,13 +460,13 @@ export const lightTheme = responsiveFontSizes(
       },
       MuiBottomNavigationAction: {
         root: {
-          fontSize: 14,
-          lineHeight: "18px",
-          fontWeight: "normal",
-          minWidth: "auto",
-          borderRadius: 12,
-          padding: "6px 20px 8px 9px",
-          margin: 6,
+          "fontSize": 14,
+          "lineHeight": "18px",
+          "fontWeight": "normal",
+          "minWidth": "auto",
+          "borderRadius": 12,
+          "padding": "6px 20px 8px 9px",
+          "margin": 6,
 
           "& path": {
             fill: greySecondaryDay,
@@ -479,8 +479,8 @@ export const lightTheme = responsiveFontSizes(
           },
 
           "&$selected": {
-            background: "rgba(82, 148, 255, 0.12)",
-            borderRadius: 10,
+            "background": "rgba(82, 148, 255, 0.12)",
+            "borderRadius": 10,
 
             "& path": {
               fill: primary,
@@ -488,9 +488,9 @@ export const lightTheme = responsiveFontSizes(
           },
         },
         wrapper: {
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "alignItems": "center",
           "& img:first-child": {
             marginBottom: "0 !important",
             marginRight: 6,
@@ -503,8 +503,8 @@ export const lightTheme = responsiveFontSizes(
           },
         },
         label: {
-          fontSize: 14,
-          lineHeight: "18px",
+          "fontSize": 14,
+          "lineHeight": "18px",
 
           "&$selected": {
             fontWeight: "bold",
@@ -532,8 +532,8 @@ export const lightTheme = responsiveFontSizes(
       MuiStepButton: {},
       MuiStepConnector: {
         vertical: {
-          padding: 0,
-          marginLeft: 15,
+          "padding": 0,
+          "marginLeft": 15,
 
           "&.Mui-disabled": {
             "& span": {
@@ -546,7 +546,7 @@ export const lightTheme = responsiveFontSizes(
           borderLeftWidth: 2,
         },
         active: {
-          borderColor: "white",
+          "borderColor": "white",
 
           "&:before": {
             height: "50%",
@@ -559,15 +559,15 @@ export const lightTheme = responsiveFontSizes(
       },
       MuiStepContent: {
         root: {
-          position: "absolute",
-          width: "calc(100% - 205px)",
-          right: 0,
-          top: 0,
-          marginTop: 0,
-          marginLeft: 0,
-          paddingLeft: 0,
-          paddingRight: 0,
-          borderLeft: "none",
+          "position": "absolute",
+          "width": "calc(100% - 205px)",
+          "right": 0,
+          "top": 0,
+          "marginTop": 0,
+          "marginLeft": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "borderLeft": "none",
 
           "& > div": {
             borderRadius: 12,
@@ -582,9 +582,9 @@ export const lightTheme = responsiveFontSizes(
       },
       MuiStepLabel: {
         label: {
-          fontWeight: 500,
-          fontSize: 14,
-          lineHeight: "24px",
+          "fontWeight": 500,
+          "fontSize": 14,
+          "lineHeight": "24px",
 
           "&$completed": {
             color: "#646464",
@@ -594,16 +594,16 @@ export const lightTheme = responsiveFontSizes(
           },
         },
         active: {
-          background:
+          "background":
             "-webkit-linear-gradient(121.21deg, #1EFF78 -11.78%, #5294FF 118.78%)",
           "-webkit-background-clip": "text",
           "-webkit-text-fill-color": "transparent",
-          width: "fit-content",
+          "width": "fit-content",
         },
       },
     },
   })
-);
+)
 
 export const darkTheme = responsiveFontSizes(
   createTheme({
@@ -721,23 +721,23 @@ export const darkTheme = responsiveFontSizes(
       },
       MuiOutlinedInput: {
         root: {
-          border: `1px solid ${dividerGreyNight}`,
-          background: "black",
-          borderRadius: 12,
-          height: 45,
+          "border": `1px solid ${dividerGreyNight}`,
+          "background": "black",
+          "borderRadius": 12,
+          "height": 45,
 
           "& .MuiSelect-root": {
-            alignItems: "center",
-            display: "flex",
-            paddingLeft: 12,
-            zIndex: 100,
+            "alignItems": "center",
+            "display": "flex",
+            "paddingLeft": 12,
+            "zIndex": 100,
 
             "& svg": {
-              width: 20,
-              marginRight: 2,
-              position: "relative",
-              height: 20,
-              top: -2,
+              "width": 20,
+              "marginRight": 2,
+              "position": "relative",
+              "height": 20,
+              "top": -2,
 
               "& path": {
                 fill: primary,
@@ -832,13 +832,13 @@ export const darkTheme = responsiveFontSizes(
       },
       MuiTab: {
         labelIcon: {
-          minWidth: 98,
-          minHeight: 55,
-          paddingTop: 0,
-          padding: 0,
+          "minWidth": 98,
+          "minHeight": 55,
+          "paddingTop": 0,
+          "padding": 0,
 
           "&.Mui-selected": {
-            color: primary,
+            "color": primary,
 
             "& svg:first-child": {
               "& path": {
@@ -848,10 +848,10 @@ export const darkTheme = responsiveFontSizes(
           },
         },
         wrapper: {
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          position: "relative",
+          "display": "flex",
+          "flexDirection": "row",
+          "alignItems": "center",
+          "position": "relative",
 
           "& svg": {
             marginRight: 6,
@@ -898,48 +898,48 @@ export const darkTheme = responsiveFontSizes(
           width: 90,
         },
         textPrimary: {
-          backgroundColor: primary,
-          color: white,
-          border: `1px solid transparent`,
+          "backgroundColor": primary,
+          "color": white,
+          "border": `1px solid transparent`,
 
           "&:hover": {
-            borderColor: primary,
-            color: primary,
+            "borderColor": primary,
+            "color": primary,
             "& svg path": {
               fill: primary,
             },
           },
 
           "&:active": {
-            borderColor: primary,
-            color: primary,
+            "borderColor": primary,
+            "color": primary,
             "& svg path": {
               fill: primary,
             },
           },
         },
         textSecondary: {
-          background: premiaBlueNight,
-          color: primary,
+          "background": premiaBlueNight,
+          "color": primary,
           "&:hover": {
             "& svg path": {
               fill: textSecondaryNight,
             },
-            color: textSecondaryNight,
+            "color": textSecondaryNight,
           },
         },
         contained: {
-          backgroundColor: "transparent",
-          color: greySecondaryNight,
+          "backgroundColor": "transparent",
+          "color": greySecondaryNight,
           "& svg path": {},
         },
         outlined: {
           backgroundColor: "transparent",
         },
         containedPrimary: {
-          background: `linear-gradient(121.21deg, ${callGradientA} 7.78%, ${callGradientB} 118.78%);`,
-          color: black,
-          boxShadow: "0px 0px 25px rgba(43, 229, 154, 0.25)",
+          "background": `linear-gradient(121.21deg, ${callGradientA} 7.78%, ${callGradientB} 118.78%);`,
+          "color": black,
+          "boxShadow": "0px 0px 25px rgba(43, 229, 154, 0.25)",
           "&:hover": {
             background: `linear-gradient(121.21deg, ${callGradientB} 7.78%, ${callGradientA} 118.78%);`,
           },
@@ -955,10 +955,10 @@ export const darkTheme = responsiveFontSizes(
           },
         },
         containedSecondary: {
-          background: `linear-gradient(316.57deg, ${putGradientA} 18.89%, ${putGradientB} 95.84%);`,
-          color: black,
-          fontWeight: 500,
-          boxShadow: "0px 0px 5px rgba(246, 67, 207, 0.4)",
+          "background": `linear-gradient(316.57deg, ${putGradientA} 18.89%, ${putGradientB} 95.84%);`,
+          "color": black,
+          "fontWeight": 500,
+          "boxShadow": "0px 0px 5px rgba(246, 67, 207, 0.4)",
           "&:hover": {
             background: `linear-gradient(316.57deg, ${putGradientB} 18.89%, ${putGradientA} 95.84%);`,
           },
@@ -970,9 +970,9 @@ export const darkTheme = responsiveFontSizes(
           },
         },
         outlinedPrimary: {
-          backgroundColor: premiaBlueNight,
-          color: primary,
-          border: "none",
+          "backgroundColor": premiaBlueNight,
+          "color": primary,
+          "border": "none",
 
           "&:hover": {
             color: black,
@@ -981,9 +981,9 @@ export const darkTheme = responsiveFontSizes(
           },
 
           "&:active": {
-            color: white,
-            backgroundColor: primary,
-            opacity: 1,
+            "color": white,
+            "backgroundColor": primary,
+            "opacity": 1,
 
             "& .MuiButton-label > svg path": {
               fill: white,
@@ -991,9 +991,9 @@ export const darkTheme = responsiveFontSizes(
           },
         },
         outlinedSecondary: {
-          backgroundColor: black,
-          color: greySecondaryNight,
-          border: `1px solid ${dividerGreyNight}`,
+          "backgroundColor": black,
+          "color": greySecondaryNight,
+          "border": `1px solid ${dividerGreyNight}`,
           "&:hover": {
             color: white,
             border: `1px solid ${greySecondaryNight}`,
@@ -1016,10 +1016,10 @@ export const darkTheme = responsiveFontSizes(
       },
       MuiPopover: {
         paper: {
-          overflowX: "unset",
-          overflowY: "unset",
-          transform: "translateY(-11px) !important",
-          boxShadow: "none",
+          "overflowX": "unset",
+          "overflowY": "unset",
+          "transform": "translateY(-11px) !important",
+          "boxShadow": "none",
           "&::before": {
             // content: '""',
             position: "absolute",
@@ -1048,13 +1048,13 @@ export const darkTheme = responsiveFontSizes(
       },
       MuiBottomNavigationAction: {
         root: {
-          fontSize: 14,
-          lineHeight: "18px",
-          fontWeight: "normal",
-          minWidth: "auto",
-          borderRadius: 12,
-          padding: "6px 12px 8px 9px",
-          margin: 6,
+          "fontSize": 14,
+          "lineHeight": "18px",
+          "fontWeight": "normal",
+          "minWidth": "auto",
+          "borderRadius": 12,
+          "padding": "6px 12px 8px 9px",
+          "margin": 6,
 
           "& path": {
             fill: greySecondaryNight,
@@ -1067,8 +1067,8 @@ export const darkTheme = responsiveFontSizes(
           },
 
           "&$selected": {
-            background: "rgba(82, 148, 255, 0.12)",
-            borderRadius: 10,
+            "background": "rgba(82, 148, 255, 0.12)",
+            "borderRadius": 10,
 
             "& path": {
               fill: primary,
@@ -1080,8 +1080,8 @@ export const darkTheme = responsiveFontSizes(
           flexDirection: "row",
         },
         label: {
-          fontSize: 14,
-          lineHeight: "18px",
+          "fontSize": 14,
+          "lineHeight": "18px",
 
           "&$selected": {
             fontWeight: "bold",
@@ -1102,8 +1102,8 @@ export const darkTheme = responsiveFontSizes(
       MuiStepButton: {},
       MuiStepConnector: {
         vertical: {
-          padding: 0,
-          marginLeft: 15,
+          "padding": 0,
+          "marginLeft": 15,
 
           "&.Mui-disabled": {
             "& span": {
@@ -1116,7 +1116,7 @@ export const darkTheme = responsiveFontSizes(
           borderLeftWidth: 2,
         },
         active: {
-          borderColor: "white",
+          "borderColor": "white",
 
           "&:before": {
             height: "50%",
@@ -1136,15 +1136,15 @@ export const darkTheme = responsiveFontSizes(
       },
       MuiStepContent: {
         root: {
-          position: "absolute",
-          width: "calc(100% - 205px)",
-          right: 0,
-          top: 0,
-          marginTop: 0,
-          marginLeft: 0,
-          paddingLeft: 0,
-          paddingRight: 0,
-          borderLeft: "none",
+          "position": "absolute",
+          "width": "calc(100% - 205px)",
+          "right": 0,
+          "top": 0,
+          "marginTop": 0,
+          "marginLeft": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "borderLeft": "none",
 
           "& > div": {
             borderRadius: 12,
@@ -1158,9 +1158,9 @@ export const darkTheme = responsiveFontSizes(
       },
       MuiStepLabel: {
         label: {
-          fontWeight: 500,
-          fontSize: 14,
-          lineHeight: "24px",
+          "fontWeight": 500,
+          "fontSize": 14,
+          "lineHeight": "24px",
 
           "&$completed": {
             color: "#646464",
@@ -1170,17 +1170,17 @@ export const darkTheme = responsiveFontSizes(
           },
         },
         active: {
-          background:
+          "background":
             "-webkit-linear-gradient(121.21deg, #1EFF78 -11.78%, #5294FF 118.78%)",
           "-webkit-background-clip": "text",
           "-webkit-text-fill-color": "transparent",
-          width: "fit-content",
+          "width": "fit-content",
         },
       },
     },
   })
-);
+)
 
-const theme = { lightTheme, darkTheme };
+const theme = { lightTheme, darkTheme }
 
-export default theme;
+export default theme

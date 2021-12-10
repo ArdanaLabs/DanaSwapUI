@@ -1,6 +1,6 @@
-import { createReducer } from "@reduxjs/toolkit";
+import { createReducer } from "@reduxjs/toolkit"
 
-import { TotalStat, updateTotalStats } from "./actions";
+import { TotalStat, updateTotalStats } from "./actions"
 
 export const initialState: TotalStat = {
   totalDepositsAllPoolsUSD: 0,
@@ -9,7 +9,7 @@ export const initialState: TotalStat = {
   totalDailyFeeVolumeUSD: 0,
   totalLiquidityUtilization: 0,
   poolStats: null,
-};
+}
 
 export default createReducer(initialState, (builder) =>
   builder.addCase(updateTotalStats, (state, action) => {
@@ -20,14 +20,14 @@ export default createReducer(initialState, (builder) =>
       totalDailyFeeVolumeUSD,
       totalLiquidityUtilization,
       poolStats,
-    } = action.payload;
+    } = action.payload
 
-    state.totalDepositsAllPoolsUSD = totalDepositsAllPoolsUSD;
-    state.totalDailyVolumeUSD = totalDailyVolumeUSD;
-    state.totalDailyTxCount = totalDailyTxCount;
-    state.totalDailyFeeVolumeUSD = totalDailyFeeVolumeUSD;
-    state.totalLiquidityUtilization = totalLiquidityUtilization;
+    state.totalDepositsAllPoolsUSD = totalDepositsAllPoolsUSD
+    state.totalDailyVolumeUSD = totalDailyVolumeUSD
+    state.totalDailyTxCount = totalDailyTxCount
+    state.totalDailyFeeVolumeUSD = totalDailyFeeVolumeUSD
+    state.totalLiquidityUtilization = totalLiquidityUtilization
 
-    state.poolStats = poolStats;
+    state.poolStats = poolStats
   })
-);
+)

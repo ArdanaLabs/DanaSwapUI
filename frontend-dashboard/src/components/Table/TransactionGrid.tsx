@@ -1,14 +1,14 @@
-import React, { useState } from 'react'
-import { Box, useMediaQuery } from '@material-ui/core'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-import cx from 'classnames'
-import { useIsDarkMode } from 'state/user/hooks'
-import { Button } from 'components/Button'
+import React, { useState } from "react"
+import { Box, useMediaQuery } from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import cx from "classnames"
+import { useIsDarkMode } from "state/user/hooks"
+import { Button } from "components/Button"
 import {
   DataGrid,
   GridColDef,
-  GridValueGetterParams
-} from '@material-ui/data-grid'
+  GridValueGetterParams,
+} from "@material-ui/data-grid"
 
 const FILTER_ALL = 0
 const FILTER_SWAP = 1
@@ -18,68 +18,68 @@ const FILTER_REMOVE = 3
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   panel: {
     background: palette.background.paper,
-    borderRadius: '10px',
-    padding: '12px',
-    height: '400px'
+    borderRadius: "10px",
+    padding: "12px",
+    height: "400px",
   },
   filter: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    margin: '20px 0',
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    margin: "20px 0",
 
-    [breakpoints.down('xs')]: {
-      flexDirection: 'column',
-      '& > div': {
-        width: '100%'
-      }
-    }
+    [breakpoints.down("xs")]: {
+      "flexDirection": "column",
+      "& > div": {
+        width: "100%",
+      },
+    },
   },
 
   filterText: {
-    background:
-      palette.type === 'light'
-        ? '#E7E7E7'
-        : 'linear-gradient(90deg, #3142A3 0%, #243183 100%)',
-    boxShadow:
-      palette.type === 'light'
-        ? 'unset'
-        : '2px 2px 10px rgba(0, 0, 0, 0.1), inset 2px 2px 10px rgba(0, 0, 0, 0.1)',
-    fontSize: '11px',
-    fontWeight: 600,
-    lineHeight: '100%',
-    width: '500px',
-    padding: '15px 30px',
-    borderRadius: '20px',
-    color: palette.secondary.main,
+    "background":
+      palette.type === "light"
+        ? "#E7E7E7"
+        : "linear-gradient(90deg, #3142A3 0%, #243183 100%)",
+    "boxShadow":
+      palette.type === "light"
+        ? "unset"
+        : "2px 2px 10px rgba(0, 0, 0, 0.1), inset 2px 2px 10px rgba(0, 0, 0, 0.1)",
+    "fontSize": "11px",
+    "fontWeight": 600,
+    "lineHeight": "100%",
+    "width": "500px",
+    "padding": "15px 30px",
+    "borderRadius": "20px",
+    "color": palette.secondary.main,
 
-    '& ::placeholder': {
-      color: palette.secondary.main
+    "& ::placeholder": {
+      color: palette.secondary.main,
     },
 
-    [breakpoints.down('xs')]: {
-      flexDirection: 'column',
-      width: '100%'
-    }
+    [breakpoints.down("xs")]: {
+      flexDirection: "column",
+      width: "100%",
+    },
   },
   filterType: {
     background: palette.secondary.dark,
     color: palette.common.white,
-    padding: '10px 15px',
-    fontSize: '11px',
-    lineHeight: '100%',
-    margin: '10px'
+    padding: "10px 15px",
+    fontSize: "11px",
+    lineHeight: "100%",
+    margin: "10px",
   },
 
   active: {
     // background: palette.primary.light
-  }
+  },
 }))
 
 const TransactionGrid: React.FC = () => {
   const { breakpoints } = useTheme()
   const dark = useIsDarkMode()
-  const mobile = useMediaQuery(breakpoints.down('xs'))
+  const mobile = useMediaQuery(breakpoints.down("xs"))
   const classes = useStyles({ dark, mobile })
 
   // const columns = [
@@ -150,53 +150,53 @@ const TransactionGrid: React.FC = () => {
   // ]
 
   const columns: GridColDef[] = [
-    { 
-      field: 'stats',
-      headerName: '',
+    {
+      field: "stats",
+      headerName: "",
       width: 90,
-      sortable: false
+      sortable: false,
     },
     {
-      field: 'navUSD',
-      headerName: 'Total Value',
+      field: "navUSD",
+      headerName: "Total Value",
       width: 150,
     },
     {
-      field: 'amount',
-      headerName: 'Token Amount',
+      field: "amount",
+      headerName: "Token Amount",
       width: 150,
     },
     {
-      field: 'age',
-      headerName: 'Age',
+      field: "age",
+      headerName: "Age",
       width: 110,
     },
     {
-      field: 'fullName',
-      headerName: 'Full name',
+      field: "fullName",
+      headerName: "Full name",
       width: 160,
       valueGetter: (params: GridValueGetterParams) =>
-        `${params.getValue(params.id, 'firstName') || ''} ${
-          params.getValue(params.id, 'lastName') || ''
+        `${params.getValue(params.id, "firstName") || ""} ${
+          params.getValue(params.id, "lastName") || ""
         }`,
     },
-  ];
-  
+  ]
+
   const rows = [
-    { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-    { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-    { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-    { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-    { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-    { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-    { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-    { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-    { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
-  ];
+    { id: 1, lastName: "Snow", firstName: "Jon", age: 35 },
+    { id: 2, lastName: "Lannister", firstName: "Cersei", age: 42 },
+    { id: 3, lastName: "Lannister", firstName: "Jaime", age: 45 },
+    { id: 4, lastName: "Stark", firstName: "Arya", age: 16 },
+    { id: 5, lastName: "Targaryen", firstName: "Daenerys", age: null },
+    { id: 6, lastName: "Melisandre", firstName: null, age: 150 },
+    { id: 7, lastName: "Clifford", firstName: "Ferrara", age: 44 },
+    { id: 8, lastName: "Frances", firstName: "Rossini", age: 36 },
+    { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
+  ]
 
   const [filter, setFilter] = useState({
-    text: '',
-    type: FILTER_ALL
+    text: "",
+    type: FILTER_ALL,
   })
 
   const onFilterChange = (event: any) => {
@@ -206,47 +206,47 @@ const TransactionGrid: React.FC = () => {
   return (
     <Box>
       <Box className={cx(classes.filter)}>
-        <Box textAlign='center' mt={mobile ? '20px' : '0px'}>
+        <Box textAlign="center" mt={mobile ? "20px" : "0px"}>
           <Button
-            variant='contained'
+            variant="contained"
             onClick={() => {
               onFilterChange({ type: FILTER_ALL })
             }}
             className={cx(classes.filterType, {
-              [classes.active]: filter.type === FILTER_ALL
+              [classes.active]: filter.type === FILTER_ALL,
             })}
           >
             ALL
           </Button>
           <Button
-            variant='contained'
+            variant="contained"
             onClick={() => {
               onFilterChange({ type: FILTER_SWAP })
             }}
             className={cx(classes.filterType, {
-              [classes.active]: filter.type === FILTER_SWAP
+              [classes.active]: filter.type === FILTER_SWAP,
             })}
           >
             SWAPS
           </Button>
           <Button
-            variant='contained'
+            variant="contained"
             onClick={() => {
               onFilterChange({ type: FILTER_ADD })
             }}
             className={cx(classes.filterType, {
-              [classes.active]: filter.type === FILTER_ADD
+              [classes.active]: filter.type === FILTER_ADD,
             })}
           >
             ADDS
           </Button>
           <Button
-            variant='contained'
+            variant="contained"
             onClick={() => {
               onFilterChange({ type: FILTER_REMOVE })
             }}
             className={cx(classes.filterType, {
-              [classes.active]: filter.type === FILTER_REMOVE
+              [classes.active]: filter.type === FILTER_REMOVE,
             })}
           >
             REMOVES

@@ -2,12 +2,7 @@
   "PAGE": {
     "LANDING": {
       "HEADER": {
-        "LINKS": [
-          "HOME",
-          "RESOURCES",
-          "ROADMAP",
-          "BLOG"
-        ]
+        "LINKS": ["HOME", "RESOURCES", "ROADMAP", "BLOG"]
       },
       "TITLE": "Decentralized\nStablecoin Hub",
       "DESCRIPTION": "Decentralized Stablecoin and DEX Liquidity Pool. Built on Cardano.",
@@ -76,27 +71,15 @@
       "FOOTER": {
         "RESOURCES": {
           "LABEL": "Resources",
-          "LIST": [
-            "Whitepaper",
-            "Pitch Deek",
-            "Roadmap",
-            "Docs"
-          ]
+          "LIST": ["Whitepaper", "Pitch Deek", "Roadmap", "Docs"]
         },
         "PRODUCTS": {
           "LABEL": "Products",
-          "LIST": [
-            "DEX",
-            "Stablecoin",
-            "Multisig"
-          ]
+          "LIST": ["DEX", "Stablecoin", "Multisig"]
         },
         "FOUNDATION": {
           "LABEL": "Foundation",
-          "LIST": [
-            "Contact Us",
-            "Careers"
-          ]
+          "LIST": ["Contact Us", "Careers"]
         },
         "SOCIAL": {
           "LABEL": "Our Socials",

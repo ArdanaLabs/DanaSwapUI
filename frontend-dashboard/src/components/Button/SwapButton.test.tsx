@@ -1,9 +1,9 @@
-import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
-import * as Enzyme from "enzyme";
-import { shallow } from "enzyme";
-import { SwapButton } from ".";
+import Adapter from "@wojtekmaj/enzyme-adapter-react-17"
+import * as Enzyme from "enzyme"
+import { shallow } from "enzyme"
+import { SwapButton } from "."
 
-Enzyme.configure({ adapter: new Adapter() });
+Enzyme.configure({ adapter: new Adapter() })
 
 jest.mock("react-redux", () => ({
   useDispatch: () => {},
@@ -14,12 +14,10 @@ jest.mock("react-redux", () => ({
       timestamp: "dfd",
     },
   }),
-}));
+}))
 
-let wrapper: Enzyme.ShallowWrapper;
-const onSwapButtonClick = () => {
-
-}
+let wrapper: Enzyme.ShallowWrapper
+const onSwapButtonClick = () => {}
 
 describe("Components / Button / SwapButton", () => {
   beforeEach(() => {
@@ -28,17 +26,17 @@ describe("Components / Button / SwapButton", () => {
         style={{ margin: "0 40px" }}
         onButtonClick={onSwapButtonClick}
       />
-    );
-  });
+    )
+  })
 
   it("renders", () => {
-    expect(wrapper).toMatchSnapshot();
-  });
+    expect(wrapper).toMatchSnapshot()
+  })
   it("should be correct props", () => {
-    expect(wrapper.prop("onClick")).toEqual(onSwapButtonClick);
-    expect(wrapper.prop("style")).toEqual({ margin: "0 40px" });
-  });
+    expect(wrapper.prop("onClick")).toEqual(onSwapButtonClick)
+    expect(wrapper.prop("style")).toEqual({ margin: "0 40px" })
+  })
   it("should contain 2 image tag", () => {
-    expect(wrapper.find("img")).toHaveLength(2);
-  });
-});
+    expect(wrapper.find("img")).toHaveLength(2)
+  })
+})

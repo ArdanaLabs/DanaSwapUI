@@ -1,7 +1,7 @@
-import { useSelector } from 'react-redux'
-import configureMockStore from 'redux-mock-store'
-import { updateUserDarkMode } from './actions'
-import { useIsDarkMode, useDarkModeManager } from './hooks'
+import { useSelector } from "react-redux"
+import configureMockStore from "redux-mock-store"
+import { updateUserDarkMode } from "./actions"
+import { useIsDarkMode, useDarkModeManager } from "./hooks"
 
 const mockStore = configureMockStore([])
 
@@ -10,24 +10,24 @@ const initialState = {
   user: {
     userDarkMode: null,
     mediaDarkMode: false,
-    timestamp: new Date().getTime()
-  }
+    timestamp: new Date().getTime(),
+  },
 }
 
 const mockDispatch = jest.fn()
-jest.mock('react-redux', () => ({
-  ...jest.requireActual('react-redux'),
+jest.mock("react-redux", () => ({
+  ...jest.requireActual("react-redux"),
   useSelector: jest.fn(),
-  useDispatch: () => mockDispatch
+  useDispatch: () => mockDispatch,
 }))
 
 beforeEach(() => {
   store = mockStore(initialState)
 })
 
-describe('User hooks', () => {
+describe("User hooks", () => {
   beforeEach(() => {
-    ;(useSelector as jest.Mock).mockImplementation(callback => {
+    ;(useSelector as jest.Mock).mockImplementation((callback) => {
       return callback(initialState)
     })
   })
@@ -36,8 +36,8 @@ describe('User hooks', () => {
     ;(useSelector as jest.Mock).mockClear()
   })
 
-  describe('useIsDarkMode', () => {
-    it('should return darkMode status', () => {
+  describe("useIsDarkMode", () => {
+    it("should return darkMode status", () => {
       const darkMode = useIsDarkMode()
       const userDarkMode = store.getState().user.userDarkMode
       const mediaDarkMode = store.getState().user.mediaDarkMode
@@ -48,8 +48,8 @@ describe('User hooks', () => {
     })
   })
 
-  describe('useDarkModeManager', () => {
-    it('should return darkMode status and setDarkMode functions', () => {
+  describe("useDarkModeManager", () => {
+    it("should return darkMode status and setDarkMode functions", () => {
       const [darkMode, setDarkMode] = useDarkModeManager()
       const expectedDarkMode = useIsDarkMode()
 

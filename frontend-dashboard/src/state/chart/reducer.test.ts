@@ -1,4 +1,4 @@
-import reducer, { initialState } from './reducer'
+import reducer, { initialState } from "./reducer"
 import {
   RangedAPY,
   RangedFees,
@@ -13,11 +13,11 @@ import {
   updatePoolLiquidity,
   updatePoolTransactions,
   updatePoolTXCount,
-  updatePoolVolume
-} from './actions'
+  updatePoolVolume,
+} from "./actions"
 
-describe('Chart reducers', () => {
-  it('should return aggVolume when dispatch updateAggVolume action', () => {
+describe("Chart reducers", () => {
+  it("should return aggVolume when dispatch updateAggVolume action", () => {
     let mock: RangedVolume[] = []
     mock.push({
       start: null,
@@ -25,44 +25,44 @@ describe('Chart reducers', () => {
       addLiquidity: null,
       removeLiquidity: null,
       total: null,
-      trade: null
+      trade: null,
     })
 
     expect(reducer(initialState, updateAggVolume(mock))).toStrictEqual({
       ...initialState,
-      aggVolume: mock
+      aggVolume: mock,
     })
   })
 
-  it('should return aggLiquidity when dispatch updateAggLiquidity action', () => {
+  it("should return aggLiquidity when dispatch updateAggLiquidity action", () => {
     let mock: RangedLiquidity[] = []
     mock.push({
       start: null,
       end: null,
-      value: null
+      value: null,
     })
 
     expect(reducer(initialState, updateAggLiquidity(mock))).toStrictEqual({
       ...initialState,
-      aggLiquidity: mock
+      aggLiquidity: mock,
     })
   })
 
-  it('should return poolFees when dispatch updatePoolFees action', () => {
+  it("should return poolFees when dispatch updatePoolFees action", () => {
     let mock: RangedFees[] = []
     mock.push({
       start: null,
       end: null,
-      value: null
+      value: null,
     })
 
     expect(reducer(initialState, updatePoolFees(mock))).toStrictEqual({
       ...initialState,
-      poolFees: mock
+      poolFees: mock,
     })
   })
 
-  it('should return poolVolume when dispatch updatePoolVolume action', () => {
+  it("should return poolVolume when dispatch updatePoolVolume action", () => {
     let mock: RangedVolume[] = []
     mock.push({
       start: null,
@@ -70,30 +70,30 @@ describe('Chart reducers', () => {
       addLiquidity: null,
       removeLiquidity: null,
       total: null,
-      trade: null
+      trade: null,
     })
 
     expect(reducer(initialState, updatePoolVolume(mock))).toStrictEqual({
       ...initialState,
-      poolVolume: mock
+      poolVolume: mock,
     })
   })
 
-  it('should return poolLiquidity when dispatch updatePoolLiquidity action', () => {
+  it("should return poolLiquidity when dispatch updatePoolLiquidity action", () => {
     let mock: RangedLiquidity[] = []
     mock.push({
       start: null,
       end: null,
-      value: null
+      value: null,
     })
 
     expect(reducer(initialState, updatePoolLiquidity(mock))).toStrictEqual({
       ...initialState,
-      poolLiquidity: mock
+      poolLiquidity: mock,
     })
   })
 
-  it('should return poolTXCount when dispatch updatePoolTXCount action', () => {
+  it("should return poolTXCount when dispatch updatePoolTXCount action", () => {
     let mock: RangedTxCount[] = []
     mock.push({
       start: null,
@@ -101,30 +101,30 @@ describe('Chart reducers', () => {
       addLiquidity: null,
       removeLiquidity: null,
       total: null,
-      trade: null
+      trade: null,
     })
 
     expect(reducer(initialState, updatePoolTXCount(mock))).toStrictEqual({
       ...initialState,
-      poolTXCount: mock
+      poolTXCount: mock,
     })
   })
 
-  it('should return poolAPY when dispatch updatePoolAPY action', () => {
+  it("should return poolAPY when dispatch updatePoolAPY action", () => {
     let mock: RangedAPY[] = []
     mock.push({
       start: null,
       end: null,
-      value: null
+      value: null,
     })
 
     expect(reducer(initialState, updatePoolAPY(mock))).toStrictEqual({
       ...initialState,
-      poolAPY: mock
+      poolAPY: mock,
     })
   })
 
-  it('should return poolTransactions when dispatch updatePoolTransactions action', () => {
+  it("should return poolTransactions when dispatch updatePoolTransactions action", () => {
     let mock: RangedTransactions[] = []
     mock.push({
       tx: {
@@ -137,16 +137,16 @@ describe('Chart reducers', () => {
           spentAmount: null,
           purchasedAmount: null,
           amounts: {
-            token: null
-          }
-        }
+            token: null,
+          },
+        },
       },
-      navUSD: null
+      navUSD: null,
     })
 
     expect(reducer(initialState, updatePoolTransactions(mock))).toStrictEqual({
       ...initialState,
-      poolTransactions: mock
+      poolTransactions: mock,
     })
   })
 })

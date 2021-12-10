@@ -1,10 +1,10 @@
-import React from "react";
-import { Box, useMediaQuery } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import cx from "classnames";
-import { useIsDarkMode } from "state/user/hooks";
+import React from "react"
+import { Box, useMediaQuery } from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import cx from "classnames"
+import { useIsDarkMode } from "state/user/hooks"
 
-import ArrowRightIcon from "assets/image/icons/arrow-right-circle.svg";
+import ArrowRightIcon from "assets/image/icons/arrow-right-circle.svg"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -53,10 +53,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   link: {
-    position: "absolute",
-    top: "50%",
-    right: "0px",
-    transform: "translate(-50%, -50%)",
+    "position": "absolute",
+    "top": "50%",
+    "right": "0px",
+    "transform": "translate(-50%, -50%)",
 
     "& > img": {
       width: "50px",
@@ -73,19 +73,19 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       left: "50%",
     },
   },
-}));
+}))
 
 export interface HelpCardProps {
-  title: string;
-  content: string;
-  background: string;
+  title: string
+  content: string
+  background: string
 }
 
 const HelpCard: React.FC<HelpCardProps> = ({ title, content, background }) => {
-  const { breakpoints } = useTheme();
-  const dark = useIsDarkMode();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const classes = useStyles({ dark, mobile });
+  const { breakpoints } = useTheme()
+  const dark = useIsDarkMode()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark, mobile })
 
   return (
     <Box className={cx(classes.root)} style={{ background: background }}>
@@ -101,7 +101,7 @@ const HelpCard: React.FC<HelpCardProps> = ({ title, content, background }) => {
         <img src={ArrowRightIcon} alt="right" />
       </Box>
     </Box>
-  );
-};
+  )
+}
 
-export default HelpCard;
+export default HelpCard

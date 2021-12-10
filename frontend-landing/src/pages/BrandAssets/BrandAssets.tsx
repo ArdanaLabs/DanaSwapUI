@@ -1,7 +1,7 @@
-import React from "react";
-import { Box } from "@material-ui/core";
+import React from "react"
+import { Box } from "@material-ui/core"
 
-import { GuideLinesSection, MainSection, PressKitSection } from "./sections";
+import { GuideLinesSection, MainSection, PressKitSection } from "./sections"
 
 const BrandAssets: React.FC = () => {
   return (
@@ -10,7 +10,7 @@ const BrandAssets: React.FC = () => {
       <GuideLinesSection />
       <PressKitSection />
     </Box>
-  );
-};
+  )
+}
 
-export default BrandAssets;
+export default BrandAssets

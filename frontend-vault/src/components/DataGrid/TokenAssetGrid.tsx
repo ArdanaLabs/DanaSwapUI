@@ -1,16 +1,16 @@
-import { withStyles } from "@material-ui/core/styles";
-import { DataGrid } from "@material-ui/data-grid";
+import { withStyles } from "@material-ui/core/styles"
+import { DataGrid } from "@material-ui/data-grid"
 
 const StyledDataGrid = withStyles((theme) => ({
   root: {
-    border: "unset",
+    "border": "unset",
     "& .MuiDataGrid-columnHeaderTitle": {
-      fontFamily: "Brandon Grotesque",
-      fontStyle: "normal",
-      fontWeight: 900,
-      fontSize: "15px",
-      color: theme.palette.primary.main,
-      marginRight: "20px",
+      "fontFamily": "Brandon Grotesque",
+      "fontStyle": "normal",
+      "fontWeight": 900,
+      "fontSize": "15px",
+      "color": theme.palette.primary.main,
+      "marginRight": "20px",
 
       "& svg": {
         color: `${theme.palette.primary.main} !important`,
@@ -55,6 +55,6 @@ const StyledDataGrid = withStyles((theme) => ({
   cell: {
     border: "unset !important",
   },
-}))(DataGrid);
+}))(DataGrid)
 
-export default StyledDataGrid;
+export default StyledDataGrid

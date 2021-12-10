@@ -1,18 +1,18 @@
-import React from 'react'
-import { Box, makeStyles } from '@material-ui/core'
-import { Button } from 'components/Button'
-import cx from 'classnames'
+import React from "react"
+import { Box, makeStyles } from "@material-ui/core"
+import { Button } from "components/Button"
+import cx from "classnames"
 
 const useStyles = makeStyles(() => ({
   root: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    margin: '0px -5px',
+    "display": "inline-flex",
+    "alignItems": "center",
+    "margin": "0px -5px",
 
-    '& > button': {
-      margin: '0px 5px'
-    }
-  }
+    "& > button": {
+      margin: "0px 5px",
+    },
+  },
 }))
 
 export interface SwitchWithGliderProps {
@@ -30,7 +30,7 @@ const SwitchWithGlider: React.FC<SwitchWithGliderProps> = ({
   normalClass,
   activeClass,
   activeIndex,
-  handleSwitch
+  handleSwitch,
 }) => {
   const classes = useStyles()
   return (
@@ -39,10 +39,10 @@ const SwitchWithGlider: React.FC<SwitchWithGliderProps> = ({
         elements.map((element: any, i: number) => (
           <Button
             key={i}
-            variant='contained'
+            variant="contained"
             onClick={() => handleSwitch(i)}
             className={cx(normalClass, {
-              [activeClass]: activeIndex === i
+              [activeClass]: activeIndex === i,
             })}
           >
             {element}

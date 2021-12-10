@@ -1,12 +1,12 @@
-import React from "react";
-import cx from "classnames";
-import { Box } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import React from "react"
+import cx from "classnames"
+import { Box } from "@material-ui/core"
+import { makeStyles } from "@material-ui/core/styles"
 
-import { useDarkModeManager } from "state/user/hooks";
+import { useDarkModeManager } from "state/user/hooks"
 
-import ICO_Dark from "assets/svg/moon.svg";
-import ICO_Light from "assets/svg/sun.svg";
+import ICO_Dark from "assets/svg/moon.svg"
+import ICO_Light from "assets/svg/sun.svg"
 
 const useStyles = makeStyles(({ palette }) => ({
   self: {
@@ -20,14 +20,14 @@ const useStyles = makeStyles(({ palette }) => ({
     background: palette.primary.light,
   },
   switchIcon: {
-    borderRadius: "50%",
-    background: "#FFFFFF",
-    padding: 5,
-    width: 28,
-    height: 28,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
+    "borderRadius": "50%",
+    "background": "#FFFFFF",
+    "padding": 5,
+    "width": 28,
+    "height": 28,
+    "display": "flex",
+    "justifyContent": "center",
+    "alignItems": "center",
 
     "& img": {
       width: "14px",
@@ -43,15 +43,15 @@ const useStyles = makeStyles(({ palette }) => ({
     flexGrow: 5,
     textAlign: "center",
   },
-}));
+}))
 
 const ThemeSwitch: React.FC = () => {
-  const [darkMode, setDarkMode] = useDarkModeManager();
-  const classes = useStyles();
+  const [darkMode, setDarkMode] = useDarkModeManager()
+  const classes = useStyles()
 
   const toggleMode = () => {
-    setDarkMode(!darkMode);
-  };
+    setDarkMode(!darkMode)
+  }
 
   return (
     <Box
@@ -66,7 +66,7 @@ const ThemeSwitch: React.FC = () => {
         <img src={!darkMode ? ICO_Dark : ICO_Light} alt="Theme switch icon" />
       </Box>
     </Box>
-  );
-};
+  )
+}
 
-export default ThemeSwitch;
+export default ThemeSwitch

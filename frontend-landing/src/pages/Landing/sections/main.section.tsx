@@ -1,26 +1,26 @@
-import React from "react";
-import { Box, useMediaQuery, Container, Grid, Link } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import cx from "classnames";
-import ScrollAnimation from "react-animate-on-scroll";
-import i18next from "i18next";
-import ReactPlayer from "react-player";
+import React from "react"
+import { Box, useMediaQuery, Container, Grid, Link } from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import cx from "classnames"
+import ScrollAnimation from "react-animate-on-scroll"
+import i18next from "i18next"
+import ReactPlayer from "react-player"
 
-import { useIsDarkMode } from "state/user/hooks";
+import { useIsDarkMode } from "state/user/hooks"
 
-import { GradientButton } from "components/Button";
+import { GradientButton } from "components/Button"
 
-import BG_PURPLE_RADIAL from "assets/backgrounds/pink-gradient.png";
-import BG_BLUE_RADIAL from "assets/backgrounds/cyan-gradient.png";
-import BG_WAVE from "assets/backgrounds/wave-gradient.png";
-import BG_WAVE_MOBILE from "assets/backgrounds/wave-mobile-gradient.png";
-import { ReactComponent as TwitterIcon } from "assets/icons/twitter.svg";
-import { ReactComponent as TelegramIcon } from "assets/icons/telegram.svg";
+import BG_PURPLE_RADIAL from "assets/backgrounds/pink-gradient.png"
+import BG_BLUE_RADIAL from "assets/backgrounds/cyan-gradient.png"
+import BG_WAVE from "assets/backgrounds/wave-gradient.png"
+import BG_WAVE_MOBILE from "assets/backgrounds/wave-mobile-gradient.png"
+import { ReactComponent as TwitterIcon } from "assets/icons/twitter.svg"
+import { ReactComponent as TelegramIcon } from "assets/icons/telegram.svg"
 
-import { Listings } from "data";
+import { Listings } from "data"
 
 const sphereVideo =
-  "https://background.sfo3.digitaloceanspaces.com/sphere/output.webm";
+  "https://background.sfo3.digitaloceanspaces.com/sphere/output.webm"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
@@ -42,13 +42,13 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   title: {
-    fontFamily: "Brandon Grotesque",
-    fontStyle: "normal",
-    fontWeight: 900,
-    fontSize: "70px",
-    lineHeight: "100%",
-    color: palette.text.primary,
-    whiteSpace: "pre-line",
+    "fontFamily": "Brandon Grotesque",
+    "fontStyle": "normal",
+    "fontWeight": 900,
+    "fontSize": "70px",
+    "lineHeight": "100%",
+    "color": palette.text.primary,
+    "whiteSpace": "pre-line",
 
     "& > strong": {
       color: palette.text.secondary,
@@ -84,7 +84,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
   listingItem: {
     "& a": {
-      marginRight: "30px",
+      "marginRight": "30px",
 
       "&:last-child": {
         marginRight: 0,
@@ -100,20 +100,20 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   socialIconLink: {
-    cursor: "pointer",
-    color: palette.text.primary,
+    "cursor": "pointer",
+    "color": palette.text.primary,
 
     "&:hover path": {
       fill: palette.text.secondary,
     },
   },
-}));
+}))
 
 const MainSection: React.FC = () => {
-  const { breakpoints } = useTheme();
-  const dark = useIsDarkMode();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const classes = useStyles({ dark, mobile });
+  const { breakpoints } = useTheme()
+  const dark = useIsDarkMode()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark, mobile })
 
   return (
     <Box className={cx(classes.bg)}>
@@ -155,11 +155,7 @@ const MainSection: React.FC = () => {
                 flexDirection={!mobile ? "row" : "column"}
               >
                 {/* <Link href="http://app.ardana.org/launch" underline="none"> */}
-                <GradientButton
-                  label={"TRADING NOW"}
-                  width={160}
-                  height={40}
-                />
+                <GradientButton label={"TRADING NOW"} width={160} height={40} />
                 {/* </Link> */}
                 <Box
                   display="flex"
@@ -228,7 +224,7 @@ const MainSection: React.FC = () => {
         </Grid>
       </Container>
     </Box>
-  );
-};
+  )
+}
 
-export default MainSection;
+export default MainSection

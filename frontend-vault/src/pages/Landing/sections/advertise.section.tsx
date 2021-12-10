@@ -1,17 +1,17 @@
-import React from "react";
-import { Box, Grid, Container, useMediaQuery } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import cx from "classnames";
+import React from "react"
+import { Box, Grid, Container, useMediaQuery } from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import cx from "classnames"
 
-import { useIsDarkMode } from "state/user/hooks";
-import { ThemeSwitch } from "components";
+import { useIsDarkMode } from "state/user/hooks"
+import { ThemeSwitch } from "components"
 
-import BACKGROUND_GRAPHIC from "assets/image/backgrounds/BG-GRAPHIC.png";
-import BACKGROUND_WAVE_BLUE from "assets/image/backgrounds/BG-BLUE.png";
-import BACKGROUND_WAVE_WHITE from "assets/image/backgrounds/BG-WHITE.png";
-import BACKGROUND_WAVE_BLUE_M from "assets/image/backgrounds/BG-BLUE-MOBILE.png";
-import BACKGROUND_WAVE_WHITE_M from "assets/image/backgrounds/BG-WHITE-MOBILE.png";
-import COIN_CARDANO from "assets/image/COIN1.png";
+import BACKGROUND_GRAPHIC from "assets/image/backgrounds/BG-GRAPHIC.png"
+import BACKGROUND_WAVE_BLUE from "assets/image/backgrounds/BG-BLUE.png"
+import BACKGROUND_WAVE_WHITE from "assets/image/backgrounds/BG-WHITE.png"
+import BACKGROUND_WAVE_BLUE_M from "assets/image/backgrounds/BG-BLUE-MOBILE.png"
+import BACKGROUND_WAVE_WHITE_M from "assets/image/backgrounds/BG-WHITE-MOBILE.png"
+import COIN_CARDANO from "assets/image/COIN1.png"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -42,7 +42,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   description: {
-    width: "700px",
+    "width": "700px",
     "& > div:first-child": {
       color: palette.primary.main,
       fontFamily: "Brandon Grotesque",
@@ -97,13 +97,13 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     display: "inline-block",
     fontWeight: 700,
   },
-}));
+}))
 
 const AdSection: React.FC = () => {
-  const { breakpoints } = useTheme();
-  const dark = useIsDarkMode();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const classes = useStyles({ dark, mobile });
+  const { breakpoints } = useTheme()
+  const dark = useIsDarkMode()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark, mobile })
 
   return (
     <Box className={cx(classes.root)}>
@@ -160,7 +160,7 @@ const AdSection: React.FC = () => {
         </Grid>
       </Container>
     </Box>
-  );
-};
+  )
+}
 
-export default AdSection;
+export default AdSection

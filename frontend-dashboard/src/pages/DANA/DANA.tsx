@@ -1,10 +1,10 @@
-import React from "react";
-import { Box, Fade, Grid, Link, useMediaQuery } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import { useIsDarkMode } from "state/user/hooks";
-import cx from "classnames";
-import { PoolRatePerDANAList, WeeklyFeeList, depositePools } from "data";
-import { CheckGroup } from "components/Button";
+import React from "react"
+import { Box, Fade, Grid, Link, useMediaQuery } from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import { useIsDarkMode } from "state/user/hooks"
+import cx from "classnames"
+import { PoolRatePerDANAList, WeeklyFeeList, depositePools } from "data"
+import { CheckGroup } from "components/Button"
 
 const useStyles = makeStyles(({ palette }) => ({
   panel: {
@@ -29,13 +29,13 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 
   displayText: {
-    fontFamily: "Museo Sans",
-    fontStyle: "normal",
-    fontWeight: 100,
-    fontSize: "14px",
-    lineHeight: "100%",
-    color: palette.secondary.main,
-    whiteSpace: "pre-line",
+    "fontFamily": "Museo Sans",
+    "fontStyle": "normal",
+    "fontWeight": 100,
+    "fontSize": "14px",
+    "lineHeight": "100%",
+    "color": palette.secondary.main,
+    "whiteSpace": "pre-line",
 
     "& > span": {
       fontWeight: 900,
@@ -43,16 +43,16 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 
   viewGuideBtn: {
-    background: palette.primary.light,
-    padding: "10px 20px",
-    borderRadius: "5px",
-    color: palette.common.white,
-    fontFamily: "Museo Sans",
-    fontStyle: "normal",
-    fontWeight: 600,
-    fontSize: "13px",
-    lineHeight: "100%",
-    width: "fit-content",
+    "background": palette.primary.light,
+    "padding": "10px 20px",
+    "borderRadius": "5px",
+    "color": palette.common.white,
+    "fontFamily": "Museo Sans",
+    "fontStyle": "normal",
+    "fontWeight": 600,
+    "fontSize": "13px",
+    "lineHeight": "100%",
+    "width": "fit-content",
 
     "&:hover": {
       boxShadow:
@@ -101,13 +101,13 @@ const useStyles = makeStyles(({ palette }) => ({
     color: palette.secondary.main,
     textAlign: "center",
   },
-}));
+}))
 
 const DANA: React.FC = () => {
-  const { breakpoints } = useTheme();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const dark = useIsDarkMode();
-  const classes = useStyles({ dark, mobile });
+  const { breakpoints } = useTheme()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const dark = useIsDarkMode()
+  const classes = useStyles({ dark, mobile })
 
   return (
     <Fade in={true}>
@@ -254,7 +254,7 @@ const DANA: React.FC = () => {
         </Grid>
       </Grid>
     </Fade>
-  );
-};
+  )
+}
 
-export default DANA;
+export default DANA

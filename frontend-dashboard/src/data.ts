@@ -1,6 +1,5 @@
-
-import LOGO_Ardana from "assets/logos/ardana.png";
-import LOGO_Cardano from "assets/logos/cardano.png";
+import LOGO_Ardana from "assets/logos/ardana.png"
+import LOGO_Cardano from "assets/logos/cardano.png"
 
 export const options = [
   {
@@ -31,7 +30,7 @@ export const options = [
       { label: "", value: "Custom", hasInput: true },
     ],
   },
-];
+]
 
 export const navList = [
   {
@@ -58,7 +57,7 @@ export const navList = [
     label: "INFO",
     link: "/info",
   },
-];
+]
 
 export const TokenList = [
   {
@@ -71,7 +70,7 @@ export const TokenList = [
     name: "ADA",
     desc: "exDANA",
   },
-];
+]
 
 export const PoolRatePerDANAList = [
   {
@@ -98,7 +97,7 @@ export const PoolRatePerDANAList = [
     pool: "compound",
     rate: 0.793,
   },
-];
+]
 
 export const WeeklyFeeList = [
   {
@@ -125,16 +124,6 @@ export const WeeklyFeeList = [
     week: "Thu Jul 1 2021",
     fee: "149,000,100",
   },
-];
+]
 
-export const depositePools = [
-  "A",
-  "B",
-  "C",
-  "D",
-  "E",
-  "F",
-  "G",
-  "H",
-  "I",
-];
+export const depositePools = ["A", "B", "C", "D", "E", "F", "G", "H", "I"]

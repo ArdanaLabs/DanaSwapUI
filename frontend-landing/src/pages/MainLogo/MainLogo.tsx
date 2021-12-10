@@ -1,7 +1,7 @@
-import React from "react";
-import { Box } from "@material-ui/core";
+import React from "react"
+import { Box } from "@material-ui/core"
 
-import MainLogoImage from "assets/mainlogo.png";
+import MainLogoImage from "assets/mainlogo.png"
 
 const MainLogo: React.FC = () => {
   return (
@@ -15,7 +15,7 @@ const MainLogo: React.FC = () => {
     >
       <img src={MainLogoImage} alt="main logo" />
     </Box>
-  );
-};
+  )
+}
 
-export default MainLogo;
+export default MainLogo

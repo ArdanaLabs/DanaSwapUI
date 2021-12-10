@@ -77,6 +77,12 @@ This will install the rest of packages from NPM to build the front-end.
 NOTE: As of now the `--legacy-peer-deps` is required to resolve certain
 downstream dependencies
 
+== Formatting
+
+https://editorconfig.org/[EditorConfig] and https://prettier.io/[Prettier] are
+used to format various files. Please enable them to be ran from your editor or
+in your personal Git Hooks.
+
 === Workflow instructions
 
 Refer to the projects’ `package.json` for details, but a quick start:

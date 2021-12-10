@@ -1,28 +1,28 @@
-import React from "react";
-import { Box, useMediaQuery, Container } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import cx from "classnames";
-import i18next from "i18next";
-import ReactPlayer from "react-player";
+import React from "react"
+import { Box, useMediaQuery, Container } from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import cx from "classnames"
+import i18next from "i18next"
+import ReactPlayer from "react-player"
 
-import { useIsDarkMode } from "state/user/hooks";
-import { GradientButton } from "components/Button";
+import { useIsDarkMode } from "state/user/hooks"
+import { GradientButton } from "components/Button"
 
-import ICO_NEXT from "assets/icons/carousel-next.svg";
-import ICO_PREV from "assets/icons/carousel-prev.svg";
+import ICO_NEXT from "assets/icons/carousel-next.svg"
+import ICO_PREV from "assets/icons/carousel-prev.svg"
 
 const heroVideo =
-  "https://background.sfo3.digitaloceanspaces.com/team/output.webm";
+  "https://background.sfo3.digitaloceanspaces.com/team/output.webm"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
-    position: "relative",
+    "position": "relative",
     "& video": {
       objectFit: "cover",
     },
   },
   background: {
-    lineHeight: 0,
+    "lineHeight": 0,
 
     "& > img": {
       width: "100%",
@@ -91,17 +91,17 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       width: "18px",
     },
   },
-}));
+}))
 
 interface Props {
-  handleCarousel: (direction: number) => void;
+  handleCarousel: (direction: number) => void
 }
 
 const HeroSection: React.FC<Props> = ({ handleCarousel }) => {
-  const { breakpoints } = useTheme();
-  const dark = useIsDarkMode();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const classes = useStyles({ dark, mobile });
+  const { breakpoints } = useTheme()
+  const dark = useIsDarkMode()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark, mobile })
 
   return (
     <Box className={cx(classes.root)}>
@@ -139,7 +139,7 @@ const HeroSection: React.FC<Props> = ({ handleCarousel }) => {
         </Box>
       </Box>
     </Box>
-  );
-};
+  )
+}
 
-export default HeroSection;
+export default HeroSection

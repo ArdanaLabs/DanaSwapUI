@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { Box, useMediaQuery } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import cx from "classnames";
-import { useIsDarkMode } from "state/user/hooks";
+import React, { useState } from "react"
+import { Box, useMediaQuery } from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import cx from "classnames"
+import { useIsDarkMode } from "state/user/hooks"
 
 const useStyles = makeStyles(({ palette }) => ({
   root: {
@@ -21,13 +21,13 @@ const useStyles = makeStyles(({ palette }) => ({
     width: "100%",
     height: "100%",
   },
-}));
+}))
 
 interface GradientBoxProps {
-  width?: number;
-  height?: number;
-  strokeWidth?: number;
-  clickable?: boolean;
+  width?: number
+  height?: number
+  strokeWidth?: number
+  clickable?: boolean
 }
 
 const GradientBox: React.FC<GradientBoxProps> = ({
@@ -37,11 +37,11 @@ const GradientBox: React.FC<GradientBoxProps> = ({
   clickable = true,
   children,
 }) => {
-  const { breakpoints } = useTheme();
-  const dark = useIsDarkMode();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const classes = useStyles({ dark, mobile });
-  const [hover, setHover] = useState(false);
+  const { breakpoints } = useTheme()
+  const dark = useIsDarkMode()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark, mobile })
+  const [hover, setHover] = useState(false)
 
   return (
     <Box position="relative" lineHeight={0} display="inline-block">
@@ -84,7 +84,7 @@ const GradientBox: React.FC<GradientBoxProps> = ({
         style={clickable && hover ? { background: "#FFFFFF33" } : {}}
       />
     </Box>
-  );
-};
+  )
+}
 
-export default GradientBox;
+export default GradientBox

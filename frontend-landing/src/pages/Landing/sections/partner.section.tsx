@@ -1,13 +1,13 @@
-import React from "react";
-import { Box, useMediaQuery, Container, Link } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import cx from "classnames";
-import ScrollAnimation from "react-animate-on-scroll";
+import React from "react"
+import { Box, useMediaQuery, Container, Link } from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import cx from "classnames"
+import ScrollAnimation from "react-animate-on-scroll"
 
-import i18next from "i18next";
-import { useIsDarkMode } from "state/user/hooks";
+import i18next from "i18next"
+import { useIsDarkMode } from "state/user/hooks"
 
-import { Partners } from "data";
+import { Partners } from "data"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
@@ -31,20 +31,20 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     },
   },
   partner: {
-    textAlign: "center",
+    "textAlign": "center",
 
     "& img": {
       width: "100%",
       maxWidth: "max-content",
     },
   },
-}));
+}))
 
 const PartnerSection: React.FC = () => {
-  const { breakpoints } = useTheme();
-  const dark = useIsDarkMode();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const classes = useStyles({ dark, mobile });
+  const { breakpoints } = useTheme()
+  const dark = useIsDarkMode()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark, mobile })
 
   return (
     <Box className={cx(classes.bg)}>
@@ -120,7 +120,7 @@ const PartnerSection: React.FC = () => {
         </ScrollAnimation>
       </Container>
     </Box>
-  );
-};
+  )
+}
 
-export default PartnerSection;
+export default PartnerSection

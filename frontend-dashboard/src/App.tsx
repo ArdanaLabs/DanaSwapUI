@@ -1,17 +1,17 @@
-import React, { Suspense, useState, useEffect } from "react";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-import { Provider as StateProvider } from "react-redux";
+import React, { Suspense, useState, useEffect } from "react"
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom"
+import { Provider as StateProvider } from "react-redux"
 import {
   ThemeProvider as MuiThemeProvider,
   CssBaseline,
-} from "@material-ui/core";
-import { ParallaxProvider } from "react-scroll-parallax";
-import { I18nextProvider } from "react-i18next";
+} from "@material-ui/core"
+import { ParallaxProvider } from "react-scroll-parallax"
+import { I18nextProvider } from "react-i18next"
 
-import i18n from "./i18n";
-import { useIsDarkMode } from "state/user/hooks";
-import { darkTheme, lightTheme } from "./theme";
-import store from "./state";
+import i18n from "./i18n"
+import { useIsDarkMode } from "state/user/hooks"
+import { darkTheme, lightTheme } from "./theme"
+import store from "./state"
 
 import {
   Home,
@@ -22,13 +22,13 @@ import {
   SpecPool,
   Withdraw,
   Deposit,
-} from "./pages";
-import Layout from "layouts/Layout";
+} from "./pages"
+import Layout from "layouts/Layout"
 
-import HomeUpdater from "./state/home/updater";
-import UserUpdater from "./state/user/updater";
+import HomeUpdater from "./state/home/updater"
+import UserUpdater from "./state/user/updater"
 // import WSUpdater from "./state/websocket/updater";
-import ChartUpdater from "./state/chart/updater";
+import ChartUpdater from "./state/chart/updater"
 
 const StateUpdaters: React.FC = () => {
   return (
@@ -38,20 +38,20 @@ const StateUpdaters: React.FC = () => {
       {/* <WSUpdater /> */}
       <ChartUpdater />
     </>
-  );
-};
+  )
+}
 
 const ThemeProvider: React.FC = ({ children }) => {
   // const location = useLocation();
-  const darkMode = useIsDarkMode();
-  let theme = darkMode ? darkTheme : lightTheme;
+  const darkMode = useIsDarkMode()
+  let theme = darkMode ? darkTheme : lightTheme
 
   // if (location.pathname.replace('/', '') === '') {
   //   theme = darkTheme;
   // }
 
-  return <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>;
-};
+  return <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>
+}
 
 const Providers: React.FC = ({ children }) => {
   return (
@@ -69,18 +69,18 @@ const Providers: React.FC = ({ children }) => {
         </Suspense>
       </BrowserRouter>
     </ParallaxProvider>
-  );
-};
+  )
+}
 
 const App: React.FC = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    setLoading(false);
-  }, []);
+    setLoading(false)
+  }, [])
 
   if (loading) {
-    return null;
+    return null
   }
 
   return (
@@ -141,7 +141,7 @@ const App: React.FC = () => {
         </Route>
       </Switch>
     </Providers>
-  );
-};
+  )
+}
 
-export default App;
+export default App

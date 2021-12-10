@@ -1,25 +1,28 @@
-import React from "react";
-import { Box, useMediaQuery, Container, Link } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import cx from "classnames";
+import React from "react"
+import { Box, useMediaQuery, Container, Link } from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import cx from "classnames"
 
-import { useIsDarkMode } from "state/user/hooks";
+import { useIsDarkMode } from "state/user/hooks"
 
-import LOGO_White from "assets/logo_white.png";
-import LOGO_Text from "assets/logo_text.png";
+import LOGO_White from "assets/logo_white.png"
+import LOGO_Text from "assets/logo_text.png"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
-    background: palette.type === "light" ? "linear-gradient(90.19deg, #2F3DA0 27.19%, #73D6F1 99.87%)" : palette.background.default,
+    background:
+      palette.type === "light"
+        ? "linear-gradient(90.19deg, #2F3DA0 27.19%, #73D6F1 99.87%)"
+        : palette.background.default,
     marginTop: "50px",
     padding: 10,
   },
 
   logo: {
-    paddingLeft: "10px",
-    display: "flex",
-    alignItems: "center",
-    cursor: "pointer",
+    "paddingLeft": "10px",
+    "display": "flex",
+    "alignItems": "center",
+    "cursor": "pointer",
     "& img": {
       padding: "20px 10px",
     },
@@ -32,19 +35,19 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
     [breakpoints.down("xs")]: {
       flexDirection: "column",
-    }
+    },
   },
 
   socialIconLink: {
-    borderRadius: "50%",
-    backgroundColor: "white",
-    padding: "10px",
-    marginRight: "20px",
-    cursor: "pointer",
-    color: "gray",
-    textAlign: "center",
-    transition: "background .2s",
-    fontFamily: "auto",
+    "borderRadius": "50%",
+    "backgroundColor": "white",
+    "padding": "10px",
+    "marginRight": "20px",
+    "cursor": "pointer",
+    "color": "gray",
+    "textAlign": "center",
+    "transition": "background .2s",
+    "fontFamily": "auto",
 
     "& i": {
       width: "16px",
@@ -55,13 +58,13 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       backgroundColor: "lightgray",
     },
   },
-}));
+}))
 
 const Footer: React.FC = () => {
-  const { breakpoints } = useTheme();
-  const dark = useIsDarkMode();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const classes = useStyles({ dark, mobile });
+  const { breakpoints } = useTheme()
+  const dark = useIsDarkMode()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark, mobile })
 
   return (
     <Box className={cx(classes.bg)}>
@@ -91,7 +94,7 @@ const Footer: React.FC = () => {
         </Box>
       </Container>
     </Box>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

@@ -1,14 +1,14 @@
-import React from "react";
-import { Box, Container, Grid, useMediaQuery } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import { useIsDarkMode } from "state/user/hooks";
-import cx from "classnames";
-import IMG_bg from "assets/backgrounds/launch-bg.png";
-import { default as ReactPlayer } from "react-player";
-import ScrollAnimation from "react-animate-on-scroll";
+import React from "react"
+import { Box, Container, Grid, useMediaQuery } from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import { useIsDarkMode } from "state/user/hooks"
+import cx from "classnames"
+import IMG_bg from "assets/backgrounds/launch-bg.png"
+import { default as ReactPlayer } from "react-player"
+import ScrollAnimation from "react-animate-on-scroll"
 
 const heroVideo =
-  "https://background.sfo3.digitaloceanspaces.com/background/output.m3u8";
+  "https://background.sfo3.digitaloceanspaces.com/background/output.m3u8"
 // "https://background.sfo3.digitaloceanspaces.com/background.mov";
 
 const statInfo = [
@@ -36,15 +36,15 @@ const statInfo = [
     label: "Current exDANA\nStaking APY",
     content: "88,000",
   },
-];
+]
 
 const useStyles = makeStyles(({ palette }) => ({
   root: {
-    background: `url(${IMG_bg})`,
-    minHeight: "100vh",
-    position: "fixed",
-    height: "100vh",
-    width: "100vw",
+    "background": `url(${IMG_bg})`,
+    "minHeight": "100vh",
+    "position": "fixed",
+    "height": "100vh",
+    "width": "100vw",
     "& video": {
       objectFit: "cover",
     },
@@ -64,14 +64,14 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 
   title: {
-    fontFamily: "Brandon Grotesque",
-    fontStyle: "normal",
-    fontWeight: 300,
-    fontSize: "48px",
-    lineHeight: "120.5%",
-    textAlign: "center",
-    color: "#FFFFFF",
-    padding: "30px",
+    "fontFamily": "Brandon Grotesque",
+    "fontStyle": "normal",
+    "fontWeight": 300,
+    "fontSize": "48px",
+    "lineHeight": "120.5%",
+    "textAlign": "center",
+    "color": "#FFFFFF",
+    "padding": "30px",
 
     "& > span": {
       fontWeight: 900,
@@ -79,9 +79,9 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 
   statGroup: {
-    display: "flex",
-    justifyContent: "center",
-    marginTop: "50px",
+    "display": "flex",
+    "justifyContent": "center",
+    "marginTop": "50px",
 
     "& > div": {
       display: "flex",
@@ -90,13 +90,13 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 
   StatBox: {
-    color: "white",
-    fontFamily: "Brandon Grotesque",
-    fontStyle: "normal",
-    fontWeight: 900,
-    fontSize: "22px",
-    lineHeight: "110%",
-    whiteSpace: "pre-line",
+    "color": "white",
+    "fontFamily": "Brandon Grotesque",
+    "fontStyle": "normal",
+    "fontWeight": 900,
+    "fontSize": "22px",
+    "lineHeight": "110%",
+    "whiteSpace": "pre-line",
 
     "& > span": {
       fontFamily: "Museo Sans",
@@ -105,21 +105,21 @@ const useStyles = makeStyles(({ palette }) => ({
       fontWeight: 100,
     },
   },
-}));
+}))
 
 export interface TotalStatsSectionProps {
-  top?: string;
-  show?: boolean;
+  top?: string
+  show?: boolean
 }
 
 const TotalStatsSection: React.FC<TotalStatsSectionProps> = ({
   top = "0vh",
   show = false,
 }) => {
-  const { breakpoints } = useTheme();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const dark = useIsDarkMode();
-  const classes = useStyles({ dark, mobile });
+  const { breakpoints } = useTheme()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const dark = useIsDarkMode()
+  const classes = useStyles({ dark, mobile })
 
   return (
     <Box className={cx(classes.root)} top={top}>
@@ -160,7 +160,7 @@ const TotalStatsSection: React.FC<TotalStatsSectionProps> = ({
         )}
       </Box>
     </Box>
-  );
-};
+  )
+}
 
-export default TotalStatsSection;
+export default TotalStatsSection
