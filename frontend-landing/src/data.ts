@@ -458,7 +458,8 @@ export const externals: any = {
   Resources: {
     Technology: "/tech",
     Documentation: "https://docs.ardana.org/",
-    "Pitch Deck": "https://docsend.com/view/kc5m2snw7t77fs5r",
+    // "Pitch Deck": "https://docsend.com/view/kc5m2snw7t77fs5r",
+    "Pitch Deck": "https://docsend.com/view/ps9hsr88m834pj98",
     "Brand Assets": "/brandassets",
   },
   Products: {
@@ -553,4 +554,13 @@ export const Roadmap = {
     "Partnership Project Integrations",
   ],
   "Q4 2022": ["Danaswap Foreign Exchange"],
+  "2023+": [
+    "Tokenized Asset Vaults",
+    "Alternative Stablecoin Currency Vaults",
+    "Mobile Application",
+    "Real World Asset Vaults",
+    "Fiat Gateways",
+    "Institutional Platform Development",
+    "Liquidity Incentives Program",
+  ],
 };
