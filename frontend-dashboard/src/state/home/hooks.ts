@@ -1,42 +1,38 @@
-import { useSelector } from "react-redux";
-import { AppState } from "state";
-import { API_URL } from "config/endpoints";
+import { useSelector } from "react-redux"
+import { AppState } from "state"
+import { API_URL } from "config/endpoints"
 
 export function useTotalStats() {
-  const { 
-    totalDepositsAllPoolsUSD, 
-    totalDailyVolumeUSD, 
+  const {
+    totalDepositsAllPoolsUSD,
+    totalDailyVolumeUSD,
     totalDailyFeeVolumeUSD,
-    totalLiquidityUtilization
-  } = useSelector<
-    AppState,
-    AppState["home"]
-  >((state) => state.home);
+    totalLiquidityUtilization,
+  } = useSelector<AppState, AppState["home"]>((state) => state.home)
 
-  return { 
-    totalDepositsAllPoolsUSD, 
-    totalDailyVolumeUSD, 
+  return {
+    totalDepositsAllPoolsUSD,
+    totalDailyVolumeUSD,
     totalDailyFeeVolumeUSD,
-    totalLiquidityUtilization
-  };
+    totalLiquidityUtilization,
+  }
 }
 
 export function usePoolStats() {
-  const { poolStats } = useSelector<
-    AppState,
-    AppState["home"]
-  >((state) => state.home);
+  const { poolStats } = useSelector<AppState, AppState["home"]>(
+    (state) => state.home
+  )
 
-  return poolStats;
+  return poolStats
 }
 
 export async function getStats() {
   try {
-    const result = await fetch(API_URL + "/combined");
+    const result = await fetch(API_URL + "/combined")
 
-    return result.json();
-  } catch(e) {
-    console.log('error fetching', e);
-    return null;
+    return result.json()
+  } catch (e) {
+    console.log("error fetching", e)
+    return null
   }
 }

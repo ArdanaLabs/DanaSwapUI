@@ -1,1 +1,1 @@
-export { default } from './BrandAssets';
+export { default } from "./BrandAssets"

@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
-import FormLabel from "@material-ui/core/FormLabel";
-import FormControl from "@material-ui/core/FormControl";
-import FormGroup from "@material-ui/core/FormGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox, { CheckboxProps } from "@material-ui/core/Checkbox";
-import { Box, Grid } from "@material-ui/core";
-import cx from "classnames";
+import React, { useEffect, useState } from "react"
+import { makeStyles, Theme, createStyles } from "@material-ui/core/styles"
+import FormLabel from "@material-ui/core/FormLabel"
+import FormControl from "@material-ui/core/FormControl"
+import FormGroup from "@material-ui/core/FormGroup"
+import FormControlLabel from "@material-ui/core/FormControlLabel"
+import Checkbox, { CheckboxProps } from "@material-ui/core/Checkbox"
+import { Box, Grid } from "@material-ui/core"
+import cx from "classnames"
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -28,12 +28,12 @@ const useStyles = makeStyles((theme: Theme) =>
         fontStyle: "normal",
         fontWeight: 500,
         fontSize: "10px",
-        lineHeight: "16px",        
+        lineHeight: "16px",
         color: theme.palette.secondary.main,
       },
     },
   })
-);
+)
 const useCheckBoxStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -42,12 +42,12 @@ const useCheckBoxStyles = makeStyles((theme: Theme) =>
       },
     },
     icon: {
-      borderRadius: "50%",
-      width: 18,
-      height: 18,
-      boxShadow:
+      "borderRadius": "50%",
+      "width": 18,
+      "height": 18,
+      "boxShadow":
         "inset 0 0 0 1px rgba(16,22,26,.2), inset 0 -1px 0 rgba(16,22,26,.1)",
-      backgroundColor: theme.palette.type === "light" ? "#E9E9E9" : "#FFFFFF",
+      "backgroundColor": theme.palette.type === "light" ? "#E9E9E9" : "#FFFFFF",
       "$root.Mui-focusVisible &": {
         outline: "2px auto rgba(19,124,189,.6)",
         outlineOffset: 2,
@@ -61,7 +61,7 @@ const useCheckBoxStyles = makeStyles((theme: Theme) =>
       },
     },
     checkedIcon: {
-      backgroundColor: "#235DF4",
+      "backgroundColor": "#235DF4",
       "&:before": {
         display: "block",
         width: 18,
@@ -77,10 +77,10 @@ const useCheckBoxStyles = makeStyles((theme: Theme) =>
       },
     },
   })
-);
+)
 
 function StyledCheckbox(props: CheckboxProps) {
-  const classes = useCheckBoxStyles();
+  const classes = useCheckBoxStyles()
 
   return (
     <Checkbox
@@ -92,46 +92,48 @@ function StyledCheckbox(props: CheckboxProps) {
       inputProps={{ "aria-label": "decorative checkbox" }}
       {...props}
     />
-  );
+  )
 }
 
 export interface CheckGroupProps {
-  list: any;
+  list: any
 }
 
 export interface CheckStateProps {
-  [x: string]: boolean;
+  [x: string]: boolean
 }
 
 const CheckGroup: React.FC<CheckGroupProps> = ({ list }) => {
-  const classes = useStyles();
-  const [state, setState] = useState<CheckStateProps[]>([]);
+  const classes = useStyles()
+  const [state, setState] = useState<CheckStateProps[]>([])
 
   useEffect(() => {
     let newState = list.map((item: string) => {
-      return { [item]: false };
-    });
+      return { [item]: false }
+    })
 
-    setState(newState);
+    setState(newState)
     // eslint-disable-next-line
-  }, [list]);
+  }, [list])
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     let updatedState: any = state.map((item: any) => {
       if (Object.keys(item)[0] === event.target.name) {
-        return { [event.target.name]: event.target.checked };
+        return { [event.target.name]: event.target.checked }
       }
       return {
         [Object.keys(item)[0]]: Object.values(item)[0],
-      };
-    });
-    setState(updatedState);
-  };
+      }
+    })
+    setState(updatedState)
+  }
 
   return (
     <Box className={cx(classes.root)}>
       <FormControl component="fieldset">
-        <FormLabel component="legend">Select pools where you want to deposit:</FormLabel>
+        <FormLabel component="legend">
+          Select pools where you want to deposit:
+        </FormLabel>
         <FormGroup>
           <Grid container>
             {state.map((item, index) => (
@@ -152,6 +154,6 @@ const CheckGroup: React.FC<CheckGroupProps> = ({ list }) => {
         </FormGroup>
       </FormControl>
     </Box>
-  );
-};
-export default CheckGroup;
+  )
+}
+export default CheckGroup

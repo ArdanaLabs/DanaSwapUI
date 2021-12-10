@@ -1,9 +1,9 @@
-import { mount } from 'enzyme'
-import * as Enzyme from 'enzyme'
-import Adapter from '@wojtekmaj/enzyme-adapter-react-17'
-import configureMockStore from 'redux-mock-store'
-import HomeUpdater from './updater'
-import React, { useEffect } from 'react'
+import { mount } from "enzyme"
+import * as Enzyme from "enzyme"
+import Adapter from "@wojtekmaj/enzyme-adapter-react-17"
+import configureMockStore from "redux-mock-store"
+import HomeUpdater from "./updater"
+import React, { useEffect } from "react"
 
 Enzyme.configure({ adapter: new Adapter() })
 const mockStore = configureMockStore([])
@@ -14,19 +14,19 @@ const initialState = {
     totalDailyVolumeUSD: null,
     totalDailyFeeVolumeUSD: null,
     totalLiquidityUtilization: null,
-    poolStats: null
-  }
+    poolStats: null,
+  },
 }
 
 const mockDispatch = jest.fn()
-jest.mock('react', () => ({
-  ...jest.requireActual('react'),
-  useEffect: jest.fn(f => f())
+jest.mock("react", () => ({
+  ...jest.requireActual("react"),
+  useEffect: jest.fn((f) => f()),
 }))
-jest.mock('react-redux', () => ({
-  ...jest.requireActual('react-redux'),
+jest.mock("react-redux", () => ({
+  ...jest.requireActual("react-redux"),
   useSelector: jest.fn(),
-  useDispatch: () => mockDispatch
+  useDispatch: () => mockDispatch,
 }))
 jest.useFakeTimers()
 
@@ -34,12 +34,12 @@ beforeEach(() => {
   mockStore(initialState)
 })
 
-describe('Home updater', () => {
+describe("Home updater", () => {
   beforeEach(() => {
     mount(<HomeUpdater />)
   })
 
-  it('should call useEffect', () => {
+  it("should call useEffect", () => {
     expect(useEffect).toHaveBeenCalled()
   })
 

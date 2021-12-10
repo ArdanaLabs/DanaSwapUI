@@ -1,31 +1,31 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect } from "react"
+import { useDispatch } from "react-redux"
 
-import { AppDispatch } from "state";
-import { updateTotalStats } from "./actions";
-import { getStats } from "./hooks";
+import { AppDispatch } from "state"
+import { updateTotalStats } from "./actions"
+import { getStats } from "./hooks"
 
 export default function Updater(): null {
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useDispatch<AppDispatch>()
 
   useEffect(() => {
     const fetchTotalStatsFromEndPoint = async () => {
-      const totalStats: any = await getStats();
-      console.log("totalStats", totalStats);
+      const totalStats: any = await getStats()
+      console.log("totalStats", totalStats)
 
-      totalStats && dispatch(updateTotalStats(totalStats));
-    };
+      totalStats && dispatch(updateTotalStats(totalStats))
+    }
 
     let timer = setInterval(async () => {
-      await fetchTotalStatsFromEndPoint();
-    }, 1000 * 60 * 100);
+      await fetchTotalStatsFromEndPoint()
+    }, 1000 * 60 * 100)
 
-    fetchTotalStatsFromEndPoint();
+    fetchTotalStatsFromEndPoint()
 
     return () => {
-      clearInterval(timer);
-    };
-  }, [dispatch]);
+      clearInterval(timer)
+    }
+  }, [dispatch])
 
-  return null;
+  return null
 }

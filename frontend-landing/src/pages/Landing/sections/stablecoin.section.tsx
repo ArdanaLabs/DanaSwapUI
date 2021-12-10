@@ -1,30 +1,30 @@
-import React from "react";
-import { Box, useMediaQuery, Container, Grid } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import cx from "classnames";
+import React from "react"
+import { Box, useMediaQuery, Container, Grid } from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import cx from "classnames"
 // import ReactPlayer from "react-player";
-import ScrollAnimation from "react-animate-on-scroll";
-import i18next from "i18next";
+import ScrollAnimation from "react-animate-on-scroll"
+import i18next from "i18next"
 
-import { useIsDarkMode } from "state/user/hooks";
-import { GradientButton } from "components/Button";
+import { useIsDarkMode } from "state/user/hooks"
+import { GradientButton } from "components/Button"
 
-import BG_VECTEEZY from "assets/backgrounds/vecteezy.png";
-import IMG_STABLECOIN from "assets/logos/stablecoin-logo.png";
+import BG_VECTEEZY from "assets/backgrounds/vecteezy.png"
+import IMG_STABLECOIN from "assets/logos/stablecoin-logo.png"
 
 // const heroVideo =
 //   "https://background.sfo3.digitaloceanspaces.com/team/output.webm";
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
-    padding: "0px",
-    position: "relative",
+    "padding": "0px",
+    "position": "relative",
     "& video": {
       objectFit: "cover",
     },
   },
   background: {
-    lineHeight: 0,
+    "lineHeight": 0,
 
     "& > img": {
       width: "100%",
@@ -82,13 +82,13 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       padding: "0px 10px",
     },
   },
-}));
+}))
 
 const StableCoinSection: React.FC = () => {
-  const { breakpoints } = useTheme();
-  const dark = useIsDarkMode();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const classes = useStyles({ dark, mobile });
+  const { breakpoints } = useTheme()
+  const dark = useIsDarkMode()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark, mobile })
 
   return (
     <Box className={cx(classes.root)}>
@@ -137,7 +137,7 @@ const StableCoinSection: React.FC = () => {
         </Container>
       </Box>
     </Box>
-  );
-};
+  )
+}
 
-export default StableCoinSection;
+export default StableCoinSection

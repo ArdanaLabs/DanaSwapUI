@@ -1,25 +1,25 @@
-import React, { useState } from "react";
-import { Box, Container, useMediaQuery } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import cx from "classnames";
-import { useIsDarkMode } from "state/user/hooks";
+import React, { useState } from "react"
+import { Box, Container, useMediaQuery } from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import cx from "classnames"
+import { useIsDarkMode } from "state/user/hooks"
 import {
   TokenAssetGrid,
   TokenAssetGridFilter,
   TokenAssetCard,
   VaultButton,
-} from "components";
+} from "components"
 import {
   GridCellParams,
   GridColDef,
   GridValueGetterParams,
-} from "@material-ui/data-grid";
+} from "@material-ui/data-grid"
 import {
   FilterOption,
   FilterType,
-} from "components/DataGrid/TokenAssetGridFilter";
+} from "components/DataGrid/TokenAssetGridFilter"
 
-import COIN1 from "assets/image/COIN1.png";
+import COIN1 from "assets/image/COIN1.png"
 
 const rows = [
   {
@@ -85,7 +85,7 @@ const rows = [
     minColl: 150,
     assetIcon: COIN1,
   },
-];
+]
 
 const columns: GridColDef[] = [
   {
@@ -94,13 +94,13 @@ const columns: GridColDef[] = [
     sortable: false,
     flex: 2,
     renderCell: (params: GridCellParams) => {
-      const assetIcon = params.getValue(params.id, "assetIcon");
+      const assetIcon = params.getValue(params.id, "assetIcon")
       return (
         <Box display="flex" alignItems="center">
           <img src={assetIcon?.toString()} alt="" width="35px" height="35px" />
           <Box pl="15px">{params.value}</Box>
         </Box>
-      );
+      )
     },
   },
   {
@@ -141,7 +141,7 @@ const columns: GridColDef[] = [
     align: "center",
     renderCell: () => <VaultButton>Open Vault</VaultButton>,
   },
-];
+]
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {},
@@ -153,17 +153,17 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     color: palette.primary.main,
     fontSize: "10px",
   },
-}));
+}))
 
 const AssetSection: React.FC = () => {
-  const { breakpoints } = useTheme();
-  const dark = useIsDarkMode();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const classes = useStyles({ dark, mobile });
+  const { breakpoints } = useTheme()
+  const dark = useIsDarkMode()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark, mobile })
   const [filterOption, setFilterOption] = useState<FilterOption>({
     filterType: FilterType.POPULAR,
     keyword: "",
-  });
+  })
 
   const SortedDescendingIcon = () => (
     <Box display="flex" justifyContent="center" alignItems="center">
@@ -172,7 +172,7 @@ const AssetSection: React.FC = () => {
         aria-hidden="true"
       />
     </Box>
-  );
+  )
 
   const SortedAscendingIcon = () => (
     <Box display="flex" justifyContent="center" alignItems="center">
@@ -181,7 +181,7 @@ const AssetSection: React.FC = () => {
         aria-hidden="true"
       />
     </Box>
-  );
+  )
 
   return (
     <Box className={cx(classes.root)}>
@@ -226,7 +226,7 @@ const AssetSection: React.FC = () => {
         </Box>
       </Container>
     </Box>
-  );
-};
+  )
+}
 
-export default AssetSection;
+export default AssetSection

@@ -1,18 +1,18 @@
-import React from "react";
-import { Box, Container, useMediaQuery } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import { useIsDarkMode } from "state/user/hooks";
-import cx from "classnames";
-import IMG_logo from "assets/logos/Ardana_hor_white.png";
-import { useHistory } from "react-router-dom";
+import React from "react"
+import { Box, Container, useMediaQuery } from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import { useIsDarkMode } from "state/user/hooks"
+import cx from "classnames"
+import IMG_logo from "assets/logos/Ardana_hor_white.png"
+import { useHistory } from "react-router-dom"
 
 const useStyles = makeStyles(({ palette }) => ({
   header: {
-    cursor: "pointer",
-    position: "fixed",
-    top: "0",
-    width: "100%",
-    zIndex: 1000,
+    "cursor": "pointer",
+    "position": "fixed",
+    "top": "0",
+    "width": "100%",
+    "zIndex": 1000,
 
     "& > div": {
       display: "flex",
@@ -26,19 +26,19 @@ const useStyles = makeStyles(({ palette }) => ({
     justifyContent: "center",
   },
   navItem: {
-    margin: "10px",
-    padding: "10px 30px",
-    borderRadius: "20px",
-    background: "transparent",
-    color: "white",
-    textAlign: "center",
-    fontFamily: "Museo Sans",
-    fontStyle: "normal",
-    fontWeight: 700,
-    fontSize: "11px",
-    lineHeight: "100%",
-    border: "1px solid white",
-    cursor: "pointer",
+    "margin": "10px",
+    "padding": "10px 30px",
+    "borderRadius": "20px",
+    "background": "transparent",
+    "color": "white",
+    "textAlign": "center",
+    "fontFamily": "Museo Sans",
+    "fontStyle": "normal",
+    "fontWeight": 700,
+    "fontSize": "11px",
+    "lineHeight": "100%",
+    "border": "1px solid white",
+    "cursor": "pointer",
 
     "&:hover": {
       background: "white",
@@ -47,26 +47,26 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 
   active: {
-    border: "unset",
-    background: "linear-gradient(90deg, #5F72FF 0%, #73D6F1 100%)",
+    "border": "unset",
+    "background": "linear-gradient(90deg, #5F72FF 0%, #73D6F1 100%)",
     "&:hover": {
-      background: 'linear-gradient(90deg, #5F72FF 0%, #73D6F1 100%)',
+      background: "linear-gradient(90deg, #5F72FF 0%, #73D6F1 100%)",
       color: "#000633",
     },
   },
-}));
+}))
 
 export interface LaunchHeaderProps {
-  nav: number;
-  updateNav: any;
+  nav: number
+  updateNav: any
 }
 
 const LaunchHeader: React.FC<LaunchHeaderProps> = ({ nav, updateNav }) => {
-  const { breakpoints } = useTheme();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const dark = useIsDarkMode();
-  const classes = useStyles({ dark, mobile });
-  const history = useHistory();
+  const { breakpoints } = useTheme()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const dark = useIsDarkMode()
+  const classes = useStyles({ dark, mobile })
+  const history = useHistory()
 
   return (
     <Box className={cx(classes.header)}>
@@ -102,7 +102,7 @@ const LaunchHeader: React.FC<LaunchHeaderProps> = ({ nav, updateNav }) => {
         </Box>
       </Container>
     </Box>
-  );
-};
+  )
+}
 
-export default LaunchHeader;
+export default LaunchHeader

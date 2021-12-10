@@ -1,19 +1,19 @@
-import React, { useRef } from "react";
-import { Box, useMediaQuery, Container, Grid } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import cx from "classnames";
-import ScrollAnimation from "react-animate-on-scroll";
-import Carousel from "react-elastic-carousel";
-import i18next from "i18next";
+import React, { useRef } from "react"
+import { Box, useMediaQuery, Container, Grid } from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import cx from "classnames"
+import ScrollAnimation from "react-animate-on-scroll"
+import Carousel from "react-elastic-carousel"
+import i18next from "i18next"
 
-import { useIsDarkMode } from "state/user/hooks";
-import { GradientButton } from "components/Button";
-import { DanaswapFeature } from "components/Box";
+import { useIsDarkMode } from "state/user/hooks"
+import { GradientButton } from "components/Button"
+import { DanaswapFeature } from "components/Box"
 
-import { DanaSwapFeatures } from "data";
+import { DanaSwapFeatures } from "data"
 
-import ICO_NEXT from "assets/icons/carousel-next.svg";
-import ICO_PREV from "assets/icons/carousel-prev.svg";
+import ICO_NEXT from "assets/icons/carousel-next.svg"
+import ICO_PREV from "assets/icons/carousel-prev.svg"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
@@ -57,9 +57,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     background: palette.background.paper,
 
     [breakpoints.down("xs")]: {
-      background: "transparent",
-      marginLeft: "-16px",
-      width: "100vw !important",
+      "background": "transparent",
+      "marginLeft": "-16px",
+      "width": "100vw !important",
       "& .rec .rec-slider-container": {
         margin: "0 !important",
       },
@@ -94,25 +94,25 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       width: "18px",
     },
   },
-}));
+}))
 
 const DanaswapSection: React.FC = () => {
-  const { breakpoints } = useTheme();
-  const dark = useIsDarkMode();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const classes = useStyles({ dark, mobile });
-  const carouselRef = useRef<any>(null);
+  const { breakpoints } = useTheme()
+  const dark = useIsDarkMode()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark, mobile })
+  const carouselRef = useRef<any>(null)
 
-  const renderArrow = () => <></>;
-  const renderPagination = () => <></>;
+  const renderArrow = () => <></>
+  const renderPagination = () => <></>
 
   const handleCarousel = (direction: number) => {
     if (direction > 0) {
-      carouselRef.current.slideNext();
+      carouselRef.current.slideNext()
     } else {
-      carouselRef.current.slidePrev();
+      carouselRef.current.slidePrev()
     }
-  };
+  }
 
   return (
     <Box className={cx(classes.bg)}>
@@ -182,7 +182,7 @@ const DanaswapSection: React.FC = () => {
         </Grid>
       </Container>
     </Box>
-  );
-};
+  )
+}
 
-export default DanaswapSection;
+export default DanaswapSection

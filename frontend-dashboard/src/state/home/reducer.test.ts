@@ -1,8 +1,8 @@
-import reducer, { initialState } from './reducer'
-import { TotalStat, updateTotalStats } from './actions'
+import reducer, { initialState } from "./reducer"
+import { TotalStat, updateTotalStats } from "./actions"
 
-describe('Chart reducers', () => {
-  it('should return TotalStat object values when dispatch updateTotalStats action', () => {
+describe("Chart reducers", () => {
+  it("should return TotalStat object values when dispatch updateTotalStats action", () => {
     const mock: TotalStat = {
       totalDailyTxCount: null,
       totalDailyFeeVolumeUSD: null,

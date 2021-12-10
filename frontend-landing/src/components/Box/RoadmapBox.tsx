@@ -1,17 +1,17 @@
-import React from "react";
-import cx from "classnames";
-import { Box, makeStyles, useMediaQuery, useTheme } from "@material-ui/core";
-import { useIsDarkMode } from "state/user/hooks";
-import { GradientBox } from "components/Box";
+import React from "react"
+import cx from "classnames"
+import { Box, makeStyles, useMediaQuery, useTheme } from "@material-ui/core"
+import { useIsDarkMode } from "state/user/hooks"
+import { GradientBox } from "components/Box"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
-    padding: "20px",
-    width: "100%",
+    "padding": "20px",
+    "width": "100%",
 
     "& .title": {
-      position: "relative",
-      padding: "20px 0px 20px 0px",
+      "position": "relative",
+      "padding": "20px 0px 20px 0px",
 
       "& span": {
         fontFamily: "Brandon Grotesque",
@@ -43,18 +43,18 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   [breakpoints.down("xs")]: { padding: "10px" },
-}));
+}))
 
 interface Props {
-  term: string;
-  plans: string[];
+  term: string
+  plans: string[]
 }
 
 const RoadmapBox: React.FC<Props> = ({ term, plans }) => {
-  const { breakpoints } = useTheme();
-  const dark = useIsDarkMode();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const classes = useStyles({ dark, mobile });
+  const { breakpoints } = useTheme()
+  const dark = useIsDarkMode()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark, mobile })
 
   return (
     <Box className={cx(classes.root)} display="flex" flexDirection={"column"}>
@@ -69,7 +69,7 @@ const RoadmapBox: React.FC<Props> = ({ term, plans }) => {
         </Box>
       ))}
     </Box>
-  );
-};
+  )
+}
 
-export default RoadmapBox;
+export default RoadmapBox

@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 import {
   Box,
   useMediaQuery,
@@ -7,11 +7,11 @@ import {
   FormControlLabel,
   FormControl,
   FormLabel,
-} from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import cx from "classnames";
-import { useIsDarkMode } from "state/user/hooks";
-import { Input } from "components/Input";
+} from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import cx from "classnames"
+import { useIsDarkMode } from "state/user/hooks"
+import { Input } from "components/Input"
 
 const useStyles = makeStyles(({ palette }) => ({
   title: {
@@ -27,11 +27,11 @@ const useStyles = makeStyles(({ palette }) => ({
     },
   },
   icon: {
-    borderRadius: "50%",
-    width: 18,
-    height: 18,
-    background: palette.type === "light" ? "#E9E9E9" : palette.common.white,
-    transition: "background .3s ease-in",
+    "borderRadius": "50%",
+    "width": 18,
+    "height": 18,
+    "background": palette.type === "light" ? "#E9E9E9" : palette.common.white,
+    "transition": "background .3s ease-in",
     "input:hover ~ &": {
       // backgroundColor: "#ebf1f5",
     },
@@ -41,7 +41,8 @@ const useStyles = makeStyles(({ palette }) => ({
     },
   },
   checkedIcon: {
-    background: palette.type === "light" ? palette.primary.main : palette.text.hint,
+    "background":
+      palette.type === "light" ? palette.primary.main : palette.text.hint,
     // "&:before": {
     //   display: "block",
     //   width: 18,
@@ -68,14 +69,14 @@ const useStyles = makeStyles(({ palette }) => ({
     fontSize: "7px",
     width: "calc(100% - 20px)",
     padding: "4px 2px 4px 9px",
-    background: palette.type === 'light' ? '#E5E5E5' : "white",
+    background: palette.type === "light" ? "#E5E5E5" : "white",
   },
-}));
+}))
 
 export interface CustomRadioProps {
-  option: any;
-  value: any;
-  customValue?: any;
+  option: any
+  value: any
+  customValue?: any
 }
 
 const CustomRadio: React.FC<CustomRadioProps> = ({
@@ -83,16 +84,16 @@ const CustomRadio: React.FC<CustomRadioProps> = ({
   value,
   customValue = "",
 }) => {
-  const { breakpoints } = useTheme();
-  const dark = useIsDarkMode();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const classes = useStyles({ dark, mobile });
-  const [val, setVal] = React.useState(value);
-  const [customVal, setCustomVal] = React.useState(customValue);
+  const { breakpoints } = useTheme()
+  const dark = useIsDarkMode()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark, mobile })
+  const [val, setVal] = React.useState(value)
+  const [customVal, setCustomVal] = React.useState(customValue)
 
   const onCustomInputChange = (e: any) => {
-    setCustomVal(e.target.value);
-  };
+    setCustomVal(e.target.value)
+  }
   const StyledRadio = (props: any) => {
     return (
       <Radio
@@ -103,19 +104,19 @@ const CustomRadio: React.FC<CustomRadioProps> = ({
         icon={<span className={classes.icon} />}
         {...props}
       />
-    );
-  };
+    )
+  }
 
   const handleChange = (event: any) => {
     // console.log(event.target);
-    setVal(event.target.value);
-  };
+    setVal(event.target.value)
+  }
 
   return (
     <FormControl>
-      {
-        option.title && <FormLabel className={cx(classes.title)}>{option.title}</FormLabel>
-      }
+      {option.title && (
+        <FormLabel className={cx(classes.title)}>{option.title}</FormLabel>
+      )}
       <RadioGroup
         aria-label={option.title}
         name={option.title}
@@ -146,7 +147,7 @@ const CustomRadio: React.FC<CustomRadioProps> = ({
         ))}
       </RadioGroup>
     </FormControl>
-  );
-};
+  )
+}
 
-export default CustomRadio;
+export default CustomRadio

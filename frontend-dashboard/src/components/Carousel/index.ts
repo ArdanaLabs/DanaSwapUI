@@ -1,1 +1,1 @@
-export { default } from './VerticalCarousel';
+export { default } from "./VerticalCarousel"

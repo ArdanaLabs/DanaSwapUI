@@ -1,6 +1,6 @@
-import jsc from 'jsverify'
-import { useSelector } from 'react-redux'
-import configureMockStore from 'redux-mock-store'
+import jsc from "jsverify"
+import { useSelector } from "react-redux"
+import configureMockStore from "redux-mock-store"
 import {
   FiveMinutes,
   FourHours,
@@ -11,8 +11,8 @@ import {
   OneWeek,
   TenMinutes,
   ThirtyMinutes,
-  TwelveHours
-} from 'config/grains'
+  TwelveHours,
+} from "config/grains"
 import {
   getAggLiquidity,
   getAggVolume,
@@ -28,8 +28,8 @@ import {
   usePoolFees,
   usePoolTransactions,
   usePoolTxCount,
-  usePoolVolume
-} from './hooks'
+  usePoolVolume,
+} from "./hooks"
 import {
   updateAggLiquidity,
   updateAggVolume,
@@ -37,9 +37,9 @@ import {
   updatePoolFees,
   updatePoolTransactions,
   updatePoolTXCount,
-  updatePoolVolume
-} from './actions'
-import { Any } from 'config/txTypes'
+  updatePoolVolume,
+} from "./actions"
+import { Any } from "config/txTypes"
 
 const mockStore = configureMockStore([])
 
@@ -53,22 +53,22 @@ const initialState = {
         addLiquidity: null,
         removeLiquidity: null,
         total: null,
-        trade: null
-      }
+        trade: null,
+      },
     ],
     aggLiquidity: [
       {
         start: null,
         end: null,
-        value: null
-      }
+        value: null,
+      },
     ],
     poolFees: [
       {
         start: null,
         end: null,
-        value: null
-      }
+        value: null,
+      },
     ],
     poolVolume: [
       {
@@ -77,15 +77,15 @@ const initialState = {
         addLiquidity: null,
         removeLiquidity: null,
         total: null,
-        trade: null
-      }
+        trade: null,
+      },
     ],
     poolLiquidity: [
       {
         start: null,
         end: null,
-        value: null
-      }
+        value: null,
+      },
     ],
     poolTXCount: [
       {
@@ -94,23 +94,23 @@ const initialState = {
         addLiquidity: null,
         removeLiquidity: null,
         total: null,
-        trade: null
-      }
+        trade: null,
+      },
     ],
     poolAPY: [
       {
         start: null,
         end: null,
-        value: null
-      }
+        value: null,
+      },
     ],
     poolTransactions: [
       {
         tx: null,
-        navUSD: null
-      }
-    ]
-  }
+        navUSD: null,
+      },
+    ],
+  },
 }
 
 const grains = jsc.oneof([
@@ -123,23 +123,23 @@ const grains = jsc.oneof([
   jsc.constant(TwelveHours),
   jsc.constant(OneDay),
   jsc.constant(OneWeek),
-  jsc.constant(OneMonth)
+  jsc.constant(OneMonth),
 ])
 
 const mockDispatch = jest.fn()
-jest.mock('react-redux', () => ({
-  ...jest.requireActual('react-redux'),
+jest.mock("react-redux", () => ({
+  ...jest.requireActual("react-redux"),
   useSelector: jest.fn(),
-  useDispatch: () => mockDispatch
+  useDispatch: () => mockDispatch,
 }))
 
 beforeEach(() => {
   store = mockStore(initialState)
 })
 
-describe('Chart hooks', () => {
+describe("Chart hooks", () => {
   beforeEach(() => {
-    ;(useSelector as jest.Mock).mockImplementation(callback => {
+    ;(useSelector as jest.Mock).mockImplementation((callback) => {
       return callback(initialState)
     })
   })
@@ -148,10 +148,10 @@ describe('Chart hooks', () => {
     ;(useSelector as jest.Mock).mockClear()
   })
 
-  it('should fetch aggVolume from endpoint', async () => {
+  it("should fetch aggVolume from endpoint", async () => {
     const result = await getAggVolume(
-      '2020-12-12T00:00:00.0Z',
-      '2020-12-12T00:05:00.0Z',
+      "2020-12-12T00:00:00.0Z",
+      "2020-12-12T00:05:00.0Z",
       FiveMinutes
     )
     if (!result) {
@@ -165,14 +165,14 @@ describe('Chart hooks', () => {
       addLiquidity: expect.any(Number),
       removeLiquidity: expect.any(Number),
       total: expect.any(Number),
-      trade: expect.any(Number)
+      trade: expect.any(Number),
     })
   })
 
-  it('should fetch aggLiquidity from endpoint', async () => {
+  it("should fetch aggLiquidity from endpoint", async () => {
     const result = await getAggLiquidity(
-      '2020-12-12T00:00:00.0Z',
-      '2020-12-14T00:00:00.0Z',
+      "2020-12-12T00:00:00.0Z",
+      "2020-12-14T00:00:00.0Z",
       OneDay
     )
     if (!result) {
@@ -183,15 +183,15 @@ describe('Chart hooks', () => {
     expect(result[0]).toMatchObject({
       start: expect.any(String),
       end: expect.any(String),
-      value: expect.any(Number)
+      value: expect.any(Number),
     })
   })
 
-  it('should fetch poolFees from endpoint', async () => {
+  it("should fetch poolFees from endpoint", async () => {
     const result = await getPoolFees(
-      'foo',
-      '2020-12-12T00:00:00.0Z',
-      '2021-01-12T00:00:00.0Z',
+      "foo",
+      "2020-12-12T00:00:00.0Z",
+      "2021-01-12T00:00:00.0Z",
       OneWeek
     )
     if (!result) {
@@ -202,15 +202,15 @@ describe('Chart hooks', () => {
     expect(result[0]).toMatchObject({
       start: expect.any(String),
       end: expect.any(String),
-      value: expect.any(Number)
+      value: expect.any(Number),
     })
   })
 
-  it('should fetch poolVolume from endpoint', async () => {
+  it("should fetch poolVolume from endpoint", async () => {
     const result = await getPoolVolume(
-      'foo',
-      '2020-12-12T00:00:00.0Z',
-      '2021-01-12T00:00:00.0Z',
+      "foo",
+      "2020-12-12T00:00:00.0Z",
+      "2021-01-12T00:00:00.0Z",
       OneWeek
     )
     if (!result) {
@@ -224,15 +224,15 @@ describe('Chart hooks', () => {
       addLiquidity: expect.any(Number),
       removeLiquidity: expect.any(Number),
       total: expect.any(Number),
-      trade: expect.any(Number)
+      trade: expect.any(Number),
     })
   })
 
-  it('should fetch poolLiquidity from endpoint', async () => {
+  it("should fetch poolLiquidity from endpoint", async () => {
     const result = await getPoolLiquidity(
-      'foo',
-      '2020-12-12T00:00:00.0Z',
-      '2021-01-12T00:00:00.0Z',
+      "foo",
+      "2020-12-12T00:00:00.0Z",
+      "2021-01-12T00:00:00.0Z",
       OneWeek
     )
     if (!result) {
@@ -243,15 +243,15 @@ describe('Chart hooks', () => {
     expect(result[0]).toMatchObject({
       start: expect.any(String),
       end: expect.any(String),
-      value: expect.any(Number)
+      value: expect.any(Number),
     })
   })
 
-  it('should fetch poolTXCount from endpoint', async () => {
+  it("should fetch poolTXCount from endpoint", async () => {
     const result = await getPoolTXCount(
-      'foo',
-      '2020-12-12T00:00:00.0Z',
-      '2021-01-12T00:00:00.0Z',
+      "foo",
+      "2020-12-12T00:00:00.0Z",
+      "2021-01-12T00:00:00.0Z",
       OneWeek
     )
     if (!result) {
@@ -265,15 +265,15 @@ describe('Chart hooks', () => {
       addLiquidity: expect.any(Number),
       removeLiquidity: expect.any(Number),
       total: expect.any(Number),
-      trade: expect.any(Number)
+      trade: expect.any(Number),
     })
   })
 
-  it('should fetch poolAPY from endpoint', async () => {
+  it("should fetch poolAPY from endpoint", async () => {
     const result = await getPoolAPY(
-      'foo',
-      '2020-12-12T00:00:00.0Z',
-      '2021-01-12T00:00:00.0Z',
+      "foo",
+      "2020-12-12T00:00:00.0Z",
+      "2021-01-12T00:00:00.0Z",
       OneWeek
     )
     if (!result) {
@@ -284,12 +284,12 @@ describe('Chart hooks', () => {
     expect(result[0]).toMatchObject({
       start: expect.any(String),
       end: expect.any(String),
-      value: expect.any(Number)
+      value: expect.any(Number),
     })
   })
 
-  it('should fetch poolTransactions from endpoint', async () => {
-    const result = await getPoolTransactions('foo', 0, 10, Any)
+  it("should fetch poolTransactions from endpoint", async () => {
+    const result = await getPoolTransactions("foo", 0, 10, Any)
     if (!result) {
       return
     }
@@ -297,17 +297,17 @@ describe('Chart hooks', () => {
     expect(Array.isArray(result)).toBe(true)
     expect(result[0]).toMatchObject({
       tx: expect.any(Object),
-      navUSD: expect.any(Number)
+      navUSD: expect.any(Number),
     })
   })
 
-  it('should return stored aggVolume and getAggVolume function', async () => {
+  it("should return stored aggVolume and getAggVolume function", async () => {
     const { aggVolume, getAggVolume } = useAggVolume()
 
     expect(aggVolume).toEqual(store.getState().chart.aggVolume)
     const result = await getAggVolume(
-      '2020-12-12T00:00:00.0Z',
-      '2020-12-12T00:05:00.0Z',
+      "2020-12-12T00:00:00.0Z",
+      "2020-12-12T00:05:00.0Z",
       FiveMinutes
     )
     if (!result) {
@@ -321,13 +321,13 @@ describe('Chart hooks', () => {
     // )
   })
 
-  it('should return stored aggLiquidity and getAggLiquidity function', async () => {
+  it("should return stored aggLiquidity and getAggLiquidity function", async () => {
     const { aggLiquidity, getAggLiquidity } = useAggLiquidity()
 
     expect(aggLiquidity).toEqual(store.getState().chart.aggLiquidity)
     const result = await getAggLiquidity(
-      '2020-12-12T00:00:00.0Z',
-      '2020-12-14T00:00:00.0Z',
+      "2020-12-12T00:00:00.0Z",
+      "2020-12-14T00:00:00.0Z",
       OneDay
     )
     if (!result) {
@@ -341,14 +341,14 @@ describe('Chart hooks', () => {
     // )
   })
 
-  it('should return stored poolFees and getPoolFees function', async () => {
+  it("should return stored poolFees and getPoolFees function", async () => {
     const { poolFees, getPoolFees } = usePoolFees()
 
     expect(poolFees).toEqual(store.getState().chart.poolFees)
     const result = await getPoolFees(
-      'foo',
-      '2020-12-12T00:00:00.0Z',
-      '2021-01-12T00:00:00.0Z',
+      "foo",
+      "2020-12-12T00:00:00.0Z",
+      "2021-01-12T00:00:00.0Z",
       OneWeek
     )
     if (!result) {
@@ -362,14 +362,14 @@ describe('Chart hooks', () => {
     // )
   })
 
-  it('should return stored poolVolume and getPoolVolume function', async () => {
+  it("should return stored poolVolume and getPoolVolume function", async () => {
     const { poolVolume, getPoolVolume } = usePoolVolume()
 
     expect(poolVolume).toEqual(store.getState().chart.poolVolume)
     const result = await getPoolVolume(
-      'foo',
-      '2020-12-12T00:00:00.0Z',
-      '2021-01-12T00:00:00.0Z',
+      "foo",
+      "2020-12-12T00:00:00.0Z",
+      "2021-01-12T00:00:00.0Z",
       OneWeek
     )
     if (!result) {
@@ -383,14 +383,14 @@ describe('Chart hooks', () => {
     // )
   })
 
-  it('should return stored poolTXCount and getPoolTXCount function', async () => {
+  it("should return stored poolTXCount and getPoolTXCount function", async () => {
     const { poolTXCount, getPoolTXCount } = usePoolTxCount()
 
     expect(poolTXCount).toEqual(store.getState().chart.poolTXCount)
     const result = await getPoolTXCount(
-      'foo',
-      '2020-12-12T00:00:00.0Z',
-      '2021-01-12T00:00:00.0Z',
+      "foo",
+      "2020-12-12T00:00:00.0Z",
+      "2021-01-12T00:00:00.0Z",
       OneWeek
     ).catch(() => null)
     if (!result) {
@@ -404,14 +404,14 @@ describe('Chart hooks', () => {
     // )
   })
 
-  it('should return stored poolAPY and getPoolAPY function', async () => {
+  it("should return stored poolAPY and getPoolAPY function", async () => {
     const { poolAPY, getPoolAPY } = usePoolAPY()
 
     expect(poolAPY).toEqual(store.getState().chart.poolAPY)
     const result = await getPoolAPY(
-      'foo',
-      '2020-12-12T00:00:00.0Z',
-      '2021-01-12T00:00:00.0Z',
+      "foo",
+      "2020-12-12T00:00:00.0Z",
+      "2021-01-12T00:00:00.0Z",
       OneWeek
     ).catch(() => null)
 
@@ -426,16 +426,11 @@ describe('Chart hooks', () => {
     // )
   })
 
-  it('should return stored poolTransactions and getPoolTransactions function', async () => {
+  it("should return stored poolTransactions and getPoolTransactions function", async () => {
     const { poolTransactions, getPoolTransactions } = usePoolTransactions()
 
     expect(poolTransactions).toEqual(store.getState().chart.poolTransactions)
-    const result = await getPoolTransactions(
-      'foo',
-      0,
-      10,
-      Any
-    )
+    const result = await getPoolTransactions("foo", 0, 10, Any)
     if (!result) {
       return
     }

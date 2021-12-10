@@ -13,8 +13,8 @@ import {
   updatePoolLiquidity,
   updatePoolTransactions,
   updatePoolTXCount,
-  updatePoolVolume
-} from './actions'
+  updatePoolVolume,
+} from "./actions"
 
 // const AsteroidType = jsc.record({
 //   start: jsc.string,
@@ -35,8 +35,8 @@ import {
 //   return true;
 // }
 
-describe('Chart actions', () => {
-  describe('updateAggVolume', () => {
+describe("Chart actions", () => {
+  describe("updateAggVolume", () => {
     let mock: RangedVolume[] = []
     mock.push({
       start: null,
@@ -44,13 +44,13 @@ describe('Chart actions', () => {
       addLiquidity: null,
       removeLiquidity: null,
       total: null,
-      trade: null
+      trade: null,
     })
 
-    it('should create action with passed data', () => {
+    it("should create action with passed data", () => {
       expect(updateAggVolume(mock)).toEqual({
-        type: 'home/updateAggVolume',
-        payload: mock
+        type: "home/updateAggVolume",
+        payload: mock,
       })
     })
 
@@ -59,40 +59,40 @@ describe('Chart actions', () => {
     // })
   })
 
-  describe('updateAggLiquidity', () => {
-    it('should create action with passed data', () => {
+  describe("updateAggLiquidity", () => {
+    it("should create action with passed data", () => {
       let mock: RangedLiquidity[] = []
       mock.push({
         start: null,
         end: null,
-        value: null
+        value: null,
       })
 
       expect(updateAggLiquidity(mock)).toEqual({
-        type: 'home/updateAggLiquidity',
-        payload: mock
+        type: "home/updateAggLiquidity",
+        payload: mock,
       })
     })
   })
 
-  describe('updatePoolFees', () => {
-    it('should create action with passed data', () => {
+  describe("updatePoolFees", () => {
+    it("should create action with passed data", () => {
       let mock: RangedFees[] = []
       mock.push({
         start: null,
         end: null,
-        value: null
+        value: null,
       })
 
       expect(updatePoolFees(mock)).toEqual({
-        type: 'home/updatePoolFees',
-        payload: mock
+        type: "home/updatePoolFees",
+        payload: mock,
       })
     })
   })
 
-  describe('updatePoolVolume', () => {
-    it('should create action with passed data', () => {
+  describe("updatePoolVolume", () => {
+    it("should create action with passed data", () => {
       let mock: RangedVolume[] = []
       mock.push({
         start: null,
@@ -100,34 +100,34 @@ describe('Chart actions', () => {
         addLiquidity: null,
         removeLiquidity: null,
         total: null,
-        trade: null
+        trade: null,
       })
 
       expect(updatePoolVolume(mock)).toEqual({
-        type: 'home/updatePoolVolume',
-        payload: mock
+        type: "home/updatePoolVolume",
+        payload: mock,
       })
     })
   })
 
-  describe('updatePoolLiquidity', () => {
-    it('should create action with passed data', () => {
+  describe("updatePoolLiquidity", () => {
+    it("should create action with passed data", () => {
       let mock: RangedLiquidity[] = []
       mock.push({
         start: null,
         end: null,
-        value: null
+        value: null,
       })
 
       expect(updatePoolLiquidity(mock)).toEqual({
-        type: 'home/updatePoolLiquidity',
-        payload: mock
+        type: "home/updatePoolLiquidity",
+        payload: mock,
       })
     })
   })
 
-  describe('updatePoolTXCount', () => {
-    it('should create action with passed data', () => {
+  describe("updatePoolTXCount", () => {
+    it("should create action with passed data", () => {
       let mock: RangedTxCount[] = []
       mock.push({
         start: null,
@@ -135,34 +135,34 @@ describe('Chart actions', () => {
         addLiquidity: null,
         removeLiquidity: null,
         total: null,
-        trade: null
+        trade: null,
       })
 
       expect(updatePoolTXCount(mock)).toEqual({
-        type: 'home/updatePoolTXCount',
-        payload: mock
+        type: "home/updatePoolTXCount",
+        payload: mock,
       })
     })
   })
 
-  describe('updatePoolAPY', () => {
-    it('should create action with passed data', () => {
+  describe("updatePoolAPY", () => {
+    it("should create action with passed data", () => {
       let mock: RangedAPY[] = []
       mock.push({
         start: null,
         end: null,
-        value: null
+        value: null,
       })
 
       expect(updatePoolAPY(mock)).toEqual({
-        type: 'home/updatePoolAPY',
-        payload: mock
+        type: "home/updatePoolAPY",
+        payload: mock,
       })
     })
   })
 
-  describe('updatePoolTransactions', () => {
-    it('should create action with passed data', () => {
+  describe("updatePoolTransactions", () => {
+    it("should create action with passed data", () => {
       let mock: RangedTransactions[] = []
       mock.push({
         tx: {
@@ -175,16 +175,16 @@ describe('Chart actions', () => {
             spentAmount: null,
             purchasedAmount: null,
             amounts: {
-              token: null
-            }
-          }
+              token: null,
+            },
+          },
         },
-        navUSD: null
+        navUSD: null,
       })
 
       expect(updatePoolTransactions(mock)).toEqual({
-        type: 'home/updatePoolTransactions',
-        payload: mock
+        type: "home/updatePoolTransactions",
+        payload: mock,
       })
     })
   })

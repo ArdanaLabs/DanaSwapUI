@@ -1,13 +1,13 @@
-import React from "react";
-import { Box, useMediaQuery, Container, Link } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import cx from "classnames";
-import ScrollAnimation from "react-animate-on-scroll";
+import React from "react"
+import { Box, useMediaQuery, Container, Link } from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import cx from "classnames"
+import ScrollAnimation from "react-animate-on-scroll"
 
-import i18next from "i18next";
-import { useIsDarkMode } from "state/user/hooks";
+import i18next from "i18next"
+import { useIsDarkMode } from "state/user/hooks"
 
-import { Investors } from "data";
+import { Investors } from "data"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
@@ -31,20 +31,20 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     },
   },
   partner: {
-    textAlign: "center",
+    "textAlign": "center",
 
     "& img": {
       width: "100%",
       maxWidth: "max-content",
     },
   },
-}));
+}))
 
 const InvestorsSection: React.FC = () => {
-  const { breakpoints } = useTheme();
-  const dark = useIsDarkMode();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const classes = useStyles({ dark, mobile });
+  const { breakpoints } = useTheme()
+  const dark = useIsDarkMode()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark, mobile })
 
   return (
     <Box className={cx(classes.bg)}>
@@ -66,30 +66,30 @@ const InvestorsSection: React.FC = () => {
           >
             {Investors.map((investor, index) => (
               <Box
-              key={index}
-              textAlign="center"
-              p={!mobile ? "20px 0px" : "10px"}
-              flex="1 0 21%"
-            >
-              {investor.url && (
-                <Link href={investor.url} target="_blank" underline="none">
+                key={index}
+                textAlign="center"
+                p={!mobile ? "20px 0px" : "10px"}
+                flex="1 0 21%"
+              >
+                {investor.url && (
+                  <Link href={investor.url} target="_blank" underline="none">
+                    <img
+                      src={investor.src}
+                      alt="investor"
+                      height={!mobile ? "45px" : "25px"}
+                      style={{ maxWidth: "max-content" }}
+                    />
+                  </Link>
+                )}
+                {!investor.url && (
                   <img
                     src={investor.src}
                     alt="investor"
                     height={!mobile ? "45px" : "25px"}
                     style={{ maxWidth: "max-content" }}
                   />
-                </Link>
-              )}
-              {!investor.url && (
-                <img
-                  src={investor.src}
-                  alt="investor"
-                  height={!mobile ? "45px" : "25px"}
-                  style={{ maxWidth: "max-content" }}
-                />
-              )}
-            </Box>
+                )}
+              </Box>
             ))}
             {/* {Investors.flatMap((investor, index) => [
               <Box key={index} textAlign="center" p={!mobile ? "20px" : "10px"}>
@@ -120,7 +120,7 @@ const InvestorsSection: React.FC = () => {
         </ScrollAnimation>
       </Container>
     </Box>
-  );
-};
+  )
+}
 
-export default InvestorsSection;
+export default InvestorsSection

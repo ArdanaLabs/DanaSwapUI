@@ -1,5 +1,5 @@
-import _ from 'lodash'
-import { RangedLiquidity, RangedVolume } from 'state/chart/actions'
+import _ from "lodash"
+import { RangedLiquidity, RangedVolume } from "state/chart/actions"
 
 export const extractXAxis = (
   arr: RangedVolume[] | RangedLiquidity[]
@@ -7,14 +7,17 @@ export const extractXAxis = (
   const length = arr.length
   let newAxis: string[] = []
 
-  newAxis.push(arr[0]?.start ?? '')
+  newAxis.push(arr[0]?.start ?? "")
   for (let i = 0; i < length; i++) {
-    newAxis.push(arr[i]?.end ?? '')
+    newAxis.push(arr[i]?.end ?? "")
   }
   return newAxis
 }
 
-export const extractYAxis = (arr: RangedVolume[] | RangedLiquidity[], filter: string): any[] => {
+export const extractYAxis = (
+  arr: RangedVolume[] | RangedLiquidity[],
+  filter: string
+): any[] => {
   const length = arr.length
   let newAxis: string[] = []
 
@@ -32,7 +35,7 @@ const fn = (obj: any, key: string): any => {
   // elegant:
   return _.flatten(
     _.map(obj, function (v) {
-      return typeof v == 'object' ? fn(v, key) : []
+      return typeof v == "object" ? fn(v, key) : []
     })
   )
 }

@@ -1,13 +1,13 @@
-import React from "react";
-import { Box, useMediaQuery, Container } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import cx from "classnames";
+import React from "react"
+import { Box, useMediaQuery, Container } from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import cx from "classnames"
 // import ReactPlayer from "react-player";
-import ScrollAnimation from "react-animate-on-scroll";
+import ScrollAnimation from "react-animate-on-scroll"
 
-import { useIsDarkMode } from "state/user/hooks";
+import { useIsDarkMode } from "state/user/hooks"
 
-import BG_BRAND from "assets/backgrounds/brand.png";
+import BG_BRAND from "assets/backgrounds/brand.png"
 
 // const heroVideo =
 //   "https://background.sfo3.digitaloceanspaces.com/stablecoin/output.webm";
@@ -36,12 +36,12 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     },
   },
   title: {
-    fontFamily: "Brandon Grotesque",
-    fontStyle: "normal",
-    fontWeight: 900,
-    fontSize: "60px",
-    lineHeight: "100%",
-    color: palette.text.primary,
+    "fontFamily": "Brandon Grotesque",
+    "fontStyle": "normal",
+    "fontWeight": 900,
+    "fontSize": "60px",
+    "lineHeight": "100%",
+    "color": palette.text.primary,
 
     "& > span": {
       color: palette.text.secondary,
@@ -69,13 +69,13 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       marginTop: "15px",
     },
   },
-}));
+}))
 
 const MainSection: React.FC = () => {
-  const { breakpoints } = useTheme();
-  const dark = useIsDarkMode();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const classes = useStyles({ dark, mobile });
+  const { breakpoints } = useTheme()
+  const dark = useIsDarkMode()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark, mobile })
 
   return (
     <Box className={cx(classes.bg)}>
@@ -105,7 +105,7 @@ const MainSection: React.FC = () => {
         </Container>
       </Box>
     </Box>
-  );
-};
+  )
+}
 
-export default MainSection;
+export default MainSection

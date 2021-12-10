@@ -1,9 +1,9 @@
-import React from "react";
-import { Box, MenuItem, Select, useMediaQuery } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import cx from "classnames";
-import { useIsDarkMode } from "state/user/hooks";
-import { BootstrapInput, SearchInput } from "components";
+import React from "react"
+import { Box, MenuItem, Select, useMediaQuery } from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import cx from "classnames"
+import { useIsDarkMode } from "state/user/hooks"
+import { BootstrapInput, SearchInput } from "components"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -25,17 +25,17 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     display: "flex",
   },
   filterItem: {
-    border: "1px solid transparent",
-    borderRadius: "20px",
-    fontSize: "16px",
-    lineHeight: "100%",
-    display: "flex",
-    alignItems: "center",
-    background: "transparent",
-    cursor: "pointer",
-    color: palette.primary.main,
-    padding: "5px 20px",
-    marginRight: "20px",
+    "border": "1px solid transparent",
+    "borderRadius": "20px",
+    "fontSize": "16px",
+    "lineHeight": "100%",
+    "display": "flex",
+    "alignItems": "center",
+    "background": "transparent",
+    "cursor": "pointer",
+    "color": palette.primary.main,
+    "padding": "5px 20px",
+    "marginRight": "20px",
 
     "&.active": {
       background: palette.info.light,
@@ -50,7 +50,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       width: "100%",
     },
   },
-}));
+}))
 
 export enum FilterType {
   POPULAR = "Popular Assets",
@@ -60,38 +60,38 @@ export enum FilterType {
 }
 
 export interface FilterOption {
-  filterType: FilterType;
-  keyword: string;
+  filterType: FilterType
+  keyword: string
 }
 
 export interface TokenAssetGridFilterProps {
-  filterOption: FilterOption;
-  handleFilterChange: (filterOption: FilterOption) => void;
+  filterOption: FilterOption
+  handleFilterChange: (filterOption: FilterOption) => void
 }
 
 const TokenAssetGridFilter: React.FC<TokenAssetGridFilterProps> = ({
   filterOption,
   handleFilterChange,
 }) => {
-  const { breakpoints } = useTheme();
-  const dark = useIsDarkMode();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const classes = useStyles({ dark, mobile });
-  const { filterType, keyword } = filterOption;
+  const { breakpoints } = useTheme()
+  const dark = useIsDarkMode()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark, mobile })
+  const { filterType, keyword } = filterOption
 
   const hanldeFilterTypeChange = (type: FilterType) => {
     handleFilterChange({
       ...filterOption,
       filterType: type,
-    });
-  };
+    })
+  }
 
   const handleFilterInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     handleFilterChange({
       ...filterOption,
       keyword: e.target.value,
-    });
-  };
+    })
+  }
 
   return (
     <Box className={cx(classes.root)} flexDirection={mobile ? "column" : "row"}>
@@ -139,7 +139,7 @@ const TokenAssetGridFilter: React.FC<TokenAssetGridFilterProps> = ({
             id="Filter Select"
             value={filterOption.filterType}
             onChange={(event: React.ChangeEvent<{ value: unknown }>) => {
-              hanldeFilterTypeChange(event.target.value as FilterType);
+              hanldeFilterTypeChange(event.target.value as FilterType)
             }}
             input={<BootstrapInput />}
           >
@@ -161,7 +161,7 @@ const TokenAssetGridFilter: React.FC<TokenAssetGridFilterProps> = ({
         />
       </Box>
     </Box>
-  );
-};
+  )
+}
 
-export default TokenAssetGridFilter;
+export default TokenAssetGridFilter

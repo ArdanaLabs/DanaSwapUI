@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import cx from "classnames";
-import { Box, Link, useMediaQuery } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import { useIsDarkMode } from "state/user/hooks";
-import { Avatar } from "components/Avatar";
+import React, { useState } from "react"
+import cx from "classnames"
+import { Box, Link, useMediaQuery } from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import { useIsDarkMode } from "state/user/hooks"
+import { Avatar } from "components/Avatar"
 
-import ICO_LINKEDIN from "assets/icons/linkedin.svg";
-import ICO_TWITTER from "assets/icons/twitter.svg";
-import ICO_GITHUB from "assets/icons/github.svg";
-import ICO_EXPAND from "assets/icons/expand.svg";
-import ICO_COLLAPSE from "assets/icons/collapse.svg";
+import ICO_LINKEDIN from "assets/icons/linkedin.svg"
+import ICO_TWITTER from "assets/icons/twitter.svg"
+import ICO_GITHUB from "assets/icons/github.svg"
+import ICO_EXPAND from "assets/icons/expand.svg"
+import ICO_COLLAPSE from "assets/icons/collapse.svg"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -22,7 +22,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     height: "400px",
 
     [breakpoints.down("xs")]: {
-      padding: "50px 10px 40px",
+      "padding": "50px 10px 40px",
       "&.collapsed": {
         height: "180px",
       },
@@ -65,13 +65,13 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   info: {
-    fontFamily: "Museo Sans",
-    fontStyle: "normal",
-    fontSize: "16px",
-    lineHeight: "110%",
-    color: palette.text.primary,
-    whiteSpace: "pre-line",
-    opacity: 1,
+    "fontFamily": "Museo Sans",
+    "fontStyle": "normal",
+    "fontSize": "16px",
+    "lineHeight": "110%",
+    "color": palette.text.primary,
+    "whiteSpace": "pre-line",
+    "opacity": 1,
 
     "& > strong": {
       fontWeight: 900,
@@ -88,19 +88,19 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   socials: {
-    position: "absolute",
-    width: "50%",
-    bottom: "50px",
-    left: "50%",
-    transform: "translate(-50%, 0%)",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-around",
-    visibility: "visible",
-    opacity: 1,
+    "position": "absolute",
+    "width": "50%",
+    "bottom": "50px",
+    "left": "50%",
+    "transform": "translate(-50%, 0%)",
+    "display": "flex",
+    "alignItems": "center",
+    "justifyContent": "space-around",
+    "visibility": "visible",
+    "opacity": 1,
 
     "& > a": {
-      display: "flex",
+      "display": "flex",
       "& > img": {
         width: "25px",
         maxWidth: "max-content",
@@ -112,8 +112,8 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     },
 
     [breakpoints.down("xs")]: {
-      bottom: "40px",
-      width: "80%",
+      "bottom": "40px",
+      "width": "80%",
 
       "&.hide": {
         visibility: "hidden",
@@ -128,36 +128,36 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     bottom: "0",
     transform: "translate(-50%, 50%)",
   },
-}));
+}))
 
 export interface ProfileType {
-  avatar: string;
-  name: string;
-  role: string;
-  info: string;
+  avatar: string
+  name: string
+  role: string
+  info: string
   socials: {
-    github?: string;
-    linkedin?: string;
-    twitter?: string;
-  };
+    github?: string
+    linkedin?: string
+    twitter?: string
+  }
 }
 
 export interface ProfileBoxProps {
-  profile: ProfileType;
+  profile: ProfileType
 }
 
 const ProfileBox: React.FC<ProfileBoxProps> = ({
   profile: { avatar, name, role, info, socials },
 }) => {
-  const { breakpoints } = useTheme();
-  const dark = useIsDarkMode();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const classes = useStyles({ dark, mobile });
-  const [expand, setExpand] = useState<boolean>(false);
+  const { breakpoints } = useTheme()
+  const dark = useIsDarkMode()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark, mobile })
+  const [expand, setExpand] = useState<boolean>(false)
 
   const handleExpand = () => {
-    setExpand(!expand);
-  };
+    setExpand(!expand)
+  }
 
   return (
     <Box className={cx(classes.root, { collapsed: mobile && !expand })}>
@@ -199,7 +199,7 @@ const ProfileBox: React.FC<ProfileBoxProps> = ({
         </Box>
       )}
     </Box>
-  );
-};
+  )
+}
 
-export default ProfileBox;
+export default ProfileBox

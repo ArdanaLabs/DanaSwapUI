@@ -5,7 +5,7 @@ export default function Updater(): null {
   // const socketUrl = 'ws://localhost:40510';
 
   // const {
-    // sendMessage,
+  // sendMessage,
   //   lastMessage,
   //   readyState,
   // } = useWebSocket(socketUrl);
@@ -19,15 +19,15 @@ export default function Updater(): null {
   // }[readyState];
 
   // useEffect(() => {
-    // console.log('ws', connectionStatus);
+  // console.log('ws', connectionStatus);
   // }, [connectionStatus])
 
   // useEffect(() => {
-    
-    // console.log('ws', lastMessage);
-    
+
+  // console.log('ws', lastMessage);
+
   //   return () => {};
   // }, [lastMessage]);
 
-  return null;
+  return null
 }

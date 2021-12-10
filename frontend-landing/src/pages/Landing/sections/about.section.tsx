@@ -1,24 +1,24 @@
-import React from "react";
-import { Box, useMediaQuery, Container, Grid } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import cx from "classnames";
-import ScrollAnimation from "react-animate-on-scroll";
-import i18next from "i18next";
-import ReactPlayer from "react-player";
+import React from "react"
+import { Box, useMediaQuery, Container, Grid } from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import cx from "classnames"
+import ScrollAnimation from "react-animate-on-scroll"
+import i18next from "i18next"
+import ReactPlayer from "react-player"
 
-import { useIsDarkMode } from "state/user/hooks";
+import { useIsDarkMode } from "state/user/hooks"
 
-import { FeatureBox } from "components/Box";
+import { FeatureBox } from "components/Box"
 
-import ICON_PLAY from "assets/icons/video-play.svg";
-import BG_POSTER from "assets/backgrounds/video-poster.png";
-import BG_LEFT from "assets/backgrounds/about-bg.png";
-import BG_RIGHT from "assets/backgrounds/cyan-gradient.png";
-import { ArdanaFeatures } from "data";
-import { GradientButton } from "components";
+import ICON_PLAY from "assets/icons/video-play.svg"
+import BG_POSTER from "assets/backgrounds/video-poster.png"
+import BG_LEFT from "assets/backgrounds/about-bg.png"
+import BG_RIGHT from "assets/backgrounds/cyan-gradient.png"
+import { ArdanaFeatures } from "data"
+import { GradientButton } from "components"
 
 const aboutVideo =
-  "https://background.sfo3.digitaloceanspaces.com/about/output.m3u8";
+  "https://background.sfo3.digitaloceanspaces.com/about/output.m3u8"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
@@ -37,13 +37,13 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   title: {
-    color: palette.text.primary,
-    fontSize: "60px",
-    fontWeight: 900,
-    fontFamily: "Brandon Grotesque",
-    fontStyle: "normal",
-    lineHeight: "100%",
-    marginBottom: "30px",
+    "color": palette.text.primary,
+    "fontSize": "60px",
+    "fontWeight": 900,
+    "fontFamily": "Brandon Grotesque",
+    "fontStyle": "normal",
+    "lineHeight": "100%",
+    "marginBottom": "30px",
 
     "& > span": {
       color: palette.text.secondary,
@@ -73,8 +73,8 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   socialIconLink: {
-    cursor: "pointer",
-    color: palette.text.primary,
+    "cursor": "pointer",
+    "color": palette.text.primary,
 
     "&:hover path": {
       fill: palette.text.secondary,
@@ -82,9 +82,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   aboutVideo: {
-    position: "relative",
+    "position": "relative",
     "& > div": {
-      display: "flex",
+      "display": "flex",
 
       "& > video": {
         objectFit: "cover",
@@ -127,13 +127,13 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       width: "60px",
     },
   },
-}));
+}))
 
 const AboutSection: React.FC = () => {
-  const { breakpoints } = useTheme();
-  const dark = useIsDarkMode();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const classes = useStyles({ dark, mobile });
+  const { breakpoints } = useTheme()
+  const dark = useIsDarkMode()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark, mobile })
 
   return (
     <Box className={classes.bg}>
@@ -167,7 +167,12 @@ const AboutSection: React.FC = () => {
                         width={!mobile ? 145 : 81}
                         height={!mobile ? 145 : 81}
                       />
-                      <img className={cx(classes.photo)} src={ICON_PLAY} alt="playIcon" width="100px" />
+                      <img
+                        className={cx(classes.photo)}
+                        src={ICON_PLAY}
+                        alt="playIcon"
+                        width="100px"
+                      />
                     </Box>
                   }
                 />
@@ -219,7 +224,7 @@ const AboutSection: React.FC = () => {
         </Grid>
       </Container>
     </Box>
-  );
-};
+  )
+}
 
-export default AboutSection;
+export default AboutSection

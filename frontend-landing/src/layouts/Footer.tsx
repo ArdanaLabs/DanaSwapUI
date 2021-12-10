@@ -1,25 +1,25 @@
-import React from "react";
-import { Box, useMediaQuery, Link, Container } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import cx from "classnames";
-import _ from "lodash";
+import React from "react"
+import { Box, useMediaQuery, Link, Container } from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import cx from "classnames"
+import _ from "lodash"
 
-import { useIsDarkMode } from "state/user/hooks";
+import { useIsDarkMode } from "state/user/hooks"
 
-import { externals, socials } from "data";
-import BG_WAVE from "assets/backgrounds/wave-gradient.png";
-import BG_WAVE_MOBILE from "assets/backgrounds/wave-mobile180-bg.png";
-import LOGO_BLUE from "assets/logo_blue.png";
-import { GradientButton } from "components";
+import { externals, socials } from "data"
+import BG_WAVE from "assets/backgrounds/wave-gradient.png"
+import BG_WAVE_MOBILE from "assets/backgrounds/wave-mobile180-bg.png"
+import LOGO_BLUE from "assets/logo_blue.png"
+import { GradientButton } from "components"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
-    background: `url(${BG_WAVE}) top left no-repeat`,
-    backgroundSize: "100%",
-    padding: "150px 0px 60px",
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "flex-start",
+    "background": `url(${BG_WAVE}) top left no-repeat`,
+    "backgroundSize": "100%",
+    "padding": "150px 0px 60px",
+    "display": "flex",
+    "justifyContent": "space-between",
+    "alignItems": "flex-start",
 
     "& span": {
       "&:first-child": {
@@ -38,10 +38,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       "& > a": {
         color: palette.common.white,
       },
-      fontFamily: "Museo Sans",
-      fontSize: "16px",
-      lineHeight: "24px",
-      cursor: "pointer",
+      "fontFamily": "Museo Sans",
+      "fontSize": "16px",
+      "lineHeight": "24px",
+      "cursor": "pointer",
 
       [breakpoints.down("xs")]: {
         fontSize: "16px",
@@ -81,14 +81,14 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   logo: {
-    display: "inline-flex",
-    justifyContent: "center",
-    alignItems: "center",
-    width: "250px",
-    height: "250px",
-    padding: "40px",
-    position: "relative",
-    lineHeight: 0,
+    "display": "inline-flex",
+    "justifyContent": "center",
+    "alignItems": "center",
+    "width": "250px",
+    "height": "250px",
+    "padding": "40px",
+    "position": "relative",
+    "lineHeight": 0,
 
     "& > img": {
       borderRadius: "50%",
@@ -118,10 +118,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   guide: {
-    width: "100%",
-    display: "flex",
-    justifyContent: "space-between",
-    textAlign: "left",
+    "width": "100%",
+    "display": "flex",
+    "justifyContent": "space-between",
+    "textAlign": "left",
 
     "& > .section": {
       display: "flex",
@@ -140,13 +140,13 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   socials: {
-    display: "flex",
-    flexDirection: "column",
+    "display": "flex",
+    "flexDirection": "column",
     "& > .link-container": {
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "center",
-      width: "280px",
+      "display": "flex",
+      "justifyContent": "space-between",
+      "alignItems": "center",
+      "width": "280px",
 
       "& > .link:hover path": {
         fill: palette.text.secondary,
@@ -165,13 +165,13 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       width: "100%",
     },
   },
-}));
+}))
 
 const Footer: React.FC = () => {
-  const { breakpoints } = useTheme();
-  const dark = useIsDarkMode();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const classes = useStyles({ dark, mobile });
+  const { breakpoints } = useTheme()
+  const dark = useIsDarkMode()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark, mobile })
 
   return (
     <Box className={cx(classes.root)}>
@@ -244,7 +244,7 @@ const Footer: React.FC = () => {
         </Box>
       </Container>
     </Box>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

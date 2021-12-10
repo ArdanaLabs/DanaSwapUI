@@ -1,11 +1,11 @@
-import React from "react";
-import cx from "classnames";
-import { Box, useMediaQuery } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import { useIsDarkMode } from "state/user/hooks";
+import React from "react"
+import cx from "classnames"
+import { Box, useMediaQuery } from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import { useIsDarkMode } from "state/user/hooks"
 
-import ICO_Info_light from "assets/svg/info_light.svg";
-import ICO_Info_dark from "assets/svg/info_dark.svg";
+import ICO_Info_light from "assets/svg/info_light.svg"
+import ICO_Info_dark from "assets/svg/info_dark.svg"
 
 const useStyles = makeStyles(({ palette }) => ({
   self: {
@@ -34,7 +34,7 @@ const useStyles = makeStyles(({ palette }) => ({
     right: 10,
   },
   display: {
-    padding: "12px 0px 10px 30px",
+    "padding": "12px 0px 10px 30px",
 
     "& p:first-child": {
       fontWeight: 300,
@@ -53,19 +53,19 @@ const useStyles = makeStyles(({ palette }) => ({
       fontFamily: "Museo Sans",
     },
   },
-}));
+}))
 
 export interface OverViewBoxProps {
-  label: string;
-  content: any;
-  info?: string;
+  label: string
+  content: any
+  info?: string
 }
 
 const OverViewBox: React.FC<OverViewBoxProps> = ({ label, content, info }) => {
-  const { breakpoints } = useTheme();
-  const dark = useIsDarkMode();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const classes = useStyles({ dark, mobile });
+  const { breakpoints } = useTheme()
+  const dark = useIsDarkMode()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark, mobile })
 
   return (
     <Box className={cx(classes.self)}>
@@ -92,7 +92,7 @@ const OverViewBox: React.FC<OverViewBoxProps> = ({ label, content, info }) => {
         </Box>
       </Box>
     </Box>
-  );
-};
+  )
+}
 
-export default OverViewBox;
+export default OverViewBox

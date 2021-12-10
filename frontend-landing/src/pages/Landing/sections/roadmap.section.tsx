@@ -1,27 +1,27 @@
-import React from "react";
-import { Box, useMediaQuery, Container, Grid, Link } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import cx from "classnames";
-import ReactPlayer from "react-player";
-import ScrollAnimation from "react-animate-on-scroll";
-import i18next from "i18next";
+import React from "react"
+import { Box, useMediaQuery, Container, Grid, Link } from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import cx from "classnames"
+import ReactPlayer from "react-player"
+import ScrollAnimation from "react-animate-on-scroll"
+import i18next from "i18next"
 
-import { useIsDarkMode } from "state/user/hooks";
-import { GradientButton } from "components/Button";
+import { useIsDarkMode } from "state/user/hooks"
+import { GradientButton } from "components/Button"
 
 const heroVideo =
-  "https://background.sfo3.digitaloceanspaces.com/team/output.webm";
+  "https://background.sfo3.digitaloceanspaces.com/team/output.webm"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
-    padding: "0px",
-    position: "relative",
+    "padding": "0px",
+    "position": "relative",
     "& video": {
       objectFit: "cover",
     },
   },
   background: {
-    lineHeight: 0,
+    "lineHeight": 0,
 
     "& > img": {
       width: "100%",
@@ -79,13 +79,13 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       padding: "0px 10px",
     },
   },
-}));
+}))
 
 const RoadMapSection: React.FC = () => {
-  const { breakpoints } = useTheme();
-  const dark = useIsDarkMode();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const classes = useStyles({ dark, mobile });
+  const { breakpoints } = useTheme()
+  const dark = useIsDarkMode()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark, mobile })
 
   return (
     <Box className={cx(classes.root)}>
@@ -132,7 +132,7 @@ const RoadMapSection: React.FC = () => {
         </Container>
       </Box>
     </Box>
-  );
-};
+  )
+}
 
-export default RoadMapSection;
+export default RoadMapSection

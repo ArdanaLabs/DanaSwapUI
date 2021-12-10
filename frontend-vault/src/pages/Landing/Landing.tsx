@@ -1,15 +1,15 @@
-import React from "react";
-import { Box, useMediaQuery, useTheme } from "@material-ui/core";
+import React from "react"
+import { Box, useMediaQuery, useTheme } from "@material-ui/core"
 import {
   AdSection,
   AssetSection,
   HelpSection,
   FeatureSection,
-} from "./sections";
+} from "./sections"
 
 const Landing: React.FC = () => {
-  const { breakpoints } = useTheme();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
+  const { breakpoints } = useTheme()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
 
   return (
     <Box>
@@ -27,7 +27,7 @@ const Landing: React.FC = () => {
 
       <HelpSection />
     </Box>
-  );
-};
+  )
+}
 
-export default Landing;
+export default Landing

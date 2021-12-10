@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import cx from "classnames";
-import { Box, useMediaQuery } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import { useIsDarkMode } from "state/user/hooks";
-import { GradientButton } from "components/Button";
+import React, { useState } from "react"
+import cx from "classnames"
+import { Box, useMediaQuery } from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import { useIsDarkMode } from "state/user/hooks"
+import { GradientButton } from "components/Button"
 
 export interface DanaswapFeatureProps {
-  image?: any;
-  title?: string;
-  content?: string;
-  custom_style?: object;
+  image?: any
+  title?: string
+  content?: string
+  custom_style?: object
 }
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
@@ -83,32 +83,32 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   border: {
-    position: "absolute",
-    bottom: "0px",
-    left: "0px",
-    background: "linear-gradient(90deg, #5F72FF 0%, #73D6F1 100%)",
-    boxShadow: "0px 0px 20px 5px #2D3BA0",
-    borderRadius: "7.5px 7.5px 0px 0px",
-    width: "100%",
-    height: "15px",
-    opacity: 0,
+    "position": "absolute",
+    "bottom": "0px",
+    "left": "0px",
+    "background": "linear-gradient(90deg, #5F72FF 0%, #73D6F1 100%)",
+    "boxShadow": "0px 0px 20px 5px #2D3BA0",
+    "borderRadius": "7.5px 7.5px 0px 0px",
+    "width": "100%",
+    "height": "15px",
+    "opacity": 0,
 
     "&.hover": {
       opacity: 1,
     },
   },
-}));
+}))
 
 const DanaswapFeature: React.FC<DanaswapFeatureProps> = ({
   image,
   title,
   content,
 }) => {
-  const { breakpoints } = useTheme();
-  const dark = useIsDarkMode();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const classes = useStyles({ dark, mobile });
-  const [hover, setHover] = useState<boolean>(false);
+  const { breakpoints } = useTheme()
+  const dark = useIsDarkMode()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark, mobile })
+  const [hover, setHover] = useState<boolean>(false)
 
   return (
     <Box
@@ -129,7 +129,7 @@ const DanaswapFeature: React.FC<DanaswapFeatureProps> = ({
       <Box className={cx(classes.content)}>{content}</Box>
       <Box className={cx(classes.border, { hover: hover })} />
     </Box>
-  );
-};
+  )
+}
 
-export default DanaswapFeature;
+export default DanaswapFeature
