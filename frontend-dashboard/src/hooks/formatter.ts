@@ -1,12 +1,18 @@
-export function nFormatter(num: number | null, digits: number = 0) {
-  return new Intl.NumberFormat(undefined, {
-    currency: "USD",
-    currencyDisplay: "narrowSymbol",
-    style: "currency",
-    notation: "compact",
-    minimumFractionDigits: digits,
-  }).format(num ?? 0)
-}
+export const nFormatter = (function () {
+  let formatter: any
+  return function (num: number | null, digits: number = 0): string {
+    if (!(formatter instanceof Intl.NumberFormat)) {
+      formatter = new Intl.NumberFormat(undefined, {
+        currency: "USD",
+        currencyDisplay: "narrowSymbol",
+        style: "currency",
+        notation: "compact",
+        minimumFractionDigits: digits,
+      })
+    }
+    return formatter.format(num ?? 0)
+  }
+})()
 
 export function nReader(
   formatted: string,
