@@ -1,4 +1,4 @@
-export const nFormatter = (function () {
+export const printCurrencyUSD = (function () {
   let formatter: any
   return function (num: number | null, digits: number = 0): string {
     if (!(formatter instanceof Intl.NumberFormat)) {
@@ -14,33 +14,20 @@ export const nFormatter = (function () {
   }
 })()
 
-export function nReader(
-  formatted: string,
-  digits: number,
-  space: boolean
-): number | null {
+export function nReader(formatted: string, digits: number): number | null {
   let cur = 0
-  if (formatted.charAt(0) !== "$") {
+  if (formatted.charAt(0) !== "$" || formatted.trim() === "") {
     return null
   }
   cur += 1
-  if (
-    (space && formatted.charAt(1) !== " ") ||
-    (!space && formatted.charAt(1) === " ")
-  ) {
-    return null
-  }
-  if (space) {
-    cur += 1
-  }
 
   const symbol = formatted.charAt(formatted.length - 1)
   let value
 
-  if (parseInt(symbol) >= 0 && parseInt(symbol) <= 9) {
-    value = parseInt(formatted.substring(cur))
+  if (parseInt(symbol, 10) >= 0 && parseInt(symbol, 10) <= 9) {
+    value = parseInt(formatted.substring(cur), 10)
   } else {
-    value = parseInt(formatted.substring(cur, formatted.length - 1))
+    value = parseInt(formatted.substring(cur, formatted.length - 1), 10)
     switch (symbol) {
       case "K":
         value *= 10 ** 3
@@ -48,17 +35,11 @@ export function nReader(
       case "M":
         value *= 10 ** 6
         break
-      case "G":
+      case "B":
         value *= 10 ** 9
         break
       case "T":
         value *= 10 ** 12
-        break
-      case "P":
-        value *= 10 ** 15
-        break
-      case "E":
-        value *= 10 ** 18
         break
       default:
         value = null

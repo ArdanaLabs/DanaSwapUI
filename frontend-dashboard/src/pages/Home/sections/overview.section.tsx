@@ -7,7 +7,7 @@ import { useIsDarkMode } from "state/user/hooks"
 import { OverViewBox } from "components/Box"
 
 import { useTotalStats } from "state/home/hooks"
-import { nFormatter } from "hooks"
+import { printCurrencyUSD } from "hooks"
 
 const useStyles = makeStyles(({ palette }) => ({
   self: {
@@ -39,7 +39,7 @@ const OverViewSection: React.FC = () => {
           <Grid item xs={6} sm={3}>
             <OverViewBox
               label={"TOTAL LIQUIDITY\n\n"}
-              content={nFormatter(totalDepositsAllPoolsUSD, 2)}
+              content={printCurrencyUSD(totalDepositsAllPoolsUSD, 2)}
               // content={new Intl.NumberFormat(undefined, {
               //   currency: "USD",
               //   currencyDisplay: "narrowSymbol",
@@ -58,7 +58,7 @@ const OverViewSection: React.FC = () => {
           <Grid item xs={6} sm={3}>
             <OverViewBox
               label={"24H VOLUME\n\n"}
-              content={nFormatter(totalDailyVolumeUSD?.trade ?? 0, 2)}
+              content={printCurrencyUSD(totalDailyVolumeUSD?.trade ?? 0, 2)}
             />
           </Grid>
         </Grid>
@@ -66,7 +66,7 @@ const OverViewSection: React.FC = () => {
           <Grid item xs={6} sm={3}>
             <OverViewBox
               label={"24H FEE GENERAGED"}
-              content={nFormatter(totalDailyFeeVolumeUSD, 2)}
+              content={printCurrencyUSD(totalDailyFeeVolumeUSD, 2)}
             />
           </Grid>
           <Grid item xs={6} sm={3}>

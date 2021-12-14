@@ -1,45 +1,32 @@
+import * as Option from "fp-ts/Option"
 import _ from "lodash"
 import { RangedLiquidity, RangedVolume } from "state/chart/actions"
 
-export const extractXAxis = (
-  arr: RangedVolume[] | RangedLiquidity[]
-): string[] => {
-  const length = arr.length
-  let newAxis: string[] = []
-
-  newAxis.push(arr[0]?.start ?? "")
-  for (let i = 0; i < length; i++) {
-    newAxis.push(arr[i]?.end ?? "")
-  }
-  return newAxis
+// the strings are ISO8601 date strings
+export const extractXAxis = ([head, ...tail]:
+  | RangedVolume[]
+  | RangedLiquidity[]): string[] => {
+  return head == null
+    ? ["", ""] // Safeguard
+    : [head.start, head.end, ...tail.map((t) => t.end)].map(
+        Option.getOrElse(() => "")
+      )
 }
 
 export const extractYAxis = (
   arr: RangedVolume[] | RangedLiquidity[],
   filter: string
-): any[] => {
-  const length = arr.length
-  let newAxis: string[] = []
+): string[] => {
+  return arr.map((item) => Option.getOrElse(() => "")(_.get(item, [filter])))
+}
 
-  for (let i = 0; i < length; i++) {
-    const item: RangedVolume | RangedLiquidity = arr[i]
-    newAxis.push(_.get(item, [filter]))
+export function findKeyFromObject(obj: object, key: string): any {
+  const fn = (obj: any, key: string): any => {
+    return obj != null && obj.hasOwnProperty(key)
+      ? [obj]
+      : Object.values(obj).flatMap((v) =>
+          typeof v == "object" ? fn(v, key) : []
+        )
   }
-  return newAxis
-}
-
-const fn = (obj: any, key: string): any => {
-  if (_.has(obj, key))
-    // or just (key in obj)
-    return [obj]
-  // elegant:
-  return _.flatten(
-    _.map(obj, function (v) {
-      return typeof v == "object" ? fn(v, key) : []
-    })
-  )
-}
-
-export const findKeyFromObject = (obj: object, key: string): any => {
   return fn(obj, key)[0] ? fn(obj, key)[0][key] : undefined
 }

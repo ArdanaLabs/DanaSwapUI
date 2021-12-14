@@ -1,61 +1,51 @@
-import jsc from "jsverify"
-import { nFormatter, nReader } from "hooks"
+import { printCurrencyUSD } from "hooks"
 
 describe("Hooks formatter", () => {
-  describe("nFormatter method", () => {
+  describe("printCurrencyUSD method", () => {
     it("should return $ 0", () => {
-      const result = nFormatter(null, 0)
-      const expected = "$ 0"
+      const result = printCurrencyUSD(null, 0)
+      const expected = "$0"
       expect(result).toBe(expected)
     })
     it("should return $0", () => {
-      const result = nFormatter(null, 0, false)
+      const result = printCurrencyUSD(null, 0)
       const expected = "$0"
       expect(result).toBe(expected)
     })
     it("should return $ x.**K", () => {
-      const result = nFormatter(1323, 2)
-      const expected = "$ 1.32K"
+      const result = printCurrencyUSD(1323, 2)
+      const expected = "$1.32K"
       expect(result).toBe(expected)
     })
     it("should return $ x.**M", () => {
-      const result = nFormatter(1456323, 2)
-      const expected = "$ 1.46M"
+      const result = printCurrencyUSD(1456323, 2)
+      const expected = "$1.46M"
       expect(result).toBe(expected)
     })
-    it("should return $ x.**G", () => {
-      const result = nFormatter(1789456323, 2)
-      const expected = "$ 1.79G"
+    it("should return $ x.**B", () => {
+      const result = printCurrencyUSD(1456323435, 2)
+      const expected = "$1.46B"
       expect(result).toBe(expected)
     })
     it("should return $ x.**T", () => {
-      const result = nFormatter(1876789456323, 2)
-      const expected = "$ 1.88T"
-      expect(result).toBe(expected)
-    })
-    it("should return $ x.**P", () => {
-      const result = nFormatter(1765876789456323, 2)
-      const expected = "$ 1.77P"
-      expect(result).toBe(expected)
-    })
-    it("should return $ x.**E", () => {
-      const result = nFormatter(1543765876789456323, 2)
-      const expected = "$ 1.54E"
+      const result = printCurrencyUSD(1876789456323, 2)
+      const expected = "$1.88T"
       expect(result).toBe(expected)
     })
 
-    jsc.property(
-      "should check the properties of nFormatter method",
-      jsc.nat,
-      jsc.nat,
-      jsc.bool,
-      (num, digits, space) => {
-        const formattedCurrency = nFormatter(num, digits, space)
-        // console.log(formattedCurrency, nReader(formattedCurrency, digits, space))
-        // console.log("$ 13K", nReader("$ 13K", digits, space))
-        return nReader(formattedCurrency, digits, space) === num
+    // Since the function comes from Intl, it likely isn’t worth property testing
+    /*
+    itProp(
+      "should check the properties of printCurrencyUSD method",
+      [fc.nat(), fc.nat()],
+      (num, digits) => {
+        const formattedCurrency = printCurrencyUSD(num, digits)
+        console.log(formattedCurrency, nReader(formattedCurrency, digits))
+        // console.log("$ 13K", nReader("$13K", digits, space))
+        return nReader(formattedCurrency, digits) === num
         // return true;
       }
     )
+    */
   })
 })
