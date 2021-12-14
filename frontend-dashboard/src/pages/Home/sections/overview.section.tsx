@@ -34,18 +34,25 @@ const OverViewSection: React.FC = () => {
       <Grid container>
         <Grid container item sm={12} md={6}>
           <Grid item xs={6} sm={3}>
-            <OverViewBox label={"TVL\n\n"} content={"$220.21 M"} />
+            <OverViewBox label={"TVL\n\n"} content={"$220.21M"} />
           </Grid>
           <Grid item xs={6} sm={3}>
             <OverViewBox
               label={"TOTAL LIQUIDITY\n\n"}
               content={nFormatter(totalDepositsAllPoolsUSD, 2)}
+              // content={new Intl.NumberFormat(undefined, {
+              //   currency: "USD",
+              //   currencyDisplay: "narrowSymbol",
+              //   style: "currency",
+              //   notation: "compact",
+              //   minimumFractionDigits: 2,
+              // }).format(totalDepositsAllPoolsUSD ?? 0)}
             />
           </Grid>
           <Grid item xs={6} sm={3}>
             <OverViewBox
               label={"LIQUIDITY UTILIZATION"}
-              content={`${totalLiquidityUtilization ?? 0}%`}
+              content={`${totalLiquidityUtilization?.toFixed(0) ?? 0}%`}
             />
           </Grid>
           <Grid item xs={6} sm={3}>
@@ -63,7 +70,7 @@ const OverViewSection: React.FC = () => {
             />
           </Grid>
           <Grid item xs={6} sm={3}>
-            <OverViewBox label={"DANA PRICE\n\n"} content={"$220.21 M"} />
+            <OverViewBox label={"DANA PRICE\n\n"} content={"$220.21M"} />
           </Grid>
           <Grid item xs={6} sm={3}>
             <OverViewBox label={"% OF DANA LOCKED"} content={"30.11%"} />
