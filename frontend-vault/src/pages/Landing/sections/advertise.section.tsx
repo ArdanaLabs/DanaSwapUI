@@ -19,8 +19,8 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     paddingBottom: "50px",
     background: `url(${
       palette.type === "dark" ? BACKGROUND_WAVE_BLUE : BACKGROUND_WAVE_WHITE
-    }) no-repeat`,
-    backgroundSize: "100% 100%",
+    }) right bottom no-repeat`,
+    backgroundSize: "cover",
 
     [breakpoints.down("xs")]: {
       textAlign: "center",
@@ -29,9 +29,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
         palette.type === "dark"
           ? BACKGROUND_WAVE_BLUE_M
           : BACKGROUND_WAVE_WHITE_M
-      }) no-repeat`,
-      backgroundSize: "auto 100%",
-      backgroundPosition: "right",
+      }) right bottom no-repeat`,
     },
   },
 
