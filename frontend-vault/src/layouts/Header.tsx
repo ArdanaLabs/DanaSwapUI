@@ -74,7 +74,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     "& .menu > a": {
       margin: "5px 10px",
       textTransform: "uppercase",
-      color: palette.text.primary,
+      color: palette.primary.main,
     },
   },
 }))
