@@ -42,7 +42,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   description: {
+    "position": "relative",
     "width": "700px",
+
     "& > div:first-child": {
       color: palette.primary.main,
       fontFamily: "Brandon Grotesque",
@@ -150,11 +152,7 @@ const AdSection: React.FC = () => {
           </Grid>
           <Grid item xs={12} sm={6}>
             <Box display="flex" justifyContent="center">
-              <img
-                src={BACKGROUND_GRAPHIC}
-                alt="graphic"
-                width={!mobile ? "auto" : "80%"}
-              />
+              <img src={BACKGROUND_GRAPHIC} alt="graphic" width={"100%"} />
             </Box>
           </Grid>
         </Grid>

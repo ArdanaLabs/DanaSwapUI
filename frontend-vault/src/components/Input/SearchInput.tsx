@@ -4,6 +4,8 @@ import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
 import { useIsDarkMode } from "state/user/hooks"
 
+import { ReactComponent as SearchIcon } from "assets/image/icons/search.svg"
+
 const useStyles = makeStyles(({ palette }) => ({
   input: {
     "position": "relative",
@@ -18,12 +20,16 @@ const useStyles = makeStyles(({ palette }) => ({
         outline: "unset",
       },
     },
-    "& > i": {
-      position: "absolute",
-      left: "20px",
-      top: "13px",
-      fontSize: "12px",
-      color: palette.primary.main,
+    "& > svg": {
+      "position": "absolute",
+      "left": "25px",
+      "top": "50%",
+      "transform": "translate(-50%, -50%)",
+      "fontSize": "12px",
+
+      "& path": {
+        fill: palette.primary.main,
+      },
     },
   },
 }))
@@ -48,7 +54,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
 
   return (
     <Box className={cx(classes.input)}>
-      <i className="fa fa-search" aria-hidden="true"></i>
+      <SearchIcon />
       <input
         type="text"
         className={className}
