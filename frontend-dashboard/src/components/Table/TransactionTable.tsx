@@ -244,9 +244,9 @@ const TransactionTable: React.FC = () => {
       }
       return {
         action: action,
-        navUSD: nFormatter(navUSD, 2, false),
-        tokenAmountUSDC: nFormatter(tokenAmountUSDC, 2, false) + " USDC",
-        tokenAmount: nFormatter(tokenAmount, 2, false) + " ETH",
+        navUSD: nFormatter(navUSD, 2),
+        tokenAmountUSDC: nFormatter(tokenAmountUSDC, 2) + " USDC",
+        tokenAmount: nFormatter(tokenAmount, 2) + " ETH",
         counterpartyAddress: counterpartyAddress,
         created: created,
       }
