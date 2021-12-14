@@ -18,7 +18,7 @@ import { Button } from "components/Button"
 import { usePoolStats } from "state/home/hooks"
 import { keys } from "lodash"
 import { useHistory } from "react-router-dom"
-import { nFormatter } from "hooks"
+import { printCurrencyUSD } from "hooks"
 
 const FILTER_STABLECOINS = 0
 const FILTER_DIGITALASSESTS = 1
@@ -261,7 +261,7 @@ const PoolsPanel: React.FC<PoolsPanelProps> = ({ overView = false }) => {
                   </StyledTableCell>
                   {/* Liquidity */}
                   <StyledTableCell>
-                    {nFormatter(poolInfo.navUSD)}
+                    {printCurrencyUSD(poolInfo.navUSD)}
                   </StyledTableCell>
                   {/* Base APY */}
                   <StyledTableCell>
@@ -275,7 +275,7 @@ const PoolsPanel: React.FC<PoolsPanelProps> = ({ overView = false }) => {
                   </StyledTableCell>
                   {/* VOLUME */}
                   <StyledTableCell>
-                    {nFormatter(poolInfo.recentDailyVolumeUSD.trade)}
+                    {printCurrencyUSD(poolInfo.recentDailyVolumeUSD.trade)}
                   </StyledTableCell>
                   {/* APY */}
                   <StyledTableCell>

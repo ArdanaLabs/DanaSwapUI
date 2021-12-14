@@ -1,53 +1,59 @@
 import { createAction } from "@reduxjs/toolkit"
+import * as Option from "fp-ts/Option"
 
 export interface RangedVolume {
-  start: string | null
-  end: string | null
-  addLiquidity: number | null
-  removeLiquidity: number | null
-  total: number | null
-  trade: number | null
+  start: Option.Option<string>
+  end: Option.Option<string>
+  addLiquidity: Option.Option<number>
+  removeLiquidity: Option.Option<number>
+  total: Option.Option<number>
+  trade: Option.Option<number>
 }
+
 export interface RangedLiquidity {
-  start: string | null
-  end: string | null
-  value: number | null
+  start: Option.Option<string>
+  end: Option.Option<string>
+  value: Option.Option<number>
 }
+
 export interface RangedFees {
-  start: string | null
-  end: string | null
-  value: number | null
+  start: Option.Option<string>
+  end: Option.Option<string>
+  value: Option.Option<number>
 }
+
 export interface RangedTxCount {
-  start: string | null
-  end: string | null
-  addLiquidity: number | null
-  removeLiquidity: number | null
-  total: number | null
-  trade: number | null
+  start: Option.Option<string>
+  end: Option.Option<string>
+  addLiquidity: Option.Option<number>
+  removeLiquidity: Option.Option<number>
+  total: Option.Option<number>
+  trade: Option.Option<number>
 }
+
 export interface RangedAPY {
-  start: string | null
-  end: string | null
-  value: number | null
+  start: Option.Option<string>
+  end: Option.Option<string>
+  value: Option.Option<number>
 }
+
 export interface RangedTransactions {
   tx: {
-    tag: string | null // DepositTx, WithdrawalTx, TradeTx
+    tag: Option.Option<string> // DepositTx, WithdrawalTx, TradeTx
     contents: {
-      counterpartyAddress: string | null
-      created: string | null
-      spentAsset: string | null // TradeTx
-      purchasedAsset: string | null // TradeTx
-      spentAmount: number | null // TradeTx
-      purchasedAmount: number | null // TradeTx
+      counterpartyAddress: Option.Option<string>
+      created: Option.Option<string>
+      spentAsset: Option.Option<string> // TradeTx
+      purchasedAsset: Option.Option<string> // TradeTx
+      spentAmount: Option.Option<number> // TradeTx
+      purchasedAmount: Option.Option<number> // TradeTx
       amounts: {
         // DepositTx, WithdrawalTx
-        [token: string]: number | null
+        [token: string]: Option.Option<number>
       }
     }
   }
-  navUSD: number | null
+  navUSD: Option.Option<number>
 }
 
 export const updateAggVolume = createAction<RangedVolume[]>(

@@ -7,7 +7,7 @@ import Chart from "react-apexcharts"
 import { useIsDarkMode } from "state/user/hooks"
 import { ApexOptions } from "apexcharts"
 import { useAggVolume, useAggLiquidity } from "state/chart/hooks"
-import { extractXAxis, extractYAxis, nFormatter } from "hooks"
+import { extractXAxis, extractYAxis, printCurrencyUSD } from "hooks"
 import { FiveMinutes, OneDay } from "config/grains"
 
 const useStyles = makeStyles(({ palette }) => ({
@@ -104,7 +104,7 @@ const ChartSection: React.FC = () => {
           cssClass: "apexcharts-yaxis-label",
         },
         formatter: (value: any) => {
-          return nFormatter(value)
+          return printCurrencyUSD(value)
         },
       },
     },
@@ -185,7 +185,7 @@ const ChartSection: React.FC = () => {
               cssClass: "apexcharts-yaxis-label",
             },
             formatter: (value: any) => {
-              return nFormatter(value)
+              return printCurrencyUSD(value)
             },
           },
         },
@@ -225,7 +225,7 @@ const ChartSection: React.FC = () => {
               cssClass: "apexcharts-yaxis-label",
             },
             formatter: (value: any) => {
-              return nFormatter(value)
+              return printCurrencyUSD(value)
             },
           },
         },
@@ -265,7 +265,7 @@ const ChartSection: React.FC = () => {
             cssClass: "apexcharts-yaxis-label",
           },
           formatter: (value: any) => {
-            return nFormatter(value)
+            return printCurrencyUSD(value)
           },
         },
       },
@@ -300,7 +300,7 @@ const ChartSection: React.FC = () => {
             cssClass: "apexcharts-yaxis-label",
           },
           formatter: (value: any) => {
-            return nFormatter(value)
+            return printCurrencyUSD(value)
           },
         },
       },

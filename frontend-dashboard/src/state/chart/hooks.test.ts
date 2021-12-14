@@ -1,4 +1,4 @@
-import jsc from "jsverify"
+import { itProp, fc } from "jest-fast-check"
 import { useSelector } from "react-redux"
 import configureMockStore from "redux-mock-store"
 import {
@@ -113,18 +113,18 @@ const initialState = {
   },
 }
 
-const grains = jsc.oneof([
-  jsc.constant(OneMinute),
-  jsc.constant(FiveMinutes),
-  jsc.constant(TenMinutes),
-  jsc.constant(ThirtyMinutes),
-  jsc.constant(OneHour),
-  jsc.constant(FourHours),
-  jsc.constant(TwelveHours),
-  jsc.constant(OneDay),
-  jsc.constant(OneWeek),
-  jsc.constant(OneMonth),
-])
+const grains = fc.oneof(
+  fc.constant(OneMinute),
+  fc.constant(FiveMinutes),
+  fc.constant(TenMinutes),
+  fc.constant(ThirtyMinutes),
+  fc.constant(OneHour),
+  fc.constant(FourHours),
+  fc.constant(TwelveHours),
+  fc.constant(OneDay),
+  fc.constant(OneWeek),
+  fc.constant(OneMonth)
+)
 
 const mockDispatch = jest.fn()
 jest.mock("react-redux", () => ({

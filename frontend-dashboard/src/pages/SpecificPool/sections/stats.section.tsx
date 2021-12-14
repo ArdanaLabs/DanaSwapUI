@@ -7,7 +7,7 @@ import { ApexOptions } from "apexcharts"
 
 import { useIsDarkMode } from "state/user/hooks"
 import { useLocation } from "react-router-dom"
-import { extractXAxis, extractYAxis, nFormatter } from "hooks"
+import { extractXAxis, extractYAxis, printCurrencyUSD } from "hooks"
 import { usePoolStats } from "state/home/hooks"
 import { usePoolVolume, usePoolLiquidity } from "state/chart/hooks"
 
@@ -427,7 +427,7 @@ const StatsSection: React.FC = () => {
               <Box className={cx(classes.leftBorder)}>&nbsp;&nbsp;</Box>
               <span>VOLUME 24H</span>
               <span>
-                {nFormatter(poolInfo?.recentDailyVolumeUSD?.trade, 2)}
+                {printCurrencyUSD(poolInfo?.recentDailyVolumeUSD?.trade, 2)}
               </span>
               <Box style={{ color: "green" }}>
                 <i className="fal fa-long-arrow-up"></i>&nbsp;
@@ -438,7 +438,7 @@ const StatsSection: React.FC = () => {
             <Box className={cx(classes.statsBox, classes.statsBoxBg)}>
               <Box className={cx(classes.leftBorder)}>&nbsp;&nbsp;</Box>
               <span>24H FEES</span>
-              <span>{nFormatter(poolInfo?.dailyFeeVolumeUSD, 2)}</span>
+              <span>{printCurrencyUSD(poolInfo?.dailyFeeVolumeUSD, 2)}</span>
               <span style={{ color: "red" }}>&nbsp;</span>
             </Box>
           </Box>

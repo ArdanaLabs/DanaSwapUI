@@ -10,7 +10,7 @@ import IMG_Worth from "assets/icons/worth.png"
 import IMG_Ratio from "assets/icons/ratio.png"
 import VerticalCarousel from "components/Carousel"
 import { useTotalStats } from "state/home/hooks"
-import { nFormatter } from "hooks"
+import { printCurrencyUSD } from "hooks"
 
 const useStyles = makeStyles(({ palette }) => ({
   root: {
@@ -129,7 +129,7 @@ const PartialStatsSection: React.FC<PartialStatsSectionProps> = ({
                   <StatBox
                     image={IMG_Worth}
                     title={`TOTAL LIQUIDITY`}
-                    content={nFormatter(totalDepositsAllPoolsUSD, 2)}
+                    content={printCurrencyUSD(totalDepositsAllPoolsUSD, 2)}
                     delay={500}
                   />
                 </Grid>
@@ -144,7 +144,7 @@ const PartialStatsSection: React.FC<PartialStatsSectionProps> = ({
                   <StatBox
                     image={IMG_Ratio}
                     title="24HR TRADE VOLUME"
-                    content={nFormatter(
+                    content={printCurrencyUSD(
                       totalDailyVolumeUSD ? totalDailyVolumeUSD.trade : 0,
                       2
                     )}

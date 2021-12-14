@@ -17,7 +17,7 @@ import { useIsDarkMode } from "state/user/hooks"
 import { Button } from "components/Button"
 import { usePoolTransactions } from "state/chart/hooks"
 import { Any, Trade, Withdrawal, Deposit } from "config/txTypes"
-import { findKeyFromObject, nFormatter } from "hooks"
+import { findKeyFromObject, printCurrencyUSD } from "hooks"
 import { useLocation } from "react-router-dom"
 import { keys } from "lodash"
 
@@ -244,9 +244,9 @@ const TransactionTable: React.FC = () => {
       }
       return {
         action: action,
-        navUSD: nFormatter(navUSD, 2),
-        tokenAmountUSDC: nFormatter(tokenAmountUSDC, 2) + " USDC",
-        tokenAmount: nFormatter(tokenAmount, 2) + " ETH",
+        navUSD: printCurrencyUSD(navUSD, 2),
+        tokenAmountUSDC: `${printCurrencyUSD(tokenAmountUSDC, 2)} USDC`,
+        tokenAmount: `${printCurrencyUSD(tokenAmount, 2)} ETH`,
         counterpartyAddress: counterpartyAddress,
         created: created,
       }
