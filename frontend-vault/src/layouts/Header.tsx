@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react"
-import { Box, useMediaQuery, Container } from "@material-ui/core"
+import {
+  Box,
+  useMediaQuery,
+  Container,
+  Link,
+  Typography,
+} from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
 
@@ -8,6 +14,18 @@ import { useHistory } from "react-router-dom"
 import { ThemeSwitch, ConnectWallet } from "components"
 import DUSD_LOGO_BLUE from "assets/image/DUSD-LOGO-BLUE.png"
 import DUSD_LOGO_WHITE from "assets/image/DUSD-LOGO-WHITE.png"
+import { useWallet } from "state/wallet/hooks"
+
+const MenuList = [
+  {
+    text: "Your vaults",
+    link: "/my_vaults",
+  },
+  {
+    text: "Open a new vault",
+    link: "/new_vault",
+  },
+]
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -35,7 +53,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     "& img": {
       width: "60px",
 
-      [breakpoints.down("sm")]: {
+      [breakpoints.down("xs")]: {
         width: "40px",
       },
     },
@@ -51,22 +69,30 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       width: "auto",
     },
   },
+
+  menubar: {
+    "& .menu > a": {
+      margin: "5px 10px",
+      textTransform: "uppercase",
+      color: palette.text.primary,
+    },
+  },
 }))
 
 const Header: React.FC = () => {
   const theme = useTheme()
-  const mobile = useMediaQuery(theme.breakpoints.down("sm"))
+  const mobile = useMediaQuery(theme.breakpoints.down("xs"))
   const dark = useIsDarkMode()
   const classes = useStyles({ dark, mobile })
   const history = useHistory()
   const [bgColor, setBGColor] = useState("transparent")
+  const [address] = useWallet()
 
   const handleScroll = () => {
     setBGColor(
       window.scrollY > 0 ? theme.palette.background.default : "transparent"
     )
   }
-
   useEffect(() => {
     handleScroll()
     window.addEventListener("scroll", handleScroll, { passive: true })
@@ -78,19 +104,48 @@ const Header: React.FC = () => {
     <Box className={cx(classes.root)} style={{ background: bgColor }}>
       <Container>
         <Box className={cx(classes.container)}>
-          <Box className={cx(classes.logo)} onClick={() => history.push("/")}>
-            <img
-              src={
-                theme.palette.type === "dark" ? DUSD_LOGO_WHITE : DUSD_LOGO_BLUE
-              }
-              alt="DANA Logo"
-            />
+          <Box display={"flex"} alignItems={"center"}>
+            <Box
+              className={cx(classes.logo)}
+              onClick={() => history.push("/")}
+              mr={"30px"}
+            >
+              <img
+                src={
+                  theme.palette.type === "dark"
+                    ? DUSD_LOGO_WHITE
+                    : DUSD_LOGO_BLUE
+                }
+                alt="DANA Logo"
+              />
+            </Box>
+            {address && !mobile && <ThemeSwitch />}
           </Box>
 
-          <Box className={cx(classes.toolbar)}>
-            {!mobile && <ThemeSwitch />}
-            <ConnectWallet />
-          </Box>
+          {!address && (
+            <Box className={cx(classes.toolbar)}>
+              {!mobile && <ThemeSwitch />}
+              <ConnectWallet />
+            </Box>
+          )}
+          {address && (
+            <Box
+              className={cx(classes.menubar)}
+              display={"flex"}
+              alignItems={"center"}
+            >
+              <Box className="menu" display={"flex"} alignItems={"center"}>
+                {MenuList.map((item) => (
+                  <Link key={item.text} href={item.link} underline="none">
+                    <Typography variant="h6" component="h6">
+                      {item.text}
+                    </Typography>
+                  </Link>
+                ))}
+              </Box>
+              <Box>address</Box>
+            </Box>
+          )}
         </Box>
       </Container>
     </Box>

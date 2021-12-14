@@ -4,6 +4,7 @@ import { Box } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 
 import { ReactComponent as ArrowRightIcon } from "assets/image/icons/arrow-right.svg"
+import { useWallet } from "state/wallet/hooks"
 
 const useStyles = makeStyles(({ palette }) => ({
   root: {
@@ -36,9 +37,10 @@ const useStyles = makeStyles(({ palette }) => ({
 
 const ConnectWallet: React.FC = () => {
   const classes = useStyles()
+  const [, updateWalletAddress] = useWallet()
 
   const handleConnectWallet = () => {
-    console.log("connect wallet button clicked!")
+    updateWalletAddress("0x2222222")
   }
 
   return (
