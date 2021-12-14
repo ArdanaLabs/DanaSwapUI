@@ -1,8 +1,8 @@
-import React from "react";
-import { Box, useMediaQuery } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import cx from "classnames";
-import { useIsDarkMode } from "state/user/hooks";
+import React from "react"
+import { Box, useMediaQuery } from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import cx from "classnames"
+import { useIsDarkMode } from "state/user/hooks"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -49,7 +49,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     opacity: "0.8",
 
     [breakpoints.down("xs")]: {
-      whiteSpace: "pre-line",
+      "whiteSpace": "pre-line",
 
       "& > div": {
         flexBasis: "50%",
@@ -67,15 +67,15 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       },
     },
   },
-}));
+}))
 
 export interface TokenCardProps {
-  image: string;
-  label: string;
-  name: string;
-  stabilityFee: number;
-  ratio: number;
-  background: string;
+  image: string
+  label: string
+  name: string
+  stabilityFee: number
+  ratio: number
+  background: string
 }
 
 const TokenCard: React.FC<TokenCardProps> = ({
@@ -86,10 +86,10 @@ const TokenCard: React.FC<TokenCardProps> = ({
   ratio,
   background,
 }) => {
-  const { breakpoints } = useTheme();
-  const dark = useIsDarkMode();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const classes = useStyles({ dark, mobile });
+  const { breakpoints } = useTheme()
+  const dark = useIsDarkMode()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark, mobile })
 
   return (
     <Box className={cx(classes.root)} style={{ background: background }}>
@@ -120,7 +120,7 @@ const TokenCard: React.FC<TokenCardProps> = ({
         <Box>{`Min Coll. Ratio \n${ratio.toFixed(0)}%`}</Box>
       </Box>
     </Box>
-  );
-};
+  )
+}
 
-export default TokenCard;
+export default TokenCard

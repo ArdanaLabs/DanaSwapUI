@@ -1,13 +1,13 @@
-import React from "react";
-import cx from "classnames";
-import { Box, useMediaQuery } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import { useIsDarkMode } from "state/user/hooks";
+import React from "react"
+import cx from "classnames"
+import { Box, useMediaQuery } from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import { useIsDarkMode } from "state/user/hooks"
 
-import { GradientButton } from "components/Button";
+import { GradientButton } from "components/Button"
 export interface AvatarProps {
-  image: string;
-  size?: number;
+  image: string
+  size?: number
 }
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
@@ -32,13 +32,13 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       width: "60px",
     },
   },
-}));
+}))
 
 const Avatar: React.FC<AvatarProps> = ({ image, size }) => {
-  const { breakpoints } = useTheme();
-  const dark = useIsDarkMode();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const classes = useStyles({ dark, mobile });
+  const { breakpoints } = useTheme()
+  const dark = useIsDarkMode()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark, mobile })
 
   return (
     <Box className={cx(classes.root)}>
@@ -49,7 +49,7 @@ const Avatar: React.FC<AvatarProps> = ({ image, size }) => {
       />
       <img className={cx(classes.photo)} src={image} alt="avatar" />
     </Box>
-  );
-};
+  )
+}
 
-export default Avatar;
+export default Avatar

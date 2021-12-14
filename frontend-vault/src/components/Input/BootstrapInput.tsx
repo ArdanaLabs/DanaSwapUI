@@ -1,25 +1,25 @@
-import { createStyles, InputBase, Theme, withStyles } from "@material-ui/core";
+import { createStyles, InputBase, Theme, withStyles } from "@material-ui/core"
 
 const BootstrapInput = withStyles((theme: Theme) =>
   createStyles({
     root: {
-      width: "100%",
+      "width": "100%",
       "& > svg": {
         right: "10px",
         color: "white",
       },
     },
     input: {
-      fontFamily: "Brandon Grotesque",
-      fontWeight: 900,
-      borderRadius: 100,
-      color: theme.palette.common.white,
-      width: "100%",
-      position: "relative",
-      fontSize: 16,
-      padding: "10px 10px 10px 20px",
-      transition: theme.transitions.create(["border-color", "box-shadow"]),
-      background: theme.palette.primary.light,
+      "fontFamily": "Brandon Grotesque",
+      "fontWeight": 900,
+      "borderRadius": 100,
+      "color": theme.palette.common.white,
+      "width": "100%",
+      "position": "relative",
+      "fontSize": 16,
+      "padding": "10px 10px 10px 20px",
+      "transition": theme.transitions.create(["border-color", "box-shadow"]),
+      "background": theme.palette.primary.light,
 
       "&:focus": {
         borderRadius: 100,
@@ -27,6 +27,6 @@ const BootstrapInput = withStyles((theme: Theme) =>
       },
     },
   })
-)(InputBase);
+)(InputBase)
 
-export default BootstrapInput;
+export default BootstrapInput

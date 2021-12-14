@@ -1,20 +1,20 @@
-import React from "react";
-import { Box, Container, Grid, useMediaQuery } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import cx from "classnames";
+import React from "react"
+import { Box, Container, Grid, useMediaQuery } from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import cx from "classnames"
 
-import { useIsDarkMode } from "state/user/hooks";
-import { HelpCard } from "components";
+import { useIsDarkMode } from "state/user/hooks"
+import { HelpCard } from "components"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {},
-}));
+}))
 
 const HelpSection: React.FC = () => {
-  const { breakpoints } = useTheme();
-  const dark = useIsDarkMode();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const classes = useStyles({ dark, mobile });
+  const { breakpoints } = useTheme()
+  const dark = useIsDarkMode()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark, mobile })
 
   return (
     <Box className={cx(classes.root)}>
@@ -45,7 +45,7 @@ const HelpSection: React.FC = () => {
         </Grid>
       </Container>
     </Box>
-  );
-};
+  )
+}
 
-export default HelpSection;
+export default HelpSection

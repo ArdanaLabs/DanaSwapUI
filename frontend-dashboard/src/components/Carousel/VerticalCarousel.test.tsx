@@ -1,9 +1,9 @@
-import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
-import * as Enzyme from "enzyme";
-import { shallow } from "enzyme";
-import VerticalCarousel from ".";
+import Adapter from "@wojtekmaj/enzyme-adapter-react-17"
+import * as Enzyme from "enzyme"
+import { shallow } from "enzyme"
+import VerticalCarousel from "."
 
-Enzyme.configure({ adapter: new Adapter() });
+Enzyme.configure({ adapter: new Adapter() })
 
 jest.mock("react-redux", () => ({
   useDispatch: () => {},
@@ -14,9 +14,9 @@ jest.mock("react-redux", () => ({
       timestamp: "dfd",
     },
   }),
-}));
+}))
 
-let wrapper: Enzyme.ShallowWrapper;
+let wrapper: Enzyme.ShallowWrapper
 
 describe("Components / Carousel / VerticalCarousel", () => {
   beforeEach(() => {
@@ -26,18 +26,18 @@ describe("Components / Carousel / VerticalCarousel", () => {
         setActiveIndex={() => {}}
         data={["DANASWAP", `ARDANA VAULTS`, "MY DASHBOARD"]}
       />
-    );
-  });
+    )
+  })
 
   it("renders", () => {
-    expect(wrapper).toMatchSnapshot();
-  });
+    expect(wrapper).toMatchSnapshot()
+  })
   it("should contain 3 button", () => {
-    expect(wrapper.find('button')).toHaveLength(3);
-  });
+    expect(wrapper.find("button")).toHaveLength(3)
+  })
   it("should contain correct button labels", () => {
-    expect(wrapper.find('button').at(0).text()).toEqual('DANASWAP');
-    expect(wrapper.find('button').at(1).text()).toEqual('ARDANA VAULTS');
-    expect(wrapper.find('button').at(2).text()).toEqual('MY DASHBOARD');
-  });
-});
+    expect(wrapper.find("button").at(0).text()).toEqual("DANASWAP")
+    expect(wrapper.find("button").at(1).text()).toEqual("ARDANA VAULTS")
+    expect(wrapper.find("button").at(2).text()).toEqual("MY DASHBOARD")
+  })
+})

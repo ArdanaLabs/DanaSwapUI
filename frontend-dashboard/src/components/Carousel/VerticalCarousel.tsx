@@ -1,7 +1,7 @@
-import React from "react";
-import cx from "classnames";
-import { makeStyles, useMediaQuery, useTheme } from "@material-ui/core";
-import { useIsDarkMode } from "state/user/hooks";
+import React from "react"
+import cx from "classnames"
+import { makeStyles, useMediaQuery, useTheme } from "@material-ui/core"
+import { useIsDarkMode } from "state/user/hooks"
 
 /*
  * Read the blog post here:
@@ -46,21 +46,21 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   before: {
-    background: "-webkit-linear-gradient(-90deg, #ffffff, #ffffff00)",
+    "background": "-webkit-linear-gradient(-90deg, #ffffff, #ffffff00)",
     "-webkit-background-clip": "text",
     "-webkit-text-fill-color": "transparent",
   },
   after: {
-    background: "-webkit-linear-gradient(90deg, #ffffff, #ffffff00)",
+    "background": "-webkit-linear-gradient(90deg, #ffffff, #ffffff00)",
     "-webkit-background-clip": "text",
     "-webkit-text-fill-color": "transparent",
   },
-}));
+}))
 
 export interface VerticalCarouselProps {
-  data: any[];
-  activeIndex: number;
-  setActiveIndex: any;
+  data: any[]
+  activeIndex: number
+  setActiveIndex: any
 }
 
 const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
@@ -68,24 +68,24 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
   activeIndex,
   setActiveIndex,
 }) => {
-  const { breakpoints } = useTheme();
-  const dark = useIsDarkMode();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const classes = useStyles({ dark, mobile });
+  const { breakpoints } = useTheme()
+  const dark = useIsDarkMode()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark, mobile })
 
   // const [activeIndex, setActiveIndex] = useState(0);
 
   // Used to determine which items appear above the active item
-  const halfwayIndex = Math.ceil(data.length / 2);
+  const halfwayIndex = Math.ceil(data.length / 2)
 
   // Usd to determine the height/spacing of each item
-  const itemHeight = 120;
+  const itemHeight = 120
 
   // Used to determine at what point an item is moved from the top to the bottom
-  const shuffleThreshold = halfwayIndex * itemHeight;
+  const shuffleThreshold = halfwayIndex * itemHeight
 
   // Used to determine which items should be visible. this prevents the "ghosting" animation
-  const visibleStyleThreshold = shuffleThreshold / 2;
+  const visibleStyleThreshold = shuffleThreshold / 2
 
   const determinePlacement = (itemIndex: number): any => {
     // If these match, the item is active
@@ -94,27 +94,27 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
     //   return -45;
     // }
 
-    if (activeIndex === itemIndex) return -15;
+    if (activeIndex === itemIndex) return -15
 
     if (itemIndex >= halfwayIndex) {
       if (activeIndex > itemIndex - halfwayIndex) {
-        return (itemIndex - activeIndex) * itemHeight;
+        return (itemIndex - activeIndex) * itemHeight
       } else {
-        return -(data.length + activeIndex - itemIndex) * itemHeight;
+        return -(data.length + activeIndex - itemIndex) * itemHeight
       }
     }
 
     if (itemIndex > activeIndex) {
-      return (itemIndex - activeIndex) * itemHeight;
+      return (itemIndex - activeIndex) * itemHeight
     }
 
     if (itemIndex < activeIndex) {
       if ((activeIndex - itemIndex) * itemHeight >= shuffleThreshold) {
-        return (data.length - (activeIndex - itemIndex)) * itemHeight;
+        return (data.length - (activeIndex - itemIndex)) * itemHeight
       }
-      return -(activeIndex - itemIndex) * itemHeight;
+      return -(activeIndex - itemIndex) * itemHeight
     }
-  };
+  }
 
   return (
     <div className={cx(classes.carouselInner)}>
@@ -138,7 +138,7 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
         </button>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default VerticalCarousel;
+export default VerticalCarousel

@@ -73,32 +73,24 @@
         "TITLE": "Ardana has a\n<span>world class team</span>",
         "CONTENT": "Our team is comprised of technical talent, early contributors,\nstudents and ambassadors of reputable companies and\nblockchain projects such as Apple, Microsoft, Barclays, Citi\nBank, Jane Street, Mina Protocol, Cardano, the Plutus Pioneers\nProgram and Emurgo Academy."
       },
+      "ROADMAP": {
+        "TITLE": "Roadmap",
+        "CONTENT": "Ardana is building the first All-in-One Stablecoin Ecosystem Built on Cardano. Learn more about our roadmap below."
+      },
       "PARTNERS": "Partners",
       "INVESTORS": "Investors",
       "FOOTER": {
         "RESOURCES": {
           "LABEL": "Resources",
-          "LIST": [
-            "Whitepaper",
-            "Pitch Deek",
-            "Roadmap",
-            "Docs"
-          ]
+          "LIST": ["Whitepaper", "Pitch Deek", "Roadmap", "Docs"]
         },
         "PRODUCTS": {
           "LABEL": "Products",
-          "LIST": [
-            "DEX",
-            "Stablecoin",
-            "Multisig"
-          ]
+          "LIST": ["DEX", "Stablecoin", "Multisig"]
         },
         "FOUNDATION": {
           "LABEL": "Foundation",
-          "LIST": [
-            "Contact Us",
-            "Careers"
-          ]
+          "LIST": ["Contact Us", "Careers"]
         },
         "SOCIAL": {
           "LABEL": "Our Socials",

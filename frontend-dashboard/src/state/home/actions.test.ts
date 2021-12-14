@@ -1,7 +1,7 @@
-import { TotalStat, updateTotalStats } from './actions'
+import { TotalStat, updateTotalStats } from "./actions"
 
-describe('Home actions', () => {
-  describe('updateTotalStats', () => {
+describe("Home actions", () => {
+  describe("updateTotalStats", () => {
     const mock: TotalStat = {
       totalDailyTxCount: null,
       totalDailyFeeVolumeUSD: null,
@@ -11,10 +11,10 @@ describe('Home actions', () => {
       poolStats: null,
     }
 
-    it('should create action with passed data', () => {
+    it("should create action with passed data", () => {
       expect(updateTotalStats(mock)).toEqual({
-        type: 'home/updateTotalStats',
-        payload: mock
+        type: "home/updateTotalStats",
+        payload: mock,
       })
     })
   })

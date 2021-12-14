@@ -12,11 +12,11 @@
         "poetry2nix": "poetry2nix"
       },
       "locked": {
-        "lastModified": 1638511605,
-        "narHash": "sha256-1xYj7zWQ/wkXZ/X5m1qbGeyCJSTA5XK+BzhWyd7NULg=",
+        "lastModified": 1639195972,
+        "narHash": "sha256-gsuP7VjrUGDc3ygPnSc9r1u3oJ9UMIhqME1rsu3XIuA=",
         "owner": "davhau",
         "repo": "dream2nix",
-        "rev": "3fa75b5189ad78f3600a6b6a4570e6b87c1a47f1",
+        "rev": "a08f5eb25aea5abc4d137628d26dafdcd1129793",
         "type": "github"
       },
       "original": {
@@ -105,11 +105,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1638587357,
-        "narHash": "sha256-2ySMW3QARG8BsRPmwe7clTbdCuaObromOKewykP+UJc=",
+        "lastModified": 1639161226,
+        "narHash": "sha256-75Y08ynJDTq6HHGIF+8IADBJSVip0UyWQH7jqSFnRR8=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "e34c5379866833f41e2a36f309912fa675d687c7",
+        "rev": "573095944e7c1d58d30fc679c81af63668b54056",
         "type": "github"
       },
       "original": {

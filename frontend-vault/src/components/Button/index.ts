@@ -1,1 +1,1 @@
-export { default as VaultButton } from "./VaultButton";
+export { default as VaultButton } from "./VaultButton"

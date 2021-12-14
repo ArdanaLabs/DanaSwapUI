@@ -1,10 +1,10 @@
-import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
-import * as Enzyme from "enzyme";
-import { shallow } from "enzyme";
-import { BrowserRouter } from "react-router-dom";
-import { TransactionTable } from ".";
+import Adapter from "@wojtekmaj/enzyme-adapter-react-17"
+import * as Enzyme from "enzyme"
+import { shallow } from "enzyme"
+import { BrowserRouter } from "react-router-dom"
+import { TransactionTable } from "."
 
-Enzyme.configure({ adapter: new Adapter() });
+Enzyme.configure({ adapter: new Adapter() })
 
 jest.mock("react-redux", () => ({
   useDispatch: () => {},
@@ -15,9 +15,9 @@ jest.mock("react-redux", () => ({
       timestamp: "dfd",
     },
   }),
-}));
+}))
 
-let wrapper: Enzyme.ShallowWrapper;
+let wrapper: Enzyme.ShallowWrapper
 
 describe("Components / Table / TransactionTable", () => {
   beforeEach(() => {
@@ -25,10 +25,10 @@ describe("Components / Table / TransactionTable", () => {
       <BrowserRouter basename="/">
         <TransactionTable />
       </BrowserRouter>
-    );
-  });
+    )
+  })
 
   it("renders", () => {
-    expect(wrapper).toMatchSnapshot();
-  });
-});
+    expect(wrapper).toMatchSnapshot()
+  })
+})

@@ -1,5 +1,5 @@
-import { Button } from "@material-ui/core";
-import { withStyles, Theme } from "@material-ui/core/styles";
+import { Button } from "@material-ui/core"
+import { withStyles, Theme } from "@material-ui/core/styles"
 
 const StyledValutButton = withStyles((theme: Theme) => ({
   root: {
@@ -12,6 +12,6 @@ const StyledValutButton = withStyles((theme: Theme) => ({
     minWidth: "150px",
     lineHeight: "100% !important",
   },
-}))(Button);
+}))(Button)
 
-export default StyledValutButton;
+export default StyledValutButton

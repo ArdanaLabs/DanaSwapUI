@@ -1,5 +1,5 @@
-import { Slider } from "@material-ui/core";
-import { withStyles } from "@material-ui/core/styles";
+import { Slider } from "@material-ui/core"
+import { withStyles } from "@material-ui/core/styles"
 
 const StyledSlider = withStyles((theme) => ({
   root: {},
@@ -34,6 +34,6 @@ const StyledSlider = withStyles((theme) => ({
     fontSize: "14px",
     lineHeight: "100%",
   },
-}))(Slider);
+}))(Slider)
 
-export default StyledSlider;
+export default StyledSlider

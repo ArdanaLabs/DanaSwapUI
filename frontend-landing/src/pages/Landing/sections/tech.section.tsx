@@ -1,18 +1,18 @@
-import React, { useRef } from "react";
-import { Box, useMediaQuery, Container, Grid } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import cx from "classnames";
-import ScrollAnimation from "react-animate-on-scroll";
-import Carousel from "react-elastic-carousel";
+import React, { useRef } from "react"
+import { Box, useMediaQuery, Container, Grid } from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import cx from "classnames"
+import ScrollAnimation from "react-animate-on-scroll"
+import Carousel from "react-elastic-carousel"
 
-import { useIsDarkMode } from "state/user/hooks";
-import { GradientButton } from "components/Button";
+import { useIsDarkMode } from "state/user/hooks"
+import { GradientButton } from "components/Button"
 
-import BG_CIRCLE from "assets/backgrounds/two-circle-rtl.png";
-import ICO_NEXT from "assets/icons/carousel-next.svg";
-import ICO_PREV from "assets/icons/carousel-prev.svg";
-import { TechnicalPapers } from "data";
-import { TechnicalPaperBox } from "components";
+import BG_CIRCLE from "assets/backgrounds/two-circle-rtl.png"
+import ICO_NEXT from "assets/icons/carousel-next.svg"
+import ICO_PREV from "assets/icons/carousel-prev.svg"
+import { TechnicalPapers } from "data"
+import { TechnicalPaperBox } from "components"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -90,25 +90,25 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       width: "18px",
     },
   },
-}));
+}))
 
 const TechSection: React.FC = () => {
-  const { breakpoints } = useTheme();
-  const dark = useIsDarkMode();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const classes = useStyles({ dark, mobile });
-  const carouselRef = useRef<any>(null);
+  const { breakpoints } = useTheme()
+  const dark = useIsDarkMode()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark, mobile })
+  const carouselRef = useRef<any>(null)
 
-  const renderArrow = () => <></>;
-  const renderPagination = () => <></>;
+  const renderArrow = () => <></>
+  const renderPagination = () => <></>
 
   const handleCarousel = (direction: number) => {
     if (direction > 0) {
-      carouselRef.current.slideNext();
+      carouselRef.current.slideNext()
     } else {
-      carouselRef.current.slidePrev();
+      carouselRef.current.slidePrev()
     }
-  };
+  }
 
   return (
     <Box className={cx(classes.root)}>
@@ -166,7 +166,7 @@ const TechSection: React.FC = () => {
         </Grid>
       </Container>
     </Box>
-  );
-};
+  )
+}
 
-export default TechSection;
+export default TechSection

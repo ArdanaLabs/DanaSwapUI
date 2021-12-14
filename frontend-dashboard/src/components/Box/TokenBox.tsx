@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import cx from "classnames";
-import { Box, List, ListItem, useMediaQuery } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import { useIsDarkMode } from "state/user/hooks";
+import React, { useState } from "react"
+import cx from "classnames"
+import { Box, List, ListItem, useMediaQuery } from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import { useIsDarkMode } from "state/user/hooks"
 
-import { TokenList } from "data";
-import { Dialog, DialogTitle } from "components/Dialog";
-import { Button } from "components/Button";
-import { SearchInput } from "components/Input";
+import { TokenList } from "data"
+import { Dialog, DialogTitle } from "components/Dialog"
+import { Button } from "components/Button"
+import { SearchInput } from "components/Input"
 
-const FILTER_ALL = 0;
-const FILTER_NATIVE = 1;
-const FILTER_ERC20 = 2;
-const FILTER_BEP2 = 3;
+const FILTER_ALL = 0
+const FILTER_NATIVE = 1
+const FILTER_ERC20 = 2
+const FILTER_BEP2 = 3
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   label: {
@@ -40,8 +40,8 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   other: {
-    display: "flex",
-    alignItems: "center",
+    "display": "flex",
+    "alignItems": "center",
 
     "& > div": {
       margin: "0 10px",
@@ -49,18 +49,18 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   maxButton: {
-    background:
+    "background":
       "linear-gradient(180deg, #73D6F1 0%, #5F72FF 99.99%, #2F3DA0 100%)",
-    borderRadius: "5px",
-    fontFamily: "Museo Sans",
-    fontStyle: "normal",
-    fontWeight: 500,
-    fontSize: "10px",
-    lineHeight: "100%",
-    textAlign: "center",
-    color: palette.common.white,
-    padding: "5px 10px",
-    cursor: "pointer",
+    "borderRadius": "5px",
+    "fontFamily": "Museo Sans",
+    "fontStyle": "normal",
+    "fontWeight": 500,
+    "fontSize": "10px",
+    "lineHeight": "100%",
+    "textAlign": "center",
+    "color": palette.common.white,
+    "padding": "5px 10px",
+    "cursor": "pointer",
 
     "&:hover": {
       color: "#0C1347",
@@ -74,13 +74,13 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   tokenIcon: {
-    background: palette.common.white,
-    borderRadius: "50%",
-    padding: "10px",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    marginRight: "10px",
+    "background": palette.common.white,
+    "borderRadius": "50%",
+    "padding": "10px",
+    "display": "flex",
+    "justifyContent": "center",
+    "alignItems": "center",
+    "marginRight": "10px",
 
     "& img": {
       width: "30px",
@@ -97,11 +97,11 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   tokenName: {
-    fontFamily: "Museo Sans",
-    fontStyle: "normal",
-    lineHeight: "100%",
-    color: palette.secondary.main,
-    flexGrow: 2,
+    "fontFamily": "Museo Sans",
+    "fontStyle": "normal",
+    "lineHeight": "100%",
+    "color": palette.secondary.main,
+    "flexGrow": 2,
 
     "& div:first-child": {
       fontSize: "15px",
@@ -115,14 +115,15 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   filterText: {
-    background: palette.common.white,
-    fontSize: "10px",
-    fontWeight: 500,
-    lineHeight: "100%",
-    width: "100%",
-    padding: "15px 20px",
-    borderRadius: "10px",
-    color: palette.type === "light" ? palette.primary.main : palette.text.hint,
+    "background": palette.common.white,
+    "fontSize": "10px",
+    "fontWeight": 500,
+    "lineHeight": "100%",
+    "width": "100%",
+    "padding": "15px 20px",
+    "borderRadius": "10px",
+    "color":
+      palette.type === "light" ? palette.primary.main : palette.text.hint,
 
     "&::placeholder": {
       color:
@@ -149,16 +150,16 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   menuItem: {
     borderBottom: "1px solid white",
   },
-}));
+}))
 
 export interface OverViewBoxProps {
-  label: string;
-  amount: number;
-  token: any;
-  onMaxAmount: any;
-  style?: object;
-  className?: string;
-  handleTokenSelect: any;
+  label: string
+  amount: number
+  token: any
+  onMaxAmount: any
+  style?: object
+  className?: string
+  handleTokenSelect: any
 }
 
 const TokenBox: React.FC<OverViewBoxProps> = ({
@@ -170,32 +171,32 @@ const TokenBox: React.FC<OverViewBoxProps> = ({
   style = {},
   className,
 }) => {
-  const { breakpoints } = useTheme();
-  const dark = useIsDarkMode();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const classes = useStyles({ dark, mobile });
-  const [openTokenDlg, setOpenTokenDlg] = useState(false);
+  const { breakpoints } = useTheme()
+  const dark = useIsDarkMode()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark, mobile })
+  const [openTokenDlg, setOpenTokenDlg] = useState(false)
 
   const [filter, setFilter] = useState({
     text: "",
     type: 0,
-  });
+  })
 
   const onFilterChange = (event: any) => {
-    setFilter({ ...filter, ...event });
-  };
+    setFilter({ ...filter, ...event })
+  }
 
   const handleClickOpen = () => {
-    setOpenTokenDlg(true);
-  };
+    setOpenTokenDlg(true)
+  }
   const handleClose = () => {
-    setOpenTokenDlg(false);
-  };
+    setOpenTokenDlg(false)
+  }
 
   const handleMenuItemClick = (token: any) => {
-    handleTokenSelect(token);
-    setOpenTokenDlg(false);
-  };
+    handleTokenSelect(token)
+    setOpenTokenDlg(false)
+  }
 
   return (
     <Box className={className} style={style}>
@@ -205,7 +206,11 @@ const TokenBox: React.FC<OverViewBoxProps> = ({
       <Box className={cx(classes.body)}>
         <Box className={cx(classes.amount)}>{amount}</Box>
         <Box className={cx(classes.other)}>
-          <Box id='max_button' className={cx(classes.maxButton)} onClick={onMaxAmount}>
+          <Box
+            id="max_button"
+            className={cx(classes.maxButton)}
+            onClick={onMaxAmount}
+          >
             MAX
           </Box>
           <Box className={cx(classes.token)} onClick={handleClickOpen}>
@@ -235,7 +240,7 @@ const TokenBox: React.FC<OverViewBoxProps> = ({
               <Button
                 variant="contained"
                 onClick={() => {
-                  onFilterChange({ type: FILTER_ALL });
+                  onFilterChange({ type: FILTER_ALL })
                 }}
                 className={cx(classes.filterType, {
                   [classes.active]: filter.type === FILTER_ALL,
@@ -246,7 +251,7 @@ const TokenBox: React.FC<OverViewBoxProps> = ({
               <Button
                 variant="contained"
                 onClick={() => {
-                  onFilterChange({ type: FILTER_NATIVE });
+                  onFilterChange({ type: FILTER_NATIVE })
                 }}
                 className={cx(classes.filterType, {
                   [classes.active]: filter.type === FILTER_NATIVE,
@@ -257,7 +262,7 @@ const TokenBox: React.FC<OverViewBoxProps> = ({
               <Button
                 variant="contained"
                 onClick={() => {
-                  onFilterChange({ type: FILTER_ERC20 });
+                  onFilterChange({ type: FILTER_ERC20 })
                 }}
                 className={cx(classes.filterType, {
                   [classes.active]: filter.type === FILTER_ERC20,
@@ -268,7 +273,7 @@ const TokenBox: React.FC<OverViewBoxProps> = ({
               <Button
                 variant="contained"
                 onClick={() => {
-                  onFilterChange({ type: FILTER_BEP2 });
+                  onFilterChange({ type: FILTER_BEP2 })
                 }}
                 className={cx(classes.filterType, {
                   [classes.active]: filter.type === FILTER_BEP2,
@@ -284,7 +289,7 @@ const TokenBox: React.FC<OverViewBoxProps> = ({
               placeholder="SEARCH..."
               isIcon={true}
               onChange={(e: any) => {
-                onFilterChange({ text: e.target.value });
+                onFilterChange({ text: e.target.value })
               }}
             />
 
@@ -311,7 +316,7 @@ const TokenBox: React.FC<OverViewBoxProps> = ({
         </Box>
       </Box>
     </Box>
-  );
-};
+  )
+}
 
-export default TokenBox;
+export default TokenBox

@@ -1,10 +1,10 @@
-import React from "react";
-import { Box, Grid, useMediaQuery } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import cx from "classnames";
+import React from "react"
+import { Box, Grid, useMediaQuery } from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import cx from "classnames"
 
-import { useIsDarkMode } from "state/user/hooks";
-import { useTotalStats } from "state/home/hooks";
+import { useIsDarkMode } from "state/user/hooks"
+import { useTotalStats } from "state/home/hooks"
 
 const useStyles = makeStyles(({ palette }) => ({
   self: {},
@@ -18,18 +18,18 @@ const useStyles = makeStyles(({ palette }) => ({
     color: palette.secondary.main,
   },
   body: {
-    background: palette.background.paper,
-    padding: "30px 50px 30px 50px",
-    borderRadius: "10px",
+    "background": palette.background.paper,
+    "padding": "30px 50px 30px 50px",
+    "borderRadius": "10px",
 
     "& p": {
-      fontFamily: "Museo Sans",
-      fontStyle: "normal",
-      fontWeight: 900,
-      fontSize: "16px",
-      lineHeight: "20px",
-      whiteSpace: "pre-line",
-      color: palette.secondary.main,
+      "fontFamily": "Museo Sans",
+      "fontStyle": "normal",
+      "fontWeight": 900,
+      "fontSize": "16px",
+      "lineHeight": "20px",
+      "whiteSpace": "pre-line",
+      "color": palette.secondary.main,
 
       "& > span": {
         fontWeight: 100,
@@ -48,16 +48,16 @@ const useStyles = makeStyles(({ palette }) => ({
     padding: "10px",
     color: palette.secondary.main,
   },
-}));
+}))
 
 const StatsSection: React.FC = () => {
-  const { breakpoints } = useTheme();
-  const dark = useIsDarkMode();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const classes = useStyles({ dark, mobile });
+  const { breakpoints } = useTheme()
+  const dark = useIsDarkMode()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark, mobile })
 
-  const totalStats = useTotalStats();
-  const { totalDailyVolumeUSD } = totalStats;
+  const totalStats = useTotalStats()
+  const { totalDailyVolumeUSD } = totalStats
 
   return (
     <Box className={cx(classes.self)}>
@@ -103,12 +103,18 @@ const StatsSection: React.FC = () => {
             <Box component="p">
               DAILY DEPOSITS:
               <br />
-              <span>${totalDailyVolumeUSD?.addLiquidity?.toLocaleString() ?? 0} (includes factory pools)</span>
+              <span>
+                ${totalDailyVolumeUSD?.addLiquidity?.toLocaleString() ?? 0}{" "}
+                (includes factory pools)
+              </span>
               <br />
               <br />
               DAILY WITHDRAWALS:
               <br />
-              <span>${totalDailyVolumeUSD?.removeLiquidity?.toLocaleString() ?? 0} (includes factory pools)</span>
+              <span>
+                ${totalDailyVolumeUSD?.removeLiquidity?.toLocaleString() ?? 0}{" "}
+                (includes factory pools)
+              </span>
               <br />
               <br />
               DAILY VOLUME:
@@ -129,7 +135,7 @@ const StatsSection: React.FC = () => {
         </Grid>
       </Grid>
     </Box>
-  );
-};
+  )
+}
 
-export default StatsSection;
+export default StatsSection

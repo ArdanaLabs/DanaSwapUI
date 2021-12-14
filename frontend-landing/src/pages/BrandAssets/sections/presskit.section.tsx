@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { Box, useMediaQuery, Container, Grid } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import cx from "classnames";
+import React, { useEffect, useState } from "react"
+import { Box, useMediaQuery, Container, Grid } from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import cx from "classnames"
 
-import { useIsDarkMode } from "state/user/hooks";
-import { BrandAssetBox } from "components";
+import { useIsDarkMode } from "state/user/hooks"
+import { BrandAssetBox } from "components"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -51,32 +51,30 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       margin: "20px 0",
     },
   },
-}));
+}))
 
 const PressKitSection: React.FC = () => {
-  const { breakpoints } = useTheme();
-  const dark = useIsDarkMode();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const classes = useStyles({ dark, mobile });
+  const { breakpoints } = useTheme()
+  const dark = useIsDarkMode()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark, mobile })
 
-  const [horizonWidth, setHorizonWidth] = useState(0);
+  const [horizonWidth, setHorizonWidth] = useState(0)
 
   useEffect(() => {
-    const container = document.querySelector("#container");
-    const horizon = document.querySelector("#horizon");
+    const container = document.querySelector("#container")
+    const horizon = document.querySelector("#horizon")
 
     if (mobile) {
       const mobileWidth =
         (document.querySelector("body")?.clientWidth ?? 0) -
-        (horizon?.getBoundingClientRect().left ?? 0);
-      setHorizonWidth(mobileWidth);
+        (horizon?.getBoundingClientRect().left ?? 0)
+      setHorizonWidth(mobileWidth)
     } else {
-      setHorizonWidth(
-        (container?.getBoundingClientRect().width ?? 0) / 2 - 100
-      );
+      setHorizonWidth((container?.getBoundingClientRect().width ?? 0) / 2 - 100)
     }
     // eslint-disable-next-line
-  }, [mobile]);
+  }, [mobile])
 
   return (
     <Box className={cx(classes.root)}>
@@ -112,7 +110,7 @@ const PressKitSection: React.FC = () => {
         </Grid>
       </Container>
     </Box>
-  );
-};
+  )
+}
 
-export default PressKitSection;
+export default PressKitSection

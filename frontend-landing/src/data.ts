@@ -1,11 +1,11 @@
-import i18next from "i18next";
-import { ProfileType } from "components/Box/ProfileBox";
-import { ReactComponent as TwitterIcon } from "assets/icons/twitter.svg";
-import { ReactComponent as DiscordIcon } from "assets/icons/discord.svg";
-import { ReactComponent as TelegramIcon } from "assets/icons/telegram.svg";
-import { ReactComponent as MediumIcon } from "assets/icons/medium.svg";
-import { ReactComponent as YoutubeIcon } from "assets/icons/youtube.svg";
-import { ReactComponent as LinkedinIcon } from "assets/icons/linkedin.svg";
+import i18next from "i18next"
+import { ProfileType } from "components/Box/ProfileBox"
+import { ReactComponent as TwitterIcon } from "assets/icons/twitter.svg"
+import { ReactComponent as DiscordIcon } from "assets/icons/discord.svg"
+import { ReactComponent as TelegramIcon } from "assets/icons/telegram.svg"
+import { ReactComponent as MediumIcon } from "assets/icons/medium.svg"
+import { ReactComponent as YoutubeIcon } from "assets/icons/youtube.svg"
+import { ReactComponent as LinkedinIcon } from "assets/icons/linkedin.svg"
 
 export const Menus = [
   {
@@ -23,8 +23,8 @@ export const Menus = [
   },
   {
     label: i18next.t("PAGE.LANDING.HEADER.LINKS.3"),
-    to: "https://faceted-wash-97d.notion.site/cb0d147034e6439f8e70b2698ce199f2?v=fbf6185ab5f143eb9e22064fd9647814",
-    blank: true,
+    // to: "https://faceted-wash-97d.notion.site/cb0d147034e6439f8e70b2698ce199f2?v=fbf6185ab5f143eb9e22064fd9647814",
+    to: "/roadmap",
   },
   {
     label: i18next.t("PAGE.LANDING.HEADER.LINKS.4"),
@@ -35,7 +35,7 @@ export const Menus = [
     to: "https://medium.com/ardana-hub",
     blank: true,
   },
-];
+]
 
 export const ArdanaFeatures = [
   {
@@ -58,7 +58,7 @@ export const ArdanaFeatures = [
     title: i18next.t("PAGE.LANDING.ARDANA.FEATURES.3.TITLE"),
     content: i18next.t("PAGE.LANDING.ARDANA.FEATURES.3.CONTENT"),
   },
-];
+]
 
 export const DanaSwapFeatures = [
   {
@@ -86,7 +86,7 @@ export const DanaSwapFeatures = [
     title: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.4.TITLE"),
     content: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.4.CONTENT"),
   },
-];
+]
 
 export const Members: ProfileType[] = [
   {
@@ -258,7 +258,7 @@ export const Members: ProfileType[] = [
       github: "https://github.com/gregnwosu",
     },
   },
-];
+]
 
 export const Advisors: ProfileType[] = [
   {
@@ -342,7 +342,7 @@ export const Advisors: ProfileType[] = [
       linkedin: "https://www.linkedin.com/in/joao-ferrao-dos-santos/",
     },
   },
-];
+]
 
 export const TopNotchTeams = [
   require("assets/logos/apple.svg").default,
@@ -353,7 +353,7 @@ export const TopNotchTeams = [
   require("assets/logos/cardano.svg").default,
   require("assets/logos/emurgo.svg").default,
   require("assets/logos/mina.svg").default,
-];
+]
 
 export const Partners = [
   {
@@ -393,7 +393,7 @@ export const Partners = [
   // require("assets/logos/synaps.svg").default,
   // require("assets/logos/singularity.svg").default,
   // require("assets/logos/benqi.svg").default,
-];
+]
 
 export const Investors = [
   {
@@ -452,13 +452,14 @@ export const Investors = [
   // require("assets/logos/cardwallet.svg").default,
   // require("assets/logos/indigo.svg").default,
   // require("assets/logos/sundaeswap.svg").default,
-];
+]
 
 export const externals: any = {
   Resources: {
-    Technology: "/tech",
-    Documentation: "https://docs.ardana.org/",
-    "Pitch Deck": "https://docsend.com/view/kc5m2snw7t77fs5r",
+    "Technology": "/tech",
+    "Documentation": "https://docs.ardana.org/",
+    // "Pitch Deck": "https://docsend.com/view/kc5m2snw7t77fs5r",
+    "Pitch Deck": "https://docsend.com/view/ps9hsr88m834pj98",
     "Brand Assets": "/brandassets",
   },
   Products: {
@@ -467,11 +468,11 @@ export const externals: any = {
     Stablecoin: "#",
   },
   Company: {
-    Team: "/team",
+    "Team": "/team",
     "Contact Us": "mailto:enquiries@ardana.org",
-    Careers: "mailto:careers@ardana.org",
+    "Careers": "mailto:careers@ardana.org",
   },
-};
+}
 
 export const socials = [
   {
@@ -498,7 +499,7 @@ export const socials = [
     image: LinkedinIcon,
     url: "https://www.linkedin.com/company/ardanalabs/",
   },
-];
+]
 
 export const TechnicalPapers = [
   {
@@ -511,7 +512,7 @@ export const TechnicalPapers = [
     link: "https://docsend.com/view/v4w3muusi6im3ay2",
     image: require("assets/papers/DanaswapTechnicalPaper.png").default,
   },
-];
+]
 
 export const Listings = [
   {
@@ -526,4 +527,40 @@ export const Listings = [
     image: require("assets/listings/MEXC.svg").default,
     link: "https://www.mexc.com/exchange/DANA_USDT",
   },
-];
+]
+
+export const Roadmap = {
+  "Q1 2021": ["Project Conception", "Danaswap Development"],
+  "Q2 2021": ["Stablecoin Development", "Seed Sale", "Whitepaper Release"],
+  "Q3 2021": ["Plutus Contract Audits", "Private Sale", "AREM Development"],
+  "Q4 2021": [
+    "Public Sale",
+    "Token Generation Event",
+    "CEX Listing",
+    "Ardana Academy Opening",
+  ],
+  "Q1 2022": [
+    "Futher Wallet Integration",
+    "Stablecoin Release",
+    "Danaswap Release",
+  ],
+  "Q2 2022": [
+    "Danaswap V2 Release",
+    "Community Ambassador Program",
+    "Governance Transition",
+  ],
+  "Q3 2022": [
+    "Third Party Integration Expansion",
+    "Partnership Project Integrations",
+  ],
+  "Q4 2022": ["Danaswap Foreign Exchange"],
+  "2023+": [
+    "Tokenized Asset Vaults",
+    "Alternative Stablecoin Currency Vaults",
+    "Mobile Application",
+    "Real World Asset Vaults",
+    "Fiat Gateways",
+    "Institutional Platform Development",
+    "Liquidity Incentives Program",
+  ]
+}

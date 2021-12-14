@@ -1,5 +1,5 @@
-import { withStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
+import { withStyles } from "@material-ui/core/styles"
+import Button from "@material-ui/core/Button"
 
 const StyledButton = withStyles({
   root: {
@@ -14,6 +14,6 @@ const StyledButton = withStyles({
     fontSize: "13px",
     lineHeight: "18px",
   },
-})(Button);
+})(Button)
 
-export default StyledButton;
+export default StyledButton

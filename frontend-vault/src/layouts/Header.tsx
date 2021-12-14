@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { Box, useMediaQuery, Container } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import cx from "classnames";
+import React, { useEffect, useState } from "react"
+import { Box, useMediaQuery, Container } from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import cx from "classnames"
 
-import { useIsDarkMode } from "state/user/hooks";
-import { useHistory } from "react-router-dom";
-import { ThemeSwitch, ConnectWallet } from "components";
-import DUSD_LOGO_BLUE from "assets/image/DUSD-LOGO-BLUE.png";
-import DUSD_LOGO_WHITE from "assets/image/DUSD-LOGO-WHITE.png";
+import { useIsDarkMode } from "state/user/hooks"
+import { useHistory } from "react-router-dom"
+import { ThemeSwitch, ConnectWallet } from "components"
+import DUSD_LOGO_BLUE from "assets/image/DUSD-LOGO-BLUE.png"
+import DUSD_LOGO_WHITE from "assets/image/DUSD-LOGO-WHITE.png"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -28,10 +28,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   logo: {
-    paddingLeft: "10px",
-    display: "flex",
-    alignItems: "center",
-    cursor: "pointer",
+    "paddingLeft": "10px",
+    "display": "flex",
+    "alignItems": "center",
+    "cursor": "pointer",
     "& img": {
       width: "60px",
 
@@ -51,28 +51,28 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       width: "auto",
     },
   },
-}));
+}))
 
 const Header: React.FC = () => {
-  const theme = useTheme();
-  const mobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const dark = useIsDarkMode();
-  const classes = useStyles({ dark, mobile });
-  const history = useHistory();
-  const [bgColor, setBGColor] = useState("transparent");
+  const theme = useTheme()
+  const mobile = useMediaQuery(theme.breakpoints.down("sm"))
+  const dark = useIsDarkMode()
+  const classes = useStyles({ dark, mobile })
+  const history = useHistory()
+  const [bgColor, setBGColor] = useState("transparent")
 
   const handleScroll = () => {
     setBGColor(
       window.scrollY > 0 ? theme.palette.background.default : "transparent"
-    );
-  };
+    )
+  }
 
   useEffect(() => {
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    handleScroll()
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [theme]);
+  }, [theme])
 
   return (
     <Box className={cx(classes.root)} style={{ background: bgColor }}>
@@ -94,7 +94,7 @@ const Header: React.FC = () => {
         </Box>
       </Container>
     </Box>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

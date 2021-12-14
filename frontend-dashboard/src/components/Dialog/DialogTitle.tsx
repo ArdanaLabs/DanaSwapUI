@@ -1,24 +1,31 @@
-import { createStyles, Theme, WithStyles, withStyles } from "@material-ui/core/styles";
-import MuiDialogTitle from '@material-ui/core/DialogTitle';
-import { IconButton, Typography } from "@material-ui/core";
-import CloseIcon from '@material-ui/icons/Close';
+import {
+  createStyles,
+  Theme,
+  WithStyles,
+  withStyles,
+} from "@material-ui/core/styles"
+import MuiDialogTitle from "@material-ui/core/DialogTitle"
+import { IconButton, Typography } from "@material-ui/core"
+import CloseIcon from "@material-ui/icons/Close"
 
 const styles = (theme: Theme) =>
   createStyles({
     root: {
-      width: "450px",
-      margin: 0,
-      padding: "10px 0px",
-      color: theme.palette.type === "light" ? theme.palette.primary.main : theme.palette.text.hint,
+      "width": "450px",
+      "margin": 0,
+      "padding": "10px 0px",
+      "color":
+        theme.palette.type === "light"
+          ? theme.palette.primary.main
+          : theme.palette.text.hint,
 
-      "& h6" : {
+      "& h6": {
         fontFamily: "Brandon Grotesque",
         fontStyle: "normal",
         fontWeight: 900,
         fontSize: "15px",
         lineHeight: "100%",
-
-      }
+      },
     },
     closeButton: {
       color: theme.palette.secondary.main,
@@ -26,16 +33,16 @@ const styles = (theme: Theme) =>
       right: theme.spacing(1),
       top: theme.spacing(1),
     },
-  });
+  })
 
 export interface DialogTitleProps extends WithStyles<typeof styles> {
-  id: string;
-  children: React.ReactNode;
-  onClose: () => void;
+  id: string
+  children: React.ReactNode
+  onClose: () => void
 }
 
 const DialogTitle = withStyles(styles)((props: DialogTitleProps) => {
-  const { children, classes, onClose, ...other } = props;
+  const { children, classes, onClose, ...other } = props
   return (
     <MuiDialogTitle disableTypography className={classes.root} {...other}>
       <Typography variant="h6">{children}</Typography>
@@ -49,7 +56,7 @@ const DialogTitle = withStyles(styles)((props: DialogTitleProps) => {
         </IconButton>
       ) : null}
     </MuiDialogTitle>
-  );
-});
+  )
+})
 
-export default DialogTitle;
+export default DialogTitle

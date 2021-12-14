@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 import {
   Box,
   Collapse,
@@ -6,21 +6,21 @@ import {
   Grid,
   Mark,
   useMediaQuery,
-} from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+} from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
 
-import cx from "classnames";
+import cx from "classnames"
 
-import { useIsDarkMode } from "state/user/hooks";
-import { TokenBox } from "components/Box";
-import { Slider } from "components";
-import { Radio, SwapButton } from "components/Button";
-import { options } from "data";
+import { useIsDarkMode } from "state/user/hooks"
+import { TokenBox } from "components/Box"
+import { Slider } from "components"
+import { Radio, SwapButton } from "components/Button"
+import { options } from "data"
 
-import ICO_Info_dark from "assets/svg/info_dark.svg";
+import ICO_Info_dark from "assets/svg/info_dark.svg"
 
-import LOGO_Ardana from "assets/logos/ardana.png";
-import LOGO_Cardano from "assets/logos/cardano.png";
+import LOGO_Ardana from "assets/logos/ardana.png"
+import LOGO_Cardano from "assets/logos/cardano.png"
 
 const useStyles = makeStyles(({ palette }) => ({
   self: {
@@ -116,49 +116,49 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 
   submit: {
-    background: "linear-gradient(90deg, #5F72FF 0%, #73D6F1 100%)",
-    borderRadius: "20px",
-    width: "250px",
-    fontFamily: "Museo Sans",
-    fontStyle: "normal",
-    fontWeight: "bold",
-    fontSize: "24px",
-    lineHeight: "100%",
-    textAlign: "center",
-    color: palette.common.white,
-    padding: "15px",
-    cursor: "pointer",
+    "background": "linear-gradient(90deg, #5F72FF 0%, #73D6F1 100%)",
+    "borderRadius": "20px",
+    "width": "250px",
+    "fontFamily": "Museo Sans",
+    "fontStyle": "normal",
+    "fontWeight": "bold",
+    "fontSize": "24px",
+    "lineHeight": "100%",
+    "textAlign": "center",
+    "color": palette.common.white,
+    "padding": "15px",
+    "cursor": "pointer",
 
     "&:hover": {
       background: "linear-gradient(-90deg, #5F72FF 0%, #73D6F1 100%)",
     },
   },
-}));
+}))
 
 const Swap: React.FC = () => {
-  const { breakpoints } = useTheme();
-  const dark = useIsDarkMode();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const classes = useStyles({ dark, mobile });
+  const { breakpoints } = useTheme()
+  const dark = useIsDarkMode()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark, mobile })
 
-  const [fromAmount, setFromAmount] = useState(0);
-  const [toAmount, setToAmount] = useState(0);
+  const [fromAmount, setFromAmount] = useState(0)
+  const [toAmount, setToAmount] = useState(0)
 
   const [fromToken, setFromToken] = useState({
     src: LOGO_Ardana,
     name: "DANA",
     desc: "exDANA",
-  });
+  })
   const [toToken, setToToken] = useState({
     src: LOGO_Cardano,
     name: "ADA",
     desc: "exDANA",
-  });
-  const [isOptionOpen, setIsOptionOpen] = useState(false);
+  })
+  const [isOptionOpen, setIsOptionOpen] = useState(false)
 
   const onToggleOptions = () => {
-    setIsOptionOpen((prev) => !prev);
-  };
+    setIsOptionOpen((prev) => !prev)
+  }
 
   const marks: Mark[] = [
     {
@@ -169,18 +169,18 @@ const Swap: React.FC = () => {
       value: 100,
       label: "100%",
     },
-  ];
+  ]
 
   const onAmountChange = (e: any, newValue: any) => {
-    setFromAmount(newValue);
-  };
+    setFromAmount(newValue)
+  }
 
   const onSwapButtonClick = (e: any) => {
-    setFromAmount(toAmount);
-    setToAmount(fromAmount);
-    setFromToken(toToken);
-    setToToken(fromToken);
-  };
+    setFromAmount(toAmount)
+    setToAmount(fromAmount)
+    setFromToken(toToken)
+    setToToken(fromToken)
+  }
 
   return (
     <Fade in={true}>
@@ -196,10 +196,10 @@ const Swap: React.FC = () => {
               token={fromToken}
               amount={fromAmount}
               onMaxAmount={() => {
-                setFromAmount(100);
+                setFromAmount(100)
               }}
               handleTokenSelect={(token: any) => {
-                setFromToken(token);
+                setFromToken(token)
               }}
               className={cx(classes.box)}
               style={{ padding: 10 }}
@@ -226,10 +226,10 @@ const Swap: React.FC = () => {
               token={toToken}
               amount={toAmount}
               onMaxAmount={() => {
-                setToAmount(100);
+                setToAmount(100)
               }}
               handleTokenSelect={(token: any) => {
-                setToToken(token);
+                setToToken(token)
               }}
               className={cx(classes.box)}
               style={{ padding: 10 }}
@@ -298,7 +298,7 @@ const Swap: React.FC = () => {
         </Box>
       </Box>
     </Fade>
-  );
-};
+  )
+}
 
-export default Swap;
+export default Swap

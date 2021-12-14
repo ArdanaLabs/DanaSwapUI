@@ -1,6 +1,7 @@
-import { useDispatch, useSelector } from 'react-redux'
-import { AppDispatch, AppState } from 'state'
-import { API_URL } from 'config/endpoints'
+import * as Option from "fp-ts/Option"
+import { useDispatch, useSelector } from "react-redux"
+import { AppDispatch, AppState } from "state"
+import { API_URL } from "config/endpoints"
 import {
   updateAggLiquidity,
   updateAggVolume,
@@ -9,13 +10,13 @@ import {
   updatePoolLiquidity,
   updatePoolTransactions,
   updatePoolTXCount,
-  updatePoolVolume
-} from './actions'
+  updatePoolVolume,
+} from "./actions"
 
-export function useAggVolume () {
+export function useAggVolume() {
   const dispatch = useDispatch<AppDispatch>()
-  const { aggVolume } = useSelector<AppState, AppState['chart']>(
-    state => state.chart
+  const { aggVolume } = useSelector<AppState, AppState["chart"]>(
+    (state) => state.chart
   )
 
   const _getAggVolume = async (start: string, end: string, grain: string) => {
@@ -26,13 +27,13 @@ export function useAggVolume () {
 
   return {
     aggVolume,
-    getAggVolume: _getAggVolume
+    getAggVolume: _getAggVolume,
   }
 }
-export function useAggLiquidity () {
+export function useAggLiquidity() {
   const dispatch = useDispatch<AppDispatch>()
-  const { aggLiquidity } = useSelector<AppState, AppState['chart']>(
-    state => state.chart
+  const { aggLiquidity } = useSelector<AppState, AppState["chart"]>(
+    (state) => state.chart
   )
 
   const _getAggLiquidity = async (
@@ -47,13 +48,13 @@ export function useAggLiquidity () {
 
   return {
     aggLiquidity,
-    getAggLiquidity: _getAggLiquidity
+    getAggLiquidity: _getAggLiquidity,
   }
 }
-export function usePoolFees () {
+export function usePoolFees() {
   const dispatch = useDispatch<AppDispatch>()
-  const { poolFees } = useSelector<AppState, AppState['chart']>(
-    state => state.chart
+  const { poolFees } = useSelector<AppState, AppState["chart"]>(
+    (state) => state.chart
   )
   const _getPoolFees = async (
     poolName: string,
@@ -63,17 +64,17 @@ export function usePoolFees () {
   ) => {
     const _poolFees = await getPoolFees(poolName, start, end, grain)
     _poolFees && dispatch(updatePoolFees(_poolFees))
-    return _poolFees;
+    return _poolFees
   }
   return {
     poolFees,
-    getPoolFees: _getPoolFees
+    getPoolFees: _getPoolFees,
   }
 }
-export function usePoolVolume () {
+export function usePoolVolume() {
   const dispatch = useDispatch<AppDispatch>()
-  const { poolVolume } = useSelector<AppState, AppState['chart']>(
-    state => state.chart
+  const { poolVolume } = useSelector<AppState, AppState["chart"]>(
+    (state) => state.chart
   )
 
   const _getPoolVolume = async (
@@ -89,13 +90,13 @@ export function usePoolVolume () {
 
   return {
     poolVolume,
-    getPoolVolume: _getPoolVolume
+    getPoolVolume: _getPoolVolume,
   }
 }
-export function usePoolLiquidity () {
+export function usePoolLiquidity() {
   const dispatch = useDispatch<AppDispatch>()
-  const { poolLiquidity } = useSelector<AppState, AppState['chart']>(
-    state => state.chart
+  const { poolLiquidity } = useSelector<AppState, AppState["chart"]>(
+    (state) => state.chart
   )
 
   const _getPoolLiquidity = async (
@@ -110,13 +111,13 @@ export function usePoolLiquidity () {
 
   return {
     poolLiquidity,
-    getPoolLiquidity: _getPoolLiquidity
+    getPoolLiquidity: _getPoolLiquidity,
   }
 }
-export function usePoolTxCount () {
+export function usePoolTxCount() {
   const dispatch = useDispatch<AppDispatch>()
-  const { poolTXCount } = useSelector<AppState, AppState['chart']>(
-    state => state.chart
+  const { poolTXCount } = useSelector<AppState, AppState["chart"]>(
+    (state) => state.chart
   )
 
   const _getPoolTXCount = async (
@@ -132,13 +133,13 @@ export function usePoolTxCount () {
 
   return {
     poolTXCount,
-    getPoolTXCount: _getPoolTXCount
+    getPoolTXCount: _getPoolTXCount,
   }
 }
-export function usePoolAPY () {
+export function usePoolAPY() {
   const dispatch = useDispatch<AppDispatch>()
-  const { poolAPY } = useSelector<AppState, AppState['chart']>(
-    state => state.chart
+  const { poolAPY } = useSelector<AppState, AppState["chart"]>(
+    (state) => state.chart
   )
 
   const _getPoolAPY = async (
@@ -154,13 +155,13 @@ export function usePoolAPY () {
 
   return {
     poolAPY,
-    getPoolAPY: _getPoolAPY
+    getPoolAPY: _getPoolAPY,
   }
 }
-export function usePoolTransactions () {
+export function usePoolTransactions() {
   const dispatch = useDispatch<AppDispatch>()
-  const { poolTransactions } = useSelector<AppState, AppState['chart']>(
-    state => state.chart
+  const { poolTransactions } = useSelector<AppState, AppState["chart"]>(
+    (state) => state.chart
   )
 
   const _getPoolTransactions = async (
@@ -176,13 +177,14 @@ export function usePoolTransactions () {
 
   return {
     poolTransactions,
-    getPoolTransactions: _getPoolTransactions
+    getPoolTransactions: _getPoolTransactions,
   }
 }
 
 // fetch from api server
-export async function getAggVolume (start: string, end: string, grain: string) {
+export async function getAggVolume(start: string, end: string, grain: string) {
   try {
+    // TODO: use URL + URLSearchParams
     const result = await fetch(
       API_URL +
         `/chart/aggregate/volume?start=${start}&end=${end}&grain="${grain}"`
@@ -190,180 +192,194 @@ export async function getAggVolume (start: string, end: string, grain: string) {
     const aggVolume: any[] = await result.json()
 
     return aggVolume.map((item: any) => ({
-      start: item[0][0],
-      end: item[0][1],
-      addLiquidity: item[1].addLiquidity,
-      removeLiquidity: item[1].removeLiquidity,
-      total: item[1].total,
-      trade: item[1].trade
+      start: Option.fromNullable(item[0][0]),
+      end: Option.fromNullable(item[0][1]),
+      addLiquidity: Option.fromNullable(item[1].addLiquidity),
+      removeLiquidity: Option.fromNullable(item[1].removeLiquidity),
+      total: Option.fromNullable(item[1].total),
+      trade: Option.fromNullable(item[1].trade),
     }))
   } catch (e) {
-    console.log('getAggVolume: error fetching', e)
+    console.log("getAggVolume: error fetching", e)
     return null
   }
 }
 
-export async function getAggLiquidity (
+export async function getAggLiquidity(
   start: string,
   end: string,
   grain: string
 ) {
   try {
+    // TODO: use URL + URLSearchParams
     const result = await fetch(
       API_URL +
         `/chart/aggregate/liquidity?start=${start}&end=${end}&grain="${grain}"`
     )
+    // TODO: decode JSON properly
     const aggLiquidity: any[] = await result.json()
 
     return aggLiquidity.map((item: any) => ({
-      start: item[0][0],
-      end: item[0][1],
-      value: item[1]
+      start: Option.fromNullable(item[0][0]),
+      end: Option.fromNullable(item[0][1]),
+      value: Option.fromNullable(item[1]),
     }))
   } catch (e) {
-    console.log('getAggLiquidity: error fetching', e)
+    console.log("getAggLiquidity: error fetching", e)
     return null
   }
 }
 
-export async function getPoolFees (
+export async function getPoolFees(
   pool: string,
   start: string,
   end: string,
   grain: string
 ) {
   try {
+    // TODO: use URL + URLSearchParams
     const result = await fetch(
       API_URL +
         `/chart/pool/fees?pool="${pool}"&start=${start}&end=${end}&grain="${grain}"`
     )
-    const poolFees = await result.json()
+    // TODO: decode JSON properly
+    const poolFees: any[] = await result.json()
     return poolFees.map((item: any) => ({
-      start: item[0][0],
-      end: item[0][1],
-      value: item[1]
+      start: Option.fromNullable(item[0][0]),
+      end: Option.fromNullable(item[0][1]),
+      value: Option.fromNullable(item[1]),
     }))
   } catch (e) {
-    console.log('getPoolFees: error fetching', e)
+    console.log("getPoolFees: error fetching", e)
     return null
   }
 }
 
-export async function getPoolVolume (
+export async function getPoolVolume(
   pool: string,
   start: string,
   end: string,
   grain: string
 ) {
   try {
+    // TODO: use URL + URLSearchParams
     const result = await fetch(
       API_URL +
         `/chart/pool/volume?pool="${pool}"&start=${start}&end=${end}&grain="${grain}"`
     )
+    // TODO: decode JSON properly
     const poolVolume: any[] = await result.json()
 
     return poolVolume.map((item: any) => ({
-      start: item[0][0],
-      end: item[0][1],
-      addLiquidity: item[1].addLiquidity,
-      removeLiquidity: item[1].removeLiquidity,
-      total: item[1].total,
-      trade: item[1].trade
+      start: Option.fromNullable(item[0][0]),
+      end: Option.fromNullable(item[0][1]),
+      addLiquidity: Option.fromNullable(item[1].addLiquidity),
+      removeLiquidity: Option.fromNullable(item[1].removeLiquidity),
+      total: Option.fromNullable(item[1].total),
+      trade: Option.fromNullable(item[1].trade),
     }))
   } catch (e) {
-    console.log('getPoolVolume: error fetching', e)
+    console.log("getPoolVolume: error fetching", e)
     return null
   }
 }
 
-export async function getPoolLiquidity (
+export async function getPoolLiquidity(
   pool: string,
   start: string,
   end: string,
   grain: string
 ) {
   try {
+    // TODO: use URL + URLSearchParams
     const result = await fetch(
       API_URL +
         `/chart/pool/liquidity?pool="${pool}"&start=${start}&end=${end}&grain="${grain}"`
     )
+    // TODO: decode JSON properly
     const poolLiquidity: any[] = await result.json()
 
     return poolLiquidity.map((item: any) => ({
-      start: item[0][0],
-      end: item[0][1],
-      value: item[1]
+      start: Option.fromNullable(item[0][0]),
+      end: Option.fromNullable(item[0][1]),
+      value: Option.fromNullable(item[1]),
     }))
   } catch (e) {
-    console.log('getPoolLiquidity: error fetching', e)
+    console.log("getPoolLiquidity: error fetching", e)
     return null
   }
 }
 
-export async function getPoolTXCount (
+export async function getPoolTXCount(
   pool: string,
   start: string,
   end: string,
   grain: string
 ) {
   try {
+    // TODO: use URL + URLSearchParams
     const result = await fetch(
       API_URL +
         `/chart/pool/tx-count?pool="${pool}"&start=${start}&end=${end}&grain="${grain}"`
     )
-    const poolTXCount = await result.json()
+    // TODO: decode JSON properly
+    const poolTXCount: any[] = await result.json()
     return poolTXCount.map((item: any) => ({
-      start: item[0][0],
-      end: item[0][1],
-      addLiquidity: item[1].addLiquidity,
-      removeLiquidity: item[1].removeLiquidity,
-      total: item[1].total,
-      trade: item[1].trade
+      start: Option.fromNullable(item[0][0]),
+      end: Option.fromNullable(item[0][1]),
+      addLiquidity: Option.fromNullable(item[1].addLiquidity),
+      removeLiquidity: Option.fromNullable(item[1].removeLiquidity),
+      total: Option.fromNullable(item[1].total),
+      trade: Option.fromNullable(item[1].trade),
     }))
   } catch (e) {
-    console.log('getPoolTXCount: error fetching', e)
+    console.log("getPoolTXCount: error fetching", e)
     return null
   }
 }
 
-export async function getPoolAPY (
+export async function getPoolAPY(
   pool: string,
   start: string,
   end: string,
   grain: string
 ) {
   try {
+    // TODO: use URL + URLSearchParams
     const result = await fetch(
       API_URL +
         `/chart/pool/apy?pool="${pool}"&start=${start}&end=${end}&grain="${grain}"`
     )
+    // TODO: decode JSON properly
     const poolAPY: any[] = await result.json()
     return poolAPY.map((item: any) => ({
-      start: item[0][0],
-      end: item[0][1],
-      value: item[1]
+      start: Option.fromNullable(item[0][0]),
+      end: Option.fromNullable(item[0][1]),
+      value: Option.fromNullable(item[1]),
     }))
   } catch (e) {
-    console.log('getPoolAPY: error fetching', e)
+    console.log("getPoolAPY: error fetching", e)
     return null
   }
 }
 
-export async function getPoolTransactions (
+export async function getPoolTransactions(
   pool: string,
   start: number,
   end: number,
   type: string
 ) {
   try {
+    // TODO: use URL + URLSearchParams
     const result = await fetch(
       API_URL +
         `/transactions?pool="${pool}"&start=${start}&end=${end}&type="${type}"`
     )
 
+    // TODO: decode JSON properly
     return result.json()
   } catch (e) {
-    console.log('getPoolTransactions: error fetching', e)
+    console.log("getPoolTransactions: error fetching", e)
     return null
   }
 }

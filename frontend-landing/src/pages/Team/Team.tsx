@@ -1,11 +1,7 @@
-import React from "react";
-import { Box } from "@material-ui/core";
+import React from "react"
+import { Box } from "@material-ui/core"
 
-import {
-  ProfileSection,
-  AdvisorsSection,
-  MainSection,
-} from "./sections";
+import { ProfileSection, AdvisorsSection, MainSection } from "./sections"
 
 const Team: React.FC = () => {
   return (
@@ -14,7 +10,7 @@ const Team: React.FC = () => {
       <ProfileSection />
       <AdvisorsSection />
     </Box>
-  );
-};
+  )
+}
 
-export default Team;
+export default Team

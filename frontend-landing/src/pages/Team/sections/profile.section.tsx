@@ -1,15 +1,15 @@
-import React from "react";
-import { Box, useMediaQuery, Grid, Container } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import cx from "classnames";
+import React from "react"
+import { Box, useMediaQuery, Grid, Container } from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import cx from "classnames"
 
-import { useIsDarkMode } from "state/user/hooks";
-import { ProfileBox } from "components/Box";
+import { useIsDarkMode } from "state/user/hooks"
+import { ProfileBox } from "components/Box"
 
-import { Members } from "data";
-import { ProfileType } from "components/Box/ProfileBox";
+import { Members } from "data"
+import { ProfileType } from "components/Box/ProfileBox"
 
-import BG_BLUE_RADIAL from "assets/backgrounds/cyan-gradient.png";
+import BG_BLUE_RADIAL from "assets/backgrounds/cyan-gradient.png"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
@@ -26,13 +26,13 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     alignItems: "stretch",
     flexFlow: "column",
   },
-}));
+}))
 
 const ProfileSection: React.FC = () => {
-  const { breakpoints } = useTheme();
-  const dark = useIsDarkMode();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const classes = useStyles({ dark, mobile });
+  const { breakpoints } = useTheme()
+  const dark = useIsDarkMode()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark, mobile })
 
   return (
     <Box className={cx(classes.bg)}>
@@ -53,7 +53,7 @@ const ProfileSection: React.FC = () => {
         </Grid>
       </Container>
     </Box>
-  );
-};
+  )
+}
 
-export default ProfileSection;
+export default ProfileSection

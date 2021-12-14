@@ -1,17 +1,17 @@
-import React from "react";
-import { Box, useMediaQuery, Container } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import cx from "classnames";
-import ScrollAnimation from "react-animate-on-scroll";
+import React from "react"
+import { Box, useMediaQuery, Container } from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import cx from "classnames"
+import ScrollAnimation from "react-animate-on-scroll"
 
-import { useIsDarkMode } from "state/user/hooks";
+import { useIsDarkMode } from "state/user/hooks"
 
-import BG_LEFT from "assets/backgrounds/danatoken-left-bg.png";
-import BG_RIGHT from "assets/backgrounds/danatoken-right-bg.png";
-import BG_CYAN_GRADIENT from "assets/backgrounds/cyan-gradient.png";
+import BG_LEFT from "assets/backgrounds/danatoken-left-bg.png"
+import BG_RIGHT from "assets/backgrounds/danatoken-right-bg.png"
+import BG_CYAN_GRADIENT from "assets/backgrounds/cyan-gradient.png"
 
-import BG_LEFT_MOBILE from "assets/backgrounds/danatoken-left-mobile-bg.png";
-import BG_RIGHT_MOBILE from "assets/backgrounds/danatoken-right-mobile-bg.png";
+import BG_LEFT_MOBILE from "assets/backgrounds/danatoken-left-mobile-bg.png"
+import BG_RIGHT_MOBILE from "assets/backgrounds/danatoken-right-mobile-bg.png"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -61,26 +61,26 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       lineHeight: "18.4px",
     },
   },
-}));
+}))
 
 declare global {
   namespace JSX {
     interface IntrinsicElements {
       // "coingecko-coin-ticker-widget": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
       "coingecko-coin-ticker-widget": {
-        currency: string;
-        locale: string;
-        width: string;
-      };
+        currency: string
+        locale: string
+        width: string
+      }
     }
   }
 }
 
 const DanaswapSection: React.FC = () => {
-  const { breakpoints } = useTheme();
-  const dark = useIsDarkMode();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const classes = useStyles({ dark, mobile });
+  const { breakpoints } = useTheme()
+  const dark = useIsDarkMode()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark, mobile })
 
   return (
     <Box className={cx(classes.root)}>
@@ -110,7 +110,7 @@ const DanaswapSection: React.FC = () => {
         </ScrollAnimation>
       </Container>
     </Box>
-  );
-};
+  )
+}
 
-export default DanaswapSection;
+export default DanaswapSection

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 import {
   useMediaQuery,
   Box,
@@ -6,17 +6,17 @@ import {
   Drawer,
   IconButton,
   Container,
-} from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import cx from "classnames";
-import Hamburger from "hamburger-react";
+} from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import cx from "classnames"
+import Hamburger from "hamburger-react"
 
-import { useIsDarkMode } from "state/user/hooks";
-import { Menus } from "data";
+import { useIsDarkMode } from "state/user/hooks"
+import { Menus } from "data"
 
-import LOGO_White from "assets/logo_white.png";
-import LOGO_Text from "assets/logo_text.png";
-import { useHistory } from "react-router";
+import LOGO_White from "assets/logo_white.png"
+import LOGO_Text from "assets/logo_text.png"
+import { useHistory } from "react-router"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -34,12 +34,12 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     paddingTop: "10px",
   },
   logo: {
-    paddingLeft: "10px",
-    display: "flex",
-    alignItems: "center",
-    cursor: "pointer",
+    "paddingLeft": "10px",
+    "display": "flex",
+    "alignItems": "center",
+    "cursor": "pointer",
     "& img": {
-      padding: "20px 5px",
+      "padding": "20px 5px",
       "&:first-child": {
         width: "55px",
       },
@@ -52,23 +52,23 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     padding: "10px",
   },
   menuItem: {
-    fontFamily: "Museo Sans",
-    fontWeight: 700,
-    fontStyle: "normal",
-    lineHeight: "100%",
-    margin: "auto 20px",
-    padding: "8px 0px",
-    color: "white",
-    fontSize: "13px",
-    position: "relative",
-    textAlign: "center",
+    "fontFamily": "Museo Sans",
+    "fontWeight": 700,
+    "fontStyle": "normal",
+    "lineHeight": "100%",
+    "margin": "auto 20px",
+    "padding": "8px 0px",
+    "color": "white",
+    "fontSize": "13px",
+    "position": "relative",
+    "textAlign": "center",
 
     "&:hover": {
       color: "#73D6F1",
     },
 
     "&.active": {
-      color: palette.text.secondary,
+      "color": palette.text.secondary,
       "&::before": {
         content: "' '",
         position: "absolute",
@@ -85,34 +85,34 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       },
     },
   },
-}));
+}))
 
 const HeaderSection: React.FC = () => {
-  const { palette, breakpoints } = useTheme();
-  const dark = useIsDarkMode();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const classes = useStyles({ dark, mobile });
-  const history = useHistory();
+  const { palette, breakpoints } = useTheme()
+  const dark = useIsDarkMode()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark, mobile })
+  const history = useHistory()
 
-  const [openMenu, setOpenMenu] = useState(false);
+  const [openMenu, setOpenMenu] = useState(false)
 
   const toggleMenu = () => {
-    setOpenMenu((prev) => !prev);
-  };
+    setOpenMenu((prev) => !prev)
+  }
 
   const activeMenu = (to: string): boolean => {
-    const path = "/" + window.location.pathname.split("/").pop();
+    const path = "/" + window.location.pathname.split("/").pop()
     if (to === path) {
-      return true;
+      return true
     }
-    return false;
-  };
+    return false
+  }
 
   return (
     <Box className={cx(classes.root)}>
       <Container>
         <Box className={cx(classes.self)}>
-          <Box className={cx(classes.logo)} onClick={() => history.push('/')}>
+          <Box className={cx(classes.logo)} onClick={() => history.push("/")}>
             <img src={LOGO_White} alt="logo" />
             <img src={LOGO_Text} alt="logo" />
           </Box>
@@ -132,7 +132,7 @@ const HeaderSection: React.FC = () => {
                   >
                     {link.label}
                   </Link>
-                );
+                )
               })}
             </Box>
           )}
@@ -174,7 +174,7 @@ const HeaderSection: React.FC = () => {
         </Box>
       </Container>
     </Box>
-  );
-};
+  )
+}
 
-export default HeaderSection;
+export default HeaderSection

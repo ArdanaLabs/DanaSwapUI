@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { Box, useMediaQuery, Container, Grid } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import cx from "classnames";
+import React, { useEffect, useState } from "react"
+import { Box, useMediaQuery, Container, Grid } from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import cx from "classnames"
 
-import { useIsDarkMode } from "state/user/hooks";
-import { BrandAssetBox } from "components";
+import { useIsDarkMode } from "state/user/hooks"
+import { BrandAssetBox } from "components"
 
-import BRAND_ARDANA from "assets/brands/Ardana.png";
-import BRAND_DUSD from "assets/brands/dUSD.png";
-import BRAND_ASPA from "assets/brands/ASPA.png";
+import BRAND_ARDANA from "assets/brands/Ardana.png"
+import BRAND_DUSD from "assets/brands/dUSD.png"
+import BRAND_ASPA from "assets/brands/ASPA.png"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -55,30 +55,30 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       margin: "20px 0",
     },
   },
-}));
+}))
 
 const GuideLinesSection: React.FC = () => {
-  const { breakpoints } = useTheme();
-  const dark = useIsDarkMode();
-  const mobile = useMediaQuery(breakpoints.down("xs"));
-  const classes = useStyles({ dark, mobile });
+  const { breakpoints } = useTheme()
+  const dark = useIsDarkMode()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark, mobile })
 
-  const [horizonWidth, setHorizonWidth] = useState(0);
+  const [horizonWidth, setHorizonWidth] = useState(0)
 
   useEffect(() => {
-    const container = document.querySelector("#container");
-    const horizon = document.querySelector("#horizon");
+    const container = document.querySelector("#container")
+    const horizon = document.querySelector("#horizon")
 
     if (mobile) {
       const mobileWidth =
         (document.querySelector("body")?.clientWidth ?? 0) -
-        (horizon?.getBoundingClientRect().left ?? 0);
-      setHorizonWidth(mobileWidth);
+        (horizon?.getBoundingClientRect().left ?? 0)
+      setHorizonWidth(mobileWidth)
     } else {
-      setHorizonWidth((container?.getBoundingClientRect().width ?? 0) - 100);
+      setHorizonWidth((container?.getBoundingClientRect().width ?? 0) - 100)
     }
     // eslint-disable-next-line
-  }, [mobile]);
+  }, [mobile])
 
   return (
     <Box className={cx(classes.root)}>
@@ -145,7 +145,7 @@ const GuideLinesSection: React.FC = () => {
         </Grid>
       </Container>
     </Box>
-  );
-};
+  )
+}
 
-export default GuideLinesSection;
+export default GuideLinesSection
