@@ -17,6 +17,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     borderRadius: "100px",
     padding: "5px",
   },
+  preIcon: {
+    marginLeft: "5px",
+    width: "20px",
+  },
   status: {
     width: "25px",
     height: "25px",
@@ -45,7 +49,11 @@ const ThemeSwitch: React.FC = () => {
       className={cx(classes.root)}
       onClick={toggleMode}
     >
-      <img src={dark ? ICON_SUN : ICON_MOON} alt="theme" />
+      <img
+        className={cx(classes.preIcon)}
+        src={dark ? ICON_SUN : ICON_MOON}
+        alt="theme"
+      />
       <Box className={cx(classes.status)} />
     </Box>
   )

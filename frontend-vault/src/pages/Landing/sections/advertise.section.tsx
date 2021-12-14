@@ -150,7 +150,11 @@ const AdSection: React.FC = () => {
           </Grid>
           <Grid item xs={12} sm={6}>
             <Box display="flex" justifyContent="center">
-              <img src={BACKGROUND_GRAPHIC} alt="graphic" width={"100%"} />
+              <img
+                src={BACKGROUND_GRAPHIC}
+                alt="graphic"
+                width={!mobile ? "100%" : "80%"}
+              />
             </Box>
           </Grid>
         </Grid>

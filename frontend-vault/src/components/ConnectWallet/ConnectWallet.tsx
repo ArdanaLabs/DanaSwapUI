@@ -3,6 +3,8 @@ import cx from "classnames"
 import { Box } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 
+import { ReactComponent as ArrowRightIcon } from "assets/image/icons/arrow-right.svg"
+
 const useStyles = makeStyles(({ palette }) => ({
   root: {
     "margin": "0 10px",
@@ -21,10 +23,14 @@ const useStyles = makeStyles(({ palette }) => ({
     fontFamily: "Brandon Grotesque",
     color: palette.primary.main,
     textAlign: "center",
+    lineHeight: "150%",
   },
   icon: {
-    marginLeft: "10px",
-    color: palette.primary.main,
+    "marginLeft": "10px",
+
+    "& path": {
+      fill: palette.primary.main,
+    },
   },
 }))
 
@@ -38,7 +44,7 @@ const ConnectWallet: React.FC = () => {
   return (
     <Box className={cx(classes.root)} onClick={handleConnectWallet}>
       <Box className={cx(classes.label)}>CONNECT A WALLET</Box>
-      <i className={cx(classes.icon, "fas fa-arrow-right")} />
+      <ArrowRightIcon className={cx(classes.icon)} />
     </Box>
   )
 }

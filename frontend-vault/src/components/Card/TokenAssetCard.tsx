@@ -22,7 +22,6 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontFamily: "Museo Sans",
     fontStyle: "normal",
     fontWeight: 100,
-    opacity: "0.8",
   },
   row: {
     display: "flex",
