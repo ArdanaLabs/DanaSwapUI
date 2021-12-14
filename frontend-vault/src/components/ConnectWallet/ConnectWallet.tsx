@@ -37,7 +37,7 @@ const useStyles = makeStyles(({ palette }) => ({
 
 const ConnectWallet: React.FC = () => {
   const classes = useStyles()
-  const [, updateWalletAddress] = useWallet()
+  const { updateWalletAddress } = useWallet()
 
   const handleConnectWallet = () => {
     updateWalletAddress("0x2222222")

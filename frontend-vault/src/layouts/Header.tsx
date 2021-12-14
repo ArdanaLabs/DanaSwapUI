@@ -86,7 +86,7 @@ const Header: React.FC = () => {
   const classes = useStyles({ dark, mobile })
   const history = useHistory()
   const [bgColor, setBGColor] = useState("transparent")
-  const [address] = useWallet()
+  const { address } = useWallet()
 
   const handleScroll = () => {
     setBGColor(

@@ -3,11 +3,12 @@ import { shallowEqual, useDispatch, useSelector } from "react-redux"
 
 import { AppDispatch, AppState } from "state"
 import { updateWalletAddressAction } from "./actions"
+import { WalletState } from "./reducer"
 
-export function useWallet(): [string, (address: string) => void] {
+export function useWallet(): any {
   const dispatch = useDispatch<AppDispatch>()
 
-  const { address } = useSelector<AppState, { address: string }>(
+  const { address, balance } = useSelector<AppState, WalletState>(
     (state) => state.wallet,
     shallowEqual
   )
@@ -19,5 +20,9 @@ export function useWallet(): [string, (address: string) => void] {
     [dispatch]
   )
 
-  return [address, updateWalletAddress]
+  return {
+    address,
+    balance,
+    updateWalletAddress,
+  }
 }
