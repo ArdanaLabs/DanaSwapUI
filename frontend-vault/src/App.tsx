@@ -1,20 +1,18 @@
-import React, { Suspense, useState, useEffect } from "react"
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom"
-import { Provider as StateProvider } from "react-redux"
 import {
-  ThemeProvider as MuiThemeProvider,
   CssBaseline,
+  ThemeProvider as MuiThemeProvider,
 } from "@material-ui/core"
-import { ParallaxProvider } from "react-scroll-parallax"
-import { I18nextProvider } from "react-i18next"
-
-import i18n from "./i18n"
-import { useIsDarkMode } from "state/user/hooks"
-import { darkTheme, lightTheme } from "./theme"
-import store from "./state"
-
-import { Landing } from "./pages"
 import Layout from "layouts/Layout"
+import React, { Suspense, useEffect, useState } from "react"
+import { I18nextProvider } from "react-i18next"
+import { Provider as StateProvider } from "react-redux"
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom"
+import { ParallaxProvider } from "react-scroll-parallax"
+import { useIsDarkMode } from "state/user/hooks"
+import i18n from "./i18n"
+import { Landing, MyVaults } from "./pages"
+import store from "./state"
+import { darkTheme, lightTheme } from "./theme"
 
 const ThemeProvider: React.FC = ({ children }) => {
   // const location = useLocation();
@@ -59,7 +57,17 @@ const App: React.FC = () => {
   return (
     <Providers>
       <Switch>
-        <Route path="/">
+        <Route exact path="/">
+          <Layout>
+            <Landing />
+          </Layout>
+        </Route>
+        <Route exact path="/myvaults">
+          <Layout>
+            <MyVaults />
+          </Layout>
+        </Route>
+        <Route exact path="/vaults">
           <Layout>
             <Landing />
           </Layout>

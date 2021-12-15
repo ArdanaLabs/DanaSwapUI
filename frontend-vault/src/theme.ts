@@ -44,8 +44,8 @@ const backgroundDay = "#F9FBFF"
 const backgroundNight = "#010730"
 
 const backgroundPaperDay =
-  "linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%)"
-const backgroundPaperNight = "linear-gradient(180deg, #131B59 0%, #2F3DA0 100%)"
+  "linear-gradient(359deg, #B9D4FF -129.98%, #FFFFFF 99.14%)"
+const backgroundPaperNight = "#2F3F9D"
 
 const textPrimaryDay = "#235DF4"
 const textPrimaryNight = "#FFFFFF"
@@ -65,6 +65,40 @@ const lg = 1280
 const md = 960
 const sm = 700
 const xs = 0
+
+// typography
+const typography = {
+  h1: {
+    fontFamily: "Brandon Grotesque",
+    fontStyle: "normal",
+    fontWeight: 700,
+    fontSize: 50,
+  },
+  h2: {},
+  h3: {
+    fontFamily: "Brandon Grotesque",
+    fontStyle: "normal",
+    fontWeight: 700,
+    fontSize: 20,
+  },
+  h4: {},
+  h5: {
+    fontFamily: "Brandon Grotesque",
+    fontStyle: "normal",
+    fontWeight: 700,
+    fontSize: 14,
+  },
+  h6: {
+    fontFamily: "Museo Sans",
+    fontStyle: "normal",
+    fontWeight: "normal",
+    fontSize: 14,
+  },
+  subtitle1: {},
+  subtitle2: {},
+  body1: {},
+  body2: {},
+}
 
 function createTheme(
   custom: any,
@@ -107,31 +141,7 @@ export const lightTheme = responsiveFontSizes(
         paper: backgroundPaperDay,
       },
     },
-    typography: {
-      h1: {},
-      h2: {},
-      h3: {
-        fontFamily: "Brandon Grotesque",
-        fontSize: 20,
-        fontWeight: 700,
-      },
-      h4: {},
-      h5: {
-        fontFamily: "Brandon Grotesque",
-        fontSize: 14,
-        fontWeight: 700,
-      },
-      h6: {
-        fontFamily: "Museo Sans",
-        fontStyle: "normal",
-        fontWeight: "normal",
-        fontSize: 14,
-      },
-      subtitle1: {},
-      subtitle2: {},
-      body1: {},
-      body2: {},
-    },
+    typography,
     breakpoints: {
       values: {
         xl,
@@ -177,31 +187,7 @@ export const darkTheme = responsiveFontSizes(
         paper: backgroundPaperNight,
       },
     },
-    typography: {
-      h1: {},
-      h2: {},
-      h3: {
-        fontFamily: "Brandon Grotesque",
-        fontSize: 20,
-        fontWeight: 700,
-      },
-      h4: {},
-      h5: {
-        fontFamily: "Brandon Grotesque",
-        fontSize: 14,
-        fontWeight: 700,
-      },
-      h6: {
-        fontFamily: "Museo Sans",
-        fontStyle: "normal",
-        fontWeight: "normal",
-        fontSize: 14,
-      },
-      subtitle1: {},
-      subtitle2: {},
-      body1: {},
-      body2: {},
-    },
+    typography,
     breakpoints: {
       values: {
         xl,

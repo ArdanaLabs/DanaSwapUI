@@ -13,7 +13,7 @@ import Hamburger from "hamburger-react"
 
 import { useIsDarkMode } from "state/user/hooks"
 import { useHistory } from "react-router-dom"
-import { ThemeSwitch, ConnectWallet, AddressBox } from "components"
+import { ThemeSwitch, ConnectWallet, AddressCard } from "components"
 import DUSD_LOGO_BLUE from "assets/image/DUSD-LOGO-BLUE.png"
 import DUSD_LOGO_WHITE from "assets/image/DUSD-LOGO-WHITE.png"
 import { useWallet } from "state/wallet/hooks"
@@ -21,11 +21,11 @@ import { useWallet } from "state/wallet/hooks"
 const MenuList = [
   {
     text: "Your vaults",
-    link: "/my_vaults",
+    link: "/myvaults",
   },
   {
     text: "Open a new vault",
-    link: "/new_vault",
+    link: "/vaults",
   },
 ]
 
@@ -73,7 +73,8 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   menubar: {
-    "& .menu > a": {
+    "& .menu > div": {
+      cursor: "pointer",
       margin: "5px 10px",
       textTransform: "uppercase",
       color: palette.primary.main,
@@ -83,7 +84,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   drawerContainer: {
     "& .MuiDrawer-paper": {
       background: palette.background.default,
-    }
+    },
   },
 
   drawer: {
@@ -112,6 +113,7 @@ const Header: React.FC = () => {
       window.scrollY > 0 ? theme.palette.background.default : "transparent"
     )
   }
+
   useEffect(() => {
     handleScroll()
     window.addEventListener("scroll", handleScroll, { passive: true })
@@ -156,16 +158,19 @@ const Header: React.FC = () => {
               {!mobile && (
                 <Box className="menu" display={"flex"} alignItems={"center"}>
                   {MenuList.map((item) => (
-                    <Link key={item.text} href={item.link} underline="none">
+                    <Box
+                      key={item.text}
+                      onClick={() => history.push(item.link)}
+                    >
                       <Typography variant="h5" component="h5">
                         {item.text}
                       </Typography>
-                    </Link>
+                    </Box>
                   ))}
                 </Box>
               )}
               <Box ml={"20px"}>
-                <AddressBox />
+                <AddressCard />
               </Box>
               {mobile && (
                 <Hamburger

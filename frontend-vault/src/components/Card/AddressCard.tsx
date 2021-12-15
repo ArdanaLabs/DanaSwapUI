@@ -60,7 +60,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 }))
 
-const AddressBox: React.FC = () => {
+const AddressCard: React.FC = () => {
   const theme = useTheme()
   const dark = useIsDarkMode()
   const mobile = useMediaQuery(theme.breakpoints.down("xs"))
@@ -111,4 +111,4 @@ const AddressBox: React.FC = () => {
   )
 }
 
-export default AddressBox
+export default AddressCard

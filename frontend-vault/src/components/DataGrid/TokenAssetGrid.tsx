@@ -47,7 +47,7 @@ const StyledDataGrid = withStyles((theme) => ({
     borderBottom: `1px solid ${
       theme.palette.type === "dark" ? "#72D2F3" : "#3651CD"
     }`,
-    marginBottom: "15px",
+    // marginBottom: "15px",
     width: "100% !important",
     padding: "0 5px",
     cursor: "pointer",
