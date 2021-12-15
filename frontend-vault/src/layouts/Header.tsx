@@ -5,13 +5,15 @@ import {
   Container,
   Link,
   Typography,
+  Drawer,
 } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
+import Hamburger from "hamburger-react"
 
 import { useIsDarkMode } from "state/user/hooks"
 import { useHistory } from "react-router-dom"
-import { ThemeSwitch, ConnectWallet } from "components"
+import { ThemeSwitch, ConnectWallet, AddressBox } from "components"
 import DUSD_LOGO_BLUE from "assets/image/DUSD-LOGO-BLUE.png"
 import DUSD_LOGO_WHITE from "assets/image/DUSD-LOGO-WHITE.png"
 import { useWallet } from "state/wallet/hooks"
@@ -77,6 +79,22 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       color: palette.primary.main,
     },
   },
+
+  drawerContainer: {
+    "& .MuiDrawer-paper": {
+      background: palette.background.default,
+    }
+  },
+
+  drawer: {
+    "textAlign": "center",
+    "marginTop": "50px",
+
+    "& h3": {
+      padding: "10px 20px",
+      color: palette.primary.main,
+    },
+  },
 }))
 
 const Header: React.FC = () => {
@@ -85,8 +103,9 @@ const Header: React.FC = () => {
   const dark = useIsDarkMode()
   const classes = useStyles({ dark, mobile })
   const history = useHistory()
-  const [bgColor, setBGColor] = useState("transparent")
   const { address } = useWallet()
+  const [bgColor, setBGColor] = useState("transparent")
+  const [openMenu, setOpenMenu] = useState(false)
 
   const handleScroll = () => {
     setBGColor(
@@ -108,7 +127,7 @@ const Header: React.FC = () => {
             <Box
               className={cx(classes.logo)}
               onClick={() => history.push("/")}
-              mr={"30px"}
+              mr={!mobile ? "30px" : "0px"}
             >
               <img
                 src={
@@ -134,19 +153,49 @@ const Header: React.FC = () => {
               display={"flex"}
               alignItems={"center"}
             >
-              <Box className="menu" display={"flex"} alignItems={"center"}>
-                {MenuList.map((item) => (
-                  <Link key={item.text} href={item.link} underline="none">
-                    <Typography variant="h6" component="h6">
-                      {item.text}
-                    </Typography>
-                  </Link>
-                ))}
+              {!mobile && (
+                <Box className="menu" display={"flex"} alignItems={"center"}>
+                  {MenuList.map((item) => (
+                    <Link key={item.text} href={item.link} underline="none">
+                      <Typography variant="h5" component="h5">
+                        {item.text}
+                      </Typography>
+                    </Link>
+                  ))}
+                </Box>
+              )}
+              <Box ml={"20px"}>
+                <AddressBox />
               </Box>
-              <Box>address</Box>
+              {mobile && (
+                <Hamburger
+                  size={24}
+                  distance={"lg"}
+                  color={theme.palette.primary.main}
+                  toggled={openMenu}
+                  toggle={() => setOpenMenu(!openMenu)}
+                />
+              )}
             </Box>
           )}
         </Box>
+
+        <Drawer
+          className={cx(classes.drawerContainer)}
+          anchor={"left"}
+          open={openMenu}
+          onClose={() => setOpenMenu(false)}
+        >
+          <Box className={cx(classes.drawer)}>
+            {MenuList.map((item) => (
+              <Link key={item.text} href={item.link} underline="none">
+                <Typography variant="h3" component="h3" key={item.text}>
+                  {item.text}
+                </Typography>
+              </Link>
+            ))}
+          </Box>
+        </Drawer>
       </Container>
     </Box>
   )

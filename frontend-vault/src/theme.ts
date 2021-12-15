@@ -34,8 +34,8 @@ const secondaryDarkNight = "rgba(24, 33, 100, 0.5)"
 const infoLightDay = "linear-gradient(89.62deg, #000A4F 0.3%, #3C4DC5 99.64%)"
 const infoLightNight = "linear-gradient(89.62deg, #72D2F2 0.3%, #6077FF 99.64%)"
 
-const infoMainDay = "#000000"
-const infoMainNight = "#000000"
+const infoMainDay = "#202E8D"
+const infoMainNight = "#69A3FA"
 
 const infoDarkDay = "#6077FF"
 const infoDarkNight = "#000A4F"
@@ -110,13 +110,22 @@ export const lightTheme = responsiveFontSizes(
     typography: {
       h1: {},
       h2: {},
-      h3: {},
+      h3: {
+        fontFamily: "Brandon Grotesque",
+        fontSize: 20,
+        fontWeight: 700,
+      },
       h4: {},
-      h5: {},
-      h6: {
+      h5: {
         fontFamily: "Brandon Grotesque",
         fontSize: 14,
         fontWeight: 700,
+      },
+      h6: {
+        fontFamily: "Museo Sans",
+        fontStyle: "normal",
+        fontWeight: "normal",
+        fontSize: 14,
       },
       subtitle1: {},
       subtitle2: {},
@@ -171,13 +180,22 @@ export const darkTheme = responsiveFontSizes(
     typography: {
       h1: {},
       h2: {},
-      h3: {},
+      h3: {
+        fontFamily: "Brandon Grotesque",
+        fontSize: 20,
+        fontWeight: 700,
+      },
       h4: {},
-      h5: {},
-      h6: {
+      h5: {
         fontFamily: "Brandon Grotesque",
         fontSize: 14,
         fontWeight: 700,
+      },
+      h6: {
+        fontFamily: "Museo Sans",
+        fontStyle: "normal",
+        fontWeight: "normal",
+        fontSize: 14,
       },
       subtitle1: {},
       subtitle2: {},

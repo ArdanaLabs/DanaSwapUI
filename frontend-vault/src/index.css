@@ -50,6 +50,6 @@
 }
 
 .hamburger-react > div {
-  height: 5px !important;
+  height: 4px !important;
   border-radius: 5px;
 }

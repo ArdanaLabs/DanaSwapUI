@@ -40,7 +40,7 @@ const ConnectWallet: React.FC = () => {
   const { updateWalletAddress } = useWallet()
 
   const handleConnectWallet = () => {
-    updateWalletAddress("0x2222222")
+    updateWalletAddress("0x2ddA6C07ED3671F8d2f19B317e91e4DFD43f6621")
   }
 
   return (
