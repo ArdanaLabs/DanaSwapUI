@@ -48,7 +48,7 @@ const VaultStatCard = () => {
 
   const [vaultList] = useState([
     {
-      name: "YIFI",
+      name: "YIFI1",
       image: require("assets/image/coins/dusd.svg").default,
       locked: 13794.18,
       debt: 5602.59,
@@ -56,7 +56,7 @@ const VaultStatCard = () => {
       risk: false,
     },
     {
-      name: "YIFI",
+      name: "YIFI2",
       image: require("assets/image/coins/dusd.svg").default,
       locked: 13794.18,
       debt: 5602.59,
@@ -85,6 +85,7 @@ const VaultStatCard = () => {
 
   const renderVault = (name: string, image: string, percentage: number) => (
     <Box
+      key={name}
       className={cx(classes.vault)}
       display="flex"
       alignItems={"center"}
