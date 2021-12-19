@@ -7,10 +7,10 @@ import { useIsDarkMode } from "state/user/hooks"
 import { ThemeSwitch } from "components"
 
 import BACKGROUND_GRAPHIC from "assets/image/backgrounds/BG-GRAPHIC.png"
-import BACKGROUND_WAVE_BLUE from "assets/image/backgrounds/BG-BLUE.png"
-import BACKGROUND_WAVE_WHITE from "assets/image/backgrounds/BG-WHITE.png"
-import BACKGROUND_WAVE_BLUE_M from "assets/image/backgrounds/BG-BLUE-MOBILE.png"
-import BACKGROUND_WAVE_WHITE_M from "assets/image/backgrounds/BG-WHITE-MOBILE.png"
+import BACKGROUND_WAVE_BLUE from "assets/image/backgrounds/hero-bg-dark.png"
+import BACKGROUND_WAVE_WHITE from "assets/image/backgrounds/hero-bg-light.png"
+// import BACKGROUND_WAVE_BLUE_M from "assets/image/backgrounds/BG-BLUE-MOBILE.png"
+// import BACKGROUND_WAVE_WHITE_M from "assets/image/backgrounds/BG-WHITE-MOBILE.png"
 import COIN_CARDANO from "assets/image/COIN1.png"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
@@ -21,15 +21,15 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       palette.type === "dark" ? BACKGROUND_WAVE_BLUE : BACKGROUND_WAVE_WHITE
     }) right bottom no-repeat`,
     backgroundSize: "cover",
+    borderBottomRightRadius: "100px",
 
     [breakpoints.down("xs")]: {
       textAlign: "center",
       paddingBottom: "30px",
       background: `url(${
-        palette.type === "dark"
-          ? BACKGROUND_WAVE_BLUE_M
-          : BACKGROUND_WAVE_WHITE_M
+        palette.type === "dark" ? BACKGROUND_WAVE_BLUE : BACKGROUND_WAVE_WHITE
       }) right bottom no-repeat`,
+      borderBottomRightRadius: "75px",
     },
   },
 
@@ -41,7 +41,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
   description: {
     "position": "relative",
-    "width": "700px",
+    "width": "660px",
 
     "& > div:first-child": {
       color: palette.primary.main,

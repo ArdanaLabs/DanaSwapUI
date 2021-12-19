@@ -21,6 +21,14 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     "& h5": {
       textTransform: "uppercase",
     },
+    "& h1, & h5, & h6": {
+      color: palette.primary.main,
+    },
+
+    [breakpoints.down("xs")]: {
+      textAlign: "left",
+      padding: "30px 10px",
+    },
   },
 
   divider: {
@@ -74,12 +82,8 @@ const VaultStatCard = () => {
     [vaultList]
   )
 
-  const totalDebtUSD = useMemo(
-    () =>
-      vaultList.reduce(
-        (prev, current) => prev + current.debt * current.usdRate,
-        0
-      ),
+  const totalDebt = useMemo(
+    () => vaultList.reduce((prev, current) => prev + current.debt, 0),
     [vaultList]
   )
 
@@ -123,6 +127,7 @@ const VaultStatCard = () => {
             <Typography variant="h1" component="h1">
               {vaultList.length}
             </Typography>
+            <Box mb={"20px"} />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
@@ -133,6 +138,7 @@ const VaultStatCard = () => {
             <Typography variant="h1" component="h1">
               {`$${totalLockedUSD.toLocaleString()}`}
             </Typography>
+            <Box mb={"20px"} />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
@@ -140,9 +146,19 @@ const VaultStatCard = () => {
               Total Debt
             </Typography>
             <Box mb={"20px"} />
-            <Typography variant="h1" component="h1">
-              {`$${totalDebtUSD.toLocaleString()}`}
-            </Typography>
+            <Box display={"flex"} alignItems={"baseline"}>
+              <Box>
+                <Typography variant="h1" component="h1">
+                  {`${totalDebt.toLocaleString()}`}
+                </Typography>
+              </Box>
+              <Box ml={"10px"}>
+                <Typography variant="h5" component="h5">
+                  {` DAI`}
+                </Typography>
+              </Box>
+            </Box>
+            <Box mb={"20px"} />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
@@ -153,10 +169,9 @@ const VaultStatCard = () => {
             <Typography variant="h1" component="h1">
               {vaultList.filter((vault) => vault.risk).length}
             </Typography>
+            <Box mb={"20px"} />
           </Grid>
         </Grid>
-
-        <Box mb={"20px"} />
 
         <Box className={cx(classes.divider)} />
 
