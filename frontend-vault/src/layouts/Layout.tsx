@@ -3,6 +3,7 @@ import cx from "classnames"
 import { Box, makeStyles, useMediaQuery, useTheme } from "@material-ui/core"
 import { useIsDarkMode } from "state/user/hooks"
 import { Footer, Header } from "layouts"
+import { ThemeSwitch } from "components"
 
 const useStyles = makeStyles(({ palette }) => ({
   root: {
@@ -25,6 +26,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <Header />
       <Box>{children}</Box>
       <Footer />
+
+      {mobile && (
+        <Box position="fixed" left={10} bottom={30}>
+          <ThemeSwitch />
+        </Box>
+      )}
     </Box>
   )
 }

@@ -3,7 +3,6 @@ import {
   Box,
   useMediaQuery,
   Container,
-  Link,
   Typography,
   Drawer,
 } from "@material-ui/core"
@@ -193,11 +192,11 @@ const Header: React.FC = () => {
         >
           <Box className={cx(classes.drawer)}>
             {MenuList.map((item) => (
-              <Link key={item.text} href={item.link} underline="none">
+              <Box key={item.text} onClick={() => history.push(item.link)}>
                 <Typography variant="h3" component="h3" key={item.text}>
                   {item.text}
                 </Typography>
-              </Link>
+              </Box>
             ))}
           </Box>
         </Drawer>

@@ -4,7 +4,6 @@ import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
 
 import { useIsDarkMode } from "state/user/hooks"
-import { ThemeSwitch } from "components"
 
 import BACKGROUND_GRAPHIC from "assets/image/backgrounds/BG-GRAPHIC.png"
 import BACKGROUND_WAVE_BLUE from "assets/image/backgrounds/hero-bg-dark.png"
@@ -140,12 +139,6 @@ const AdSection: React.FC = () => {
               <Box mt={!mobile ? "20px" : "20px"} />
 
               <Box className={cx(classes.connectWallet)}>CONNECT A WALLET</Box>
-
-              {mobile && (
-                <Box mt="50px" textAlign="left">
-                  <ThemeSwitch />
-                </Box>
-              )}
             </Box>
           </Grid>
           <Grid item xs={12} sm={6}>
