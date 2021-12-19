@@ -1,9 +1,10 @@
 import { Box, Container, useMediaQuery } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
-import { VaultStatCard } from "components/Card"
+import { VaultStatCard, NoVaultStatCard } from "components/Card"
 import React from "react"
 import { useIsDarkMode } from "state/user/hooks"
+import { useWallet } from "state/wallet/hooks"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -21,10 +22,13 @@ const VaultStatSection: React.FC = () => {
   const mobile = useMediaQuery(breakpoints.down("xs"))
   const classes = useStyles({ dark, mobile })
 
+  const { myVaults } = useWallet()
+
   return (
     <Box className={cx(classes.root)}>
       <Container>
-        <VaultStatCard />
+        {myVaults.length > 0 && <VaultStatCard vaultList={myVaults} />}
+        {myVaults.length === 0 && <NoVaultStatCard />}
       </Container>
     </Box>
   )

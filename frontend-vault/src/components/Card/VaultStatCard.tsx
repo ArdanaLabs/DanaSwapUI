@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react"
+import React, { useMemo } from "react"
 import cx from "classnames"
 import {
   Box,
@@ -11,6 +11,7 @@ import {
 } from "@material-ui/core"
 import { useIsDarkMode } from "state/user/hooks"
 import { percentageFormatter } from "hooks"
+import { VaultInfo } from "state/wallet/reducer"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -48,30 +49,33 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 }))
 
-const VaultStatCard = () => {
+// const [vaultList] = useState([
+//   {
+//     name: "YIFI1",
+//     image: require("assets/image/coins/dusd.svg").default,
+//     locked: 13794.18,
+//     debt: 5602.59,
+//     usdRate: 1.45,
+//     risk: false,
+//   },
+//   {
+//     name: "YIFI2",
+//     image: require("assets/image/coins/dusd.svg").default,
+//     locked: 13794.18,
+//     debt: 5602.59,
+//     usdRate: 1,
+//     risk: false,
+//   },
+// ])
+interface Props {
+  vaultList: VaultInfo[]
+}
+
+const VaultStatCard: React.FC<Props> = ({ vaultList }) => {
   const { breakpoints } = useTheme()
   const dark = useIsDarkMode()
   const mobile = useMediaQuery(breakpoints.down("xs"))
   const classes = useStyles({ dark, mobile })
-
-  const [vaultList] = useState([
-    {
-      name: "YIFI1",
-      image: require("assets/image/coins/dusd.svg").default,
-      locked: 13794.18,
-      debt: 5602.59,
-      usdRate: 1.45,
-      risk: false,
-    },
-    {
-      name: "YIFI2",
-      image: require("assets/image/coins/dusd.svg").default,
-      locked: 13794.18,
-      debt: 5602.59,
-      usdRate: 1,
-      risk: false,
-    },
-  ])
 
   const totalLockedUSD = useMemo(
     () =>
