@@ -5,8 +5,9 @@ const StyledValutButton = withStyles((theme: Theme) => ({
   root: {
     background: theme.palette.info.light,
     borderRadius: "100px",
+    fontFamily: "Brandon Grotesque",
     fontWeight: 700,
-    fontSize: "15px",
+    fontSize: "14px",
     color: theme.palette.common.white,
     padding: "10px 25px",
     minWidth: "150px",

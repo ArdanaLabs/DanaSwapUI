@@ -189,6 +189,12 @@ const AssetSection: React.FC = () => {
         <Box className={cx(classes.filter)}>
           <TokenAssetGridFilter
             filterOption={filterOption}
+            avFilterTypes={[
+              FilterType.POPULAR,
+              FilterType.ALL,
+              FilterType.STABLECOINS,
+              FilterType.LP,
+            ]}
             handleFilterChange={(newOption) => setFilterOption(newOption)}
           />
         </Box>

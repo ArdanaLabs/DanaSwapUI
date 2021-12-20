@@ -55,6 +55,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 export enum FilterType {
   POPULAR = "Popular Assets",
   ALL = "All Assets",
+  YOUR = "Your Vaults",
   STABLECOINS = "Stablecoins",
   LP = "LP Token",
 }
@@ -66,11 +67,13 @@ export interface FilterOption {
 
 export interface TokenAssetGridFilterProps {
   filterOption: FilterOption
+  avFilterTypes: FilterType[]
   handleFilterChange: (filterOption: FilterOption) => void
 }
 
 const TokenAssetGridFilter: React.FC<TokenAssetGridFilterProps> = ({
   filterOption,
+  avFilterTypes,
   handleFilterChange,
 }) => {
   const { breakpoints } = useTheme()
@@ -97,7 +100,18 @@ const TokenAssetGridFilter: React.FC<TokenAssetGridFilterProps> = ({
     <Box className={cx(classes.root)} flexDirection={mobile ? "column" : "row"}>
       {!mobile && (
         <Box className={cx(classes.filterType)}>
-          <Box
+          {avFilterTypes.map((avFilterType) => (
+            <Box
+              key={avFilterType}
+              className={cx(classes.typographyPrimary, classes.filterItem, {
+                active: filterType === avFilterType,
+              })}
+              onClick={() => hanldeFilterTypeChange(avFilterType)}
+            >
+              {avFilterType}
+            </Box>
+          ))}
+          {/* <Box
             className={cx(classes.typographyPrimary, classes.filterItem, {
               active: filterType === FilterType.POPULAR,
             })}
@@ -128,7 +142,7 @@ const TokenAssetGridFilter: React.FC<TokenAssetGridFilterProps> = ({
             onClick={() => hanldeFilterTypeChange(FilterType.LP)}
           >
             {FilterType.LP}
-          </Box>
+          </Box> */}
         </Box>
       )}
 
@@ -143,12 +157,17 @@ const TokenAssetGridFilter: React.FC<TokenAssetGridFilterProps> = ({
             }}
             input={<BootstrapInput />}
           >
-            <MenuItem value={FilterType.POPULAR}>{FilterType.POPULAR}</MenuItem>
+            {avFilterTypes.map((avFilterType) => (
+              <MenuItem value={avFilterType} key={avFilterType}>
+                {avFilterType}
+              </MenuItem>
+            ))}
+            {/* <MenuItem value={FilterType.POPULAR}>{FilterType.POPULAR}</MenuItem>
             <MenuItem value={FilterType.ALL}>{FilterType.ALL}</MenuItem>
             <MenuItem value={FilterType.STABLECOINS}>
               {FilterType.STABLECOINS}
             </MenuItem>
-            <MenuItem value={FilterType.LP}>{FilterType.LP}</MenuItem>
+            <MenuItem value={FilterType.LP}>{FilterType.LP}</MenuItem> */}
           </Select>
         </Box>
       )}
