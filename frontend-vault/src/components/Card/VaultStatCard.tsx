@@ -15,7 +15,10 @@ import { VaultInfo } from "state/wallet/reducer"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
-    "background": palette.background.paper,
+    "background":
+      palette.type === "dark"
+        ? palette.background.paper
+        : "linear-gradient(359deg, #B9D4FF -129.98%, #FFFFFF 99.14%)",
     "borderRadius": "20px",
     "padding": "30px",
 

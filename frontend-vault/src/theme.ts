@@ -44,8 +44,9 @@ const infoDarkNight = "#000A4F"
 const backgroundDay = "#F9FBFF"
 const backgroundNight = "#010730"
 
-const backgroundPaperDay =
-  "linear-gradient(359deg, #B9D4FF -129.98%, #FFFFFF 99.14%)"
+const backgroundPaperDay = "#FFFFFF"
+// "linear-gradient(359deg, #B9D4FF -129.98%, #FFFFFF 99.14%)"
+
 const backgroundPaperNight = "#2F3F9D"
 
 const textPrimaryDay = "#235DF4"

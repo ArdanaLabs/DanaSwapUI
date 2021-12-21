@@ -50,6 +50,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       width: "100%",
     },
   },
+  menuItem: {
+    color: palette.primary.main,
+  },
 }))
 
 export enum FilterType {
@@ -111,38 +114,6 @@ const TokenAssetGridFilter: React.FC<TokenAssetGridFilterProps> = ({
               {avFilterType}
             </Box>
           ))}
-          {/* <Box
-            className={cx(classes.typographyPrimary, classes.filterItem, {
-              active: filterType === FilterType.POPULAR,
-            })}
-            onClick={() => hanldeFilterTypeChange(FilterType.POPULAR)}
-          >
-            {FilterType.POPULAR}
-          </Box>
-          <Box
-            className={cx(classes.typographyPrimary, classes.filterItem, {
-              active: filterType === FilterType.ALL,
-            })}
-            onClick={() => hanldeFilterTypeChange(FilterType.ALL)}
-          >
-            {FilterType.ALL}
-          </Box>
-          <Box
-            className={cx(classes.typographyPrimary, classes.filterItem, {
-              active: filterType === FilterType.STABLECOINS,
-            })}
-            onClick={() => hanldeFilterTypeChange(FilterType.STABLECOINS)}
-          >
-            {FilterType.STABLECOINS}
-          </Box>
-          <Box
-            className={cx(classes.typographyPrimary, classes.filterItem, {
-              active: filterType === FilterType.LP,
-            })}
-            onClick={() => hanldeFilterTypeChange(FilterType.LP)}
-          >
-            {FilterType.LP}
-          </Box> */}
         </Box>
       )}
 
@@ -158,16 +129,14 @@ const TokenAssetGridFilter: React.FC<TokenAssetGridFilterProps> = ({
             input={<BootstrapInput />}
           >
             {avFilterTypes.map((avFilterType) => (
-              <MenuItem value={avFilterType} key={avFilterType}>
+              <MenuItem
+                value={avFilterType}
+                key={avFilterType}
+                className={cx(classes.menuItem)}
+              >
                 {avFilterType}
               </MenuItem>
             ))}
-            {/* <MenuItem value={FilterType.POPULAR}>{FilterType.POPULAR}</MenuItem>
-            <MenuItem value={FilterType.ALL}>{FilterType.ALL}</MenuItem>
-            <MenuItem value={FilterType.STABLECOINS}>
-              {FilterType.STABLECOINS}
-            </MenuItem>
-            <MenuItem value={FilterType.LP}>{FilterType.LP}</MenuItem> */}
           </Select>
         </Box>
       )}
