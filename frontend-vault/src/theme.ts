@@ -3,6 +3,7 @@ import {
   responsiveFontSizes,
   ThemeOptions,
 } from "@material-ui/core"
+import createBreakpoints from "@material-ui/core/styles/createBreakpoints"
 import { merge } from "lodash"
 
 // custom colors
@@ -66,6 +67,8 @@ const md = 960
 const sm = 700
 const xs = 0
 
+const breakpoints = createBreakpoints({})
+
 // typography
 const typography = {
   h1: {
@@ -73,6 +76,10 @@ const typography = {
     fontStyle: "normal",
     fontWeight: 700,
     fontSize: 50,
+
+    [breakpoints.down("xs")]: {
+      fontSize: 30,
+    },
   },
   h2: {},
   h3: {

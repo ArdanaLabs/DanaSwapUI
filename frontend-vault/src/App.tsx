@@ -10,7 +10,7 @@ import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom"
 import { ParallaxProvider } from "react-scroll-parallax"
 import { useIsDarkMode } from "state/user/hooks"
 import i18n from "./i18n"
-import { Landing, MyVaults } from "./pages"
+import { Landing, MyVaults, Vaults } from "./pages"
 import store from "./state"
 import { darkTheme, lightTheme } from "./theme"
 
@@ -69,7 +69,7 @@ const App: React.FC = () => {
         </Route>
         <Route exact path="/vaults">
           <Layout>
-            <Landing />
+            <Vaults />
           </Layout>
         </Route>
         <Route path="*">

@@ -11,10 +11,8 @@ import cx from "classnames"
 
 import { useIsDarkMode } from "state/user/hooks"
 
-import BACKGROUND_WAVE_BLUE from "assets/image/backgrounds/BG-BLUE.png"
-import BACKGROUND_WAVE_WHITE from "assets/image/backgrounds/BG-WHITE.png"
-import BACKGROUND_WAVE_BLUE_M from "assets/image/backgrounds/BG-BLUE-MOBILE.png"
-import BACKGROUND_WAVE_WHITE_M from "assets/image/backgrounds/BG-WHITE-MOBILE.png"
+import BACKGROUND_WAVE_BLUE from "assets/image/backgrounds/hero-bg-dark.png"
+import BACKGROUND_WAVE_WHITE from "assets/image/backgrounds/hero-bg-light.png"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -25,16 +23,16 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       palette.type === "dark" ? BACKGROUND_WAVE_BLUE : BACKGROUND_WAVE_WHITE
     }) right bottom no-repeat`,
     backgroundSize: "cover",
+    borderBottomRightRadius: "100px",
 
     [breakpoints.down("xs")]: {
       height: "400px",
       textAlign: "center",
       paddingBottom: "30px",
       background: `url(${
-        palette.type === "dark"
-          ? BACKGROUND_WAVE_BLUE_M
-          : BACKGROUND_WAVE_WHITE_M
+        palette.type === "dark" ? BACKGROUND_WAVE_BLUE : BACKGROUND_WAVE_WHITE
       }) right bottom no-repeat`,
+      borderBottomRightRadius: "75px",
     },
   },
 
