@@ -22,6 +22,7 @@ import {
   GridValueGetterParams,
 } from "@material-ui/data-grid"
 import { currencyFormatter, percentageFormatter } from "hooks"
+import { useUiModal } from "state/ui/hooks"
 
 const rows = [
   {
@@ -44,67 +45,6 @@ const rows = [
   },
 ]
 
-const columns: GridColDef[] = [
-  {
-    field: "asset",
-    headerName: "Asset",
-    sortable: false,
-    flex: 2,
-    renderCell: (params: GridCellParams) => {
-      const assetIcon = params.getValue(params.id, "assetIcon")
-      return (
-        <Box display="flex" alignItems="center">
-          <img src={assetIcon?.toString()} alt="" width="35px" height="35px" />
-          <Box pl="15px">{params.value}</Box>
-        </Box>
-      )
-    },
-  },
-  {
-    field: "vaultId",
-    headerName: "Vault ID",
-    sortable: false,
-    flex: 1,
-  },
-  {
-    field: "liquidationPrice",
-    headerName: "Liquidation Price",
-    type: "number",
-    flex: 1,
-    align: "left",
-    headerAlign: "left",
-    valueGetter: (params: GridValueGetterParams) =>
-      currencyFormatter(Number(params.value)),
-  },
-  {
-    field: "coltRatio",
-    headerName: "Colt Ratio",
-    type: "number",
-    flex: 1,
-    align: "left",
-    headerAlign: "left",
-    valueGetter: (params: GridValueGetterParams) =>
-      percentageFormatter(Number(params.value)),
-  },
-  {
-    field: "daiDebt",
-    headerName: "DAI Debt",
-    type: "number",
-    flex: 1,
-    align: "left",
-    headerAlign: "left",
-    valueGetter: (params: GridValueGetterParams) => Number(params.value),
-  },
-  {
-    field: "action",
-    headerName: " ",
-    sortable: false,
-    width: 200,
-    align: "center",
-    renderCell: () => <VaultButton>Manage Vault</VaultButton>,
-  },
-]
-
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
     margin: "50px 0px",
@@ -119,11 +59,96 @@ const VaultListSection: React.FC = () => {
   const classes = useStyles({ dark, mobile })
 
   const { myVaults } = useWallet()
+  const { toggleModal } = useUiModal()
 
   const [filterOption, setFilterOption] = useState<FilterOption>({
     filterType: FilterType.YOUR,
     keyword: "",
   })
+
+  const columns: GridColDef[] = [
+    {
+      field: "asset",
+      headerName: "Asset",
+      sortable: false,
+      flex: 2,
+      renderCell: (params: GridCellParams) => {
+        const assetIcon = params.getValue(params.id, "assetIcon")
+        return (
+          <Box display="flex" alignItems="center">
+            <img
+              src={assetIcon?.toString()}
+              alt=""
+              width="35px"
+              height="35px"
+            />
+            <Box pl="15px">{params.value}</Box>
+          </Box>
+        )
+      },
+    },
+    {
+      field: "vaultId",
+      headerName: "Vault ID",
+      sortable: false,
+      flex: 1,
+    },
+    {
+      field: "liquidationPrice",
+      headerName: "Liquidation Price",
+      type: "number",
+      flex: 1,
+      align: "left",
+      headerAlign: "left",
+      valueGetter: (params: GridValueGetterParams) =>
+        currencyFormatter(Number(params.value)),
+    },
+    {
+      field: "coltRatio",
+      headerName: "Colt Ratio",
+      type: "number",
+      flex: 1,
+      align: "left",
+      headerAlign: "left",
+      valueGetter: (params: GridValueGetterParams) =>
+        percentageFormatter(Number(params.value)),
+    },
+    {
+      field: "daiDebt",
+      headerName: "DAI Debt",
+      type: "number",
+      flex: 1,
+      align: "left",
+      headerAlign: "left",
+      valueGetter: (params: GridValueGetterParams) => Number(params.value),
+    },
+    {
+      field: "action",
+      headerName: " ",
+      sortable: false,
+      width: 200,
+      align: "center",
+      renderCell: (params: GridCellParams) => {
+        const asset: string = params.getValue(params.id, "asset") as string
+        return (
+          <VaultButton onClick={() => handleOpenVault(asset)}>
+            Manage Vault
+          </VaultButton>
+        )
+      },
+    },
+  ]
+
+  const handleOpenVault = (asset: string) => {
+    if (!asset) {
+      return
+    }
+
+    toggleModal({
+      open: true,
+      asset,
+    })
+  }
 
   const SortedDescendingIcon = () => (
     <Box display="flex" justifyContent="center" alignItems="center">

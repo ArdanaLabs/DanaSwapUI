@@ -32,14 +32,14 @@ const secondaryLightNight = "#131B59"
 const secondaryDarkDay = "#A5A5A5"
 const secondaryDarkNight = "rgba(24, 33, 100, 0.5)"
 
-const infoLightDay = "linear-gradient(89.62deg, #000A4F 0.3%, #3C4DC5 99.64%)"
-const infoLightNight = "linear-gradient(89.62deg, #72D2F2 0.3%, #6077FF 99.64%)"
+const infoLightDay = "linear-gradient(90deg, #000A4F 0%, #3C4DC5 100%)"
+const infoLightNight = "linear-gradient(90deg, #72D2F2 0%, #6077FF 100%)"
 
 const infoMainDay = "#202E8D"
 const infoMainNight = "#69A3FA"
 
-const infoDarkDay = "#6077FF"
-const infoDarkNight = "#000A4F"
+const infoDarkDay = "#3651CD"
+const infoDarkNight = "#72D2F3"
 
 const backgroundDay = "#F9FBFF"
 const backgroundNight = "#010730"

@@ -4,6 +4,7 @@ import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
 import { useIsDarkMode } from "state/user/hooks"
 import { VaultButton } from "components"
+import { useUiModal } from "state/ui/hooks"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -65,6 +66,14 @@ const TokenAssetCard: React.FC<TokenAssetCardProps> = ({
   const dark = useIsDarkMode()
   const mobile = useMediaQuery(breakpoints.down("xs"))
   const classes = useStyles({ dark, mobile })
+  const { toggleModal } = useUiModal()
+
+  const handleOpenVault = () => {
+    toggleModal({
+      open: true,
+      asset,
+    })
+  }
 
   return (
     <Box className={cx(classes.root)}>
@@ -110,7 +119,7 @@ const TokenAssetCard: React.FC<TokenAssetCardProps> = ({
         </Box>
       </Box>
       <Box justifyContent="center" display="flex" mt="20px">
-        <VaultButton>Open Vault</VaultButton>
+        <VaultButton onClick={handleOpenVault}>Open Vault</VaultButton>
       </Box>
     </Box>
   )

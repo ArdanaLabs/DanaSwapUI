@@ -20,6 +20,7 @@ import {
 } from "components/DataGrid/TokenAssetGridFilter"
 
 import COIN1 from "assets/image/COIN1.png"
+import { useUiModal } from "state/ui/hooks"
 
 const rows = [
   {
@@ -87,62 +88,6 @@ const rows = [
   },
 ]
 
-const columns: GridColDef[] = [
-  {
-    field: "asset",
-    headerName: "Asset",
-    sortable: false,
-    flex: 2,
-    renderCell: (params: GridCellParams) => {
-      const assetIcon = params.getValue(params.id, "assetIcon")
-      return (
-        <Box display="flex" alignItems="center">
-          <img src={assetIcon?.toString()} alt="" width="35px" height="35px" />
-          <Box pl="15px">{params.value}</Box>
-        </Box>
-      )
-    },
-  },
-  {
-    field: "type",
-    headerName: "Type",
-    sortable: false,
-    flex: 1,
-  },
-  {
-    field: "dUSD",
-    headerName: "dUSD Available",
-    flex: 1,
-  },
-  {
-    field: "stabilityFee",
-    headerName: "Stability Fee",
-    type: "number",
-    flex: 1,
-    align: "left",
-    headerAlign: "left",
-    valueGetter: (params: GridValueGetterParams) =>
-      Number(params.value).toFixed(2) + "%",
-  },
-  {
-    field: "minColl",
-    headerName: "Min Coll. Ratio",
-    type: "number",
-    flex: 1,
-    align: "left",
-    headerAlign: "left",
-    valueGetter: (params: GridValueGetterParams) => params.value + "%",
-  },
-  {
-    field: "action",
-    headerName: " ",
-    sortable: false,
-    width: 200,
-    align: "center",
-    renderCell: () => <VaultButton>Open Vault</VaultButton>,
-  },
-]
-
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {},
   filter: {},
@@ -164,6 +109,87 @@ const AssetSection: React.FC = () => {
     filterType: FilterType.POPULAR,
     keyword: "",
   })
+
+  const { toggleModal } = useUiModal()
+
+  const columns: GridColDef[] = [
+    {
+      field: "asset",
+      headerName: "Asset",
+      sortable: false,
+      flex: 2,
+      renderCell: (params: GridCellParams) => {
+        const assetIcon = params.getValue(params.id, "assetIcon")
+        return (
+          <Box display="flex" alignItems="center">
+            <img
+              src={assetIcon?.toString()}
+              alt=""
+              width="35px"
+              height="35px"
+            />
+            <Box pl="15px">{params.value}</Box>
+          </Box>
+        )
+      },
+    },
+    {
+      field: "type",
+      headerName: "Type",
+      sortable: false,
+      flex: 1,
+    },
+    {
+      field: "dUSD",
+      headerName: "dUSD Available",
+      flex: 1,
+    },
+    {
+      field: "stabilityFee",
+      headerName: "Stability Fee",
+      type: "number",
+      flex: 1,
+      align: "left",
+      headerAlign: "left",
+      valueGetter: (params: GridValueGetterParams) =>
+        Number(params.value).toFixed(2) + "%",
+    },
+    {
+      field: "minColl",
+      headerName: "Min Coll. Ratio",
+      type: "number",
+      flex: 1,
+      align: "left",
+      headerAlign: "left",
+      valueGetter: (params: GridValueGetterParams) => params.value + "%",
+    },
+    {
+      field: "action",
+      headerName: " ",
+      sortable: false,
+      width: 200,
+      align: "center",
+      renderCell: (params: GridCellParams) => {
+        const asset: string = params.getValue(params.id, "asset") as string
+        return (
+          <VaultButton onClick={() => handleOpenVault(asset)}>
+            Open Vault
+          </VaultButton>
+        )
+      },
+    },
+  ]
+
+  const handleOpenVault = (asset: string) => {
+    if (!asset) {
+      return
+    }
+
+    toggleModal({
+      open: true,
+      asset,
+    })
+  }
 
   const SortedDescendingIcon = () => (
     <Box display="flex" justifyContent="center" alignItems="center">

@@ -5,6 +5,7 @@ import cx from "classnames"
 import { useIsDarkMode } from "state/user/hooks"
 import { VaultButton } from "components"
 import { currencyFormatter, percentageFormatter } from "hooks"
+import { useUiModal } from "state/ui/hooks"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -67,6 +68,15 @@ const VaultCard: React.FC<VaultCardProps> = ({
   const mobile = useMediaQuery(breakpoints.down("xs"))
   const classes = useStyles({ dark, mobile })
 
+  const { toggleModal } = useUiModal()
+
+  const handleOpenVault = () => {
+    toggleModal({
+      open: true,
+      asset,
+    })
+  }
+
   return (
     <Box className={cx(classes.root)}>
       <Box className={cx(classes.row)}>
@@ -111,7 +121,7 @@ const VaultCard: React.FC<VaultCardProps> = ({
         </Box>
       </Box>
       <Box justifyContent="center" display="flex" mt="20px">
-        <VaultButton>Manage Vault</VaultButton>
+        <VaultButton onClick={handleOpenVault}>Manage Vault</VaultButton>
       </Box>
     </Box>
   )

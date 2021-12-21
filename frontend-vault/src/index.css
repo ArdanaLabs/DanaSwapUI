@@ -45,9 +45,9 @@
   font-weight: 300;
 }
 
-* {
+/* * {
   transition: all 0.2s ease-in;
-}
+} */
 
 .hamburger-react > div {
   height: 4px !important;

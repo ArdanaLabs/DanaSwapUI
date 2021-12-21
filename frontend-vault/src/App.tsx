@@ -13,6 +13,15 @@ import i18n from "./i18n"
 import { Landing, MyVaults, Vaults } from "./pages"
 import store from "./state"
 import { darkTheme, lightTheme } from "./theme"
+import UiUpdater from "state/ui/updater"
+
+const StateUpdaters: React.FC = () => {
+  return (
+    <>
+      <UiUpdater />
+    </>
+  )
+}
 
 const ThemeProvider: React.FC = ({ children }) => {
   // const location = useLocation();
@@ -35,6 +44,7 @@ const Providers: React.FC = ({ children }) => {
             <ThemeProvider>
               <CssBaseline />
               <I18nextProvider i18n={i18n}>{children}</I18nextProvider>
+              <StateUpdaters />
             </ThemeProvider>
           </StateProvider>
         </Suspense>
