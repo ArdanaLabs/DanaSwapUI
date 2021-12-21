@@ -13,6 +13,7 @@ import cx from "classnames"
 import { useIsDarkMode } from "state/user/hooks"
 
 import CloseIcon from "assets/image/icons/close.svg"
+import { useHistory } from "react-router-dom"
 
 interface Props {
   info: {
@@ -82,9 +83,16 @@ const VaultModal: React.FC<Props> = ({ info, handleClose }) => {
   const dark = useIsDarkMode()
   const mobile = useMediaQuery(breakpoints.down("xs"))
   const classes = useStyles({ dark, mobile })
+  const history = useHistory()
 
   const handleMultiply = () => {
-    console.log("handleMultiply")
+    history.push(`/multiply/${info.asset}`)
+    handleClose()
+  }
+
+  const handleBorrow = () => {
+    history.push(`/borrow/${info.asset}`)
+    handleClose()
   }
 
   return (
@@ -136,7 +144,7 @@ const VaultModal: React.FC<Props> = ({ info, handleClose }) => {
               Borrow up to 50000 DAI for every $100,000 worth of ETH.
             </Typography>
             <Box mt="10px" />
-            <Button className="action" onClick={handleMultiply}>
+            <Button className="action" onClick={handleBorrow}>
               <Typography variant="h5" component="h5">
                 Borrow against ETH
               </Typography>

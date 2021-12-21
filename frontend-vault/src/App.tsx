@@ -8,12 +8,18 @@ import { I18nextProvider } from "react-i18next"
 import { Provider as StateProvider } from "react-redux"
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom"
 import { ParallaxProvider } from "react-scroll-parallax"
+import UiUpdater from "state/ui/updater"
 import { useIsDarkMode } from "state/user/hooks"
 import i18n from "./i18n"
-import { Landing, MyVaults, Vaults } from "./pages"
+import {
+  Landing,
+  MyVaults,
+  Vaults,
+  CreateVaultMultiply,
+  CreateVaultBorrow,
+} from "./pages"
 import store from "./state"
 import { darkTheme, lightTheme } from "./theme"
-import UiUpdater from "state/ui/updater"
 
 const StateUpdaters: React.FC = () => {
   return (
@@ -82,6 +88,19 @@ const App: React.FC = () => {
             <Vaults />
           </Layout>
         </Route>
+
+        <Route exact path="/multiply/:asset">
+          <Layout>
+            <CreateVaultMultiply />
+          </Layout>
+        </Route>
+
+        <Route exact path="/borrow/:asset">
+          <Layout>
+            <CreateVaultBorrow />
+          </Layout>
+        </Route>
+
         <Route path="*">
           <Redirect to="/" />
         </Route>
