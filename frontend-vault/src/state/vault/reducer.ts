@@ -9,7 +9,10 @@ export interface VaultInfo {
   type: string
   locked: number
   stabilityFee: number
+  liquidationFee: number
   minCollRatio: number
+
+  dustLimit: number
 }
 
 export interface VaultState {

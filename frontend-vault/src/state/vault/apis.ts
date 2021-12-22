@@ -11,6 +11,9 @@ export const fetchVaultsApi = async (): Promise<VaultInfo[]> => {
       locked: 13794.18,
       stabilityFee: 0.02,
       minCollRatio: 1.5,
+
+      dustLimit: 15000,
+      liquidationFee: 0.13,
     },
     {
       id: 1,
@@ -20,6 +23,9 @@ export const fetchVaultsApi = async (): Promise<VaultInfo[]> => {
       locked: 13794.18,
       stabilityFee: 0.03,
       minCollRatio: 2.5,
+
+      dustLimit: 14000,
+      liquidationFee: 0.13,
     },
   ]
 }
