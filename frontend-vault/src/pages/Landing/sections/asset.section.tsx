@@ -19,74 +19,75 @@ import {
   FilterType,
 } from "components/DataGrid/TokenAssetGridFilter"
 
-import COIN1 from "assets/image/COIN1.png"
 import { useUiModal } from "state/ui/hooks"
+import { useVault } from "state/vault/hooks"
+import { numberFormatter, percentageFormatter } from "hooks/formatter"
 
-const rows = [
-  {
-    id: 0,
-    asset: "Wrapped Bitcoin1",
-    type: "WBTC-A",
-    dUSD: "29.36M",
-    stabilityFee: 2,
-    minColl: 150,
-    assetIcon: COIN1,
-  },
-  {
-    id: 17,
-    asset: "Wrapped Bitcoin2",
-    type: "WBTC-A",
-    dUSD: "29.36M",
-    stabilityFee: 2,
-    minColl: 150,
-    assetIcon: COIN1,
-  },
-  {
-    id: 18,
-    asset: "Wrapped Bitcoin3",
-    type: "WBTC-A",
-    dUSD: "29.36M",
-    stabilityFee: 1,
-    minColl: 150,
-    assetIcon: COIN1,
-  },
-  {
-    id: 19,
-    asset: "Wrapped Bitcoin4",
-    type: "WBTC-A",
-    dUSD: "29.36M",
-    stabilityFee: 3,
-    minColl: 150,
-    assetIcon: COIN1,
-  },
-  {
-    id: 110,
-    asset: "Wrapped Bitcoin5",
-    type: "WBTC-A",
-    dUSD: "29.36M",
-    stabilityFee: 1,
-    minColl: 150,
-    assetIcon: COIN1,
-  },
-  {
-    id: 120,
-    asset: "Wrapped Bitcoin6",
-    type: "WBTC-A",
-    dUSD: "29.36M",
-    stabilityFee: 20,
-    minColl: 150,
-    assetIcon: COIN1,
-  },
-  {
-    id: 130,
-    asset: "Wrapped Bitcoin7",
-    type: "WBTC-A",
-    dUSD: "29.36M",
-    stabilityFee: 2,
-    minColl: 150,
-    assetIcon: COIN1,
-  },
-]
+// const rows = [
+//   {
+//     id: 0,
+//     asset: "Wrapped Bitcoin1",
+//     type: "WBTC-W",
+//     dUSD: "29.36M",
+//     stabilityFee: 2,
+//     minColl: 150,
+//     assetIcon: COIN1,
+//   },
+//   {
+//     id: 17,
+//     asset: "Wrapped Bitcoin2",
+//     type: "WBTC-Q",
+//     dUSD: "29.36M",
+//     stabilityFee: 2,
+//     minColl: 150,
+//     assetIcon: COIN1,
+//   },
+//   {
+//     id: 18,
+//     asset: "Wrapped Bitcoin3",
+//     type: "WBTC-E",
+//     dUSD: "29.36M",
+//     stabilityFee: 1,
+//     minColl: 150,
+//     assetIcon: COIN1,
+//   },
+//   {
+//     id: 19,
+//     asset: "Wrapped Bitcoin4",
+//     type: "WBTC-D",
+//     dUSD: "29.36M",
+//     stabilityFee: 3,
+//     minColl: 150,
+//     assetIcon: COIN1,
+//   },
+//   {
+//     id: 110,
+//     asset: "Wrapped Bitcoin5",
+//     type: "WBTC-C",
+//     dUSD: "29.36M",
+//     stabilityFee: 1,
+//     minColl: 150,
+//     assetIcon: COIN1,
+//   },
+//   {
+//     id: 120,
+//     asset: "Wrapped Bitcoin6",
+//     type: "WBTC-A",
+//     dUSD: "29.36M",
+//     stabilityFee: 20,
+//     minColl: 150,
+//     assetIcon: COIN1,
+//   },
+//   {
+//     id: 130,
+//     asset: "Wrapped Bitcoin7",
+//     type: "WBTC-B",
+//     dUSD: "29.36M",
+//     stabilityFee: 2,
+//     minColl: 150,
+//     assetIcon: COIN1,
+//   },
+// ]
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {},
@@ -111,6 +112,7 @@ const AssetSection: React.FC = () => {
   })
 
   const { toggleModal } = useUiModal()
+  const { vaults } = useVault()
 
   const columns: GridColDef[] = [
     {
@@ -119,15 +121,15 @@ const AssetSection: React.FC = () => {
       sortable: false,
       flex: 2,
       renderCell: (params: GridCellParams) => {
-        const assetIcon = params.getValue(params.id, "assetIcon")
+        const assetLogo: string = params.getValue(
+          params.id,
+          "assetLogo"
+        ) as string
         return (
           <Box display="flex" alignItems="center">
-            <img
-              src={assetIcon?.toString()}
-              alt=""
-              width="35px"
-              height="35px"
-            />
+            {assetLogo && (
+              <img src={assetLogo} alt="" width="35px" height="35px" />
+            )}
             <Box pl="15px">{params.value}</Box>
           </Box>
         )
@@ -140,9 +142,11 @@ const AssetSection: React.FC = () => {
       flex: 1,
     },
     {
-      field: "dUSD",
+      field: "locked",
       headerName: "dUSD Available",
       flex: 1,
+      valueGetter: (params: GridValueGetterParams) =>
+        numberFormatter((params.value as number) ?? 0),
     },
     {
       field: "stabilityFee",
@@ -152,16 +156,17 @@ const AssetSection: React.FC = () => {
       align: "left",
       headerAlign: "left",
       valueGetter: (params: GridValueGetterParams) =>
-        Number(params.value).toFixed(2) + "%",
+        percentageFormatter(params.value as number),
     },
     {
-      field: "minColl",
+      field: "minCollRatio",
       headerName: "Min Coll. Ratio",
       type: "number",
       flex: 1,
       align: "left",
       headerAlign: "left",
-      valueGetter: (params: GridValueGetterParams) => params.value + "%",
+      valueGetter: (params: GridValueGetterParams) =>
+        percentageFormatter(params.value as number, 0),
     },
     {
       field: "action",
@@ -170,9 +175,9 @@ const AssetSection: React.FC = () => {
       width: 200,
       align: "center",
       renderCell: (params: GridCellParams) => {
-        const asset: string = params.getValue(params.id, "asset") as string
+        const type: string = params.getValue(params.id, "type") as string
         return (
-          <VaultButton onClick={() => handleOpenVault(asset)}>
+          <VaultButton onClick={() => handleOpenVault(type)}>
             Open Vault
           </VaultButton>
         )
@@ -180,14 +185,14 @@ const AssetSection: React.FC = () => {
     },
   ]
 
-  const handleOpenVault = (asset: string) => {
-    if (!asset) {
+  const handleOpenVault = (type: string) => {
+    if (!type) {
       return
     }
 
     toggleModal({
       open: true,
-      asset,
+      type,
     })
   }
 
@@ -227,7 +232,7 @@ const AssetSection: React.FC = () => {
         <Box className={cx(classes.assetList)}>
           {!mobile && (
             <TokenAssetGrid
-              rows={rows}
+              rows={vaults}
               columns={columns}
               disableSelectionOnClick
               disableColumnSelector
@@ -243,18 +248,7 @@ const AssetSection: React.FC = () => {
             />
           )}
           {mobile &&
-            rows.map((row) => (
-              <TokenAssetCard
-                key={row.id}
-                id={row.id}
-                asset={row.asset}
-                type={row.type}
-                dUSD={row.dUSD}
-                stabilityFee={row.stabilityFee}
-                minColl={row.minColl}
-                assetIcon={row.assetIcon}
-              />
-            ))}
+            vaults.map((row) => <TokenAssetCard key={row.id} row={row} />)}
         </Box>
       </Container>
     </Box>

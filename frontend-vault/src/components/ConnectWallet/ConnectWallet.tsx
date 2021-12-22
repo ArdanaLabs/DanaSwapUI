@@ -37,28 +37,10 @@ const useStyles = makeStyles(({ palette }) => ({
 
 const ConnectWallet: React.FC = () => {
   const classes = useStyles()
-  const { updateWalletAddress, updateMyVaults } = useWallet()
+  const { updateWalletAddress } = useWallet()
 
   const handleConnectWallet = () => {
-    updateWalletAddress("0x2ddA6C07ED3671F8d2f19B317e91e4DFD43f6621")
-    updateMyVaults([
-      {
-        name: "YIFI1",
-        image: require("assets/image/coins/dusd.svg").default,
-        locked: 13794.18,
-        debt: 5602.59,
-        usdRate: 1.45,
-        risk: false,
-      },
-      {
-        name: "YIFI2",
-        image: require("assets/image/coins/dusd.svg").default,
-        locked: 13794.18,
-        debt: 5602.59,
-        usdRate: 1,
-        risk: false,
-      },
-    ])
+    updateWalletAddress()
   }
 
   return (

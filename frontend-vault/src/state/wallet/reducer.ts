@@ -1,33 +1,43 @@
 import { createReducer } from "@reduxjs/toolkit"
-import { updateMyVaultsAction, updateWalletAddressAction } from "./actions"
 
-export interface VaultInfo {
-  //  TBD
-  name: string
-  image: string
+import {
+  updateMyVaultsAction,
+  updateWalletAddressAction,
+  updateBalanceAction,
+} from "./actions"
+
+export interface MyVaultInfo {
+  id: number
+  asset: string
+  assetLogo: string
+  type: string
   locked: number
+  collRatio: number
   debt: number
-  usdRate: number
   risk: boolean
 }
+
 export interface WalletState {
   address: string
   balance: number
-  myVaults: VaultInfo[]
+  myVaults: MyVaultInfo[]
 }
 
 export const initialState: WalletState = {
   address: "",
-  balance: 0.32,
+  balance: 0,
   myVaults: [],
 }
 
 export default createReducer(initialState, (builder) =>
   builder
     .addCase(updateWalletAddressAction, (state, action) => {
-      state.address = action.payload.address
+      state.address = action.payload
+    })
+    .addCase(updateBalanceAction, (state, action) => {
+      state.balance = action.payload
     })
     .addCase(updateMyVaultsAction, (state, action) => {
-      state.myVaults = action.payload.vaults
+      state.myVaults = action.payload
     })
 )

@@ -49,7 +49,7 @@ const HeroSection: React.FC = () => {
   const mobile = useMediaQuery(breakpoints.down("xs"))
   const classes = useStyles({ dark, mobile })
 
-  const { asset } = useParams<{ asset: string }>()
+  const { type } = useParams<{ type: string }>()
 
   return (
     <Box
@@ -66,7 +66,7 @@ const HeroSection: React.FC = () => {
               component="h1"
               className={cx(classes.title)}
             >
-              Open {asset} Vault
+              Open {type} Vault
             </Typography>
           </Grid>
         </Grid>

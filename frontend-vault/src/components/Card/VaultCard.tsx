@@ -6,6 +6,7 @@ import { useIsDarkMode } from "state/user/hooks"
 import { VaultButton } from "components"
 import { currencyFormatter, percentageFormatter } from "hooks"
 import { useUiModal } from "state/ui/hooks"
+import { MyVaultInfo } from "state/wallet/reducer"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -45,24 +46,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 }))
 
 export interface VaultCardProps {
-  id: number
-  vaultId: number
-  asset: string
-  assetIcon: string
-  liquidationPrice: number
-  coltRatio: number
-  daiDebt: number
+  row: MyVaultInfo
 }
 
-const VaultCard: React.FC<VaultCardProps> = ({
-  id,
-  vaultId,
-  asset,
-  assetIcon,
-  liquidationPrice,
-  coltRatio,
-  daiDebt,
-}) => {
+const VaultCard: React.FC<VaultCardProps> = ({ row }) => {
   const { breakpoints } = useTheme()
   const dark = useIsDarkMode()
   const mobile = useMediaQuery(breakpoints.down("xs"))
@@ -73,7 +60,7 @@ const VaultCard: React.FC<VaultCardProps> = ({
   const handleOpenVault = () => {
     toggleModal({
       open: true,
-      asset,
+      type: row.type,
     })
   }
 
@@ -84,8 +71,8 @@ const VaultCard: React.FC<VaultCardProps> = ({
           Asset
         </Box>
         <Box className={cx(classes.value, classes.typographySecondary)}>
-          <img src={assetIcon} alt="" />
-          {asset}
+          <img src={row.assetLogo} alt="" />
+          {row.asset}
         </Box>
       </Box>
       <Box className={cx(classes.row)}>
@@ -93,7 +80,7 @@ const VaultCard: React.FC<VaultCardProps> = ({
           VaultID
         </Box>
         <Box className={cx(classes.value, classes.typographySecondary)}>
-          {vaultId}
+          #{row.id}
         </Box>
       </Box>
       <Box className={cx(classes.row)}>
@@ -101,7 +88,7 @@ const VaultCard: React.FC<VaultCardProps> = ({
           Liquidation Price
         </Box>
         <Box className={cx(classes.value, classes.typographySecondary)}>
-          {currencyFormatter(liquidationPrice)}
+          {currencyFormatter(row.locked)}
         </Box>
       </Box>
       <Box className={cx(classes.row)}>
@@ -109,7 +96,7 @@ const VaultCard: React.FC<VaultCardProps> = ({
           Colt Ratio
         </Box>
         <Box className={cx(classes.value, classes.typographySecondary)}>
-          {percentageFormatter(coltRatio)}
+          {percentageFormatter(row.collRatio, 0)}
         </Box>
       </Box>
       <Box className={cx(classes.row)}>
@@ -117,7 +104,7 @@ const VaultCard: React.FC<VaultCardProps> = ({
           DAI Debt
         </Box>
         <Box className={cx(classes.value, classes.typographySecondary)}>
-          {daiDebt}
+          {row.debt}
         </Box>
       </Box>
       <Box justifyContent="center" display="flex" mt="20px">

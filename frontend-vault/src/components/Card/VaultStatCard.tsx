@@ -11,7 +11,7 @@ import {
 } from "@material-ui/core"
 import { useIsDarkMode } from "state/user/hooks"
 import { percentageFormatter } from "hooks"
-import { VaultInfo } from "state/wallet/reducer"
+import { MyVaultInfo } from "state/wallet/reducer"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -52,26 +52,8 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 }))
 
-// const [vaultList] = useState([
-//   {
-//     name: "YIFI1",
-//     image: require("assets/image/coins/dusd.svg").default,
-//     locked: 13794.18,
-//     debt: 5602.59,
-//     usdRate: 1.45,
-//     risk: false,
-//   },
-//   {
-//     name: "YIFI2",
-//     image: require("assets/image/coins/dusd.svg").default,
-//     locked: 13794.18,
-//     debt: 5602.59,
-//     usdRate: 1,
-//     risk: false,
-//   },
-// ])
 interface Props {
-  vaultList: VaultInfo[]
+  vaultList: MyVaultInfo[]
 }
 
 const VaultStatCard: React.FC<Props> = ({ vaultList }) => {
@@ -81,11 +63,7 @@ const VaultStatCard: React.FC<Props> = ({ vaultList }) => {
   const classes = useStyles({ dark, mobile })
 
   const totalLockedUSD = useMemo(
-    () =>
-      vaultList.reduce(
-        (prev, current) => prev + current.locked * current.usdRate,
-        0
-      ),
+    () => vaultList.reduce((prev, current) => prev + current.locked, 0),
     [vaultList]
   )
 
@@ -187,9 +165,9 @@ const VaultStatCard: React.FC<Props> = ({ vaultList }) => {
         <Box display={"flex"}>
           {vaultList.map((vault) => {
             return renderVault(
-              vault.name,
-              vault.image,
-              (vault.locked * vault.usdRate) / totalLockedUSD
+              vault.asset,
+              vault.assetLogo,
+              vault.locked / totalLockedUSD
             )
           })}
         </Box>

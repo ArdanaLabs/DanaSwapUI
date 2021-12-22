@@ -1,7 +1,11 @@
-export const percentageFormatter = (amount: number): string => {
+export const percentageFormatter = (
+  amount: number,
+  digits: number = 2
+): string => {
   const option = {
     style: "percent",
-    maximumFractionDigits: 2,
+    minimumFractionDigits: digits,
+    maximumFractionDigits: digits,
   }
 
   return new Intl.NumberFormat("en-US", option).format(amount)
@@ -16,6 +20,20 @@ export const currencyFormatter = (
     currencyDisplay: "narrowSymbol",
     style: "currency",
     // notation: "compact",
+    maximumFractionDigits: digits,
+  }
+
+  return new Intl.NumberFormat("en-US", option).format(amount)
+}
+
+export const numberFormatter = (amount: number, digits: number = 2): string => {
+  const option = {
+    notation: "compact" as
+      | "compact"
+      | "standard"
+      | "scientific"
+      | "engineering"
+      | undefined,
     maximumFractionDigits: digits,
   }
 

@@ -20,11 +20,11 @@ import { useWallet } from "state/wallet/hooks"
 const MenuList = [
   {
     text: "Your vaults",
-    link: "/myvaults",
+    link: "/owner",
   },
   {
     text: "Open a new vault",
-    link: "/vaults",
+    link: "/vaults/list",
   },
 ]
 

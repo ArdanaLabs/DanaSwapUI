@@ -15,7 +15,6 @@ import React, { useState } from "react"
 import { useIsDarkMode } from "state/user/hooks"
 import { useWallet } from "state/wallet/hooks"
 
-import COIN1 from "assets/image/COIN1.png"
 import {
   GridCellParams,
   GridColDef,
@@ -23,27 +22,7 @@ import {
 } from "@material-ui/data-grid"
 import { currencyFormatter, percentageFormatter } from "hooks"
 import { useUiModal } from "state/ui/hooks"
-
-const rows = [
-  {
-    id: 1,
-    vaultId: 20,
-    asset: "Wrapped Bitcoin1",
-    assetIcon: COIN1,
-    liquidationPrice: 32634.72,
-    coltRatio: 2.46,
-    daiDebt: 5602.59,
-  },
-  {
-    id: 2,
-    vaultId: 21,
-    asset: "Wrapped Bitcoin1",
-    assetIcon: COIN1,
-    liquidationPrice: 32634.72,
-    coltRatio: 2.46,
-    daiDebt: 5602.59,
-  },
-]
+import { MyVaultInfo } from "state/wallet/reducer"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -73,11 +52,11 @@ const VaultListSection: React.FC = () => {
       sortable: false,
       flex: 2,
       renderCell: (params: GridCellParams) => {
-        const assetIcon = params.getValue(params.id, "assetIcon")
+        const assetLogo = params.getValue(params.id, "assetLogo")
         return (
           <Box display="flex" alignItems="center">
             <img
-              src={assetIcon?.toString()}
+              src={assetLogo?.toString()}
               alt=""
               width="35px"
               height="35px"
@@ -88,13 +67,14 @@ const VaultListSection: React.FC = () => {
       },
     },
     {
-      field: "vaultId",
+      field: "id",
       headerName: "Vault ID",
       sortable: false,
       flex: 1,
+      valueGetter: (params: GridValueGetterParams) => "#" + params.value,
     },
     {
-      field: "liquidationPrice",
+      field: "locked",
       headerName: "Liquidation Price",
       type: "number",
       flex: 1,
@@ -104,17 +84,17 @@ const VaultListSection: React.FC = () => {
         currencyFormatter(Number(params.value)),
     },
     {
-      field: "coltRatio",
+      field: "collRatio",
       headerName: "Colt Ratio",
       type: "number",
       flex: 1,
       align: "left",
       headerAlign: "left",
       valueGetter: (params: GridValueGetterParams) =>
-        percentageFormatter(Number(params.value)),
+        percentageFormatter(Number(params.value), 0),
     },
     {
-      field: "daiDebt",
+      field: "debt",
       headerName: "DAI Debt",
       type: "number",
       flex: 1,
@@ -129,9 +109,9 @@ const VaultListSection: React.FC = () => {
       width: 200,
       align: "center",
       renderCell: (params: GridCellParams) => {
-        const asset: string = params.getValue(params.id, "asset") as string
+        const type: string = params.getValue(params.id, "type") as string
         return (
-          <VaultButton onClick={() => handleOpenVault(asset)}>
+          <VaultButton onClick={() => handleOpenVault(type)}>
             Manage Vault
           </VaultButton>
         )
@@ -139,14 +119,14 @@ const VaultListSection: React.FC = () => {
     },
   ]
 
-  const handleOpenVault = (asset: string) => {
-    if (!asset) {
+  const handleOpenVault = (type: string) => {
+    if (!type) {
       return
     }
 
     toggleModal({
       open: true,
-      asset,
+      type,
     })
   }
 
@@ -186,7 +166,7 @@ const VaultListSection: React.FC = () => {
           <Box>
             {!mobile && (
               <TokenAssetGrid
-                rows={rows}
+                rows={myVaults}
                 columns={columns}
                 disableSelectionOnClick
                 disableColumnSelector
@@ -201,7 +181,10 @@ const VaultListSection: React.FC = () => {
                 }}
               />
             )}
-            {mobile && rows.map((row) => <VaultCard key={row.id} {...row} />)}
+            {mobile &&
+              myVaults.map((row: MyVaultInfo) => (
+                <VaultCard key={row.id} row={row} />
+              ))}
           </Box>
         </Container>
       )}

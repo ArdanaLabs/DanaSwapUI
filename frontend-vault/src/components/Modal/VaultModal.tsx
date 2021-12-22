@@ -18,7 +18,7 @@ import { useHistory } from "react-router-dom"
 interface Props {
   info: {
     open: boolean
-    asset: string
+    type: string
   }
   handleClose: () => void
 }
@@ -86,12 +86,12 @@ const VaultModal: React.FC<Props> = ({ info, handleClose }) => {
   const history = useHistory()
 
   const handleMultiply = () => {
-    history.push(`/multiply/${info.asset}`)
+    history.push(`/vaults/open-multiply/${info.type}`)
     handleClose()
   }
 
   const handleBorrow = () => {
-    history.push(`/borrow/${info.asset}`)
+    history.push(`/vaults/open-borrow/${info.type}`)
     handleClose()
   }
 

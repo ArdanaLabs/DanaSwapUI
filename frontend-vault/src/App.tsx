@@ -9,6 +9,8 @@ import { Provider as StateProvider } from "react-redux"
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom"
 import { ParallaxProvider } from "react-scroll-parallax"
 import UiUpdater from "state/ui/updater"
+import VaultUpdater from "state/vault/updater"
+import WalletUpdater from "state/wallet/updater"
 import { useIsDarkMode } from "state/user/hooks"
 import i18n from "./i18n"
 import {
@@ -25,6 +27,8 @@ const StateUpdaters: React.FC = () => {
   return (
     <>
       <UiUpdater />
+      <VaultUpdater />
+      <WalletUpdater />
     </>
   )
 }
@@ -78,24 +82,24 @@ const App: React.FC = () => {
             <Landing />
           </Layout>
         </Route>
-        <Route exact path="/myvaults">
+        <Route exact path="/owner">
           <Layout>
             <MyVaults />
           </Layout>
         </Route>
-        <Route exact path="/vaults">
+        <Route exact path="/vaults/list">
           <Layout>
             <Vaults />
           </Layout>
         </Route>
 
-        <Route exact path="/multiply/:asset">
+        <Route exact path="/vaults/open-multiply/:type">
           <Layout>
             <CreateVaultMultiply />
           </Layout>
         </Route>
 
-        <Route exact path="/borrow/:asset">
+        <Route exact path="/vaults/open-borrow/:type">
           <Layout>
             <CreateVaultBorrow />
           </Layout>

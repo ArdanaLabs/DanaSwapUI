@@ -4,14 +4,14 @@ import { toggleUiModalAction } from "./actions"
 export interface UiState {
   modal: {
     open: boolean
-    asset: string
+    type?: string
   }
 }
 
 export const initialState: UiState = {
   modal: {
     open: false,
-    asset: "",
+    type: "",
   },
 }
 

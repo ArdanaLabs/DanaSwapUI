@@ -5,6 +5,8 @@ import cx from "classnames"
 import { useIsDarkMode } from "state/user/hooks"
 import { VaultButton } from "components"
 import { useUiModal } from "state/ui/hooks"
+import { VaultInfo } from "state/vault/reducer"
+import { numberFormatter, percentageFormatter } from "hooks"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -44,24 +46,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 }))
 
 export interface TokenAssetCardProps {
-  id: number
-  asset: string
-  type: string
-  dUSD: string
-  stabilityFee: number
-  minColl: number
-  assetIcon: string
+  row: VaultInfo
 }
 
-const TokenAssetCard: React.FC<TokenAssetCardProps> = ({
-  id,
-  asset,
-  type,
-  dUSD,
-  stabilityFee,
-  minColl,
-  assetIcon,
-}) => {
+const TokenAssetCard: React.FC<TokenAssetCardProps> = ({ row }) => {
   const { breakpoints } = useTheme()
   const dark = useIsDarkMode()
   const mobile = useMediaQuery(breakpoints.down("xs"))
@@ -71,7 +59,7 @@ const TokenAssetCard: React.FC<TokenAssetCardProps> = ({
   const handleOpenVault = () => {
     toggleModal({
       open: true,
-      asset,
+      type: row.type,
     })
   }
 
@@ -82,8 +70,8 @@ const TokenAssetCard: React.FC<TokenAssetCardProps> = ({
           Asset
         </Box>
         <Box className={cx(classes.value, classes.typographySecondary)}>
-          <img src={assetIcon} alt="" />
-          {asset}
+          <img src={row.assetLogo} alt="" />
+          {row.asset}
         </Box>
       </Box>
       <Box className={cx(classes.row)}>
@@ -91,7 +79,7 @@ const TokenAssetCard: React.FC<TokenAssetCardProps> = ({
           Type
         </Box>
         <Box className={cx(classes.value, classes.typographySecondary)}>
-          {type}
+          {row.type}
         </Box>
       </Box>
       <Box className={cx(classes.row)}>
@@ -99,7 +87,7 @@ const TokenAssetCard: React.FC<TokenAssetCardProps> = ({
           dUSD Available
         </Box>
         <Box className={cx(classes.value, classes.typographySecondary)}>
-          {dUSD}
+          {numberFormatter(row.locked)}
         </Box>
       </Box>
       <Box className={cx(classes.row)}>
@@ -107,7 +95,7 @@ const TokenAssetCard: React.FC<TokenAssetCardProps> = ({
           Stability Fee
         </Box>
         <Box className={cx(classes.value, classes.typographySecondary)}>
-          {stabilityFee.toFixed(2)}%
+          {percentageFormatter(row.stabilityFee)}
         </Box>
       </Box>
       <Box className={cx(classes.row)}>
@@ -115,7 +103,7 @@ const TokenAssetCard: React.FC<TokenAssetCardProps> = ({
           Min Coll. Ratio
         </Box>
         <Box className={cx(classes.value, classes.typographySecondary)}>
-          {minColl}%
+          {percentageFormatter(row.minCollRatio, 0)}
         </Box>
       </Box>
       <Box justifyContent="center" display="flex" mt="20px">
