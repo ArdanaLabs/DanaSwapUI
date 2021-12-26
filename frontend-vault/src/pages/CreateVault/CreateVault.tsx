@@ -1,6 +1,6 @@
 import React from "react"
 import { Box } from "@material-ui/core"
-import { HeroSection, StatSection } from "./sections"
+import { HeroSection, StatSection, BorrowSection } from "./sections"
 
 export const CreateVaultMultiply: React.FC = () => {
   return (
@@ -16,6 +16,7 @@ export const CreateVaultBorrow: React.FC = () => {
     <Box>
       <HeroSection />
       <StatSection />
+      <BorrowSection />
     </Box>
   )
 }

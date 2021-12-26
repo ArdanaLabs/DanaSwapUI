@@ -32,6 +32,16 @@ const secondaryLightNight = "#131B59"
 const secondaryDarkDay = "#A5A5A5"
 const secondaryDarkNight = "rgba(24, 33, 100, 0.5)"
 
+const errorLightDay = "#FFEAEA"
+const errorMainDay = "#FF2C2C"
+const errorLightNight = "#FFEAEA"
+const errorMainNight = "#FF2C2C"
+
+const successLightDay = "#CEFFF0"
+const successMainDay = "#199F03"
+const successLightNight = "#CEFFF0"
+const successMainNight = "#199F03"
+
 const infoLightDay = "linear-gradient(90deg, #000A4F 0%, #3C4DC5 100%)"
 const infoLightNight = "linear-gradient(90deg, #72D2F2 0%, #6077FF 100%)"
 
@@ -135,6 +145,14 @@ export const lightTheme = responsiveFontSizes(
         main: infoMainDay,
         dark: infoDarkDay,
       },
+      error: {
+        light: errorLightDay,
+        main: errorMainDay,
+      },
+      success: {
+        light: successLightDay,
+        main: successMainDay,
+      },
       common: {
         black,
         white,
@@ -180,6 +198,14 @@ export const darkTheme = responsiveFontSizes(
         light: infoLightNight,
         main: infoMainNight,
         dark: infoDarkNight,
+      },
+      error: {
+        light: errorLightNight,
+        main: errorMainNight,
+      },
+      success: {
+        light: successLightNight,
+        main: successMainNight,
       },
       common: {
         black,
