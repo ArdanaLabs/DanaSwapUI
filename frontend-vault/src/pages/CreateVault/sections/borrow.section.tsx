@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import {
   Box,
   useMediaQuery,
@@ -13,6 +13,7 @@ import { useIsDarkMode } from "state/user/hooks"
 
 import { ReactComponent as CircleQuestionIcon } from "assets/image/icons/circle-question.svg"
 import { currencyFormatter, numberFormatter, percentageFormatter } from "hooks"
+import { AmountInput } from "components"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -38,7 +39,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     [`& h5`]: {
       textTransform: "uppercase",
     },
-    [`& h1, & h5, & h6`]: {
+    [`& h1, & h3, & h5, & h6`]: {
       color: palette.primary.main,
     },
   },
@@ -62,7 +63,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     },
   },
   highlight: {
-    color: palette.info.dark,
+    color: `${palette.info.dark} !important`,
   },
 }))
 
@@ -71,6 +72,9 @@ const MainSection: React.FC = () => {
   const dark = useIsDarkMode()
   const mobile = useMediaQuery(breakpoints.down("xs"))
   const classes = useStyles({ dark, mobile })
+
+  const token = "ETH"
+  const [amount, setAmount] = useState<number>(0)
 
   const liquidationPrice = 2.32
   const liquidationPriceAfter = 4324.67
@@ -94,6 +98,186 @@ const MainSection: React.FC = () => {
   const generate = 9
   const generateAfter = 3.42
 
+  const renderLiquidationPrice = () => (
+    <Box className={cx(classes.card)}>
+      <Box
+        display={"flex"}
+        justifyContent={"space-between"}
+        alignItems={"center"}
+        mb={"10px"}
+      >
+        <Typography component="h5" variant="h5">
+          Liquidation Price
+        </Typography>
+        <CircleQuestionIcon className={cx(classes.questionIcon)} />
+      </Box>
+      <Box mb={"15px"}>
+        <Typography component="h1" variant="h1">
+          {currencyFormatter(liquidationPrice)}
+        </Typography>
+      </Box>
+
+      <Typography component="h6" variant="h6" className={cx(classes.badge)}>
+        {currencyFormatter(liquidationPriceAfter)} after
+      </Typography>
+    </Box>
+  )
+
+  const renderBuyingPower = () => (
+    <Box className={cx(classes.card)}>
+      <Box
+        display={"flex"}
+        justifyContent={"space-between"}
+        alignItems={"center"}
+        mb={"10px"}
+      >
+        <Typography component="h5" variant="h5">
+          Buying Power
+        </Typography>
+        <CircleQuestionIcon className={cx(classes.questionIcon)} />
+      </Box>
+      <Box mb={"15px"}>
+        <Typography component="h1" variant="h1">
+          {currencyFormatter(buyingPower)}
+        </Typography>
+      </Box>
+
+      <Typography component="h6" variant="h6" className={cx(classes.badge)}>
+        {currencyFormatter(buyingPowerAfter)} after
+      </Typography>
+    </Box>
+  )
+
+  const renderCurrentPrice = () => (
+    <Box className={cx(classes.card)}>
+      <Box
+        display={"flex"}
+        justifyContent={"space-between"}
+        alignItems={"center"}
+        mb={"10px"}
+      >
+        <Typography component="h5" variant="h5">
+          Current Price
+        </Typography>
+        <CircleQuestionIcon className={cx(classes.questionIcon)} />
+      </Box>
+      <Box mb={"15px"}>
+        <Typography component="h1" variant="h1">
+          {currencyFormatter(currentPrice)}
+        </Typography>
+      </Box>
+
+      <Typography component="h6" variant="h6">
+        Next:{" "}
+        <strong className={cx(classes.highlight)}>
+          {currencyFormatter(nextPrice)}
+        </strong>{" "}
+        <small>{percentageFormatter(increasedPercent)}</small>
+      </Typography>
+    </Box>
+  )
+
+  const renderNetValue = () => (
+    <Box className={cx(classes.card)}>
+      <Box
+        display={"flex"}
+        justifyContent={"space-between"}
+        alignItems={"center"}
+        mb={"10px"}
+      >
+        <Typography component="h5" variant="h5">
+          Net Value
+        </Typography>
+        <CircleQuestionIcon className={cx(classes.questionIcon)} />
+      </Box>
+      <Box mb={"15px"}>
+        <Typography component="h1" variant="h1">
+          {currencyFormatter(netValue)}
+        </Typography>
+      </Box>
+
+      <Typography component="h6" variant="h6" className={cx(classes.badge)}>
+        {currencyFormatter(netValueAfter)} after
+      </Typography>
+    </Box>
+  )
+
+  const renderVaultStat = () => (
+    <Box className={cx(classes.card)}>
+      <Grid container>
+        <Grid item xs={12} md={4}>
+          <Typography component="h5" variant="h5">
+            Vault DAI Debt
+          </Typography>
+          <Box mb="10px" />
+          <Typography component="h6" variant="h6">
+            {numberFormatter(debt)} DAI
+          </Typography>
+          <Box mb="15px" />
+          <Typography component="h6" variant="h6" className={cx(classes.badge)}>
+            {currencyFormatter(debtAfter)} after
+          </Typography>
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <Typography component="h5" variant="h5">
+            Total ETH Exposure
+          </Typography>
+          <Box mb="10px" />
+          <Typography component="h6" variant="h6">
+            {numberFormatter(withdraw)} ETH
+          </Typography>
+          <Box mb="15px" />
+          <Typography component="h6" variant="h6" className={cx(classes.badge)}>
+            {numberFormatter(withdrawAfter)} after
+          </Typography>
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <Typography component="h5" variant="h5">
+            Multiply
+          </Typography>
+          <Box mb="10px" />
+          <Typography component="h6" variant="h6">
+            {numberFormatter(generate)}x
+          </Typography>
+          <Box mb="15px" />
+          <Typography component="h6" variant="h6" className={cx(classes.badge)}>
+            {numberFormatter(generateAfter)} after
+          </Typography>
+        </Grid>
+      </Grid>
+    </Box>
+  )
+
+  const renderConfig = () => (
+    <Box className={cx(classes.card)}>
+      <Box display="flex" justifyContent="space-between" alignItems="center">
+        <Typography component="h3" variant="h3">
+          Configure your Vault
+        </Typography>
+        <Typography
+          component="h5"
+          variant="h5"
+          className={cx(classes.highlight)}
+        >
+          1/3
+        </Typography>
+      </Box>
+      <Box mb="10px" />
+      <Typography component="h6" variant="h6">
+        Simulate your vault by configuring the amount of collateral to deposit,
+        and slide your multiply factor.
+      </Typography>
+      <Box mb="20px" />
+      <Typography component="h3" variant="h3">
+        Deposit your ETH
+      </Typography>
+      <Box mb="10px" />
+      <Box>
+        <AmountInput token={token} inputChange={setAmount} />
+      </Box>
+    </Box>
+  )
+
   return (
     <Box className={cx(classes.root)}>
       <Container>
@@ -107,177 +291,23 @@ const MainSection: React.FC = () => {
             alignItems={"stretch"}
           >
             <Grid item xs={12} md={6}>
-              <Box className={cx(classes.card)}>
-                <Box
-                  display={"flex"}
-                  justifyContent={"space-between"}
-                  alignItems={"center"}
-                  mb={"10px"}
-                >
-                  <Typography component="h5" variant="h5">
-                    Liquidation Price
-                  </Typography>
-                  <CircleQuestionIcon className={cx(classes.questionIcon)} />
-                </Box>
-                <Box mb={"15px"}>
-                  <Typography component="h1" variant="h1">
-                    {currencyFormatter(liquidationPrice)}
-                  </Typography>
-                </Box>
-
-                <Typography
-                  component="h6"
-                  variant="h6"
-                  className={cx(classes.badge)}
-                >
-                  {currencyFormatter(liquidationPriceAfter)} after
-                </Typography>
-              </Box>
+              {renderLiquidationPrice()}
             </Grid>
             <Grid item xs={12} md={6}>
-              <Box className={cx(classes.card)}>
-                <Box
-                  display={"flex"}
-                  justifyContent={"space-between"}
-                  alignItems={"center"}
-                  mb={"10px"}
-                >
-                  <Typography component="h5" variant="h5">
-                    Buying Power
-                  </Typography>
-                  <CircleQuestionIcon className={cx(classes.questionIcon)} />
-                </Box>
-                <Box mb={"15px"}>
-                  <Typography component="h1" variant="h1">
-                    {currencyFormatter(buyingPower)}
-                  </Typography>
-                </Box>
-
-                <Typography
-                  component="h6"
-                  variant="h6"
-                  className={cx(classes.badge)}
-                >
-                  {currencyFormatter(buyingPowerAfter)} after
-                </Typography>
-              </Box>
+              {renderBuyingPower()}
             </Grid>
             <Grid item xs={12} md={6}>
-              <Box className={cx(classes.card)}>
-                <Box
-                  display={"flex"}
-                  justifyContent={"space-between"}
-                  alignItems={"center"}
-                  mb={"10px"}
-                >
-                  <Typography component="h5" variant="h5">
-                    Current Price
-                  </Typography>
-                  <CircleQuestionIcon className={cx(classes.questionIcon)} />
-                </Box>
-                <Box mb={"15px"}>
-                  <Typography component="h1" variant="h1">
-                    {currencyFormatter(currentPrice)}
-                  </Typography>
-                </Box>
-
-                <Typography component="h6" variant="h6">
-                  Next:{" "}
-                  <strong className={cx(classes.highlight)}>
-                    {currencyFormatter(nextPrice)}
-                  </strong>{" "}
-                  <small>{percentageFormatter(increasedPercent)}</small>
-                </Typography>
-              </Box>
+              {renderCurrentPrice()}
             </Grid>
             <Grid item xs={12} md={6}>
-              <Box className={cx(classes.card)}>
-                <Box
-                  display={"flex"}
-                  justifyContent={"space-between"}
-                  alignItems={"center"}
-                  mb={"10px"}
-                >
-                  <Typography component="h5" variant="h5">
-                    Net Value
-                  </Typography>
-                  <CircleQuestionIcon className={cx(classes.questionIcon)} />
-                </Box>
-                <Box mb={"15px"}>
-                  <Typography component="h1" variant="h1">
-                    {currencyFormatter(netValue)}
-                  </Typography>
-                </Box>
-
-                <Typography
-                  component="h6"
-                  variant="h6"
-                  className={cx(classes.badge)}
-                >
-                  {currencyFormatter(netValueAfter)} after
-                </Typography>
-              </Box>
+              {renderNetValue()}
             </Grid>
             <Grid item xs={12}>
-              <Box className={cx(classes.card)}>
-                <Grid container>
-                  <Grid item xs={12} md={4}>
-                    <Typography component="h5" variant="h5">
-                      Vault DAI Debt
-                    </Typography>
-                    <Box mb="10px" />
-                    <Typography component="h6" variant="h6">
-                      {numberFormatter(debt)} DAI
-                    </Typography>
-                    <Box mb="15px" />
-                    <Typography
-                      component="h6"
-                      variant="h6"
-                      className={cx(classes.badge)}
-                    >
-                      {currencyFormatter(debtAfter)} after
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12} md={4}>
-                    <Typography component="h5" variant="h5">
-                      Total ETH Exposure
-                    </Typography>
-                    <Box mb="10px" />
-                    <Typography component="h6" variant="h6">
-                      {numberFormatter(withdraw)} ETH
-                    </Typography>
-                    <Box mb="15px" />
-                    <Typography
-                      component="h6"
-                      variant="h6"
-                      className={cx(classes.badge)}
-                    >
-                      {numberFormatter(withdrawAfter)} after
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12} md={4}>
-                    <Typography component="h5" variant="h5">
-                      Multiply
-                    </Typography>
-                    <Box mb="10px" />
-                    <Typography component="h6" variant="h6">
-                      {numberFormatter(generate)}x
-                    </Typography>
-                    <Box mb="15px" />
-                    <Typography
-                      component="h6"
-                      variant="h6"
-                      className={cx(classes.badge)}
-                    >
-                      {numberFormatter(generateAfter)} after
-                    </Typography>
-                  </Grid>
-                </Grid>
-              </Box>
+              {renderVaultStat()}
             </Grid>
           </Grid>
           <Grid item xs={12} md={4}>
-            <Box className={cx(classes.card)}>6</Box>
+            {renderConfig()}
           </Grid>
         </Grid>
       </Container>

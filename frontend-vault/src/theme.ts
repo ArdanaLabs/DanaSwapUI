@@ -86,7 +86,7 @@ const typography = {
     fontFamily: "Brandon Grotesque",
     fontStyle: "normal",
     fontWeight: 700,
-    fontSize: 50,
+    fontSize: 45,
 
     [breakpoints.down("xs")]: {
       fontSize: 30,
