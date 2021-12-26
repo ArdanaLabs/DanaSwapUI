@@ -5,6 +5,7 @@ import {
   Container,
   Grid,
   Typography,
+  Button,
 } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
@@ -65,6 +66,38 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   highlight: {
     color: `${palette.info.dark} !important`,
   },
+  button: {
+    borderRadius: "50px",
+    width: "100%",
+    padding: "10px",
+    background: palette.info.light,
+
+    [`& h5`]: {
+      textTransform: "capitalize",
+      color: palette.common.white,
+    },
+
+    [`&.disabled`]: {
+      background: "#AFAFAF",
+      pointerEvents: "none",
+    },
+  },
+  divider: {
+    background: palette.info.dark,
+    width: "100%",
+    height: "1px",
+    marginTop: "30px",
+    marginBottom: "30px",
+  },
+  alert: {
+    background: palette.error.light,
+    padding: "20px",
+    borderRadius: "10px",
+
+    [`& h6`]: {
+      color: `${palette.error.main} !important`,
+    },
+  },
 }))
 
 const MainSection: React.FC = () => {
@@ -72,6 +105,9 @@ const MainSection: React.FC = () => {
   const dark = useIsDarkMode()
   const mobile = useMediaQuery(breakpoints.down("xs"))
   const classes = useStyles({ dark, mobile })
+  const [errMsgs] = useState([
+    "You cannot deposit more collateral than the amount in your wallet.",
+  ])
 
   const token = "ETH"
   const [amount, setAmount] = useState<number>(0)
@@ -97,6 +133,18 @@ const MainSection: React.FC = () => {
 
   const generate = 9
   const generateAfter = 3.42
+
+  const handleGenerateDAI = () => {
+    console.log("handleGenerateDAI")
+  }
+
+  const handleSetupProxy = () => {
+    console.log("handleSetupProxy")
+  }
+
+  const handleSwitchToMultiply = () => {
+    console.log("handleSwitchToMultiply")
+  }
 
   const renderLiquidationPrice = () => (
     <Box className={cx(classes.card)}>
@@ -248,40 +296,133 @@ const MainSection: React.FC = () => {
     </Box>
   )
 
-  const renderConfig = () => (
-    <Box className={cx(classes.card)}>
-      <Box display="flex" justifyContent="space-between" alignItems="center">
+  const renderConfig = () => {
+    const renderUpdateInfo = (
+      name: string,
+      value: string,
+      tip: string = ""
+    ) => (
+      <Box
+        display={"flex"}
+        justifyContent={"space-between"}
+        alignItems={"center"}
+        mb="10px"
+      >
+        <Typography component="h5" variant="h5">
+          <small>{name}</small>
+        </Typography>
+        <Typography component="h6" variant="h6">
+          <small>
+            <b>{value}</b> {tip && tip}
+          </small>
+        </Typography>
+      </Box>
+    )
+    return (
+      <Box className={cx(classes.card)}>
+        <Box display="flex" justifyContent="space-between" alignItems="center">
+          <Typography component="h3" variant="h3">
+            Configure your Vault
+          </Typography>
+          <Typography
+            component="h5"
+            variant="h5"
+            className={cx(classes.highlight)}
+          >
+            1/3
+          </Typography>
+        </Box>
+        <Box mb="10px" />
+        <Typography component="h6" variant="h6">
+          Simulate your vault by configuring the amount of collateral to
+          deposit, and slide your multiply factor.
+        </Typography>
+        <Box mb="20px" />
         <Typography component="h3" variant="h3">
-          Configure your Vault
+          Deposit your ETH
         </Typography>
-        <Typography
-          component="h5"
-          variant="h5"
-          className={cx(classes.highlight)}
+        <Box mb="10px" />
+        <Box>
+          <AmountInput token={token} inputChange={setAmount} />
+        </Box>
+        <Box mb="20px" />
+        <Button
+          className={cx(classes.button, { disabled: true })}
+          onClick={handleGenerateDAI}
         >
-          1/3
+          <Typography component="h5" variant="h5">
+            Generate DAI with this transaction
+          </Typography>
+        </Button>
+        <Box className={cx(classes.divider)} />
+        <Typography component="h3" variant="h3">
+          Order Information
         </Typography>
+        <Box mb="10px" />
+        <Box>
+          {renderUpdateInfo(
+            `BUYING ${token}`,
+            `2.2041 ${token}`,
+            `(${currencyFormatter(10518.4)})`
+          )}
+          {renderUpdateInfo(
+            `TOTAL ${token} EXPOSURE`,
+            `0.00 ${token} → 2.2041 ${token}`
+          )}
+          {renderUpdateInfo(
+            `${token} PRICE(impact)`,
+            currencyFormatter(4784.31),
+            `(${currencyFormatter(10518.4)})`
+          )}
+          {renderUpdateInfo(`SLIPPAGE LIMIT`, percentageFormatter(0.005))}
+          {renderUpdateInfo(
+            `MULTIPLE`,
+            `${numberFormatter(0)}x → ${numberFormatter(3.22)}x`
+          )}
+          {renderUpdateInfo(
+            `OUTSTANDING DEBT`,
+            `${numberFormatter(0)} DAI → ${numberFormatter(10456.48)} DAI`
+          )}
+          {renderUpdateInfo(
+            `COLLATERAL RATIO`,
+            `${percentageFormatter(0)} → `,
+            `${percentageFormatter(1.45)}`
+          )}
+          {renderUpdateInfo(`FEES + (max gas fee)`, `${21.07} + `, `(n/a)`)}
+        </Box>
+        <Box mb="15px" />
+        <Box className={cx(classes.alert)}>
+          <Box component="ul" paddingLeft={"20px"}>
+            {errMsgs.map((msg, index) => (
+              <Typography component="h6" variant="h6">
+                <li key={index}>{msg}</li>
+              </Typography>
+            ))}
+          </Box>
+        </Box>
+        <Box mb="20px" />
+        <Button
+          className={cx(classes.button, { disabled: true })}
+          onClick={handleSetupProxy}
+        >
+          <Typography component="h5" variant="h5">
+            SETUP PROXY
+          </Typography>
+        </Button>
+        <Box className={cx(classes.divider)} />
+        <Button className={cx(classes.button)} onClick={handleSwitchToMultiply}>
+          <Typography component="h5" variant="h5">
+            SWITCH TO MULTIPLY
+          </Typography>
+        </Button>
       </Box>
-      <Box mb="10px" />
-      <Typography component="h6" variant="h6">
-        Simulate your vault by configuring the amount of collateral to deposit,
-        and slide your multiply factor.
-      </Typography>
-      <Box mb="20px" />
-      <Typography component="h3" variant="h3">
-        Deposit your ETH
-      </Typography>
-      <Box mb="10px" />
-      <Box>
-        <AmountInput token={token} inputChange={setAmount} />
-      </Box>
-    </Box>
-  )
+    )
+  }
 
   return (
     <Box className={cx(classes.root)}>
       <Container>
-        <Grid container spacing={0}>
+        <Grid container spacing={0} alignItems={"flex-start"}>
           <Grid
             item
             container
