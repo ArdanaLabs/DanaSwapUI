@@ -1,5 +1,11 @@
 import React from "react"
-import { Box, useMediaQuery, Container, Typography } from "@material-ui/core"
+import {
+  Box,
+  useMediaQuery,
+  Container,
+  Typography,
+  Grid,
+} from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
 import ReactPlayer from "react-player"
@@ -9,6 +15,7 @@ import { GradientButton } from "components/Button"
 
 import ICO_NEXT from "assets/icons/carousel-next.svg"
 import ICO_PREV from "assets/icons/carousel-prev.svg"
+import RoadMapImg from "assets/logos/roadmap.png"
 
 const heroVideo =
   "https://background.sfo3.digitaloceanspaces.com/team/output.webm"
@@ -28,7 +35,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       height: "600px",
 
       [breakpoints.down("xs")]: {
-        height: "400px",
+        height: "500px",
       },
     },
   },
@@ -51,7 +58,18 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   title: {
     lineHeight: "100%",
     color: palette.secondary.main,
-    textAlign: "center",
+  },
+
+  content: {
+    lineHeight: "25px",
+    width: "100%",
+    marginTop: "30px",
+
+    [breakpoints.down("xs")]: {
+      lineHeight: "18.4px",
+      marginTop: "15px",
+      padding: "0px 10px",
+    },
   },
 
   actionBar: {
@@ -103,14 +121,40 @@ const HeroSection: React.FC<Props> = ({ handleCarousel }) => {
         loop={true}
         muted
         width={!mobile ? "100%" : "unset"}
-        height={"500px"}
+        height={"600px"}
         playbackRate={0.3}
       />
       <Box className={cx(classes.container)}>
         <Container>
-          <Typography variant="h3" component="h3" className={cx(classes.title)}>
-            Roadmap
-          </Typography>
+          <Grid
+            container
+            spacing={2}
+            alignItems="center"
+            direction={!mobile ? "row" : "column-reverse"}
+          >
+            <Grid item xs={12} md={7}>
+              <Typography
+                variant="h3"
+                component="h3"
+                className={cx(classes.title)}
+              >
+                Roadmap
+              </Typography>
+              <Typography
+                variant="h4"
+                component="h4"
+                className={cx(classes.content)}
+              >
+                Ardana is building the first All-in-One Stablecoin Ecosystem
+                Built on Cardano. Learn more about our roadmap below.
+              </Typography>
+            </Grid>
+            <Grid item xs={12} md={5}>
+              <Box display="flex" justifyContent={"center"}>
+                <img src={RoadMapImg} alt="roadmap" width="80%" />
+              </Box>
+            </Grid>
+          </Grid>
         </Container>
 
         <Box className={cx(classes.actionBar)}>

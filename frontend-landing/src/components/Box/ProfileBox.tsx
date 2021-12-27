@@ -23,6 +23,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
     [breakpoints.down("xs")]: {
       "padding": "50px 10px 40px",
+      "transition": "all .2s",
       "&.collapsed": {
         height: "180px",
       },
