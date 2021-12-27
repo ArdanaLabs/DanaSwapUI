@@ -26,7 +26,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
         fontFamily: "Brandon Grotesque",
         fontSize: "20px",
         lineHeight: "36px",
-        color: palette.text.secondary,
+        color: palette.secondary.main,
         marginBottom: "12px",
         fontWeight: 900,
 
@@ -69,7 +69,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   title: {
-    color: palette.text.secondary,
+    color: palette.secondary.main,
     fontFamily: "Brandon Grotesque",
     fontWeight: 900,
     fontSize: "32px",
@@ -149,7 +149,8 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       "width": "280px",
 
       "& > .link:hover path": {
-        fill: palette.text.secondary,
+        fill: palette.secondary.main,
+        transition: "all .2s",
       },
 
       "& > .link svg": {

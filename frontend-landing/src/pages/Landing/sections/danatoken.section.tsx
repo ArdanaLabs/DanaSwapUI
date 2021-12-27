@@ -1,8 +1,7 @@
 import React from "react"
-import { Box, useMediaQuery, Container } from "@material-ui/core"
+import { Box, useMediaQuery, Container, Typography } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
-import ScrollAnimation from "react-animate-on-scroll"
 
 import { useIsDarkMode } from "state/user/hooks"
 
@@ -35,29 +34,18 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   title: {
-    fontFamily: "Brandon Grotesque",
-    fontStyle: "normal",
-    fontWeight: 900,
-    fontSize: "60px",
+    color: palette.secondary.main,
     lineHeight: "100%",
-    color: palette.text.secondary,
 
     [breakpoints.down("xs")]: {
       paddingTop: "200px",
-      fontSize: "35px",
     },
   },
 
   content: {
-    fontFamily: "Museo Sans",
-    fontStyle: "normal",
-    fontWeight: 300,
-    fontSize: "16px",
     lineHeight: "26px",
-    color: palette.text.primary,
 
     [breakpoints.down("xs")]: {
-      fontSize: "16px",
       lineHeight: "18.4px",
     },
   },
@@ -85,29 +73,25 @@ const DanaswapSection: React.FC = () => {
   return (
     <Box className={cx(classes.root)}>
       <Container maxWidth="md">
-        <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-          <Box className={cx(classes.title)}>DANA Token</Box>
-        </ScrollAnimation>
+        <Typography variant="h3" component="h3" className={cx(classes.title)}>
+          DANA Token
+        </Typography>
         <Box mt="20px" />
-        <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-          <Box className={cx(classes.content)}>
-            The DANA token is the utility and governance token of the Ardana
-            ecosystem which rewards holders with profits from Ardana and allows
-            those who hold it to vote on changes to the project’s parameters.
-          </Box>
-        </ScrollAnimation>
+        <Typography variant="h4" component="h4" className={cx(classes.content)}>
+          The DANA token is the utility and governance token of the Ardana
+          ecosystem which rewards holders with profits from Ardana and allows
+          those who hold it to vote on changes to the project’s parameters.
+        </Typography>
         <Box mt="20px" />
-        <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-          <Box display="flex" justifyContent="center">
-            {/* <coingecko-coin-ticker-widget
+        <Box display="flex" justifyContent="center">
+          {/* <coingecko-coin-ticker-widget
               coin-id="ardana"
               currency="usd"
               locale="en"
               background-color="#3d40eb"
               width="300"
             /> */}
-          </Box>
-        </ScrollAnimation>
+        </Box>
       </Container>
     </Box>
   )

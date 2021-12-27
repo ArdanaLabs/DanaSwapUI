@@ -1,4 +1,3 @@
-import i18next from "i18next"
 import { ProfileType } from "components/Box/ProfileBox"
 import { ReactComponent as TwitterIcon } from "assets/icons/twitter.svg"
 import { ReactComponent as DiscordIcon } from "assets/icons/discord.svg"
@@ -9,29 +8,29 @@ import { ReactComponent as LinkedinIcon } from "assets/icons/linkedin.svg"
 
 export const Menus = [
   {
-    label: i18next.t("PAGE.LANDING.HEADER.LINKS.0"),
+    label: "Home",
     to: "/",
   },
   {
-    label: i18next.t("PAGE.LANDING.HEADER.LINKS.1"),
+    label: "Technology",
     to: "/tech",
   },
   {
-    label: i18next.t("PAGE.LANDING.HEADER.LINKS.2"),
+    label: "Documentation",
     to: "https://docs.ardana.org/",
     blank: true,
   },
   {
-    label: i18next.t("PAGE.LANDING.HEADER.LINKS.3"),
+    label: "Roadmap",
     // to: "https://faceted-wash-97d.notion.site/cb0d147034e6439f8e70b2698ce199f2?v=fbf6185ab5f143eb9e22064fd9647814",
     to: "/roadmap",
   },
   {
-    label: i18next.t("PAGE.LANDING.HEADER.LINKS.4"),
+    label: "Team",
     to: "/team",
   },
   {
-    label: i18next.t("PAGE.LANDING.HEADER.LINKS.5"),
+    label: "Blog",
     to: "https://medium.com/ardana-hub",
     blank: true,
   },
@@ -40,51 +39,51 @@ export const Menus = [
 export const ArdanaFeatures = [
   {
     image: require("assets/logos/fully-decentralized.png").default,
-    title: i18next.t("PAGE.LANDING.ARDANA.FEATURES.0.TITLE"),
-    content: i18next.t("PAGE.LANDING.ARDANA.FEATURES.0.CONTENT"),
+    title: "Fully\nDecentralized",
+    content: "Unbiased, collateral backed and pegged to the US Dollar.",
   },
   {
     image: require("assets/logos/borrowing.png").default,
-    title: i18next.t("PAGE.LANDING.ARDANA.FEATURES.1.TITLE"),
-    content: i18next.t("PAGE.LANDING.ARDANA.FEATURES.1.CONTENT"),
+    title: "Borrowing",
+    content: "Allows users to borrow stablecoins against locked collateral.",
   },
   {
     image: require("assets/logos/store-of-value.png").default,
-    title: i18next.t("PAGE.LANDING.ARDANA.FEATURES.2.TITLE"),
-    content: i18next.t("PAGE.LANDING.ARDANA.FEATURES.2.CONTENT"),
+    title: "Store of\nValue",
+    content: "Secure store of value preserving value even in volatile markets.",
   },
   {
     image: require("assets/logos/powered-by-cardano.png").default,
-    title: i18next.t("PAGE.LANDING.ARDANA.FEATURES.3.TITLE"),
-    content: i18next.t("PAGE.LANDING.ARDANA.FEATURES.3.CONTENT"),
+    title: "Powered by\nCardano",
+    content: "Built utilizing Cardano’s speed, scalability and security.",
   },
 ]
 
 export const DanaSwapFeatures = [
   {
     image: require("assets/logos/ultra-low-slippage.png").default,
-    title: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.0.TITLE"),
-    content: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.0.CONTENT"),
+    title: "Ultra-low Slippage",
+    content: "Swap between stablecoins and stable assets such as wrapped/synthetic Bitcoin with minimal slippage.",
   },
   {
     image: require("assets/logos/earn-trading-fees.png").default,
-    title: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.1.TITLE"),
-    content: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.1.CONTENT"),
+    title: "Earn Trading Fees",
+    content: "Deposit your assets into a DanaSwap pool and earn a proportion of the market making fees.",
   },
   {
     image: require("assets/logos/foreign-exchange.png").default,
-    title: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.2.TITLE"),
-    content: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.2.CONTENT"),
+    title: "Foreign Exchange",
+    content: "Swap between international stablecoins such as dUSD, dEUR, dGBP and more.",
   },
   {
     image: require("assets/logos/dana-token.png").default,
-    title: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.3.TITLE"),
-    content: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.3.CONTENT"),
+    title: "DANA Token",
+    content: "The governance token rewarded to users for supporting the ecosystem through liquidity provision.",
   },
   {
     image: require("assets/logos/governance.png").default,
-    title: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.4.TITLE"),
-    content: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.4.CONTENT"),
+    title: "Governance",
+    content: "DANA token holders can participate in polling and voting to influence the development of Ardana.",
   },
 ]
 

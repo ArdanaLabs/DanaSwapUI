@@ -1,8 +1,7 @@
 import React from "react"
-import { Box, useMediaQuery, Container } from "@material-ui/core"
+import { Box, useMediaQuery, Container, Typography } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
-import i18next from "i18next"
 import ReactPlayer from "react-player"
 
 import { useIsDarkMode } from "state/user/hooks"
@@ -50,16 +49,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     },
   },
   title: {
-    fontFamily: "Brandon Grotesque",
-    fontStyle: "normal",
-    fontWeight: 900,
-    fontSize: "60px",
     lineHeight: "100%",
-    color: palette.text.secondary,
-
-    [breakpoints.down("xs")]: {
-      fontSize: "35px",
-    },
+    color: palette.secondary.main,
+    textAlign: "center",
   },
 
   actionBar: {
@@ -116,9 +108,9 @@ const HeroSection: React.FC<Props> = ({ handleCarousel }) => {
       />
       <Box className={cx(classes.container)}>
         <Container>
-          <Box className={cx(classes.title)} textAlign={"center"}>
-            {i18next.t("PAGE.LANDING.ROADMAP.TITLE")}
-          </Box>
+          <Typography variant="h3" component="h3" className={cx(classes.title)}>
+            Roadmap
+          </Typography>
         </Container>
 
         <Box className={cx(classes.actionBar)}>

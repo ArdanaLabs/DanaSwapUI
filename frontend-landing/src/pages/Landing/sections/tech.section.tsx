@@ -1,8 +1,13 @@
 import React, { useRef } from "react"
-import { Box, useMediaQuery, Container, Grid } from "@material-ui/core"
+import {
+  Box,
+  useMediaQuery,
+  Typography,
+  Container,
+  Grid,
+} from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
-import ScrollAnimation from "react-animate-on-scroll"
 import Carousel from "react-elastic-carousel"
 
 import { useIsDarkMode } from "state/user/hooks"
@@ -28,36 +33,21 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   title: {
-    fontFamily: "Brandon Grotesque",
-    fontStyle: "normal",
-    fontWeight: 900,
-    fontSize: "60px",
+    color: palette.secondary.main,
     lineHeight: "100%",
-    color: palette.text.secondary,
-
-    [breakpoints.down("xs")]: {
-      fontSize: "35px",
-    },
   },
 
   content: {
-    fontFamily: "Museo Sans",
-    fontStyle: "normal",
-    fontWeight: 300,
-    fontSize: "16px",
     lineHeight: "25px",
-    color: palette.text.primary,
     marginTop: "30px",
 
     [breakpoints.down("xs")]: {
-      fontSize: "16px",
       lineHeight: "18.4px",
       marginTop: "15px",
       padding: "0 50px 50px",
     },
   },
 
-  carousel: {},
   carouselAction: {
     display: "flex",
     justifyContent: "right",
@@ -115,21 +105,26 @@ const TechSection: React.FC = () => {
       <Container>
         <Grid container spacing={0} alignItems="flex-start">
           <Grid item xs={12} sm={3} md={4}>
-            <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-              <Box className={cx(classes.title)}>Explore</Box>
-            </ScrollAnimation>
-            <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-              <Box className={cx(classes.content)}>
-                Browse through our technical papers to learn more about the
-                Ardana ecosystem.
-              </Box>
-            </ScrollAnimation>
+            <Typography
+              variant="h3"
+              component="h3"
+              className={cx(classes.title)}
+            >
+              Explore
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h4"
+              className={cx(classes.content)}
+            >
+              Browse through our technical papers to learn more about the Ardana
+              ecosystem.
+            </Typography>
           </Grid>
 
           <Grid item xs={12} sm={9} md={8}>
             <Carousel
               ref={(ref) => (carouselRef.current = ref)}
-              className={cx(classes.carousel)}
               itemsToShow={!mobile ? 2 : 1}
               isRTL={false}
               itemPadding={!mobile ? [0, 20] : [0, 10]}

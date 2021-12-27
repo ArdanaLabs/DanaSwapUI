@@ -1,10 +1,14 @@
 import React, { useRef } from "react"
-import { Box, useMediaQuery, Container, Grid } from "@material-ui/core"
+import {
+  Box,
+  useMediaQuery,
+  Container,
+  Grid,
+  Typography,
+} from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
-import ScrollAnimation from "react-animate-on-scroll"
 import Carousel from "react-elastic-carousel"
-import i18next from "i18next"
 
 import { useIsDarkMode } from "state/user/hooks"
 import { GradientButton } from "components/Button"
@@ -24,30 +28,13 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       textAlign: "center",
     },
   },
-
   title: {
-    fontFamily: "Brandon Grotesque",
-    fontStyle: "normal",
-    fontWeight: 900,
-    fontSize: "60px",
-    lineHeight: "100%",
-    color: palette.text.secondary,
-
-    [breakpoints.down("xs")]: {
-      fontSize: "35px",
-    },
+    color: palette.secondary.main,
   },
-
   content: {
-    fontFamily: "Museo Sans",
-    fontStyle: "normal",
-    fontWeight: 300,
-    fontSize: "16px",
     lineHeight: "26px",
-    color: palette.text.primary,
 
     [breakpoints.down("xs")]: {
-      fontSize: "16px",
       lineHeight: "18.4px",
     },
   },
@@ -120,21 +107,26 @@ const DanaswapSection: React.FC = () => {
         <Grid container alignItems="center" spacing={3}>
           <Grid item xs={12} sm={6}>
             <Box>
-              <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-                <Box className={cx(classes.title)}>
-                  {i18next.t("PAGE.LANDING.DANASWAP.TITLE")}
-                </Box>
-              </ScrollAnimation>
+              <Typography
+                component="h3"
+                variant="h3"
+                className={cx(classes.title)}
+              >
+                Danaswap
+              </Typography>
               <Box mt="20px" />
-              <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-                <Box className={cx(classes.content)}>
-                  {i18next.t("PAGE.LANDING.DANASWAP.CONTENT")}
-                </Box>
-              </ScrollAnimation>
+              <Typography
+                component="h4"
+                variant="h4"
+                className={cx(classes.content)}
+              >
+                An automated market maker (AMM) decentralized exchange for
+                stable multi-asset pools. Danaswap is highly capital efficient
+                enabling swaps with minimal slippage while providing low-risk
+                yield opportunities for liquidity providers.
+              </Typography>
               <Box mt={!mobile ? "50px" : "30px"} />
-              <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-                <GradientButton label={"COMING SOON"} width={160} height={40} />
-              </ScrollAnimation>
+              <GradientButton label={"COMING SOON"} width={160} height={40} />
             </Box>
           </Grid>
 

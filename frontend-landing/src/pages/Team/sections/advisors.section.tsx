@@ -27,7 +27,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontWeight: "bold",
     fontSize: "60px",
     lineHeight: "100%",
-    color: palette.text.secondary,
+    color: palette.secondary.main,
     textAlign: "center",
     margin: "30px 0 100px",
 
