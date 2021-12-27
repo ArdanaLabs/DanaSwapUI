@@ -34,11 +34,14 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   title: {
-    color: palette.secondary.main,
     lineHeight: "100%",
 
     [breakpoints.down("xs")]: {
       paddingTop: "200px",
+    },
+
+    [`& span`]: {
+      color: palette.secondary.main,
     },
   },
 
@@ -74,7 +77,7 @@ const DanaswapSection: React.FC = () => {
     <Box className={cx(classes.root)}>
       <Container maxWidth="md">
         <Typography variant="h3" component="h3" className={cx(classes.title)}>
-          DANA Token
+          <span>DANA</span> Tokens
         </Typography>
         <Box mt="20px" />
         <Typography variant="h4" component="h4" className={cx(classes.content)}>

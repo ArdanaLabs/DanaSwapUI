@@ -38,22 +38,22 @@ export const Menus = [
 
 export const ArdanaFeatures = [
   {
-    image: require("assets/logos/fully-decentralized.png").default,
+    image: require("assets/logos/fully-decentralized.png"),
     title: "Fully\nDecentralized",
     content: "Unbiased, collateral backed and pegged to the US Dollar.",
   },
   {
-    image: require("assets/logos/borrowing.png").default,
+    image: require("assets/logos/borrowing.png"),
     title: "Borrowing",
     content: "Allows users to borrow stablecoins against locked collateral.",
   },
   {
-    image: require("assets/logos/store-of-value.png").default,
+    image: require("assets/logos/store-of-value.png"),
     title: "Store of\nValue",
     content: "Secure store of value preserving value even in volatile markets.",
   },
   {
-    image: require("assets/logos/powered-by-cardano.png").default,
+    image: require("assets/logos/powered-by-cardano.png"),
     title: "Powered by\nCardano",
     content: "Built utilizing Cardano’s speed, scalability and security.",
   },
@@ -61,35 +61,40 @@ export const ArdanaFeatures = [
 
 export const DanaSwapFeatures = [
   {
-    image: require("assets/logos/ultra-low-slippage.png").default,
+    image: require("assets/logos/ultra-low-slippage.png"),
     title: "Ultra-low Slippage",
-    content: "Swap between stablecoins and stable assets such as wrapped/synthetic Bitcoin with minimal slippage.",
+    content:
+      "Swap between stablecoins and stable assets such as wrapped/synthetic Bitcoin with minimal slippage.",
   },
   {
-    image: require("assets/logos/earn-trading-fees.png").default,
+    image: require("assets/logos/earn-trading-fees.png"),
     title: "Earn Trading Fees",
-    content: "Deposit your assets into a DanaSwap pool and earn a proportion of the market making fees.",
+    content:
+      "Deposit your assets into a DanaSwap pool and earn a proportion of the market making fees.",
   },
   {
-    image: require("assets/logos/foreign-exchange.png").default,
+    image: require("assets/logos/foreign-exchange.png"),
     title: "Foreign Exchange",
-    content: "Swap between international stablecoins such as dUSD, dEUR, dGBP and more.",
+    content:
+      "Swap between international stablecoins such as dUSD, dEUR, dGBP and more.",
   },
   {
-    image: require("assets/logos/dana-token.png").default,
+    image: require("assets/logos/dana-token.png"),
     title: "DANA Token",
-    content: "The governance token rewarded to users for supporting the ecosystem through liquidity provision.",
+    content:
+      "The governance token rewarded to users for supporting the ecosystem through liquidity provision.",
   },
   {
-    image: require("assets/logos/governance.png").default,
+    image: require("assets/logos/governance.png"),
     title: "Governance",
-    content: "DANA token holders can participate in polling and voting to influence the development of Ardana.",
+    content:
+      "DANA token holders can participate in polling and voting to influence the development of Ardana.",
   },
 ]
 
 export const Members: ProfileType[] = [
   {
-    avatar: require("assets/avatars/RyanMatovu.png").default,
+    avatar: require("assets/avatars/RyanMatovu.png"),
     name: "Ryan Matovu",
     role: "Founder",
     info: `Serial entrepreneur in B2B/B2C sales and e-commerce.\n\nLeadership positions in various Ethereum based projects.`,
@@ -99,7 +104,7 @@ export const Members: ProfileType[] = [
     },
   },
   {
-    avatar: require("assets/avatars/IssacShapira.png").default,
+    avatar: require("assets/avatars/IssacShapira.png"),
     name: "Isaac Shapira",
     role: "Chief Technology Officer",
     info: `Founder of Platonic.Systems, a lead functional programming firm.\n\nSenior software developer roles at various leading tech firms.`,
@@ -109,14 +114,14 @@ export const Members: ProfileType[] = [
     },
   },
   {
-    avatar: require("assets/avatars/DerekEvans.png").default,
+    avatar: require("assets/avatars/DerekEvans.png"),
     name: "Derek Evans",
     role: "Chief Operating Officer",
     info: `20+ years in software leading business and government projects.\n\nPrivate trader and fund manager in the financial derivatives market.`,
     socials: {},
   },
   {
-    avatar: require("assets/avatars/BassamAwad.png").default,
+    avatar: require("assets/avatars/BassamAwad.png"),
     name: "Bassam Awad, PhD",
     role: "Chief Economist",
     info: `Senior Economist and Head of Risk at the <strong>Central Bank of Jordan.</strong>\n\nMultiple peer-reviewed papers on macro/computational economics.`,
@@ -125,14 +130,14 @@ export const Members: ProfileType[] = [
     },
   },
   {
-    avatar: require("assets/avatars/ScottFranklin.png").default,
+    avatar: require("assets/avatars/ScottFranklin.png"),
     name: "Scott Franklin",
     role: "Head of Strategy",
     info: `20+ years experience in equity markets on Wall Street.\n\nCapital raising and advisor to multiple blockchain projects.`,
     socials: {},
   },
   {
-    avatar: require("assets/avatars/NeilTionson.png").default,
+    avatar: require("assets/avatars/NeilTionson.png"),
     name: "Neil Tionson",
     role: "Head of Design",
     info: `Marketing coordinator for Five Group Pty Ltd.\n\nWorked with brands such as Cadbury, San Remo.`,
@@ -142,7 +147,7 @@ export const Members: ProfileType[] = [
     },
   },
   {
-    avatar: require("assets/avatars/ChetanBafna.png").default,
+    avatar: require("assets/avatars/ChetanBafna.png"),
     name: "Chetan Bafna",
     role: "Head of Outreach",
     info: `Fundraising facilitator to multiple blockchain projects.\n\nLeadership positions in multiple philanthropic organisations.`,
@@ -151,7 +156,7 @@ export const Members: ProfileType[] = [
     },
   },
   {
-    avatar: require("assets/avatars/MorganThomas.png").default,
+    avatar: require("assets/avatars/MorganThomas.png"),
     name: "Morgan Thomas",
     role: "Blockchain Developer",
     info: `Platonic Systems functional programming tech consultant.\n\nDeveloped algorithmic trading systems using Haskell.`,
@@ -161,7 +166,7 @@ export const Members: ProfileType[] = [
     },
   },
   {
-    avatar: require("assets/avatars/NicVanDenBroeck.png").default,
+    avatar: require("assets/avatars/NicVanDenBroeck.png"),
     name: "Nick Van den Broeck",
     role: "Blockchain Developer",
     info: `Masters degree in Theoretical Physics and research intern at <strong>CERN</strong>.\n\nFounder of Tailer AI, bringing AI to the chemical/brewing industries.`,
@@ -171,7 +176,7 @@ export const Members: ProfileType[] = [
     },
   },
   {
-    avatar: require("assets/avatars/GregorySantini.png").default,
+    avatar: require("assets/avatars/GregorySantini.png"),
     name: "Gregory Santini",
     role: "Front-end Developer",
     info: `Senior front-end developer for <strong>Apple</strong> and Evernote.\n\nExperienced web developer and Solidity developer.`,
@@ -181,7 +186,7 @@ export const Members: ProfileType[] = [
     },
   },
   {
-    avatar: require("assets/avatars/MarcinBugaj.png").default,
+    avatar: require("assets/avatars/MarcinBugaj.png"),
     name: "Marcin Bugaj",
     role: "Blockchain Developer",
     info: `Senior software developer for <strong>Logitech</strong> and Motorola Solutions.\n\nDesign and implementation of Robotic Process Automation (RPA).`,
@@ -191,7 +196,7 @@ export const Members: ProfileType[] = [
     },
   },
   {
-    avatar: require("assets/avatars/JaimeCasoOnzain.png").default,
+    avatar: require("assets/avatars/JaimeCasoOnzain.png"),
     name: "Jamie Caso Onzain",
     role: "Blockchain Developer",
     info: `<strong>Cardano</strong> ambassador and Cardano stake pool operator.\n\nGenesis Founding Member and tester for <strong>Mina Protocol.</strong>`,
@@ -201,7 +206,7 @@ export const Members: ProfileType[] = [
     },
   },
   {
-    avatar: require("assets/avatars/AndrzejSwatowski.png").default,
+    avatar: require("assets/avatars/AndrzejSwatowski.png"),
     name: "Andrzej Swatowski",
     role: "Blockchain Developer",
     info: `Game developer in Unity working on AI,UI and gameplay elements.\n\nMasters Degree in Computer Science from the University of Warsaw.`,
@@ -211,7 +216,7 @@ export const Members: ProfileType[] = [
     },
   },
   {
-    avatar: require("assets/avatars/OlegPrutz.png").default,
+    avatar: require("assets/avatars/OlegPrutz.png"),
     name: "Oleg Prutz",
     role: "Blockchain Developer",
     info: `Data Scientist for Genesys AI ‘Experience as a Service’ company.\n\nExperienced functional programmer and Kaggle competitor.`,
@@ -221,7 +226,7 @@ export const Members: ProfileType[] = [
     },
   },
   {
-    avatar: require("assets/avatars/EmmaDwyer.png").default,
+    avatar: require("assets/avatars/EmmaDwyer.png"),
     name: "Emma Dwyer",
     role: "Writer",
     info: `Risk analyst at <strong>Citi bank</strong> and AML analyst at <strong>State Street.</strong>\n\n7+ years experience in investment banking and wealth management.`,
@@ -231,14 +236,14 @@ export const Members: ProfileType[] = [
     },
   },
   {
-    avatar: require("assets/avatars/NoamDavidElbaz.png").default,
+    avatar: require("assets/avatars/NoamDavidElbaz.png"),
     name: "Noam David Elbaz",
     role: "Researcher",
     info: `Crypto portfolio management and DeFi enthusiast.`,
     socials: {},
   },
   {
-    avatar: require("assets/avatars/EdenOvadia.png").default,
+    avatar: require("assets/avatars/EdenOvadia.png"),
     name: "Eden Ovadia",
     role: "Intern",
     info: `Full stack software engineer for <strong>Microsoft.</strong>\n\nSoftware and programming, problems solving skills and attention to details.`,
@@ -248,7 +253,7 @@ export const Members: ProfileType[] = [
     },
   },
   {
-    avatar: require("assets/avatars/GregNwosu.png").default,
+    avatar: require("assets/avatars/GregNwosu.png"),
     name: "Greg Nwosu",
     role: "Intern",
     info: `Big Data and infrastructure engineer for <strong>Barclays</strong> and RBS.\n\nSenior Java developer for <strong>IG Index</strong> online exchange.`,
@@ -261,7 +266,7 @@ export const Members: ProfileType[] = [
 
 export const Advisors: ProfileType[] = [
   {
-    avatar: require("assets/avatars/JohnOConnor.png").default,
+    avatar: require("assets/avatars/JohnOConnor.png"),
     name: "John O'Connor",
     role: "Cardano",
     info: `Director of <strong>IOHK</strong> leading operations and projects in Africa.\n\nFormer Head of Strategy/Comms for <strong>Cardano Foundation.</strong>`,
@@ -270,7 +275,7 @@ export const Advisors: ProfileType[] = [
     },
   },
   {
-    avatar: require("assets/avatars/ShunsukeMurasaki.png").default,
+    avatar: require("assets/avatars/ShunsukeMurasaki.png"),
     name: "Shunsuke Murasaki",
     role: "Emurgo",
     info: `Chief executive officer for <strong>EMURGO</strong> Indonesia.\n\n7+ years experience in Asian markets in B2B overseas sales.`,
@@ -279,7 +284,7 @@ export const Advisors: ProfileType[] = [
     },
   },
   {
-    avatar: require("assets/avatars/DarrenCamas.png").default,
+    avatar: require("assets/avatars/DarrenCamas.png"),
     name: "Darren Camas",
     role: "Cardano",
     info: `Former senior advisor to <strong>Emurgo</strong> and strategy consultant for <strong>IOHK.</strong>\n\nFounder of IPOR Labs, blockchain based derivatives software.`,
@@ -288,7 +293,7 @@ export const Advisors: ProfileType[] = [
     },
   },
   {
-    avatar: require("assets/avatars/PedroBatista.png").default,
+    avatar: require("assets/avatars/PedroBatista.png"),
     name: "Pedro Batista",
     role: "CBDC",
     info: `<strong>UK Bank of England</strong> review for Central Bank Digital Currencies.\n\nGlobal Head of Payments/Banking for various financial institutions.`,
@@ -297,7 +302,7 @@ export const Advisors: ProfileType[] = [
     },
   },
   {
-    avatar: require("assets/avatars/JoeriVanGeelen.png").default,
+    avatar: require("assets/avatars/JoeriVanGeelen.png"),
     name: "Joeri Van Geelen",
     role: "Economics",
     info: `Business advisor at <strong>Prysm Group</strong> DLT economic consulting firm.\n\nBusiness Development advisor at Minterest cross-chain protocol.`,
@@ -306,7 +311,7 @@ export const Advisors: ProfileType[] = [
     },
   },
   // {
-  //   avatar: require("assets/avatars/YosefShaftal.png").default,
+  //   avatar: require("assets/avatars/YosefShaftal.png"),
   //   name: "Yosef Shaftal",
   //   role: "Business",
   //   info: `Executive director of the <strong>Israeli Blockchain Association.</strong>\n\nStrategic advisor to startups, corporations and governments.`,
@@ -315,7 +320,7 @@ export const Advisors: ProfileType[] = [
   //   },
   // },
   // {
-  //   avatar: require("assets/avatars/JDGagnon.png").default,
+  //   avatar: require("assets/avatars/JDGagnon.png"),
   //   name: "JD Gagnon",
   //   role: "DeFi",
   //   info: `Founder of <strong>Benqi</strong>, liquidity market protocol on Avalanche.\nDivision director at IG Wealth Management.`,
@@ -324,7 +329,7 @@ export const Advisors: ProfileType[] = [
   //   },
   // },
   {
-    avatar: require("assets/avatars/CalEvans.png").default,
+    avatar: require("assets/avatars/CalEvans.png"),
     name: "Cal Evans",
     role: "Legal",
     info: `Cryptocurrency compliance expert with 50+ ICO/STO contributions.\n\n<strong>British Blockchain Association</strong> board member.`,
@@ -333,7 +338,7 @@ export const Advisors: ProfileType[] = [
     },
   },
   {
-    avatar: require("assets/avatars/JoaoSantos.png").default,
+    avatar: require("assets/avatars/JoaoSantos.png"),
     name: "Joao Santos",
     role: "Venture Capital",
     info: `Senior Principal at Mustard Seed Maze venture capital fund.\n\nMentor at the Catolica Lisbon School of Business and Economics.`,
@@ -504,12 +509,12 @@ export const TechnicalPapers = [
   {
     title: "eUTXO Models",
     link: "https://docsend.com/view/d2g9qajrb4w23eyq",
-    image: require("assets/papers/eUTXOModels.png").default,
+    image: require("assets/papers/eUTXOModels.png"),
   },
   {
     title: "Danaswap\nTechnical Paper",
     link: "https://docsend.com/view/v4w3muusi6im3ay2",
-    image: require("assets/papers/DanaswapTechnicalPaper.png").default,
+    image: require("assets/papers/DanaswapTechnicalPaper.png"),
   },
 ]
 
@@ -561,5 +566,5 @@ export const Roadmap = {
     "Fiat Gateways",
     "Institutional Platform Development",
     "Liquidity Incentives Program",
-  ]
+  ],
 }
