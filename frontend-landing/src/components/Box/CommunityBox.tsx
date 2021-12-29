@@ -27,7 +27,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     textAlign: "center",
     background: palette.background.paper,
     borderRadius: "10px",
-    height: "calc(100% - 140px)", //  marginTop + marginBottom
+    height: "calc(100% - 140px)", // 100% - (marginTop + marginBottom)
   },
 
   title: {
@@ -64,8 +64,8 @@ const CommunityBox: React.FC<CommunityBoxProps> = ({
   return (
     <Box className={cx(classes.root)}>
       <Box className={cx(classes.image)}>
-        <GradientBox width={150} height={150}>
-          <img src={image} alt="" />
+        <GradientBox width={!mobile ? 150 : 100} height={!mobile ? 150 : 100}>
+          <img src={image} alt="" width={!mobile ? "auto" : "80px"} />
         </GradientBox>
       </Box>
       <Typography component="h5" variant="h5" className={cx(classes.title)}>

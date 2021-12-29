@@ -635,3 +635,66 @@ export const NewsOnMediumList = [
     link: "/",
   },
 ]
+
+export const TelegramChannelList = [
+  {
+    country: "Chinese",
+    flag: require("assets/telegramchannels/flags/chinese.svg").default,
+    link: "/",
+  },
+  {
+    country: "German",
+    flag: require("assets/telegramchannels/flags/german.svg").default,
+    link: "/",
+  },
+  {
+    country: "Indonesian",
+    flag: require("assets/telegramchannels/flags/indonesian.svg").default,
+    link: "/",
+  },
+  {
+    country: "Italian",
+    flag: require("assets/telegramchannels/flags/italian.svg").default,
+    link: "/",
+  },
+  {
+    country: "Japanese",
+    flag: require("assets/telegramchannels/flags/japanese.svg").default,
+    link: "/",
+  },
+  {
+    country: "Korean",
+    flag: require("assets/telegramchannels/flags/southkorea.svg").default,
+    link: "/",
+  },
+  {
+    country: "Portuguese",
+    flag: require("assets/telegramchannels/flags/portuguese.svg").default,
+    link: "/",
+  },
+  {
+    country: "Russian",
+    flag: require("assets/telegramchannels/flags/russian.svg").default,
+    link: "/",
+  },
+  {
+    country: "Spanish",
+    flag: require("assets/telegramchannels/flags/spanish.svg").default,
+    link: "/",
+  },
+  {
+    country: "Thai",
+    flag: require("assets/telegramchannels/flags/thai.svg").default,
+    link: "/",
+  },
+  {
+    country: "Turkish",
+    flag: require("assets/telegramchannels/flags/turkish.svg").default,
+    link: "/",
+  },
+  {
+    country: "Vietnamese",
+    flag: require("assets/telegramchannels/flags/vietnamese.svg").default,
+    link: "/",
+  },
+]

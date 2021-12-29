@@ -18,6 +18,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
     paddingTop: "150px",
     paddingBottom: "150px",
+    [breakpoints.down("xs")]: {
+      paddingTop: "100px",
+      paddingBottom: "100px",
+    },
   },
   title: {
     color: palette.secondary.main,
@@ -40,11 +44,12 @@ const HeroSection: React.FC = () => {
               spacing={3}
               direction={!mobile ? "row" : "column-reverse"}
             >
-              <Grid item xs={12} md={6}>
+              <Grid item container xs={12} md={6}>
                 <Box
                   display="flex"
                   flexDirection="column"
                   justifyContent={"center"}
+                  textAlign={!mobile ? "start" : "center"}
                 >
                   <Typography
                     component="h3"
@@ -59,7 +64,9 @@ const HeroSection: React.FC = () => {
                     with Ardana followers all throughout the globe.
                   </Typography>
                   <Box mb="30px" />
-                  <SocialBar />
+                  <Box px={!mobile ? "0px" : "20px"}>
+                    <SocialBar />
+                  </Box>
                 </Box>
               </Grid>
               <Grid item xs={12} md={6}>
@@ -69,7 +76,6 @@ const HeroSection: React.FC = () => {
               </Grid>
             </Grid>
           </Grid>
-
           <Grid item container xs={12} md={9} spacing={3} alignItems="stretch">
             {CommunityList.map((community) => (
               <Grid item key={community.title} xs={12} md={4}>
