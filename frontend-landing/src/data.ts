@@ -568,3 +568,33 @@ export const Roadmap = {
     "Liquidity Incentives Program",
   ],
 }
+
+export const NewsList = [
+  {
+    image: require("assets/news/ASPA_PARTNER_FOCUS_8.png"),
+    title:
+      "ASPA Partner Focus #8 — Announcing the Latest Stake Pool Operators Partnering with Ardana",
+    content:
+      "Welcome to the eighth edition of our ASPA Partner Focus series. We have interviewed the latest new joiners and would like to share their mission and Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum",
+    date: "December 16, 2021",
+    link: "/",
+  },
+  {
+    image: require("assets/news/ASPA_PARTNER_FOCUS_6.png"),
+    title:
+      "ASPA Partner Focus #6 — Announcing the Latest Stake Pool Operators Partnering with Ardana",
+    content:
+      "Please join us in welcoming the latest ASPA joiners to Ardana! We sat down and interviewed each stake pool to find out their mission and goals, who they are as Lorem Lorem Lorem Lorem Lorem Lorem",
+    date: "December 5, 2021",
+    link: "/",
+  },
+  {
+    image: require("assets/news/ASPA_PARTNER_FOCUS_7.png"),
+    title:
+      "ASPA Partner Focus #7 — Announcing the Latest Stake Pool Operators Partnering with Ardana",
+    content:
+      "In the seventh edition of our ASPA Partner Focus series, we welcome the latest ASPA joiners to Ardana! ASPA applications are now closed! We sat down and Lorem Lorem Lorem ",
+    date: "December 9, 2021",
+    link: "/",
+  },
+]

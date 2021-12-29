@@ -14,6 +14,7 @@ import {
   TechSection,
   RoadMapSection,
   CommunitySection,
+  NewsSection,
 } from "./sections"
 
 import BG_PURPLE_GRADIENT from "assets/backgrounds/pink-gradient.png"
@@ -43,6 +44,7 @@ const Landing: React.FC = () => {
         <TechSection />
       </Box>
       <CommunitySection />
+      <NewsSection />
       <RoadMapSection />
       <PartnerSection />
       <InvestorsSection />

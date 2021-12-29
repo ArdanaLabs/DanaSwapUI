@@ -27,6 +27,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     maxWidth: "320px",
     background: palette.background.paper,
     borderRadius: "10px",
+
+    [breakpoints.down("xs")]: {
+      maxWidth: "100%",
+    },
   },
 
   title: {

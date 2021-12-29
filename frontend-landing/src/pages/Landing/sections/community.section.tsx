@@ -39,7 +39,7 @@ const CommunityList = [
     },
   },
   {
-    image: require("assets/logos/newspaper.png"),
+    image: require("assets/logos/startup.png"),
     title: "Become an\nambassador",
     content: "Be part of the Team and become an Ardana ambassador.",
     cta: {
