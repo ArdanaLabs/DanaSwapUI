@@ -7,6 +7,7 @@ import { useIsDarkMode } from "state/user/hooks"
 import BG_PURPLE_GRADIENT from "assets/backgrounds/pink-gradient.png"
 import BG_CYAN_GRADIENT from "assets/backgrounds/cyan-gradient.png"
 import BG_COMMUNITY from "assets/backgrounds/community-bg.png"
+import BG_COMMUNITY_MOBILE from "assets/backgrounds/community-bg-mobile.png"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -18,6 +19,13 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
                   linear-gradient(180deg, rgba(4, 13, 77, 0.7) -43.4%, rgba(50, 3, 111, 0.7) 222.51%),
                   url(${BG_COMMUNITY}) top left no-repeat`,
     backgroundSize: "cover",
+
+    [breakpoints.down("xs")]: {
+      background: ` url(${BG_PURPLE_GRADIENT}) top -1800px left -1400px no-repeat,
+                    linear-gradient(180deg, rgba(4, 13, 77, 0.7) -43.4%, rgba(50, 3, 111, 0.7) 222.51%),
+                    url(${BG_COMMUNITY_MOBILE}) top left no-repeat`,
+      backgroundSize: "cover",
+    },
   },
 }))
 

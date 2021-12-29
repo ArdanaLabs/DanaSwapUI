@@ -28,6 +28,13 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     background: palette.background.paper,
     borderRadius: "10px",
     height: "calc(100% - 140px)", // 100% - (marginTop + marginBottom)
+
+    [breakpoints.down("xs")]: {
+      marginTop: "80px",
+      marginBottom: "0px",
+      paddingTop: "50px",
+      height: "calc(100% - 80px)", // 100% - (marginTop + marginBottom)
+    },
   },
 
   title: {
