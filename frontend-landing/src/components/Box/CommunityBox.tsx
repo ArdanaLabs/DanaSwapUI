@@ -27,6 +27,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     textAlign: "center",
     background: palette.background.paper,
     borderRadius: "10px",
+    height: "calc(100% - 140px)", //  marginTop + marginBottom
   },
 
   title: {

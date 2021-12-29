@@ -6,11 +6,11 @@ import _ from "lodash"
 
 import { useIsDarkMode } from "state/user/hooks"
 
-import { externals, socials } from "data"
+import { externals } from "data"
 import BG_WAVE from "assets/backgrounds/wave-gradient.png"
 import BG_WAVE_MOBILE from "assets/backgrounds/wave-mobile180-bg.png"
 import LOGO_BLUE from "assets/logo_blue.png"
-import { GradientButton } from "components"
+import { GradientButton, SocialBar } from "components"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -140,27 +140,8 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   socials: {
-    "display": "flex",
-    "flexDirection": "column",
-    "& > .link-container": {
-      "display": "flex",
-      "justifyContent": "space-between",
-      "alignItems": "center",
-      "width": "280px",
-
-      "& > .link:hover path": {
-        fill: palette.secondary.main,
-        transition: "all .2s",
-      },
-
-      "& > .link svg": {
-        width: "22px",
-      },
-
-      [breakpoints.down("xs")]: {
-        width: "100%",
-      },
-    },
+    display: "flex",
+    flexDirection: "column",
 
     [breakpoints.down("xs")]: {
       width: "100%",
@@ -227,19 +208,7 @@ const Footer: React.FC = () => {
               </span>
 
               <Box mt={"25px"} />
-              <Box className="link-container">
-                {socials.map((social: any, index: number) => (
-                  <Link
-                    className="link"
-                    href={social.url}
-                    key={index}
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    <social.image />
-                  </Link>
-                ))}
-              </Box>
+              <SocialBar />
             </Box>
           </Box>
         </Box>

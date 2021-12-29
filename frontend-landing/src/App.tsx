@@ -16,6 +16,7 @@ import {
   BrandAssetsPage,
   TechPage,
   RoadMapPage,
+  CommunityPage,
 } from "./pages"
 import Layout from "layouts/Layout"
 
@@ -72,6 +73,12 @@ const App: React.FC = () => {
         <Route exact path="/roadmap">
           <Layout>
             <RoadMapPage />
+          </Layout>
+        </Route>
+
+        <Route exact path="/community">
+          <Layout>
+            <CommunityPage />
           </Layout>
         </Route>
 
