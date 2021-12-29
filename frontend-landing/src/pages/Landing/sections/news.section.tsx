@@ -11,7 +11,7 @@ import cx from "classnames"
 
 import { useIsDarkMode } from "state/user/hooks"
 import { GradientBox, NewsBox } from "components"
-import { NewsList } from "data"
+import { NewsOnMediumList } from "data"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -64,7 +64,7 @@ const CommunitySection: React.FC = () => {
           </Grid>
 
           <Grid item container xs={12} spacing={3}>
-            {NewsList.map((news) => (
+            {NewsOnMediumList.slice(0, 3).map((news) => (
               <Grid item xs={12} md={4} key={news.title}>
                 <NewsBox {...news} />
               </Grid>

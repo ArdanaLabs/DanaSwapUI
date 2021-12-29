@@ -569,7 +569,7 @@ export const Roadmap = {
   ],
 }
 
-export const NewsList = [
+export const NewsOnMediumList = [
   {
     image: require("assets/news/ASPA_PARTNER_FOCUS_8.png"),
     title:
