@@ -76,6 +76,15 @@ const darkTypography = {
     },
   },
   h6: {},
+  button: {
+    fontFamily: "Museo Sans",
+    fontStyle: "normal",
+    fontWeight: 600,
+    color: darkPrimary.main,
+    fontSize: [13],
+    textTransform: "uppercase",
+    lineHeight: "100%",
+  },
 }
 
 const common = {
