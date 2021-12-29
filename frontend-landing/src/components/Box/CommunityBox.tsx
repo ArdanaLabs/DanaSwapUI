@@ -15,6 +15,7 @@ export interface CommunityBoxProps {
     width: number
     height: number
   }
+  short?: boolean
 }
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
@@ -24,13 +25,8 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     marginTop: "110px",
     marginBottom: "30px",
     textAlign: "center",
-    maxWidth: "320px",
     background: palette.background.paper,
     borderRadius: "10px",
-
-    [breakpoints.down("xs")]: {
-      maxWidth: "100%",
-    },
   },
 
   title: {
@@ -57,6 +53,7 @@ const CommunityBox: React.FC<CommunityBoxProps> = ({
   title,
   content,
   cta,
+  short = false,
 }) => {
   const { breakpoints } = useTheme()
   const dark = useIsDarkMode()
@@ -74,9 +71,11 @@ const CommunityBox: React.FC<CommunityBoxProps> = ({
         {title}
       </Typography>
       <Box mb={"20px"} />
-      <Typography component="h4" variant="h4">
-        {content}
-      </Typography>
+      {!short && (
+        <Typography component="h4" variant="h4">
+          {content}
+        </Typography>
+      )}
       <Box mb={"30px"} />
       <Link href={cta.link} target={"_blank"} className={classes.cta}>
         <GradientBox width={cta.width} height={cta.height}>

@@ -569,6 +569,43 @@ export const Roadmap = {
   ],
 }
 
+export const CommunityList = [
+  {
+    image: require("assets/logos/newspaper.png"),
+    title: "Find out the\nlatest news",
+    content:
+      "Be up to the date on the latest Ardana updates  and announcements.",
+    cta: {
+      label: "Ardana Hub on Medium",
+      link: "/",
+      width: 220,
+      height: 40,
+    },
+  },
+  {
+    image: require("assets/logos/communication-chat-bubble.png"),
+    title: "Join the\nconversation",
+    content: "Join our Telegram channel and Discord server.",
+    cta: {
+      label: "Follow us on Twitter",
+      link: "/",
+      width: 220,
+      height: 40,
+    },
+  },
+  {
+    image: require("assets/logos/startup.png"),
+    title: "Become an\nambassador",
+    content: "Be part of the Team and become an Ardana ambassador.",
+    cta: {
+      label: "Coming Soon",
+      link: "/",
+      width: 160,
+      height: 40,
+    },
+  },
+]
+
 export const NewsOnMediumList = [
   {
     image: require("assets/news/ASPA_PARTNER_FOCUS_8.png"),

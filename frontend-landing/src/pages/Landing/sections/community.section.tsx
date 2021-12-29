@@ -10,46 +10,10 @@ import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
 
 import { useIsDarkMode } from "state/user/hooks"
+import { CommunityBox, GradientBox } from "components"
+import { CommunityList } from "data"
 
 import CommunityImage from "assets/logos/community.png"
-import { CommunityBox, GradientBox } from "components"
-
-const CommunityList = [
-  {
-    image: require("assets/logos/newspaper.png"),
-    title: "Find out the\nlatest news",
-    content:
-      "Be up to the date on the latest Ardana updates  and announcements.",
-    cta: {
-      label: "Ardana Hub on Medium",
-      link: "/",
-      width: 220,
-      height: 40,
-    },
-  },
-  {
-    image: require("assets/logos/communication-chat-bubble.png"),
-    title: "Join the\nconversation",
-    content: "Join our Telegram channel and Discord server.",
-    cta: {
-      label: "Follow us on Twitter",
-      link: "/",
-      width: 220,
-      height: 40,
-    },
-  },
-  {
-    image: require("assets/logos/startup.png"),
-    title: "Become an\nambassador",
-    content: "Be part of the Team and become an Ardana ambassador.",
-    cta: {
-      label: "Coming Soon",
-      link: "/",
-      width: 160,
-      height: 40,
-    },
-  },
-]
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {},
@@ -99,17 +63,12 @@ const CommunitySection: React.FC = () => {
             </Box>
           </Grid>
 
-          <Grid item xs={12} md={10}>
-            <Box
-              display={"flex"}
-              justifyContent={"space-between"}
-              alignItems={!mobile ? "stretch" : "center"}
-              flexDirection={!mobile ? "row" : "column"}
-            >
-              {CommunityList.map((community) => (
-                <CommunityBox key={community.title} {...community} />
-              ))}
-            </Box>
+          <Grid item container xs={12} md={9} spacing={3}>
+            {CommunityList.map((community) => (
+              <Grid item key={community.title} xs={12} md={4}>
+                <CommunityBox {...community} short />
+              </Grid>
+            ))}
           </Grid>
         </Grid>
       </Container>
