@@ -5,6 +5,7 @@ import {
   Container,
   Grid,
   Typography,
+  Link,
 } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
@@ -55,11 +56,13 @@ const CommunitySection: React.FC = () => {
                 by a world-class team found all across the globe.
               </Typography>
               <Box mb="30px" />
-              <GradientBox width={145} height={40}>
-                <Typography component="div" variant="button">
-                  Learn More
-                </Typography>
-              </GradientBox>
+              <Link href="/community">
+                <GradientBox width={145} height={40}>
+                  <Typography component="div" variant="button">
+                    Learn More
+                  </Typography>
+                </GradientBox>
+              </Link>
             </Box>
           </Grid>
 

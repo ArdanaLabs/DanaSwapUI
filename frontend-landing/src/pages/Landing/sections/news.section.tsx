@@ -5,6 +5,7 @@ import {
   Container,
   Grid,
   Typography,
+  Link,
 } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
@@ -55,11 +56,13 @@ const CommunitySection: React.FC = () => {
                 accounts and keep checking back in to the Ardana platform.
               </Typography>
               <Box mb="30px" />
-              <GradientBox width={145} height={40}>
-                <Typography component="div" variant="button">
-                  View More
-                </Typography>
-              </GradientBox>
+              <Link href="/news">
+                <GradientBox width={145} height={40}>
+                  <Typography component="div" variant="button">
+                    View More
+                  </Typography>
+                </GradientBox>
+              </Link>
             </Box>
           </Grid>
 
