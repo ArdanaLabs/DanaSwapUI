@@ -1,7 +1,7 @@
 import React from "react"
 import { Box, makeStyles, useMediaQuery, useTheme } from "@material-ui/core"
 
-import { HeroSection } from "./sections"
+import { HeroSection, MediumSection } from "./sections"
 import { useIsDarkMode } from "state/user/hooks"
 
 // import BG_PURPLE_GRADIENT from "assets/backgrounds/pink-gradient.png"
@@ -28,6 +28,7 @@ const Community: React.FC = () => {
   return (
     <Box className={classes.root}>
       <HeroSection />
+      <MediumSection />
     </Box>
   )
 }

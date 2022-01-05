@@ -68,7 +68,7 @@ const CommunitySection: React.FC = () => {
 
           <Grid item container xs={12} spacing={3}>
             {NewsOnMediumList.slice(0, 3).map((news) => (
-              <Grid item xs={12} md={4} key={news.title}>
+              <Grid item xs={12} sm={6} md={4} key={news.title}>
                 <NewsBox {...news} />
               </Grid>
             ))}

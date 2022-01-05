@@ -15,12 +15,8 @@ import NewsHeroImage from "assets/logos/news-hero.png"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
-    paddingTop: "150px",
-    paddingBottom: "150px",
-    [breakpoints.down("xs")]: {
-      paddingTop: "100px",
-      paddingBottom: "100px",
-    },
+    paddingTop: "100px",
+    paddingBottom: "100px",
   },
   title: {
     [`& > span`]: {
@@ -39,7 +35,7 @@ const HeroSection: React.FC = () => {
     <Box className={classes.root}>
       <Container>
         <Grid container justifyContent="center">
-          <Grid item xs={12} md={9}>
+          <Grid item xs={12} md={12}>
             <Grid
               container
               spacing={3}
@@ -77,13 +73,6 @@ const HeroSection: React.FC = () => {
                 </Box>
               </Grid>
             </Grid>
-          </Grid>
-          <Grid item container xs={12} md={9} spacing={3} alignItems="stretch">
-            {/* {CommunityList.map((community) => (
-              <Grid item key={community.title} xs={12} md={4}>
-                <CommunityBox {...community} />
-              </Grid>
-            ))} */}
           </Grid>
         </Grid>
       </Container>
