@@ -20,19 +20,22 @@ export const Menus = [
     to: "https://docs.ardana.org/",
     blank: true,
   },
+  // {
+  //   label: "Team",
+  //   to: "/team",
+  // },
+  {
+    label: "Community",
+    to: "/community",
+  },
+  {
+    label: "News",
+    to: "/news",
+  },
   {
     label: "Roadmap",
     // to: "https://faceted-wash-97d.notion.site/cb0d147034e6439f8e70b2698ce199f2?v=fbf6185ab5f143eb9e22064fd9647814",
     to: "/roadmap",
-  },
-  {
-    label: "Team",
-    to: "/team",
-  },
-  {
-    label: "Blog",
-    to: "https://medium.com/ardana-hub",
-    blank: true,
   },
 ]
 

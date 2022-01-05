@@ -28,6 +28,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     },
   },
   badge: {
+    textAlign: "center",
     cursor: "pointer",
     display: "inline-flex",
     alignItems: "center",
@@ -41,6 +42,13 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     borderRadius: "10px",
     paddingLeft: "30px",
     paddingRight: "30px",
+    marginTop: "30px",
+    marginBottom: "30px",
+
+    [breakpoints.down("xs")]: {
+      paddingLeft: "10px",
+      paddingRight: "10px",
+    },
   },
 }))
 
@@ -49,6 +57,22 @@ const TwitterSection: React.FC = () => {
   const dark = useIsDarkMode()
   const mobile = useMediaQuery(breakpoints.down("xs"))
   const classes = useStyles({ dark, mobile })
+
+  const renderBadge = () => (
+    <Link
+      href="https://twitter.com/ardanaproject"
+      target="_blank"
+      underline="none"
+      className={classes.badge}
+    >
+      <Typography component="div" variant="button">
+        Follow Ardana on Twitter
+      </Typography>
+      <Box ml={"10px"} lineHeight={"0"}>
+        <TwitterIcon />
+      </Box>
+    </Link>
+  )
 
   return (
     <Box className={classes.root}>
@@ -61,20 +85,7 @@ const TwitterSection: React.FC = () => {
                   Ardana on <span>Twitter</span>
                 </small>
               </Typography>
-
-              <Link
-                href="https://twitter.com/ardanaproject"
-                target="_blank"
-                underline="none"
-                className={classes.badge}
-              >
-                <Typography component="div" variant="button">
-                  Follow Ardana on Twitter
-                </Typography>
-                <Box ml={"10px"} lineHeight={"0"}>
-                  <TwitterIcon />
-                </Box>
-              </Link>
+              {!mobile && renderBadge()}
             </Box>
           </Grid>
         </Grid>
@@ -91,7 +102,7 @@ const TwitterSection: React.FC = () => {
           className={classes.panel}
           itemsToShow={!mobile ? 3 : 1}
           isRTL={false}
-          itemPadding={[10]}
+          itemPadding={[!mobile ? 10 : 5]}
           renderArrow={() => <></>}
           renderPagination={() => <></>}
         >
@@ -99,6 +110,9 @@ const TwitterSection: React.FC = () => {
             <TwitterNewsBox key={news.title + i} {...news} />
           ))}
         </Carousel>
+        <Box display="flex" justifyContent="center">
+          {mobile && renderBadge()}
+        </Box>
       </Container>
     </Box>
   )

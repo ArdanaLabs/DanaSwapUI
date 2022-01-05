@@ -17,6 +17,11 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
     paddingTop: "100px",
     paddingBottom: "100px",
+
+    [breakpoints.down("xs")]: {
+      paddingTop: "100px",
+      paddingBottom: "50px",
+    },
   },
   title: {
     [`& > span`]: {

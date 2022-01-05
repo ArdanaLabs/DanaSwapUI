@@ -27,6 +27,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     },
   },
   badge: {
+    textAlign: "center",
     cursor: "pointer",
     display: "inline-flex",
     alignItems: "center",
@@ -43,6 +44,22 @@ const MediumSection: React.FC = () => {
   const mobile = useMediaQuery(breakpoints.down("xs"))
   const classes = useStyles({ dark, mobile })
 
+  const renderBadge = () => (
+    <Link
+      href="https://medium.com/ardana-hub"
+      target="href"
+      underline="none"
+      className={classes.badge}
+    >
+      <Typography component="div" variant="button">
+        Follow Ardana Hub On Medium
+      </Typography>
+      <Box ml={"10px"} lineHeight={"0"}>
+        <MediumIcon />
+      </Box>
+    </Link>
+  )
+
   return (
     <Box className={classes.root}>
       <Container>
@@ -54,30 +71,20 @@ const MediumSection: React.FC = () => {
                   Ardana on <span>Medium</span>
                 </small>
               </Typography>
-
-              <Link
-                href="https://medium.com/ardana-hub"
-                target="href"
-                underline="none"
-                className={classes.badge}
-              >
-                <Typography component="div" variant="button">
-                  Follow Ardana Hub On Medium
-                </Typography>
-                <Box ml={"10px"} lineHeight={"0"}>
-                  <MediumIcon />
-                </Box>
-              </Link>
+              {!mobile && renderBadge()}
             </Box>
           </Grid>
         </Grid>
         <Grid container spacing={3}>
-          {NewsOnMediumList.slice(0, 6).map((news) => (
+          {NewsOnMediumList.slice(0, !mobile ? 6 : 3).map((news) => (
             <Grid item xs={12} sm={6} md={4} key={news.title}>
               <NewsBox {...news} />
             </Grid>
           ))}
         </Grid>
+        <Box display="flex" justifyContent="center">
+          {mobile && renderBadge()}
+        </Box>
       </Container>
     </Box>
   )
