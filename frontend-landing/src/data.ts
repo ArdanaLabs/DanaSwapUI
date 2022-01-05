@@ -671,30 +671,131 @@ export const TelegramChannelList = [
 
 export const NewsOnMediumList = [
   {
-    image: require("assets/news/ASPA_PARTNER_FOCUS_8.png"),
+    image: require("assets/news/medium/ASPA_PARTNER_FOCUS_8.png"),
     title:
       "ASPA Partner Focus #8 — Announcing the Latest Stake Pool Operators Partnering with Ardana",
     content:
       "Welcome to the eighth edition of our ASPA Partner Focus series. We have interviewed the latest new joiners and would like to share their mission and Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum",
     date: "December 16, 2021",
-    link: "/",
+    link: "https://medium.com/ardana-hub/aspa-partner-focus-8-announcing-the-latest-stake-pool-operators-partnering-with-ardana-1f4f8f3ca45a?source=collection_home---4------1-----------------------",
   },
   {
-    image: require("assets/news/ASPA_PARTNER_FOCUS_6.png"),
-    title:
-      "ASPA Partner Focus #6 — Announcing the Latest Stake Pool Operators Partnering with Ardana",
-    content:
-      "Please join us in welcoming the latest ASPA joiners to Ardana! We sat down and interviewed each stake pool to find out their mission and goals, who they are as Lorem Lorem Lorem Lorem Lorem Lorem",
-    date: "December 5, 2021",
-    link: "/",
-  },
-  {
-    image: require("assets/news/ASPA_PARTNER_FOCUS_7.png"),
+    image: require("assets/news/medium/ASPA_PARTNER_FOCUS_7.png"),
     title:
       "ASPA Partner Focus #7 — Announcing the Latest Stake Pool Operators Partnering with Ardana",
     content:
       "In the seventh edition of our ASPA Partner Focus series, we welcome the latest ASPA joiners to Ardana! ASPA applications are now closed! We sat down and Lorem Lorem Lorem ",
     date: "December 9, 2021",
+    link: "https://medium.com/ardana-hub/aspa-partner-focus-7-announcing-the-latest-stake-pool-operators-partnering-with-ardana-23bff202860f?source=collection_home---4------2-----------------------",
+  },
+  {
+    image: require("assets/news/medium/ASPA_PARTNER_FOCUS_6.png"),
+    title:
+      "ASPA Partner Focus #6 — Announcing the Latest Stake Pool Operators Partnering with Ardana",
+    content:
+      "Please join us in welcoming the latest ASPA joiners to Ardana! We sat down and interviewed each stake pool to find out their mission and goals, who they are as Lorem Lorem Lorem Lorem Lorem Lorem",
+    date: "December 5, 2021",
+    link: "https://medium.com/ardana-hub/aspa-partner-focus-6-announcing-the-latest-stake-pool-operators-partnering-with-ardana-ae67525924c4?source=collection_home---4------3-----------------------",
+  },
+  {
+    image: require("assets/news/medium/NEAR_PROTOCOL.png"),
+    title: "Ardana is Partnering with NEAR Protocol",
+    content:
+      "Today, we at Ardana are excited to announce our latest strategic partnership with NEAR, a decentralized application platform (dApp) that focuses on both developer and user experience. Through this partnership with NEAR, which includes a grant",
+    date: "November 23, 2021",
+    link: "https://medium.com/ardana-hub/ardana-is-partnering-with-near-protocol-281a6e64e031?source=collection_home---4------4-----------------------",
+  },
+  {
+    image: require("assets/news/medium/DANA_TOKEN.png"),
+    title: "DANA Token Going Live on Gate, Bitmart and MEXC!",
+    content:
+      "The growing community around Ardana has been eagerly awaiting the token launch since the project began. Today, we are thrilled to announce that the token launch will take place on Monday, 22nd...",
+    date: "November 17, 2021",
+    link: "https://medium.com/ardana-hub/dana-token-going-live-on-gate-bitmart-and-mxec-72ed54702527?source=collection_home---4------5-----------------------",
+  },
+  {
+    image: require("assets/news/medium/ARDANA_QCP.png"),
+    title:
+      "Crypto Options leader QCP Capital Makes a Strategic Investment in Ardana",
+    content:
+      "Today, we are very pleased to announce that QCP Capital has made a strategic investment in Ardana. We are excited to be supported by QCP Capital, who has a strong presence in the Asian markets as we",
+    date: "December 5, 2021",
+    link: "https://medium.com/ardana-hub/crypto-options-leader-qcp-capital-makes-a-strategic-investment-in-ardana-e51de7397e35?source=collection_home---4------6-----------------------",
+  },
+]
+
+export const NewsOnTwitterList = [
+  {
+    title: "Ardana - DeFi Hub of Cardano",
+    type: "@ArdanaProject",
+    content: `⭐️ Ardana has formed a strategic partnership w/ <span>#dApp</span> platform <span>@NEARProtocol</span>\n\n🌈 Through this collab, which includes a grant, we'll <span>#BUIDL</span> the first-ever bridge between <span>#Cardano</span> & <span>#NEAR</span> ecosystems to facilitate seamless asset transfers and more ⤵️`,
+    image: require("assets/news/twitter/twitter1.png"),
+    datetime: "10:21 PM · Nov 23, 2021",
+  },
+  {
+    title: "Ardana - DeFi Hub of Cardano",
+    type: "@ArdanaProject",
+    content: `4/ ✨ WIthout this protection measure, collateral could be manipulated, for example withdrawn from a vault under false pretences. The operations of Emergency Oracles and price delays by the OGM are also managed by <span>#Ardana</span> governance.`,
+    datetime: "10:21 PM · Nov 23, 2021",
+  },
+  {
+    title: "Ardana - DeFi Hub of Cardano",
+    type: "@ArdanaProject",
+    content: `3/ 🌐 The OGM serves as a layer of defense between the oracles and the protocol by delaying the price feed by one hour. This delay allows Emergency Oracles or an #Ardana governance vote to individually freeze compromised oracles.`,
+    datetime: "10:21 PM · Nov 23, 2021",
+  },
+]
+
+export const NewsOnMediaList = [
+  {
+    image: require("assets/news/media/Y4SEOFO3SNHCZMJOIWYGPOZD24 1.png"),
+    label: "Coindesk",
+    title: "Ardana and Near Join Forces to Build a Crosschain Bridge",
+    content:
+      "On Tuesday morning, Ardana, a stablecoin and lending hub on the Cardano blockchain platform, announced an agreement with Near protocol, a layer 1 Ethereum alternative. Ardana received a grant",
+    link: "/",
+  },
+  {
+    label: "CoinTelegraph",
+    image: require("assets/news/media/1434_aHR0cHM6Ly9zMy5jb2ludGVsZWdyYXBoLmNvbS91cGxvYWRzLzIwMjEtMTEvNzZhNjcyYjYtZGQ0NS00NjViLThlNTUtNTEwYzViNmJkZjA4LmpwZw== 1.png"),
+    title:
+      "Ardana partners with Near protocol on Cardano bridge infrastructure",
+    content:
+      "Ardana, Cardano’s growing stablecoin hub, announced a strategic partnership with Near protocol on Tuesday. The partnership allows for asset transfer between the two protocols in which Ardana will",
+    link: "/",
+  },
+  {
+    image: require("assets/news/media/69ea73c64e0929176878276fd614c409 1.png"),
+    label: "Yahoo Finance",
+    title: "Cardano DeFi platform Ardana partners with NEAR protocol",
+    content:
+      "Recently-launched Ardana – a Cardano based decentralised stablecoin solution – has partnered with Ethereum rival NEAR protocol.The move aims to deliver an interconnected bridge between the DeFi",
+    link: "/",
+  },
+  {
+    image: require("assets/news/media/cardano-stablecoin-protocol-ardana-toasts-10m-capital-injection-led-by-three-arrows-capital-and-ascensive-assets 1.png"),
+    label: "Bitcoin.com",
+    title:
+      "Cardano Stablecoin Protocol Ardana Toasts $10m Capital Injection Led by Three Arrows Capital and Ascensive Assets",
+    content:
+      "Ardana, the asset-backed stablecoin protocol and decentralized exchange, has attracted $10 million of investment in its latest strategic funding round",
+    link: "/",
+  },
+  {
+    label: "CoinDesk",
+    image: require("assets/news/media/KHAH5Z2K3FBRHDQTPX4UVPVK3Q 1.png"),
+    title: "Three Arrows Capital Backs $10M Raise for DeFi on Cardano",
+    content:
+      "Cardano’s decentralized finance (DeFi) ecosystem may be showing glimmers of primordial life following the close of a $10 million raise for Ardana, a new protocol that aims to provide stablecoin minting",
+    link: "/",
+  },
+  {
+    image: require("assets/news/media/cardano-stablecoin-protocol-ardana-toasts-10m-capital-injection-led-by-three-arrows-capital-and-ascensive-assets 1.png"),
+    label: "Benzinga",
+    title:
+      "Cardano Stablecoin Protocol Ardana Toasts $10m Capital Injection Led by Three Arrows Capital and Ascensive Assets",
+    content:
+      "Ardana, the asset-backed stablecoin protocol and decentralized exchange, has attracted $10 million of investment in its latest strategic funding round",
     link: "/",
   },
 ]

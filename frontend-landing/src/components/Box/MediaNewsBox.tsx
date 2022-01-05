@@ -5,11 +5,11 @@ import { makeStyles, useTheme } from "@material-ui/core/styles"
 import { useIsDarkMode } from "state/user/hooks"
 import { GradientBox } from "components/Box"
 
-export interface NewsBoxProps {
+export interface MediaNewsBoxProps {
   image: string
   title: string
   content: string
-  date: string
+  label: string
   link: string
 }
 
@@ -22,8 +22,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     padding: "20px 15px 0px",
     borderLeft: "1px solid #72D2F3AA",
   },
-  date: {
+  label: {
     color: palette.secondary.main,
+    textTransform: "uppercase",
+    fontWeight: 900,
   },
   content: {
     display: "-webkit-box",
@@ -34,11 +36,11 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 }))
 
-const NewsBox: React.FC<NewsBoxProps> = ({
+const MediaNewsBox: React.FC<MediaNewsBoxProps> = ({
   image,
   title,
   content,
-  date,
+  label,
   link,
 }) => {
   const { breakpoints } = useTheme()
@@ -52,16 +54,16 @@ const NewsBox: React.FC<NewsBoxProps> = ({
         <img src={image} alt="news" width={"100%"} />
       </Box>
       <Box className={classes.body}>
+        <Typography component="h4" variant="h4" className={classes.label}>
+          {label}
+        </Typography>
+        <Box mb="15px" />
         <Typography component="h5" variant="h5">
           <small>{title}</small>
         </Typography>
-        <Box mb="15px" />
-        <Typography component="h4" variant="h4" className={classes.date}>
-          <small>{date}</small>
-        </Typography>
         <Box mb="20px" />
         <Typography component="h4" variant="h4" className={classes.content}>
-          <small>{content}</small>
+          {content}
         </Typography>
         <Box mb="20px" />
         <Link href={link} target="_blank">
@@ -76,4 +78,4 @@ const NewsBox: React.FC<NewsBoxProps> = ({
   )
 }
 
-export default NewsBox
+export default MediaNewsBox

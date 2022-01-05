@@ -5,15 +5,12 @@ import {
   Container,
   Grid,
   Typography,
-  Link,
 } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 
 import { useIsDarkMode } from "state/user/hooks"
-import { NewsBox } from "components"
-import { NewsOnMediumList } from "data"
-
-import { ReactComponent as MediumIcon } from "assets/icons/medium.svg"
+import { MediaNewsBox } from "components"
+import { NewsOnMediaList } from "data"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -26,18 +23,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       color: palette.secondary.main,
     },
   },
-  badge: {
-    cursor: "pointer",
-    display: "inline-flex",
-    alignItems: "center",
-    borderRadius: "50px",
-    background: "linear-gradient(89.62deg, #72D2F2 0.3%, #6077FF 99.64%)",
-    textTransform: "uppercase",
-    padding: "15px 30px",
-  },
 }))
 
-const MediumSection: React.FC = () => {
+const MediaSection: React.FC = () => {
   const { breakpoints } = useTheme()
   const dark = useIsDarkMode()
   const mobile = useMediaQuery(breakpoints.down("xs"))
@@ -51,30 +39,16 @@ const MediumSection: React.FC = () => {
             <Box display={"flex"} alignItems={"center"}>
               <Typography component="h3" variant="h3" className={classes.title}>
                 <small>
-                  Ardana on <span>Medium</span>
+                  Ardana on <span>Media</span>
                 </small>
               </Typography>
-
-              <Link
-                href="https://medium.com/ardana-hub"
-                target="href"
-                underline="none"
-                className={classes.badge}
-              >
-                <Typography component="div" variant="button">
-                  Follow Ardana Hub On Medium
-                </Typography>
-                <Box ml={"10px"} lineHeight={"0"}>
-                  <MediumIcon />
-                </Box>
-              </Link>
             </Box>
           </Grid>
         </Grid>
         <Grid container spacing={3}>
-          {NewsOnMediumList.slice(0, 6).map((news) => (
-            <Grid item xs={12} sm={6} md={4} key={news.title}>
-              <NewsBox {...news} />
+          {NewsOnMediaList.slice(0, 6).map((news, i) => (
+            <Grid item xs={12} sm={6} md={4} key={news.title + i}>
+              <MediaNewsBox {...news} />
             </Grid>
           ))}
         </Grid>
@@ -83,4 +57,4 @@ const MediumSection: React.FC = () => {
   )
 }
 
-export default MediumSection
+export default MediaSection

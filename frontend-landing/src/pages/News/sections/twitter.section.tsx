@@ -1,4 +1,5 @@
 import React from "react"
+import Carousel from "react-elastic-carousel"
 import {
   Box,
   useMediaQuery,
@@ -10,10 +11,10 @@ import {
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 
 import { useIsDarkMode } from "state/user/hooks"
-import { NewsBox } from "components"
-import { NewsOnMediumList } from "data"
+import { TwitterNewsBox } from "components"
+import { NewsOnTwitterList } from "data"
 
-import { ReactComponent as MediumIcon } from "assets/icons/medium.svg"
+import { ReactComponent as TwitterIcon } from "assets/icons/twitter.svg"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -35,9 +36,15 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     textTransform: "uppercase",
     padding: "15px 30px",
   },
+  panel: {
+    background: palette.background.paper,
+    borderRadius: "10px",
+    paddingLeft: "30px",
+    paddingRight: "30px",
+  },
 }))
 
-const MediumSection: React.FC = () => {
+const TwitterSection: React.FC = () => {
   const { breakpoints } = useTheme()
   const dark = useIsDarkMode()
   const mobile = useMediaQuery(breakpoints.down("xs"))
@@ -51,36 +58,50 @@ const MediumSection: React.FC = () => {
             <Box display={"flex"} alignItems={"center"}>
               <Typography component="h3" variant="h3" className={classes.title}>
                 <small>
-                  Ardana on <span>Medium</span>
+                  Ardana on <span>Twitter</span>
                 </small>
               </Typography>
 
               <Link
-                href="https://medium.com/ardana-hub"
-                target="href"
+                href="https://twitter.com/ardanaproject"
+                target="_blank"
                 underline="none"
                 className={classes.badge}
               >
                 <Typography component="div" variant="button">
-                  Follow Ardana Hub On Medium
+                  Follow Ardana on Twitter
                 </Typography>
                 <Box ml={"10px"} lineHeight={"0"}>
-                  <MediumIcon />
+                  <TwitterIcon />
                 </Box>
               </Link>
             </Box>
           </Grid>
         </Grid>
-        <Grid container spacing={3}>
-          {NewsOnMediumList.slice(0, 6).map((news) => (
-            <Grid item xs={12} sm={6} md={4} key={news.title}>
-              <NewsBox {...news} />
-            </Grid>
+        {/* <Box className={classes.panel} mt="30px">
+          <Grid container spacing={3}>
+            {NewsOnTwitterList.slice(0, 3).map((news) => (
+              <Grid item xs={12} sm={6} md={4} key={news.title}>
+                <TwitterNewsBox {...news} />
+              </Grid>
+            ))}
+          </Grid>
+        </Box> */}
+        <Carousel
+          className={classes.panel}
+          itemsToShow={!mobile ? 3 : 1}
+          isRTL={false}
+          itemPadding={[10]}
+          renderArrow={() => <></>}
+          renderPagination={() => <></>}
+        >
+          {NewsOnTwitterList.slice(0, 8).map((news, i: number) => (
+            <TwitterNewsBox key={news.title + i} {...news} />
           ))}
-        </Grid>
+        </Carousel>
       </Container>
     </Box>
   )
 }
 
-export default MediumSection
+export default TwitterSection
