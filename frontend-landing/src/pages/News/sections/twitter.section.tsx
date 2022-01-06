@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import Carousel from "react-elastic-carousel"
 import {
   Box,
@@ -9,12 +9,20 @@ import {
   Link,
 } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
+import { TwitterClient } from "twitter-api-client"
 
 import { useIsDarkMode } from "state/user/hooks"
 import { TwitterNewsBox } from "components"
 import { NewsOnTwitterList } from "data"
 
 import { ReactComponent as TwitterIcon } from "assets/icons/twitter.svg"
+
+const twitterClient = new TwitterClient({
+  apiKey: "jnTPb81hoJWcI0ipkj5aJZTGC",
+  apiSecret: "NobWgqETxHE7RsxJwvH3kQOuDXB4MYn1cr65ikyxlkkWPkFt6Y",
+  accessToken: "858267119229689857-g64vncq9OBDcy1U3vwwteCAUmoo6hw9",
+  accessTokenSecret: "fv0RMswaVrfKq1vkuNyBJK9kH35nydoTyr8ZjoXqrpHpf",
+})
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -57,6 +65,30 @@ const TwitterSection: React.FC = () => {
   const dark = useIsDarkMode()
   const mobile = useMediaQuery(breakpoints.down("xs"))
   const classes = useStyles({ dark, mobile })
+
+  useEffect(() => {
+    ;(async () => {
+      // const response = await fetch(url, {
+      //   method: 'POST', // *GET, POST, PUT, DELETE, etc.
+      //   mode: 'cors', // no-cors, *cors, same-origin
+      //   cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+      //   credentials: 'same-origin', // include, *same-origin, omit
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //     // 'Content-Type': 'application/x-www-form-urlencoded',
+      //   },
+      //   redirect: 'follow', // manual, *follow, error
+      //   referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+      //   body: JSON.stringify(data) // body data type must match "Content-Type" header
+      // });
+
+      const data = await twitterClient.accountsAndUsers.usersSearch({
+        q: "twitterDev",
+      })
+
+      console.log(111111, data)
+    })()
+  }, [])
 
   const renderBadge = () => (
     <Link
