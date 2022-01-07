@@ -100,7 +100,7 @@ const AmountInput: React.FC<AmountInputProps> = ({ token, inputChange }) => {
         alignItems={"center"}
       >
         <Typography component="h5" variant="h5">
-          <small>DEPOSIT {token}</small>
+          <small style={{ textTransform: "uppercase" }}>Deposit {token}</small>
         </Typography>
         <Typography component="h6" variant="h6">
           <small>

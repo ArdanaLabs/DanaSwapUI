@@ -15,7 +15,7 @@ import { useIsDarkMode } from "state/user/hooks"
 
 import { ReactComponent as CircleQuestionIcon } from "assets/image/icons/circle-question.svg"
 import { currencyFormatter, numberFormatter, percentageFormatter } from "hooks"
-import { AmountInput } from "components"
+import { AmountInput, Slider } from "components"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -48,8 +48,8 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   badge: {
     borderRadius: "100px",
     padding: "5px 15px",
-    background: palette.success.light,
-    color: `${palette.success.main} !important`,
+    background: palette.error.light,
+    color: `${palette.error.main} !important`,
     display: "inline-block",
     fontWeight: 600,
   },
@@ -66,6 +66,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
   highlight: {
     color: `${palette.info.dark} !important`,
+  },
+  warning: {
+    color: `${palette.warning.main} !important`,
   },
   button: {
     borderRadius: "50px",
@@ -101,7 +104,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 }))
 
-const MainSection: React.FC = () => {
+const MultiplySection: React.FC = () => {
   const { breakpoints } = useTheme()
   const dark = useIsDarkMode()
   const mobile = useMediaQuery(breakpoints.down("xs"))
@@ -113,7 +116,7 @@ const MainSection: React.FC = () => {
   ])
 
   const token = "ETH"
-  const [, setAmount] = useState<number>(0)
+  const [amount, setAmount] = useState<number>(0)
 
   const liquidationPrice = 2.32
   const liquidationPriceAfter = 4324.67
@@ -137,17 +140,13 @@ const MainSection: React.FC = () => {
   const generate = 9
   const generateAfter = 3.42
 
-  const handleGenerateDAI = () => {
-    console.log("handleGenerateDAI")
-  }
-
   const handleSetupProxy = () => {
     console.log("handleSetupProxy")
   }
 
-  const handleSwitchToMultiply = () => {
-    console.log("handleSwitchToMultiply")
-    history.push(`/vaults/open-multiply/${type}`)
+  const handleSwitchToBorrow = () => {
+    console.log("handleSwitchToBorrow")
+    history.push(`/vaults/open-borrow/${type}`)
   }
 
   const renderLiquidationPrice = () => (
@@ -350,14 +349,49 @@ const MainSection: React.FC = () => {
           <AmountInput token={token} inputChange={setAmount} />
         </Box>
         <Box mb="20px" />
-        <Button
-          className={cx(classes.button, { disabled: true })}
-          onClick={handleGenerateDAI}
-        >
-          <Typography component="h5" variant="h5">
-            Generate DAI with this transaction
+        <Typography component="h3" variant="h3">
+          Adjust your Multiply
+        </Typography>
+        <Box mb="20px" />
+        <Box display={"flex"} justifyContent={"space-between"}>
+          <Box>
+            <Typography component="h5" variant="h5">
+              <small style={{ textTransform: "uppercase" }}>
+                Deposit {token}
+              </small>
+            </Typography>
+            <Typography
+              component="h3"
+              variant="h3"
+              className={classes.highlight}
+            >
+              <big>{currencyFormatter(amount * currentPrice)}</big>
+            </Typography>
+          </Box>
+          <Box>
+            <Typography component="h5" variant="h5">
+              <small style={{ textTransform: "uppercase" }}>
+                Collateral Ratio
+              </small>
+            </Typography>
+            <Typography component="h3" variant="h3" className={classes.warning}>
+              <big>{percentageFormatter(1.45)}</big>
+            </Typography>
+          </Box>
+        </Box>
+
+        <Box mb="20px" />
+        <Slider min={0} max={100} defaultValue={0} step={1} />
+        <Box mb="10px" />
+        <Box display="flex" justifyContent={"space-between"}>
+          <Typography component="h6" variant="h6" style={{ fontWeight: 100 }}>
+            Decrease Risk
           </Typography>
-        </Button>
+          <Typography component="h6" variant="h6" style={{ fontWeight: 100 }}>
+            Increase Risk
+          </Typography>
+        </Box>
+
         <Box className={cx(classes.divider)} />
         <Typography component="h3" variant="h3">
           Order Information
@@ -418,13 +452,13 @@ const MainSection: React.FC = () => {
           </Typography>
         </Button>
         <Box className={cx(classes.divider)} />
-        <Button className={cx(classes.button)} onClick={handleSwitchToMultiply}>
+        <Button className={cx(classes.button)} onClick={handleSwitchToBorrow}>
           <Typography
             component="h5"
             variant="h5"
             style={{ textTransform: "uppercase" }}
           >
-            Switch to Multiply
+            Switch to Borrow
           </Typography>
         </Button>
       </Box>
@@ -468,4 +502,4 @@ const MainSection: React.FC = () => {
   )
 }
 
-export default MainSection
+export default MultiplySection

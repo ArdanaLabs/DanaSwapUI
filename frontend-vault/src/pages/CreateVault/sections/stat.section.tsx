@@ -18,6 +18,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     display: "flex",
     alignItems: "center",
     flexWrap: "wrap",
+    padding: "0 8px",
 
     [breakpoints.down("xs")]: {
       flexDirection: "column",

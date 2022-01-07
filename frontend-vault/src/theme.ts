@@ -42,6 +42,9 @@ const successMainDay = "#199F03"
 const successLightNight = "#CEFFF0"
 const successMainNight = "#199F03"
 
+const warningMainNight = "#FFD8AA"
+const warningMainDay = "#FF2C2C"
+
 const infoLightDay = "linear-gradient(90deg, #000A4F 0%, #3C4DC5 100%)"
 const infoLightNight = "linear-gradient(90deg, #72D2F2 0%, #6077FF 100%)"
 
@@ -153,6 +156,9 @@ export const lightTheme = responsiveFontSizes(
         light: successLightDay,
         main: successMainDay,
       },
+      warning: {
+        main: warningMainDay,
+      },
       common: {
         black,
         white,
@@ -206,6 +212,9 @@ export const darkTheme = responsiveFontSizes(
       success: {
         light: successLightNight,
         main: successMainNight,
+      },
+      warning: {
+        main: warningMainNight,
       },
       common: {
         black,
