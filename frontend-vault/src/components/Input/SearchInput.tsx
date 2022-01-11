@@ -1,4 +1,4 @@
-import React from "react"
+import React, { ChangeEvent } from "react"
 import { Box, useMediaQuery } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
@@ -35,10 +35,10 @@ const useStyles = makeStyles(({ palette }) => ({
 }))
 
 export interface SearchInputProps {
-  value?: any
-  placeholder?: any
-  className?: any
-  onChange?: any
+  value?: string
+  placeholder?: string
+  className?: string
+  onChange?: (value: ChangeEvent<HTMLInputElement>) => void
 }
 
 const SearchInput: React.FC<SearchInputProps> = ({
