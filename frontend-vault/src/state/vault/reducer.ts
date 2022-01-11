@@ -5,7 +5,6 @@ export interface VaultInfo {
   //  TBD
   id: number
   asset: string
-  assetLogo: string
   type: string
   locked: number
   stabilityFee: number

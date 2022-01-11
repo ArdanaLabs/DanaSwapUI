@@ -29,6 +29,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     margin: "50px 0px",
   },
   sortIcon: {},
+  uppercase: {
+    textTransform: "uppercase",
+  },
 }))
 
 const VaultListSection: React.FC = () => {
@@ -52,16 +55,16 @@ const VaultListSection: React.FC = () => {
       sortable: false,
       flex: 2,
       renderCell: (params: GridCellParams) => {
-        const assetLogo = params.getValue(params.id, "assetLogo")
+        const assetLogo =
+          require(`assets/image/coins/${params.value}.svg`).default
         return (
           <Box display="flex" alignItems="center">
-            <img
-              src={assetLogo?.toString()}
-              alt=""
-              width="35px"
-              height="35px"
-            />
-            <Box pl="15px">{params.value}</Box>
+            {assetLogo && (
+              <img src={assetLogo} alt="" width="35px" height="35px" />
+            )}
+            <Box pl="15px" className={classes.uppercase}>
+              {params.value}
+            </Box>
           </Box>
         )
       },

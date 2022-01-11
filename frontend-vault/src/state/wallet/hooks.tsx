@@ -1,4 +1,3 @@
-import { useCallback } from "react"
 import { shallowEqual, useDispatch, useSelector } from "react-redux"
 
 import { AppDispatch, AppState } from "state"
@@ -8,9 +7,16 @@ import {
   updateWalletAddressAction,
 } from "./actions"
 import { fetchBalanceApi, fetchMyVaultsApi, getWalletAddress } from "./apis"
-import { WalletState } from "./reducer"
+import { MyVaultInfo, WalletState } from "./reducer"
 
-export function useWallet(): any {
+export function useWallet(): {
+  address: string
+  balance: number
+  myVaults: MyVaultInfo[]
+  updateWalletAddress: () => Promise<void>
+  updateBalance: () => Promise<void>
+  updateMyVaults: () => Promise<void>
+} {
   const dispatch = useDispatch<AppDispatch>()
 
   const { address, balance, myVaults } = useSelector<AppState, WalletState>(
@@ -18,20 +24,20 @@ export function useWallet(): any {
     shallowEqual
   )
 
-  const updateWalletAddress = useCallback(async () => {
+  const updateWalletAddress = async (): Promise<void> => {
     const address = await getWalletAddress()
     dispatch(updateWalletAddressAction(address))
-  }, [dispatch])
+  }
 
-  const updateBalance = useCallback(async () => {
-    const balance = await fetchBalanceApi()
+  const updateBalance = async (): Promise<void> => {
+    const balance = await fetchBalanceApi(address)
     dispatch(updateBalanceAction(balance))
-  }, [dispatch])
+  }
 
-  const updateMyVaults = useCallback(async () => {
-    const vaults = await fetchMyVaultsApi()
+  const updateMyVaults = async (): Promise<void> => {
+    const vaults = await fetchMyVaultsApi(address)
     dispatch(updateMyVaultsAction(vaults))
-  }, [dispatch])
+  }
 
   return {
     address,

@@ -11,11 +11,7 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 }))
 
-export interface LayoutProps {
-  children: any
-}
-
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const Layout: React.FC = ({ children }) => {
   const dark = useIsDarkMode()
   const { breakpoints } = useTheme()
   const mobile = useMediaQuery(breakpoints.down("xs"))

@@ -71,7 +71,7 @@ const VaultCard: React.FC<VaultCardProps> = ({ row }) => {
           Asset
         </Box>
         <Box className={cx(classes.value, classes.typographySecondary)}>
-          <img src={row.assetLogo} alt="" />
+          <img src={`assets/image/coins/${row.asset}.svg`} alt="" />
           {row.asset}
         </Box>
       </Box>

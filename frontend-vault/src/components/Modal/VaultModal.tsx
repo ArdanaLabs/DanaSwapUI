@@ -14,14 +14,7 @@ import { useIsDarkMode } from "state/user/hooks"
 
 import CloseIcon from "assets/image/icons/close.svg"
 import { useHistory } from "react-router-dom"
-
-interface Props {
-  info: {
-    open: boolean
-    type: string
-  }
-  handleClose: () => void
-}
+import { ModalUIState } from "state/ui/reducer"
 
 const StyledDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialog-paper": {
@@ -77,6 +70,11 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     },
   },
 }))
+
+interface Props {
+  info: ModalUIState
+  handleClose: () => void
+}
 
 const VaultModal: React.FC<Props> = ({ info, handleClose }) => {
   const { breakpoints } = useTheme()

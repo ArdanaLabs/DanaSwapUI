@@ -166,7 +166,7 @@ const VaultStatCard: React.FC<Props> = ({ vaultList }) => {
           {vaultList.map((vault) => {
             return renderVault(
               vault.asset,
-              vault.assetLogo,
+              require(`assets/image/coins/${vault.asset}.svg`).default,
               vault.locked / totalLockedUSD
             )
           })}

@@ -1,18 +1,22 @@
 import { createReducer } from "@reduxjs/toolkit"
 import { toggleUiModalAction } from "./actions"
 
-export interface UiState {
-  modal: {
-    open: boolean
-    type?: string
-  }
+export interface ModalUIState {
+  open: boolean
+  type?: string
 }
 
-export const initialState: UiState = {
-  modal: {
-    open: false,
-    type: "",
-  },
+export interface UIState {
+  modal: ModalUIState
+}
+
+export const modalInitialState: ModalUIState = {
+  open: false,
+  type: "",
+}
+
+export const initialState: UIState = {
+  modal: modalInitialState,
 }
 
 export default createReducer(initialState, (builder) =>

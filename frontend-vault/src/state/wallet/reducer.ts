@@ -9,7 +9,6 @@ import {
 export interface MyVaultInfo {
   id: number
   asset: string
-  assetLogo: string
   type: string
   locked: number
   collRatio: number
@@ -23,7 +22,7 @@ export interface WalletState {
   myVaults: MyVaultInfo[]
 }
 
-export const initialState: WalletState = {
+const initialState: WalletState = {
   address: "",
   balance: 0,
   myVaults: [],

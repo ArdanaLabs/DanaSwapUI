@@ -99,6 +99,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     color: palette.primary.main,
     fontSize: "10px",
   },
+  uppercase: {
+    textTransform: "uppercase",
+  },
 }))
 
 const AssetSection: React.FC = () => {
@@ -121,16 +124,16 @@ const AssetSection: React.FC = () => {
       sortable: false,
       flex: 2,
       renderCell: (params: GridCellParams) => {
-        const assetLogo: string = params.getValue(
-          params.id,
-          "assetLogo"
-        ) as string
+        const assetLogo =
+          require(`assets/image/coins/${params.value}.svg`).default
         return (
           <Box display="flex" alignItems="center">
             {assetLogo && (
               <img src={assetLogo} alt="" width="35px" height="35px" />
             )}
-            <Box pl="15px">{params.value}</Box>
+            <Box pl="15px" className={classes.uppercase}>
+              {params.value}
+            </Box>
           </Box>
         )
       },
@@ -140,6 +143,9 @@ const AssetSection: React.FC = () => {
       headerName: "Type",
       sortable: false,
       flex: 1,
+      renderCell: (params: GridCellParams) => (
+        <Box className={classes.uppercase}>{params.value}</Box>
+      ),
     },
     {
       field: "locked",

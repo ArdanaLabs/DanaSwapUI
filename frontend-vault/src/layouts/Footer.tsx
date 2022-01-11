@@ -87,7 +87,7 @@ const Footer: React.FC = () => {
             />
           </Box>
           <Box className={cx(classes.socials)}>
-            {socials.map((social: any, index: number) => (
+            {socials.map((social, index) => (
               <Link
                 className="link"
                 href={social.url}
