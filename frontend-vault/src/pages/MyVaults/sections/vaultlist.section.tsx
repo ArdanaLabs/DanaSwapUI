@@ -23,14 +23,22 @@ import {
 import { currencyFormatter, percentageFormatter } from "hooks"
 import { useUiModal } from "state/ui/hooks"
 import { MyVaultInfo } from "state/wallet/reducer"
+import { ReactComponent as ChevDownIcon } from "assets/image/icons/chev-down.svg"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
     margin: "50px 0px",
   },
-  sortIcon: {},
+  sortIcon: {
+    [`& path`]: {
+      fill: palette.primary.main,
+    },
+  },
   uppercase: {
     textTransform: "uppercase",
+  },
+  flip: {
+    transform: "rotateX(180deg)",
   },
 }))
 
@@ -135,19 +143,13 @@ const VaultListSection: React.FC = () => {
 
   const SortedDescendingIcon = () => (
     <Box display="flex" justifyContent="center" alignItems="center">
-      <i
-        className={cx("fa fa-chevron-down", classes.sortIcon)}
-        aria-hidden="true"
-      />
+      <ChevDownIcon className={cx(classes.sortIcon, classes.flip)} />
     </Box>
   )
 
   const SortedAscendingIcon = () => (
     <Box display="flex" justifyContent="center" alignItems="center">
-      <i
-        className={cx("fa fa-chevron-up", classes.sortIcon)}
-        aria-hidden="true"
-      />
+      <ChevDownIcon className={classes.sortIcon} />
     </Box>
   )
 

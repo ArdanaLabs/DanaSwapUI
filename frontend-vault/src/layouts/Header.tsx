@@ -8,14 +8,15 @@ import {
 } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
+import { useHistory } from "react-router-dom"
 import Hamburger from "hamburger-react"
 
 import { useIsDarkMode } from "state/user/hooks"
-import { useHistory } from "react-router-dom"
 import { ThemeSwitch, ConnectWallet, AddressCard } from "components"
+import { useWallet } from "state/wallet/hooks"
+
 import DUSD_LOGO_BLUE from "assets/image/DUSD-LOGO-BLUE.png"
 import DUSD_LOGO_WHITE from "assets/image/DUSD-LOGO-WHITE.png"
-import { useWallet } from "state/wallet/hooks"
 
 const MenuList = [
   {

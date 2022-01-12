@@ -1,6 +1,7 @@
-import React, { useState } from "react"
+import React, { useMemo, useState } from "react"
 import { Box, Container, useMediaQuery } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
+import _ from "lodash"
 import cx from "classnames"
 import { useIsDarkMode } from "state/user/hooks"
 import {
@@ -22,72 +23,8 @@ import {
 import { useUiModal } from "state/ui/hooks"
 import { useVault } from "state/vault/hooks"
 import { numberFormatter, percentageFormatter } from "hooks/formatter"
-
-// const rows = [
-//   {
-//     id: 0,
-//     asset: "Wrapped Bitcoin1",
-//     type: "WBTC-W",
-//     dUSD: "29.36M",
-//     stabilityFee: 2,
-//     minColl: 150,
-//     assetIcon: COIN1,
-//   },
-//   {
-//     id: 17,
-//     asset: "Wrapped Bitcoin2",
-//     type: "WBTC-Q",
-//     dUSD: "29.36M",
-//     stabilityFee: 2,
-//     minColl: 150,
-//     assetIcon: COIN1,
-//   },
-//   {
-//     id: 18,
-//     asset: "Wrapped Bitcoin3",
-//     type: "WBTC-E",
-//     dUSD: "29.36M",
-//     stabilityFee: 1,
-//     minColl: 150,
-//     assetIcon: COIN1,
-//   },
-//   {
-//     id: 19,
-//     asset: "Wrapped Bitcoin4",
-//     type: "WBTC-D",
-//     dUSD: "29.36M",
-//     stabilityFee: 3,
-//     minColl: 150,
-//     assetIcon: COIN1,
-//   },
-//   {
-//     id: 110,
-//     asset: "Wrapped Bitcoin5",
-//     type: "WBTC-C",
-//     dUSD: "29.36M",
-//     stabilityFee: 1,
-//     minColl: 150,
-//     assetIcon: COIN1,
-//   },
-//   {
-//     id: 120,
-//     asset: "Wrapped Bitcoin6",
-//     type: "WBTC-A",
-//     dUSD: "29.36M",
-//     stabilityFee: 20,
-//     minColl: 150,
-//     assetIcon: COIN1,
-//   },
-//   {
-//     id: 130,
-//     asset: "Wrapped Bitcoin7",
-//     type: "WBTC-B",
-//     dUSD: "29.36M",
-//     stabilityFee: 2,
-//     minColl: 150,
-//     assetIcon: COIN1,
-//   },
-// ]
+import { ReactComponent as ChevDownIcon } from "assets/image/icons/chev-down.svg"
+import { VaultInfo } from "state/vault/reducer"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {},
@@ -96,11 +33,15 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     width: "100%",
   },
   sortIcon: {
-    color: palette.primary.main,
-    fontSize: "10px",
+    [`& path`]: {
+      fill: palette.primary.main,
+    },
   },
   uppercase: {
     textTransform: "uppercase",
+  },
+  flip: {
+    transform: "rotateX(180deg)",
   },
 }))
 
@@ -116,6 +57,16 @@ const AssetSection: React.FC = () => {
 
   const { toggleModal } = useUiModal()
   const { vaults } = useVault()
+
+  const filteredVaults: VaultInfo[] = useMemo(
+    () =>
+      vaults.filter(
+        (vault: VaultInfo) =>
+          _.isEmpty(filterOption.keyword) ||
+          vault.asset.indexOf(filterOption.keyword) !== -1
+      ),
+    [vaults, filterOption]
+  )
 
   const columns: GridColDef[] = [
     {
@@ -204,19 +155,13 @@ const AssetSection: React.FC = () => {
 
   const SortedDescendingIcon = () => (
     <Box display="flex" justifyContent="center" alignItems="center">
-      <i
-        className={cx("fa fa-chevron-down", classes.sortIcon)}
-        aria-hidden="true"
-      />
+      <ChevDownIcon className={cx(classes.sortIcon, classes.flip)} />
     </Box>
   )
 
   const SortedAscendingIcon = () => (
     <Box display="flex" justifyContent="center" alignItems="center">
-      <i
-        className={cx("fa fa-chevron-up", classes.sortIcon)}
-        aria-hidden="true"
-      />
+      <ChevDownIcon className={classes.sortIcon} />
     </Box>
   )
 
@@ -238,7 +183,7 @@ const AssetSection: React.FC = () => {
         <Box className={cx(classes.assetList)}>
           {!mobile && (
             <TokenAssetGrid
-              rows={vaults}
+              rows={filteredVaults}
               columns={columns}
               disableSelectionOnClick
               disableColumnSelector
@@ -254,7 +199,9 @@ const AssetSection: React.FC = () => {
             />
           )}
           {mobile &&
-            vaults.map((row) => <TokenAssetCard key={row.id} row={row} />)}
+            filteredVaults.map((row) => (
+              <TokenAssetCard key={row.id} row={row} />
+            ))}
         </Box>
       </Container>
     </Box>

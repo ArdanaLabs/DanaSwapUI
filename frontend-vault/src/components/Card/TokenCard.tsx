@@ -27,6 +27,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontSize: "18px",
     lineHeight: "115%",
     marginTop: "5px",
+    textTransform: "uppercase",
 
     [breakpoints.down("xs")]: {
       fontSize: "14px",
@@ -37,6 +38,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     lineHeight: "110%",
     marginTop: "25px",
     marginBottom: "55px",
+    textTransform: "uppercase",
 
     [breakpoints.down("xs")]: {
       fontSize: "30px",

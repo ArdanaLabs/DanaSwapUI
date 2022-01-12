@@ -27,8 +27,8 @@ const AdSection: React.FC = () => {
         <Grid container spacing={4}>
           <Grid item xs={12} sm={6} md={4}>
             <TokenCard
-              name="LINK-A"
-              label="NEW"
+              name="link-a"
+              label="New"
               stabilityFee={3}
               ratio={165}
               image={COIN_DANA}
@@ -41,8 +41,8 @@ const AdSection: React.FC = () => {
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
             <TokenCard
-              name="UNI-A"
-              label="MOST POPULAR"
+              name="uni-a"
+              label="Most Popular"
               stabilityFee={2}
               ratio={145}
               image={COIN_ETH}
@@ -55,8 +55,8 @@ const AdSection: React.FC = () => {
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
             <TokenCard
-              name="GUSD-A"
-              label="CHEAPEST"
+              name="gusd-a"
+              label="Cheapest"
               stabilityFee={0}
               ratio={101}
               image={COIN_HUOBI}

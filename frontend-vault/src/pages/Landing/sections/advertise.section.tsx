@@ -4,13 +4,12 @@ import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
 
 import { useIsDarkMode } from "state/user/hooks"
+import { useWallet } from "state/wallet/hooks"
 
 import BACKGROUND_GRAPHIC from "assets/image/backgrounds/BG-GRAPHIC.png"
 import BACKGROUND_WAVE_BLUE from "assets/image/backgrounds/hero-bg-dark.png"
 import BACKGROUND_WAVE_WHITE from "assets/image/backgrounds/hero-bg-light.png"
-// import BACKGROUND_WAVE_BLUE_M from "assets/image/backgrounds/BG-BLUE-MOBILE.png"
-// import BACKGROUND_WAVE_WHITE_M from "assets/image/backgrounds/BG-WHITE-MOBILE.png"
-import COIN_CARDANO from "assets/image/COIN1.png"
+import COIN_CARDANO from "assets/image/coins/cardano.png"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -95,6 +94,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     borderRadius: "100px",
     display: "inline-block",
     fontWeight: 700,
+    textTransform: "uppercase",
   },
 }))
 
@@ -103,6 +103,7 @@ const AdSection: React.FC = () => {
   const dark = useIsDarkMode()
   const mobile = useMediaQuery(breakpoints.down("xs"))
   const classes = useStyles({ dark, mobile })
+  const { address } = useWallet()
 
   return (
     <Box className={cx(classes.root)}>
@@ -138,7 +139,11 @@ const AdSection: React.FC = () => {
 
               <Box mt={!mobile ? "20px" : "20px"} />
 
-              <Box className={cx(classes.connectWallet)}>CONNECT A WALLET</Box>
+              {!address && (
+                <Box className={cx(classes.connectWallet)}>
+                  Connect a wallet
+                </Box>
+              )}
             </Box>
           </Grid>
           <Grid item xs={12} sm={6}>

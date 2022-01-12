@@ -1,4 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit"
+// import { FilterType } from "components/DataGrid/TokenAssetGridFilter"
 import { updateVaultsAction } from "./actions"
 
 export interface VaultInfo {
@@ -12,6 +13,7 @@ export interface VaultInfo {
   minCollRatio: number
 
   dustLimit: number
+  // category: FilterType
 }
 
 export interface VaultState {

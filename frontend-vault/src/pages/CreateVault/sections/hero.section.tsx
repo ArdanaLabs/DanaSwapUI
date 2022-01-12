@@ -66,7 +66,7 @@ const HeroSection: React.FC = () => {
               component="h1"
               className={cx(classes.title)}
             >
-              Open {type} Vault
+              Open {type.toUpperCase()} Vault
             </Typography>
           </Grid>
         </Grid>
