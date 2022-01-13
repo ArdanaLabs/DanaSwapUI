@@ -58,15 +58,33 @@ const AssetSection: React.FC = () => {
   const { toggleModal } = useUiModal()
   const { vaults } = useVault()
 
-  const filteredVaults: VaultInfo[] = useMemo(
-    () =>
-      vaults.filter(
-        (vault: VaultInfo) =>
-          _.isEmpty(filterOption.keyword) ||
-          vault.asset.indexOf(filterOption.keyword) !== -1
-      ),
-    [vaults, filterOption]
-  )
+  const filteredVaults: VaultInfo[] = useMemo(() => {
+    let filteredByKeyword: VaultInfo[] = vaults.filter(
+      (vault: VaultInfo) =>
+        _.isEmpty(filterOption.keyword) ||
+        vault.asset.indexOf(filterOption.keyword) !== -1
+    )
+    switch (filterOption.filterType) {
+      case FilterType.POPULAR:
+        filteredByKeyword = filteredByKeyword.filter(
+          (vault: VaultInfo) => vault.isPopular
+        )
+        break
+      case FilterType.STABLECOINS:
+        filteredByKeyword = filteredByKeyword.filter(
+          (vault: VaultInfo) => vault.isStableCoin
+        )
+        break
+      case FilterType.LP:
+        filteredByKeyword = filteredByKeyword.filter(
+          (vault: VaultInfo) => vault.isLP
+        )
+        break
+      default:
+        break
+    }
+    return filteredByKeyword
+  }, [vaults, filterOption])
 
   const columns: GridColDef[] = [
     {
@@ -75,8 +93,10 @@ const AssetSection: React.FC = () => {
       sortable: false,
       flex: 2,
       renderCell: (params: GridCellParams) => {
-        const assetLogo =
-          require(`assets/image/coins/${params.value}.svg`).default
+        let assetLogo = null
+        try {
+          assetLogo = require(`assets/image/coins/${params.value}.svg`).default
+        } catch (e) {}
         return (
           <Box display="flex" alignItems="center">
             {assetLogo && (

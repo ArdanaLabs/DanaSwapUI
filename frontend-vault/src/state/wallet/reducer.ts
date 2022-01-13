@@ -14,6 +14,10 @@ export interface MyVaultInfo {
   collRatio: number
   debt: number
   risk: boolean
+
+  //
+  isStableCoin: boolean
+  isLP: boolean
 }
 
 export interface WalletState {

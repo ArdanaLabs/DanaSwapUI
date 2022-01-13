@@ -1,6 +1,7 @@
 import { Box, Container, useMediaQuery } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
+import _ from "lodash"
 import {
   TokenAssetGrid,
   VaultCard,
@@ -11,7 +12,7 @@ import {
   FilterOption,
   FilterType,
 } from "components/DataGrid/TokenAssetGridFilter"
-import React, { useState } from "react"
+import React, { useMemo, useState } from "react"
 import { useIsDarkMode } from "state/user/hooks"
 import { useWallet } from "state/wallet/hooks"
 
@@ -56,6 +57,29 @@ const VaultListSection: React.FC = () => {
     keyword: "",
   })
 
+  const filteredVaults: MyVaultInfo[] = useMemo(() => {
+    let filteredByKeyword: MyVaultInfo[] = myVaults.filter(
+      (vault: MyVaultInfo) =>
+        _.isEmpty(filterOption.keyword) ||
+        vault.asset.indexOf(filterOption.keyword) !== -1
+    )
+    switch (filterOption.filterType) {
+      case FilterType.STABLECOINS:
+        filteredByKeyword = filteredByKeyword.filter(
+          (vault: MyVaultInfo) => vault.isStableCoin
+        )
+        break
+      case FilterType.LP:
+        filteredByKeyword = filteredByKeyword.filter(
+          (vault: MyVaultInfo) => vault.isLP
+        )
+        break
+      default:
+        break
+    }
+    return filteredByKeyword
+  }, [myVaults, filterOption])
+
   const columns: GridColDef[] = [
     {
       field: "asset",
@@ -63,8 +87,11 @@ const VaultListSection: React.FC = () => {
       sortable: false,
       flex: 2,
       renderCell: (params: GridCellParams) => {
-        const assetLogo =
-          require(`assets/image/coins/${params.value}.svg`).default
+        let assetLogo = null
+        try {
+          assetLogo = require(`assets/image/coins/${params.value}.svg`).default
+        } catch (e) {}
+
         return (
           <Box display="flex" alignItems="center">
             {assetLogo && (
@@ -155,44 +182,42 @@ const VaultListSection: React.FC = () => {
 
   return (
     <Box className={cx(classes.root)}>
-      {myVaults.length > 0 && (
-        <Container>
-          <Box>
-            <TokenAssetGridFilter
-              filterOption={filterOption}
-              avFilterTypes={[
-                FilterType.YOUR,
-                FilterType.STABLECOINS,
-                FilterType.LP,
-              ]}
-              handleFilterChange={(newOption) => setFilterOption(newOption)}
+      <Container>
+        <Box>
+          <TokenAssetGridFilter
+            filterOption={filterOption}
+            avFilterTypes={[
+              FilterType.YOUR,
+              FilterType.STABLECOINS,
+              FilterType.LP,
+            ]}
+            handleFilterChange={(newOption) => setFilterOption(newOption)}
+          />
+        </Box>
+        <Box>
+          {!mobile && (
+            <TokenAssetGrid
+              rows={filteredVaults}
+              columns={columns}
+              disableSelectionOnClick
+              disableColumnSelector
+              disableColumnMenu
+              hideFooterPagination
+              rowHeight={64}
+              autoHeight
+              pageSize={7}
+              components={{
+                ColumnSortedDescendingIcon: SortedDescendingIcon,
+                ColumnSortedAscendingIcon: SortedAscendingIcon,
+              }}
             />
-          </Box>
-          <Box>
-            {!mobile && (
-              <TokenAssetGrid
-                rows={myVaults}
-                columns={columns}
-                disableSelectionOnClick
-                disableColumnSelector
-                disableColumnMenu
-                hideFooterPagination
-                rowHeight={64}
-                autoHeight
-                pageSize={7}
-                components={{
-                  ColumnSortedDescendingIcon: SortedDescendingIcon,
-                  ColumnSortedAscendingIcon: SortedAscendingIcon,
-                }}
-              />
-            )}
-            {mobile &&
-              myVaults.map((row: MyVaultInfo) => (
-                <VaultCard key={row.id} row={row} />
-              ))}
-          </Box>
-        </Container>
-      )}
+          )}
+          {mobile &&
+            filteredVaults.map((row: MyVaultInfo) => (
+              <VaultCard key={row.id} row={row} />
+            ))}
+        </Box>
+      </Container>
     </Box>
   )
 }
