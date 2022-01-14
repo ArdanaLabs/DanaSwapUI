@@ -540,27 +540,16 @@ export const Roadmap = {
   "Q1 2021": ["Project Conception", "Danaswap Development"],
   "Q2 2021": ["Stablecoin Development", "Seed Sale", "Whitepaper Release"],
   "Q3 2021": ["Plutus Contract Audits", "Private Sale", "AREM Development"],
-  "Q4 2021": [
-    "Public Sale",
-    "Token Generation Event",
-    "CEX Listing",
-    "Ardana Academy Opening",
-  ],
-  "Q1 2022": [
-    "Futher Wallet Integration",
-    "Stablecoin Release",
-    "Danaswap Release",
-  ],
-  "Q2 2022": [
-    "Danaswap V2 Release",
-    "Community Ambassador Program",
-    "Governance Transition",
-  ],
+  "Q4 2021": ["Public Sale", "Token Generation Event", "CEX Listing"],
+  "Q1 2022": ["Futher Wallet Integration", "Ardana Academy Opening"],
+  "Q2 2022": ["Community Ambassador Program", "Governance Transition"],
   "Q3 2022": [
     "Third Party Integration Expansion",
     "Partnership Project Integrations",
+    "Stablecoin Release",
+    "Danaswap Release",
   ],
-  "Q4 2022": ["Danaswap Foreign Exchange"],
+  "Q4 2022": ["Danaswap Foreign Exchange", "Danaswap V2 Release"],
   "2023+": [
     "Tokenized Asset Vaults",
     "Alternative Stablecoin Currency Vaults",
