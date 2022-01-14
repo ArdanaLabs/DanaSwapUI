@@ -569,7 +569,7 @@ export const CommunityList = [
       "Be up to the date on the latest Ardana updates  and announcements.",
     cta: {
       label: "Ardana Hub on Medium",
-      link: "/",
+      link: "https://medium.com/ardana-hub",
       width: 220,
       height: 40,
     },
@@ -580,7 +580,7 @@ export const CommunityList = [
     content: "Join our Telegram channel and Discord server.",
     cta: {
       label: "Follow us on Twitter",
-      link: "/",
+      link: "https://twitter.com/ardanaproject",
       width: 220,
       height: 40,
     },
