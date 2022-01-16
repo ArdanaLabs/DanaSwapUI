@@ -1,5 +1,4 @@
 import React from "react"
-import Carousel from "react-elastic-carousel"
 import {
   Box,
   useMediaQuery,
@@ -11,10 +10,9 @@ import {
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 
 import { useIsDarkMode } from "state/user/hooks"
-import { TwitterNewsBox } from "components"
-import { NewsOnTwitterList } from "data"
-
+import TwitterImage from "assets/backgrounds/twitter.png"
 import { ReactComponent as TwitterIcon } from "assets/icons/twitter.svg"
+import { GradientBox } from "components"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -37,17 +35,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     textTransform: "uppercase",
     padding: "15px 30px",
   },
-  panel: {
-    background: palette.background.paper,
-    borderRadius: "10px",
-    paddingLeft: "30px",
-    paddingRight: "30px",
-    marginTop: "30px",
-    marginBottom: "30px",
-
-    [breakpoints.down("xs")]: {
-      paddingLeft: "10px",
-      paddingRight: "10px",
+  h3: {
+    [`& > span`]: {
+      color: palette.secondary.main,
     },
   },
 }))
@@ -89,27 +79,62 @@ const TwitterSection: React.FC = () => {
             </Box>
           </Grid>
         </Grid>
-        {/* <Box className={classes.panel} mt="30px">
-          <Grid container spacing={3}>
-            {NewsOnTwitterList.slice(0, 3).map((news) => (
-              <Grid item xs={12} sm={6} md={4} key={news.title}>
-                <TwitterNewsBox {...news} />
+
+        <Box my={"100px"}>
+          <Grid container justifyContent="center">
+            <Grid item xs={12} md={9}>
+              <Grid
+                container
+                spacing={3}
+                direction={!mobile ? "row" : "column-reverse"}
+              >
+                <Grid item container xs={12} md={6}>
+                  <Box
+                    display="flex"
+                    flexDirection="column"
+                    justifyContent={"center"}
+                    textAlign={!mobile ? "start" : "center"}
+                  >
+                    <Typography
+                      component="h3"
+                      variant="h3"
+                      className={classes.h3}
+                    >
+                      Stay <span>updated.</span>
+                    </Typography>
+                    <Box mb="10px" />
+                    <Typography component="h4" variant="h4">
+                      Never miss a chance to connect! For the live news and
+                      updates, follow Ardana on twitter.
+                    </Typography>
+                    <Box mb="30px" />
+                    <Link
+                      href="https://twitter.com/ardanaproject"
+                      target="_blank"
+                      underline="none"
+                    >
+                      <GradientBox width={245} height={40}>
+                        <TwitterIcon width={"15px"} />
+                        <Typography
+                          component="div"
+                          variant="button"
+                          style={{ lineHeight: 0, marginLeft: "10px" }}
+                        >
+                          Follow us on Twitter
+                        </Typography>
+                      </GradientBox>
+                    </Link>
+                  </Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box textAlign="center">
+                    <img src={TwitterImage} alt="twitter" width={"100%"} />
+                  </Box>
+                </Grid>
               </Grid>
-            ))}
+            </Grid>
           </Grid>
-        </Box> */}
-        <Carousel
-          className={classes.panel}
-          itemsToShow={!mobile ? 3 : 1}
-          isRTL={false}
-          itemPadding={[!mobile ? 10 : 5]}
-          renderArrow={() => <></>}
-          renderPagination={() => <></>}
-        >
-          {NewsOnTwitterList.slice(0, 8).map((news, i: number) => (
-            <TwitterNewsBox key={news.title + i} {...news} />
-          ))}
-        </Carousel>
+        </Box>
         <Box display="flex" justifyContent="center">
           {mobile && renderBadge()}
         </Box>
