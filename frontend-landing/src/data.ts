@@ -392,6 +392,10 @@ export const Partners = [
     src: require("assets/logos/chaoslabs.svg").default,
     url: "https://chaoslabs.xyz/",
   },
+  {
+    src: require("assets/logos/indigo.png"),
+    url: "https://indigoprotocol.io/",
+  },
   // require("assets/logos/mlabs.svg").default,
   // require("assets/logos/defire.svg").default,
   // require("assets/logos/israel-bc.svg").default,
@@ -745,7 +749,7 @@ export const NewsOnMediaList = [
     title: "Ardana and Near Join Forces to Build a Crosschain Bridge",
     content:
       "On Tuesday morning, Ardana, a stablecoin and lending hub on the Cardano blockchain platform, announced an agreement with Near protocol, a layer 1 Ethereum alternative. Ardana received a grant",
-    link: "/",
+    link: "https://www.coindesk.com/business/2021/11/23/ardana-and-near-join-forces-to-build-a-crosschain-bridge/#:~:text=Ardana%20received%20a%20grant%20from,press%20release%20provided%20to%20CoinDesk.&text=In%20October%2C%20Near%20announced%20an,a%20bid%20to%20attract%20developers",
   },
   {
     label: "CoinTelegraph",
@@ -754,7 +758,7 @@ export const NewsOnMediaList = [
       "Ardana partners with Near protocol on Cardano bridge infrastructure",
     content:
       "Ardana, Cardano’s growing stablecoin hub, announced a strategic partnership with Near protocol on Tuesday. The partnership allows for asset transfer between the two protocols in which Ardana will",
-    link: "/",
+    link: "https://cointelegraph.com/news/ardana-partners-with-near-protocol-on-cardano-bridge-infrastructure",
   },
   {
     image: require("assets/news/media/69ea73c64e0929176878276fd614c409 1.png"),
@@ -762,7 +766,7 @@ export const NewsOnMediaList = [
     title: "Cardano DeFi platform Ardana partners with NEAR protocol",
     content:
       "Recently-launched Ardana – a Cardano based decentralised stablecoin solution – has partnered with Ethereum rival NEAR protocol.The move aims to deliver an interconnected bridge between the DeFi",
-    link: "/",
+    link: "https://finance.yahoo.com/news/cardano-defi-platform-ardana-partners-135929378.html",
   },
   {
     image: require("assets/news/media/cardano-stablecoin-protocol-ardana-toasts-10m-capital-injection-led-by-three-arrows-capital-and-ascensive-assets 1.png"),
@@ -771,7 +775,7 @@ export const NewsOnMediaList = [
       "Cardano Stablecoin Protocol Ardana Toasts $10m Capital Injection Led by Three Arrows Capital and Ascensive Assets",
     content:
       "Ardana, the asset-backed stablecoin protocol and decentralized exchange, has attracted $10 million of investment in its latest strategic funding round",
-    link: "/",
+    link: "https://news.bitcoin.com/cardano-stablecoin-protocol-ardana-toasts-10m-capital-injection-led-by-three-arrows-capital-and-ascensive-assets/",
   },
   {
     label: "CoinDesk",
@@ -779,7 +783,7 @@ export const NewsOnMediaList = [
     title: "Three Arrows Capital Backs $10M Raise for DeFi on Cardano",
     content:
       "Cardano’s decentralized finance (DeFi) ecosystem may be showing glimmers of primordial life following the close of a $10 million raise for Ardana, a new protocol that aims to provide stablecoin minting",
-    link: "/",
+    link: "https://www.coindesk.com/tech/2021/10/29/three-arrows-capital-backs-10m-raise-for-defi-on-cardano/",
   },
   {
     image: require("assets/news/media/cardano-stablecoin-protocol-ardana-toasts-10m-capital-injection-led-by-three-arrows-capital-and-ascensive-assets 1.png"),
@@ -788,6 +792,6 @@ export const NewsOnMediaList = [
       "Cardano Stablecoin Protocol Ardana Toasts $10m Capital Injection Led by Three Arrows Capital and Ascensive Assets",
     content:
       "Ardana, the asset-backed stablecoin protocol and decentralized exchange, has attracted $10 million of investment in its latest strategic funding round",
-    link: "/",
+    link: "https://www.benzinga.com/markets/cryptocurrency/21/10/23749212/cardano-stablecoin-protocol-ardana-closes-10m-round-led-by-three-arrows-capital-ascensive-",
   },
 ]

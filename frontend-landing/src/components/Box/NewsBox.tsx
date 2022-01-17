@@ -52,7 +52,7 @@ const NewsBox: React.FC<NewsBoxProps> = ({
         <img src={image} alt="news" width={"100%"} />
       </Box>
       <Box className={classes.body}>
-        <Typography component="h5" variant="h5">
+        <Typography component="h5" variant="h5" style={{ lineHeight: "100%" }}>
           <small>{title}</small>
         </Typography>
         <Box mb="15px" />
