@@ -7,7 +7,7 @@ import {
   updateWalletAddressAction,
 } from "./actions"
 import { fetchBalanceApi, fetchMyVaultsApi, getWalletAddress } from "./apis"
-import { MyVaultInfo, WalletState } from "./reducer"
+import { MyVaultInfo, WalletState } from "./types"
 
 export function useWallet(): {
   address: string

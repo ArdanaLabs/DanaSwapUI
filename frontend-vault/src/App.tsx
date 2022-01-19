@@ -4,7 +4,6 @@ import {
 } from "@material-ui/core"
 import Layout from "layouts/Layout"
 import React, { Suspense } from "react"
-import { I18nextProvider } from "react-i18next"
 import { Provider as StateProvider } from "react-redux"
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom"
 import { ParallaxProvider } from "react-scroll-parallax"
@@ -12,7 +11,6 @@ import UiUpdater from "state/ui/updater"
 import VaultUpdater from "state/vault/updater"
 import WalletUpdater from "state/wallet/updater"
 import { useIsDarkMode } from "state/user/hooks"
-import i18n from "./i18n"
 import {
   Landing,
   MyVaults,
@@ -45,7 +43,7 @@ const Providers: React.FC = ({ children }) => (
         <StateProvider store={store}>
           <ThemeProvider>
             <CssBaseline />
-            <I18nextProvider i18n={i18n}>{children}</I18nextProvider>
+            {children}
             <StateUpdaters />
           </ThemeProvider>
         </StateProvider>

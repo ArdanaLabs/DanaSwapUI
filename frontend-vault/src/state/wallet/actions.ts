@@ -1,6 +1,6 @@
 import { createAction } from "@reduxjs/toolkit"
 
-import { MyVaultInfo } from "./reducer"
+import { MyVaultInfo } from "./types"
 
 export const updateWalletAddressAction = createAction<string>(
   "wallet/updateWalletAddressAction"

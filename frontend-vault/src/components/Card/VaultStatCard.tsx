@@ -11,7 +11,7 @@ import {
 } from "@material-ui/core"
 import { useIsDarkMode } from "state/user/hooks"
 import { percentageFormatter } from "hooks"
-import { MyVaultInfo } from "state/wallet/reducer"
+import { MyVaultInfo } from "state/wallet/types"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {

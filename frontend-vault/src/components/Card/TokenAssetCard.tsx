@@ -5,7 +5,7 @@ import cx from "classnames"
 import { useIsDarkMode } from "state/user/hooks"
 import { VaultButton } from "components"
 import { useUiModal } from "state/ui/hooks"
-import { VaultInfo } from "state/vault/reducer"
+import { VaultInfo } from "state/vault/types"
 import { numberFormatter, percentageFormatter } from "hooks"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({

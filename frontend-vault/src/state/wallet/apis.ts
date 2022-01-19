@@ -1,4 +1,4 @@
-import { MyVaultInfo } from "./reducer"
+import { MyVaultInfo } from "./types"
 
 export const getWalletAddress = async (): Promise<string> => {
   // from Nami wallet

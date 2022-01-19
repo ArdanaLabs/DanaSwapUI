@@ -23,7 +23,7 @@ import {
 } from "@material-ui/data-grid"
 import { currencyFormatter, percentageFormatter } from "hooks"
 import { useUiModal } from "state/ui/hooks"
-import { MyVaultInfo } from "state/wallet/reducer"
+import { MyVaultInfo } from "state/wallet/types"
 import { ReactComponent as ChevDownIcon } from "assets/image/icons/chev-down.svg"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({

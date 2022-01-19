@@ -1,4 +1,4 @@
-import { VaultInfo } from "./reducer"
+import { VaultInfo } from "./types"
 
 export const fetchVaultsApi = async (): Promise<VaultInfo[]> => {
   try {

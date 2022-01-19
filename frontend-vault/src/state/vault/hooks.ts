@@ -4,7 +4,7 @@ import { shallowEqual, useDispatch, useSelector } from "react-redux"
 import { AppDispatch, AppState } from "state"
 
 import { updateVaultsAction } from "./actions"
-import { VaultState, VaultInfo } from "./reducer"
+import { VaultState, VaultInfo } from "./types"
 import { fetchVaultsApi } from "./apis"
 
 export function useVault(): { vaults: VaultInfo[]; updateVaults: () => void } {

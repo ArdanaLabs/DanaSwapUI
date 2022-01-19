@@ -6,7 +6,7 @@ import { useIsDarkMode } from "state/user/hooks"
 import { VaultButton } from "components"
 import { currencyFormatter, percentageFormatter } from "hooks"
 import { useUiModal } from "state/ui/hooks"
-import { MyVaultInfo } from "state/wallet/reducer"
+import { MyVaultInfo } from "state/wallet/types"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
