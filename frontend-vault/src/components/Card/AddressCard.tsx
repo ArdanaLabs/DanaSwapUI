@@ -3,10 +3,12 @@ import cx from "classnames"
 import { Box, Typography, useMediaQuery } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 
-import { useWallet } from "state/wallet/hooks"
 import { useIsDarkMode } from "state/user/hooks"
 
 import WalletIcon from "assets/image/icons/wallet.svg"
+import BigNumber from "bignumber.js"
+import { Currencies } from "data"
+import { currencyConvertor } from "hooks"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -15,15 +17,16 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     cursor: "pointer",
     border: `2px solid ${palette.primary.main}`,
     filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
-    width: "220px",
+    minWidth: "220px",
 
     [breakpoints.down("xs")]: {
-      width: "180px",
+      minWidth: "180px",
     },
   },
   address: {
     textAlign: "center",
     width: "100%",
+    padding: "0 10px",
     color: palette.primary.main,
 
     [breakpoints.down("xs")]: {
@@ -31,11 +34,11 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     },
   },
   balance: {
-    "width": "100px",
-    "background": palette.info.main,
-    "borderRadius": "100px",
+    // minWidth: "100px",
+    background: palette.info.main,
+    borderRadius: "100px",
 
-    "& > .wallet": {
+    [`& > .wallet`]: {
       background: palette.info.light,
       borderRadius: "100px",
       padding: "5px",
@@ -48,7 +51,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       },
     },
 
-    "& > .amount": {
+    [`& > .amount`]: {
       color: palette.common.white,
       marginRight: "20px",
       marginLeft: "10px",
@@ -60,12 +63,16 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 }))
 
-const AddressCard: React.FC = () => {
+interface Props {
+  address: string
+  balance: BigNumber
+}
+
+const AddressCard: React.FC<Props> = ({ address, balance }) => {
   const theme = useTheme()
   const dark = useIsDarkMode()
   const mobile = useMediaQuery(theme.breakpoints.down("xs"))
   const classes = useStyles({ dark, mobile })
-  const { address, balance } = useWallet()
 
   const smartTrim = (string: string, maxLength: number): string => {
     if (!string) return string
@@ -104,7 +111,7 @@ const AddressCard: React.FC = () => {
           <img src={WalletIcon} alt="wallet" width="80%" />
         </Box>
         <Typography variant="h6" component="h6" className="amount">
-          {balance.toString()}
+          {currencyConvertor(balance, Currencies.ada.decimals).toString()}
         </Typography>
       </Box>
     </Box>

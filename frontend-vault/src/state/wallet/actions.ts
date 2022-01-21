@@ -11,8 +11,8 @@ export const updateWalletAddressAction = createAction<string>(
   "wallet/updateWalletAddressAction"
 )
 
-export const updateBalanceAction = createAction<BigNumber>(
-  "wallet/updateBalanceAction"
+export const updateBalancesAction = createAction<{ [key: string]: BigNumber }>(
+  "wallet/updateBalancesAction"
 )
 
 export const updateMyVaultsAction = createAction<MyVaultInfo[]>(

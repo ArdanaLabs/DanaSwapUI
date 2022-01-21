@@ -4,7 +4,7 @@ import { shallowEqual, useDispatch, useSelector } from "react-redux"
 import { AppDispatch, AppState } from "state"
 import {
   getCardanoApiAction,
-  updateBalanceAction,
+  updateBalancesAction,
   updateMyVaultsAction,
   updateWalletAddressAction,
 } from "./actions"
@@ -16,7 +16,7 @@ const cardano = (window as any).cardano
 export function useWallet() {
   const dispatch = useDispatch<AppDispatch>()
 
-  const { cardanoApi, address, balance, myVaults } = useSelector<
+  const { cardanoApi, address, balances, myVaults } = useSelector<
     AppState,
     WalletState
   >((state) => state.wallet, shallowEqual)
@@ -49,8 +49,8 @@ export function useWallet() {
     dispatch(updateWalletAddressAction(newAddress))
   }
 
-  const updateBalance = (balance: BigNumber): void => {
-    dispatch(updateBalanceAction(balance))
+  const updateBalances = (balances: { [key: string]: BigNumber }): void => {
+    dispatch(updateBalancesAction(balances))
   }
 
   const updateMyVaults = (): void => {
@@ -62,11 +62,11 @@ export function useWallet() {
   return {
     cardanoApi,
     address,
-    balance,
+    balances,
     myVaults,
     connectWallet,
     updateWalletAddress,
-    updateBalance,
+    updateBalances,
     updateMyVaults,
   }
 }

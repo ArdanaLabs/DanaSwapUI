@@ -31,3 +31,12 @@ export const socials = [
     url: "https://www.linkedin.com/company/ardanalabs/",
   },
 ]
+
+export const Currencies = {
+  ada: {
+    decimals: 6,
+  },
+  dana: {
+    decimals: 6,
+  },
+}

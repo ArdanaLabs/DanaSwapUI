@@ -78,6 +78,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       margin: "5px 10px",
       textTransform: "uppercase",
       color: palette.primary.main,
+
+      [`&:hover`]: {
+        opacity: 0.8,
+      },
     },
   },
 
@@ -88,10 +92,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   drawer: {
-    "textAlign": "center",
-    "marginTop": "50px",
+    textAlign: "center",
+    marginTop: "50px",
 
-    "& h3": {
+    [`& h3`]: {
       padding: "10px 20px",
       color: palette.primary.main,
     },
@@ -104,7 +108,7 @@ const Header: React.FC = () => {
   const dark = useIsDarkMode()
   const classes = useStyles({ dark, mobile })
   const history = useHistory()
-  const { address } = useWallet()
+  const { address, balances } = useWallet()
   const [bgColor, setBGColor] = useState("transparent")
   const [openMenu, setOpenMenu] = useState(false)
 
@@ -170,7 +174,7 @@ const Header: React.FC = () => {
                 </Box>
               )}
               <Box ml={"20px"}>
-                <AddressCard />
+                <AddressCard address={address} balance={balances.ada} />
               </Box>
               {mobile && (
                 <Hamburger

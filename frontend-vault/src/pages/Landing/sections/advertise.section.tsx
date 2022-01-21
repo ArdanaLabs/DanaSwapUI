@@ -152,6 +152,7 @@ const AdSection: React.FC = () => {
                 src={BACKGROUND_GRAPHIC}
                 alt="graphic"
                 width={!mobile ? "100%" : "80%"}
+                style={{ maxWidth: "500px" }}
               />
             </Box>
           </Grid>

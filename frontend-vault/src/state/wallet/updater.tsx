@@ -10,7 +10,7 @@ export default function Updater() {
     cardanoApi,
     address,
     updateMyVaults,
-    updateBalance,
+    updateBalances,
     updateWalletAddress,
   } = useWallet()
 
@@ -19,8 +19,8 @@ export default function Updater() {
       return () => {}
     }
 
-    cardanoApi.getBalance().then((balance: string) => {
-      updateBalance(new BigNumber(balance))
+    cardanoApi.getBalance("ADA").then((balance: string) => {
+      updateBalances({ ada: new BigNumber(balance) })
     })
 
     cardanoApi.getUsedAddresses().then(function (addresses: string[]) {

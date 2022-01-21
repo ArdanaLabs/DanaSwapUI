@@ -1,3 +1,5 @@
+import BigNumber from "bignumber.js"
+
 export const percentageFormatter = (
   amount: number,
   digits: number = 2
@@ -9,6 +11,13 @@ export const percentageFormatter = (
   }
 
   return new Intl.NumberFormat("en-US", option).format(amount)
+}
+
+export const currencyConvertor = (
+  amount: BigNumber,
+  decimals: number
+): BigNumber => {
+  return amount.dividedBy(Math.pow(10, decimals))
 }
 
 export const currencyFormatter = (

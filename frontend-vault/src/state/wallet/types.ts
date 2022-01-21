@@ -23,6 +23,8 @@ export interface WalletState {
   cardanoApi: CardanoApi | null
   walletType: WalletType | null
   address: string
-  balance: BigNumber
+  balances: {
+    [key: string]: BigNumber
+  }
   myVaults: MyVaultInfo[]
 }
