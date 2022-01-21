@@ -1,6 +1,8 @@
 import { createReducer } from "@reduxjs/toolkit"
+import BigNumber from "bignumber.js"
 
 import {
+  getCardanoApiAction,
   updateMyVaultsAction,
   updateWalletAddressAction,
   updateBalanceAction,
@@ -8,13 +10,18 @@ import {
 import { WalletState } from "./types"
 
 const initialState: WalletState = {
+  cardanoApi: null,
+  walletType: null,
   address: "",
-  balance: 0,
+  balance: new BigNumber(0),
   myVaults: [],
 }
 
 export default createReducer(initialState, (builder) =>
   builder
+    .addCase(getCardanoApiAction, (state, action) => {
+      state.cardanoApi = action.payload
+    })
     .addCase(updateWalletAddressAction, (state, action) => {
       state.address = action.payload
     })

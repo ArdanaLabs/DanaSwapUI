@@ -1,3 +1,10 @@
+import BigNumber from "bignumber.js"
+
+export enum WalletType {
+  YOROI = "yoroi",
+}
+export type CardanoApi = any
+
 export interface MyVaultInfo {
   id: number
   asset: string
@@ -13,7 +20,9 @@ export interface MyVaultInfo {
 }
 
 export interface WalletState {
+  cardanoApi: CardanoApi | null
+  walletType: WalletType | null
   address: string
-  balance: number
+  balance: BigNumber
   myVaults: MyVaultInfo[]
 }

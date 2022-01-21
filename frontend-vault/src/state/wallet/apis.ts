@@ -5,11 +5,6 @@ export const getWalletAddress = async (): Promise<string> => {
   return "0x2ddA6C07ED3671F8d2f19B317e91e4DFD43f6621"
 }
 
-export const fetchBalanceApi = async (address: string): Promise<number> => {
-  // from Nami wallet
-  return 0.23
-}
-
 export const fetchMyVaultsApi = async (
   address: string
 ): Promise<MyVaultInfo[]> => {
