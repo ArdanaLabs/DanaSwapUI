@@ -5,12 +5,13 @@ import { useWallet } from "./hooks"
 const interval = 1000 * 60 //  1 min
 
 export default function Updater() {
+  const CardanoWasm = (window as any).CardanoWasm
   const {
     cardanoApi,
     address,
     updateMyVaults,
     updateBalance,
-    // updateWalletAddress,
+    updateWalletAddress,
   } = useWallet()
 
   useEffect(() => {
@@ -20,6 +21,19 @@ export default function Updater() {
 
     cardanoApi.getBalance().then((balance: string) => {
       updateBalance(new BigNumber(balance))
+    })
+
+    cardanoApi.getUsedAddresses().then(function (addresses: string[]) {
+      const addr = CardanoWasm.Address.from_bytes(
+        Buffer.from(addresses[0], "hex")
+      )
+      updateWalletAddress(
+        addr.to_bech32(
+          process.env.REACT_APP_NETWORK_TYPE === "testnet"
+            ? "addr_test"
+            : "addr"
+        )
+      )
     })
     // eslint-disable-next-line
   }, [cardanoApi])

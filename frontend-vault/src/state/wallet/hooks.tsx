@@ -8,21 +8,12 @@ import {
   updateMyVaultsAction,
   updateWalletAddressAction,
 } from "./actions"
-import { fetchMyVaultsApi, getWalletAddress } from "./apis"
+import { fetchMyVaultsApi } from "./apis"
 import { CardanoApi, MyVaultInfo, WalletState, WalletType } from "./types"
 
 const cardano = (window as any).cardano
 
-export function useWallet(): {
-  cardanoApi: CardanoApi
-  address: string
-  balance: BigNumber
-  myVaults: MyVaultInfo[]
-  connectWallet: () => void
-  updateWalletAddress: () => Promise<void>
-  updateBalance: (balance: BigNumber) => Promise<void>
-  updateMyVaults: () => Promise<void>
-} {
+export function useWallet() {
   const dispatch = useDispatch<AppDispatch>()
 
   const { cardanoApi, address, balance, myVaults } = useSelector<
@@ -54,18 +45,18 @@ export function useWallet(): {
     })
   }
 
-  const updateWalletAddress = async (): Promise<void> => {
-    const address = await getWalletAddress()
-    dispatch(updateWalletAddressAction(address))
+  const updateWalletAddress = (newAddress: string): void => {
+    dispatch(updateWalletAddressAction(newAddress))
   }
 
-  const updateBalance = async (balance: BigNumber): Promise<void> => {
+  const updateBalance = (balance: BigNumber): void => {
     dispatch(updateBalanceAction(balance))
   }
 
-  const updateMyVaults = async (): Promise<void> => {
-    const vaults = await fetchMyVaultsApi(address)
-    dispatch(updateMyVaultsAction(vaults))
+  const updateMyVaults = (): void => {
+    fetchMyVaultsApi(address).then((vaults: MyVaultInfo[]) => {
+      dispatch(updateMyVaultsAction(vaults))
+    })
   }
 
   return {
