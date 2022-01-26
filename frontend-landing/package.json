@@ -19,6 +19,7 @@
   "dependencies": {
     "@material-ui/core": "^4.11.2",
     "@reduxjs/toolkit": "^1.5.0",
+    "ajv": "^8.9.0",
     "classnames": "^2.2.6",
     "hamburger-react": "^2.4.1",
     "lodash": "^4.17.20",
