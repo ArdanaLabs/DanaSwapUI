@@ -24,6 +24,8 @@
     "hamburger-react": "^2.4.1",
     "lodash": "^4.17.20",
     "postcss": "^8.1.0",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-preset-env": "^7.2.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.1",
     "react-elastic-carousel": "^0.11.5",
