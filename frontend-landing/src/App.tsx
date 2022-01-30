@@ -34,7 +34,7 @@ const ThemeProvider: React.FC = ({ children }) => {
 
 const Providers: React.FC = ({ children }) => {
   return (
-    <BrowserRouter basename="/">
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Suspense fallback={null}>
         <StateProvider store={store}>
           <ThemeProvider>
@@ -57,43 +57,43 @@ const App: React.FC = () => {
           </Layout>
         </Route>
 
-        <Route exact path="/team">
+        <Route path="/team">
           <Layout>
             <TeamPage />
           </Layout>
         </Route>
 
-        <Route exact path="/brandassets">
+        <Route path="/brandassets">
           <Layout>
             <BrandAssetsPage />
           </Layout>
         </Route>
 
-        <Route exact path="/tech">
+        <Route strict path="/tech">
           <Layout>
             <TechPage />
           </Layout>
         </Route>
 
-        <Route exact path="/roadmap">
+        <Route path="/roadmap">
           <Layout>
             <RoadMapPage />
           </Layout>
         </Route>
 
-        <Route exact path="/community">
+        <Route path="/community">
           <Layout>
             <CommunityPage />
           </Layout>
         </Route>
 
-        <Route exact path="/news">
+        <Route path="/news">
           <Layout>
             <NewsPage />
           </Layout>
         </Route>
 
-        <Route exact path="/mainlogo">
+        <Route path="/mainlogo">
           <MainLogoPage />
         </Route>
 
