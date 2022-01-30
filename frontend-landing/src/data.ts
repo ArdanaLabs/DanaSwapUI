@@ -103,7 +103,9 @@ export const Members: ProfileType[] = [
     info: `Serial entrepreneur in B2B/B2C sales and e-commerce.\n\nLeadership positions in various Ethereum based projects.`,
     socials: {
       linkedin: "https://www.linkedin.com/in/ryan-matovu-517988203",
-      twitter: "https://twitter.com/ryanmatovu",
+      // twitter: "https://twitter.com/ryanmatovu",
+      twitter:
+        "https://twitter.com/infinit3booker?t=QBsb3CsDPsTNStkDIdlLgA&s=09",
     },
   },
   {
