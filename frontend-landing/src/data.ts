@@ -41,22 +41,22 @@ export const Menus = [
 
 export const ArdanaFeatures = [
   {
-    image: require("assets/logos/fully-decentralized.png"),
+    image: require("assets/logos/fully-decentralized.png").default,
     title: "Fully\nDecentralized",
     content: "Unbiased, collateral backed and pegged to the US Dollar.",
   },
   {
-    image: require("assets/logos/borrowing.png"),
+    image: require("assets/logos/borrowing.png").default,
     title: "Borrowing",
     content: "Allows users to borrow stablecoins against locked collateral.",
   },
   {
-    image: require("assets/logos/store-of-value.png"),
+    image: require("assets/logos/store-of-value.png").default,
     title: "Store of\nValue",
     content: "Secure store of value preserving value even in volatile markets.",
   },
   {
-    image: require("assets/logos/powered-by-cardano.png"),
+    image: require("assets/logos/powered-by-cardano.png").default,
     title: "Powered by\nCardano",
     content: "Built utilizing Cardano’s speed, scalability and security.",
   },
@@ -64,31 +64,31 @@ export const ArdanaFeatures = [
 
 export const DanaSwapFeatures = [
   {
-    image: require("assets/logos/ultra-low-slippage.png"),
+    image: require("assets/logos/ultra-low-slippage.png").default,
     title: "Ultra-low Slippage",
     content:
       "Swap between stablecoins and stable assets such as wrapped/synthetic Bitcoin with minimal slippage.",
   },
   {
-    image: require("assets/logos/earn-trading-fees.png"),
+    image: require("assets/logos/earn-trading-fees.png").default,
     title: "Earn Trading Fees",
     content:
       "Deposit your assets into a DanaSwap pool and earn a proportion of the market making fees.",
   },
   {
-    image: require("assets/logos/foreign-exchange.png"),
+    image: require("assets/logos/foreign-exchange.png").default,
     title: "Foreign Exchange",
     content:
       "Swap between international stablecoins such as dUSD, dEUR, dGBP and more.",
   },
   {
-    image: require("assets/logos/dana-token.png"),
+    image: require("assets/logos/dana-token.png").default,
     title: "DANA Token",
     content:
       "The governance token rewarded to users for supporting the ecosystem through liquidity provision.",
   },
   {
-    image: require("assets/logos/governance.png"),
+    image: require("assets/logos/governance.png").default,
     title: "Governance",
     content:
       "DANA token holders can participate in polling and voting to influence the development of Ardana.",
@@ -97,7 +97,7 @@ export const DanaSwapFeatures = [
 
 export const Members: ProfileType[] = [
   {
-    avatar: require("assets/avatars/RyanMatovu.png"),
+    avatar: require("assets/avatars/RyanMatovu.png").default,
     name: "Ryan Matovu",
     role: "Founder",
     info: `Serial entrepreneur in B2B/B2C sales and e-commerce.\n\nLeadership positions in various Ethereum based projects.`,
@@ -109,7 +109,7 @@ export const Members: ProfileType[] = [
     },
   },
   {
-    avatar: require("assets/avatars/IssacShapira.png"),
+    avatar: require("assets/avatars/IssacShapira.png").default,
     name: "Isaac Shapira",
     role: "Chief Technology Officer",
     info: `Founder of Platonic.Systems, a lead functional programming firm.\n\nSenior software developer roles at various leading tech firms.`,
@@ -119,14 +119,14 @@ export const Members: ProfileType[] = [
     },
   },
   {
-    avatar: require("assets/avatars/DerekEvans.png"),
+    avatar: require("assets/avatars/DerekEvans.png").default,
     name: "Derek Evans",
     role: "Chief Operating Officer",
     info: `20+ years in software leading business and government projects.\n\nPrivate trader and fund manager in the financial derivatives market.`,
     socials: {},
   },
   {
-    avatar: require("assets/avatars/BassamAwad.png"),
+    avatar: require("assets/avatars/BassamAwad.png").default,
     name: "Bassam Awad, PhD",
     role: "Chief Economist",
     info: `Senior Economist and Head of Risk at the <strong>Central Bank of Jordan.</strong>\n\nMultiple peer-reviewed papers on macro/computational economics.`,
@@ -135,14 +135,14 @@ export const Members: ProfileType[] = [
     },
   },
   {
-    avatar: require("assets/avatars/ScottFranklin.png"),
+    avatar: require("assets/avatars/ScottFranklin.png").default,
     name: "Scott Franklin",
     role: "Head of Strategy",
     info: `20+ years experience in equity markets on Wall Street.\n\nCapital raising and advisor to multiple blockchain projects.`,
     socials: {},
   },
   {
-    avatar: require("assets/avatars/NeilTionson.png"),
+    avatar: require("assets/avatars/NeilTionson.png").default,
     name: "Neil Tionson",
     role: "Head of Design",
     info: `Marketing coordinator for Five Group Pty Ltd.\n\nWorked with brands such as Cadbury, San Remo.`,
@@ -152,7 +152,7 @@ export const Members: ProfileType[] = [
     },
   },
   {
-    avatar: require("assets/avatars/ChetanBafna.png"),
+    avatar: require("assets/avatars/ChetanBafna.png").default,
     name: "Chetan Bafna",
     role: "Head of Outreach",
     info: `Fundraising facilitator to multiple blockchain projects.\n\nLeadership positions in multiple philanthropic organisations.`,
@@ -161,7 +161,7 @@ export const Members: ProfileType[] = [
     },
   },
   {
-    avatar: require("assets/avatars/MorganThomas.png"),
+    avatar: require("assets/avatars/MorganThomas.png").default,
     name: "Morgan Thomas",
     role: "Blockchain Developer",
     info: `Platonic Systems functional programming tech consultant.\n\nDeveloped algorithmic trading systems using Haskell.`,
@@ -171,7 +171,7 @@ export const Members: ProfileType[] = [
     },
   },
   {
-    avatar: require("assets/avatars/NicVanDenBroeck.png"),
+    avatar: require("assets/avatars/NicVanDenBroeck.png").default,
     name: "Nick Van den Broeck",
     role: "Blockchain Developer",
     info: `Masters degree in Theoretical Physics and research intern at <strong>CERN</strong>.\n\nFounder of Tailer AI, bringing AI to the chemical/brewing industries.`,
@@ -181,7 +181,7 @@ export const Members: ProfileType[] = [
     },
   },
   {
-    avatar: require("assets/avatars/GregorySantini.png"),
+    avatar: require("assets/avatars/GregorySantini.png").default,
     name: "Gregory Santini",
     role: "Front-end Developer",
     info: `Senior front-end developer for <strong>Apple</strong> and Evernote.\n\nExperienced web developer and Solidity developer.`,
@@ -191,7 +191,7 @@ export const Members: ProfileType[] = [
     },
   },
   {
-    avatar: require("assets/avatars/MarcinBugaj.png"),
+    avatar: require("assets/avatars/MarcinBugaj.png").default,
     name: "Marcin Bugaj",
     role: "Blockchain Developer",
     info: `Senior software developer for <strong>Logitech</strong> and Motorola Solutions.\n\nDesign and implementation of Robotic Process Automation (RPA).`,
@@ -201,7 +201,7 @@ export const Members: ProfileType[] = [
     },
   },
   {
-    avatar: require("assets/avatars/JaimeCasoOnzain.png"),
+    avatar: require("assets/avatars/JaimeCasoOnzain.png").default,
     name: "Jamie Caso Onzain",
     role: "Blockchain Developer",
     info: `<strong>Cardano</strong> ambassador and Cardano stake pool operator.\n\nGenesis Founding Member and tester for <strong>Mina Protocol.</strong>`,
@@ -211,7 +211,7 @@ export const Members: ProfileType[] = [
     },
   },
   {
-    avatar: require("assets/avatars/AndrzejSwatowski.png"),
+    avatar: require("assets/avatars/AndrzejSwatowski.png").default,
     name: "Andrzej Swatowski",
     role: "Blockchain Developer",
     info: `Game developer in Unity working on AI,UI and gameplay elements.\n\nMasters Degree in Computer Science from the University of Warsaw.`,
@@ -221,7 +221,7 @@ export const Members: ProfileType[] = [
     },
   },
   {
-    avatar: require("assets/avatars/OlegPrutz.png"),
+    avatar: require("assets/avatars/OlegPrutz.png").default,
     name: "Oleg Prutz",
     role: "Blockchain Developer",
     info: `Data Scientist for Genesys AI ‘Experience as a Service’ company.\n\nExperienced functional programmer and Kaggle competitor.`,
@@ -231,7 +231,7 @@ export const Members: ProfileType[] = [
     },
   },
   {
-    avatar: require("assets/avatars/EmmaDwyer.png"),
+    avatar: require("assets/avatars/EmmaDwyer.png").default,
     name: "Emma Dwyer",
     role: "Writer",
     info: `Risk analyst at <strong>Citi bank</strong> and AML analyst at <strong>State Street.</strong>\n\n7+ years experience in investment banking and wealth management.`,
@@ -241,14 +241,14 @@ export const Members: ProfileType[] = [
     },
   },
   {
-    avatar: require("assets/avatars/NoamDavidElbaz.png"),
+    avatar: require("assets/avatars/NoamDavidElbaz.png").default,
     name: "Noam David Elbaz",
     role: "Researcher",
     info: `Crypto portfolio management and DeFi enthusiast.`,
     socials: {},
   },
   {
-    avatar: require("assets/avatars/EdenOvadia.png"),
+    avatar: require("assets/avatars/EdenOvadia.png").default,
     name: "Eden Ovadia",
     role: "Intern",
     info: `Full stack software engineer for <strong>Microsoft.</strong>\n\nSoftware and programming, problems solving skills and attention to details.`,
@@ -258,7 +258,7 @@ export const Members: ProfileType[] = [
     },
   },
   {
-    avatar: require("assets/avatars/GregNwosu.png"),
+    avatar: require("assets/avatars/GregNwosu.png").default,
     name: "Greg Nwosu",
     role: "Intern",
     info: `Big Data and infrastructure engineer for <strong>Barclays</strong> and RBS.\n\nSenior Java developer for <strong>IG Index</strong> online exchange.`,
@@ -271,7 +271,7 @@ export const Members: ProfileType[] = [
 
 export const Advisors: ProfileType[] = [
   {
-    avatar: require("assets/avatars/JohnOConnor.png"),
+    avatar: require("assets/avatars/JohnOConnor.png").default,
     name: "John O'Connor",
     role: "Cardano",
     info: `Director of <strong>IOHK</strong> leading operations and projects in Africa.\n\nFormer Head of Strategy/Comms for <strong>Cardano Foundation.</strong>`,
@@ -280,7 +280,7 @@ export const Advisors: ProfileType[] = [
     },
   },
   {
-    avatar: require("assets/avatars/ShunsukeMurasaki.png"),
+    avatar: require("assets/avatars/ShunsukeMurasaki.png").default,
     name: "Shunsuke Murasaki",
     role: "Emurgo",
     info: `Chief executive officer for <strong>EMURGO</strong> Indonesia.\n\n7+ years experience in Asian markets in B2B overseas sales.`,
@@ -289,7 +289,7 @@ export const Advisors: ProfileType[] = [
     },
   },
   {
-    avatar: require("assets/avatars/DarrenCamas.png"),
+    avatar: require("assets/avatars/DarrenCamas.png").default,
     name: "Darren Camas",
     role: "Cardano",
     info: `Former senior advisor to <strong>Emurgo</strong> and strategy consultant for <strong>IOHK.</strong>\n\nFounder of IPOR Labs, blockchain based derivatives software.`,
@@ -298,7 +298,7 @@ export const Advisors: ProfileType[] = [
     },
   },
   {
-    avatar: require("assets/avatars/PedroBatista.png"),
+    avatar: require("assets/avatars/PedroBatista.png").default,
     name: "Pedro Batista",
     role: "CBDC",
     info: `<strong>UK Bank of England</strong> review for Central Bank Digital Currencies.\n\nGlobal Head of Payments/Banking for various financial institutions.`,
@@ -307,7 +307,7 @@ export const Advisors: ProfileType[] = [
     },
   },
   {
-    avatar: require("assets/avatars/JoeriVanGeelen.png"),
+    avatar: require("assets/avatars/JoeriVanGeelen.png").default,
     name: "Joeri Van Geelen",
     role: "Economics",
     info: `Business advisor at <strong>Prysm Group</strong> DLT economic consulting firm.\n\nBusiness Development advisor at Minterest cross-chain protocol.`,
@@ -334,7 +334,7 @@ export const Advisors: ProfileType[] = [
   //   },
   // },
   {
-    avatar: require("assets/avatars/CalEvans.png"),
+    avatar: require("assets/avatars/CalEvans.png").default,
     name: "Cal Evans",
     role: "Legal",
     info: `Cryptocurrency compliance expert with 50+ ICO/STO contributions.\n\n<strong>British Blockchain Association</strong> board member.`,
@@ -343,7 +343,7 @@ export const Advisors: ProfileType[] = [
     },
   },
   {
-    avatar: require("assets/avatars/JoaoSantos.png"),
+    avatar: require("assets/avatars/JoaoSantos.png").default,
     name: "Joao Santos",
     role: "Venture Capital",
     info: `Senior Principal at Mustard Seed Maze venture capital fund.\n\nMentor at the Catolica Lisbon School of Business and Economics.`,
@@ -395,7 +395,7 @@ export const Partners = [
     url: "https://chaoslabs.xyz/",
   },
   {
-    src: require("assets/logos/indigo.png"),
+    src: require("assets/logos/indigo.png").default,
     url: "https://indigoprotocol.io/",
   },
   // require("assets/logos/mlabs.svg").default,
@@ -518,12 +518,12 @@ export const TechnicalPapers = [
   {
     title: "eUTXO Models",
     link: "https://docsend.com/view/d2g9qajrb4w23eyq",
-    image: require("assets/papers/eUTXOModels.png"),
+    image: require("assets/papers/eUTXOModels.png").default,
   },
   {
     title: "Danaswap\nTechnical Paper",
     link: "https://docsend.com/view/v4w3muusi6im3ay2",
-    image: require("assets/papers/DanaswapTechnicalPaper.png"),
+    image: require("assets/papers/DanaswapTechnicalPaper.png").default,
   },
 ]
 
@@ -569,7 +569,7 @@ export const Roadmap = {
 
 export const CommunityList = [
   {
-    image: require("assets/logos/newspaper.png"),
+    image: require("assets/logos/newspaper.png").default,
     title: "Find out the\nlatest news",
     content:
       "Be up to the date on the latest Ardana updates  and announcements.",
@@ -581,7 +581,7 @@ export const CommunityList = [
     },
   },
   {
-    image: require("assets/logos/communication-chat-bubble.png"),
+    image: require("assets/logos/communication-chat-bubble.png").default,
     title: "Join the\nconversation",
     content: "Join our Telegram channel and Discord server.",
     cta: {
@@ -592,7 +592,7 @@ export const CommunityList = [
     },
   },
   {
-    image: require("assets/logos/startup.png"),
+    image: require("assets/logos/startup.png").default,
     title: "Become an\nambassador",
     content: "Be part of the Team and become an Ardana ambassador.",
     cta: {
@@ -669,7 +669,7 @@ export const TelegramChannelList = [
 
 export const NewsOnMediumList = [
   {
-    image: require("assets/news/medium/ASPA_PARTNER_FOCUS_8.png"),
+    image: require("assets/news/medium/ASPA_PARTNER_FOCUS_8.png").default,
     title:
       "ASPA Partner Focus #8 — Announcing the Latest Stake Pool Operators Partnering with Ardana",
     content:
@@ -678,7 +678,7 @@ export const NewsOnMediumList = [
     link: "https://medium.com/ardana-hub/aspa-partner-focus-8-announcing-the-latest-stake-pool-operators-partnering-with-ardana-1f4f8f3ca45a?source=collection_home---4------1-----------------------",
   },
   {
-    image: require("assets/news/medium/ASPA_PARTNER_FOCUS_7.png"),
+    image: require("assets/news/medium/ASPA_PARTNER_FOCUS_7.png").default,
     title:
       "ASPA Partner Focus #7 — Announcing the Latest Stake Pool Operators Partnering with Ardana",
     content:
@@ -687,7 +687,7 @@ export const NewsOnMediumList = [
     link: "https://medium.com/ardana-hub/aspa-partner-focus-7-announcing-the-latest-stake-pool-operators-partnering-with-ardana-23bff202860f?source=collection_home---4------2-----------------------",
   },
   {
-    image: require("assets/news/medium/ASPA_PARTNER_FOCUS_6.png"),
+    image: require("assets/news/medium/ASPA_PARTNER_FOCUS_6.png").default,
     title:
       "ASPA Partner Focus #6 — Announcing the Latest Stake Pool Operators Partnering with Ardana",
     content:
@@ -696,7 +696,7 @@ export const NewsOnMediumList = [
     link: "https://medium.com/ardana-hub/aspa-partner-focus-6-announcing-the-latest-stake-pool-operators-partnering-with-ardana-ae67525924c4?source=collection_home---4------3-----------------------",
   },
   {
-    image: require("assets/news/medium/NEAR_PROTOCOL.png"),
+    image: require("assets/news/medium/NEAR_PROTOCOL.png").default,
     title: "Ardana is Partnering with NEAR Protocol",
     content:
       "Today, we at Ardana are excited to announce our latest strategic partnership with NEAR, a decentralized application platform (dApp) that focuses on both developer and user experience. Through this partnership with NEAR, which includes a grant",
@@ -704,7 +704,7 @@ export const NewsOnMediumList = [
     link: "https://medium.com/ardana-hub/ardana-is-partnering-with-near-protocol-281a6e64e031?source=collection_home---4------4-----------------------",
   },
   {
-    image: require("assets/news/medium/DANA_TOKEN.png"),
+    image: require("assets/news/medium/DANA_TOKEN.png").default,
     title: "DANA Token Going Live on Gate, Bitmart and MEXC!",
     content:
       "The growing community around Ardana has been eagerly awaiting the token launch since the project began. Today, we are thrilled to announce that the token launch will take place on Monday, 22nd...",
@@ -712,7 +712,7 @@ export const NewsOnMediumList = [
     link: "https://medium.com/ardana-hub/dana-token-going-live-on-gate-bitmart-and-mxec-72ed54702527?source=collection_home---4------5-----------------------",
   },
   {
-    image: require("assets/news/medium/ARDANA_QCP.png"),
+    image: require("assets/news/medium/ARDANA_QCP.png").default,
     title:
       "Crypto Options leader QCP Capital Makes a Strategic Investment in Ardana",
     content:
@@ -727,7 +727,7 @@ export const NewsOnTwitterList = [
     title: "Ardana - DeFi Hub of Cardano",
     type: "@ArdanaProject",
     content: `⭐️ Ardana has formed a strategic partnership w/ <span>#dApp</span> platform <span>@NEARProtocol</span>\n\n🌈 Through this collab, which includes a grant, we'll <span>#BUIDL</span> the first-ever bridge between <span>#Cardano</span> & <span>#NEAR</span> ecosystems to facilitate seamless asset transfers and more ⤵️`,
-    image: require("assets/news/twitter/twitter1.png"),
+    image: require("assets/news/twitter/twitter1.png").default,
     datetime: "10:21 PM · Nov 23, 2021",
   },
   {
@@ -746,7 +746,8 @@ export const NewsOnTwitterList = [
 
 export const NewsOnMediaList = [
   {
-    image: require("assets/news/media/Y4SEOFO3SNHCZMJOIWYGPOZD24 1.png"),
+    image: require("assets/news/media/Y4SEOFO3SNHCZMJOIWYGPOZD24 1.png")
+      .default,
     label: "Coindesk",
     title: "Ardana and Near Join Forces to Build a Crosschain Bridge",
     content:
@@ -755,7 +756,9 @@ export const NewsOnMediaList = [
   },
   {
     label: "CoinTelegraph",
-    image: require("assets/news/media/1434_aHR0cHM6Ly9zMy5jb2ludGVsZWdyYXBoLmNvbS91cGxvYWRzLzIwMjEtMTEvNzZhNjcyYjYtZGQ0NS00NjViLThlNTUtNTEwYzViNmJkZjA4LmpwZw== 1.png"),
+    image:
+      require("assets/news/media/1434_aHR0cHM6Ly9zMy5jb2ludGVsZWdyYXBoLmNvbS91cGxvYWRzLzIwMjEtMTEvNzZhNjcyYjYtZGQ0NS00NjViLThlNTUtNTEwYzViNmJkZjA4LmpwZw== 1.png")
+        .default,
     title:
       "Ardana partners with Near protocol on Cardano bridge infrastructure",
     content:
@@ -763,7 +766,8 @@ export const NewsOnMediaList = [
     link: "https://cointelegraph.com/news/ardana-partners-with-near-protocol-on-cardano-bridge-infrastructure",
   },
   {
-    image: require("assets/news/media/69ea73c64e0929176878276fd614c409 1.png"),
+    image: require("assets/news/media/69ea73c64e0929176878276fd614c409 1.png")
+      .default,
     label: "Yahoo Finance",
     title: "Cardano DeFi platform Ardana partners with NEAR protocol",
     content:
@@ -771,7 +775,9 @@ export const NewsOnMediaList = [
     link: "https://finance.yahoo.com/news/cardano-defi-platform-ardana-partners-135929378.html",
   },
   {
-    image: require("assets/news/media/cardano-stablecoin-protocol-ardana-toasts-10m-capital-injection-led-by-three-arrows-capital-and-ascensive-assets 1.png"),
+    image:
+      require("assets/news/media/cardano-stablecoin-protocol-ardana-toasts-10m-capital-injection-led-by-three-arrows-capital-and-ascensive-assets 1.png")
+        .default,
     label: "Bitcoin.com",
     title:
       "Cardano Stablecoin Protocol Ardana Toasts $10m Capital Injection Led by Three Arrows Capital and Ascensive Assets",
@@ -781,14 +787,17 @@ export const NewsOnMediaList = [
   },
   {
     label: "CoinDesk",
-    image: require("assets/news/media/KHAH5Z2K3FBRHDQTPX4UVPVK3Q 1.png"),
+    image: require("assets/news/media/KHAH5Z2K3FBRHDQTPX4UVPVK3Q 1.png")
+      .default,
     title: "Three Arrows Capital Backs $10M Raise for DeFi on Cardano",
     content:
       "Cardano’s decentralized finance (DeFi) ecosystem may be showing glimmers of primordial life following the close of a $10 million raise for Ardana, a new protocol that aims to provide stablecoin minting",
     link: "https://www.coindesk.com/tech/2021/10/29/three-arrows-capital-backs-10m-raise-for-defi-on-cardano/",
   },
   {
-    image: require("assets/news/media/cardano-stablecoin-protocol-ardana-toasts-10m-capital-injection-led-by-three-arrows-capital-and-ascensive-assets 1.png"),
+    image:
+      require("assets/news/media/cardano-stablecoin-protocol-ardana-toasts-10m-capital-injection-led-by-three-arrows-capital-and-ascensive-assets 1.png")
+        .default,
     label: "Benzinga",
     title:
       "Cardano Stablecoin Protocol Ardana Toasts $10m Capital Injection Led by Three Arrows Capital and Ascensive Assets",
