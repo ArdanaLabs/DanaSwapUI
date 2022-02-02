@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import cx from "classnames"
 import ReactPlayer from "react-player"
-import { Box, useMediaQuery } from "@material-ui/core"
+import { Box, Typography, useMediaQuery } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import { useIsDarkMode } from "state/user/hooks"
 import { GradientButton } from "components/Button"
@@ -78,30 +78,13 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   title: {
-    color: "#FFFFFF",
-    // whiteSpace: "pre-line",
-    fontSize: "26px",
-    fontWeight: 900,
-    fontFamily: "Brandon Grotesque",
-    fontStyle: "normal",
     lineHeight: "110%",
-
-    [breakpoints.down("sm")]: {
-      whiteSpace: "unset",
-      fontSize: "25px",
-    },
   },
 
   content: {
-    color: "#F5FCFE",
-    fontSize: "16px",
     lineHeight: "24px",
-    fontWeight: 300,
-    fontFamily: "Museo Sans",
-    fontStyle: "normal",
 
     [breakpoints.down("sm")]: {
-      fontSize: "16px",
       lineHeight: "19.2px",
     },
   },
@@ -155,11 +138,15 @@ const FeatureBox: React.FC<FeatureBoxProps> = ({ image, title, content }) => {
 
         <Box mt={!mobile ? "80px" : "25px"} />
 
-        <Box className={cx(classes.title)}>{title}</Box>
+        <Typography variant="h5" component="h5" className={cx(classes.title)}>
+          {title}
+        </Typography>
 
         <Box mt={!mobile ? "30px" : "10px"} />
 
-        <Box className={cx(classes.content)}>{content}</Box>
+        <Typography variant="h4" component="h4" className={cx(classes.content)}>
+          {content}
+        </Typography>
 
         <Box mt="30px"></Box>
       </Box>

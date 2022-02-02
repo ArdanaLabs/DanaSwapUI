@@ -62,13 +62,15 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     "fontSize": "13px",
     "position": "relative",
     "textAlign": "center",
+    "textTransform": "uppercase",
+    "transition": "all .2s",
 
     "&:hover": {
       color: "#73D6F1",
     },
 
     "&.active": {
-      "color": palette.text.secondary,
+      "color": palette.secondary.main,
       "&::before": {
         content: "' '",
         position: "absolute",
@@ -94,10 +96,10 @@ const HeaderSection: React.FC = () => {
   const classes = useStyles({ dark, mobile })
   const history = useHistory()
 
-  const [openMenu, setOpenMenu] = useState(false)
+  const [openMenu, setOpenMenu] = useState<boolean>(false)
 
   const toggleMenu = () => {
-    setOpenMenu((prev) => !prev)
+    setOpenMenu((prev: boolean) => !prev)
   }
 
   const activeMenu = (to: string): boolean => {
