@@ -37,6 +37,7 @@ const useStyles = makeStyles(({ palette }) => ({
     "color": palette.secondary.main,
     "whiteSpace": "pre-line",
 
+    // TODO
     "& > span": {
       fontWeight: 900,
     },
@@ -113,7 +114,7 @@ const DANA: React.FC = () => {
     <Fade in={true}>
       <Grid container spacing={4}>
         <Grid item xs={12} sm={6}>
-          <Box className={cx(classes.panel)}>
+          <Box component="dl" className={cx(classes.panel)} grid-gap={"40px"}>
             <Box className={cx(classes.displayBox)}>
               <Box>1 DANA locked for 4 years = 1exDANA</Box>
               <br />
@@ -131,44 +132,41 @@ const DANA: React.FC = () => {
               </Link>
             </Box>
 
-            <Box mt="40px"></Box>
-            <Box className={cx(classes.displayText)}>
-              exDANA holder/LP ratio: <span>22.56</span>
-            </Box>
-            <Box mt="40px"></Box>
+            <dt>exDANA holder/LP ratio</dt>
+            <dd>22.56</dd>
 
-            <Box className={cx(classes.alertBox)}>
+            <aside className={cx(classes.alertBox)}>
               Having locked 1$ in DANA for 4 years is equal to having provided
               22.56$ as an LP
-            </Box>
-            <Box mt="40px"></Box>
+            </aside>
 
-            <Box className={cx(classes.displayText)}>
-              exDANA holder APY: 8.85%
-              <br />
-              Yearly fee earnings per 1 exDANA: 0.16$
-              <br />
-              <br />
-              exDANA balance: 0 <span>Stake DANA</span>
-              <br />
-              <br />
-              Average daily earnings: $95,369.23
-              <br />
-              Last weekly earnings: $667,584.61
-              <br />
-              <br />
-              Total DANA Locked: 242,785,542.45
-              <br />
-              Total exDANA: 222,832,093.00
-              <br />
-              <br />
-              Next Distribution: Sat, 10 Jul 2021 04:36:06 GMT
-              <br />
-              <br />
-              <span style={{ fontWeight: 700 }}>Stake your DANA</span>
-              <br />
-              <span>Guide to staking DANA</span>
-            </Box>
+            <dt>exDANA holder APY</dt>
+            <dd>8.85%</dd>
+
+            <dt>Yearly fee earnings per 1 exDANA</dt>
+            <dd>0.16$</dd>
+
+            <dt>exDANA balance</dt>
+            <dd>0 Stake DANA</dd>
+
+            <dt>Average daily earnings</dt>
+            <dd>$95,369.23</dd>
+
+            <dt>Last weekly earnings</dt>
+            <dd>$667,584.61</dd>
+
+            <dt>Total DANA Locked</dt>
+            <dd>242,785,542.45</dd>
+
+            <dt>Total exDANA</dt>
+            <dd>222,832,093.00</dd>
+
+            <dt>Next Distribution</dt>
+            {/* TODO: Intl.DateFormate */}
+            <dd>Sat, 10 Jul 2021 04:36:06 GMT</dd>
+
+            <div style={{ fontWeight: 700 }}>Stake your DANA</div>
+            <div>Guide to staking DANA</div>
           </Box>
         </Grid>
         <Grid item xs={12} sm={6}>

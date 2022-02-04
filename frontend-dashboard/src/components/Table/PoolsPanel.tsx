@@ -15,13 +15,24 @@ import cx from "classnames"
 import { useIsDarkMode } from "state/user/hooks"
 import { SearchInput } from "components/Input"
 import { Button } from "components/Button"
-import { usePoolStats } from "state/home/hooks"
-import { keys } from "lodash"
 import { useHistory } from "react-router-dom"
-import { printCurrencyUSD } from "hooks"
 
-const FILTER_STABLECOINS = 0
-const FILTER_DIGITALASSESTS = 1
+import * as O from "fp-ts/Option"
+import * as ROM from "fp-ts/ReadonlyMap"
+import { RemoteData } from "fp-ts-remote-data"
+
+import { FetchDecodeError } from "Data/FetchDecode"
+import * as PoolSetName from "Data/Pool/PoolSetName"
+import { PoolStats } from "Data/Stats/PoolStats"
+import { Percent, USD } from "Data/Unit"
+
+import { usePoolStats } from "state/home/hooks"
+import { printCurrencyUSD, printPercentage } from "hooks"
+
+enum FilterOn {
+  StableCoins = 0,
+  DigitalAssets = 1,
+}
 
 const StyledTableCell = withStyles(({ palette }) => ({
   root: {
@@ -133,91 +144,124 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 }))
 
 export interface PoolsPanelProps {
-  overView?: boolean
+  overview?: boolean
 }
 
-const PoolsPanel: React.FC<PoolsPanelProps> = ({ overView = false }) => {
+const PoolsPanel: React.FC<PoolsPanelProps> = ({ overview = false }) => {
   const { breakpoints } = useTheme()
   const dark = useIsDarkMode()
   const mobile = useMediaQuery(breakpoints.down("xs"))
   const classes = useStyles({ dark, mobile })
   const history = useHistory()
 
-  const columns = [
-    "POOL",
+  const columns: string[] = [
+    "Pool",
     "Liquidity",
     "Base APY",
     "Rewards APY",
-    "VOLUME",
+    "Volume",
     "APY",
   ]
 
-  const poolStats = usePoolStats()
+  const poolStats: RemoteData<
+    FetchDecodeError,
+    ReadonlyMap<PoolSetName.Type, PoolStats>
+  > = usePoolStats()
 
   const [filter, setFilter] = useState({
     text: "",
-    type: FILTER_STABLECOINS,
+    type: FilterOn.StableCoins,
   })
 
-  const onFilterChange = (event: any) => {
-    setFilter({ ...filter, ...event })
+  function onFilterChange(event: object) {
+    return setFilter({ ...filter, ...event })
   }
 
-  const handleRowClick = (event: any, poolName: string) => {
+  function handleRowClick(poolSetName: PoolSetName.Type): void {
     history.push({
-      pathname: "/spec",
-      state: {
-        poolName: poolName,
-      },
+      pathname: `/spec/${PoolSetName.iso.unwrap(poolSetName)}`,
     })
   }
 
-  return (
-    <Box>
-      {!overView && (
-        <Box className={cx(classes.filter)}>
-          <SearchInput
-            className={cx(classes.filterText)}
-            value={filter.text}
-            placeholder="Search pool by name, network or type..."
-            onChange={(e: any) => {
-              onFilterChange({ text: e.target.value })
-            }}
-          />
-
-          <Box textAlign="center" mt={mobile ? "20px" : "0px"}>
-            <Button
-              variant="contained"
-              onClick={() => {
-                onFilterChange({ type: FILTER_STABLECOINS })
-              }}
-              className={cx(classes.filterType, {
-                [classes.active]: filter.type === FILTER_STABLECOINS,
-              })}
+  function renderTableRow(
+    poolName: PoolSetName.Type,
+    ps: PoolStats
+  ): JSX.Element {
+    // TODO: use SVG sprite, like `coins.svg#${poolName}`
+    // const icon = require(`assets/coins/${poolName}.png`).default
+    const poolSetNameStr: string = PoolSetName.iso.unwrap(poolName)
+    const icon = require(`assets/coins/bBTC.png`).default
+    return (
+      <TableRow
+        hover={true}
+        key={poolSetNameStr}
+        onClick={() => handleRowClick(poolName)}
+      >
+        {/* POOL */}
+        <StyledTableCell component="th" scope="row">
+          <Box display="flex" alignItems="center">
+            <Box>
+              <img
+                src={icon}
+                alt={poolSetNameStr}
+                style={{ width: "30px", marginRight: "15px" }}
+              />
+            </Box>
+            <Box
+              display={"flex"}
+              flexDirection={"column"}
+              justifyContent={"center"}
             >
-              STABLECOINS
-            </Button>
-            <Button
-              variant="contained"
-              onClick={() => {
-                onFilterChange({ type: FILTER_DIGITALASSESTS })
-              }}
-              className={cx(classes.filterType, {
-                [classes.active]: filter.type === FILTER_DIGITALASSESTS,
-              })}
-            >
-              DIGITAL ASSETS
-            </Button>
+              <Box textAlign="left">{poolName}</Box>
+              <Box fontWeight={300}>
+                {/*keys(ps.reserves).join(" + ")*/}
+                {" + "}
+              </Box>
+            </Box>
           </Box>
-        </Box>
-      )}
+        </StyledTableCell>
+        {/* Liquidity */}
+        <StyledTableCell>
+          {O.fold(() => "", printCurrencyUSD)(ps.navUSD)}
+        </StyledTableCell>
+        {/* Base APY */}
+        <StyledTableCell>
+          {printPercentage(
+            O.getOrElse(() => Percent.iso.wrap(0))(ps.recentDailyAPYPercent)
+          )}
+        </StyledTableCell>
+        {/* Rewards APY */}
+        <StyledTableCell>
+          {/* {poolRewardAPYs[i]} */}
+          {`+4.30% → 10.76% DANA + 1.13% BTC`}
+        </StyledTableCell>
+        {/* VOLUME */}
+        <StyledTableCell>
+          {printCurrencyUSD(
+            O.getOrElse(() => USD.iso.wrap(0))(ps.recentDailyVolumeUSD.trade)
+          )}
+        </StyledTableCell>
+        {/* APY */}
+        <StyledTableCell>
+          {printPercentage(
+            O.getOrElse(() => Percent.iso.wrap(0))(ps.recentDailyAPYPercent)
+          )}
+        </StyledTableCell>
+      </TableRow>
+    )
+  }
+
+  function renderTable(
+    poolStatsMap: ReadonlyMap<PoolSetName.Type, PoolStats>
+  ): JSX.Element {
+    return (
       <TableContainer component={Box} className={cx(classes.panel)}>
         <Table aria-label="simple table">
           <TableHead>
             <TableRow>
-              {columns.map((column: any, i: any) => {
+              {columns.map((column: string, index: number) => {
                 return (
-                  <StyledTableCell key={i}>
+                  <StyledTableCell key={index}>
                     {column}
                     &nbsp;
                     <i className="fas fa-sort" />
@@ -227,65 +271,10 @@ const PoolsPanel: React.FC<PoolsPanelProps> = ({ overView = false }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {keys(poolStats).map((poolName: any, i: any) => {
-              // const icon = require(`assets/coins/${poolName}.png`).default
-              const icon = require(`assets/coins/bBTC.png`).default
-              const poolInfo = poolStats![poolName]
-              return (
-                <TableRow
-                  hover
-                  key={i}
-                  onClick={(e: any) => handleRowClick(e, poolName)}
-                >
-                  {/* POOL */}
-                  <StyledTableCell component="th" scope="row">
-                    <Box display="flex" alignItems="center">
-                      <Box>
-                        <img
-                          src={icon}
-                          alt={poolName}
-                          style={{ width: "30px", marginRight: "15px" }}
-                        />
-                      </Box>
-                      <Box
-                        display={"flex"}
-                        flexDirection={"column"}
-                        justifyContent={"center"}
-                      >
-                        <Box textAlign="left">{poolName}</Box>
-                        <Box fontWeight={300}>
-                          {keys(poolInfo.reserves).join(" + ")}
-                        </Box>
-                      </Box>
-                    </Box>
-                  </StyledTableCell>
-                  {/* Liquidity */}
-                  <StyledTableCell>
-                    {printCurrencyUSD(poolInfo.navUSD)}
-                  </StyledTableCell>
-                  {/* Base APY */}
-                  <StyledTableCell>
-                    {/* {poolInfos[i].recentDailyAPYPercent}% */}
-                    2.99%
-                  </StyledTableCell>
-                  {/* Rewards APY */}
-                  <StyledTableCell>
-                    {/* {poolRewardAPYs[i]} */}
-                    {`+4.30% -> 10.76% DANA + 1.13% BTC`}
-                  </StyledTableCell>
-                  {/* VOLUME */}
-                  <StyledTableCell>
-                    {printCurrencyUSD(poolInfo.recentDailyVolumeUSD.trade)}
-                  </StyledTableCell>
-                  {/* APY */}
-                  <StyledTableCell>
-                    {poolInfo.totalAPYPercent?.toFixed(2) ?? 0}%
-                  </StyledTableCell>
-                </TableRow>
-              )
-            })}
+            {/* TODO: is `collect` the correct, performant solution? */}
+            {ROM.collect(PoolSetName.Ord)(renderTableRow)(poolStatsMap)}
           </TableBody>
-          {overView && (
+          {overview && (
             <TableFooter>
               <TableRow>
                 <StyledTableCell colSpan={12}>
@@ -298,6 +287,69 @@ const PoolsPanel: React.FC<PoolsPanelProps> = ({ overView = false }) => {
           )}
         </Table>
       </TableContainer>
+    )
+  }
+
+  function renderPoolStats(
+    psrd: RemoteData<FetchDecodeError, ReadonlyMap<PoolSetName.Type, PoolStats>>
+  ): JSX.Element {
+    switch (psrd._tag) {
+      case "Success":
+        return renderTable(psrd.success)
+      case "Pending":
+        return <div>loading …</div>
+      case "Failure":
+        return (
+          <details>
+            <summary>Error</summary>
+            <pre>{JSON.stringify(psrd.failure, null, 2)}</pre>
+          </details>
+        )
+    }
+  }
+
+  return (
+    <Box>
+      {!overview && (
+        <Box className={cx(classes.filter)}>
+          <SearchInput
+            className={cx(classes.filterText)}
+            value={filter.text}
+            placeholder="Search pool by name, network or type…"
+            onChange={(e: any) => {
+              onFilterChange({ text: e.target.value })
+            }}
+          />
+
+          <Box textAlign="center" mt={mobile ? "20px" : "0px"}>
+            <Button
+              variant="contained"
+              onClick={() => {
+                onFilterChange({ type: FilterOn.StableCoins })
+              }}
+              className={cx(classes.filterType, {
+                [classes.active]: filter.type === FilterOn.StableCoins,
+              })}
+            >
+              {/* TODO: text-transform: uppercase */}
+              STABLECOINS
+            </Button>
+            <Button
+              variant="contained"
+              onClick={() => {
+                onFilterChange({ type: FilterOn.DigitalAssets })
+              }}
+              className={cx(classes.filterType, {
+                [classes.active]: filter.type === FilterOn.DigitalAssets,
+              })}
+            >
+              {/* TODO: text-transform: uppercase */}
+              DIGITAL ASSETS
+            </Button>
+          </Box>
+        </Box>
+      )}
+      {renderPoolStats(poolStats)}
     </Box>
   )
 }

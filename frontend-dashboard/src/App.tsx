@@ -13,6 +13,8 @@ import { useIsDarkMode } from "state/user/hooks"
 import { darkTheme, lightTheme } from "./theme"
 import store from "./state"
 
+import * as PoolSetName from "Data/Pool/PoolSetName"
+
 import {
   Home,
   Swap,
@@ -126,11 +128,14 @@ const App: React.FC = () => {
           </Layout>
         </Route>
 
-        <Route exact path="/spec">
-          <Layout>
-            <SpecPool />
-          </Layout>
-        </Route>
+        <Route
+          path="/spec/:poolSet"
+          render={({ match }) => (
+            <Layout>
+              <SpecPool poolSet={PoolSetName.iso.wrap(match.params.poolSet)} />
+            </Layout>
+          )}
+        />
 
         <Route exact path="/launch">
           <Launch />

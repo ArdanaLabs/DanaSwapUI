@@ -1,11 +1,20 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { Box, Fade, useMediaQuery } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
-import { useIsDarkMode } from "state/user/hooks"
 import cx from "classnames"
-import Button from "components/Button/Button"
+import { useHistory } from "react-router-dom"
+
+import * as O from "fp-ts/Option"
+import * as ROM from "fp-ts/ReadonlyMap"
+import { RemoteData } from "fp-ts-remote-data"
+
+import { FetchDecodeError } from "Data/FetchDecode"
+import { PoolStats } from "Data/Stats/PoolStats"
+import * as PoolSetName from "Data/Pool/PoolSetName"
+
 import { StatsSection, ChartSection, TransactionsSection } from "./sections"
-import { useHistory, useLocation } from "react-router-dom"
+import { useIsDarkMode } from "state/user/hooks"
+import Button from "components/Button/Button"
 import { usePoolStats } from "state/home/hooks"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
@@ -40,68 +49,107 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 }))
 
-const SpecificPool: React.FC = () => {
+export type Props = {
+  poolSet: PoolSetName.Type
+}
+
+export const SpecificPool: React.FC<Props> = ({
+  poolSet,
+}: Props): JSX.Element => {
   const { breakpoints } = useTheme()
   const mobile = useMediaQuery(breakpoints.down("xs"))
   const dark = useIsDarkMode()
   const classes = useStyles({ dark, mobile })
-  const location = useLocation()
   const history = useHistory()
-  const poolStats = usePoolStats()
+  const poolStats: RemoteData<
+    FetchDecodeError,
+    ReadonlyMap<PoolSetName.Type, PoolStats>
+  > = usePoolStats()
+  const [specificPoolStats, setSpecificPoolStats] = useState<
+    O.Option<PoolStats>
+  >(O.none)
 
   useEffect(() => {
-    if (!location.state) {
-      history.goBack()
-      return
-    }
-    const { poolName }: any = location.state
-    if (!poolName || !poolStats || !poolStats[poolName]) {
-      history.goBack()
+    switch (poolStats._tag) {
+      case "Success":
+        if (O.isNone(specificPoolStats)) {
+          const ps: O.Option<PoolStats> = ROM.lookup(PoolSetName.Eq)(poolSet)(
+            poolStats.success
+          )
+          O.isNone(ps) && history.goBack()
+          setSpecificPoolStats(ps)
+        }
+        break
+      default:
+        break
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [poolStats, location.state])
+  }, [poolStats])
 
-  return (
-    <Fade in={true}>
-      <Box>
-        <Box textAlign="right">
-          <Button
-            variant="contained"
-            onClick={() => history.push("/swap")}
-            className={cx(classes.filterType, classes.active)}
-          >
-            SWAP
-          </Button>
-          <Button
-            variant="contained"
-            onClick={() => history.push("/deposit")}
-            className={cx(classes.filterType)}
-          >
-            DEPOSIT
-          </Button>
-          <Button
-            variant="contained"
-            onClick={() => history.push("/withdraw")}
-            className={cx(classes.filterType)}
-          >
-            WITHDRAW
-          </Button>
+  function renderPoolStats(ps: PoolStats): JSX.Element {
+    // TODO: text-transform: upppercase
+    const poolSetStr: string = PoolSetName.iso.unwrap(poolSet)
+    return (
+      <Fade in={true} key={poolSetStr}>
+        <Box>
+          <Box textAlign="right">
+            <Button
+              variant="contained"
+              onClick={() => history.push("/swap")}
+              className={cx(classes.filterType, classes.active)}
+            >
+              SWAP
+            </Button>
+            <Button
+              variant="contained"
+              onClick={() => history.push("/deposit")}
+              className={cx(classes.filterType)}
+            >
+              DEPOSIT
+            </Button>
+            <Button
+              variant="contained"
+              onClick={() => history.push("/withdraw")}
+              className={cx(classes.filterType)}
+            >
+              WITHDRAW
+            </Button>
+          </Box>
+          {/* TODO: elements should *NOT* be used for spacer, this is what styles are for */}
+          <Box mt={"30px"} />
+          <StatsSection poolStats={ps} poolSet={poolSet} />
+          <Box mt={"30px"} />
+          <ChartSection poolStats={ps} poolSet={poolSet} />
+          <Box mt={"50px"} />
+          <TransactionsSection poolSet={poolSet} />
         </Box>
+      </Fade>
+    )
+  }
 
-        <Box mt={"30px"} />
-
-        <StatsSection />
-
-        <Box mt={"30px"} />
-
-        <ChartSection />
-
-        <Box mt={"50px"} />
-
-        <TransactionsSection />
-      </Box>
-    </Fade>
-  )
+  switch (poolStats._tag) {
+    case "Success":
+      return O.fold(
+        // this should be covered by the goBack()
+        () => (
+          <div>
+            Error: pool set “{PoolSetName.iso.unwrap(poolSet)}” not found
+          </div>
+        ),
+        renderPoolStats
+      )(specificPoolStats)
+    case "Pending":
+      // TODO:
+      return <div>loading …</div>
+    case "Failure":
+      // Given the `goBack`, this state is impossible
+      return (
+        <details>
+          <summary>TODO error</summary>
+          <pre>{JSON.stringify(poolStats.failure, null, 2)}</pre>
+        </details>
+      )
+  }
 }
 
 export default SpecificPool
