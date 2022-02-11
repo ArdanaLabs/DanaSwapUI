@@ -1,0 +1,150 @@
+[
+  {
+    "tx": {
+      "tag": "WithdrawalTx",
+      "contents": {
+        "counterpartyAddress": "vFZNv156FMmzev3CJBWv",
+        "created": "1982-02-02T17:35:46Z",
+        "amounts": {
+          "kU0R": 2.5266702864733295e11,
+          "eXE": 1.4397845161082568e11,
+          "9cVm9": 8.626680127999538e10
+        }
+      }
+    },
+    "navUSD": 3.099650828728591e10
+  },
+  {
+    "tx": {
+      "tag": "DepositTx",
+      "contents": {
+        "counterpartyAddress": "d4IWPvUB0fAedVf9nO6l",
+        "created": "1977-11-26T17:18:26Z",
+        "amounts": {
+          "kU0R": 1.796981823742793e11,
+          "eXE": 2.2908530786380508e11,
+          "9cVm9": 1.52598312078394e11
+        }
+      }
+    },
+    "navUSD": 2.518605664546585e10
+  },
+  {
+    "tx": {
+      "tag": "TradeTx",
+      "contents": {
+        "counterpartyAddress": "glUHkSHCrOQmyPTMkBSQ",
+        "spentAsset": "kU0R",
+        "purchasedAsset": "eXE",
+        "spentAmount": 1.5530175632513007e11,
+        "created": "1989-12-06T13:11:51Z",
+        "purchasedAmount": 1.65857435513942e11
+      }
+    },
+    "navUSD": 1.693308008683714e11
+  },
+  {
+    "tx": {
+      "tag": "DepositTx",
+      "contents": {
+        "counterpartyAddress": "k3WDSfgepeKbAF06QHfE",
+        "created": "1992-10-22T09:00:05Z",
+        "amounts": {
+          "kU0R": 1.1319808537516063e11,
+          "eXE": 1.1201250155972815e11,
+          "9cVm9": 2.4341544980852014e11
+        }
+      }
+    },
+    "navUSD": 1.852804507038752e11
+  },
+  {
+    "tx": {
+      "tag": "DepositTx",
+      "contents": {
+        "counterpartyAddress": "pqZgMFRGIgRY0c0HN7wx",
+        "created": "1989-10-27T23:46:18Z",
+        "amounts": {
+          "kU0R": 4.377642080222381e10,
+          "eXE": 1.2560514484088191e11,
+          "9cVm9": 1.0208160305087229e9
+        }
+      }
+    },
+    "navUSD": 2.0476861756405862e11
+  },
+  {
+    "tx": {
+      "tag": "WithdrawalTx",
+      "contents": {
+        "counterpartyAddress": "JeKga9pIsQu36TgIHY5e",
+        "created": "1993-09-09T06:36:18Z",
+        "amounts": {
+          "kU0R": 6.792257400541564e10,
+          "eXE": 1.6601447127783218e10,
+          "9cVm9": 2.1105508663718372e11
+        }
+      }
+    },
+    "navUSD": 2.2589172761842514e11
+  },
+  {
+    "tx": {
+      "tag": "WithdrawalTx",
+      "contents": {
+        "counterpartyAddress": "VHipPfc83d0d0C721hnp",
+        "created": "1998-11-17T14:33:10Z",
+        "amounts": {
+          "kU0R": 3.056195903028503e10,
+          "eXE": 2.990154804548627e11,
+          "9cVm9": 2.549132147895188e11
+        }
+      }
+    },
+    "navUSD": 1.0473237841286856e11
+  },
+  {
+    "tx": {
+      "tag": "TradeTx",
+      "contents": {
+        "counterpartyAddress": "PSOg4dsSEv4kDCqnNWmU",
+        "spentAsset": "eXE",
+        "purchasedAsset": "kU0R",
+        "spentAmount": 2.702616826663914e11,
+        "created": "1991-10-12T12:18:27Z",
+        "purchasedAmount": 4.4856594011617645e10
+      }
+    },
+    "navUSD": 1.8198204054344574e11
+  },
+  {
+    "tx": {
+      "tag": "WithdrawalTx",
+      "contents": {
+        "counterpartyAddress": "sxMh3nqrcki6q5qSIW1K",
+        "created": "1993-11-14T15:22:07Z",
+        "amounts": {
+          "kU0R": 1.1484787243106602e11,
+          "eXE": 2.4767865168475482e11,
+          "9cVm9": 1.3749465210157278e11
+        }
+      }
+    },
+    "navUSD": 1.9961713664027423e11
+  },
+  {
+    "tx": {
+      "tag": "DepositTx",
+      "contents": {
+        "counterpartyAddress": "r4c9UpIxL2svTvJyfLFc",
+        "created": "1970-12-04T16:32:04Z",
+        "amounts": {
+          "kU0R": 1.6359752919576523e11,
+          "eXE": 2.4560039662095493e11,
+          "9cVm9": 2.0381730160201785e11
+        }
+      }
+    },
+    "navUSD": 2.8201617995301196e11
+  }
+]

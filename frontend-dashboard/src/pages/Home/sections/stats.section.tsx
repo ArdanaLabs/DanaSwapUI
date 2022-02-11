@@ -3,6 +3,15 @@ import { Box, Grid, useMediaQuery } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
 
+import * as O from "fp-ts/Option"
+import { RemoteData } from "fp-ts-remote-data"
+
+import { ByTxType } from "Data/ByTxType"
+import { FetchDecodeError } from "Data/FetchDecode"
+import { TotalDailyVolume } from "Data/Stats/AggregateStats"
+import { TotalStats } from "Data/Stats/CombinedStats"
+
+import { printCurrencyUSD } from "hooks"
 import { useIsDarkMode } from "state/user/hooks"
 import { useTotalStats } from "state/home/hooks"
 
@@ -56,8 +65,73 @@ const StatsSection: React.FC = () => {
   const mobile = useMediaQuery(breakpoints.down("xs"))
   const classes = useStyles({ dark, mobile })
 
-  const totalStats = useTotalStats()
-  const { totalDailyVolumeUSD } = totalStats
+  const totalStats: RemoteData<FetchDecodeError, TotalStats> = useTotalStats()
+
+  function renderTotalDailyVolumeUSD(
+    totalDailyVolume: ByTxType<O.Option<TotalDailyVolume.Type>>
+  ) {
+    // TODO: text-transform: uppercase
+    return (
+      <Box className={cx(classes.body)}>
+        <Box component="dl">
+          <dt>DAILY DEPOSITS</dt>
+          {O.fold(
+            () => null,
+            (tdv: TotalDailyVolume.Type) => {
+              return (
+                <dd>
+                  {printCurrencyUSD(TotalDailyVolume.iso.unwrap(tdv))} (includes
+                  factory pools)
+                </dd>
+              )
+            }
+          )(totalDailyVolume.addLiquidity)}
+          <dt>DAILY WITHDRAWALS</dt>
+          {O.fold(
+            () => null,
+            (tdv: TotalDailyVolume.Type) => {
+              return (
+                <dd>
+                  {printCurrencyUSD(TotalDailyVolume.iso.unwrap(tdv))} (includes
+                  factory pools)
+                </dd>
+              )
+            }
+          )(totalDailyVolume.removeLiquidity)}
+          <dt>DAILY VOLUME</dt>
+          {O.fold(
+            () => null,
+            (tdv: TotalDailyVolume.Type) => {
+              return (
+                <dd>{printCurrencyUSD(TotalDailyVolume.iso.unwrap(tdv))}</dd>
+              )
+            }
+          )(totalDailyVolume.total)}
+          <dt>STABLECOIN VOLUME</dt>
+          {/* TODO: Intl.NumberFormat */}
+          <dd>$3,065,174</dd>
+        </Box>
+      </Box>
+    )
+  }
+
+  function renderTotalStats(rts: RemoteData<FetchDecodeError, TotalStats>) {
+    switch (rts._tag) {
+      case "Success":
+        return renderTotalDailyVolumeUSD(rts.success.totalDailyVolumeUSD)
+      case "Pending":
+        // TODO: loading
+        return <span>loading …</span>
+      case "Failure":
+        // TODO: failure
+        return (
+          <details>
+            <summary> Error </summary>
+            <pre>{JSON.stringify(rts.failure, null, 2)}</pre>
+          </details>
+        )
+    }
+  }
 
   return (
     <Box className={cx(classes.self)}>
@@ -66,6 +140,7 @@ const StatsSection: React.FC = () => {
           <Box className={cx(classes.title)}>exDANA Stats</Box>
           <Box className={cx(classes.body)}>
             <Box component="p">
+              {/* TODO: remove <br>, text-transform: uppercase */}
               exDANA holder/LP ratio (based on fees): <span>24.52</span>
               <br />
               <br />
@@ -99,34 +174,8 @@ const StatsSection: React.FC = () => {
           <Box className={cx(classes.title)}>
             Total Pool Deposits and Daily Volume
           </Box>
-          <Box className={cx(classes.body)}>
-            <Box component="p">
-              DAILY DEPOSITS:
-              <br />
-              <span>
-                ${totalDailyVolumeUSD?.addLiquidity?.toLocaleString() ?? 0}{" "}
-                (includes factory pools)
-              </span>
-              <br />
-              <br />
-              DAILY WITHDRAWALS:
-              <br />
-              <span>
-                ${totalDailyVolumeUSD?.removeLiquidity?.toLocaleString() ?? 0}{" "}
-                (includes factory pools)
-              </span>
-              <br />
-              <br />
-              DAILY VOLUME:
-              <br />
-              <span>${totalDailyVolumeUSD?.total?.toLocaleString() ?? 0}</span>
-              <br />
-              <br />
-              STABLECOIN VOLUME:
-              <br />
-              <span>$3,065,174</span>
-            </Box>
-          </Box>
+
+          {renderTotalStats(totalStats)}
 
           <Box mt="30px" />
 

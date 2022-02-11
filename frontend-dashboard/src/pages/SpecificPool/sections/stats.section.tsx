@@ -5,13 +5,22 @@ import cx from "classnames"
 import Chart from "react-apexcharts"
 import { ApexOptions } from "apexcharts"
 
+import * as NEA from "fp-ts/NonEmptyArray"
+import * as O from "fp-ts/Option"
+
+import * as PoolStats from "Data/Stats/PoolStats"
+import * as PoolSetName from "Data/Pool/PoolSetName"
+import * as LiquidityTokenPrice from "Data/LiquidityTokenPrice"
+import * as Volume from "Data/Volume"
+import * as Asset from "Data/Asset"
+import { USD } from "Data/Unit"
+import { LiquidityChart, VolumeChart } from "Data/Chart"
+import { Granularity } from "Data/Chart/Granularity"
+
 import { useIsDarkMode } from "state/user/hooks"
-import { useLocation } from "react-router-dom"
-import { extractXAxis, extractYAxis, printCurrencyUSD } from "hooks"
-import { usePoolStats } from "state/home/hooks"
+import { extractDateAxis, printCurrencyUSD, printDate } from "hooks"
 import { usePoolVolume, usePoolLiquidity } from "state/chart/hooks"
 
-import { OneWeek } from "config/grains"
 import { SwitchWithGlider } from "components"
 
 const useStyles = makeStyles(({ palette }) => ({
@@ -108,6 +117,7 @@ const useStyles = makeStyles(({ palette }) => ({
     borderRadius: "20px",
     padding: "10px 20px",
     background: palette.type === "light" ? "#A5A5A5" : "#010730",
+    textTransform: "uppercase",
 
     fontFamily: "Museo Sans",
     fontStyle: "normal",
@@ -141,16 +151,42 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 }))
 
-const StatsSection: React.FC = () => {
+enum ChartType {
+  Volume = 0,
+  TVL = 1,
+  Liquidity = 2,
+}
+
+const allChartTypes: ChartType[] = [
+  ChartType.Volume,
+  ChartType.TVL,
+  ChartType.Liquidity,
+]
+
+function chartTypeLabel(ct: ChartType): string {
+  switch (ct) {
+    case ChartType.Volume:
+      return "Volume"
+    case ChartType.TVL:
+      return "TVL"
+    case ChartType.Liquidity:
+      return "Liquidity"
+  }
+}
+
+export type Props = {
+  poolStats: PoolStats.Type
+  poolSet: PoolSetName.Type
+}
+
+const StatsSection: React.FC<Props> = ({ poolSet, poolStats }: Props) => {
   const { palette, breakpoints } = useTheme()
   const dark = useIsDarkMode()
   const mobile = useMediaQuery(breakpoints.down("xs"))
   const classes = useStyles({ dark, mobile })
-  const location = useLocation()
 
-  const poolStats = usePoolStats()
-  const { poolVolume, getPoolVolume } = usePoolVolume()
-  const { poolLiquidity, getPoolLiquidity } = usePoolLiquidity()
+  const { poolVolume, fetchPoolVolume } = usePoolVolume()
+  const { poolLiquidity, fetchPoolLiquidity } = usePoolLiquidity()
 
   let options: ApexOptions = {
     chart: {
@@ -225,160 +261,198 @@ const StatsSection: React.FC = () => {
 
   const lockedTokenList = [
     {
-      name: "BTC",
-      amount: "$22.62 M",
+      asset: Asset.iso.wrap("BTC"),
+      amount: USD.iso.wrap(22_620_000),
     },
     {
-      name: "ARD",
-      amount: "$22.62 M",
+      asset: Asset.iso.wrap("ARD"),
+      amount: USD.iso.wrap(22_630_000),
     },
   ]
 
-  const [poolInfo, setPoolInfo] = useState<any>(null)
   const [chartOptions, setChartOptions] = useState<ApexOptions>(options)
   const [chartSeries, setChartSeries] = useState<any[]>(series)
 
-  const [activeChart, setActiveChart] = useState(0)
+  const [activeChart, setActiveChart] = useState<ChartType>(ChartType.Volume)
 
   useEffect(() => {
-    const { poolName }: any = location.state
-    poolStats && poolStats[poolName] && setPoolInfo(poolStats[poolName])
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [poolStats, location.state])
-
-  useEffect(() => {
-    const { poolName }: any = location.state
-    getPoolVolume(
-      poolName,
-      "2020-12-12T00:00:00.0Z",
-      "2021-01-12T00:00:00.0Z",
-      OneWeek
+    fetchPoolVolume(
+      poolSet,
+      [new Date("2020-12-12T00:00:00.0Z"), new Date("2021-01-12T00:00:00.0Z")],
+      Granularity.OneWeek
     )
-    getPoolLiquidity(
-      poolName,
-      "2020-12-12T00:00:00.0Z",
-      "2021-01-12T00:00:00.0Z",
-      OneWeek
+    fetchPoolLiquidity(
+      poolSet,
+      [new Date("2020-12-12T00:00:00.0Z"), new Date("2021-01-12T00:00:00.0Z")],
+      Granularity.OneWeek
     )
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location.state])
+  }, [])
 
   useEffect(() => {
-    if (poolVolume) {
-      setChartOptions({
-        ...chartOptions,
-        xaxis: {
-          categories: extractXAxis(poolVolume),
-          labels: {
-            style: {
-              colors: palette.text.hint,
-            },
-          },
-          axisTicks: {
-            show: false,
-          },
-          axisBorder: {
-            show: false,
-          },
-        },
-        fill: {
-          type: "gradient",
-          colors: [!dark ? "#202F9A" : "#73d6f1"],
-          gradient: {
-            type: "vertical", // The gradient in the horizontal direction
-            gradientToColors: [!dark ? "#5F72FF" : "#73D6F1"], // The color at the end of the gradient
-            opacityFrom: 1, // transparency
-            opacityTo: 0.3,
-            stops: [0, 1200],
-          },
-        },
-      })
-      setChartSeries([
-        {
-          name: "Volume",
-          data: extractYAxis(poolVolume, "total"),
-        },
-      ])
+    switch (poolVolume._tag) {
+      case "Success":
+        O.fold(
+          (): void => {},
+          (pvs: NEA.NonEmptyArray<VolumeChart.Item.Type>): void => {
+            setChartOptions({
+              ...chartOptions,
+              xaxis: {
+                categories: extractDateAxis(pvs).map((d: Date) => printDate(d)),
+                labels: {
+                  style: {
+                    colors: palette.text.hint,
+                  },
+                },
+                axisTicks: {
+                  show: false,
+                },
+                axisBorder: {
+                  show: false,
+                },
+              },
+              fill: {
+                type: "gradient",
+                colors: [!dark ? "#202F9A" : "#73d6f1"],
+                gradient: {
+                  type: "vertical", // The gradient in the horizontal direction
+                  gradientToColors: [!dark ? "#5F72FF" : "#73D6F1"], // The color at the end of the gradient
+                  opacityFrom: 1, // transparency
+                  opacityTo: 0.3,
+                  stops: [0, 1200],
+                },
+              },
+            })
+            setChartSeries([
+              {
+                name: "Volume",
+                data: pvs.map(([, v]: VolumeChart.Item.Type): number =>
+                  USD.iso.unwrap(Volume.iso.unwrap(v.total))
+                ),
+              },
+            ])
+          }
+        )(NEA.fromArray(poolVolume.success))
+        break
+      case "Pending":
+        break
+      case "Failure":
+        break
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [palette, poolVolume])
 
-  const handleSwitch = (index: number) => {
+  const handleSwitch = (index: ChartType) => {
     setActiveChart(index)
     switch (index) {
-      case 0:
-      default:
-        setChartOptions({
-          ...chartOptions,
-          xaxis: {
-            categories: extractXAxis(poolVolume),
-            labels: {
-              style: {
-                colors: palette.text.hint,
-              },
-            },
-            axisTicks: {
-              show: false,
-            },
-            axisBorder: {
-              show: false,
-            },
-          },
-          fill: {
-            type: "gradient",
-            colors: [!dark ? "#202F9A" : "#73d6f1"],
-            gradient: {
-              type: "vertical", // The gradient in the horizontal direction
-              gradientToColors: [!dark ? "#5F72FF" : "#73D6F1"], // The color at the end of the gradient
-              opacityFrom: 1, // transparency
-              opacityTo: 0.3,
-              stops: [0, 1200],
-            },
-          },
-        })
-        setChartSeries([
-          {
-            name: "Volume",
-            data: extractYAxis(poolVolume, "total"),
-          },
-        ])
+      case ChartType.Volume:
+        switch (poolVolume._tag) {
+          case "Success":
+            O.fold(
+              (): void => {},
+              (pvs: NEA.NonEmptyArray<VolumeChart.Item.Type>): void => {
+                setChartOptions({
+                  ...chartOptions,
+                  xaxis: {
+                    categories: extractDateAxis(pvs).map((d: Date) =>
+                      printDate(d)
+                    ),
+                    labels: {
+                      style: {
+                        colors: palette.text.hint,
+                      },
+                    },
+                    axisTicks: {
+                      show: false,
+                    },
+                    axisBorder: {
+                      show: false,
+                    },
+                  },
+                  fill: {
+                    type: "gradient",
+                    colors: [!dark ? "#202F9A" : "#73d6f1"],
+                    gradient: {
+                      type: "vertical", // The gradient in the horizontal direction
+                      gradientToColors: [!dark ? "#5F72FF" : "#73D6F1"], // The color at the end of the gradient
+                      opacityFrom: 1, // transparency
+                      opacityTo: 0.3,
+                      stops: [0, 1200],
+                    },
+                  },
+                })
+                setChartSeries([
+                  {
+                    name: "Volume",
+                    data: pvs.map(([, v]: VolumeChart.Item.Type): number =>
+                      USD.iso.unwrap(Volume.iso.unwrap(v.total))
+                    ),
+                  },
+                ])
+              }
+            )(NEA.fromArray(poolVolume.success))
+            break
+          case "Pending":
+            break
+          case "Failure":
+            break
+        }
         break
-      case 1:
-      case 2:
-        setChartOptions({
-          ...chartOptions,
-          xaxis: {
-            categories: extractXAxis(poolLiquidity),
-            labels: {
-              style: {
-                colors: palette.text.hint,
-              },
-            },
-            axisTicks: {
-              show: false,
-            },
-            axisBorder: {
-              show: false,
-            },
-          },
-          fill: {
-            type: "gradient",
-            colors: [!dark ? "#202F9A" : "#73d6f1"],
-            gradient: {
-              type: "vertical", // The gradient in the horizontal direction
-              gradientToColors: [!dark ? "#5F72FF" : "#73D6F1"], // The color at the end of the gradient
-              opacityFrom: 1, // transparency
-              opacityTo: 0.3,
-              stops: [0, 1200],
-            },
-          },
-        })
-        setChartSeries([
-          {
-            name: "Liquidity",
-            data: extractYAxis(poolLiquidity, "value"),
-          },
-        ])
+      case ChartType.TVL:
+      case ChartType.Liquidity:
+        switch (poolLiquidity._tag) {
+          case "Success":
+            O.fold(
+              (): void => {},
+              (pls: NEA.NonEmptyArray<LiquidityChart.Item.Type>) => {
+                setChartOptions({
+                  ...chartOptions,
+                  xaxis: {
+                    categories: extractDateAxis(pls).map((d: Date) =>
+                      printDate(d)
+                    ),
+                    labels: {
+                      style: {
+                        colors: palette.text.hint,
+                      },
+                      formatter: (usd: any): string => printCurrencyUSD(usd),
+                    },
+                    axisTicks: {
+                      show: false,
+                    },
+                    axisBorder: {
+                      show: false,
+                    },
+                  },
+                  fill: {
+                    type: "gradient",
+                    colors: [!dark ? "#202F9A" : "#73d6f1"],
+                    gradient: {
+                      type: "vertical", // The gradient in the horizontal direction
+                      gradientToColors: [!dark ? "#5F72FF" : "#73D6F1"], // The color at the end of the gradient
+                      opacityFrom: 1, // transparency
+                      opacityTo: 0.3,
+                      stops: [0, 1200],
+                    },
+                  },
+                })
+                setChartSeries([
+                  {
+                    name: "Liquidity",
+                    data: pls.map(
+                      ([, l]: LiquidityChart.Item.Type): USD.Type =>
+                        LiquidityTokenPrice.iso.unwrap(l)
+                    ),
+                  },
+                ])
+              }
+            )(NEA.fromArray(poolLiquidity.success))
+            break
+          case "Pending":
+            break
+          case "Failure":
+            break
+        }
         break
     }
   }
@@ -401,22 +475,34 @@ const StatsSection: React.FC = () => {
               paddingX="25px"
               paddingY="15px"
             >
-              {lockedTokenList &&
-                lockedTokenList.map((token: any, i: number) => {
-                  const icon = require(`assets/coins/${token.name}.png`).default
+              {lockedTokenList.map(
+                (token: { asset: Asset.Type; amount: USD.Type }, i: number) => {
+                  // TODO: make this an SVG sprite rather than PNG
+                  const assetStr: string = Asset.iso.unwrap(token.asset)
+                  const icon = require(`assets/coins/${assetStr}.png`).default
                   return (
                     <Box className={cx(classes.token)} key={i}>
-                      <img src={icon} alt="token" />
-                      <span>{token.name}</span>
-                      <span>{token.amount}</span>
+                      <img src={icon} alt="" />
+                      <span>{assetStr}</span>
+                      <span>
+                        {printCurrencyUSD(token.amount, {
+                          minimumFractionDigits: 4,
+                        })}
+                      </span>
                     </Box>
                   )
-                })}
+                }
+              )}
             </Box>
             <Box className={cx(classes.statsBox, classes.statsBoxBg)}>
+              {/* TODO: don’t use div/Box for spacing */}
               <Box className={cx(classes.leftBorder)}>&nbsp;&nbsp;</Box>
-              <span>TVL</span>
-              <span>$242.90m</span>
+              {/* TODO: text-transform: uppercase */}
+              {/* TODO: what is the abbreviation?? */}
+              <span>
+                <abbr title="TODO">TVL</abbr>
+              </span>
+              <span>{printCurrencyUSD(USD.iso.wrap(242_900_000))}</span>
               <Box style={{ color: "red" }}>
                 <i className="fal fa-long-arrow-down"></i>&nbsp;
                 <span>2.05%</span>
@@ -425,10 +511,17 @@ const StatsSection: React.FC = () => {
 
             <Box className={cx(classes.statsBox, classes.statsBoxBg)}>
               <Box className={cx(classes.leftBorder)}>&nbsp;&nbsp;</Box>
+              {/* TODO: text-transform: uppercase */}
               <span>VOLUME 24H</span>
               <span>
-                {printCurrencyUSD(poolInfo?.recentDailyVolumeUSD?.trade, 2)}
+                {printCurrencyUSD(
+                  O.getOrElse(() => USD.iso.wrap(0))(
+                    poolStats.recentDailyVolumeUSD.trade
+                  ),
+                  { minimumFractionDigits: 2 }
+                )}
               </span>
+              {/* TODO: use class, use function */}
               <Box style={{ color: "green" }}>
                 <i className="fal fa-long-arrow-up"></i>&nbsp;
                 <span>36.12%</span>
@@ -436,9 +529,19 @@ const StatsSection: React.FC = () => {
             </Box>
 
             <Box className={cx(classes.statsBox, classes.statsBoxBg)}>
+              {/* TODO: don’t use div/Box for spacing */}
               <Box className={cx(classes.leftBorder)}>&nbsp;&nbsp;</Box>
+              {/* TODO: text-transform: uppercase */}
               <span>24H FEES</span>
-              <span>{printCurrencyUSD(poolInfo?.dailyFeeVolumeUSD, 2)}</span>
+              <span>
+                {printCurrencyUSD(
+                  O.getOrElse(() => USD.iso.wrap(0))(
+                    poolStats.dailyFeeVolumeUSD
+                  ),
+                  { minimumFractionDigits: 2 }
+                )}
+              </span>
+              {/* TODO: use class, use function */}
               <span style={{ color: "red" }}>&nbsp;</span>
             </Box>
           </Box>
@@ -447,7 +550,7 @@ const StatsSection: React.FC = () => {
           <Box className={cx(classes.panelbg)}>
             <Box textAlign="right">
               <SwitchWithGlider
-                elements={["VOLUME", "TVL", "LIQUIDITY"]}
+                elements={allChartTypes.map(chartTypeLabel)}
                 normalClass={classes.filterNormal}
                 activeClass={classes.filterActive}
                 activeIndex={activeChart}
@@ -472,6 +575,8 @@ const StatsSection: React.FC = () => {
             )}
             {activeChart === 2 && (
               <Box className={cx(classes.currentRatio)}>
+                {/* TODO: text-transform: uppercase */}
+                {/* TODO: remove the breaks for proper padding/gaps */}
                 CURRENT PRICE
                 <br />
                 <br />

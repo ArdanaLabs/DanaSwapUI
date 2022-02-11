@@ -1,85 +1,43 @@
 import { createAction } from "@reduxjs/toolkit"
-import * as Option from "fp-ts/Option"
 
-export interface RangedVolume {
-  start: Option.Option<string>
-  end: Option.Option<string>
-  addLiquidity: Option.Option<number>
-  removeLiquidity: Option.Option<number>
-  total: Option.Option<number>
-  trade: Option.Option<number>
-}
+import {
+  APYChart,
+  FeeVolumeChart,
+  LiquidityChart,
+  TxCountChart,
+  VolumeChart,
+} from "Data/Chart"
+import { FetchDecodeResult } from "Data/FetchDecode"
+import * as Transaction from "Data/Transaction"
 
-export interface RangedLiquidity {
-  start: Option.Option<string>
-  end: Option.Option<string>
-  value: Option.Option<number>
-}
+export const receivedAggVolume = createAction<
+  FetchDecodeResult<VolumeChart.Type>
+>("home/receivedAggVolume")
 
-export interface RangedFees {
-  start: Option.Option<string>
-  end: Option.Option<string>
-  value: Option.Option<number>
-}
+export const receivedAggLiquidity = createAction<
+  FetchDecodeResult<LiquidityChart.Type>
+>("home/receivedAggLiquidity")
 
-export interface RangedTxCount {
-  start: Option.Option<string>
-  end: Option.Option<string>
-  addLiquidity: Option.Option<number>
-  removeLiquidity: Option.Option<number>
-  total: Option.Option<number>
-  trade: Option.Option<number>
-}
+export const receivedPoolFees = createAction<
+  FetchDecodeResult<FeeVolumeChart.Type>
+>("home/receivedPoolFees")
 
-export interface RangedAPY {
-  start: Option.Option<string>
-  end: Option.Option<string>
-  value: Option.Option<number>
-}
+export const receivedPoolVolume = createAction<
+  FetchDecodeResult<VolumeChart.Type>
+>("home/receivedPoolVolume")
 
-export interface RangedTransactions {
-  tx: {
-    tag: Option.Option<string> // DepositTx, WithdrawalTx, TradeTx
-    contents: {
-      counterpartyAddress: Option.Option<string>
-      created: Option.Option<string>
-      spentAsset: Option.Option<string> // TradeTx
-      purchasedAsset: Option.Option<string> // TradeTx
-      spentAmount: Option.Option<number> // TradeTx
-      purchasedAmount: Option.Option<number> // TradeTx
-      amounts: {
-        // DepositTx, WithdrawalTx
-        [token: string]: Option.Option<number>
-      }
-    }
-  }
-  navUSD: Option.Option<number>
-}
+export const receivedPoolLiquidity = createAction<
+  FetchDecodeResult<LiquidityChart.Type>
+>("home/receivedPoolLiquidity")
 
-export const updateAggVolume = createAction<RangedVolume[]>(
-  "home/updateAggVolume"
+export const receivedPoolTxCount = createAction<
+  FetchDecodeResult<TxCountChart.Type>
+>("home/receivedPoolTxCount")
+
+export const receivedPoolAPY = createAction<FetchDecodeResult<APYChart.Type>>(
+  "home/receivedPoolAPY"
 )
 
-export const updateAggLiquidity = createAction<RangedLiquidity[]>(
-  "home/updateAggLiquidity"
-)
-
-export const updatePoolFees = createAction<RangedFees[]>("home/updatePoolFees")
-
-export const updatePoolVolume = createAction<RangedVolume[]>(
-  "home/updatePoolVolume"
-)
-
-export const updatePoolLiquidity = createAction<RangedLiquidity[]>(
-  "home/updatePoolLiquidity"
-)
-
-export const updatePoolTXCount = createAction<RangedTxCount[]>(
-  "home/updatePoolTXCount"
-)
-
-export const updatePoolAPY = createAction<RangedAPY[]>("home/updatePoolAPY")
-
-export const updatePoolTransactions = createAction<RangedTransactions[]>(
-  "home/updatePoolTransactions"
-)
+export const receivedPoolTransactions = createAction<
+  FetchDecodeResult<Transaction.WithTotalValue[]>
+>("home/receivedPoolTransactions")

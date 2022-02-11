@@ -18,7 +18,7 @@ const PoolsSection: React.FC = () => {
 
   return (
     <Box className={cx(classes.self)}>
-      <PoolsPanel overView={true} />
+      <PoolsPanel overview={true} />
     </Box>
   )
 }

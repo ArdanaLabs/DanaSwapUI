@@ -38,10 +38,15 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     },
   },
 
+  // TODO: change container to use `gap` instead of this `margin-right` hack
   socialIconLink: {
+    "display": "inline-flex",
+    "height": "2.25em",
+    "width": "2.25em",
+    "alignItems": "center",
+    "justifyContent": "center",
     "borderRadius": "50%",
     "backgroundColor": "white",
-    "padding": "10px",
     "marginRight": "20px",
     "cursor": "pointer",
     "color": "gray",
@@ -71,23 +76,45 @@ const Footer: React.FC = () => {
       <Container>
         <Box className={cx(classes.container)}>
           <Box className={cx(classes.logo)}>
-            <img src={LOGO_White} alt="logo" />
-            <img src={LOGO_Text} alt="logo" />
+            {/* TODO: make this one image so the titles make sense; link to the homepage */}
+            <img src={LOGO_White} alt="Ardana" />
+            <img src={LOGO_Text} alt="" />
           </Box>
+          {/* TODO: style this as flex or grid; aria labels; titles */}
           <Box>
-            <Link className={cx(classes.socialIconLink)} href="#">
+            <Link
+              className={cx(classes.socialIconLink)}
+              href="#"
+              rel="noopener"
+            >
               <i className="fab fa-twitter"></i>
             </Link>
-            <Link className={cx(classes.socialIconLink)} href="#">
+            <Link
+              className={cx(classes.socialIconLink)}
+              href="#"
+              rel="noopener"
+            >
               <i className="fab fa-instagram"></i>
             </Link>
-            <Link className={cx(classes.socialIconLink)} href="#">
+            <Link
+              className={cx(classes.socialIconLink)}
+              href="#"
+              rel="noopener"
+            >
               <i className="fab fa-medium"></i>
             </Link>
-            <Link className={cx(classes.socialIconLink)} href="#">
+            <Link
+              className={cx(classes.socialIconLink)}
+              href="#"
+              rel="noopener"
+            >
               <i className="fab fa-youtube"></i>
             </Link>
-            <Link className={cx(classes.socialIconLink)} href="#">
+            <Link
+              className={cx(classes.socialIconLink)}
+              href="#"
+              rel="noopener"
+            >
               <i className="fab fa-linkedin"></i>
             </Link>
           </Box>
