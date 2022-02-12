@@ -114,9 +114,11 @@ const Header: React.FC = () => {
     <Box className={cx(classes.self)}>
       <Container>
         <Box className={cx(classes.container)}>
+          {/* TODO: make this a link, not onclick */}
           <Box className={cx(classes.logo)} onClick={() => history.push("/")}>
-            <img src={LOGO_Blue} alt="Ardana Logo" />
-            <img src={LOGO_Text} alt="Ardana Logo" />
+            {/* TODO: make this one image */}
+            <img src={LOGO_Blue} alt="Ardana" />
+            <img src={LOGO_Text} alt="" />
           </Box>
 
           {!mobile && (

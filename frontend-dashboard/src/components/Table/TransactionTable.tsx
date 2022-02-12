@@ -15,11 +15,23 @@ import { makeStyles, useTheme, withStyles } from "@material-ui/core/styles"
 import cx from "classnames"
 import { useIsDarkMode } from "state/user/hooks"
 import { Button } from "components/Button"
-import { usePoolTransactions } from "state/chart/hooks"
-import { Any, Trade, Withdrawal, Deposit } from "config/txTypes"
-import { findKeyFromObject, nFormatter } from "hooks"
-import { useLocation } from "react-router-dom"
-import { keys } from "lodash"
+import { fetchPoolTransactions } from "state/chart/hooks"
+
+import * as E from "fp-ts/Either"
+import * as O from "fp-ts/Option"
+import * as ROM from "fp-ts/ReadonlyMap"
+import * as RemoteData from "fp-ts-remote-data"
+
+import * as Asset from "Data/Asset"
+import { AssetQuantity } from "Data/Unit"
+import { TransactionType } from "Data/Chart/TransactionType"
+import { FetchDecodeError, FetchDecodeResult } from "Data/FetchDecode"
+import * as PoolSetName from "Data/Pool/PoolSetName"
+import * as Transaction from "Data/Transaction"
+import * as Transfer from "Data/Transfer"
+import * as Trade from "Data/Trade"
+
+import { printAssetQuantity, printDate } from "hooks"
 
 const StyledTableCellHead = withStyles(({ palette }) => ({
   root: {
@@ -96,6 +108,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     borderRadius: "10px",
     position: "relative",
     padding: "12px",
+    minHeight: "72px",
   },
   filter: {
     display: "flex",
@@ -144,6 +157,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontSize: "11px",
     lineHeight: "100%",
     margin: "10px",
+    textTransform: "uppercase",
   },
 
   active: {
@@ -151,37 +165,42 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 }))
 
-const TransactionTable: React.FC = () => {
+export type Props = {
+  poolSet: PoolSetName.Type
+}
+
+export const TransactionTable: React.FC<Props> = ({
+  poolSet,
+}: Props): JSX.Element => {
   const { breakpoints } = useTheme()
   const dark = useIsDarkMode()
   const mobile = useMediaQuery(breakpoints.down("xs"))
   const classes = useStyles({ dark, mobile })
-  const { poolTransactions, getPoolTransactions } = usePoolTransactions()
-  const location = useLocation()
 
   const columns = [
     "",
-    "TOTAL VALUE",
-    "TOKEN AMOUNT",
-    "TOKEN AMOUNT",
-    "ACCOUNT",
-    "TIME",
+    "Total Value",
+    "Token Amount",
+    "Token Amount",
+    "Account",
+    "Time",
   ]
 
-  const [rows, setRows] = useState([])
+  const [rows, setRows] = useState<
+    RemoteData.RemoteData<FetchDecodeError, Transaction.WithTotalValue[]>
+  >(RemoteData.pending)
   const [filter, setFilter] = useState({
     text: "",
-    type: Any,
+    type: TransactionType.Any,
   })
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(10)
-  const [loading, setLoading] = useState(true)
 
-  const handleFilterChange = (event: any) => {
+  const handleFilterChange = (event: object) => {
     setFilter({ ...filter, ...event })
     setPage(0)
   }
-  const handleChangePage = (event: unknown, newPage: number) => {
+  const handleChangePage = (_event: object, newPage: number) => {
     setPage(newPage)
   }
   const handleChangeRowsPerPage = (
@@ -192,148 +211,143 @@ const TransactionTable: React.FC = () => {
   }
 
   useEffect(() => {
-    const { poolName }: any = location.state
-    getPoolTransactions(
-      poolName,
+    fetchPoolTransactions(
+      poolSet,
       page * rowsPerPage,
       (page + 1) * rowsPerPage,
       filter.type
+    )().then(
+      (transactions: FetchDecodeResult<Transaction.WithTotalValue[]>): void => {
+        E.isLeft(transactions) &&
+          console.error("Fetch processing error:", transactions.left)
+        setRows(RemoteData.fromEither(transactions))
+      }
     )
-    setLoading(true)
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, rowsPerPage, filter.type])
 
-  useEffect(() => {
-    if (!poolTransactions) return
-
-    let parsedRows = poolTransactions.map((row: any, i: number) => {
-      const tag = findKeyFromObject(row, "tag")
-      const navUSD = findKeyFromObject(row, "navUSD")
-      const counterpartyAddress = findKeyFromObject(row, "counterpartyAddress")
-      const created = findKeyFromObject(row, "created")
-      const amounts = findKeyFromObject(row, "amounts")
-      const purchasedAmount = findKeyFromObject(row, "purchasedAmount")
-      const spentAmount = findKeyFromObject(row, "spentAmount")
-
-      let action = ""
-      let tokenAmountUSDC = 0
-      let tokenAmount = 0
-
-      switch (tag) {
-        case "DepositTx":
-          action = "Add USDC and ETH"
-          // tokenAmountUSDC = amounts['USDC']  // true action
-          tokenAmountUSDC = amounts[keys(amounts)[0]] // mock action
-          // tokenAmount = amounts['ETH']  // true action
-          tokenAmount = amounts[keys(amounts)[0]] // mock action
-          break
-        case "WithdrawalTx":
-          action = "Remove USDC and ETH"
-          // tokenAmountUSDC = amounts['USDC'] + ' USDC'  // true action
-          tokenAmountUSDC = amounts[keys(amounts)[0]] // mock action
-          // tokenAmount = amounts['ETH']  // true action
-          tokenAmount = amounts[keys(amounts)[0]] // mock action
-          break
-        case "TradeTx":
-          action = "Swap ETH for USDC"
-          tokenAmountUSDC = purchasedAmount ?? spentAmount // mock action //  whether purchase or not
-          tokenAmount = purchasedAmount ?? spentAmount // mock action //  whether purchase or not
-          break
-        default:
-          break
+  /* TODO: we need to move from the below Mock function to something like this…
+  const getPairQuantity =
+    (as: Transfer.Amounts.Type) =>
+    (
+      assets: [Asset, Asset]
+    ): [O.Option<[Asset, AssetQuantity.Type]>, O.Option<[Asset, AssetQuantity.Type]>] => {
+      function lookup(k: Asset): O.Option<[Asset, AssetQuantity.Type]> {
+        return O.map((aq: AssetQuantity.Type): [Asset, AssetQuantity.Type] => [k, aq])(
+          ROM.lookup(eqAsset)(k)(as)
+        )
       }
-      return {
-        action: action,
-        navUSD: nFormatter(navUSD, 2),
-        tokenAmountUSDC: nFormatter(tokenAmountUSDC, 2) + " USDC",
-        tokenAmount: nFormatter(tokenAmount, 2) + " ETH",
-        counterpartyAddress: counterpartyAddress,
-        created: created,
-      }
-    })
+      return [lookup(assets[0]), lookup(assets[1])]
+    }
+  */
 
-    setRows(parsedRows)
-    setLoading(false)
-  }, [poolTransactions])
+  const getPairQuantityMock = (
+    as: Transfer.Amounts.Type
+  ): [O.Option<AssetQuantity.Type>, O.Option<AssetQuantity.Type>] => {
+    const ks: ReadonlyArray<Asset.Type> = ROM.keys(Asset.Ord)(as)
+    return [O.fromNullable(as.get(ks[0])), O.fromNullable(as.get(ks[1]))]
+  }
 
-  return (
-    <Box>
-      <Box className={cx(classes.filter)}>
-        <Box textAlign="center" mt={mobile ? "20px" : "0px"}>
-          <Button
-            variant="contained"
-            onClick={() => {
-              handleFilterChange({ type: Any })
-            }}
-            className={cx(classes.filterType, {
-              [classes.active]: filter.type === Any,
-            })}
-          >
-            ALL
-          </Button>
-          <Button
-            variant="contained"
-            onClick={() => {
-              handleFilterChange({ type: Trade })
-            }}
-            className={cx(classes.filterType, {
-              [classes.active]: filter.type === Trade,
-            })}
-          >
-            SWAPS
-          </Button>
-          <Button
-            variant="contained"
-            onClick={() => {
-              handleFilterChange({ type: Deposit })
-            }}
-            className={cx(classes.filterType, {
-              [classes.active]: filter.type === Deposit,
-            })}
-          >
-            ADDS
-          </Button>
-          <Button
-            variant="contained"
-            onClick={() => {
-              handleFilterChange({ type: Withdrawal })
-            }}
-            className={cx(classes.filterType, {
-              [classes.active]: filter.type === Withdrawal,
-            })}
-          >
-            REMOVES
-          </Button>
-        </Box>
-      </Box>
-      <Box className={cx(classes.panel)}>
-        {rows && (
+  function renderTransaction(
+    { transaction, navUSD }: Transaction.WithTotalValue,
+    index: number
+  ): JSX.Element | undefined {
+    switch (transaction._tag) {
+      case "Trade":
+        const t: Trade.Type = transaction.trade
+        // purchasedAmount ?? spentAmount
+        return (
+          <TableRow key={index} hover>
+            <StyledTableCellHead>Swap USDC and ETH</StyledTableCellHead>
+            <StyledTableCell>{t.purchasedAmount}</StyledTableCell>
+            <StyledTableCell></StyledTableCell>
+            <StyledTableCell>{t.purchasedAmount}</StyledTableCell>
+            <StyledTableCell>{t.counterpartyAddress}</StyledTableCell>
+            <StyledTableCell>{printDate(t.created)}</StyledTableCell>
+          </TableRow>
+        )
+
+      case "Deposit":
+        const d: Transfer.Type = transaction.deposit
+        //key = d.counterpartyAddress
+        // tokenAmountUSDC = amounts['USDC']  // true action
+        // tokenAmount = amounts['ETH']  // true action
+        const [daqx, daqy] = getPairQuantityMock(d.amounts)
+        return (
+          <TableRow key={index} hover>
+            <StyledTableCellHead>Add USDC and ETH</StyledTableCellHead>
+            <StyledTableCell>{navUSD}</StyledTableCell>
+            <StyledTableCell>
+              {O.fold(
+                () => "",
+                (aq: AssetQuantity.Type): string =>
+                  printAssetQuantity(Asset.iso.wrap("USDC"), aq)
+              )(daqx)}
+            </StyledTableCell>
+            <StyledTableCell>
+              {O.fold(
+                () => "",
+                (aq: AssetQuantity.Type): string =>
+                  printAssetQuantity(Asset.iso.wrap("ETH"), aq)
+              )(daqy)}
+            </StyledTableCell>
+            <StyledTableCell>{d.counterpartyAddress}</StyledTableCell>
+            <StyledTableCell>{printDate(d.created)}</StyledTableCell>
+          </TableRow>
+        )
+
+      case "Withdrawal":
+        const w: Transfer.Type = transaction.withdrawal
+        //key = w.counterpartyAddress
+        // tokenAmountUSDC = amounts['USDC']  // true action
+        // tokenAmount = amounts['ETH']  // true action
+        const [waqx, waqy] = getPairQuantityMock(w.amounts)
+        return (
+          <TableRow key={index} hover>
+            <StyledTableCellHead>Remove USDC and ETH</StyledTableCellHead>
+            <StyledTableCell>{navUSD}</StyledTableCell>
+            <StyledTableCell>
+              {O.fold(
+                () => "",
+                (aq: AssetQuantity.Type): string =>
+                  printAssetQuantity(Asset.iso.wrap("USDC"), aq)
+              )(waqx)}
+            </StyledTableCell>
+            <StyledTableCell>
+              {O.fold(
+                () => "",
+                (aq: AssetQuantity.Type): string =>
+                  printAssetQuantity(Asset.iso.wrap("ETH"), aq)
+              )(waqy)}
+            </StyledTableCell>
+            <StyledTableCell>{w.counterpartyAddress}</StyledTableCell>
+            <StyledTableCell>{printDate(w.created)}</StyledTableCell>
+          </TableRow>
+        )
+    }
+  }
+
+  function renderTransactions(
+    ts: RemoteData.RemoteData<FetchDecodeError, Transaction.WithTotalValue[]>
+  ): JSX.Element {
+    switch (ts._tag) {
+      case "Success":
+        return (
           <>
             <TableContainer>
               <Table aria-label="simple table">
                 <TableHead>
                   <TableRow>
-                    {columns.map((column: any, i: any) => (
-                      <StyledTableCellHead key={i}>
+                    {columns.map((column: string, index: number) => (
+                      <StyledTableCellHead key={`${column}-${index}`}>
+                        {/* TODO: text-transform: upperase */}
                         {column}
                       </StyledTableCellHead>
                     ))}
                   </TableRow>
                 </TableHead>
-                <TableBody>
-                  {rows.map((row: any, i: any) => (
-                    <TableRow key={i} hover>
-                      <StyledTableCellHead>{row.action}</StyledTableCellHead>
-                      <StyledTableCell>{row.navUSD}</StyledTableCell>
-                      <StyledTableCell>{row.tokenAmountUSDC}</StyledTableCell>
-                      <StyledTableCell>{row.tokenAmount}</StyledTableCell>
-                      <StyledTableCell>
-                        {row.counterpartyAddress}
-                      </StyledTableCell>
-                      <StyledTableCell>{row.created}</StyledTableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
+                <TableBody>{ts.success.map(renderTransaction)}</TableBody>
               </Table>
             </TableContainer>
             <StyledTablePagination
@@ -346,8 +360,9 @@ const TransactionTable: React.FC = () => {
               onRowsPerPageChange={handleChangeRowsPerPage}
             />
           </>
-        )}
-        {loading && (
+        )
+      case "Pending":
+        return (
           <Box
             position="absolute"
             top={0}
@@ -360,8 +375,45 @@ const TransactionTable: React.FC = () => {
           >
             <CircularProgress />
           </Box>
-        )}
+        )
+      case "Failure":
+        return (
+          <details>
+            <summary>TODO: Error</summary>
+            <pre>{JSON.stringify(ts.failure, null, 2)}</pre>
+          </details>
+        )
+    }
+  }
+
+  return (
+    <Box>
+      <Box className={cx(classes.filter)}>
+        <Box textAlign="center" mt={mobile ? "20px" : "0px"}>
+          {[
+            [TransactionType.Any, "Any"],
+            [TransactionType.Trade, "Swap"],
+            [TransactionType.Deposit, "Adds"],
+            [TransactionType.Withdrawal, "Removes"],
+          ].map(([transactionType, label]) => {
+            return (
+              <Button
+                variant="contained"
+                onClick={() => {
+                  handleFilterChange({ type: transactionType })
+                }}
+                className={cx(classes.filterType, {
+                  [classes.active]: filter.type === transactionType,
+                })}
+                key={label}
+              >
+                {label}
+              </Button>
+            )
+          })}
+        </Box>
       </Box>
+      <Box className={cx(classes.panel)}>{renderTransactions(rows)}</Box>
     </Box>
   )
 }

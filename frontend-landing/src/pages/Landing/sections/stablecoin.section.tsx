@@ -1,10 +1,14 @@
 import React from "react"
-import { Box, useMediaQuery, Container, Grid } from "@material-ui/core"
+import {
+  Box,
+  useMediaQuery,
+  Container,
+  Grid,
+  Typography,
+} from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
 // import ReactPlayer from "react-player";
-import ScrollAnimation from "react-animate-on-scroll"
-import i18next from "i18next"
 
 import { useIsDarkMode } from "state/user/hooks"
 import { GradientButton } from "components/Button"
@@ -52,30 +56,16 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     },
   },
   title: {
-    fontFamily: "Brandon Grotesque",
-    fontStyle: "normal",
-    fontWeight: 900,
-    fontSize: "60px",
     lineHeight: "100%",
-    color: "#73D6F1",
-
-    [breakpoints.down("sm")]: {
-      fontSize: "35px",
-    },
+    color: palette.secondary.main,
   },
 
   content: {
-    fontFamily: "Museo Sans",
-    fontStyle: "normal",
-    fontWeight: 300,
-    fontSize: "16px",
     lineHeight: "26px",
     width: "100%",
-    color: palette.text.primary,
     marginTop: "30px",
 
     [breakpoints.down("sm")]: {
-      fontSize: "16px",
       lineHeight: "18.4px",
       width: "100%",
       marginTop: "15px",
@@ -113,25 +103,24 @@ const StableCoinSection: React.FC = () => {
               </Box>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-                <Box className={cx(classes.title)}>
-                  {i18next.t("PAGE.LANDING.STABLECOIN.TITLE")}
-                </Box>
-              </ScrollAnimation>
-              <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-                <Box
-                  className={cx(classes.content)}
-                  dangerouslySetInnerHTML={{
-                    __html: i18next.t("PAGE.LANDING.STABLECOIN.CONTENT", {
-                      interpolation: { escapeValue: false },
-                    }),
-                  }}
-                />
-              </ScrollAnimation>
+              <Typography
+                component="h3"
+                variant="h3"
+                className={cx(classes.title)}
+              >
+                Stablecoin
+              </Typography>
+              <Typography
+                variant="h4"
+                component="h4"
+                className={cx(classes.content)}
+              >
+                <span>dUSD</span> is verifiably backed by on-chain collateral
+                and will enable borrowers to take leverage on their ADA or other
+                supported assets.
+              </Typography>
               <Box mt={!mobile ? "50px" : "30px"} />
-              <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-                <GradientButton label={"COMING SOON"} width={160} height={40} />
-              </ScrollAnimation>
+              <GradientButton label={"COMING SOON"} width={160} height={40} />
             </Grid>
           </Grid>
         </Container>

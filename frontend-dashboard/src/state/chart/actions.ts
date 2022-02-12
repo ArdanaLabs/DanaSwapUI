@@ -1,79 +1,43 @@
 import { createAction } from "@reduxjs/toolkit"
 
-export interface RangedVolume {
-  start: string | null
-  end: string | null
-  addLiquidity: number | null
-  removeLiquidity: number | null
-  total: number | null
-  trade: number | null
-}
-export interface RangedLiquidity {
-  start: string | null
-  end: string | null
-  value: number | null
-}
-export interface RangedFees {
-  start: string | null
-  end: string | null
-  value: number | null
-}
-export interface RangedTxCount {
-  start: string | null
-  end: string | null
-  addLiquidity: number | null
-  removeLiquidity: number | null
-  total: number | null
-  trade: number | null
-}
-export interface RangedAPY {
-  start: string | null
-  end: string | null
-  value: number | null
-}
-export interface RangedTransactions {
-  tx: {
-    tag: string | null // DepositTx, WithdrawalTx, TradeTx
-    contents: {
-      counterpartyAddress: string | null
-      created: string | null
-      spentAsset: string | null // TradeTx
-      purchasedAsset: string | null // TradeTx
-      spentAmount: number | null // TradeTx
-      purchasedAmount: number | null // TradeTx
-      amounts: {
-        // DepositTx, WithdrawalTx
-        [token: string]: number | null
-      }
-    }
-  }
-  navUSD: number | null
-}
+import {
+  APYChart,
+  FeeVolumeChart,
+  LiquidityChart,
+  TxCountChart,
+  VolumeChart,
+} from "Data/Chart"
+import { FetchDecodeResult } from "Data/FetchDecode"
+import * as Transaction from "Data/Transaction"
 
-export const updateAggVolume = createAction<RangedVolume[]>(
-  "home/updateAggVolume"
+export const receivedAggVolume = createAction<
+  FetchDecodeResult<VolumeChart.Type>
+>("home/receivedAggVolume")
+
+export const receivedAggLiquidity = createAction<
+  FetchDecodeResult<LiquidityChart.Type>
+>("home/receivedAggLiquidity")
+
+export const receivedPoolFees = createAction<
+  FetchDecodeResult<FeeVolumeChart.Type>
+>("home/receivedPoolFees")
+
+export const receivedPoolVolume = createAction<
+  FetchDecodeResult<VolumeChart.Type>
+>("home/receivedPoolVolume")
+
+export const receivedPoolLiquidity = createAction<
+  FetchDecodeResult<LiquidityChart.Type>
+>("home/receivedPoolLiquidity")
+
+export const receivedPoolTxCount = createAction<
+  FetchDecodeResult<TxCountChart.Type>
+>("home/receivedPoolTxCount")
+
+export const receivedPoolAPY = createAction<FetchDecodeResult<APYChart.Type>>(
+  "home/receivedPoolAPY"
 )
 
-export const updateAggLiquidity = createAction<RangedLiquidity[]>(
-  "home/updateAggLiquidity"
-)
-
-export const updatePoolFees = createAction<RangedFees[]>("home/updatePoolFees")
-
-export const updatePoolVolume = createAction<RangedVolume[]>(
-  "home/updatePoolVolume"
-)
-
-export const updatePoolLiquidity = createAction<RangedLiquidity[]>(
-  "home/updatePoolLiquidity"
-)
-
-export const updatePoolTXCount = createAction<RangedTxCount[]>(
-  "home/updatePoolTXCount"
-)
-
-export const updatePoolAPY = createAction<RangedAPY[]>("home/updatePoolAPY")
-
-export const updatePoolTransactions = createAction<RangedTransactions[]>(
-  "home/updatePoolTransactions"
-)
+export const receivedPoolTransactions = createAction<
+  FetchDecodeResult<Transaction.WithTotalValue[]>
+>("home/receivedPoolTransactions")

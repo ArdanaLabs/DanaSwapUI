@@ -1,33 +1,28 @@
-import { createReducer } from "@reduxjs/toolkit"
+import {
+  ActionReducerMapBuilder,
+  PayloadAction,
+  createReducer,
+} from "@reduxjs/toolkit"
 
-import { TotalStat, updateTotalStats } from "./actions"
+import { RemoteData, fromEither, pending } from "fp-ts-remote-data"
 
-export const initialState: TotalStat = {
-  totalDepositsAllPoolsUSD: 0,
-  totalDailyVolumeUSD: null,
-  totalDailyTxCount: 0,
-  totalDailyFeeVolumeUSD: 0,
-  totalLiquidityUtilization: 0,
-  poolStats: null,
-}
+import { CombinedStats } from "Data/Stats/CombinedStats"
+import { FetchDecodeError, FetchDecodeResult } from "Data/FetchDecode"
 
-export default createReducer(initialState, (builder) =>
-  builder.addCase(updateTotalStats, (state, action) => {
-    const {
-      totalDepositsAllPoolsUSD,
-      totalDailyVolumeUSD,
-      totalDailyTxCount,
-      totalDailyFeeVolumeUSD,
-      totalLiquidityUtilization,
-      poolStats,
-    } = action.payload
+import { receivedCombinedStats } from "./actions"
 
-    state.totalDepositsAllPoolsUSD = totalDepositsAllPoolsUSD
-    state.totalDailyVolumeUSD = totalDailyVolumeUSD
-    state.totalDailyTxCount = totalDailyTxCount
-    state.totalDailyFeeVolumeUSD = totalDailyFeeVolumeUSD
-    state.totalLiquidityUtilization = totalLiquidityUtilization
+export type State = RemoteData<FetchDecodeError, CombinedStats>
 
-    state.poolStats = poolStats
-  })
+export const initialState = pending
+
+export default createReducer(
+  initialState,
+  (builder: ActionReducerMapBuilder<State>) =>
+    builder.addCase(
+      receivedCombinedStats,
+      (
+        _state: State,
+        action: PayloadAction<FetchDecodeResult<CombinedStats>>
+      ) => fromEither(action.payload)
+    )
 )

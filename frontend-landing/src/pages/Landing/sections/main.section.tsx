@@ -1,9 +1,14 @@
 import React from "react"
-import { Box, useMediaQuery, Container, Grid, Link } from "@material-ui/core"
+import {
+  Box,
+  useMediaQuery,
+  Container,
+  Grid,
+  Link,
+  Typography,
+} from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
-import ScrollAnimation from "react-animate-on-scroll"
-import i18next from "i18next"
 import ReactPlayer from "react-player"
 
 import { useIsDarkMode } from "state/user/hooks"
@@ -42,26 +47,19 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   title: {
-    "fontFamily": "Brandon Grotesque",
-    "fontStyle": "normal",
-    "fontWeight": 900,
-    "fontSize": "70px",
     "lineHeight": "100%",
-    "color": palette.text.primary,
-    "whiteSpace": "pre-line",
 
-    "& > strong": {
-      color: palette.text.secondary,
+    "& span": {
+      color: palette.secondary.main,
     },
 
-    [breakpoints.down("sm")]: {
-      fontSize: "35px",
+    [breakpoints.down("xs")]: {
       marginBottom: "10px",
     },
   },
 
   subTitle: {
-    color: palette.text.primary,
+    color: palette.primary.main,
     fontSize: "20px",
     fontFamily: "Museo Sans",
     fontStyle: "normal",
@@ -80,7 +78,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontSize: "12px",
     fontWeight: 100,
     lineHeight: "100%",
-    color: palette.text.primary,
+    color: palette.primary.main,
   },
   listingItem: {
     "& a": {
@@ -100,11 +98,12 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   socialIconLink: {
-    "cursor": "pointer",
-    "color": palette.text.primary,
+    cursor: "pointer",
+    color: palette.primary.main,
 
-    "&:hover path": {
-      fill: palette.text.secondary,
+    [`&:hover path`]: {
+      transition: "all .2s",
+      fill: palette.secondary.main,
     },
   },
 }))
@@ -124,91 +123,84 @@ const MainSection: React.FC = () => {
           direction={!mobile ? "row" : "column-reverse"}
         >
           <Grid item xs={12} sm={6}>
-            <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-              <Box
-                className={cx(classes.title)}
-                textAlign={mobile ? "center" : "left"}
-                dangerouslySetInnerHTML={{
-                  __html: i18next.t("PAGE.LANDING.TITLE", {
-                    interpolation: { escapeValue: false },
-                  }),
-                }}
-              />
-              <Box mt={"20px"} />
-              <Box
-                className={cx(classes.subTitle)}
-                textAlign={mobile ? "center" : "left"}
-              >
-                {i18next.t("PAGE.LANDING.DESCRIPTION")}
-              </Box>
-            </ScrollAnimation>
+            <Box
+              className={cx(classes.title)}
+              textAlign={mobile ? "center" : "left"}
+            >
+              <Typography component="h1" variant="h1">
+                Mint, Trade, Stake
+                <br />
+                and <span>Store Value</span>
+              </Typography>
+            </Box>
+            <Box mt={"20px"} />
+            <Box
+              className={cx(classes.subTitle)}
+              textAlign={mobile ? "center" : "left"}
+            >
+              The First All-in-One Stablecoin Ecosystem Built on Cardano
+            </Box>
 
             <Box mt={!mobile ? "50px" : "30px"} />
 
-            <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
+            <Box
+              display="flex"
+              alignItems="center"
+              justifyContent="space-between"
+              width={!mobile ? "280px" : "100%"}
+              textAlign={!mobile ? "left" : "center"}
+              flexDirection={!mobile ? "row" : "column"}
+            >
+              {/* <Link href="http://app.ardana.org/launch" underline="none"> */}
+              <GradientButton label={"TRADING NOW"} width={160} height={40} />
+              {/* </Link> */}
               <Box
                 display="flex"
                 alignItems="center"
                 justifyContent="space-between"
-                width={!mobile ? "280px" : "100%"}
-                textAlign={!mobile ? "left" : "center"}
-                flexDirection={!mobile ? "row" : "column"}
+                width="80px"
+                mt={!mobile ? "0px" : "15px"}
               >
-                {/* <Link href="http://app.ardana.org/launch" underline="none"> */}
-                <GradientButton label={"TRADING NOW"} width={160} height={40} />
-                {/* </Link> */}
-                <Box
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="space-between"
-                  width="80px"
-                  mt={!mobile ? "0px" : "15px"}
+                <Link
+                  className={cx(classes.socialIconLink)}
+                  href="https://t.me/ardanaofficial"
+                  target="_blank"
                 >
-                  <Link
-                    className={cx(classes.socialIconLink)}
-                    href="https://t.me/ardanaofficial"
-                    target="_blank"
-                  >
-                    <TelegramIcon />
-                  </Link>
-                  <Link
-                    className={cx(classes.socialIconLink)}
-                    href="https://twitter.com/ardanaproject"
-                    target="_blank"
-                  >
-                    <TwitterIcon />
-                  </Link>
-                </Box>
+                  <TelegramIcon />
+                </Link>
+                <Link
+                  className={cx(classes.socialIconLink)}
+                  href="https://twitter.com/ardanaproject"
+                  target="_blank"
+                >
+                  <TwitterIcon />
+                </Link>
               </Box>
-            </ScrollAnimation>
+            </Box>
 
             <Box mt={!mobile ? "50px" : "30px"} />
 
-            <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-              <Box className={cx(classes.listingLabel)}>LISTED ON:</Box>
-            </ScrollAnimation>
+            <Box className={cx(classes.listingLabel)}>LISTED ON:</Box>
 
             <Box mt={!mobile ? "30px" : "10px"} />
 
-            <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-              <Box
-                display="flex"
-                alignItems="center"
-                justifyContent={!mobile ? "flex-start" : "center"}
-                className={cx(classes.listingItem)}
-              >
-                {Listings.map((item, index) => (
-                  <Link
-                    key={index}
-                    href={item.link}
-                    target="_blank"
-                    underline="none"
-                  >
-                    <img src={item.image} alt="listing item" />
-                  </Link>
-                ))}
-              </Box>
-            </ScrollAnimation>
+            <Box
+              display="flex"
+              alignItems="center"
+              justifyContent={!mobile ? "flex-start" : "center"}
+              className={cx(classes.listingItem)}
+            >
+              {Listings.map((item, index) => (
+                <Link
+                  key={index}
+                  href={item.link}
+                  target="_blank"
+                  underline="none"
+                >
+                  <img src={item.image} alt="listing item" />
+                </Link>
+              ))}
+            </Box>
           </Grid>
           <Grid item xs={12} sm={6} style={{ pointerEvents: "none" }}>
             <ReactPlayer

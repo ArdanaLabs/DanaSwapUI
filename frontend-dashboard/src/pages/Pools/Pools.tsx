@@ -1,7 +1,16 @@
 import React from "react"
 import { Box, Fade, useMediaQuery } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
+
+import * as O from "fp-ts/Option"
+import { RemoteData } from "fp-ts-remote-data"
+
+import { FetchDecodeError } from "Data/FetchDecode"
+import { TotalDeposits, TotalDailyVolume } from "Data/Stats/AggregateStats"
+import { TotalStats } from "Data/Stats/CombinedStats"
+
 import { PoolsPanel } from "components"
+import { printCurrencyUSD } from "hooks"
 import { useIsDarkMode } from "state/user/hooks"
 import cx from "classnames"
 import { useTotalStats } from "state/home/hooks"
@@ -44,35 +53,64 @@ const Pools: React.FC = () => {
   const dark = useIsDarkMode()
   const classes = useStyles({ dark, mobile })
 
-  const totalStats = useTotalStats()
-  const { totalDepositsAllPoolsUSD, totalDailyVolumeUSD } = totalStats
+  const totalStats: RemoteData<FetchDecodeError, TotalStats> = useTotalStats()
 
-  return (
-    <Fade in={true}>
-      <Box>
-        <Box className={cx(classes.label)}>Dana Pools</Box>
-        <PoolsPanel />
+  switch (totalStats._tag) {
+    case "Success":
+      const ts: TotalStats = totalStats.success
+      return (
+        <Fade in={true}>
+          <Box>
+            <Box className={cx(classes.label)}>Dana Pools</Box>
+            <PoolsPanel />
 
-        <Box className={cx(classes.label)}>
-          Total pool deposits and daily volume
-        </Box>
-        <Box className={cx(classes.statsPanel)}>
-          Deposit:{" "}
-          <span>
-            ${totalDepositsAllPoolsUSD?.toLocaleString() ?? 0} (includes factory
-            pools)
-          </span>
-          <br />
-          <br />
-          Daily Volume:{" "}
-          <span>${totalDailyVolumeUSD?.trade?.toLocaleString() ?? 0}</span>
-          <br />
-          <br />
-          Factory Daily Volume: <span>$8,999,777</span>
-        </Box>
-      </Box>
-    </Fade>
-  )
+            <Box className={cx(classes.label)}>
+              Total pool deposits and daily volume
+            </Box>
+            <Box className={cx(classes.statsPanel)}>
+              {/* TODO: use <dt> or <table> for key-value pairs */}
+              Deposit:{" "}
+              <span>
+                {O.fold(
+                  () => "",
+                  (td: TotalDeposits.Type) =>
+                    printCurrencyUSD(TotalDeposits.iso.unwrap(td))
+                )(ts.totalDepositsAllPoolsUSD)}{" "}
+                (includes factory pools)
+              </span>
+              <br />
+              <br />
+              Daily Volume:{" "}
+              {O.fold(
+                () => null,
+                (tdv: TotalDailyVolume.Type) => {
+                  return (
+                    <span>
+                      {printCurrencyUSD(TotalDailyVolume.iso.unwrap(tdv))}
+                    </span>
+                  )
+                }
+              )(ts.totalDailyVolumeUSD.trade)}
+              <br />
+              <br />
+              {/* TODO: Intl.NumberFormat */}
+              Factory Daily Volume: <span>$8,999,777</span>
+            </Box>
+          </Box>
+        </Fade>
+      )
+    case "Pending":
+      // TODO: loading
+      return <span>loading …</span>
+    case "Failure":
+      // TODO: failure
+      return (
+        <details>
+          <summary>Error</summary>
+          <pre>{JSON.stringify(totalStats.failure, null, 2)}</pre>
+        </details>
+      )
+  }
 }
 
 export default Pools

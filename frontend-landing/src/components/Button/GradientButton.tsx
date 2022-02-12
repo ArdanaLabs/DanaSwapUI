@@ -15,7 +15,7 @@ const useStyles = makeStyles(({ palette }) => ({
   label: {
     position: "absolute",
     top: "0px",
-    color: palette.text.primary,
+    color: palette.primary.main,
     fontFamily: "Museo Sans",
     fontWeight: "bold",
     fontSize: "13px",

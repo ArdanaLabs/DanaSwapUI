@@ -1,27 +1,27 @@
-import jsc from "jsverify"
+// import { itProp, fc } from "jest-fast-check"
+import "@relmify/jest-fp-ts"
+import { testProp, fc } from "jest-fast-check"
 import { useSelector } from "react-redux"
 import configureMockStore from "redux-mock-store"
+
+import * as E from "fp-ts/Either"
+
+import * as PoolSetName from "Data/Pool/PoolSetName"
+import * as TimeInterval from "Data/TimeInterval"
+import { genTimeInterval } from "Data/TimeInterval/Gen"
+import { Granularity } from "Data/Chart/Granularity"
+import { TransactionType } from "Data/Chart/TransactionType"
+import { genGranularity } from "Data/Chart/Gen"
+
 import {
-  FiveMinutes,
-  FourHours,
-  OneDay,
-  OneHour,
-  OneMinute,
-  OneMonth,
-  OneWeek,
-  TenMinutes,
-  ThirtyMinutes,
-  TwelveHours,
-} from "config/grains"
-import {
-  getAggLiquidity,
-  getAggVolume,
-  getPoolAPY,
-  getPoolFees,
-  getPoolLiquidity,
-  getPoolTransactions,
-  getPoolTXCount,
-  getPoolVolume,
+  fetchAggLiquidity,
+  fetchAggVolume,
+  fetchPoolAPY,
+  fetchPoolFees,
+  fetchPoolLiquidity,
+  fetchPoolTransactions,
+  fetchPoolTxCount,
+  fetchPoolVolume,
   useAggLiquidity,
   useAggVolume,
   usePoolAPY,
@@ -31,100 +31,23 @@ import {
   usePoolVolume,
 } from "./hooks"
 import {
-  updateAggLiquidity,
-  updateAggVolume,
-  updatePoolAPY,
-  updatePoolFees,
-  updatePoolTransactions,
-  updatePoolTXCount,
-  updatePoolVolume,
+  receivedAggLiquidity,
+  receivedAggVolume,
+  receivedPoolAPY,
+  receivedPoolFees,
+  receivedPoolTransactions,
+  receivedPoolTxCount,
+  receivedPoolVolume,
 } from "./actions"
-import { Any } from "config/txTypes"
+
+const foo: PoolSetName.Type = PoolSetName.iso.wrap("foo")
 
 const mockStore = configureMockStore([])
 
 let store: any
 const initialState = {
-  chart: {
-    aggVolume: [
-      {
-        start: null,
-        end: null,
-        addLiquidity: null,
-        removeLiquidity: null,
-        total: null,
-        trade: null,
-      },
-    ],
-    aggLiquidity: [
-      {
-        start: null,
-        end: null,
-        value: null,
-      },
-    ],
-    poolFees: [
-      {
-        start: null,
-        end: null,
-        value: null,
-      },
-    ],
-    poolVolume: [
-      {
-        start: null,
-        end: null,
-        addLiquidity: null,
-        removeLiquidity: null,
-        total: null,
-        trade: null,
-      },
-    ],
-    poolLiquidity: [
-      {
-        start: null,
-        end: null,
-        value: null,
-      },
-    ],
-    poolTXCount: [
-      {
-        start: null,
-        end: null,
-        addLiquidity: null,
-        removeLiquidity: null,
-        total: null,
-        trade: null,
-      },
-    ],
-    poolAPY: [
-      {
-        start: null,
-        end: null,
-        value: null,
-      },
-    ],
-    poolTransactions: [
-      {
-        tx: null,
-        navUSD: null,
-      },
-    ],
-  },
+  chart: require("./reducer").initialState,
 }
-
-const grains = jsc.oneof([
-  jsc.constant(OneMinute),
-  jsc.constant(FiveMinutes),
-  jsc.constant(TenMinutes),
-  jsc.constant(ThirtyMinutes),
-  jsc.constant(OneHour),
-  jsc.constant(FourHours),
-  jsc.constant(TwelveHours),
-  jsc.constant(OneDay),
-  jsc.constant(OneWeek),
-  jsc.constant(OneMonth),
-])
 
 const mockDispatch = jest.fn()
 jest.mock("react-redux", () => ({
@@ -149,296 +72,264 @@ describe("Chart hooks", () => {
   })
 
   it("should fetch aggVolume from endpoint", async () => {
-    const result = await getAggVolume(
-      "2020-12-12T00:00:00.0Z",
-      "2020-12-12T00:05:00.0Z",
-      FiveMinutes
-    )
-    if (!result) {
-      return
-    }
+    const result = await fetchAggVolume(
+      [new Date("2020-12-12T00:00:00.0Z"), new Date("2020-12-12T00:05:00.0Z")],
+      Granularity.FiveMinutes
+    )()
 
-    expect(Array.isArray(result)).toBe(true)
-    expect(result[0]).toMatchObject({
-      start: expect.any(String),
-      end: expect.any(String),
-      addLiquidity: expect.any(Number),
-      removeLiquidity: expect.any(Number),
-      total: expect.any(Number),
-      trade: expect.any(Number),
-    })
+    expect(result).toBeRight()
   })
 
   it("should fetch aggLiquidity from endpoint", async () => {
-    const result = await getAggLiquidity(
-      "2020-12-12T00:00:00.0Z",
-      "2020-12-14T00:00:00.0Z",
-      OneDay
-    )
-    if (!result) {
-      return
-    }
+    const result = await fetchAggLiquidity(
+      [new Date("2020-12-12T00:00:00.0Z"), new Date("2020-12-14T00:00:00.0Z")],
+      Granularity.OneDay
+    )()
 
-    expect(Array.isArray(result)).toBe(true)
-    expect(result[0]).toMatchObject({
-      start: expect.any(String),
-      end: expect.any(String),
-      value: expect.any(Number),
-    })
+    expect(result).toBeRight()
   })
 
   it("should fetch poolFees from endpoint", async () => {
-    const result = await getPoolFees(
-      "foo",
-      "2020-12-12T00:00:00.0Z",
-      "2021-01-12T00:00:00.0Z",
-      OneWeek
-    )
-    if (!result) {
-      return
-    }
+    const result = await fetchPoolFees(
+      foo,
+      [new Date("2020-12-12T00:00:00.0Z"), new Date("2021-01-12T00:00:00.0Z")],
+      Granularity.OneWeek
+    )()
 
-    expect(Array.isArray(result)).toBe(true)
-    expect(result[0]).toMatchObject({
-      start: expect.any(String),
-      end: expect.any(String),
-      value: expect.any(Number),
-    })
+    expect(result).toBeRight()
   })
 
   it("should fetch poolVolume from endpoint", async () => {
-    const result = await getPoolVolume(
-      "foo",
-      "2020-12-12T00:00:00.0Z",
-      "2021-01-12T00:00:00.0Z",
-      OneWeek
-    )
-    if (!result) {
-      return
-    }
+    const result = await fetchPoolVolume(
+      foo,
+      [new Date("2020-12-12T00:00:00.0Z"), new Date("2021-01-12T00:00:00.0Z")],
+      Granularity.OneWeek
+    )()
 
-    expect(Array.isArray(result)).toBe(true)
-    expect(result[0]).toMatchObject({
-      start: expect.any(String),
-      end: expect.any(String),
-      addLiquidity: expect.any(Number),
-      removeLiquidity: expect.any(Number),
-      total: expect.any(Number),
-      trade: expect.any(Number),
-    })
+    expect(result).toBeRight()
   })
 
   it("should fetch poolLiquidity from endpoint", async () => {
-    const result = await getPoolLiquidity(
-      "foo",
-      "2020-12-12T00:00:00.0Z",
-      "2021-01-12T00:00:00.0Z",
-      OneWeek
-    )
-    if (!result) {
-      return
-    }
+    const result = await fetchPoolLiquidity(
+      foo,
+      [new Date("2020-12-12T00:00:00.0Z"), new Date("2021-01-12T00:00:00.0Z")],
+      Granularity.OneWeek
+    )()
 
-    expect(Array.isArray(result)).toBe(true)
-    expect(result[0]).toMatchObject({
-      start: expect.any(String),
-      end: expect.any(String),
-      value: expect.any(Number),
-    })
+    expect(result).toBeRight()
   })
 
-  it("should fetch poolTXCount from endpoint", async () => {
-    const result = await getPoolTXCount(
-      "foo",
-      "2020-12-12T00:00:00.0Z",
-      "2021-01-12T00:00:00.0Z",
-      OneWeek
-    )
-    if (!result) {
-      return
-    }
+  it("should fetch poolTxCount from endpoint", async () => {
+    const result = await fetchPoolTxCount(
+      foo,
+      [new Date("2020-12-12T00:00:00.0Z"), new Date("2021-01-12T00:00:00.0Z")],
+      Granularity.OneWeek
+    )()
 
-    expect(Array.isArray(result)).toBe(true)
-    expect(result[0]).toMatchObject({
-      start: expect.any(String),
-      end: expect.any(String),
-      addLiquidity: expect.any(Number),
-      removeLiquidity: expect.any(Number),
-      total: expect.any(Number),
-      trade: expect.any(Number),
-    })
+    expect(result).toBeRight()
   })
 
   it("should fetch poolAPY from endpoint", async () => {
-    const result = await getPoolAPY(
-      "foo",
-      "2020-12-12T00:00:00.0Z",
-      "2021-01-12T00:00:00.0Z",
-      OneWeek
-    )
-    if (!result) {
-      return
-    }
+    const result = await fetchPoolAPY(
+      foo,
+      [new Date("2020-12-12T00:00:00.0Z"), new Date("2021-01-12T00:00:00.0Z")],
+      Granularity.OneWeek
+    )()
 
-    expect(Array.isArray(result)).toBe(true)
-    expect(result[0]).toMatchObject({
-      start: expect.any(String),
-      end: expect.any(String),
-      value: expect.any(Number),
-    })
+    expect(result).toBeRight()
   })
 
   it("should fetch poolTransactions from endpoint", async () => {
-    const result = await getPoolTransactions("foo", 0, 10, Any)
-    if (!result) {
-      return
-    }
+    const result = await fetchPoolTransactions(
+      foo,
+      0 | 0,
+      10 | 0,
+      TransactionType.Any
+    )()
 
-    expect(Array.isArray(result)).toBe(true)
-    expect(result[0]).toMatchObject({
-      tx: expect.any(Object),
-      navUSD: expect.any(Number),
-    })
+    expect(result).toBeRight()
   })
 
-  it("should return stored aggVolume and getAggVolume function", async () => {
-    const { aggVolume, getAggVolume } = useAggVolume()
+  it("should return stored aggVolume and fetchAggVolume function", async () => {
+    const { aggVolume, fetchAggVolume } = useAggVolume()
 
     expect(aggVolume).toEqual(store.getState().chart.aggVolume)
-    const result = await getAggVolume(
-      "2020-12-12T00:00:00.0Z",
-      "2020-12-12T00:05:00.0Z",
-      FiveMinutes
-    )
-    if (!result) {
-      return
-    }
-    expect(mockDispatch).toHaveBeenCalledTimes(1)
-    expect(mockDispatch).toHaveBeenCalledWith(updateAggVolume(result))
+    const result = await fetchAggVolume(
+      [new Date("2020-12-12T00:00:00.0Z"), new Date("2020-12-12T00:05:00.0Z")],
+      Granularity.FiveMinutes
+    )()
 
-    // jsc.assert(
-    //   jsc.forall(jsc.datetime, jsc.datetime, grains, getAggVolume)
-    // )
+    expect(result).toBeRight()
+    expect(mockDispatch).toHaveBeenCalledTimes(1)
+    expect(mockDispatch).toHaveBeenCalledWith(receivedAggVolume(result))
   })
 
-  it("should return stored aggLiquidity and getAggLiquidity function", async () => {
-    const { aggLiquidity, getAggLiquidity } = useAggLiquidity()
+  /*
+  testProp(
+    "fetchAggVolume properties",
+    [genTimeInterval, genGranularity],
+    async (timeInterval: TimeInterval, granularity: Granularity) => {
+      const result = await fetchAggVolume(timeInterval, granularity)()
+      expect(result).toBeRight()
+    }
+  )
+  */
+
+  it("should return stored aggLiquidity and fetchAggLiquidity function", async () => {
+    const { aggLiquidity, fetchAggLiquidity } = useAggLiquidity()
 
     expect(aggLiquidity).toEqual(store.getState().chart.aggLiquidity)
-    const result = await getAggLiquidity(
-      "2020-12-12T00:00:00.0Z",
-      "2020-12-14T00:00:00.0Z",
-      OneDay
-    )
-    if (!result) {
-      return
-    }
-    expect(mockDispatch).toHaveBeenCalledTimes(1)
-    expect(mockDispatch).toHaveBeenCalledWith(updateAggLiquidity(result))
 
-    // jsc.assert(
-    //   jsc.forall(jsc.string, jsc.string, grains, getAggLiquidity)
-    // )
+    const result = await fetchAggLiquidity(
+      [new Date("2020-12-12T00:00:00.0Z"), new Date("2020-12-14T00:00:00.0Z")],
+      Granularity.OneDay
+    )()
+
+    expect(result).toBeRight()
+    expect(mockDispatch).toHaveBeenCalledTimes(1)
+    expect(mockDispatch).toHaveBeenCalledWith(receivedAggLiquidity(result))
   })
 
-  it("should return stored poolFees and getPoolFees function", async () => {
-    const { poolFees, getPoolFees } = usePoolFees()
+  /*
+  testProp(
+    "fetchAggLiquidity properties",
+    [genTimeInterval, genGranularity],
+    async (timeInterval: TimeInterval, granularity: Granularity) => {
+      const result = await fetchAggLiquidity(timeInterval, granularity)()
+      expect(result).toBeRight()
+    }
+  )
+  */
+
+  it("should return stored poolFees and fetchPoolFees function", async () => {
+    const { poolFees, fetchPoolFees } = usePoolFees()
 
     expect(poolFees).toEqual(store.getState().chart.poolFees)
-    const result = await getPoolFees(
-      "foo",
-      "2020-12-12T00:00:00.0Z",
-      "2021-01-12T00:00:00.0Z",
-      OneWeek
-    )
-    if (!result) {
-      return
-    }
-    expect(mockDispatch).toHaveBeenCalledTimes(1)
-    expect(mockDispatch).toHaveBeenCalledWith(updatePoolFees(result))
+    const result = await fetchPoolFees(
+      foo,
+      [new Date("2020-12-12T00:00:00.0Z"), new Date("2021-01-12T00:00:00.0Z")],
+      Granularity.OneWeek
+    )()
 
-    // jsc.assert(
-    //   jsc.forall(jsc.string, jsc.datetime, jsc.datetime, jsc.string, getPoolFees)
-    // )
+    expect(result).toBeRight()
+    expect(mockDispatch).toHaveBeenCalledTimes(1)
+    expect(mockDispatch).toHaveBeenCalledWith(receivedPoolFees(result))
   })
 
-  it("should return stored poolVolume and getPoolVolume function", async () => {
-    const { poolVolume, getPoolVolume } = usePoolVolume()
+  /*
+  testProp(
+    "fetchPoolFees properties with foo",
+    [fc.constant(foo), genTimeInterval, genGranularity],
+    async (
+      poolSetName: PoolSetName,
+      timeInterval: TimeInterval,
+      granularity: Granularity
+    ) => {
+      const result = await fetchPoolFees(
+        poolSetName,
+        timeInterval,
+        granularity
+      )()
+      E.isLeft(result) &&
+        console.error(
+          "Fetch decoding failure:",
+          JSON.stringify(result.left, null, 2)
+        )
+      expect(result).toBeRight()
+    }
+  )
+  */
+
+  it("should return stored poolVolume and fetchPoolVolume function", async () => {
+    const { poolVolume, fetchPoolVolume } = usePoolVolume()
 
     expect(poolVolume).toEqual(store.getState().chart.poolVolume)
-    const result = await getPoolVolume(
-      "foo",
-      "2020-12-12T00:00:00.0Z",
-      "2021-01-12T00:00:00.0Z",
-      OneWeek
-    )
-    if (!result) {
-      return
-    }
+    const result = await fetchPoolVolume(
+      foo,
+      [new Date("2020-12-12T00:00:00.0Z"), new Date("2021-01-12T00:00:00.0Z")],
+      Granularity.OneWeek
+    )()
+
+    expect(result).toBeRight()
     expect(mockDispatch).toHaveBeenCalledTimes(1)
-    expect(mockDispatch).toHaveBeenCalledWith(updatePoolVolume(result))
+    expect(mockDispatch).toHaveBeenCalledWith(receivedPoolVolume(result))
+  })
+
+  /*
+  testProp(
+    "fetchPoolVolume properties with foo",
+    [fc.constant(foo), genTimeInterval, genGranularity],
+    async (
+      poolSetName: PoolSetName,
+      timeInterval: TimeInterval,
+      granularity: Granularity
+    ) => {
+      const result = await fetchPoolVolume(
+        poolSetName,
+        timeInterval,
+        granularity
+      )()
+      expect(result).toBeRight()
+    }
+  )
+  */
+
+  it("should return stored poolTxCount and fetchPoolTxCount function", async () => {
+    const { poolTxCount, fetchPoolTxCount } = usePoolTxCount()
+
+    expect(poolTxCount).toEqual(store.getState().chart.poolTxCount)
+
+    const result = await fetchPoolTxCount(
+      foo,
+      [new Date("2020-12-12T00:00:00.0Z"), new Date("2021-01-12T00:00:00.0Z")],
+      Granularity.OneWeek
+    )()
+
+    expect(result).toBeRight()
+    expect(mockDispatch).toHaveBeenCalledTimes(1)
+    expect(mockDispatch).toHaveBeenCalledWith(receivedPoolTxCount(result))
 
     // jsc.assert(
-    //   jsc.forall(jsc.string, jsc.datetime, jsc.datetime, jsc.string, getPoolVolume)
+    //   jsc.forall(jsc.string, jsc.datetime, jsc.datetime, jsc.string, fetchPoolTxCount)
     // )
   })
 
-  it("should return stored poolTXCount and getPoolTXCount function", async () => {
-    const { poolTXCount, getPoolTXCount } = usePoolTxCount()
-
-    expect(poolTXCount).toEqual(store.getState().chart.poolTXCount)
-    const result = await getPoolTXCount(
-      "foo",
-      "2020-12-12T00:00:00.0Z",
-      "2021-01-12T00:00:00.0Z",
-      OneWeek
-    ).catch(() => null)
-    if (!result) {
-      return
-    }
-    expect(mockDispatch).toHaveBeenCalledTimes(1)
-    expect(mockDispatch).toHaveBeenCalledWith(updatePoolTXCount(result))
-
-    // jsc.assert(
-    //   jsc.forall(jsc.string, jsc.datetime, jsc.datetime, jsc.string, getPoolTXCount)
-    // )
-  })
-
-  it("should return stored poolAPY and getPoolAPY function", async () => {
-    const { poolAPY, getPoolAPY } = usePoolAPY()
+  it("should return stored poolAPY and fetchPoolAPY function", async () => {
+    const { poolAPY, fetchPoolAPY } = usePoolAPY()
 
     expect(poolAPY).toEqual(store.getState().chart.poolAPY)
-    const result = await getPoolAPY(
-      "foo",
-      "2020-12-12T00:00:00.0Z",
-      "2021-01-12T00:00:00.0Z",
-      OneWeek
-    ).catch(() => null)
+    const result = await fetchPoolAPY(
+      foo,
+      [new Date("2020-12-12T00:00:00.0Z"), new Date("2021-01-12T00:00:00.0Z")],
+      Granularity.OneWeek
+    )()
 
-    if (!result) {
-      return
-    }
+    expect(result).toBeRight()
     expect(mockDispatch).toHaveBeenCalledTimes(1)
-    expect(mockDispatch).toHaveBeenCalledWith(updatePoolAPY(result))
+    expect(mockDispatch).toHaveBeenCalledWith(receivedPoolAPY(result))
 
     // jsc.assert(
-    //   jsc.forall(jsc.string, jsc.datetime, jsc.datetime, jsc.string, getPoolAPY)
+    //   jsc.forall(jsc.string, jsc.datetime, jsc.datetime, jsc.string, fetchPoolAPY)
     // )
   })
 
-  it("should return stored poolTransactions and getPoolTransactions function", async () => {
-    const { poolTransactions, getPoolTransactions } = usePoolTransactions()
+  it("should return stored poolTransactions and fetchPoolTransactions function", async () => {
+    const { poolTransactions, fetchPoolTransactions } = usePoolTransactions()
 
     expect(poolTransactions).toEqual(store.getState().chart.poolTransactions)
-    const result = await getPoolTransactions("foo", 0, 10, Any)
-    if (!result) {
-      return
-    }
+    const result = await fetchPoolTransactions(
+      foo,
+      0 | 0,
+      10 | 0,
+      TransactionType.Any
+    )()
+
+    expect(result).toBeRight()
     expect(mockDispatch).toHaveBeenCalledTimes(1)
-    expect(mockDispatch).toHaveBeenCalledWith(updatePoolTransactions(result))
+    expect(mockDispatch).toHaveBeenCalledWith(receivedPoolTransactions(result))
 
     // jsc.assert(
-    //   jsc.forall(jsc.string, jsc.number, jsc.number, jsc.string, getPoolTransactions)
+    //   jsc.forall(jsc.string, jsc.number, jsc.number, jsc.string, fetchPoolTransactions)
     // )
   })
 })
