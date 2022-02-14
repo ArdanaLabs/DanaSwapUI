@@ -7,18 +7,25 @@ import mocks from "../../../mocks"
 
 import * as Transaction from "."
 
+let fileMock: unknown
+
+beforeAll(async () => {
+  const data = await mocks.transactionsPool()
+  if (E.isRight(data)) {
+    fileMock = data.right
+  } else {
+    throw data.left
+  }
+})
+
 describe("Transaction", () => {
   it("Decodes Transactions from mock data", async () => {
-    const data = await mocks.transactionsPool()
-    if (E.isRight(data)) {
-      const result: E.Either<IO.Errors, Transaction.WithTotalValue[]> =
-        IO.array(Transaction.withTotalValueAdaptedFromAeson).decode(data.right)
-      if (E.isLeft(result)) {
-        console.info(JSON.stringify(result.left, null, 2))
-      }
-      expect(result).toBeRight()
-    } else {
-      console.error("Reading error", data.left)
+    const result: E.Either<IO.Errors, Transaction.WithTotalValue[]> = IO.array(
+      Transaction.withTotalValueAdaptedFromAeson
+    ).decode(fileMock)
+    if (E.isLeft(result)) {
+      console.info(JSON.stringify(result.left, null, 2))
     }
+    expect(result).toBeRight()
   })
 })

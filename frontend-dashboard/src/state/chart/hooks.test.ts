@@ -1,17 +1,12 @@
 // import { itProp, fc } from "jest-fast-check"
 import "@relmify/jest-fp-ts"
-import { testProp, fc } from "jest-fast-check"
+// import { testProp, fc } from "jest-fast-check"
 import { useSelector } from "react-redux"
 import configureMockStore from "redux-mock-store"
 
-import * as E from "fp-ts/Either"
-
 import * as PoolSetName from "Data/Pool/PoolSetName"
-import * as TimeInterval from "Data/TimeInterval"
-import { genTimeInterval } from "Data/TimeInterval/Gen"
 import { Granularity } from "Data/Chart/Granularity"
 import { TransactionType } from "Data/Chart/TransactionType"
-import { genGranularity } from "Data/Chart/Gen"
 
 import {
   fetchAggLiquidity,
