@@ -1,9 +1,6 @@
-import * as O from "fp-ts/Option"
-
-import * as PoolSetName from "Data/Pool/PoolSetName"
-
 import { configureStore } from "@reduxjs/toolkit"
 import { save, load } from "redux-localstorage-simple"
+
 import user from "./user/reducer"
 import home from "./home/reducer"
 import chart from "./chart/reducer"
