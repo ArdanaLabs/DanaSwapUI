@@ -1,4 +1,4 @@
-import { Arbitrary, date, float, record, string } from "fast-check"
+import { Arbitrary, date, record } from "fast-check"
 import { Trade } from "Data/Trade"
 
 import { genAddress } from "Data/Address/Gen"
