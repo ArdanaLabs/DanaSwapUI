@@ -1,4 +1,6 @@
 DanaSwapUI
+image:https://img.shields.io/badge/ci--by--hercules-green.svg["Herc badge", link="https://hercules-ci.com/github/ArdanaLabs/DanaSwapUI"]
+image:https://img.shields.io/badge/cachix-private_ArdanaLabs-blue.svg["Cachix badge",link="https://private-ardanalabs.cachix.org"]
 ==========
 
 Ardana application’s front-end web platforms
