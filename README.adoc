@@ -3,6 +3,9 @@ DanaSwapUI
 
 Ardana application’s front-end web platforms
 
+image:https://img.shields.io/badge/ci--by--hercules-green.svg["Hercules continuous integration status for all DanaSwapUI front-ends", link="https://hercules-ci.com/github/ArdanaLabs/DanaSwapUI"]
+image:https://img.shields.io/badge/cachix-private_ArdanaLabs-blue.svg["Cachix provisioning of binary builds",link="https://private-ardanalabs.cachix.org"]
+
 NOTE: This looks like a monorepo, but doesn’t quack like one. Without
 workspace support for `dream2nix`, this should likely be split out into
 individual repositories as there’s no advantage in keeping these together.
