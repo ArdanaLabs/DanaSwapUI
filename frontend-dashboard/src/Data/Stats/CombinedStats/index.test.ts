@@ -7,16 +7,24 @@ import mocks from "../../../../mocks"
 
 import * as CombinedStats from "."
 
+let fileMock: unknown
+
+beforeAll(async () => {
+  let data = await mocks.combined()
+  if (E.isRight(data)) {
+    fileMock = data.right
+  } else {
+    throw data.left
+  }
+})
+
 describe("CombinedStats", () => {
   it("Decodes CombinedStats from mock data", async () => {
-    let data = await mocks.combined()
-    if (E.isRight(data)) {
-      const result: E.Either<IO.Errors, CombinedStats.Type> =
-        CombinedStats.codec.decode(data.right)
-      if (E.isLeft(result)) {
-        console.info(JSON.stringify(result.left, null, 2))
-      }
-      expect(result).toBeRight()
+    const result: E.Either<IO.Errors, CombinedStats.Type> =
+      CombinedStats.codec.decode(fileMock)
+    if (E.isLeft(result)) {
+      console.info(JSON.stringify(result.left, null, 2))
     }
+    expect(result).toBeRight()
   })
 })
