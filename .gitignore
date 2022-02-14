@@ -25,7 +25,7 @@ frontend-dashbord/yarn.lock
 nodejs-websocket-example
 *result*
 
-frontend-dashbord/.env
+.envrc
 .direnv/
 node_modules/
 
