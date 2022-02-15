@@ -13,9 +13,10 @@ import cx from "classnames"
 import { useIsDarkMode } from "state/user/hooks"
 import { useHistory, useLocation } from "react-router-dom"
 import ThemeSwitch from "components/ThemeSwitch"
-import { Button } from "components/Button"
+import { GradientButton } from "components/Button"
 
 import { navList } from "data"
+import LOGO_White from "assets/logo_white.png"
 import LOGO_Blue from "assets/logo_blue.png"
 import LOGO_Text from "assets/logo_text.png"
 
@@ -34,50 +35,66 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     justifyContent: "space-between",
     alignItems: "center",
     transition: "background .2s ease-in",
+    padding: "30px 0px",
+
+    [breakpoints.down("xs")]: {
+      flexDirection: "column",
+      paddingBottom: "20px",
+    },
   },
 
   logo: {
-    "paddingLeft": "10px",
-    "display": "flex",
-    "alignItems": "center",
-    "cursor": "pointer",
-    "& img": {
-      padding: "20px 10px",
+    paddingLeft: "10px",
+    display: "flex",
+    alignItems: "center",
+    cursor: "pointer",
+    [`& img:first-child`]: {
+      height: "45px",
+      marginRight: "10px",
     },
-    "& img:last-child": {
+    [`& img:last-child`]: {
+      height: "20px",
       filter: palette.type === "light" ? "invert(1)" : "invert(0)",
     },
   },
 
-  navBar: {
-    "display": "flex",
-    "flexFlow": "wrap",
-    "alignItems": "center",
-    "background": palette.background.default,
-    "fontFamily": "Brandon Grotesque",
+  menuItem: {
+    fontFamily: "Museo Sans",
+    fontWeight: 900,
+    fontStyle: "normal",
+    lineHeight: "100%",
+    margin: "auto 20px",
+    padding: "8px 0px",
+    color: palette.text.primary,
+    fontSize: "13px",
+    position: "relative",
+    textAlign: "center",
+    cursor: "pointer",
 
-    "& > div": {
-      "margin": "5px 15px",
-      "color": palette.text.primary,
-      "fontWeight": 900,
-      "fontSize": "16px",
-      "cursor": "pointer",
+    [`&:hover`]: {
+      color: palette.text.secondary,
+    },
 
-      "&:hover": {
-        "text-decoration-thickness": "2px",
+    [`&.active`]: {
+      color: palette.text.secondary,
+      [`&::before`]: {
+        content: "' '",
+        position: "absolute",
+        top: "100%",
+        width: "100%",
+        left: 0,
+        height: "2.5px",
+        borderRadius: "2px",
+        background: "linear-gradient(90deg, #5F72FF 0%, #73D6F1 100%)",
+
+        [breakpoints.down("xs")]: {
+          display: "none",
+        },
       },
     },
 
-    "& .active": {
-      color: "#FFFFFF",
-      borderRadius: "25px",
-      background: palette.primary.light,
-      padding: "5px 20px",
-    },
-
-    [breakpoints.down("sm")]: {
-      flexDirection: "column",
-      textAlign: "center",
+    [breakpoints.down("xs")]: {
+      margin: "10px",
     },
   },
 
@@ -85,6 +102,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     display: "flex",
     justifyContent: "flex-end",
     alignItem: "center",
+    [breakpoints.down("xs")]: {
+      marginTop: "30px",
+    },
   },
 }))
 
@@ -106,7 +126,7 @@ const Header: React.FC = () => {
     return pathname.indexOf(link) > -1
   }
 
-  const onConnectWallet = (event: any) => {
+  const onConnectWallet = () => {
     console.log("connect wallet button clicked!")
   }
 
@@ -114,69 +134,78 @@ const Header: React.FC = () => {
     <Box className={cx(classes.self)}>
       <Container>
         <Box className={cx(classes.container)}>
-          {/* TODO: make this a link, not onclick */}
-          <Box className={cx(classes.logo)} onClick={() => history.push("/")}>
-            {/* TODO: make this one image */}
-            <img src={LOGO_Blue} alt="Ardana" />
-            <img src={LOGO_Text} alt="" />
-          </Box>
-
-          {!mobile && (
-            <Box className={cx(classes.navBar)}>
-              {navList.map((navItem, index) => (
-                <Box
-                  className={isActiveURL(navItem.link) ? "active" : ""}
-                  onClick={() => {
-                    history.push(navItem.link)
-                  }}
-                  key={index}
-                >
-                  {navItem.label}
-                </Box>
-              ))}
-            </Box>
-          )}
-
-          {mobile && (
-            <>
-              <IconButton
-                style={{ height: "48px", padding: 0 }}
-                onClick={() => setOpenMenu(!openMenu)}
-              >
-                <Hamburger
-                  size={24}
-                  distance={"lg"}
-                  color={theme.palette.text.primary}
-                  toggled={openMenu}
-                  toggle={setOpenMenu}
-                />
-              </IconButton>
-              <Drawer anchor={"top"} open={openMenu} onClose={toggleMenu}>
-                <Box className={cx(classes.navBar)}>
-                  {navList.map((navItem, index) => (
-                    <Box
-                      key={index}
-                      onClick={() => {
-                        history.push(navItem.link)
-                      }}
-                    >
-                      {navItem.label}
-                    </Box>
-                  ))}
-                </Box>
-              </Drawer>
-            </>
-          )}
-        </Box>
-        <Box className={cx(classes.subHeader)}>
-          <ThemeSwitch />
-          <Button
-            variant="contained"
-            onClick={onConnectWallet}
-            style={{ background: theme.palette.secondary.dark }}
+          <Box
+            display="flex"
+            justifyContent={!mobile ? "flex-start" : "space-between"}
+            width="100%"
           >
-            Connect Wallet
-          </Button>
+            <Box className={cx(classes.logo)} onClick={() => history.push("/")}>
+              <img src={dark ? LOGO_White : LOGO_Blue} alt="Ardana Logo" />
+              <img src={LOGO_Text} alt="Ardana Logo" />
+            </Box>
+            {!mobile && (
+              <Box display="flex" ml="30px">
+                {navList.map((navItem, index) => (
+                  <Box
+                    className={cx(classes.menuItem, {
+                      active: isActiveURL(navItem.link),
+                    })}
+                    onClick={() => {
+                      history.push(navItem.link)
+                    }}
+                    key={index}
+                  >
+                    {navItem.label}
+                  </Box>
+                ))}
+              </Box>
+            )}
+
+            {mobile && (
+              <>
+                <IconButton
+                  style={{ height: "60px", padding: 0 }}
+                  onClick={() => setOpenMenu(!openMenu)}
+                >
+                  <Hamburger
+                    size={30}
+                    distance={"lg"}
+                    color={"linear-gradient(90deg, #5F72FF 0%, #73D6F1 100%)"}
+                    toggled={openMenu}
+                    toggle={setOpenMenu}
+                  />
+                </IconButton>
+                <Drawer anchor={"top"} open={openMenu} onClose={toggleMenu}>
+                  <Box>
+                    {navList.map((navItem, index) => (
+                      <Box
+                        key={index}
+                        className={cx(classes.menuItem)}
+                        onClick={() => {
+                          history.push(navItem.link)
+                        }}
+                      >
+                        {navItem.label}
+                      </Box>
+                    ))}
+                  </Box>
+                </Drawer>
+              </>
+            )}
+          </Box>
+          <Box className={cx(classes.subHeader)}>
+            <ThemeSwitch />
+            <GradientButton
+              width={180}
+              height={43}
+              clickable
+              label={"CONNECT WALLET"}
+              gradientColor={
+                dark ? ["#5F72FF", "#73D6F1"] : ["#030D53", "#3B4BC2"]
+              }
+              onClick={onConnectWallet}
+            />
+          </Box>
         </Box>
       </Container>
     </Box>
