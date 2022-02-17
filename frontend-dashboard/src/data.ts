@@ -1,6 +1,37 @@
 import LOGO_Ardana from "assets/logos/ardana.png"
 import LOGO_Cardano from "assets/logos/cardano.png"
 
+export const navList = [
+  {
+    label: "Home",
+    link: "/home",
+  },
+  {
+    label: "Pools",
+    link: "/pools",
+  },
+  {
+    label: "Swap",
+    link: "/swap",
+  },
+  {
+    label: "Use Dana",
+    link: "/dana",
+  },
+  {
+    label: "Dashboard",
+    link: "/dashboard",
+  },
+  {
+    label: "Arem",
+    link: "/arem",
+  },
+  {
+    label: "Info",
+    link: "/info",
+  },
+]
+
 export const options = [
   {
     title: "Filter",
@@ -29,33 +60,6 @@ export const options = [
       { label: "32 Instant", value: "32" },
       { label: "", value: "Custom", hasInput: true },
     ],
-  },
-]
-
-export const navList = [
-  {
-    label: "HOME",
-    link: "/home",
-  },
-  {
-    label: "POOLS",
-    link: "/pools",
-  },
-  {
-    label: "SWAP",
-    link: "/swap",
-  },
-  {
-    label: "USE DANA",
-    link: "/dana",
-  },
-  {
-    label: "ANALYTICS",
-    link: "/analytics",
-  },
-  {
-    label: "INFO",
-    link: "/info",
   },
 ]
 

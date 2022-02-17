@@ -16,9 +16,8 @@ import ThemeSwitch from "components/ThemeSwitch"
 import { GradientButton } from "components/Button"
 
 import { navList } from "data"
-import LOGO_White from "assets/logo_white.png"
-import LOGO_Blue from "assets/logo_blue.png"
-import LOGO_Text from "assets/logo_text.png"
+import LogoLight from "assets/logo-light.png"
+import LogoDark from "assets/logo-dark.png"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   self: {
@@ -27,7 +26,6 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     background: palette.background.default,
     zIndex: 100,
     width: "100%",
-    paddingBottom: "10px",
   },
 
   container: {
@@ -39,7 +37,6 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
     [breakpoints.down("xs")]: {
       flexDirection: "column",
-      paddingBottom: "20px",
     },
   },
 
@@ -48,13 +45,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     display: "flex",
     alignItems: "center",
     cursor: "pointer",
-    [`& img:first-child`]: {
+    [`& img`]: {
       height: "45px",
       marginRight: "10px",
-    },
-    [`& img:last-child`]: {
-      height: "20px",
-      filter: palette.type === "light" ? "invert(1)" : "invert(0)",
     },
   },
 
@@ -70,6 +63,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     position: "relative",
     textAlign: "center",
     cursor: "pointer",
+    textTransform: "uppercase",
 
     [`&:hover`]: {
       color: palette.text.secondary,
@@ -110,7 +104,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
 const Header: React.FC = () => {
   const theme = useTheme()
-  const mobile = useMediaQuery(theme.breakpoints.down("sm"))
+  const mobile = useMediaQuery(theme.breakpoints.down("md"))
   const dark = useIsDarkMode()
   const classes = useStyles({ dark, mobile })
   const history = useHistory()
@@ -140,8 +134,7 @@ const Header: React.FC = () => {
             width="100%"
           >
             <Box className={cx(classes.logo)} onClick={() => history.push("/")}>
-              <img src={dark ? LOGO_White : LOGO_Blue} alt="Ardana Logo" />
-              <img src={LOGO_Text} alt="Ardana Logo" />
+              <img src={dark ? LogoLight : LogoDark} alt="logo" />
             </Box>
             {!mobile && (
               <Box display="flex" ml="30px">
@@ -175,8 +168,8 @@ const Header: React.FC = () => {
                     toggle={setOpenMenu}
                   />
                 </IconButton>
-                <Drawer anchor={"top"} open={openMenu} onClose={toggleMenu}>
-                  <Box>
+                <Drawer anchor={"left"} open={openMenu} onClose={toggleMenu}>
+                  <Box width={"50vw"}>
                     {navList.map((navItem, index) => (
                       <Box
                         key={index}

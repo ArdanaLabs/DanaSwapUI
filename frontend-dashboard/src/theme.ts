@@ -10,7 +10,7 @@ import { merge } from "lodash"
 const primaryDark = {
   light: "linear-gradient(89.62deg, #72D2F2 0.3%, #6077FF 99.64%)",
   main: "#FFFFFF",
-  dark: "linear-gradient(0deg, #3142A3, #3142A3)",
+  dark: "#3142A3",
 }
 const primaryLight = {
   light: "linear-gradient(89.62deg, #000A4F 0.3%, #3C4DC5 99.64%)",
@@ -20,7 +20,7 @@ const primaryLight = {
 
 const secondaryDark = {
   light: "#131B59",
-  main: "#FFFFFF",
+  main: "#73D6F1",
   dark: "rgba(24, 33, 100, 0.5)",
 }
 const secondaryLight = {
@@ -63,17 +63,6 @@ const common = {
   white: "#ffffff",
 }
 
-// breakpoints
-const breakpoints = {
-  values: {
-    xl: 1920,
-    lg: 1280,
-    md: 960,
-    sm: 700,
-    xs: 0,
-  },
-}
-
 function createTheme(
   custom: any,
   options?: ThemeOptions | undefined,
@@ -93,7 +82,6 @@ export const darkTheme = responsiveFontSizes(
       background: backgroundDark,
       common,
     },
-    breakpoints,
   })
 )
 
@@ -108,7 +96,6 @@ export const lightTheme = responsiveFontSizes(
       background: backgroundLight,
       common,
     },
-    breakpoints,
   })
 )
 

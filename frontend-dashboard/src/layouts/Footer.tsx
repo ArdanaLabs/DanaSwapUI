@@ -1,30 +1,57 @@
 import React from "react"
 import { Box, useMediaQuery, Container, Link } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
-import cx from "classnames"
 
 import { useIsDarkMode } from "state/user/hooks"
+import LogoLight from "assets/logo-light.png"
+import { ReactComponent as TwitterIcon } from "assets/icons/twitter.svg"
+import { ReactComponent as DiscordIcon } from "assets/icons/discord.svg"
+import { ReactComponent as LinkedinIcon } from "assets/icons/linkedin.svg"
+import { ReactComponent as MediumIcon } from "assets/icons/medium.svg"
+import { ReactComponent as RedisIcon } from "assets/icons/redis.svg"
+import { ReactComponent as TelegramIcon } from "assets/icons/telegram.svg"
 
-import LOGO_White from "assets/logo_white.png"
-import LOGO_Text from "assets/logo_text.png"
+const Socials = [
+  {
+    name: "Twitter",
+    icon: TwitterIcon,
+    link: "https://google.com",
+  },
+  {
+    name: "Discord",
+    icon: DiscordIcon,
+    link: "https://google.com",
+  },
+  {
+    name: "Telegram",
+    icon: TelegramIcon,
+    link: "https://google.com",
+  },
+  {
+    name: "Medium",
+    icon: MediumIcon,
+    link: "https://google.com",
+  },
+  {
+    name: "Redis",
+    icon: RedisIcon,
+    link: "https://google.com",
+  },
+  {
+    name: "Linkedin",
+    icon: LinkedinIcon,
+    link: "https://google.com",
+  },
+]
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
-  bg: {
-    background:
-      palette.type === "light"
-        ? "linear-gradient(90.19deg, #2F3DA0 27.19%, #73D6F1 99.87%)"
-        : palette.background.default,
+  root: {
+    background: "#1F297B",
     marginTop: "50px",
-    padding: 10,
-  },
+    padding: 30,
 
-  logo: {
-    "paddingLeft": "10px",
-    "display": "flex",
-    "alignItems": "center",
-    "cursor": "pointer",
-    "& img": {
-      padding: "20px 10px",
+    [breakpoints.down("xs")]: {
+      padding: 50,
     },
   },
 
@@ -38,29 +65,24 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     },
   },
 
-  // TODO: change container to use `gap` instead of this `margin-right` hack
-  socialIconLink: {
-    "display": "inline-flex",
-    "height": "2.25em",
-    "width": "2.25em",
-    "alignItems": "center",
-    "justifyContent": "center",
-    "borderRadius": "50%",
-    "backgroundColor": "white",
-    "marginRight": "20px",
-    "cursor": "pointer",
-    "color": "gray",
-    "textAlign": "center",
-    "transition": "background .2s",
-    "fontFamily": "auto",
+  logo: {
+    [breakpoints.down("xs")]: {
+      paddingBottom: 20,
+    },
+  },
 
-    "& i": {
-      width: "16px",
-      height: "16px",
+  socialLinks: {
+    width: "300px",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+
+    [`& a`]: {
+      lineHeight: 0,
     },
 
-    "&:hover": {
-      backgroundColor: "lightgray",
+    [`& svg:hover > path`]: {
+      fill: palette.secondary.main,
     },
   },
 }))
@@ -72,51 +94,18 @@ const Footer: React.FC = () => {
   const classes = useStyles({ dark, mobile })
 
   return (
-    <Box className={cx(classes.bg)}>
+    <Box className={classes.root}>
       <Container>
-        <Box className={cx(classes.container)}>
-          <Box className={cx(classes.logo)}>
-            {/* TODO: make this one image so the titles make sense; link to the homepage */}
-            <img src={LOGO_White} alt="Ardana" />
-            <img src={LOGO_Text} alt="" />
-          </Box>
-          {/* TODO: style this as flex or grid; aria labels; titles */}
-          <Box>
-            <Link
-              className={cx(classes.socialIconLink)}
-              href="#"
-              rel="noopener"
-            >
-              <i className="fab fa-twitter"></i>
-            </Link>
-            <Link
-              className={cx(classes.socialIconLink)}
-              href="#"
-              rel="noopener"
-            >
-              <i className="fab fa-instagram"></i>
-            </Link>
-            <Link
-              className={cx(classes.socialIconLink)}
-              href="#"
-              rel="noopener"
-            >
-              <i className="fab fa-medium"></i>
-            </Link>
-            <Link
-              className={cx(classes.socialIconLink)}
-              href="#"
-              rel="noopener"
-            >
-              <i className="fab fa-youtube"></i>
-            </Link>
-            <Link
-              className={cx(classes.socialIconLink)}
-              href="#"
-              rel="noopener"
-            >
-              <i className="fab fa-linkedin"></i>
-            </Link>
+        <Box className={classes.container}>
+          <Link href="/" className={classes.logo}>
+            <img src={LogoLight} alt="logo" height={"50px"} />
+          </Link>
+          <Box className={classes.socialLinks}>
+            {Socials.map((social) => (
+              <Link key={social.name} href={social.link} target="_blank">
+                <social.icon />
+              </Link>
+            ))}
           </Box>
         </Box>
       </Container>
