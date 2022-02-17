@@ -3,7 +3,7 @@ import Adapter from "@wojtekmaj/enzyme-adapter-react-17"
 import * as Enzyme from "enzyme"
 import { shallow } from "enzyme"
 import { TokenBox } from "."
-import LOGO_Ardana from "assets/logos/ardana.png"
+import LOGO_Ardana from "assets/coins/ardana.png"
 import { Dialog } from "components/Dialog"
 
 Enzyme.configure({ adapter: new Adapter() })

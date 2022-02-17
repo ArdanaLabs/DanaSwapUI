@@ -17,10 +17,10 @@ import { Slider } from "components"
 import { Radio, SwapButton } from "components/Button"
 import { options } from "data"
 
-import ICO_Info_dark from "assets/svg/info_dark.svg"
+import CircleInfoCyanIcon from "assets/icons/circle-info-cyan.png"
 
-import LOGO_Ardana from "assets/logos/ardana.png"
-import LOGO_Cardano from "assets/logos/cardano.png"
+import LOGO_Ardana from "assets/coins/ardana.png"
+import LOGO_Cardano from "assets/coins/cardano.png"
 
 const useStyles = makeStyles(({ palette }) => ({
   self: {
@@ -242,21 +242,21 @@ const Swap: React.FC = () => {
                 <Box>Rate DANA/ANA (including fees):</Box>
                 <Box display="flex" alignItems="center" lineHeight="1">
                   1.005&nbsp;
-                  <img src={ICO_Info_dark} width="13px" alt="info" />
+                  <img src={CircleInfoCyanIcon} width="13px" alt="info" />
                 </Box>
               </Box>
               <Box className={cx(classes.info)}>
                 <Box>Slip:</Box>
                 <Box display="flex" alignItems="center" lineHeight="1">
                   1%&nbsp;
-                  <img src={ICO_Info_dark} width="13px" alt="info" />
+                  <img src={CircleInfoCyanIcon} width="13px" alt="info" />
                 </Box>
               </Box>
               <Box className={cx(classes.info)}>
                 <Box>Trade routed through:</Box>
                 <Box display="flex" alignItems="center" lineHeight="1">
                   exDANA&nbsp;
-                  <img src={ICO_Info_dark} width="13px" alt="info" />
+                  <img src={CircleInfoCyanIcon} width="13px" alt="info" />
                 </Box>
               </Box>
             </Box>

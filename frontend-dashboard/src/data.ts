@@ -1,5 +1,5 @@
-import LOGO_Ardana from "assets/logos/ardana.png"
-import LOGO_Cardano from "assets/logos/cardano.png"
+import LOGO_Ardana from "assets/coins/ardana.png"
+import LOGO_Cardano from "assets/coins/cardano.png"
 
 export const navList = [
   {

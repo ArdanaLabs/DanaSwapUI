@@ -4,8 +4,8 @@ import { Box, useMediaQuery } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import { useIsDarkMode } from "state/user/hooks"
 
-import ICO_Info_light from "assets/svg/info_light.svg"
-import ICO_Info_dark from "assets/svg/info_dark.svg"
+import CircleInfoCyanIcon from "assets/icons/circle-info-cyan.png"
+import CircleInfoDarkBlueIcon from "assets/icons/circle-info-darkblue.png"
 
 const useStyles = makeStyles(({ palette }) => ({
   self: {
@@ -83,7 +83,10 @@ const OverViewBox: React.FC<OverViewBoxProps> = ({ label, content, info }) => {
       >
         <Box className={cx(classes.leftBorder)}>&nbsp;&nbsp;</Box>
         <Box className={cx(classes.info)}>
-          <img src={!dark ? ICO_Info_light : ICO_Info_dark} alt="info" />
+          <img
+            src={!dark ? CircleInfoCyanIcon : CircleInfoDarkBlueIcon}
+            alt="info"
+          />
         </Box>
 
         <Box className={cx(classes.display)}>

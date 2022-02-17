@@ -8,7 +8,7 @@ import { useIsDarkMode } from "state/user/hooks"
 import { Slider } from "components"
 import { Radio } from "components/Button"
 
-import LOGO_Ardana from "assets/logos/ardana.png"
+import LOGO_Ardana from "assets/coins/ardana.png"
 
 const marks: Mark[] = [
   {

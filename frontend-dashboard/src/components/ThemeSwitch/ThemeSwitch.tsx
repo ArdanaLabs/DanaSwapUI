@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/core/styles"
 
 import { useDarkModeManager } from "state/user/hooks"
 
-import ICO_Light from "assets/svg/sun.svg"
+import ICO_Light from "assets/icons/sun.svg"
 
 const useStyles = makeStyles(({ palette }) => ({
   self: {
