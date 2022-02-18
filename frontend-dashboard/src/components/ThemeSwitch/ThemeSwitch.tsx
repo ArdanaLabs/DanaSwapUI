@@ -8,7 +8,7 @@ import { useDarkModeManager } from "state/user/hooks"
 import ICO_Light from "assets/icons/sun.svg"
 
 const useStyles = makeStyles(({ palette }) => ({
-  self: {
+  root: {
     margin: "0 10px",
     padding: "10px 20px",
     cursor: "pointer",
@@ -41,7 +41,7 @@ const ThemeSwitch: React.FC = () => {
   }
 
   return (
-    <Box className={cx(classes.self)} onClick={toggleMode}>
+    <Box className={cx(classes.root)} onClick={toggleMode}>
       <Box className={cx(classes.switchLabel)}>
         {!darkMode ? "DarkMode" : "LightMode"}
       </Box>

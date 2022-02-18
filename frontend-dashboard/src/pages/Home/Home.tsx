@@ -25,15 +25,15 @@ const Home: React.FC = () => {
       <Box className={classes.root}>
         <OverViewSection />
 
-        <Box mt="30px" />
+        <Box mt="50px" />
 
         <ChartSection />
 
-        <Box mt="50px" />
+        <Box mt="70px" />
 
         <PoolsSection />
 
-        <Box mt="50px" />
+        <Box mt="70px" />
 
         <StatsSection />
       </Box>

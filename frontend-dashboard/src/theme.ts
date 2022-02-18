@@ -31,7 +31,7 @@ const secondaryLight = {
 }
 
 const infoDark = {
-  main: "#25308280",
+  main: "#253082",
   dark: "linear-gradient(180deg, #73D6F1 0%, #5F72FF 99.99%, #2F3DA0 100%)",
 }
 const infoLight = {
@@ -73,7 +73,12 @@ const typography = {
     fontWeight: 700,
     fontSize: 30,
   },
-  h3: {},
+  h3: {
+    fontFamily: "Brandon Grotesque",
+    fontStyle: "normal",
+    fontWeight: 700,
+    fontSize: 20,
+  },
   h5: {
     fontFamily: "Brandon Grotesque",
     fontStyle: "normal",
@@ -95,7 +100,7 @@ const typography = {
   h6: {
     fontFamily: "Museo Sans",
     fontStyle: "normal",
-    fontWeight: 400,
+    fontWeight: 700,
     fontSize: 13,
   },
   subtitle1: {},
