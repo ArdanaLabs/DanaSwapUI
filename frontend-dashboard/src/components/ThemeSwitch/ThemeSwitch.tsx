@@ -28,6 +28,7 @@ const useStyles = makeStyles(({ palette }) => ({
     color: "#FFFFFF",
     textAlign: "center",
     marginRight: "10px",
+    textTransform: "uppercase",
   },
 }))
 
@@ -42,7 +43,7 @@ const ThemeSwitch: React.FC = () => {
   return (
     <Box className={cx(classes.self)} onClick={toggleMode}>
       <Box className={cx(classes.switchLabel)}>
-        {!darkMode ? "DARKMODE" : "LIGHTMODE"}
+        {!darkMode ? "DarkMode" : "LightMode"}
       </Box>
       <Box className={cx(classes.switchIcon)}>
         <img src={ICO_Light} alt="Theme switch icon" />

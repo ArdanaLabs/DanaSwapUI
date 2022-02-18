@@ -13,7 +13,7 @@ import { Footer, Header } from "layouts"
 const useStyles = makeStyles(({ palette }) => ({
   self: {
     background: palette.background.default,
-    paddingTop: "210px",
+    paddingTop: "180px",
   },
 }))
 

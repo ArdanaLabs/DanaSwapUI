@@ -1,5 +1,4 @@
 import React from "react"
-import cx from "classnames"
 import { Box, Fade, useMediaQuery } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import { useIsDarkMode } from "state/user/hooks"
@@ -12,7 +11,7 @@ import {
 } from "./sections"
 
 const useStyles = makeStyles(({ palette }) => ({
-  self: {},
+  root: {},
 }))
 
 const Home: React.FC = () => {
@@ -23,7 +22,7 @@ const Home: React.FC = () => {
 
   return (
     <Fade in={true}>
-      <Box className={cx(classes.self)}>
+      <Box className={classes.root}>
         <OverViewSection />
 
         <Box mt="30px" />

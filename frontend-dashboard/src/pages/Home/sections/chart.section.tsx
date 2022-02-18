@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react"
-import { Box, CircularProgress, Grid, useMediaQuery } from "@material-ui/core"
+import {
+  Box,
+  CircularProgress,
+  Grid,
+  useMediaQuery,
+  Typography,
+} from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
 import Chart from "react-apexcharts"
@@ -26,33 +32,29 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 
   title: {
-    color: palette.text.primary,
-    fontFamily: "Brandon Grotesque",
-    fontStyle: "normal",
-    fontWeight: 900,
-    fontSize: "28px",
-    lineHeight: "110%",
+    color: palette.primary.main,
+    marginBottom: 30,
   },
 
   panel: {
-    background: palette.background.paper,
+    background: `linear-gradient(126.33deg, ${palette.background.paper}AA 9.83%, ${palette.background.paper}00 96.44%);`,
     borderRadius: "10px",
     padding: "30px 20px",
     filter: "drop-shadow(2px 2px 10px rgba(0, 0, 0, 0.1))",
   },
 
   panelFilter: {
-    "display": "flex",
-    "justifyContent": "space-between",
-    "color": palette.text.hint,
-    "fontFamily": "Museo Sans",
-    "fontStyle": "normal",
-    "fontWeight": 500,
-    "fontSize": "11px",
-    "lineHeight": "100%",
-    "paddingBottom": "30px",
+    display: "flex",
+    justifyContent: "space-between",
+    color: palette.text.hint,
+    fontFamily: "Museo Sans",
+    fontStyle: "normal",
+    fontWeight: 500,
+    fontSize: "11px",
+    lineHeight: "100%",
+    paddingBottom: "30px",
 
-    "& span": {
+    [`& span`]: {
       padding: "10px",
       cursor: "pointer",
     },
@@ -428,10 +430,11 @@ const ChartSection: React.FC = () => {
 
   return (
     <Box className={cx(classes.self)}>
-      <Grid container spacing={3}>
+      <Grid container spacing={5}>
         <Grid item sm={12} md={6} style={{ width: "100%" }}>
-          <Box className={cx(classes.title)}>Volume</Box>
-          <Box mt="20px" />
+          <Typography variant="h1" component="h1" className={cx(classes.title)}>
+            Volume
+          </Typography>
           <Box className={cx(classes.panel)}>
             <Box className={cx(classes.panelFilter)}>
               <Box className={cx(classes.panelFilterByType)}>
@@ -451,8 +454,9 @@ const ChartSection: React.FC = () => {
           </Box>
         </Grid>
         <Grid item sm={12} md={6} style={{ width: "100%" }}>
-          <Box className={cx(classes.title)}>Liquidity</Box>
-          <Box mt="20px" />
+          <Typography variant="h1" component="h1" className={cx(classes.title)}>
+            Liquidity
+          </Typography>
           <Box className={cx(classes.panel)}>
             <Box className={cx(classes.panelFilter)}>
               <Box className={cx(classes.panelFilterByType)}>

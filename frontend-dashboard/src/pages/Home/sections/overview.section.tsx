@@ -37,14 +37,12 @@ const OverViewSection: React.FC = () => {
 
   const totalStats: RemoteData<FetchDecodeError, TotalStats> = useTotalStats()
 
-  // TODO: text-transform: uppercase
-
   function renderTotalDepositsAllPoolsUSD(
     totalDeposits: O.Option<TotalDeposits.Type>
   ) {
     return (
       <OverViewBox
-        label={"TOTAL LIQUIDITY\n\n"}
+        label={"Total Liquidity\n\n"}
         content={O.fold(
           () => "",
           (t: TotalDeposits.Type): string =>
@@ -61,11 +59,13 @@ const OverViewSection: React.FC = () => {
   ) {
     return (
       <OverViewBox
-        label={"LIQUIDITY UTILIZATION"}
+        label={"Total Liquidity\nUtilization"}
         content={O.fold(
           () => "",
           (tlu: TotalLiquidityUtilization.Type): string =>
-            `${TotalLiquidityUtilization.iso.unwrap(tlu)}`
+            printCurrencyUSD(TotalLiquidityUtilization.iso.unwrap(tlu), {
+              minimumFractionDigits: 2,
+            })
         )(totalLiquidityUtilization)}
       />
     )
@@ -76,7 +76,7 @@ const OverViewSection: React.FC = () => {
   ) {
     return (
       <OverViewBox
-        label={"24H VOLUME\n\n"}
+        label={"24hr Volume\n\n"}
         content={O.fold(
           () => "",
           (tdv: TotalDailyVolume.Type): string =>
@@ -93,7 +93,7 @@ const OverViewSection: React.FC = () => {
   ) {
     return (
       <OverViewBox
-        label={"24H FEE GENERAGED"}
+        label={"24h fee Generated"}
         content={O.fold(
           () => "",
           (tdfvs: TotalDailyFeeVolume.Type): string =>
@@ -110,8 +110,7 @@ const OverViewSection: React.FC = () => {
       case "Success":
         const ts: TotalStats = rts.success
         return (
-          <>
-            {" "}
+          <Grid container>
             <Grid container item sm={12} md={6}>
               <Grid item xs={6} sm={3}>
                 <OverViewBox label={"TVL\n\n"} content={"$220.21M"} />
@@ -131,16 +130,16 @@ const OverViewSection: React.FC = () => {
                 {renderTotalDailyFeeVolumeUSD(ts.totalDailyFeeVolumeUSD)}
               </Grid>
               <Grid item xs={6} sm={3}>
-                <OverViewBox label={"DANA PRICE\n\n"} content={"$220.21M"} />
+                <OverViewBox label={"Dana Price\n\n"} content={"$220.21M"} />
               </Grid>
               <Grid item xs={6} sm={3}>
-                <OverViewBox label={"% OF DANA LOCKED"} content={"30.11%"} />
+                <OverViewBox label={"% of Dana Locked"} content={"30.11%"} />
               </Grid>
               <Grid item xs={6} sm={3}>
-                <OverViewBox label={"DANA STAKING\nAPY"} content={"30.11%"} />
+                <OverViewBox label={"Dana Staking\nAPY"} content={"30.11%"} />
               </Grid>
             </Grid>
-          </>
+          </Grid>
         )
       case "Pending":
         // TODO: loading

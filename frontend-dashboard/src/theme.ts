@@ -3,6 +3,7 @@ import {
   responsiveFontSizes,
   ThemeOptions,
 } from "@material-ui/core"
+// import createBreakpoints from "@material-ui/core/styles/createBreakpoints"
 import { merge } from "lodash"
 
 // custom colors
@@ -39,8 +40,8 @@ const infoLight = {
 }
 
 const backgroundDark = {
-  default: "#010730",
-  paper: "#131B5980",
+  default: "#080E42",
+  paper: "#253082",
 }
 const backgroundLight = {
   default: "#F5F5F5",
@@ -63,6 +64,46 @@ const common = {
   white: "#ffffff",
 }
 
+// const breakpoints = createBreakpoints({})
+
+const typography = {
+  h1: {
+    fontFamily: "Brandon Grotesque",
+    fontStyle: "normal",
+    fontWeight: 700,
+    fontSize: 30,
+  },
+  h3: {},
+  h5: {
+    fontFamily: "Brandon Grotesque",
+    fontStyle: "normal",
+    fontWeight: "normal",
+    fontSize: 16,
+  },
+  h2: {
+    fontFamily: "Museo Sans",
+    fontStyle: "normal",
+    fontWeight: 700,
+    fontSize: 20,
+  },
+  h4: {
+    fontFamily: "Museo Sans",
+    fontStyle: "normal",
+    fontWeight: 700,
+    fontSize: 18,
+  },
+  h6: {
+    fontFamily: "Museo Sans",
+    fontStyle: "normal",
+    fontWeight: 400,
+    fontSize: 13,
+  },
+  subtitle1: {},
+  subtitle2: {},
+  body1: {},
+  body2: {},
+}
+
 function createTheme(
   custom: any,
   options?: ThemeOptions | undefined,
@@ -82,6 +123,7 @@ export const darkTheme = responsiveFontSizes(
       background: backgroundDark,
       common,
     },
+    typography,
   })
 )
 
@@ -96,6 +138,7 @@ export const lightTheme = responsiveFontSizes(
       background: backgroundLight,
       common,
     },
+    typography,
   })
 )
 

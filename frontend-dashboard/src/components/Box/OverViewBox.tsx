@@ -1,6 +1,6 @@
 import React from "react"
 import cx from "classnames"
-import { Box, useMediaQuery } from "@material-ui/core"
+import { Box, useMediaQuery, Typography } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import { useIsDarkMode } from "state/user/hooks"
 
@@ -34,22 +34,17 @@ const useStyles = makeStyles(({ palette }) => ({
     right: 10,
   },
   display: {
-    "padding": "12px 0px 10px 30px",
+    padding: "25px 0px 10px 20px",
 
-    "& p:first-child": {
-      fontWeight: 300,
-      fontStyle: "normal",
-      fontSize: "11px",
-      lineHeight: "13px",
-      color: palette.text.hint,
+    [`& p:first-child`]: {
+      color: palette.secondary.main,
       whiteSpace: "pre-line",
+      textTransform: "uppercase",
+      lineHeight: "100%",
+      marginBottom: "10px",
     },
-    "& p:last-child": {
-      fontWeight: 700,
-      fontStyle: "normal",
-      fontSize: "16px",
-      lineHeight: "18px",
-      color: palette.text.secondary,
+    [`& p:last-child`]: {
+      color: palette.primary.main,
       fontFamily: "Museo Sans",
     },
   },
@@ -57,11 +52,10 @@ const useStyles = makeStyles(({ palette }) => ({
 
 export interface OverViewBoxProps {
   label: string
-  content: any
-  info?: string
+  content: string
 }
 
-const OverViewBox: React.FC<OverViewBoxProps> = ({ label, content, info }) => {
+const OverViewBox: React.FC<OverViewBoxProps> = ({ label, content }) => {
   const { breakpoints } = useTheme()
   const dark = useIsDarkMode()
   const mobile = useMediaQuery(breakpoints.down("xs"))
@@ -84,14 +78,18 @@ const OverViewBox: React.FC<OverViewBoxProps> = ({ label, content, info }) => {
         <Box className={cx(classes.leftBorder)}>&nbsp;&nbsp;</Box>
         <Box className={cx(classes.info)}>
           <img
-            src={!dark ? CircleInfoCyanIcon : CircleInfoDarkBlueIcon}
+            src={dark ? CircleInfoCyanIcon : CircleInfoDarkBlueIcon}
             alt="info"
           />
         </Box>
 
         <Box className={cx(classes.display)}>
-          <Box component="p">{label}</Box>
-          <Box component="p">{content}</Box>
+          <Typography variant="h6" component="p">
+            {label}
+          </Typography>
+          <Typography variant="h4" component="p">
+            {content}
+          </Typography>
         </Box>
       </Box>
     </Box>
