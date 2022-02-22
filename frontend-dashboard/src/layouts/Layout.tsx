@@ -1,19 +1,11 @@
 import React from "react"
-import cx from "classnames"
-import {
-  Box,
-  Container,
-  makeStyles,
-  useMediaQuery,
-  useTheme,
-} from "@material-ui/core"
+import { Box, makeStyles, useMediaQuery, useTheme } from "@material-ui/core"
 import { useIsDarkMode } from "state/user/hooks"
 import { Footer, Header } from "layouts"
 
 const useStyles = makeStyles(({ palette }) => ({
-  self: {
+  root: {
     background: palette.background.default,
-    paddingTop: "180px",
   },
 }))
 
@@ -28,11 +20,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const classes = useStyles({ dark, mobile })
 
   return (
-    <Box className={cx(classes.self)}>
+    <>
       <Header />
-      <Container>{children}</Container>
-      <Footer />
-    </Box>
+      <Box className={classes.root}>
+        {children}
+        <Footer />
+      </Box>
+    </>
   )
 }
 

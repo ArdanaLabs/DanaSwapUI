@@ -1,10 +1,10 @@
 import React from "react"
-import { Box, useMediaQuery } from "@material-ui/core"
+import { Box, CircularProgress, useMediaQuery } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import {
   GridCellParams,
   GridColDef,
-  GridValueGetterParams,
+  // GridValueGetterParams,
 } from "@material-ui/data-grid"
 import { RemoteData } from "fp-ts-remote-data"
 import * as ROM from "fp-ts/ReadonlyMap"
@@ -32,10 +32,9 @@ const PoolsSection: React.FC = () => {
   > = usePoolStats()
 
   if (poolStats._tag === "Success") {
-    console.log(1111, poolStats.success)
-    ROM.collect(PoolSetName.Ord)((a, b) => {
-      console.log(222, a, b)
-    })(poolStats.success)
+    ROM.collect(PoolSetName.Ord)(
+      (poolName: PoolSetName.Type, ps: PoolStats) => {}
+    )(poolStats.success)
   }
 
   const columns: GridColDef[] = [
@@ -46,11 +45,11 @@ const PoolsSection: React.FC = () => {
       flex: 2,
       renderCell: (params: GridCellParams) => {
         let assetLogo = null
-        const type: string = params.getValue(params.id, "type") as string
+        // const type: string = params.getValue(params.id, "type") as string
         try {
-          // assetLogo = require(`assets/image/coins/${params.value}.png`).default
-          assetLogo = require(`assets/image/coins/${"BTC"}.png`).default
+          assetLogo = require(`assets/coins/${"BTC"}.png`).default
         } catch (e) {}
+
         return (
           <Box display="flex" alignItems="center">
             {assetLogo && (
@@ -91,21 +90,41 @@ const PoolsSection: React.FC = () => {
     },
   ]
 
-  return (
-    <Box className={classes.root}>
-      {/* <PoolsGrid
-        rows={filteredVaults}
-        columns={columns}
-        disableSelectionOnClick
-        disableColumnSelector
-        disableColumnMenu
-        hideFooterPagination
-        rowHeight={64}
-        autoHeight
-        pageSize={7}
-      /> */}
-    </Box>
-  )
+  function renderPoolsGrid(
+    psrd: RemoteData<FetchDecodeError, ReadonlyMap<PoolSetName.Type, PoolStats>>
+  ): JSX.Element {
+    switch (psrd._tag) {
+      case "Success":
+        return (
+          <PoolsGrid
+            rows={[]}
+            columns={columns}
+            disableSelectionOnClick
+            disableColumnSelector
+            disableColumnMenu
+            hideFooterPagination
+            rowHeight={64}
+            autoHeight
+            pageSize={7}
+          />
+        )
+      case "Pending":
+        return (
+          <Box display="flex" justifyContent="center" alignItems="center">
+            <CircularProgress />
+          </Box>
+        )
+      case "Failure":
+        return (
+          <details>
+            <summary>Error</summary>
+            <pre>{JSON.stringify(psrd.failure, null, 2)}</pre>
+          </details>
+        )
+    }
+  }
+
+  return <Box className={classes.root}>{renderPoolsGrid(poolStats)}</Box>
 }
 
 export default PoolsSection

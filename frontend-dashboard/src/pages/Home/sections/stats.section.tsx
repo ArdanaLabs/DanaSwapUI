@@ -1,5 +1,11 @@
 import React from "react"
-import { Box, Grid, useMediaQuery, Typography } from "@material-ui/core"
+import {
+  Box,
+  Grid,
+  useMediaQuery,
+  Typography,
+  CircularProgress,
+} from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 
 import * as O from "fp-ts/Option"
@@ -14,16 +20,26 @@ import { printCurrencyUSD } from "hooks"
 import { useIsDarkMode } from "state/user/hooks"
 import { useTotalStats } from "state/home/hooks"
 
-const useStyles = makeStyles(({ palette }) => ({
+const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {},
   title: {
     color: palette.primary.main,
     marginBottom: 50,
+    [breakpoints.down("sm")]: {
+      marginBottom: 30,
+    },
   },
   body: {
-    background: `linear-gradient(126.33deg, ${palette.background.paper}AA 9.83%, ${palette.background.paper}00 96.44%);`,
+    background: `linear-gradient(126.33deg, ${palette.background.paper} 9.83%, #00000000 96.44%);`,
     padding: 30,
     borderRadius: "10px",
+
+    [`& .totalDailyVolume`]: {
+      margin: 0,
+      [`& dt`]: {
+        textTransform: "uppercase",
+      },
+    },
 
     [`& .exDANAStats`]: {
       margin: 0,
@@ -32,12 +48,19 @@ const useStyles = makeStyles(({ palette }) => ({
       },
     },
 
-    [`& dt.upper`]: {
-      textTransform: "uppercase",
-    },
-
     [`& dd`]: {
       fontWeight: 300,
+    },
+    [`& dt, & dd`]: {
+      color: palette.primary.main,
+      [breakpoints.down("sm")]: {
+        fontSize: 12,
+      },
+    },
+
+    [breakpoints.down("sm")]: {
+      padding: 20,
+      marginBottom: 30,
     },
   },
 }))
@@ -54,8 +77,8 @@ const StatsSection: React.FC = () => {
     totalDailyVolume: ByTxType<O.Option<TotalDailyVolume.Type>>
   ) {
     return (
-      <Box component="dl" margin={0}>
-        <Typography variant="h4" component="dt" className="upper">
+      <Box component="dl" className="totalDailyVolume">
+        <Typography variant="h4" component="dt">
           Daily Deposits:
         </Typography>
         {O.fold(
@@ -68,9 +91,9 @@ const StatsSection: React.FC = () => {
           )
         )(totalDailyVolume.addLiquidity)}
 
-        <Box mt="20px" />
+        <Box mb={!mobile ? "20px" : "10px"} />
 
-        <Typography variant="h4" component="dt" className="upper">
+        <Typography variant="h4" component="dt">
           Daily Withdrawals:
         </Typography>
         {O.fold(
@@ -83,9 +106,9 @@ const StatsSection: React.FC = () => {
           )
         )(totalDailyVolume.removeLiquidity)}
 
-        <Box mt="20px" />
+        <Box mb={!mobile ? "20px" : "10px"} />
 
-        <Typography variant="h4" component="dt" className="upper">
+        <Typography variant="h4" component="dt">
           Daily Volume:
         </Typography>
         {O.fold(
@@ -103,7 +126,7 @@ const StatsSection: React.FC = () => {
   function renderExDANAStatsSuccess() {
     return (
       <Box component="dl" className="exDANAStats">
-        <Box mb="20px">
+        <Box mb={!mobile ? "20px" : "10px"}>
           <Typography variant="h4" component="dt">
             exDANA holder/LP ratio (based on fees):&nbsp;
           </Typography>
@@ -111,7 +134,7 @@ const StatsSection: React.FC = () => {
             24.52
           </Typography>
         </Box>
-        <Box mb="20px">
+        <Box mb={!mobile ? "20px" : "10px"}>
           <Typography variant="h4" component="dt">
             Having locked $1 in DANA for 4 years is equal to having provided
             $24.52 as an LP
@@ -125,7 +148,7 @@ const StatsSection: React.FC = () => {
             21.37% (4 weeks average: 18.01%)
           </Typography>
         </Box>
-        <Box mb="20px">
+        <Box mb={!mobile ? "20px" : "10px"}>
           <Typography variant="h4" component="dt">
             Yearly fee earnings per 1 exDANA:&nbsp;
           </Typography>
@@ -133,7 +156,7 @@ const StatsSection: React.FC = () => {
             $0.34
           </Typography>
         </Box>
-        <Box mb="20px">
+        <Box mb={!mobile ? "20px" : "10px"}>
           <Typography variant="h4" component="dt">
             My exDANA balance:&nbsp;
           </Typography>
@@ -141,7 +164,7 @@ const StatsSection: React.FC = () => {
             0 Stake DANA
           </Typography>
         </Box>
-        <Box mb="20px">
+        <Box mb={!mobile ? "20px" : "10px"}>
           <Typography variant="h4" component="dt">
             Averaged daily earnings:&nbsp;
           </Typography>
@@ -149,7 +172,7 @@ const StatsSection: React.FC = () => {
             $198,244.20
           </Typography>
         </Box>
-        <Box mb="20px">
+        <Box mb={!mobile ? "20px" : "10px"}>
           <Typography variant="h4" component="dt">
             Weekly earnings:&nbsp;
           </Typography>
@@ -157,7 +180,7 @@ const StatsSection: React.FC = () => {
             $1,387,709.41
           </Typography>
         </Box>
-        <Box mb="20px">
+        <Box mb={!mobile ? "20px" : "10px"}>
           <Typography variant="h4" component="dt">
             Weekly volume (including deposits/withdrawals):&nbsp;
           </Typography>
@@ -180,7 +203,7 @@ const StatsSection: React.FC = () => {
   function renderLPClaimSuccess() {
     return (
       <Box textAlign={"center"}>
-        <Typography variant="h3" component="h3">
+        <Typography variant="h3" component="dt">
           Claim 9999.122
         </Typography>
       </Box>
@@ -192,8 +215,11 @@ const StatsSection: React.FC = () => {
       case "Success":
         return renderTotalDailyVolumeUSD(rts.success.totalDailyVolumeUSD)
       case "Pending":
-        // TODO: loading
-        return <span>loading …</span>
+        return (
+          <Box display="flex" justifyContent="center" alignItems="center">
+            <CircularProgress />
+          </Box>
+        )
       case "Failure":
         // TODO: failure
         return (
@@ -210,8 +236,11 @@ const StatsSection: React.FC = () => {
       case "Success":
         return renderExDANAStatsSuccess()
       case "Pending":
-        // TODO: loading
-        return <span>loading …</span>
+        return (
+          <Box display="flex" justifyContent="center" alignItems="center">
+            <CircularProgress />
+          </Box>
+        )
       case "Failure":
         // TODO: failure
         return (
@@ -228,8 +257,11 @@ const StatsSection: React.FC = () => {
       case "Success":
         return renderLPClaimSuccess()
       case "Pending":
-        // TODO: loading
-        return <span>loading …</span>
+        return (
+          <Box display="flex" justifyContent="center" alignItems="center">
+            <CircularProgress />
+          </Box>
+        )
       case "Failure":
         // TODO: failure
         return (

@@ -1,5 +1,5 @@
 import React from "react"
-import { Box, Fade, useMediaQuery } from "@material-ui/core"
+import { Box, Fade, useMediaQuery, Container } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import { useIsDarkMode } from "state/user/hooks"
 
@@ -10,8 +10,15 @@ import {
   StatsSection,
 } from "./sections"
 
+import CyanBG from "assets/backgrounds/cyan.svg"
+import PinkBG from "assets/backgrounds/pink.svg"
+
 const useStyles = makeStyles(({ palette }) => ({
-  root: {},
+  root: {
+    background: `url(${PinkBG}) right -600px top -600px no-repeat,
+                  url(${CyanBG}) left -800px top -500px no-repeat`,
+    paddingTop: "180px",
+  },
 }))
 
 const Home: React.FC = () => {
@@ -23,19 +30,21 @@ const Home: React.FC = () => {
   return (
     <Fade in={true}>
       <Box className={classes.root}>
-        <OverViewSection />
+        <Container>
+          <OverViewSection />
 
-        <Box mt="50px" />
+          <Box mt="50px" />
 
-        <ChartSection />
+          <ChartSection />
 
-        <Box mt="70px" />
+          <Box mt="70px" />
 
-        <PoolsSection />
+          <PoolsSection />
 
-        <Box mt="70px" />
+          <Box mt="70px" />
 
-        <StatsSection />
+          <StatsSection />
+        </Container>
       </Box>
     </Fade>
   )

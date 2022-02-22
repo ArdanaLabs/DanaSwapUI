@@ -15,7 +15,7 @@ const useStyles = makeStyles(({ palette }) => ({
     borderRadius: "100px",
     display: "flex",
     alignItems: "center",
-    background: palette.primary.light,
+    background: `linear-gradient(90deg, ${palette.secondary.main} 0%, ${palette.secondary.dark} 100%)`,
   },
   switchIcon: {
     lineHeight: "0",
@@ -25,7 +25,7 @@ const useStyles = makeStyles(({ palette }) => ({
     fontWeight: 700,
     fontFamily: "Museo Sans",
     lineHeight: "15px",
-    color: "#FFFFFF",
+    color: palette.common.white,
     textAlign: "center",
     marginRight: "10px",
     textTransform: "uppercase",

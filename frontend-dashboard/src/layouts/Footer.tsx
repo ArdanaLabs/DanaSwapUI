@@ -4,45 +4,7 @@ import { makeStyles, useTheme } from "@material-ui/core/styles"
 
 import { useIsDarkMode } from "state/user/hooks"
 import LogoLight from "assets/logo-light.png"
-import { ReactComponent as TwitterIcon } from "assets/icons/twitter.svg"
-import { ReactComponent as DiscordIcon } from "assets/icons/discord.svg"
-import { ReactComponent as LinkedinIcon } from "assets/icons/linkedin.svg"
-import { ReactComponent as MediumIcon } from "assets/icons/medium.svg"
-import { ReactComponent as RedisIcon } from "assets/icons/redis.svg"
-import { ReactComponent as TelegramIcon } from "assets/icons/telegram.svg"
-
-const Socials = [
-  {
-    name: "Twitter",
-    icon: TwitterIcon,
-    link: "https://google.com",
-  },
-  {
-    name: "Discord",
-    icon: DiscordIcon,
-    link: "https://google.com",
-  },
-  {
-    name: "Telegram",
-    icon: TelegramIcon,
-    link: "https://google.com",
-  },
-  {
-    name: "Medium",
-    icon: MediumIcon,
-    link: "https://google.com",
-  },
-  {
-    name: "Redis",
-    icon: RedisIcon,
-    link: "https://google.com",
-  },
-  {
-    name: "Linkedin",
-    icon: LinkedinIcon,
-    link: "https://google.com",
-  },
-]
+import { Socials } from "data"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {

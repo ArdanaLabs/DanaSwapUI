@@ -8,13 +8,10 @@ import CircleInfoCyanIcon from "assets/icons/circle-info-cyan.png"
 import CircleInfoDarkBlueIcon from "assets/icons/circle-info-darkblue.png"
 
 const useStyles = makeStyles(({ palette }) => ({
-  self: {
-    margin: "10px",
-  },
-  bg: {
+  root: {
     width: "100%",
     position: "relative",
-    background: palette.info.main,
+    background: palette.background.paper,
     borderRadius: "10px",
     height: 100,
   },
@@ -24,7 +21,7 @@ const useStyles = makeStyles(({ palette }) => ({
     top: 0,
     bottom: 0,
     height: "100%",
-    background: palette.info.dark,
+    background: `linear-gradient(180deg, ${palette.secondary.main} 0%, ${palette.secondary.dark} 100%)`,
     borderRadius: "10px",
     fontFamily: "auto",
   },
@@ -62,35 +59,22 @@ const OverViewBox: React.FC<OverViewBoxProps> = ({ label, content }) => {
   const classes = useStyles({ dark, mobile })
 
   return (
-    <Box className={cx(classes.self)}>
-      <Box
-        className={cx(classes.bg)}
-        style={
-          !dark
-            ? {
-                boxShadow: "0px 4px 4px #E5E5E5",
-              }
-            : {
-                boxShadow: "unset",
-              }
-        }
-      >
-        <Box className={cx(classes.leftBorder)}>&nbsp;&nbsp;</Box>
-        <Box className={cx(classes.info)}>
-          <img
-            src={dark ? CircleInfoCyanIcon : CircleInfoDarkBlueIcon}
-            alt="info"
-          />
-        </Box>
+    <Box className={cx(classes.root)}>
+      <Box className={cx(classes.leftBorder)}>&nbsp;&nbsp;</Box>
+      <Box className={cx(classes.info)}>
+        <img
+          src={dark ? CircleInfoCyanIcon : CircleInfoDarkBlueIcon}
+          alt="info"
+        />
+      </Box>
 
-        <Box className={cx(classes.display)}>
-          <Typography variant="h6" component="p">
-            {label}
-          </Typography>
-          <Typography variant="h4" component="p">
-            {content}
-          </Typography>
-        </Box>
+      <Box className={cx(classes.display)}>
+        <Typography variant="h6" component="p">
+          {label}
+        </Typography>
+        <Typography variant="h4" component="p">
+          {content}
+        </Typography>
       </Box>
     </Box>
   )

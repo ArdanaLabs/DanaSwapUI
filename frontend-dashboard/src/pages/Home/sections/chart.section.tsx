@@ -27,21 +27,27 @@ import { Granularity } from "Data/Chart/Granularity"
 import { USD } from "Data/Unit"
 import { TransactionType } from "Data/Chart/TransactionType"
 
-const useStyles = makeStyles(({ palette }) => ({
-  self: {
+const useStyles = makeStyles(({ palette, breakpoints }) => ({
+  root: {
     background: "unset",
   },
 
   title: {
     color: palette.primary.main,
     marginBottom: 50,
+    [breakpoints.down("sm")]: { marginBottom: 30 },
   },
 
   panel: {
-    background: `linear-gradient(126.33deg, ${palette.background.paper}AA 9.83%, ${palette.background.paper}00 96.44%);`,
+    background: `linear-gradient(126.33deg, ${palette.background.paper} 9.83%, #00000000 96.44%);`,
     borderRadius: "10px",
     padding: "30px 20px 0px",
     filter: "drop-shadow(2px 2px 10px rgba(0, 0, 0, 0.1))",
+
+    [breakpoints.down("sm")]: {
+      padding: "15px 10px 0px",
+      marginBottom: 30,
+    },
   },
 
   panelFilter: {
@@ -50,27 +56,43 @@ const useStyles = makeStyles(({ palette }) => ({
     color: palette.primary.main,
     paddingBottom: "30px",
 
-    [`& span`]: {
+    [`& h6`]: {
       padding: "10px",
       cursor: "pointer",
       textTransform: "uppercase",
+
+      [breakpoints.down("sm")]: {
+        padding: "5px",
+        fontSize: 8,
+      },
+    },
+
+    [breakpoints.down("sm")]: {
+      paddingBottom: "10px",
     },
   },
 
   panelFilterByType: {
+    display: "flex",
     [`& .active`]: {
       color: palette.secondary.main,
     },
   },
 
   panelFilterByDate: {
-    [`& span`]: {
+    display: "flex",
+    [`& h6`]: {
       background: "transparent",
       borderRadius: "25px",
-      padding: "8px 15px",
+      padding: "6px 15px",
 
       [`&.active`]: {
-        background: palette.primary.light,
+        background: `linear-gradient(90deg, ${palette.secondary.dark} 0%, ${palette.secondary.main} 100%)`,
+        color: palette.common.white,
+      },
+
+      [breakpoints.down("sm")]: {
+        padding: "4px 10px",
       },
     },
   },
@@ -79,7 +101,7 @@ const useStyles = makeStyles(({ palette }) => ({
 const ChartSection: React.FC = () => {
   const { palette, breakpoints } = useTheme()
   const dark = useIsDarkMode()
-  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const mobile = useMediaQuery(breakpoints.down("sm"))
   const classes = useStyles({ dark, mobile })
 
   const [volumeChartFilter, setVolumeChartFilter] = useState({
@@ -91,7 +113,7 @@ const ChartSection: React.FC = () => {
     date: Granularity.OneMonth,
   })
 
-  let options: ApexOptions = {
+  const options: ApexOptions = {
     chart: {
       id: "basic-bar",
       zoom: {
@@ -115,7 +137,7 @@ const ChartSection: React.FC = () => {
         show: true,
         style: {
           colors: palette.secondary.main,
-          fontSize: "13px",
+          fontSize: !mobile ? "13px" : "8px",
           fontFamily: "Museo Sans",
           fontWeight: 600,
         },
@@ -138,8 +160,7 @@ const ChartSection: React.FC = () => {
           colors: palette.primary.main,
           fontFamily: "Museo Sans",
           fontWeight: 600,
-          fontSize: "16px",
-          cssClass: "apexcharts-yaxis-label",
+          fontSize: !mobile ? "16px" : "10px",
         },
         formatter: (n) => printCurrencyUSD(USD.iso.wrap(n)),
       },
@@ -153,10 +174,10 @@ const ChartSection: React.FC = () => {
     },
     fill: {
       type: "gradient",
-      colors: [!dark ? "#202F9A" : "#73d6f1"],
+      colors: [palette.secondary.main],
       gradient: {
         type: "vertical", // The gradient in the horizontal direction
-        gradientToColors: [!dark ? "#5F72FF" : "#73D6F1"], // The color at the end of the gradient
+        gradientToColors: [palette.secondary.main], // The color at the end of the gradient
         opacityFrom: 1, // transparency
         opacityTo: 0.3,
         stops: [0, 1200],
@@ -274,25 +295,13 @@ const ChartSection: React.FC = () => {
 
   useEffect(() => {
     setVolumeOptions({
-      ...volumeOptions,
-      fill: {
-        colors: [!dark ? "#202F9A" : "#73d6f1"],
-        gradient: {
-          gradientToColors: [!dark ? "#5F72FF" : "#73D6F1"],
-        },
-      },
+      ...options,
     })
     setLiquidityOptions({
-      ...liquidityOptions,
-      fill: {
-        colors: [!dark ? "#202F9A" : "#73d6f1"],
-        gradient: {
-          gradientToColors: [!dark ? "#5F72FF" : "#73D6F1"],
-        },
-      },
+      ...options,
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dark])
+  }, [palette, mobile])
 
   const handleVolumeChartFilterChange = (event: object) => {
     setVolumeChartFilter({ ...volumeChartFilter, ...event })
@@ -317,12 +326,7 @@ const ChartSection: React.FC = () => {
       case "Pending":
         return (
           <Box
-            // position="absolute"
-            // top={0}
-            // left={0}
-            // width="100%"
-            // height="100%"
-            padding={"150px"}
+            padding={"100px"}
             display="flex"
             justifyContent="center"
             alignItems="center"
@@ -356,12 +360,7 @@ const ChartSection: React.FC = () => {
       case "Pending":
         return (
           <Box
-            // position="absolute"
-            // top={0}
-            // left={0}
-            // width="100%"
-            // height="100%"
-            padding={"150px"}
+            padding={"100px"}
             display="flex"
             justifyContent="center"
             alignItems="center"
@@ -380,8 +379,8 @@ const ChartSection: React.FC = () => {
   }
 
   return (
-    <Box className={cx(classes.self)}>
-      <Grid container spacing={5}>
+    <Box className={cx(classes.root)}>
+      <Grid container spacing={!mobile ? 5 : 2}>
         <Grid item sm={12} md={6} style={{ width: "100%" }}>
           <Typography variant="h1" component="h1" className={cx(classes.title)}>
             Volume
@@ -400,7 +399,7 @@ const ChartSection: React.FC = () => {
                 ].map(([transactionType, label]) => (
                   <Typography
                     variant="h6"
-                    component="span"
+                    component="h6"
                     key={label}
                     onClick={() =>
                       handleVolumeChartFilterChange({ type: transactionType })
@@ -420,7 +419,7 @@ const ChartSection: React.FC = () => {
                 ].map(([granularity, label]) => (
                   <Typography
                     variant="h6"
-                    component="span"
+                    component="h6"
                     key={label}
                     onClick={() =>
                       handleVolumeChartFilterChange({ date: granularity })
@@ -450,7 +449,7 @@ const ChartSection: React.FC = () => {
                 ].map(([granularity, label]) => (
                   <Typography
                     variant="h6"
-                    component="span"
+                    component="h6"
                     key={label}
                     onClick={() =>
                       handleLiquidityChartFilterChange({ date: granularity })

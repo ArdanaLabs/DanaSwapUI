@@ -1,5 +1,5 @@
 import React from "react"
-import { Box, Grid, useMediaQuery } from "@material-ui/core"
+import { Box, Grid, useMediaQuery } from "@mui/material"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
 
@@ -23,7 +23,7 @@ import { useTotalStats } from "state/home/hooks"
 import { printCurrencyUSD } from "hooks"
 
 const useStyles = makeStyles(({ palette }) => ({
-  self: {
+  root: {
     // background: "transparent",
     // margin: "auto -10px",
   },
@@ -110,34 +110,30 @@ const OverViewSection: React.FC = () => {
       case "Success":
         const ts: TotalStats = rts.success
         return (
-          <Grid container>
-            <Grid container item sm={12} md={6}>
-              <Grid item xs={6} sm={3}>
-                <OverViewBox label={"TVL\n\n"} content={"$220.21M"} />
-              </Grid>
-              <Grid item xs={6} sm={3}>
-                {renderTotalDepositsAllPoolsUSD(ts.totalDepositsAllPoolsUSD)}
-              </Grid>
-              <Grid item xs={6} sm={3}>
-                {renderTotalLiquidityUtilization(ts.totalLiquidityUtilization)}
-              </Grid>
-              <Grid item xs={6} sm={3}>
-                {renderTotalDailyVolumeUSD(ts.totalDailyVolumeUSD)}
-              </Grid>
+          <Grid container columns={8} spacing={1}>
+            <Grid item xs={4} sm={2} md={1}>
+              <OverViewBox label={"TVL\n\n"} content={"$220.21M"} />
             </Grid>
-            <Grid container item sm={12} md={6}>
-              <Grid item xs={6} sm={3}>
-                {renderTotalDailyFeeVolumeUSD(ts.totalDailyFeeVolumeUSD)}
-              </Grid>
-              <Grid item xs={6} sm={3}>
-                <OverViewBox label={"Dana Price\n\n"} content={"$220.21M"} />
-              </Grid>
-              <Grid item xs={6} sm={3}>
-                <OverViewBox label={"% of Dana Locked"} content={"30.11%"} />
-              </Grid>
-              <Grid item xs={6} sm={3}>
-                <OverViewBox label={"Dana Staking\nAPY"} content={"30.11%"} />
-              </Grid>
+            <Grid item xs={4} sm={2} md={1}>
+              {renderTotalDepositsAllPoolsUSD(ts.totalDepositsAllPoolsUSD)}
+            </Grid>
+            <Grid item xs={4} sm={2} md={1}>
+              {renderTotalLiquidityUtilization(ts.totalLiquidityUtilization)}
+            </Grid>
+            <Grid item xs={4} sm={2} md={1}>
+              {renderTotalDailyVolumeUSD(ts.totalDailyVolumeUSD)}
+            </Grid>
+            <Grid item xs={4} sm={2} md={1}>
+              {renderTotalDailyFeeVolumeUSD(ts.totalDailyFeeVolumeUSD)}
+            </Grid>
+            <Grid item xs={4} sm={2} md={1}>
+              <OverViewBox label={"Dana Price\n\n"} content={"$220.21M"} />
+            </Grid>
+            <Grid item xs={4} sm={2} md={1}>
+              <OverViewBox label={"% of Dana Locked"} content={"30.11%"} />
+            </Grid>
+            <Grid item xs={4} sm={2} md={1}>
+              <OverViewBox label={"Dana Staking\nAPY"} content={"30.11%"} />
             </Grid>
           </Grid>
         )
@@ -155,7 +151,7 @@ const OverViewSection: React.FC = () => {
     }
   }
 
-  return <Box className={cx(classes.self)}>{renderTotalStats(totalStats)}</Box>
+  return <Box className={cx(classes.root)}>{renderTotalStats(totalStats)}</Box>
 }
 
 export default OverViewSection

@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import {
   Box,
   IconButton,
@@ -20,12 +20,13 @@ import LogoLight from "assets/logo-light.png"
 import LogoDark from "assets/logo-dark.png"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
-  self: {
+  root: {
     position: "fixed",
     top: 0,
-    background: palette.background.default,
     zIndex: 100,
     width: "100%",
+    filter: "drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.05))",
+    mixBlendMode: "normal",
   },
 
   container: {
@@ -79,7 +80,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
         left: 0,
         height: "2.5px",
         borderRadius: "2px",
-        background: "linear-gradient(90deg, #5F72FF 0%, #73D6F1 100%)",
+        background: `linear-gradient(90deg, ${palette.secondary.dark} 0%, ${palette.secondary.main} 100%)`,
 
         [breakpoints.down("xs")]: {
           display: "none",
@@ -111,6 +112,7 @@ const Header: React.FC = () => {
   const { pathname } = useLocation<{ previous: string }>()
 
   const [openMenu, setOpenMenu] = useState(false)
+  const [bgColor, setBGColor] = useState("transparent")
 
   const toggleMenu = () => {
     setOpenMenu((prev) => !prev)
@@ -124,8 +126,21 @@ const Header: React.FC = () => {
     console.log("connect wallet button clicked!")
   }
 
+  const handleScroll = () => {
+    setBGColor(
+      window.scrollY > 0 ? theme.palette.background.default : "transparent"
+    )
+  }
+
+  useEffect(() => {
+    handleScroll()
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [theme])
+
   return (
-    <Box className={cx(classes.self)}>
+    <Box className={cx(classes.root)} style={{ background: bgColor }}>
       <Container>
         <Box className={cx(classes.container)}>
           <Box
@@ -193,9 +208,6 @@ const Header: React.FC = () => {
               height={43}
               clickable
               label={"CONNECT WALLET"}
-              gradientColor={
-                dark ? ["#5F72FF", "#73D6F1"] : ["#030D53", "#3B4BC2"]
-              }
               onClick={onConnectWallet}
             />
           </Box>

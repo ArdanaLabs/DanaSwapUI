@@ -9,43 +9,35 @@ import { merge } from "lodash"
 // custom colors
 
 const primaryDark = {
-  light: "linear-gradient(89.62deg, #72D2F2 0.3%, #6077FF 99.64%)",
   main: "#FFFFFF",
-  dark: "#3142A3",
 }
 const primaryLight = {
-  light: "linear-gradient(89.62deg, #000A4F 0.3%, #3C4DC5 99.64%)",
-  main: "#235DF4",
-  dark: "linear-gradient(90.19deg, #2F3DA0 27.19%, #73D6F1 99.87%)",
+  main: "#1E2769",
 }
 
 const secondaryDark = {
-  light: "#131B59",
   main: "#73D6F1",
-  dark: "rgba(24, 33, 100, 0.5)",
+  dark: "#5F72FF",
 }
 const secondaryLight = {
-  light: "linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%)",
-  main: "#636060",
-  dark: "#A5A5A5",
+  main: "#314BC7",
+  dark: "#030D53",
 }
 
 const infoDark = {
-  main: "#253082",
-  dark: "linear-gradient(180deg, #73D6F1 0%, #5F72FF 99.99%, #2F3DA0 100%)",
+  main: "#253082AA",
 }
 const infoLight = {
-  main: "#F5F5F5",
-  dark: "linear-gradient(180deg, #A5A5A5 0%, #A5A5A5 54.17%, #A5A5A5 99.99%)",
+  main: "#3A89D919",
 }
 
 const backgroundDark = {
   default: "#080E42",
-  paper: "#253082",
+  paper: "#253082AA",
 }
 const backgroundLight = {
   default: "#F5F5F5",
-  paper: "#FFFFFF",
+  paper: "#3A89D919",
 }
 
 const textDark = {
