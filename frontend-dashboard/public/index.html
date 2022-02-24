@@ -2,23 +2,9 @@
 <html lang="en-US">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self';
-    connect-src 'self' *.ardana.org; img-src 'self' data:; script-src 'self' <%=
-    process.env.NODE_ENV === "development" ? "'unsafe-inline' 'unsafe-eval'" :
-    "" %>; style-src 'self' <%= process.env.NODE_ENV === "development" ?
-    "'unsafe-inline'" : "" %>; object-src 'none'" />
-    <meta http-equiv="X-XSS-Protection" content="1;mode=block" />
-    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-    <meta
-      http-equiv="Referrer-Policy"
-      content="strict-origin-when-cross-origin"
-    />
-    <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
-
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="theme-color" content="#235DF4" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
     <meta
       name="description"
       content="Ardana is a decentralized exchange stable asset liquidity pool and on-chain asset backed stablecoin protocol built on Cardano."
@@ -42,16 +28,7 @@
     <!-- <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"> -->
   </head>
   <body>
-    <noscript>
-      <p lang="en" style="margin: auto; padding: 1rem; max-width: 56ex">
-        This <abbr title="application">app</abbr> requires you to enable
-        JavaScript. Here are the
-        <a href="https://www.enable-javascript.com/en/"
-          >instructions how to enable JavaScript in your web browser</a
-        >.
-      </p>
-    </noscript>
-
+    <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
       This HTML file is a template.

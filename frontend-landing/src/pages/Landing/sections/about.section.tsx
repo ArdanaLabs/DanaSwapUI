@@ -21,7 +21,8 @@ import BG_RIGHT from "assets/backgrounds/cyan-gradient.png"
 import { ArdanaFeatures } from "data"
 import { GradientButton } from "components"
 
-const aboutVideo = "https://www.youtube.com/watch?v=pn8OiMxToV8"
+const aboutVideo =
+  "https://background.sfo3.digitaloceanspaces.com/about/output.m3u8"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
@@ -80,7 +81,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
         objectFit: "cover",
       },
     },
-    "& > div > video, & .react-player__preview, & iframe": {
+    "& > div > video, & .react-player__preview": {
       borderRadius: "10px",
     },
     [breakpoints.down("xs")]: {
