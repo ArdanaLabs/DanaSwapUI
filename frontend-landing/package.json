@@ -22,6 +22,7 @@
     "ajv": "^8.9.0",
     "classnames": "^2.2.6",
     "hamburger-react": "^2.4.1",
+    "hls.js": "^1.1.5",
     "lodash": "^4.17.20",
     "postcss": "^8.1.0",
     "postcss-flexbugs-fixes": "^5.0.2",
