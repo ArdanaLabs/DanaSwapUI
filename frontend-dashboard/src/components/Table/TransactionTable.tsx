@@ -13,9 +13,6 @@ import {
 } from "@material-ui/core"
 import { makeStyles, useTheme, withStyles } from "@material-ui/core/styles"
 import cx from "classnames"
-import { useIsDarkMode } from "state/user/hooks"
-import { Button } from "components/Button"
-import { fetchPoolTransactions } from "state/chart/hooks"
 
 import * as E from "fp-ts/Either"
 import * as O from "fp-ts/Option"
@@ -30,8 +27,12 @@ import * as PoolSetName from "Data/Pool/PoolSetName"
 import * as Transaction from "Data/Transaction"
 import * as Transfer from "Data/Transfer"
 import * as Trade from "Data/Trade"
+import * as Theme from "Data/User/Theme"
 
 import { printAssetQuantity, printDate } from "hooks"
+import { useUserTheme } from "state/user/hooks"
+import { Button } from "components/Button"
+import { fetchPoolTransactions } from "state/chart/hooks"
 
 const StyledTableCellHead = withStyles(({ palette }) => ({
   root: {
@@ -173,9 +174,12 @@ export const TransactionTable: React.FC<Props> = ({
   poolSet,
 }: Props): JSX.Element => {
   const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
+  const userTheme: Theme.Theme = useUserTheme()
   const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const classes = useStyles({
+    dark: Theme.Eq.equals(userTheme, Theme.Theme.Dark),
+    mobile,
+  })
 
   const columns = [
     "",

@@ -1,8 +1,11 @@
 import React from "react"
 import { Box, Fade, Grid, Link, useMediaQuery } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
-import { useIsDarkMode } from "state/user/hooks"
 import cx from "classnames"
+
+import * as Theme from "Data/User/Theme"
+
+import { useUserTheme } from "state/user/hooks"
 import { PoolRatePerDANAList, WeeklyFeeList, depositePools } from "data"
 import { CheckGroup } from "components/Button"
 
@@ -107,8 +110,11 @@ const useStyles = makeStyles(({ palette }) => ({
 const DANA: React.FC = () => {
   const { breakpoints } = useTheme()
   const mobile = useMediaQuery(breakpoints.down("xs"))
-  const dark = useIsDarkMode()
-  const classes = useStyles({ dark, mobile })
+  const userTheme: Theme.Theme = useUserTheme()
+  const classes = useStyles({
+    dark: Theme.Eq.equals(userTheme, Theme.Theme.Dark),
+    mobile,
+  })
 
   return (
     <Fade in={true}>
@@ -117,6 +123,7 @@ const DANA: React.FC = () => {
           <Box component="dl" className={cx(classes.panel)} grid-gap={"40px"}>
             <Box className={cx(classes.displayBox)}>
               <Box>1 DANA locked for 4 years = 1exDANA</Box>
+              {/* TODO: use padding/gap, not breaks …and maybe change to a more descriptive elements */}
               <br />
               <Box>1 DANA locked for 3 years = 0. 75exDANA</Box>
               <br />

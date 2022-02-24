@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { Box, Container, Grid, Fade, useMediaQuery } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
-import { useIsDarkMode } from "state/user/hooks"
 import cx from "classnames"
-import { StatBox } from "components/Box"
 
 import * as O from "fp-ts/Option"
 import { RemoteData } from "fp-ts-remote-data"
@@ -12,6 +10,10 @@ import { ByTxType } from "Data/ByTxType"
 import { FetchDecodeError } from "Data/FetchDecode"
 import { TotalDeposits, TotalDailyVolume } from "Data/Stats/AggregateStats"
 import { TotalStats } from "Data/Stats/CombinedStats"
+import * as Theme from "Data/User/Theme"
+
+import { StatBox } from "components/Box"
+import { useUserTheme } from "state/user/hooks"
 
 import IMG_TVL from "assets/icons/tvl.png"
 import IMG_Worth from "assets/icons/worth.png"
@@ -76,8 +78,11 @@ const PartialStatsSection: React.FC<PartialStatsSectionProps> = ({
 }) => {
   const { breakpoints } = useTheme()
   const mobile = useMediaQuery(breakpoints.down("xs"))
-  const dark = useIsDarkMode()
-  const classes = useStyles({ dark, mobile })
+  const userTheme: Theme.Theme = useUserTheme()
+  const classes = useStyles({
+    dark: Theme.Eq.equals(userTheme, Theme.Theme.Dark),
+    mobile,
+  })
 
   const [activeIndex, setActiveIndex] = useState(-1)
 

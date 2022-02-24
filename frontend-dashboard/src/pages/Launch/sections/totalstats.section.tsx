@@ -1,11 +1,15 @@
 import React from "react"
 import { Box, Container, Grid, useMediaQuery } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
-import { useIsDarkMode } from "state/user/hooks"
 import cx from "classnames"
-import IMG_bg from "assets/backgrounds/launch-bg.png"
 import { default as ReactPlayer } from "react-player"
 import ScrollAnimation from "react-animate-on-scroll"
+
+import * as Theme from "Data/User/Theme"
+
+import { useUserTheme } from "state/user/hooks"
+
+import IMG_bg from "assets/backgrounds/launch-bg.png"
 
 const heroVideo =
   "https://background.sfo3.digitaloceanspaces.com/background/output.m3u8"
@@ -21,7 +25,7 @@ const statInfo = [
     content: "$7.00",
   },
   {
-    label: "Ecosystem TVL",
+    label: "Ecosystem TVL", // Possible to add <abbr>?
     content: "$92.68 billion",
   },
   {
@@ -70,6 +74,7 @@ const useStyles = makeStyles(({ palette }) => ({
     "fontSize": "48px",
     "lineHeight": "120.5%",
     "textAlign": "center",
+    "textTransform": "uppercase",
     "color": "#FFFFFF",
     "padding": "30px",
 
@@ -118,8 +123,11 @@ const TotalStatsSection: React.FC<TotalStatsSectionProps> = ({
 }) => {
   const { breakpoints } = useTheme()
   const mobile = useMediaQuery(breakpoints.down("xs"))
-  const dark = useIsDarkMode()
-  const classes = useStyles({ dark, mobile })
+  const userTheme: Theme.Theme = useUserTheme()
+  const classes = useStyles({
+    dark: Theme.Eq.equals(userTheme, Theme.Theme.Dark),
+    mobile,
+  })
 
   return (
     <Box className={cx(classes.root)} top={top}>
@@ -137,9 +145,9 @@ const TotalStatsSection: React.FC<TotalStatsSectionProps> = ({
           <Container>
             <ScrollAnimation animateIn="fadeInUp">
               <Box className={cx(classes.title)}>
-                DECENTRALIZED
+                Decentralized
                 <br />
-                <span>STABLECOIN HUB</span>
+                <span>Stablecoin Hub</span>
               </Box>
             </ScrollAnimation>
 

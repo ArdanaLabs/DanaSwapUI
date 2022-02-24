@@ -3,7 +3,10 @@ import cx from "classnames"
 import { Box, useMediaQuery } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import ScrollAnimation from "react-animate-on-scroll"
-import { useIsDarkMode } from "state/user/hooks"
+
+import * as Theme from "Data/User/Theme"
+
+import { useUserTheme } from "state/user/hooks"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
@@ -74,9 +77,12 @@ const StatBox: React.FC<StatBoxProps> = ({
   delay = 0,
 }) => {
   const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
+  const userTheme: Theme.Theme = useUserTheme()
   const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const classes = useStyles({
+    dark: Theme.Eq.equals(userTheme, Theme.Theme.Dark),
+    mobile,
+  })
 
   return (
     <ScrollAnimation

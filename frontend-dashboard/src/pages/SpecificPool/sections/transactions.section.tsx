@@ -4,8 +4,9 @@ import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
 
 import * as PoolSetName from "Data/Pool/PoolSetName"
+import * as Theme from "Data/User/Theme"
 
-import { useIsDarkMode } from "state/user/hooks"
+import { useUserTheme } from "state/user/hooks"
 import { TransactionTable } from "components"
 
 const useStyles = makeStyles(({ palette }) => ({
@@ -28,9 +29,12 @@ const TransactionsSection: React.FC<Props> = ({
   poolSet,
 }: Props): JSX.Element => {
   const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
+  const userTheme: Theme.Theme = useUserTheme()
   const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const classes = useStyles({
+    dark: Theme.Eq.equals(userTheme, Theme.Theme.Dark),
+    mobile,
+  })
 
   return (
     <Box className={cx(classes.root)}>

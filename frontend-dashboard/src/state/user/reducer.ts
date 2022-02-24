@@ -1,36 +1,44 @@
-import { createReducer } from "@reduxjs/toolkit"
+import { ActionReducerMapBuilder, createReducer } from "@reduxjs/toolkit"
 
-import { updateMediaDarkMode, updateUserDarkMode } from "./actions"
+import * as O from "fp-ts/Option"
 
-const currentTimestamp = () => new Date().getTime()
+import { SupportedW3ColorScheme, Theme } from "Data/User/Theme"
 
-export const DARK_MODE_LOCALSTORAGE_KEY = "user/dark_mode"
+import { updatePrefersColorScheme, updateUserTheme } from "./actions"
+
+function currentTimestamp(): number {
+  return new Date().getTime()
+}
+
+export const THEME_LOCALSTORAGE_KEY = "user/theme"
+
 export interface UserState {
   lastUpdateVersionTimestamp?: number
-  userDarkMode: boolean | null // the user's choice for dark mode or light mode
-  mediaDarkMode: boolean // whether the dark mode media query matches
+  theme: O.Option<Theme> // current theme
+  prefersColorScheme: O.Option<SupportedW3ColorScheme>
   timestamp: number
 }
 
 export const initialState: UserState = {
-  userDarkMode: null,
-  mediaDarkMode: false,
-  timestamp: currentTimestamp(),
+  theme: O.none,
+  prefersColorScheme: O.none,
+  timestamp: currentTimestamp(), // side-effect
 }
 
-export default createReducer(initialState, (builder) =>
-  builder
-    .addCase(updateUserDarkMode, (state, action) => {
-      localStorage.setItem(
-        DARK_MODE_LOCALSTORAGE_KEY,
-        action.payload.userDarkMode ? "1" : "0"
-      )
-
-      state.userDarkMode = action.payload.userDarkMode
-      state.timestamp = currentTimestamp()
-    })
-    .addCase(updateMediaDarkMode, (state, action) => {
-      state.mediaDarkMode = action.payload.mediaDarkMode
-      state.timestamp = currentTimestamp()
-    })
+export default createReducer(
+  initialState,
+  (builder: ActionReducerMapBuilder<UserState>) =>
+    builder
+      .addCase(updateUserTheme, (state, action) => {
+        localStorage.setItem(
+          THEME_LOCALSTORAGE_KEY,
+          action.payload.toString(10)
+        )
+        const timestamp = currentTimestamp()
+        return { ...state, theme: O.some(action.payload), timestamp }
+      })
+      .addCase(updatePrefersColorScheme, (state, action) => {
+        const timestamp = currentTimestamp()
+        return { ...state, prefersColorScheme: action.payload, timestamp }
+      })
 )

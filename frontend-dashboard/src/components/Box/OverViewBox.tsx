@@ -2,7 +2,10 @@ import React from "react"
 import cx from "classnames"
 import { Box, useMediaQuery } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
-import { useIsDarkMode } from "state/user/hooks"
+
+import * as Theme from "Data/User/Theme"
+
+import { useUserTheme } from "state/user/hooks"
 
 import ICO_Info_light from "assets/svg/info_light.svg"
 import ICO_Info_dark from "assets/svg/info_dark.svg"
@@ -63,16 +66,17 @@ export interface OverViewBoxProps {
 
 const OverViewBox: React.FC<OverViewBoxProps> = ({ label, content, info }) => {
   const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
+  const userTheme: Theme.Theme = useUserTheme()
   const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const isDarkTheme: boolean = Theme.Eq.equals(userTheme, Theme.Theme.Dark)
+  const classes = useStyles({ dark: isDarkTheme, mobile })
 
   return (
     <Box className={cx(classes.self)}>
       <Box
         className={cx(classes.bg)}
         style={
-          !dark
+          isDarkTheme
             ? {
                 boxShadow: "0px 4px 4px #E5E5E5",
               }
@@ -83,7 +87,7 @@ const OverViewBox: React.FC<OverViewBoxProps> = ({ label, content, info }) => {
       >
         <Box className={cx(classes.leftBorder)}>&nbsp;&nbsp;</Box>
         <Box className={cx(classes.info)}>
-          <img src={!dark ? ICO_Info_light : ICO_Info_dark} alt="info" />
+          <img src={isDarkTheme ? ICO_Info_dark : ICO_Info_light} alt="" />
         </Box>
 
         <Box className={cx(classes.display)}>

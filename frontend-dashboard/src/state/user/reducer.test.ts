@@ -1,18 +1,33 @@
+import { testProp } from "jest-fast-check"
+
+import * as O from "fp-ts/Option"
+import { getOption } from "fp-ts-laws/lib/Option"
+
+import * as Theme from "Data/User/Theme"
+import { genTheme, genSupportedW3ColorScheme } from "Data/User/Theme/Gen"
+
 import reducer, { initialState } from "./reducer"
-import { updateMediaDarkMode, updateUserDarkMode } from "./actions"
+import { updatePrefersColorScheme, updateUserTheme } from "./actions"
 
 describe("User reducers", () => {
-  it("should return mediaDarkMode value when dispatch updateMediaDarkMode action", () => {
-    const mock = { mediaDarkMode: true }
-    expect(
-      reducer(initialState, updateMediaDarkMode(mock)).mediaDarkMode
-    ).toEqual(true)
-  })
+  testProp(
+    "should return prefersColorScheme value when dispatch updatePrefersColorScheme action",
+    [getOption(genSupportedW3ColorScheme)],
+    (oscheme: O.Option<Theme.SupportedW3ColorScheme>) => {
+      expect(
+        reducer(initialState, updatePrefersColorScheme(oscheme))
+          .prefersColorScheme
+      ).toEqual(oscheme)
+    }
+  )
 
-  it("should return userDarkMode value when dispatch updateUserDarkMode action", () => {
-    const mock = { userDarkMode: true }
-    expect(
-      reducer(initialState, updateUserDarkMode(mock)).userDarkMode
-    ).toEqual(true)
-  })
+  testProp(
+    "should return theme value when dispatch updateUserTheme action",
+    [genTheme],
+    (theme: Theme.Theme) => {
+      expect(reducer(initialState, updateUserTheme(theme)).theme).toEqual(
+        O.some(theme)
+      )
+    }
+  )
 })

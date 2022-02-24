@@ -16,8 +16,9 @@ import * as Asset from "Data/Asset"
 import { USD } from "Data/Unit"
 import { LiquidityChart, VolumeChart } from "Data/Chart"
 import { Granularity } from "Data/Chart/Granularity"
+import * as Theme from "Data/User/Theme"
 
-import { useIsDarkMode } from "state/user/hooks"
+import { useUserTheme } from "state/user/hooks"
 import { extractDateAxis, printCurrencyUSD, printDate } from "hooks"
 import { usePoolVolume, usePoolLiquidity } from "state/chart/hooks"
 
@@ -181,9 +182,10 @@ export type Props = {
 
 const StatsSection: React.FC<Props> = ({ poolSet, poolStats }: Props) => {
   const { palette, breakpoints } = useTheme()
-  const dark = useIsDarkMode()
+  const userTheme: Theme.Theme = useUserTheme()
+  const isDarkTheme: boolean = Theme.Eq.equals(userTheme, Theme.Theme.Dark)
   const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const classes = useStyles({ dark: isDarkTheme, mobile })
 
   const { poolVolume, fetchPoolVolume } = usePoolVolume()
   const { poolLiquidity, fetchPoolLiquidity } = usePoolLiquidity()
@@ -230,10 +232,10 @@ const StatsSection: React.FC<Props> = ({ poolSet, poolStats }: Props) => {
     },
     fill: {
       type: "gradient",
-      colors: [!dark ? "#202F9A" : "#73d6f1"],
+      colors: [isDarkTheme ? "#73d6f1" : "#202F9A"],
       gradient: {
         type: "vertical", // The gradient in the horizontal direction
-        gradientToColors: [!dark ? "#5F72FF" : "#73D6F1"], // The color at the end of the gradient
+        gradientToColors: [isDarkTheme ? "#73D6F1" : "#5F72FF"], // The color at the end of the gradient
         opacityFrom: 1, // transparency
         opacityTo: 0.3,
         stops: [0, 1200],
@@ -313,10 +315,10 @@ const StatsSection: React.FC<Props> = ({ poolSet, poolStats }: Props) => {
               },
               fill: {
                 type: "gradient",
-                colors: [!dark ? "#202F9A" : "#73d6f1"],
+                colors: [isDarkTheme ? "#73d6f1" : "#202F9A"],
                 gradient: {
                   type: "vertical", // The gradient in the horizontal direction
-                  gradientToColors: [!dark ? "#5F72FF" : "#73D6F1"], // The color at the end of the gradient
+                  gradientToColors: [isDarkTheme ? "#73D6F1" : "#5F72FF"], // The color at the end of the gradient
                   opacityFrom: 1, // transparency
                   opacityTo: 0.3,
                   stops: [0, 1200],
@@ -371,10 +373,10 @@ const StatsSection: React.FC<Props> = ({ poolSet, poolStats }: Props) => {
                   },
                   fill: {
                     type: "gradient",
-                    colors: [!dark ? "#202F9A" : "#73d6f1"],
+                    colors: [isDarkTheme ? "#73d6f1" : "#202F9A"],
                     gradient: {
                       type: "vertical", // The gradient in the horizontal direction
-                      gradientToColors: [!dark ? "#5F72FF" : "#73D6F1"], // The color at the end of the gradient
+                      gradientToColors: [isDarkTheme ? "#73D6F1" : "#5F72FF"], // The color at the end of the gradient
                       opacityFrom: 1, // transparency
                       opacityTo: 0.3,
                       stops: [0, 1200],
@@ -426,10 +428,10 @@ const StatsSection: React.FC<Props> = ({ poolSet, poolStats }: Props) => {
                   },
                   fill: {
                     type: "gradient",
-                    colors: [!dark ? "#202F9A" : "#73d6f1"],
+                    colors: [isDarkTheme ? "#73d6f1" : "#202F9A"],
                     gradient: {
                       type: "vertical", // The gradient in the horizontal direction
-                      gradientToColors: [!dark ? "#5F72FF" : "#73D6F1"], // The color at the end of the gradient
+                      gradientToColors: [isDarkTheme ? "#73D6F1" : "#5F72FF"], // The color at the end of the gradient
                       opacityFrom: 1, // transparency
                       opacityTo: 0.3,
                       stops: [0, 1200],

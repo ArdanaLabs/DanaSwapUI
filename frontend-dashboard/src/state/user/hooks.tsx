@@ -1,27 +1,44 @@
 // import { useCallback } from 'react';
-import { shallowEqual, useDispatch, useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+
+import * as O from "fp-ts/Option"
+import { pipe } from "fp-ts/function"
+
+import * as Theme from "Data/User/Theme"
 
 import { AppDispatch, AppState } from "state"
-import { updateUserDarkMode } from "./actions"
+import { UserState } from "./reducer"
+import { updateUserTheme } from "./actions"
 
-export function useIsDarkMode(): boolean {
-  const { userDarkMode, mediaDarkMode } = useSelector<
-    AppState,
-    { userDarkMode: boolean | null; mediaDarkMode: boolean }
-  >(
-    ({ user: { mediaDarkMode, userDarkMode } }) => ({
-      userDarkMode,
-      mediaDarkMode,
-    }),
-    shallowEqual
+export function getTheme(
+  userState: Pick<UserState, "theme" | "prefersColorScheme">
+): Theme.Theme {
+  return pipe(
+    userState.theme,
+    O.alt(
+      (): O.Option<Theme.Theme> =>
+        O.chain(
+          (s: Theme.SupportedW3ColorScheme): O.Option<Theme.Theme> =>
+            Theme.fromW3ColorScheme(s)
+        )(userState.prefersColorScheme)
+    ),
+    O.getOrElse((): Theme.Theme => Theme.defaultTheme)
   )
-
-  return userDarkMode === null ? mediaDarkMode : userDarkMode
 }
 
-export function useDarkModeManager(): [boolean, (darkMode: boolean) => void] {
+export function useUserTheme(): Theme.Theme {
+  const user: UserState = useSelector<AppState, UserState>(
+    (state) => state.user
+  )
+  return getTheme(user)
+}
+
+export function useUserThemeManager(): [
+  Theme.Theme,
+  (newTheme: Theme.Theme) => void
+] {
   const dispatch = useDispatch<AppDispatch>()
-  const darkMode = useIsDarkMode()
+  const theme: Theme.Theme = useUserTheme()
 
   // const setDarkMode = useCallback(
   //   (darkMode: boolean) => {
@@ -29,9 +46,9 @@ export function useDarkModeManager(): [boolean, (darkMode: boolean) => void] {
   //   },
   //   [dispatch]
   // );
-  const setDarkMode = (darkMode: boolean) => {
-    dispatch(updateUserDarkMode({ userDarkMode: darkMode }))
+  const setTheme = (newTheme: Theme.Theme): void => {
+    dispatch(updateUserTheme(newTheme))
   }
 
-  return [darkMode, setDarkMode]
+  return [theme, setTheme]
 }

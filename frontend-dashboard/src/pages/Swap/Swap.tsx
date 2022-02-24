@@ -11,7 +11,9 @@ import { makeStyles, useTheme } from "@material-ui/core/styles"
 
 import cx from "classnames"
 
-import { useIsDarkMode } from "state/user/hooks"
+import * as Theme from "Data/User/Theme"
+
+import { useUserTheme } from "state/user/hooks"
 import { TokenBox } from "components/Box"
 import { Slider } from "components"
 import { Radio, SwapButton } from "components/Button"
@@ -137,9 +139,12 @@ const useStyles = makeStyles(({ palette }) => ({
 
 const Swap: React.FC = () => {
   const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
+  const userTheme: Theme.Theme = useUserTheme()
   const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const classes = useStyles({
+    dark: Theme.Eq.equals(userTheme, Theme.Theme.Dark),
+    mobile,
+  })
 
   const [fromAmount, setFromAmount] = useState(0)
   const [toAmount, setToAmount] = useState(0)

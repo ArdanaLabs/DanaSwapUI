@@ -2,8 +2,10 @@ import React, { useState } from "react"
 import cx from "classnames"
 import { Box, List, ListItem, useMediaQuery } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
-import { useIsDarkMode } from "state/user/hooks"
 
+import * as Theme from "Data/User/Theme"
+
+import { useUserTheme } from "state/user/hooks"
 import { TokenList } from "data"
 import { Dialog, DialogTitle } from "components/Dialog"
 import { Button } from "components/Button"
@@ -172,9 +174,12 @@ const TokenBox: React.FC<OverViewBoxProps> = ({
   className,
 }) => {
   const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
+  const userTheme: Theme.Theme = useUserTheme()
   const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const classes = useStyles({
+    dark: Theme.Eq.equals(userTheme, Theme.Theme.Dark),
+    mobile,
+  })
   const [openTokenDlg, setOpenTokenDlg] = useState(false)
 
   const [filter, setFilter] = useState({

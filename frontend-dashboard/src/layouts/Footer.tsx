@@ -3,7 +3,9 @@ import { Box, useMediaQuery, Container, Link } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
 
-import { useIsDarkMode } from "state/user/hooks"
+import * as Theme from "Data/User/Theme"
+
+import { useUserTheme } from "state/user/hooks"
 
 import LOGO_White from "assets/logo_white.png"
 import LOGO_Text from "assets/logo_text.png"
@@ -67,9 +69,12 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
 const Footer: React.FC = () => {
   const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
+  const userTheme: Theme.Theme = useUserTheme()
   const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const classes = useStyles({
+    dark: Theme.Eq.equals(userTheme, Theme.Theme.Dark),
+    mobile,
+  })
 
   return (
     <Box className={cx(classes.bg)}>
