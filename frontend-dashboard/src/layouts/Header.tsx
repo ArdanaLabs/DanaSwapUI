@@ -5,6 +5,7 @@ import {
   Drawer,
   useMediaQuery,
   Container,
+  Typography,
 } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import Hamburger from "hamburger-react"
@@ -13,7 +14,7 @@ import cx from "classnames"
 import { useIsDarkMode } from "state/user/hooks"
 import { useHistory, useLocation } from "react-router-dom"
 import ThemeSwitch from "components/ThemeSwitch"
-import { GradientButton } from "components/Button"
+import { GradientBox } from "components"
 
 import { navList } from "data"
 import LogoLight from "assets/logo-light.png"
@@ -101,6 +102,11 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       marginTop: "30px",
     },
   },
+
+  connectWallet: {
+    color: palette.primary.main,
+    textTransform: "uppercase",
+  },
 }))
 
 const Header: React.FC = () => {
@@ -172,13 +178,13 @@ const Header: React.FC = () => {
             {mobile && (
               <>
                 <IconButton
-                  style={{ height: "60px", padding: 0 }}
+                  style={{ height: "48px", padding: 0 }}
                   onClick={() => setOpenMenu(!openMenu)}
                 >
                   <Hamburger
                     size={30}
                     distance={"lg"}
-                    color={"linear-gradient(90deg, #5F72FF 0%, #73D6F1 100%)"}
+                    color={`linear-gradient(90deg, ${theme.palette.secondary.dark} 0%, ${theme.palette.secondary.main} 100%)`}
                     toggled={openMenu}
                     toggle={setOpenMenu}
                   />
@@ -203,13 +209,15 @@ const Header: React.FC = () => {
           </Box>
           <Box className={cx(classes.subHeader)}>
             <ThemeSwitch />
-            <GradientButton
-              width={180}
-              height={43}
-              clickable
-              label={"CONNECT WALLET"}
-              onClick={onConnectWallet}
-            />
+            <GradientBox width={180} height={43} onClick={onConnectWallet}>
+              <Typography
+                variant="h6"
+                component="span"
+                className={classes.connectWallet}
+              >
+                Connect Wallet
+              </Typography>
+            </GradientBox>
           </Box>
         </Box>
       </Container>

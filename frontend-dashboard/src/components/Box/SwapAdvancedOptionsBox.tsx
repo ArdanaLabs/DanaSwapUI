@@ -1,0 +1,373 @@
+import React, { ChangeEvent, useState, useEffect, useRef } from "react"
+import cx from "classnames"
+import {
+  Box,
+  Collapse,
+  Typography,
+  useMediaQuery,
+  RadioGroup,
+  Radio,
+  FormControlLabel,
+} from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import { useIsDarkMode } from "state/user/hooks"
+
+import { ReactComponent as ChevUpIcon } from "assets/icons/chev-up.svg"
+
+const useStyles = makeStyles(({ palette, breakpoints }) => ({
+  root: {
+    padding: "0 20px",
+  },
+  header: {
+    display: "flex",
+    alignItems: "center",
+    marginBottom: 20,
+
+    [`& > span`]: {
+      color: palette.primary.main,
+      textTransform: "uppercase",
+    },
+
+    [`& > svg`]: {
+      marginLeft: 10,
+      cursor: "pointer",
+      transition: "transform .2s",
+
+      [`& path`]: {
+        stroke: palette.primary.main,
+      },
+      [`&.collapsed`]: {
+        transform: "rotateZ(180deg)",
+      },
+    },
+  },
+  body: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+  },
+  radioGroupTitle: {
+    textTransform: "uppercase",
+    color: palette.secondary.main,
+    fontSize: 16,
+  },
+
+  formControlLabel: {
+    margin: 0,
+  },
+  optionText: {
+    color: palette.primary.main,
+    fontSize: 14,
+    fontWeight: 400,
+  },
+
+  styledRadio: {
+    padding: "7px 10px 7px 0 !important",
+    [`&:hover`]: {
+      backgroundColor: "transparent",
+    },
+  },
+  styledRadioIcon: {
+    borderRadius: "50%",
+    width: 18,
+    height: 18,
+    background: "transparent",
+    border: `1px solid ${palette.primary.main}`,
+  },
+  styledRadioCheckedIcon: {
+    background: `${palette.secondary.main}88`,
+  },
+
+  slippageAmountInput: {
+    width: 100,
+    height: 18,
+    borderRadius: 50,
+    background: `${palette.secondary.main}32`,
+    border: "none",
+    outline: "none",
+    textAlign: "center",
+    fontFamily: "Museo Sans",
+    fontWeight: 600,
+    fontSize: "9px",
+    color: palette.primary.main,
+
+    [`&.disable`]: {
+      pointerEvent: "none",
+    },
+    [`&::placeholder`]: {
+      color: palette.primary.main,
+    },
+    [`&::-webkit-outer-spin-button, &::-webkit-inner-spin-button`]: {
+      [`-webkit-appearance`]: "none",
+      margin: 0,
+    },
+  },
+}))
+
+export enum FilterOptionType {
+  INSERT = "Insert",
+  FILTER = "Filter",
+  NAMES = "Names",
+  HERE = "Here",
+  ACCORDINGLY = "Accordingly",
+}
+
+export enum GasPriceOptionType {
+  TWENTYANDHALF = 20.5,
+  TWENTYFIVE = 25,
+  TWENTYEIGHT = 28,
+  THIRTYTWO = 32,
+}
+
+interface Props {
+  filterOption: FilterOptionType
+  slippage: number
+  gasPriceOption: GasPriceOptionType
+  handleFilterOptionChange: (filterOption: FilterOptionType) => void
+  handleSlippageChange: (slippage: number) => void
+  handleGasPriceOptionChange: (gasPriceOption: GasPriceOptionType) => void
+}
+
+const SwapAdvancedOptionsBox: React.FC<Props> = ({
+  filterOption,
+  slippage,
+  gasPriceOption,
+  handleFilterOptionChange,
+  handleSlippageChange,
+  handleGasPriceOptionChange,
+}) => {
+  const { breakpoints } = useTheme()
+  const dark = useIsDarkMode()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark, mobile })
+  const [collapsed, setCollapsed] = useState(false)
+
+  const [customSlippageAmount, setCustomSlippageAmount] = useState<
+    number | undefined
+  >(undefined)
+
+  const slippageAmountRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    if (customSlippageAmount !== undefined) {
+      // handleSlippageChange(customSlippageAmount)
+      slippageAmountRef.current && slippageAmountRef.current.focus()
+    }
+  }, [customSlippageAmount, handleSlippageChange])
+
+  const StyledRadio = (props: any) => (
+    <Radio
+      className={classes.styledRadio}
+      disableRipple
+      color="default"
+      checkedIcon={
+        <span
+          className={cx(
+            classes.styledRadioIcon,
+            classes.styledRadioCheckedIcon
+          )}
+        />
+      }
+      icon={<span className={classes.styledRadioIcon} />}
+      {...props}
+    />
+  )
+
+  const StyledFormControlLabel = (props: any) => (
+    <FormControlLabel
+      className={classes.formControlLabel}
+      value={props.value}
+      control={<StyledRadio />}
+      label={props.label}
+    />
+  )
+
+  const SlippageAmountInput = () => (
+    <input
+      ref={slippageAmountRef}
+      className={cx(classes.slippageAmountInput, { disable: true })}
+      placeholder={"Custom Amount"}
+      type="number"
+      value={customSlippageAmount}
+      onChange={(e: ChangeEvent<HTMLInputElement>) =>
+        setCustomSlippageAmount(Number(e.target.value))
+      }
+      onBlur={() =>
+        customSlippageAmount && handleSlippageChange(customSlippageAmount)
+      }
+    />
+  )
+
+  const renderHeader = () => (
+    <Box className={classes.header}>
+      <Typography variant="h4" component="span">
+        Advanced Options
+      </Typography>
+      <ChevUpIcon
+        className={cx({ collapsed: collapsed })}
+        onClick={() => setCollapsed(!collapsed)}
+      />
+    </Box>
+  )
+
+  const renderFilterOptionGroup = () => (
+    <Box>
+      <Box mb={1}>
+        <Typography
+          variant="h4"
+          component="span"
+          className={classes.radioGroupTitle}
+        >
+          Filter
+        </Typography>
+      </Box>
+      <RadioGroup
+        aria-label={"Filter"}
+        name={"Filter"}
+        value={filterOption}
+        onChange={(e: ChangeEvent<HTMLInputElement>): void =>
+          handleFilterOptionChange(e.target.value as FilterOptionType)
+        }
+      >
+        {[
+          FilterOptionType.INSERT,
+          FilterOptionType.FILTER,
+          FilterOptionType.NAMES,
+          FilterOptionType.HERE,
+          FilterOptionType.ACCORDINGLY,
+        ].map((optionText) => (
+          <StyledFormControlLabel
+            key={optionText}
+            value={optionText}
+            label={
+              <Typography
+                variant="h4"
+                component="span"
+                className={classes.optionText}
+              >
+                {optionText}
+              </Typography>
+            }
+          />
+        ))}
+      </RadioGroup>
+    </Box>
+  )
+
+  const renderSlippageGroup = () => (
+    <Box>
+      <Box mb={1}>
+        <Typography
+          variant="h4"
+          component="span"
+          className={classes.radioGroupTitle}
+        >
+          Slippage
+        </Typography>
+      </Box>
+      <RadioGroup
+        aria-label={"Slippage"}
+        name={"Slippage"}
+        value={slippage}
+        onChange={(e: ChangeEvent<HTMLInputElement>): void => {
+          const value = Number(e.target.value) as number
+          if (value === 0.5 || value === 1) {
+            setCustomSlippageAmount(undefined)
+          }
+          handleSlippageChange(value)
+        }}
+      >
+        <StyledFormControlLabel
+          value={0.5}
+          label={
+            <Typography
+              variant="h4"
+              component="span"
+              className={classes.optionText}
+            >
+              0.5%
+            </Typography>
+          }
+        />
+        <StyledFormControlLabel
+          value={1}
+          label={
+            <Typography
+              variant="h4"
+              component="span"
+              className={classes.optionText}
+            >
+              1%
+            </Typography>
+          }
+        />
+        <StyledFormControlLabel
+          value={customSlippageAmount}
+          label={<SlippageAmountInput />}
+        />
+      </RadioGroup>
+    </Box>
+  )
+
+  const renderGasPriceGroup = () => (
+    <Box>
+      <Box mb={1}>
+        <Typography
+          variant="h4"
+          component="span"
+          className={classes.radioGroupTitle}
+        >
+          Gas Prices
+        </Typography>
+      </Box>
+      <RadioGroup
+        aria-label={"Gas Price"}
+        name={"Gas Price"}
+        value={gasPriceOption}
+        onChange={(e: ChangeEvent<HTMLInputElement>): void =>
+          handleGasPriceOptionChange(
+            Number(e.target.value) as GasPriceOptionType
+          )
+        }
+      >
+        {[
+          [GasPriceOptionType.TWENTYANDHALF, "Slow"],
+          [GasPriceOptionType.TWENTYFIVE, "Standard"],
+          [GasPriceOptionType.TWENTYEIGHT, "Fast"],
+          [GasPriceOptionType.THIRTYTWO, "Instant"],
+        ].map(([optionText, speed]) => (
+          <StyledFormControlLabel
+            key={optionText}
+            value={optionText}
+            label={
+              <Typography
+                variant="h4"
+                component="span"
+                className={classes.optionText}
+              >
+                {optionText} {speed}
+              </Typography>
+            }
+          />
+        ))}
+      </RadioGroup>
+    </Box>
+  )
+
+  const renderBody = () => (
+    <Box className={classes.body}>
+      {renderFilterOptionGroup()}
+      {renderSlippageGroup()}
+      {renderGasPriceGroup()}
+    </Box>
+  )
+
+  return (
+    <Box className={classes.root}>
+      {renderHeader()}
+      <Collapse in={!collapsed}>{renderBody()}</Collapse>
+    </Box>
+  )
+}
+
+export default SwapAdvancedOptionsBox

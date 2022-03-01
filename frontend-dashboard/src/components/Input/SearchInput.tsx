@@ -1,49 +1,54 @@
-import React from "react"
+import React, { ChangeEvent } from "react"
 import { Box, useMediaQuery } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
 import { useIsDarkMode } from "state/user/hooks"
 
+import { ReactComponent as SearchIcon } from "assets/icons/search.svg"
+
 const useStyles = makeStyles(({ palette }) => ({
   input: {
-    "position": "relative",
-    "& input": {
-      "border": "unset",
-      "fontFamily": "'Museo Sans 300'",
-      "fontStyle": "normal",
+    position: "relative",
+    [`& input`]: {
+      border: "unset",
+      fontFamily: "Museo Sans",
+      fontStyle: "normal",
 
-      "&:focus-visible": {
+      [`&:focus-visible`]: {
         outline: "unset",
       },
     },
-    "& ::placeholder": {
+    [`& ::placeholder`]: {
       color: palette.secondary.main,
     },
-    "& ::-webkit-outer-spin-button, & ::-webkit-inner-spin-button": {
-      "-webkit-appearance": "none",
-      "margin": 0,
+    [`& ::-webkit-outer-spin-button, & ::-webkit-inner-spin-button`]: {
+      [`-webkit-appearance`]: "none",
+      margin: 0,
     },
+  },
 
-    "& > i": {
-      position: "absolute",
-      right: "25px",
-      top: "13px",
-      fontSize: "18px",
-      color: palette.common.black,
+  icon: {
+    position: "absolute",
+    top: "50%",
+    right: "10px",
+    transform: "translate(-50%, -50%)",
+
+    [`& path`]: {
+      fill: palette.primary.main,
     },
   },
 }))
 
 export interface SearchInputProps {
-  value?: any
-  placeholder?: any
-  className?: any
-  onChange?: any
+  value: string | number
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void
   isIcon?: boolean
+  placeholder?: string
+  className?: string
 }
 
 const SearchInput: React.FC<SearchInputProps> = ({
-  value = "",
+  value,
   className = "",
   placeholder = "Search Input",
   isIcon = false,
@@ -63,7 +68,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
         value={value}
         onChange={onChange}
       ></input>
-      {isIcon && <i className="fa fa-search" aria-hidden="true"></i>}
+      {isIcon && <SearchIcon className={classes.icon} />}
     </Box>
   )
 }

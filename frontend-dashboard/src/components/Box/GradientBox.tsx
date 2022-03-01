@@ -12,13 +12,9 @@ const useStyles = makeStyles(({ palette }) => ({
     display: "inline-block",
     zIndex: 102,
   },
-  label: {
+  children: {
     position: "absolute",
     top: "0px",
-    color: palette.text.primary,
-    fontFamily: "Museo Sans",
-    fontWeight: "bold",
-    fontSize: "13px",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -27,23 +23,22 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 }))
 
-export interface GradientButtonProps {
-  label?: string
+interface GradientBoxProps {
   width?: number
   height?: number
   strokeWidth?: number
   clickable?: boolean
   glow?: boolean
-  onClick?: () => void
+  onClick: () => void
 }
 
-const GradientButton: React.FC<GradientButtonProps> = ({
-  label = "Button",
+const GradientBox: React.FC<GradientBoxProps> = ({
   width = 200,
   height = 50,
   strokeWidth = 3,
   clickable = true,
-  glow = false,
+  glow = true,
+  children,
   onClick,
 }) => {
   const { breakpoints, palette } = useTheme()
@@ -60,7 +55,7 @@ const GradientButton: React.FC<GradientButtonProps> = ({
         onMouseLeave={() => setHover(false)}
         onClick={onClick}
       >
-        <svg width={width + strokeWidth * 2} height={height}>
+        <svg width={width + strokeWidth} height={height + strokeWidth}>
           <defs>
             <linearGradient id="grad1" x1="0" y1="0" x2="1" y2="0">
               <stop offset="0" stopColor={palette.secondary.dark} />
@@ -69,17 +64,17 @@ const GradientButton: React.FC<GradientButtonProps> = ({
           </defs>
           <g fill="none">
             <rect
-              x={strokeWidth}
-              y={strokeWidth}
+              x={strokeWidth / 2}
+              y={strokeWidth / 2}
               width={width}
-              height={height - strokeWidth * 2}
-              rx={(height - strokeWidth * 2) / 2}
+              height={height}
+              rx={height / 2}
               stroke="url(#grad1)"
               strokeWidth={strokeWidth}
             />
           </g>
         </svg>
-        {label && <Box className={cx(classes.label)}>{label}</Box>}
+        <Box className={cx(classes.children)}>{children}</Box>
       </Box>
       <Box
         position="absolute"
@@ -89,9 +84,7 @@ const GradientButton: React.FC<GradientButtonProps> = ({
         height={`calc(100% - ${strokeWidth * 2}px)`}
         borderRadius="500px"
         border={`${strokeWidth} solid transparent`}
-        boxShadow={
-          glow ? `0px 0px 14px 7px ${palette.secondary.main}` : `unset`
-        }
+        boxShadow={glow ? "0px 0px 14px 7px #2D3BA0" : "none"}
         zIndex={101}
         style={clickable && hover ? { background: "#FFFFFF33" } : {}}
       />
@@ -99,4 +92,4 @@ const GradientButton: React.FC<GradientButtonProps> = ({
   )
 }
 
-export default GradientButton
+export default GradientBox

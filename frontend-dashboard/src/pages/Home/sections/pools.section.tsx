@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useMemo } from "react"
 import { Box, CircularProgress, useMediaQuery } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import {
@@ -31,15 +31,21 @@ const PoolsSection: React.FC = () => {
     ReadonlyMap<PoolSetName.Type, PoolStats>
   > = usePoolStats()
 
-  if (poolStats._tag === "Success") {
-    ROM.collect(PoolSetName.Ord)(
-      (poolName: PoolSetName.Type, ps: PoolStats) => {}
-    )(poolStats.success)
-  }
+  const rows = useMemo(() => {
+    if (poolStats._tag === "Success") {
+      const rows = ROM.collect(PoolSetName.Ord)(
+        (poolName: PoolSetName.Type, ps: PoolStats) => {
+          return { ...ps, poolName }
+        }
+      )(poolStats.success)
+      return rows
+    }
+    return []
+  }, [poolStats])
 
   const columns: GridColDef[] = [
     {
-      field: "pool",
+      field: "poolName",
       headerName: "Pool",
       sortable: false,
       flex: 2,
@@ -61,32 +67,32 @@ const PoolsSection: React.FC = () => {
       },
     },
     {
-      field: "type",
-      headerName: "Type",
+      field: "baseAPY",
+      headerName: "Base APY",
       sortable: false,
       flex: 1,
-      renderCell: (params: GridCellParams) => <Box>{params.value}</Box>,
+      renderCell: (params: GridCellParams) => <Box>2.99%</Box>
     },
     {
-      field: "locked",
-      headerName: "dUSD Available",
-      flex: 1,
+      field: "rewardsAPY",
+      headerName: "Rewards APY",
+      sortable: false,
+      flex: 2,
+      renderCell: (params: GridCellParams) => <Box>{`+4.30% -> 10.76% DANA + 1.13% BTC`}</Box>
     },
     {
-      field: "stabilityFee",
-      headerName: "Stability Fee",
-      type: "number",
+      field: "volume",
+      headerName: "Volume",
+      sortable: false,
       flex: 1,
-      align: "left",
-      headerAlign: "left",
+      renderCell: (params: GridCellParams) => <Box>$2.55 M</Box>
     },
     {
-      field: "minCollRatio",
-      headerName: "Min Coll. Ratio",
-      type: "number",
+      field: "APY",
+      headerName: "APY",
+      sortable: false,
       flex: 1,
-      align: "left",
-      headerAlign: "left",
+      renderCell: (params: GridCellParams) => <Box>29%</Box>
     },
   ]
 

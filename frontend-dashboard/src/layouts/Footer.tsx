@@ -9,7 +9,6 @@ import { Socials } from "data"
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
     background: "#1F297B",
-    marginTop: "50px",
     padding: 30,
 
     [breakpoints.down("xs")]: {

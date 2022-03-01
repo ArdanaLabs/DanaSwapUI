@@ -7,6 +7,7 @@ import { ReactComponent as LinkedinIcon } from "assets/icons/linkedin.svg"
 import { ReactComponent as MediumIcon } from "assets/icons/medium.svg"
 import { ReactComponent as YoutubeIcon } from "assets/icons/youtube.svg"
 import { ReactComponent as TelegramIcon } from "assets/icons/telegram.svg"
+import { Currency } from "pages/Swap/Swap"
 
 export const navList = [
   {
@@ -70,16 +71,18 @@ export const options = [
   },
 ]
 
-export const TokenList = [
+export const Currencies: Currency[] = [
   {
-    src: LOGO_Ardana,
-    name: "DANA",
-    desc: "exDANA",
+    imageUrl: LOGO_Ardana,
+    denom: "DANA",
+    minimalDenom: "exDANA",
+    decimals: 6,
   },
   {
-    src: LOGO_Cardano,
-    name: "ADA",
-    desc: "exDANA",
+    imageUrl: LOGO_Cardano,
+    denom: "ADA",
+    minimalDenom: "exADA",
+    decimals: 6,
   },
 ]
 

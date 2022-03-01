@@ -4,10 +4,7 @@ import { Dialog } from "@material-ui/core"
 const StyledDialog = withStyles((theme) => ({
   root: {},
   paperScrollPaper: {
-    background:
-      theme.palette.type === "light"
-        ? "#F6F6F6"
-        : theme.palette.background.paper,
+    background: `linear-gradient(126.33deg, ${theme.palette.background.paper} 9.83%, #00000000 96.44%), ${theme.palette.background.default}`,
     borderRadius: "10px",
     padding: "25px",
   },

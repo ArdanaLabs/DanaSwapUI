@@ -18,6 +18,7 @@ const useStyles = makeStyles(({ palette }) => ({
     background: `url(${PinkBG}) right -600px top -600px no-repeat,
                   url(${CyanBG}) left -800px top -500px no-repeat`,
     paddingTop: "180px",
+    paddingBottom: "50px",
   },
 }))
 

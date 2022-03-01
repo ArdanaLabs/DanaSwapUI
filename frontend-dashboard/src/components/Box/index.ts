@@ -1,3 +1,6 @@
 export { default as OverViewBox } from "./OverViewBox"
 export { default as TokenBox } from "./TokenBox"
 export { default as StatBox } from "./StatBox"
+export { default as GradientBox } from "./GradientBox"
+export { default as SwapDetailBox } from "./SwapDetailBox"
+export { default as SwapAdvancedOptionsBox } from "./SwapAdvancedOptionsBox"
