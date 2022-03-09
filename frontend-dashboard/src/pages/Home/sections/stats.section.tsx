@@ -53,12 +53,12 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     },
     [`& dt, & dd`]: {
       color: palette.primary.main,
-      [breakpoints.down("sm")]: {
+      [breakpoints.down("xs")]: {
         fontSize: 12,
       },
     },
 
-    [breakpoints.down("sm")]: {
+    [breakpoints.down("xs")]: {
       padding: 20,
       marginBottom: 30,
     },

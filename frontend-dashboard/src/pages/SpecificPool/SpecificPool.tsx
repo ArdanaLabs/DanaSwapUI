@@ -76,6 +76,7 @@ export const SpecificPool: React.FC<Props> = ({
           const ps: O.Option<PoolStats> = ROM.lookup(PoolSetName.Eq)(poolSet)(
             poolStats.success
           )
+          // TODO:
           O.isNone(ps) && history.goBack()
           setSpecificPoolStats(ps)
         }

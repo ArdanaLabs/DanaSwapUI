@@ -1,4 +1,4 @@
-import React, { useMemo } from "react"
+import React from "react"
 import {
   Box,
   CircularProgress,
@@ -49,38 +49,6 @@ const PoolsSection: React.FC = () => {
     ReadonlyMap<PoolSetName.Type, PoolStats>
   > = usePoolStats()
 
-  const rows = useMemo(() => {
-    if (poolStats._tag === "Success") {
-      return [
-        {
-          id: 0,
-          poolName: "PoolA",
-          baseAPY: "2.99%",
-          rewardsAPY: "+4.30% -> 10.76% DANA + 1.13% BTC",
-          volume: "$2.55 M",
-          APY: "29%",
-        },
-        {
-          id: 1,
-          poolName: "PoolB",
-          baseAPY: "2.99%",
-          rewardsAPY: "+4.30% -> 10.76% DANA + 1.13% BTC",
-          volume: "$2.55 M",
-          APY: "29%",
-        },
-        {
-          id: 2,
-          poolName: "PoolC",
-          baseAPY: "2.99%",
-          rewardsAPY: "+4.30% -> 10.76% DANA + 1.13% BTC",
-          volume: "$2.55 M",
-          APY: "29%",
-        },
-      ]
-    }
-    return []
-  }, [poolStats])
-
   function renderPoolsGrid(
     psrd: RemoteData<FetchDecodeError, ReadonlyMap<PoolSetName.Type, PoolStats>>
   ): JSX.Element {
@@ -88,7 +56,7 @@ const PoolsSection: React.FC = () => {
       case "Success":
         return (
           <>
-            <PoolsGrid rows={rows} />
+            <PoolsGrid rows={psrd.success} />
             <Box display={"flex"} justifyContent={"flex-end"} mt={2}>
               <Button
                 variant="contained"

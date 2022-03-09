@@ -24,7 +24,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
     position: "fixed",
     top: 0,
-    zIndex: 100,
+    zIndex: 200,
     width: "100%",
     filter: "drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.05))",
     mixBlendMode: "normal",
