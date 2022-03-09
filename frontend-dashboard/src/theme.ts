@@ -3,7 +3,7 @@ import {
   responsiveFontSizes,
   ThemeOptions,
 } from "@material-ui/core"
-// import createBreakpoints from "@material-ui/core/styles/createBreakpoints"
+import createBreakpoints from "@material-ui/core/styles/createBreakpoints"
 import { merge } from "lodash"
 
 // custom colors
@@ -56,7 +56,7 @@ const common = {
   white: "#ffffff",
 }
 
-// const breakpoints = createBreakpoints({})
+const breakpoints = createBreakpoints({})
 
 const typography = {
   h1: {
@@ -88,17 +88,35 @@ const typography = {
     fontStyle: "normal",
     fontWeight: 700,
     fontSize: 18,
+
+    [breakpoints.down("xs")]: {
+      fontSize: 12,
+    },
   },
   h6: {
     fontFamily: "Museo Sans",
     fontStyle: "normal",
     fontWeight: 700,
     fontSize: 13,
+
+    [breakpoints.down("xs")]: {
+      fontSize: 10,
+    },
   },
   subtitle1: {},
-  subtitle2: {},
+  subtitle2: {
+    fontFamily: "Museo Sans",
+    fontStyle: "normal",
+    fontWeight: 700,
+    fontSize: 18,
+  },
   body1: {},
-  body2: {},
+  body2: {
+    fontFamily: "Museo Sans",
+    fontStyle: "normal",
+    fontWeight: 700,
+    fontSize: 13,
+  },
 }
 
 function createTheme(

@@ -69,10 +69,10 @@ const OverViewBox: React.FC<OverViewBoxProps> = ({ label, content }) => {
       </Box>
 
       <Box className={cx(classes.display)}>
-        <Typography variant="h6" component="p">
+        <Typography variant="body2" component="p">
           {label}
         </Typography>
-        <Typography variant="h4" component="p">
+        <Typography variant="subtitle2" component="p">
           {content}
         </Typography>
       </Box>

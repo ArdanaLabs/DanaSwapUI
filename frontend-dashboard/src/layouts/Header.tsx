@@ -211,7 +211,7 @@ const Header: React.FC = () => {
             <ThemeSwitch />
             <GradientBox width={180} height={43} onClick={onConnectWallet}>
               <Typography
-                variant="h6"
+                variant="body2"
                 component="span"
                 className={classes.connectWallet}
               >

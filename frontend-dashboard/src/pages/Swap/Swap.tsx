@@ -1,9 +1,8 @@
 import React, { useState, ChangeEvent } from "react"
 import {
   Box,
-  // Collapse,
+  Container,
   Fade,
-  // Grid,
   Mark,
   useMediaQuery,
   Typography,
@@ -33,7 +32,7 @@ import {
   GasPriceOptionType,
 } from "components/Box/SwapAdvancedOptionsBox"
 
-const useStyles = makeStyles(({ palette }) => ({
+const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
     background: `url(${PinkBG}) right -600px top -600px no-repeat,
                   url(${CyanBG}) left -800px top -200px no-repeat`,
@@ -45,8 +44,17 @@ const useStyles = makeStyles(({ palette }) => ({
     alignItems: "center",
   },
 
+  container: {
+    display: "flex",
+    justifyContent: "center",
+
+    [breakpoints.down("xs")]: {
+      display: "block",
+    },
+  },
+
   panel: {
-    width: "500px",
+    maxWidth: "500px",
     background: `linear-gradient(126.33deg, ${palette.background.paper} 9.83%, #00000000 96.44%);`,
     boxShadow: "inset 0px 4px 4px rgba(0, 0, 0, 0.25)",
     backdropFilter: "blur(4px)",
@@ -122,22 +130,14 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 
   submit: {
-    background: "linear-gradient(90deg, #5F72FF 0%, #73D6F1 100%)",
-    borderRadius: "20px",
+    textTransform: "uppercase",
+    background: `linear-gradient(90deg, ${palette.secondary.dark} 0%, ${palette.secondary.main} 100%)`,
+    borderRadius: "50px",
     width: "250px",
-    fontFamily: "Museo Sans",
-    fontStyle: "normal",
-    fontWeight: "bold",
-    fontSize: "24px",
-    lineHeight: "100%",
     textAlign: "center",
     color: palette.common.white,
-    padding: "15px",
+    padding: "10px",
     cursor: "pointer",
-
-    [`&:hover`]: {
-      background: "linear-gradient(-90deg, #5F72FF 0%, #73D6F1 100%)",
-    },
   },
 }))
 
@@ -258,49 +258,23 @@ const Swap: React.FC = () => {
           }}
         />
       </Box>
-      {/*
-    <Box padding="10px">
-      <Box
-        className={cx(classes.optionTitle)}
-        onClick={onToggleOptions}
-      >
-        <Box mr={"7px"}>Advanced Options</Box>
-        <i
-          className={`fa fa-chevron-${!isOptionOpen ? "up" : "down"}`}
-          aria-hidden="true"
-        ></i>
+      <Box display="flex" justifyContent="center" my={3}>
+        <Typography variant="h2" component="span" className={classes.submit}>
+          Swap
+        </Typography>
       </Box>
-      <Collapse in={isOptionOpen}>
-        <Grid
-          container
-          spacing={mobile ? 1 : 2}
-          style={{ marginTop: "10px" }}
-        >
-          {options.map((option, i) => (
-            <Grid container item xs={4} key={i}>
-              <Radio option={option} value={option.data[0].value} />
-            </Grid>
-          ))}
-        </Grid>
-      </Collapse>
-    </Box>
-
-    <Box mt="50px"></Box>
-
-    <Box display="flex" justifyContent="center">
-      <Box className={cx(classes.submit)}>SWAP</Box>
-    </Box> */}
     </Box>
   )
 
   return (
     <Fade in={true}>
-      <Box className={cx(classes.root)}>
-        <Box className={cx(classes.panel)}>
-          {renderPanelHeader()}
-          {renderPanelBody()}
-        </Box>
-
+      <Box className={classes.root}>
+        <Container className={classes.container}>
+          <Box className={classes.panel}>
+            {renderPanelHeader()}
+            {renderPanelBody()}
+          </Box>
+        </Container>
         <SelectAssetModal
           open={selectAssetModalOpen}
           handleClose={() => setSelectAssetModalOpen(0)}

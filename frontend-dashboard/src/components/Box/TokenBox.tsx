@@ -38,6 +38,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       [`-webkit-appearance`]: "none",
       margin: 0,
     },
+
+    [breakpoints.down("xs")]: {
+      fontSize: 24,
+    },
   },
 
   tokenAvatar: {
@@ -63,7 +67,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     display: "flex",
     alignItems: "center",
     cursor: "pointer",
-    minWidth: "90px",
+    width: "90px",
   },
 
   tokenImage: {

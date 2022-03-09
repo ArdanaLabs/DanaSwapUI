@@ -45,15 +45,30 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "flex-start",
+
+    [breakpoints.down("xs")]: {
+      flexDirection: "column",
+    },
   },
+
+  radioGroup: {
+    [breakpoints.down("xs")]: {
+      flexDirection: "row",
+    },
+  },
+
   radioGroupTitle: {
     textTransform: "uppercase",
     color: palette.secondary.main,
-    fontSize: 16,
   },
 
   formControlLabel: {
     margin: 0,
+    lineHeight: 0,
+
+    [breakpoints.down("xs")]: {
+      marginRight: 20,
+    },
   },
   optionText: {
     color: palette.primary.main,
@@ -73,6 +88,11 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     height: 18,
     background: "transparent",
     border: `1px solid ${palette.primary.main}`,
+
+    [breakpoints.down("xs")]: {
+      width: 14,
+      height: 14,
+    },
   },
   styledRadioCheckedIcon: {
     background: `${palette.secondary.main}88`,
@@ -91,9 +111,6 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontSize: "9px",
     color: palette.primary.main,
 
-    [`&.disable`]: {
-      pointerEvent: "none",
-    },
     [`&::placeholder`]: {
       color: palette.primary.main,
     },
@@ -150,10 +167,14 @@ const SwapAdvancedOptionsBox: React.FC<Props> = ({
 
   useEffect(() => {
     if (customSlippageAmount !== undefined) {
-      // handleSlippageChange(customSlippageAmount)
-      slippageAmountRef.current && slippageAmountRef.current.focus()
+      handleSlippageChange(customSlippageAmount)
+      setTimeout(
+        () => slippageAmountRef.current && slippageAmountRef.current.focus(),
+        10
+      )
     }
-  }, [customSlippageAmount, handleSlippageChange])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [customSlippageAmount])
 
   const StyledRadio = (props: any) => (
     <Radio
@@ -185,15 +206,12 @@ const SwapAdvancedOptionsBox: React.FC<Props> = ({
   const SlippageAmountInput = () => (
     <input
       ref={slippageAmountRef}
-      className={cx(classes.slippageAmountInput, { disable: true })}
+      className={cx(classes.slippageAmountInput)}
       placeholder={"Custom Amount"}
       type="number"
       value={customSlippageAmount}
       onChange={(e: ChangeEvent<HTMLInputElement>) =>
         setCustomSlippageAmount(Number(e.target.value))
-      }
-      onBlur={() =>
-        customSlippageAmount && handleSlippageChange(customSlippageAmount)
       }
     />
   )
@@ -215,13 +233,14 @@ const SwapAdvancedOptionsBox: React.FC<Props> = ({
       <Box mb={1}>
         <Typography
           variant="h4"
-          component="span"
+          component="h4"
           className={classes.radioGroupTitle}
         >
           Filter
         </Typography>
       </Box>
       <RadioGroup
+        className={classes.radioGroup}
         aria-label={"Filter"}
         name={"Filter"}
         value={filterOption}
@@ -266,6 +285,7 @@ const SwapAdvancedOptionsBox: React.FC<Props> = ({
         </Typography>
       </Box>
       <RadioGroup
+        className={classes.radioGroup}
         aria-label={"Slippage"}
         name={"Slippage"}
         value={slippage}
@@ -302,7 +322,7 @@ const SwapAdvancedOptionsBox: React.FC<Props> = ({
           }
         />
         <StyledFormControlLabel
-          value={customSlippageAmount}
+          value={customSlippageAmount ?? 0}
           label={<SlippageAmountInput />}
         />
       </RadioGroup>
@@ -321,6 +341,7 @@ const SwapAdvancedOptionsBox: React.FC<Props> = ({
         </Typography>
       </Box>
       <RadioGroup
+        className={classes.radioGroup}
         aria-label={"Gas Price"}
         name={"Gas Price"}
         value={gasPriceOption}
