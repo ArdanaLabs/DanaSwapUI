@@ -96,6 +96,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
   TableRoot: {
     borderCollapse: "separate",
+    borderSpacing: "0 20px",
 
     [breakpoints.down("xs")]: {
       borderSpacing: "0 10px",
