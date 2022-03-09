@@ -76,6 +76,10 @@ const typography = {
     fontStyle: "normal",
     fontWeight: "normal",
     fontSize: 16,
+
+    [breakpoints.down("xs")]: {
+      fontSize: 12,
+    },
   },
   h2: {
     fontFamily: "Museo Sans",

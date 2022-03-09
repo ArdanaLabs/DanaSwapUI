@@ -1,0 +1,213 @@
+import React from "react"
+import {
+  Box,
+  useMediaQuery,
+  TableContainer,
+  Table,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+} from "@material-ui/core"
+import { makeStyles, useTheme, withStyles } from "@material-ui/core/styles"
+import { useIsDarkMode } from "state/user/hooks"
+import { useHistory } from "react-router-dom"
+
+import * as O from "fp-ts/Option"
+import * as ROM from "fp-ts/ReadonlyMap"
+
+import * as PoolSetName from "Data/Pool/PoolSetName"
+import { PoolStats } from "Data/Stats/PoolStats"
+import { Percent, USD } from "Data/Unit"
+
+import { printCurrencyUSD, printPercentage } from "hooks"
+
+const StyledTableRow = withStyles(({ palette }) => ({
+  root: {},
+  head: {},
+}))(TableRow)
+
+const StyledTableCell = withStyles(({ palette }) => ({
+  root: {
+    border: `unset`,
+  },
+  head: {
+    fontFamily: "Museo Sans",
+    fontStyle: "normal",
+    fontWeight: 500,
+    fontSize: "14px",
+    lineHeight: "300%",
+    textAlign: "center",
+    cursor: "pointer",
+    color: palette.secondary.main,
+  },
+  body: {
+    fontFamily: "Museo Sans",
+    fontStyle: "normal",
+    fontWeight: "bold",
+    fontSize: "14px",
+    lineHeight: "115%",
+    textAlign: "center",
+    color: palette.secondary.main,
+    cursor: "pointer",
+  },
+  footer: {
+    width: "100%",
+    height: 30,
+    textAlign: "center",
+
+    [`& span`]: {
+      fontFamily: "Museo Sans",
+      fontStyle: "normal",
+      fontWeight: "bold",
+      fontSize: "16px",
+      lineHeight: "115%",
+      cursor: "pointer",
+      color: palette.secondary.main,
+
+      [`&:hover`]: {
+        color: "gray",
+      },
+    },
+  },
+}))(TableCell)
+
+const useStyles = makeStyles(({ palette, breakpoints }) => ({
+  root: {},
+  TableRow: {
+    border: `1px solid ${palette.secondary.main}88`,
+    borderRadius: 100,
+    margin: "15px 0",
+  },
+  AssetLogo: {
+    [`& > img`]: {
+      width: 40,
+      height: 40,
+
+      [breakpoints.down("xs")]: {
+        width: 20,
+        height: 20,
+      },
+    },
+  },
+}))
+
+export interface PoolsGridProps {
+  poolStats: any
+}
+
+const PoolsGrid: React.FC<PoolsGridProps> = ({ poolStats }) => {
+  const { breakpoints } = useTheme()
+  const dark = useIsDarkMode()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark, mobile })
+  const history = useHistory()
+
+  const columns: string[] = [
+    "Pool",
+    "Liquidity",
+    "Base APY",
+    "Rewards APY",
+    "Volume",
+    "APY",
+  ]
+
+  function handleRowClick(poolSetName: PoolSetName.Type): void {
+    history.push({
+      pathname: `/spec/${PoolSetName.iso.unwrap(poolSetName)}`,
+    })
+  }
+
+  function renderTableRow(
+    poolName: PoolSetName.Type,
+    ps: PoolStats
+  ): JSX.Element {
+    // TODO: use SVG sprite, like `coins.svg#${poolName}`
+    // const icon = require(`assets/coins/${poolName}.png`).default
+    const poolSetNameStr: string = PoolSetName.iso.unwrap(poolName)
+    const icon = require(`assets/coins/BTC.png`).default
+    return (
+      <StyledTableRow
+        hover
+        key={poolSetNameStr}
+        onClick={() => handleRowClick(poolName)}
+      >
+        {/* POOL */}
+        <StyledTableCell component="th" scope="row">
+          <Box display="flex" alignItems="center">
+            <Box className={classes.AssetLogo} display={"flex"} mr={2}>
+              <img src={icon} alt={poolSetNameStr} />
+            </Box>
+            <Box
+              display={"flex"}
+              flexDirection={"column"}
+              justifyContent={"center"}
+            >
+              <Box textAlign="left">{poolName}</Box>
+              <Box fontWeight={300}>{" + "}</Box>
+            </Box>
+          </Box>
+        </StyledTableCell>
+        {/* Liquidity */}
+        <StyledTableCell>
+          {O.fold(() => "", printCurrencyUSD)(ps.navUSD)}
+        </StyledTableCell>
+        {/* Base APY */}
+        <StyledTableCell>
+          {printPercentage(
+            O.getOrElse(() => Percent.iso.wrap(0))(ps.recentDailyAPYPercent)
+          )}
+        </StyledTableCell>
+        {/* Rewards APY */}
+        <StyledTableCell>
+          {/* {poolRewardAPYs[i]} */}
+          {`+4.30% → 10.76% DANA + 1.13% BTC`}
+        </StyledTableCell>
+        {/* VOLUME */}
+        <StyledTableCell>
+          {printCurrencyUSD(
+            O.getOrElse(() => USD.iso.wrap(0))(ps.recentDailyVolumeUSD.trade)
+          )}
+        </StyledTableCell>
+        {/* APY */}
+        <StyledTableCell>
+          {printPercentage(
+            O.getOrElse(() => Percent.iso.wrap(0))(ps.recentDailyAPYPercent)
+          )}
+        </StyledTableCell>
+      </StyledTableRow>
+    )
+  }
+
+  function renderTable(
+    poolStatsMap: ReadonlyMap<PoolSetName.Type, PoolStats>
+  ): JSX.Element {
+    return (
+      <TableContainer component={Box}>
+        <Table aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              {columns.map((column: string, index: number) => {
+                return (
+                  <StyledTableCell key={index}>
+                    {column}
+                    &nbsp;
+                    <i className="fas fa-sort" />
+                  </StyledTableCell>
+                )
+              })}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {/* TODO: is `collect` the correct, performant solution? */}
+            {ROM.collect(PoolSetName.Ord)(renderTableRow)(poolStatsMap)}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    )
+  }
+
+  return <Box className={classes.root}>{renderTable(poolStats)}</Box>
+}
+
+export default PoolsGrid
