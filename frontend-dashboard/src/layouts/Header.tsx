@@ -106,6 +106,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   connectWallet: {
     color: palette.primary.main,
     textTransform: "uppercase",
+    whiteSpace: "pre",
   },
 }))
 
@@ -209,7 +210,7 @@ const Header: React.FC = () => {
           </Box>
           <Box className={cx(classes.subHeader)}>
             <ThemeSwitch />
-            <GradientBox width={180} height={43} onClick={onConnectWallet}>
+            <GradientBox onClick={onConnectWallet}>
               <Typography
                 variant="body2"
                 component="span"

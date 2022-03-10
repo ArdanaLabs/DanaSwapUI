@@ -1,52 +1,66 @@
 import React from "react"
-import { Box, makeStyles } from "@material-ui/core"
-import { Button } from "components/Button"
+import {
+  Box,
+  makeStyles,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@material-ui/core"
 import cx from "classnames"
+import { GradientBox } from "components"
+import { useIsDarkMode } from "state/user/hooks"
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(({ palette }) => ({
   root: {
-    "display": "inline-flex",
-    "alignItems": "center",
-    "margin": "0px -5px",
-
-    "& > button": {
-      margin: "0px 5px",
-    },
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "0 10px",
+  },
+  text: {
+    textTransform: "uppercase",
+    fontWeight: 900,
+    whiteSpace: "pre",
+    lineHeight: "100%",
+    color: palette.primary.main,
   },
 }))
 
 export interface SwitchWithGliderProps {
-  elements: any[]
-  vertical?: boolean
-  normalClass: any
-  activeClass: any
+  elements: string[]
   activeIndex: number
-  handleSwitch: any
+  customClassName?: string
+  handleSwitch: (index: number) => void
 }
 
 const SwitchWithGlider: React.FC<SwitchWithGliderProps> = ({
   elements,
-  vertical,
-  normalClass,
-  activeClass,
   activeIndex,
+  customClassName = "",
   handleSwitch,
 }) => {
-  const classes = useStyles()
+  const { breakpoints } = useTheme()
+  const dark = useIsDarkMode()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark, mobile })
+
   return (
     <Box className={cx(classes.root)}>
       {elements &&
-        elements.map((element: any, i: number) => (
-          <Button
-            key={i}
-            variant="contained"
-            onClick={() => handleSwitch(i)}
-            className={cx(normalClass, {
-              [activeClass]: activeIndex === i,
-            })}
+        elements.map((element: string, index: number) => (
+          <GradientBox
+            key={element}
+            glow={false}
+            fill={activeIndex === index}
+            onClick={() => handleSwitch(index)}
           >
-            {element}
-          </Button>
+            <Typography
+              variant="h6"
+              component="span"
+              className={cx(classes.text, customClassName)}
+            >
+              {element}
+            </Typography>
+          </GradientBox>
         ))}
     </Box>
   )

@@ -16,7 +16,9 @@ import PinkBG from "assets/backgrounds/pink.svg"
 const useStyles = makeStyles(({ palette }) => ({
   root: {
     background: `url(${PinkBG}) right -600px top -600px no-repeat,
-                  url(${CyanBG}) left -800px top -500px no-repeat`,
+                  url(${CyanBG}) left -800px top -500px no-repeat,
+                  url(${CyanBG}) right -600px top 500px no-repeat,
+                  url(${PinkBG}) left -800px top 500px no-repeat`,
     paddingTop: "180px",
     paddingBottom: "50px",
   },

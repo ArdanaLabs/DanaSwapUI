@@ -8,37 +8,23 @@ import { merge } from "lodash"
 
 // custom colors
 
-const primaryDark = {
-  main: "#FFFFFF",
-}
-const primaryLight = {
-  main: "#1E2769",
-}
+const primaryDark = { main: "#FFFFFF" }
+const primaryLight = { main: "#1E2769" }
 
-const secondaryDark = {
-  main: "#73D6F1",
-  dark: "#5F72FF",
-}
-const secondaryLight = {
-  main: "#314BC7",
-  dark: "#030D53",
-}
+const secondaryDark = { main: "#73D6F1", dark: "#5F72FF" }
+const secondaryLight = { main: "#314BC7", dark: "#030D53" }
 
-const infoDark = {
-  main: "#253082AA",
-}
-const infoLight = {
-  main: "#3A89D919",
-}
+const errorDark = { main: "#FF6666" }
+const errorLight = { main: "#FF6666" }
 
-const backgroundDark = {
-  default: "#080E42",
-  paper: "#253082AA",
-}
-const backgroundLight = {
-  default: "#F5F5F5",
-  paper: "#3A89D919",
-}
+const successDark = { main: "#97FF66" }
+const successLight = { main: "#97FF66" }
+
+const infoDark = { main: "#253082AA" }
+const infoLight = { main: "#3A89D919" }
+
+const backgroundDark = { default: "#080E42", paper: "#253082AA" }
+const backgroundLight = { default: "#F5F5F5", paper: "#3A89D919" }
 
 const textDark = {
   primary: primaryDark.main,
@@ -137,6 +123,8 @@ export const darkTheme = responsiveFontSizes(
       type: "dark",
       primary: primaryDark,
       secondary: secondaryDark,
+      error: errorDark,
+      success: successDark,
       info: infoDark,
       text: textDark,
       background: backgroundDark,
@@ -152,6 +140,8 @@ export const lightTheme = responsiveFontSizes(
       type: "light",
       primary: primaryLight,
       secondary: secondaryLight,
+      error: errorLight,
+      success: successLight,
       info: infoLight,
       text: textLight,
       background: backgroundLight,
