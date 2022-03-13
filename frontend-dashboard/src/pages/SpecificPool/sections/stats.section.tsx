@@ -188,103 +188,6 @@ const StatsSection: React.FC<Props> = ({ poolSet, poolStats }: Props) => {
   const { poolVolume, fetchPoolVolume } = usePoolVolume()
   const { poolLiquidity, fetchPoolLiquidity } = usePoolLiquidity()
 
-  const options: ApexOptions = {
-    chart: {
-      id: "basic-bar",
-      width: "100%",
-      height: "100%",
-      zoom: {
-        enabled: false,
-      },
-      toolbar: {
-        show: true,
-        tools: {
-          download: false,
-        },
-      },
-      events: {
-        mounted: (chart) => {
-          chart.windowResizeHandler()
-        },
-      },
-    },
-    stroke: {
-      width: 0,
-      curve: "smooth",
-    },
-    xaxis: {
-      /* TODO: Intl.DateFormat */
-      categories: ["Apr 20", "May 15", "Jun 02"],
-      labels: {
-        show: true,
-        style: {
-          colors: palette.secondary.main,
-          fontSize: !mobile ? "13px" : "8px",
-          fontFamily: "Museo Sans",
-          fontWeight: 600,
-        },
-        // formatter: (n) => printDate(n),
-      },
-      tickPlacement: "between",
-      axisTicks: {
-        show: false,
-      },
-      axisBorder: {
-        show: true,
-        color: palette.secondary.main,
-      },
-    },
-    yaxis: {
-      labels: {
-        show: true,
-        align: "left",
-        style: {
-          colors: palette.primary.main,
-          fontFamily: "Museo Sans",
-          fontWeight: 600,
-          fontSize: !mobile ? "16px" : "10px",
-        },
-        formatter: (n) => printCurrencyUSD(USD.iso.wrap(n)),
-      },
-      axisBorder: {
-        show: true,
-        color: palette.secondary.main,
-      },
-    },
-    grid: {
-      show: false,
-    },
-    fill: {
-      type: "gradient",
-      colors: [palette.secondary.main],
-      gradient: {
-        type: "vertical", // The gradient in the horizontal direction
-        gradientToColors: [palette.secondary.main], // The color at the end of the gradient
-        opacityFrom: 1, // transparency
-        opacityTo: 0.3,
-        stops: [0, 1200],
-      },
-    },
-    plotOptions: {
-      bar: {
-        borderRadius: 5,
-      },
-    },
-    dataLabels: {
-      enabled: false,
-    },
-    tooltip: {
-      enabled: false,
-    },
-  }
-
-  const series = [
-    {
-      name: "series-1",
-      data: [10],
-    },
-  ]
-
   const lockedTokens = useMemo(
     () => [
       {
@@ -298,11 +201,210 @@ const StatsSection: React.FC<Props> = ({ poolSet, poolStats }: Props) => {
     ],
     []
   )
-
-  const [chartOptions, setChartOptions] = useState<ApexOptions>(options)
-  const [chartSeries, setChartSeries] = useState<any[]>(series)
-
   const [activeChart, setActiveChart] = useState<ChartType>(ChartType.Volume)
+
+  const poolVolumeChartOptions = useMemo(() => {
+    let xCategories: any[] = []
+    switch (poolVolume._tag) {
+      case "Success":
+        O.fold(
+          (): void => {},
+          (pvs: NEA.NonEmptyArray<VolumeChart.Item.Type>): void => {
+            xCategories = extractDateAxis(pvs).map((d: Date) => printDate(d))
+          }
+        )(NEA.fromArray(poolVolume.success))
+        break
+      case "Pending":
+      case "Failure":
+        break
+    }
+    return xCategories
+  }, [poolVolume])
+
+  const poolLiquidityChartOptions = useMemo(() => {
+    let xCategories: any[] = []
+    switch (poolLiquidity._tag) {
+      case "Success":
+        O.fold(
+          (): void => {},
+          (pls: NEA.NonEmptyArray<LiquidityChart.Item.Type>) => {
+            xCategories = extractDateAxis(pls).map((d: Date) => printDate(d))
+          }
+        )(NEA.fromArray(poolLiquidity.success))
+        break
+      case "Pending":
+      case "Failure":
+        break
+    }
+    return xCategories
+  }, [poolLiquidity])
+
+  const chartOptions: ApexOptions = useMemo(() => {
+    let xCategories: any[] = []
+
+    switch (activeChart) {
+      case ChartType.Volume:
+        xCategories = poolVolumeChartOptions
+        break
+      case ChartType.TVL:
+        xCategories = poolVolumeChartOptions
+        break
+      case ChartType.Liquidity:
+        xCategories = poolLiquidityChartOptions
+        break
+      default:
+        break
+    }
+
+    return {
+      chart: {
+        id: `basic-bar-${ChartType.Volume}`,
+        width: "100%",
+        height: "100%",
+        zoom: {
+          enabled: false,
+        },
+        toolbar: {
+          show: true,
+          tools: {
+            download: false,
+          },
+        },
+        events: {
+          mounted: (chart) => {
+            chart.windowResizeHandler()
+          },
+        },
+      },
+      stroke: {
+        width: 0,
+        curve: "smooth",
+      },
+      xaxis: {
+        categories: xCategories,
+        labels: {
+          show: true,
+          style: {
+            colors: palette.secondary.main,
+            fontSize: !mobile ? "13px" : "8px",
+            fontFamily: "Museo Sans",
+            fontWeight: 600,
+          },
+          // formatter: (n) => printDate(n),
+        },
+        tickPlacement: "between",
+        axisTicks: {
+          show: false,
+        },
+        axisBorder: {
+          show: true,
+          color: palette.secondary.main,
+        },
+      },
+      yaxis: {
+        labels: {
+          show: true,
+          align: "left",
+          style: {
+            colors: palette.primary.main,
+            fontFamily: "Museo Sans",
+            fontWeight: 600,
+            fontSize: !mobile ? "16px" : "10px",
+          },
+          formatter: (n) => printCurrencyUSD(USD.iso.wrap(n)),
+        },
+        axisBorder: {
+          show: true,
+          color: palette.secondary.main,
+        },
+      },
+      grid: {
+        show: false,
+      },
+      fill: {
+        type: "gradient",
+        colors: [palette.secondary.main],
+        gradient: {
+          type: "vertical", // The gradient in the horizontal direction
+          gradientToColors: [palette.secondary.main], // The color at the end of the gradient
+          opacityFrom: 1, // transparency
+          opacityTo: 0.3,
+          stops: [0, 1200],
+        },
+      },
+      plotOptions: {
+        bar: {
+          borderRadius: 5,
+        },
+      },
+      dataLabels: {
+        enabled: false,
+      },
+      tooltip: {
+        enabled: false,
+      },
+    }
+  }, [
+    palette,
+    mobile,
+    activeChart,
+    poolVolumeChartOptions,
+    poolLiquidityChartOptions,
+  ])
+
+  const poolVolumeChartSeries = useMemo(() => {
+    let series: any[] = []
+    switch (poolVolume._tag) {
+      case "Success":
+        O.fold(
+          (): void => {},
+          (pvs: NEA.NonEmptyArray<VolumeChart.Item.Type>): void => {
+            series = pvs.map(([, v]: VolumeChart.Item.Type): number =>
+              USD.iso.unwrap(Volume.iso.unwrap(v.total))
+            )
+          }
+        )(NEA.fromArray(poolVolume.success))
+        break
+      case "Pending":
+      case "Failure":
+        break
+    }
+    return series
+  }, [poolVolume])
+
+  const poolLiquidityChartSeries: ApexAxisChartSeries = useMemo(() => {
+    let series: any[] = []
+    switch (poolLiquidity._tag) {
+      case "Success":
+        O.fold(
+          (): void => {},
+          (pls: NEA.NonEmptyArray<LiquidityChart.Item.Type>) => {
+            series = pls.map(
+              ([, l]: LiquidityChart.Item.Type): USD.Type =>
+                LiquidityTokenPrice.iso.unwrap(l)
+            )
+          }
+        )(NEA.fromArray(poolLiquidity.success))
+        break
+      case "Pending":
+      case "Failure":
+        break
+    }
+    return series
+  }, [poolLiquidity])
+
+  const chartSeries: ApexAxisChartSeries = useMemo(() => {
+    switch (activeChart) {
+      case ChartType.Volume:
+        return [{ name: "Volume", data: poolVolumeChartSeries }]
+      case ChartType.TVL:
+        return [{ name: "TVL", data: poolVolumeChartSeries }]
+      case ChartType.Liquidity:
+        return [{ name: "Liquidity", data: poolLiquidityChartSeries }]
+      default:
+        return []
+    }
+  }, [activeChart, poolVolumeChartSeries, poolLiquidityChartSeries])
 
   useEffect(() => {
     fetchPoolVolume(
@@ -317,110 +419,6 @@ const StatsSection: React.FC<Props> = ({ poolSet, poolStats }: Props) => {
     )
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
-  useEffect(() => {
-    switch (poolVolume._tag) {
-      case "Success":
-        O.fold(
-          (): void => {},
-          (pvs: NEA.NonEmptyArray<VolumeChart.Item.Type>): void => {
-            setChartOptions({
-              ...chartOptions,
-              xaxis: {
-                ...chartOptions.xaxis,
-                categories: extractDateAxis(pvs).map((d: Date) => printDate(d)),
-              },
-            })
-            setChartSeries([
-              {
-                name: "Volume",
-                data: pvs.map(([, v]: VolumeChart.Item.Type): number =>
-                  USD.iso.unwrap(Volume.iso.unwrap(v.total))
-                ),
-              },
-            ])
-          }
-        )(NEA.fromArray(poolVolume.success))
-        break
-      case "Pending":
-        break
-      case "Failure":
-        break
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [poolVolume])
-
-  const handleSwitch = (index: ChartType) => {
-    setActiveChart(index)
-    switch (index) {
-      case ChartType.Volume:
-        switch (poolVolume._tag) {
-          case "Success":
-            O.fold(
-              (): void => {},
-              (pvs: NEA.NonEmptyArray<VolumeChart.Item.Type>): void => {
-                setChartOptions({
-                  ...chartOptions,
-                  xaxis: {
-                    ...chartOptions.xaxis,
-                    categories: extractDateAxis(pvs).map((d: Date) =>
-                      printDate(d)
-                    ),
-                  },
-                })
-                setChartSeries([
-                  {
-                    name: "Volume",
-                    data: pvs.map(([, v]: VolumeChart.Item.Type): number =>
-                      USD.iso.unwrap(Volume.iso.unwrap(v.total))
-                    ),
-                  },
-                ])
-              }
-            )(NEA.fromArray(poolVolume.success))
-            break
-          case "Pending":
-            break
-          case "Failure":
-            break
-        }
-        break
-      case ChartType.TVL:
-      case ChartType.Liquidity:
-        switch (poolLiquidity._tag) {
-          case "Success":
-            O.fold(
-              (): void => {},
-              (pls: NEA.NonEmptyArray<LiquidityChart.Item.Type>) => {
-                setChartOptions({
-                  ...chartOptions,
-                  xaxis: {
-                    ...chartOptions.xaxis,
-                    categories: extractDateAxis(pls).map((d: Date) =>
-                      printDate(d)
-                    ),
-                  },
-                })
-                setChartSeries([
-                  {
-                    name: "Liquidity",
-                    data: pls.map(
-                      ([, l]: LiquidityChart.Item.Type): USD.Type =>
-                        LiquidityTokenPrice.iso.unwrap(l)
-                    ),
-                  },
-                ])
-              }
-            )(NEA.fromArray(poolLiquidity.success))
-            break
-          case "Pending":
-            break
-          case "Failure":
-            break
-        }
-        break
-    }
-  }
 
   function renderTotalTokensLocked(): JSX.Element {
     return (
@@ -527,10 +525,10 @@ const StatsSection: React.FC<Props> = ({ poolSet, poolStats }: Props) => {
           <SwitchWithGlider
             elements={allChartTypes.map(chartTypeLabel)}
             activeIndex={activeChart}
-            handleSwitch={handleSwitch}
+            handleSwitch={(index: ChartType) => setActiveChart(index)}
           />
         </Box>
-        <Box height={"100%"} display="flex">
+        <Box height={"100%"}>
           <Chart
             options={chartOptions}
             series={chartSeries}

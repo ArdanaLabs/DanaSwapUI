@@ -22,6 +22,10 @@ const useStyles = makeStyles(({ palette }) => ({
     whiteSpace: "pre",
     lineHeight: "100%",
     color: palette.primary.main,
+
+    [`&.isActive`]: {
+      color: palette.common.white,
+    },
   },
 }))
 
@@ -56,7 +60,9 @@ const SwitchWithGlider: React.FC<SwitchWithGliderProps> = ({
             <Typography
               variant="h6"
               component="span"
-              className={cx(classes.text, customClassName)}
+              className={cx(classes.text, customClassName, {
+                isActive: activeIndex === index,
+              })}
             >
               {element}
             </Typography>
