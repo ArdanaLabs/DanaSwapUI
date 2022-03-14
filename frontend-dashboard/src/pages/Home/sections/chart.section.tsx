@@ -14,11 +14,6 @@ import * as NEA from "fp-ts/NonEmptyArray"
 import * as O from "fp-ts/Option"
 import * as RemoteData from "fp-ts-remote-data"
 
-import { useIsDarkMode } from "state/user/hooks"
-import { ApexOptions } from "apexcharts"
-import { useAggVolume, useAggLiquidity } from "state/chart/hooks"
-import { extractDateAxis, printCurrencyUSD, printDate } from "hooks"
-
 import { FetchDecodeError } from "Data/FetchDecode"
 import * as LiquidityTokenPrice from "Data/LiquidityTokenPrice"
 import * as Volume from "Data/Volume"
@@ -26,6 +21,12 @@ import { LiquidityChart, VolumeChart } from "Data/Chart"
 import { Granularity } from "Data/Chart/Granularity"
 import { USD } from "Data/Unit"
 import { TransactionType } from "Data/Chart/TransactionType"
+import * as Theme from "Data/User/Theme"
+
+import { useUserTheme } from "state/user/hooks"
+import { ApexOptions } from "apexcharts"
+import { useAggVolume, useAggLiquidity } from "state/chart/hooks"
+import { extractDateAxis, printCurrencyUSD, printDate } from "hooks"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -100,9 +101,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
 const ChartSection: React.FC = () => {
   const { palette, breakpoints } = useTheme()
-  const dark = useIsDarkMode()
-  const mobile = useMediaQuery(breakpoints.down("sm"))
-  const classes = useStyles({ dark, mobile })
+  const userTheme: Theme.Theme = useUserTheme()
+  const isDarkTheme: boolean = Theme.Eq.equals(userTheme, Theme.Theme.Dark)
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({ dark: isDarkTheme, mobile })
 
   const [volumeChartFilter, setVolumeChartFilter] = useState({
     type: TransactionType.Any,

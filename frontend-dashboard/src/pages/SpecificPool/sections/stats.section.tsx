@@ -16,8 +16,9 @@ import * as Asset from "Data/Asset"
 import { USD } from "Data/Unit"
 import { LiquidityChart, VolumeChart } from "Data/Chart"
 import { Granularity } from "Data/Chart/Granularity"
+import * as Theme from "Data/User/Theme"
 
-import { useIsDarkMode } from "state/user/hooks"
+import { useUserTheme } from "state/user/hooks"
 import { extractDateAxis, printCurrencyUSD, printDate } from "hooks"
 import { usePoolVolume, usePoolLiquidity } from "state/chart/hooks"
 
@@ -183,9 +184,10 @@ export type Props = {
 
 const StatsSection: React.FC<Props> = ({ poolSet, poolStats }: Props) => {
   const { palette, breakpoints } = useTheme()
-  const dark = useIsDarkMode()
+  const userTheme: Theme.Theme = useUserTheme()
+  const isDarkTheme: boolean = Theme.Eq.equals(userTheme, Theme.Theme.Dark)
   const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const classes = useStyles({ dark: isDarkTheme, mobile })
 
   const { poolVolume, fetchPoolVolume } = usePoolVolume()
   const { poolLiquidity, fetchPoolLiquidity } = usePoolLiquidity()

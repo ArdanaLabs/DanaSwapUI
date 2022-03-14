@@ -2,11 +2,12 @@ import React, { ChangeEvent, useState } from "react"
 import cx from "classnames"
 import { Box, useMediaQuery, Typography } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
-import { useIsDarkMode } from "state/user/hooks"
 
 import { printCurrencyUSD } from "hooks"
 import { USD } from "Data/Unit"
 import { Currency } from "pages/Swap/Swap"
+import * as Theme from "Data/User/Theme"
+import { useUserTheme } from "state/user/hooks"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -136,9 +137,12 @@ const TokenBox: React.FC<OverViewBoxProps> = ({
   handleOpenSelectAssetModal,
 }) => {
   const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
+  const userTheme: Theme.Theme = useUserTheme()
   const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const classes = useStyles({
+    dark: Theme.Eq.equals(userTheme, Theme.Theme.Dark),
+    mobile,
+  })
   const [balance] = useState(100)
   const [useRate] = useState(1.22)
 

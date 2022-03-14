@@ -15,9 +15,10 @@ import { ByTxType } from "Data/ByTxType"
 import { FetchDecodeError } from "Data/FetchDecode"
 import { TotalDailyVolume } from "Data/Stats/AggregateStats"
 import { TotalStats } from "Data/Stats/CombinedStats"
+import * as Theme from "Data/User/Theme"
 
 import { printCurrencyUSD } from "hooks"
-import { useIsDarkMode } from "state/user/hooks"
+import { useUserTheme } from "state/user/hooks"
 import { useTotalStats } from "state/home/hooks"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
@@ -67,9 +68,12 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
 const StatsSection: React.FC = () => {
   const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
+  const userTheme: Theme.Theme = useUserTheme()
   const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const classes = useStyles({
+    dark: Theme.Eq.equals(userTheme, Theme.Theme.Dark),
+    mobile,
+  })
 
   const totalStats: RemoteData<FetchDecodeError, TotalStats> = useTotalStats()
 

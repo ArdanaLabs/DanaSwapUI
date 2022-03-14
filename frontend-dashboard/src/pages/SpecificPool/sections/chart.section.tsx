@@ -20,10 +20,11 @@ import { Granularity } from "Data/Chart/Granularity"
 import { Percent, USD } from "Data/Unit"
 import * as PoolStats from "Data/Stats/PoolStats"
 import * as PoolSetName from "Data/Pool/PoolSetName"
+import * as Theme from "Data/User/Theme"
 
 import { printCurrencyUSD, printPercentage } from "hooks"
 import { usePoolAPY, usePoolFees, usePoolTxCount } from "state/chart/hooks"
-import { useIsDarkMode } from "state/user/hooks"
+import { useUserTheme } from "state/user/hooks"
 
 const useStyles = makeStyles(({ palette }) => ({
   root: {
@@ -64,9 +65,10 @@ export const ChartSection: React.FC<Props> = ({
   poolStats,
 }: Props): JSX.Element => {
   const { palette, breakpoints } = useTheme()
-  const dark = useIsDarkMode()
+  const userTheme: Theme.Theme = useUserTheme()
+  const isDarkTheme: boolean = Theme.Eq.equals(userTheme, Theme.Theme.Dark)
   const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const classes = useStyles({ dark: isDarkTheme, mobile })
   const { poolAPY, fetchPoolAPY } = usePoolAPY()
   const { poolFees, fetchPoolFees } = usePoolFees()
   const { poolTxCount, fetchPoolTxCount } = usePoolTxCount()
@@ -227,9 +229,9 @@ export const ChartSection: React.FC<Props> = ({
             id: "chart-pool-apy",
           },
           fill: {
-            colors: [!dark ? "#202F9A" : "#73d6f1"],
+            colors: [isDarkTheme ? "#73d6f1" : "#202F9A"],
             gradient: {
-              gradientToColors: [!dark ? "#5F72FF" : "#73D6F1"],
+              gradientToColors: [isDarkTheme ? "#73D6F1" : "#5F72FF"],
             },
           },
         })
@@ -260,9 +262,9 @@ export const ChartSection: React.FC<Props> = ({
             id: "chart-pool-fees",
           },
           fill: {
-            colors: [!dark ? "#202F9A" : "#73d6f1"],
+            colors: [isDarkTheme ? "#73d6f1" : "#202F9A"],
             gradient: {
-              gradientToColors: [!dark ? "#5F72FF" : "#73D6F1"],
+              gradientToColors: [isDarkTheme ? "#73D6F1" : "#5F72FF"],
             },
           },
         })
@@ -293,9 +295,9 @@ export const ChartSection: React.FC<Props> = ({
             id: "chart-pool-txcount",
           },
           fill: {
-            colors: [!dark ? "#202F9A" : "#73d6f1"],
+            colors: [isDarkTheme ? "#73d6f1" : "#202F9A"],
             gradient: {
-              gradientToColors: [!dark ? "#5F72FF" : "#73D6F1"],
+              gradientToColors: [isDarkTheme ? "#73D6F1" : "#5F72FF"],
             },
           },
         })

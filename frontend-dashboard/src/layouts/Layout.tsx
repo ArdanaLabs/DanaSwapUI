@@ -1,6 +1,9 @@
 import React from "react"
 import { Box, makeStyles, useMediaQuery, useTheme } from "@material-ui/core"
-import { useIsDarkMode } from "state/user/hooks"
+
+import * as Theme from "Data/User/Theme"
+
+import { useUserTheme } from "state/user/hooks"
 import { Footer, Header } from "layouts"
 
 const useStyles = makeStyles(({ palette }) => ({
@@ -14,10 +17,13 @@ export interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const dark = useIsDarkMode()
   const { breakpoints } = useTheme()
+  const userTheme: Theme.Theme = useUserTheme()
   const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const classes = useStyles({
+    dark: Theme.Eq.equals(userTheme, Theme.Theme.Dark),
+    mobile,
+  })
 
   return (
     <>

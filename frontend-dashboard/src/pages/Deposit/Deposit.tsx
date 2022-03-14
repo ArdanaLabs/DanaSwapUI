@@ -4,7 +4,9 @@ import { makeStyles, useTheme } from "@material-ui/core/styles"
 
 import cx from "classnames"
 
-import { useIsDarkMode } from "state/user/hooks"
+import * as Theme from "Data/User/Theme"
+
+import { useUserTheme } from "state/user/hooks"
 import { Slider } from "components"
 import { Radio } from "components/Button"
 
@@ -146,9 +148,12 @@ const useStyles = makeStyles(({ palette }) => ({
 
 const Deposit: React.FC = () => {
   const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
+  const userTheme: Theme.Theme = useUserTheme()
   const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const classes = useStyles({
+    dark: Theme.Eq.equals(userTheme, Theme.Theme.Dark),
+    mobile,
+  })
 
   return (
     <Fade in={true}>

@@ -2,7 +2,9 @@ import React from "react"
 import { Box, useMediaQuery, Container, Link } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 
-import { useIsDarkMode } from "state/user/hooks"
+import * as Theme from "Data/User/Theme"
+
+import { useUserTheme } from "state/user/hooks"
 import LogoLight from "assets/logo-light.png"
 
 import TwitterIcon from "assets/components/twitter"
@@ -89,9 +91,12 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
 const Footer: React.FC = () => {
   const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
+  const userTheme: Theme.Theme = useUserTheme()
   const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const classes = useStyles({
+    dark: Theme.Eq.equals(userTheme, Theme.Theme.Dark),
+    mobile,
+  })
 
   return (
     <Box className={classes.root}>

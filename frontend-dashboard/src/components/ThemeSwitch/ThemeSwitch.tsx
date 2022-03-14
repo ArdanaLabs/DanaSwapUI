@@ -3,9 +3,16 @@ import cx from "classnames"
 import { Box } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 
-import { useDarkModeManager } from "state/user/hooks"
+import * as O from "fp-ts/Option"
+import { pipe } from "fp-ts/function"
+
+import * as Theme from "Data/User/Theme"
+
+import { useUserThemeManager } from "state/user/hooks"
 
 import ICO_Light from "assets/imgs/sun.svg"
+
+// If the theme list goes beyond 2 styles, this toggler will no longer work
 
 const useStyles = makeStyles(({ palette }) => ({
   root: {
@@ -33,17 +40,25 @@ const useStyles = makeStyles(({ palette }) => ({
 }))
 
 const ThemeSwitch: React.FC = () => {
-  const [darkMode, setDarkMode] = useDarkModeManager()
+  const [userTheme, setUserTheme] = useUserThemeManager()
   const classes = useStyles()
 
+  // only relevant while theme is binary
+  const isLightTheme: boolean = Theme.Eq.equals(userTheme, Theme.Theme.Light)
+
   const toggleMode = () => {
-    setDarkMode(!darkMode)
+    return pipe(
+      userTheme,
+      Theme.succ,
+      O.getOrElse(() => Theme.Bounded.top),
+      setUserTheme
+    )
   }
 
   return (
     <Box className={cx(classes.root)} onClick={toggleMode}>
       <Box className={cx(classes.switchLabel)}>
-        {!darkMode ? "DarkMode" : "LightMode"}
+        {isLightTheme ? "DarkMode" : "LightMode"}
       </Box>
       <Box className={cx(classes.switchIcon)}>
         <img src={ICO_Light} alt="Theme switch icon" />

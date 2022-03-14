@@ -16,10 +16,11 @@ import { RemoteData } from "fp-ts-remote-data"
 import { FetchDecodeError } from "Data/FetchDecode"
 import { TotalDeposits, TotalDailyVolume } from "Data/Stats/AggregateStats"
 import { TotalStats } from "Data/Stats/CombinedStats"
+import * as Theme from "Data/User/Theme"
 
 import { GradientBox, PoolsGrid } from "components"
 import { printCurrencyUSD } from "hooks"
-import { useIsDarkMode } from "state/user/hooks"
+import { useUserTheme } from "state/user/hooks"
 import cx from "classnames"
 import { usePoolStats, useTotalStats } from "state/home/hooks"
 
@@ -144,8 +145,11 @@ enum PoolFilterType {
 const Pools: React.FC = () => {
   const { breakpoints } = useTheme()
   const mobile = useMediaQuery(breakpoints.down("xs"))
-  const dark = useIsDarkMode()
-  const classes = useStyles({ dark, mobile })
+  const userTheme: Theme.Theme = useUserTheme()
+  const classes = useStyles({
+    dark: Theme.Eq.equals(userTheme, Theme.Theme.Dark),
+    mobile,
+  })
   const [filterBy, setFilterBy] = useState({
     input: "",
     type: PoolFilterType.STABLECOINS,

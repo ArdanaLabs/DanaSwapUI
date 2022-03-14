@@ -15,7 +15,7 @@ import { FetchDecodeError } from "Data/FetchDecode"
 import * as PoolSetName from "Data/Pool/PoolSetName"
 import { PoolStats } from "Data/Stats/PoolStats"
 import { usePoolStats } from "state/home/hooks"
-import { useIsDarkMode } from "state/user/hooks"
+import { useUserTheme } from "state/user/hooks"
 import { useHistory } from "react-router-dom"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
@@ -39,9 +39,12 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
 const PoolsSection: React.FC = () => {
   const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
+  const userTheme: Theme.Theme = useUserTheme()
   const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const classes = useStyles({
+    dark: Theme.Eq.equals(userTheme, Theme.Theme.Dark),
+    mobile,
+  })
   const history = useHistory()
 
   const poolStats: RemoteData<

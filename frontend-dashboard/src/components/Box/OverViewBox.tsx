@@ -2,7 +2,10 @@ import React from "react"
 import cx from "classnames"
 import { Box, useMediaQuery, Typography } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
-import { useIsDarkMode } from "state/user/hooks"
+
+import * as Theme from "Data/User/Theme"
+
+import { useUserTheme } from "state/user/hooks"
 
 import CircleInfoCyanIcon from "assets/imgs/circle-info-cyan.png"
 import CircleInfoDarkBlueIcon from "assets/imgs/circle-info-darkblue.png"
@@ -54,16 +57,17 @@ export interface OverViewBoxProps {
 
 const OverViewBox: React.FC<OverViewBoxProps> = ({ label, content }) => {
   const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
+  const userTheme: Theme.Theme = useUserTheme()
   const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const isDarkTheme: boolean = Theme.Eq.equals(userTheme, Theme.Theme.Dark)
+  const classes = useStyles({ dark: isDarkTheme, mobile })
 
   return (
     <Box className={cx(classes.root)}>
       <Box className={cx(classes.leftBorder)}>&nbsp;&nbsp;</Box>
       <Box className={cx(classes.info)}>
         <img
-          src={dark ? CircleInfoCyanIcon : CircleInfoDarkBlueIcon}
+          src={isDarkTheme ? CircleInfoCyanIcon : CircleInfoDarkBlueIcon}
           alt="info"
         />
       </Box>

@@ -16,9 +16,11 @@ import { RemoteData } from "fp-ts-remote-data"
 import { FetchDecodeError } from "Data/FetchDecode"
 import { PoolStats } from "Data/Stats/PoolStats"
 import * as PoolSetName from "Data/Pool/PoolSetName"
+import * as Theme from "Data/User/Theme"
 
 import { StatsSection, ChartSection, TransactionsSection } from "./sections"
-import { useIsDarkMode } from "state/user/hooks"
+import { useUserTheme } from "state/user/hooks"
+import Button from "components/Button/Button"
 import { usePoolStats } from "state/home/hooks"
 
 import CyanBG from "assets/backgrounds/cyan.svg"
@@ -42,8 +44,11 @@ export const SpecificPool: React.FC<Props> = ({
 }: Props): JSX.Element => {
   const { breakpoints } = useTheme()
   const mobile = useMediaQuery(breakpoints.down("xs"))
-  const dark = useIsDarkMode()
-  const classes = useStyles({ dark, mobile })
+  const userTheme: Theme.Theme = useUserTheme()
+  const classes = useStyles({
+    dark: Theme.Eq.equals(userTheme, Theme.Theme.Dark),
+    mobile,
+  })
   const history = useHistory()
   const poolStats: RemoteData<
     FetchDecodeError,

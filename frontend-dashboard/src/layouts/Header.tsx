@@ -11,7 +11,9 @@ import { makeStyles, useTheme } from "@material-ui/core/styles"
 import Hamburger from "hamburger-react"
 import cx from "classnames"
 
-import { useIsDarkMode } from "state/user/hooks"
+import * as Theme from "Data/User/Theme"
+
+import { useUserTheme } from "state/user/hooks"
 import { useHistory, useLocation } from "react-router-dom"
 import ThemeSwitch from "components/ThemeSwitch"
 import { GradientBox } from "components"
@@ -112,9 +114,12 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
 const Header: React.FC = () => {
   const theme = useTheme()
-  const mobile = useMediaQuery(theme.breakpoints.down("md"))
-  const dark = useIsDarkMode()
-  const classes = useStyles({ dark, mobile })
+  const mobile = useMediaQuery(theme.breakpoints.down("sm"))
+  const userTheme: Theme.Theme = useUserTheme()
+  const classes = useStyles({
+    dark: Theme.Eq.equals(userTheme, Theme.Theme.Dark),
+    mobile,
+  })
   const history = useHistory()
   const { pathname } = useLocation<{ previous: string }>()
 
