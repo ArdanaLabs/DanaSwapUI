@@ -4,7 +4,7 @@ import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
 import { useIsDarkMode } from "state/user/hooks"
 
-import { ReactComponent as SearchIcon } from "assets/icons/search.svg"
+import { ReactComponent as SearchIcon } from "assets/imgs/search.svg"
 
 const useStyles = makeStyles(({ palette }) => ({
   input: {

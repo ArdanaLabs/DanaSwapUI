@@ -3,7 +3,7 @@ import { Box, useMediaQuery } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import { useIsDarkMode } from "state/user/hooks"
 
-import ArrowLeftRightIcon from "assets/icons/arrow-leftright.svg"
+import ArrowLeftRightIcon from "assets/imgs/arrow-leftright.svg"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {

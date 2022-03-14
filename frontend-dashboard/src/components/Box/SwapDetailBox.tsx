@@ -3,8 +3,8 @@ import { Box, useMediaQuery, Typography } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import { useIsDarkMode } from "state/user/hooks"
 
-import CircleInfoCyanIcon from "assets/icons/circle-info-cyan.png"
-import CircleInfoDarkBlueIcon from "assets/icons/circle-info-darkblue.png"
+import CircleInfoCyanIcon from "assets/imgs/circle-info-cyan.png"
+import CircleInfoDarkBlueIcon from "assets/imgs/circle-info-darkblue.png"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {

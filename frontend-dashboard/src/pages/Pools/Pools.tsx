@@ -28,7 +28,7 @@ import PinkBG from "assets/backgrounds/pink.svg"
 import { PoolStats } from "Data/Stats/PoolStats"
 import * as PoolSetName from "Data/Pool/PoolSetName"
 
-import { ReactComponent as SearchIcon } from "assets/icons/search.svg"
+import { ReactComponent as SearchIcon } from "assets/imgs/search.svg"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {

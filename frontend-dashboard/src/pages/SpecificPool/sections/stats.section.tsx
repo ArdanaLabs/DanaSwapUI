@@ -21,7 +21,7 @@ import { useIsDarkMode } from "state/user/hooks"
 import { extractDateAxis, printCurrencyUSD, printDate } from "hooks"
 import { usePoolVolume, usePoolLiquidity } from "state/chart/hooks"
 
-import { ReactComponent as ArrowDown } from "assets/icons/arrow-down.svg"
+import { ReactComponent as ArrowDown } from "assets/imgs/arrow-down.svg"
 import { SwitchWithGlider } from "components"
 
 const useStyles = makeStyles(({ palette }) => ({

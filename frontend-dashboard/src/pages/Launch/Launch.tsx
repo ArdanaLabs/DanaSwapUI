@@ -5,7 +5,7 @@ import { useIsDarkMode } from "state/user/hooks"
 import cx from "classnames"
 import { LaunchTotalStats, LaunchHeader, LaunchPartialStats } from "./sections"
 
-import IMG_ScrollDown from "assets/icons/scroll-down.png"
+import IMG_ScrollDown from "assets/imgs/scroll-down.png"
 
 const useStyles = makeStyles(({ palette }) => ({
   root: {},

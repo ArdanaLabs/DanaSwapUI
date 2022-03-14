@@ -12,7 +12,7 @@ import {
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import { useIsDarkMode } from "state/user/hooks"
 
-import { ReactComponent as ChevUpIcon } from "assets/icons/chev-up.svg"
+import { ReactComponent as ChevUpIcon } from "assets/imgs/chev-up.svg"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {

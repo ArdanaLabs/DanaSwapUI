@@ -3,7 +3,7 @@ import Adapter from "@wojtekmaj/enzyme-adapter-react-17"
 import * as Enzyme from "enzyme"
 import { shallow } from "enzyme"
 import { StatBox } from "."
-import IMG_TVL from "assets/icons/tvl.png"
+import IMG_TVL from "assets/imgs/tvl.png"
 
 Enzyme.configure({ adapter: new Adapter() })
 

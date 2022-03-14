@@ -23,7 +23,7 @@ import {
 // import { options } from "data"
 import { Currencies } from "data"
 
-// import CircleInfoCyanIcon from "assets/icons/circle-info-cyan.png"
+// import CircleInfoCyanIcon from "assets/imgs/circle-info-cyan.png"
 
 import CyanBG from "assets/backgrounds/cyan.svg"
 import PinkBG from "assets/backgrounds/pink.svg"
