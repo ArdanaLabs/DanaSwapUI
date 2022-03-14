@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { Box, Grid, useMediaQuery } from "@material-ui/core"
+import { Box, Grid, Typography, useMediaQuery } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
 import Chart from "react-apexcharts"
@@ -26,35 +26,20 @@ import { usePoolAPY, usePoolFees, usePoolTxCount } from "state/chart/hooks"
 import { useIsDarkMode } from "state/user/hooks"
 
 const useStyles = makeStyles(({ palette }) => ({
-  self: {
-    background: "unset",
+  root: {
+    marginBottom: 50,
   },
 
   title: {
     color: palette.text.primary,
-    fontFamily: "Brandon Grotesque",
-    fontStyle: "normal",
-    fontWeight: 900,
-    marginTop: "20px",
-    fontSize: "18px",
-    lineHeight: "110%",
+    marginBottom: 20,
   },
 
   panel: {
-    background:
-      palette.type === "light"
-        ? palette.common.white
-        : palette.background.paper,
-    borderRadius: "10px",
-    padding: "20px",
+    background: `linear-gradient(126.33deg, ${palette.info.dark} 9.83%, rgba(37, 48, 130, 0) 96.44%)`,
+    borderRadius: 10,
+    padding: 20,
     height: "calc(100% - 70px)",
-
-    fontFamily: "Museo Sans",
-    fontStyle: "normal",
-    fontSize: "12px",
-    lineHeight: "115%",
-    fontWeight: 100,
-    color: palette.secondary.main,
   },
 }))
 
@@ -121,10 +106,10 @@ export const ChartSection: React.FC<Props> = ({
     },
     fill: {
       type: "gradient",
-      colors: [!dark ? "#202F9A" : "#73d6f1"],
+      colors: [palette.secondary.main],
       gradient: {
         type: "vertical", // The gradient in the horizontal direction
-        gradientToColors: [!dark ? "#5F72FF" : "#73D6F1"], // The color at the end of the gradient
+        gradientToColors: [palette.secondary.main], // The color at the end of the gradient
         opacityFrom: 1, // transparency
         opacityTo: 0.3,
         stops: [0, 1200],
@@ -373,10 +358,12 @@ export const ChartSection: React.FC<Props> = ({
   }
 
   return (
-    <Box className={cx(classes.self)}>
+    <Box className={cx(classes.root)}>
       <Grid container spacing={3}>
         <Grid item sm={12} md={6} style={{ width: "100%", gap: "20px" }}>
-          <Box className={cx(classes.title)}>APY Graph</Box>
+          <Typography variant="h1" component="h1" className={classes.title}>
+            APY Graph
+          </Typography>
           <Box className={cx(classes.panel)}>
             <Chart
               options={APYChartOptions}
@@ -386,10 +373,10 @@ export const ChartSection: React.FC<Props> = ({
             />
           </Box>
         </Grid>
-        <Grid item sm={12} md={6} style={{ width: "100%", gap: "20px" }}>
-          <Box component="h3" className={cx(classes.title)}>
+        <Grid item sm={12} md={6}>
+          <Typography variant="h1" component="h1" className={classes.title}>
             Historical Fee Data
-          </Box>
+          </Typography>
           <Box className={cx(classes.panel)}>
             <Chart
               options={FeesChartOptions}
@@ -399,10 +386,10 @@ export const ChartSection: React.FC<Props> = ({
             />
           </Box>
         </Grid>
-        <Grid item sm={12} md={6} style={{ width: "100%", gap: "20px" }}>
-          <Box component="h3" className={cx(classes.title)}>
+        <Grid item sm={12} md={6}>
+          <Typography variant="h1" component="h1" className={classes.title}>
             Currency Reserves
-          </Box>
+          </Typography>
           <Box
             component="dl"
             className={cx(classes.panel)}
@@ -456,10 +443,10 @@ export const ChartSection: React.FC<Props> = ({
             )(poolStats.amplificationCoefficient)}
           </Box>
         </Grid>
-        <Grid item sm={12} md={6} style={{ width: "100%", gap: "20px" }}>
-          <Box className={cx(classes.title)}>
+        <Grid item sm={12} md={6}>
+          <Typography variant="h1" component="h1" className={classes.title}>
             <abbr title="Transaction">TX</abbr> Graph
-          </Box>
+          </Typography>
           <Box className={cx(classes.panel)}>
             <Chart
               options={TxChartOptions}

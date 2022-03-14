@@ -25,7 +25,9 @@ import { ReactComponent as ArrowDown } from "assets/icons/arrow-down.svg"
 import { SwitchWithGlider } from "components"
 
 const useStyles = makeStyles(({ palette }) => ({
-  root: {},
+  root: {
+    marginBottom: 50,
+  },
   title: {
     color: palette.primary.main,
     fontWeight: 900,

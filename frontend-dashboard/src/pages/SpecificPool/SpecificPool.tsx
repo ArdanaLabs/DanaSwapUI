@@ -79,10 +79,8 @@ export const SpecificPool: React.FC<Props> = ({
           <Container>
             {/* TODO: elements should *NOT* be used for spacer, this is what styles are for */}
             <StatsSection poolStats={ps} poolSet={poolSet} />
-            {/* <Box mt={"30px"} />
             <ChartSection poolStats={ps} poolSet={poolSet} />
-            <Box mt={"50px"} />
-            <TransactionsSection poolSet={poolSet} /> */}
+            {/* <TransactionsSection poolSet={poolSet} /> */}
           </Container>
         </Box>
       </Fade>
