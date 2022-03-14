@@ -20,7 +20,6 @@ import * as Theme from "Data/User/Theme"
 
 import { StatsSection, ChartSection, TransactionsSection } from "./sections"
 import { useUserTheme } from "state/user/hooks"
-import Button from "components/Button/Button"
 import { usePoolStats } from "state/home/hooks"
 
 import CyanBG from "assets/backgrounds/cyan.svg"

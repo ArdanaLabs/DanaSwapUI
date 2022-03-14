@@ -1,7 +1,8 @@
 import React from "react"
 import { Box, useMediaQuery, Typography } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
-import { useIsDarkMode } from "state/user/hooks"
+import { useUserTheme } from "state/user/hooks"
+import * as Theme from "Data/User/Theme"
 
 import CircleInfoCyanIcon from "assets/imgs/circle-info-cyan.png"
 import CircleInfoDarkBlueIcon from "assets/imgs/circle-info-darkblue.png"
@@ -39,9 +40,13 @@ const SwapDetailBox: React.FC<Props> = ({
   tradeRoute,
 }) => {
   const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
+  const userTheme: Theme.Theme = useUserTheme()
   const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const classes = useStyles({
+    dark: Theme.Eq.equals(userTheme, Theme.Theme.Dark),
+    mobile,
+  })
+  const isDarkTheme: boolean = Theme.Eq.equals(userTheme, Theme.Theme.Dark)
 
   const renderRow = (text: string, content: string | number) => (
     <Box display="flex" justifyContent="space-between" alignItems="center">
@@ -54,7 +59,7 @@ const SwapDetailBox: React.FC<Props> = ({
         </Typography>
         <Box ml={1}>
           <img
-            src={dark ? CircleInfoCyanIcon : CircleInfoDarkBlueIcon}
+            src={isDarkTheme ? CircleInfoCyanIcon : CircleInfoDarkBlueIcon}
             alt="info"
           />
         </Box>

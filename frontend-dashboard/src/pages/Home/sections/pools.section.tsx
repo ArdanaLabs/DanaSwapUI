@@ -12,6 +12,7 @@ import { RemoteData } from "fp-ts-remote-data"
 
 import { PoolsGrid } from "components"
 import { FetchDecodeError } from "Data/FetchDecode"
+import * as Theme from "Data/User/Theme"
 import * as PoolSetName from "Data/Pool/PoolSetName"
 import { PoolStats } from "Data/Stats/PoolStats"
 import { usePoolStats } from "state/home/hooks"

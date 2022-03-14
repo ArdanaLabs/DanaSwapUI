@@ -8,7 +8,8 @@ import {
 } from "@material-ui/core"
 import cx from "classnames"
 import { GradientBox } from "components"
-import { useIsDarkMode } from "state/user/hooks"
+import { useUserTheme } from "state/user/hooks"
+import * as Theme from "Data/User/Theme"
 
 const useStyles = makeStyles(({ palette }) => ({
   root: {
@@ -43,9 +44,12 @@ const SwitchWithGlider: React.FC<SwitchWithGliderProps> = ({
   handleSwitch,
 }) => {
   const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
+  const userTheme: Theme.Theme = useUserTheme()
   const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const classes = useStyles({
+    dark: Theme.Eq.equals(userTheme, Theme.Theme.Dark),
+    mobile,
+  })
 
   return (
     <Box className={cx(classes.root)}>

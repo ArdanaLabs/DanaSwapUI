@@ -10,7 +10,8 @@ import {
   FormControlLabel,
 } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
-import { useIsDarkMode } from "state/user/hooks"
+import { useUserTheme } from "state/user/hooks"
+import * as Theme from "Data/User/Theme"
 
 import { ReactComponent as ChevUpIcon } from "assets/imgs/chev-up.svg"
 
@@ -154,9 +155,12 @@ const SwapAdvancedOptionsBox: React.FC<Props> = ({
   handleGasPriceOptionChange,
 }) => {
   const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
+  const userTheme: Theme.Theme = useUserTheme()
   const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const classes = useStyles({
+    dark: Theme.Eq.equals(userTheme, Theme.Theme.Dark),
+    mobile,
+  })
   const [collapsed, setCollapsed] = useState(false)
 
   const [customSlippageAmount, setCustomSlippageAmount] = useState<

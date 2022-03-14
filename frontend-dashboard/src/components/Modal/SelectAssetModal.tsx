@@ -11,7 +11,8 @@ import {
   makeStyles,
   Typography,
 } from "@material-ui/core"
-import { useIsDarkMode } from "state/user/hooks"
+import * as Theme from "Data/User/Theme"
+import { useUserTheme } from "state/user/hooks"
 import { GradientBox, SearchInput } from "components"
 import { Currencies } from "data"
 import { Currency } from "pages/Swap/Swap"
@@ -96,9 +97,12 @@ const SelectAssetModal: React.FunctionComponent<Props> = ({
   handleTokenChanged,
 }) => {
   const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
+  const userTheme: Theme.Theme = useUserTheme()
   const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const classes = useStyles({
+    dark: Theme.Eq.equals(userTheme, Theme.Theme.Dark),
+    mobile,
+  })
   const [filter, setFilter] = useState({
     text: "",
     type: AssetFilterType.ALL,

@@ -12,9 +12,10 @@ import {
   Typography,
 } from "@material-ui/core"
 import { makeStyles, useTheme, withStyles } from "@material-ui/core/styles"
-import { useIsDarkMode } from "state/user/hooks"
+import { useUserTheme } from "state/user/hooks"
 import { useHistory } from "react-router-dom"
 
+import * as Theme from "Data/User/Theme"
 import * as O from "fp-ts/Option"
 import * as ROM from "fp-ts/ReadonlyMap"
 
@@ -110,9 +111,12 @@ export interface PoolsGridProps {
 
 const PoolsGrid: React.FC<PoolsGridProps> = ({ rows }) => {
   const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
+  const userTheme: Theme.Theme = useUserTheme()
   const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const classes = useStyles({
+    dark: Theme.Eq.equals(userTheme, Theme.Theme.Dark),
+    mobile,
+  })
   const history = useHistory()
 
   const columns: string[] = [

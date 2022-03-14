@@ -120,6 +120,7 @@ const Header: React.FC = () => {
     dark: Theme.Eq.equals(userTheme, Theme.Theme.Dark),
     mobile,
   })
+  const isDarkTheme: boolean = Theme.Eq.equals(userTheme, Theme.Theme.Dark)
   const history = useHistory()
   const { pathname } = useLocation<{ previous: string }>()
 
@@ -161,7 +162,7 @@ const Header: React.FC = () => {
             width="100%"
           >
             <Box className={cx(classes.logo)} onClick={() => history.push("/")}>
-              <img src={dark ? LogoLight : LogoDark} alt="logo" />
+              <img src={isDarkTheme ? LogoLight : LogoDark} alt="logo" />
             </Box>
             {!mobile && (
               <Box display="flex" ml="30px">

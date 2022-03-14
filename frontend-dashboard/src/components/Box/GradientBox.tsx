@@ -2,8 +2,9 @@ import React, { useEffect, useMemo, useRef, useState } from "react"
 import { Box, useMediaQuery } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
-import { useIsDarkMode } from "state/user/hooks"
+import { useUserTheme } from "state/user/hooks"
 import { v4 as uuidv4 } from "uuid"
+import * as Theme from "Data/User/Theme"
 
 const useStyles = makeStyles(({ palette }) => ({
   root: {
@@ -55,9 +56,12 @@ const GradientBox: React.FC<GradientBoxProps> = ({
   onClick,
 }) => {
   const { breakpoints, palette } = useTheme()
-  const dark = useIsDarkMode()
+  const userTheme: Theme.Theme = useUserTheme()
   const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const classes = useStyles({
+    dark: Theme.Eq.equals(userTheme, Theme.Theme.Dark),
+    mobile,
+  })
   const [hover, setHover] = useState(false)
   const domID = useMemo(() => uuidv4().split("-").pop(), [])
 
