@@ -11,12 +11,12 @@ import LogoLight from "assets/logo-light.png"
 // import { ReactComponent as MediumIcon } from "assets/icons/medium.svg"
 // import { ReactComponent as YoutubeIcon } from "assets/icons/youtube.svg"
 // import { ReactComponent as TelegramIcon } from "assets/icons/telegram.svg"
-import TwitterIcon from "../assets/icons/twitter"
-import DiscordIcon from "../assets/icons/discord"
-import LinkedinIcon from "../assets/icons/linkedin"
-import MediumIcon from "../assets/icons/medium"
-import YoutubeIcon from "../assets/icons/youtube"
-import TelegramIcon from "../assets/icons/telegram"
+import TwitterIcon from "assets/components/twitter"
+import DiscordIcon from "assets/components/discord"
+import LinkedinIcon from "assets/components/linkedin"
+import MediumIcon from "assets/components/medium"
+import YoutubeIcon from "assets/components/youtube"
+import TelegramIcon from "assets/components/telegram"
 
 export const Socials = [
   {
