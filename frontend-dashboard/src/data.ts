@@ -1,12 +1,6 @@
 import LOGO_Ardana from "assets/coins/ardana.png"
 import LOGO_Cardano from "assets/coins/cardano.png"
 
-import { ReactComponent as TwitterIcon } from "assets/icons/twitter.svg"
-import { ReactComponent as DiscordIcon } from "assets/icons/discord.svg"
-import { ReactComponent as LinkedinIcon } from "assets/icons/linkedin.svg"
-import { ReactComponent as MediumIcon } from "assets/icons/medium.svg"
-import { ReactComponent as YoutubeIcon } from "assets/icons/youtube.svg"
-import { ReactComponent as TelegramIcon } from "assets/icons/telegram.svg"
 import { Currency } from "pages/Swap/Swap"
 
 export const navList = [
@@ -141,36 +135,3 @@ export const WeeklyFeeList = [
 ]
 
 export const depositePools = ["A", "B", "C", "D", "E", "F", "G", "H", "I"]
-
-export const Socials = [
-  {
-    name: "Twitter",
-    icon: TwitterIcon,
-    link: "https://twitter.com/ardanaproject",
-  },
-  {
-    name: "Discord",
-    icon: DiscordIcon,
-    link: "https://discord.gg/c9skrZvsqH",
-  },
-  {
-    name: "Telegram",
-    icon: TelegramIcon,
-    link: "https://t.me/ardanaofficial",
-  },
-  {
-    name: "Medium",
-    icon: MediumIcon,
-    link: "https://medium.com/ardana-hub",
-  },
-  {
-    name: "Youtube",
-    icon: YoutubeIcon,
-    link: "https://www.youtube.com/channel/UCuVtpKzlmsD6s0ZiC0hakkA",
-  },
-  {
-    name: "Linkedin",
-    icon: LinkedinIcon,
-    link: "https://www.linkedin.com/company/ardanalabs/",
-  },
-]

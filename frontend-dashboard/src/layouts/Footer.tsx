@@ -4,7 +4,46 @@ import { makeStyles, useTheme } from "@material-ui/core/styles"
 
 import { useIsDarkMode } from "state/user/hooks"
 import LogoLight from "assets/logo-light.png"
-import { Socials } from "data"
+
+import { ReactComponent as TwitterIcon } from "assets/icons/twitter.svg"
+import { ReactComponent as DiscordIcon } from "assets/icons/discord.svg"
+import { ReactComponent as LinkedinIcon } from "assets/icons/linkedin.svg"
+import { ReactComponent as MediumIcon } from "assets/icons/medium.svg"
+import { ReactComponent as YoutubeIcon } from "assets/icons/youtube.svg"
+import { ReactComponent as TelegramIcon } from "assets/icons/telegram.svg"
+
+export const Socials = [
+  {
+    name: "Twitter",
+    icon: TwitterIcon,
+    link: "https://twitter.com/ardanaproject",
+  },
+  {
+    name: "Discord",
+    icon: DiscordIcon,
+    link: "https://discord.gg/c9skrZvsqH",
+  },
+  {
+    name: "Telegram",
+    icon: TelegramIcon,
+    link: "https://t.me/ardanaofficial",
+  },
+  {
+    name: "Medium",
+    icon: MediumIcon,
+    link: "https://medium.com/ardana-hub",
+  },
+  {
+    name: "Youtube",
+    icon: YoutubeIcon,
+    link: "https://www.youtube.com/channel/UCuVtpKzlmsD6s0ZiC0hakkA",
+  },
+  {
+    name: "Linkedin",
+    icon: LinkedinIcon,
+    link: "https://www.linkedin.com/company/ardanalabs/",
+  },
+]
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
