@@ -24,8 +24,7 @@ import { ReactComponent as TelegramIcon } from "assets/icons/telegram.svg"
 
 import { Listings } from "data"
 
-const sphereVideo =
-  "https://background.sfo3.digitaloceanspaces.com/sphere/output.webm"
+const sphereVideo = "https://youtu.be/k_OaqxJaQCw"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
@@ -33,7 +32,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
                   url(${BG_BLUE_RADIAL}) top 50% left 50% no-repeat,
                   url(${BG_WAVE}) bottom left no-repeat`,
     backgroundSize: "auto, auto, contain",
-    paddingTop: "100px",
+    paddingTop: "200px",
     paddingBottom: "200px",
 
     [breakpoints.down("xs")]: {
@@ -47,9 +46,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   title: {
-    "lineHeight": "100%",
+    lineHeight: "100%",
 
-    "& span": {
+    [`& span`]: {
       color: palette.secondary.main,
     },
 
