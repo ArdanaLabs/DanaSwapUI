@@ -6,7 +6,7 @@ import { makeStyles, useTheme } from "@material-ui/core/styles"
 import { useWallet } from "state/wallet/hooks"
 import { useIsDarkMode } from "state/user/hooks"
 
-import WalletIcon from "assets/image/icons/wallet.svg"
+import WalletIcon from "assets/image/svgs/wallet.svg"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {

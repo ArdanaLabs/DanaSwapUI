@@ -13,7 +13,7 @@ import cx from "classnames"
 
 import { useIsDarkMode } from "state/user/hooks"
 
-import { ReactComponent as CircleQuestionIcon } from "assets/image/icons/circle-question.svg"
+import { ReactComponent as CircleQuestionIcon } from "assets/image/svgs/circle-question.svg"
 import { currencyFormatter, numberFormatter, percentageFormatter } from "hooks"
 import { AmountInput } from "components"
 

@@ -5,8 +5,8 @@ import { makeStyles, useTheme } from "@material-ui/core/styles"
 
 import { useDarkModeManager, useIsDarkMode } from "state/user/hooks"
 
-import ICON_SUN from "assets/image/icons/sun.svg"
-import ICON_MOON from "assets/image/icons/moon.svg"
+import ICON_SUN from "assets/image/svgs/sun.svg"
+import ICON_MOON from "assets/image/svgs/moon.svg"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {

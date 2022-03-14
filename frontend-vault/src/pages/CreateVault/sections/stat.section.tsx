@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom"
 import { useIsDarkMode } from "state/user/hooks"
 import { useVault } from "state/vault/hooks"
 import { currencyFormatter, percentageFormatter } from "hooks"
-import { ReactComponent as CircleQuestionIcon } from "assets/image/icons/circle-question.svg"
+import { ReactComponent as CircleQuestionIcon } from "assets/image/svgs/circle-question.svg"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {

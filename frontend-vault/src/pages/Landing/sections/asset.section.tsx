@@ -23,7 +23,7 @@ import {
 import { useUiModal } from "state/ui/hooks"
 import { useVault } from "state/vault/hooks"
 import { numberFormatter, percentageFormatter } from "hooks/formatter"
-import { ReactComponent as ChevDownIcon } from "assets/image/icons/chev-down.svg"
+import { ReactComponent as ChevDownIcon } from "assets/image/svgs/chev-down.svg"
 import { VaultInfo } from "state/vault/types"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({

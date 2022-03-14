@@ -4,7 +4,7 @@ import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
 import { useIsDarkMode } from "state/user/hooks"
 
-import ArrowRightIcon from "assets/image/icons/arrow-right-circle.svg"
+import ArrowRightIcon from "assets/image/svgs/arrow-right-circle.svg"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {

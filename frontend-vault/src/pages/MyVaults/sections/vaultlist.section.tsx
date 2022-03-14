@@ -24,7 +24,7 @@ import {
 import { currencyFormatter, percentageFormatter } from "hooks"
 import { useUiModal } from "state/ui/hooks"
 import { MyVaultInfo } from "state/wallet/types"
-import { ReactComponent as ChevDownIcon } from "assets/image/icons/chev-down.svg"
+import { ReactComponent as ChevDownIcon } from "assets/image/svgs/chev-down.svg"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {

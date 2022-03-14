@@ -12,7 +12,7 @@ import React from "react"
 import cx from "classnames"
 import { useIsDarkMode } from "state/user/hooks"
 
-import CloseIcon from "assets/image/icons/close.svg"
+import CloseIcon from "assets/image/svgs/close.svg"
 import { useHistory } from "react-router-dom"
 import { ModalUIState } from "state/ui/reducer"
 

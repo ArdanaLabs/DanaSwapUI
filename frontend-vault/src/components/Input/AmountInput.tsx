@@ -4,7 +4,7 @@ import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
 import { useIsDarkMode } from "state/user/hooks"
 
-import { ReactComponent as SwapIcon } from "assets/image/icons/swap.svg"
+import { ReactComponent as SwapIcon } from "assets/image/svgs/swap.svg"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {},
