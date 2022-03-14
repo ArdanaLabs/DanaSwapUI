@@ -1,7 +1,10 @@
 import React from "react"
 import cx from "classnames"
 import { makeStyles, useMediaQuery, useTheme } from "@material-ui/core"
-import { useIsDarkMode } from "state/user/hooks"
+
+import * as Theme from "Data/User/Theme"
+
+import { useUserTheme } from "state/user/hooks"
 
 /*
  * Read the blog post here:
@@ -69,9 +72,12 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
   setActiveIndex,
 }) => {
   const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
+  const userTheme: Theme.Theme = useUserTheme()
   const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const classes = useStyles({
+    dark: Theme.Eq.equals(userTheme, Theme.Theme.Dark),
+    mobile,
+  })
 
   // const [activeIndex, setActiveIndex] = useState(0);
 

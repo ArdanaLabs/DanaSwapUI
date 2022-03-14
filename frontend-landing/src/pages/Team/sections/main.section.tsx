@@ -1,13 +1,20 @@
 import React from "react"
-import { Box, useMediaQuery, Container } from "@material-ui/core"
+import {
+  Box,
+  useMediaQuery,
+  Container,
+  Typography,
+  Grid,
+} from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
 import ReactPlayer from "react-player"
-import ScrollAnimation from "react-animate-on-scroll"
 
 import { useIsDarkMode } from "state/user/hooks"
+import MembersImage from "assets/logos/members.png"
 
 // import BG_VECTEEZY from "assets/backgrounds/vecteezy.png";
+import BG_BLUE_RADIAL from "assets/backgrounds/cyan-gradient.png"
 
 const heroVideo =
   "https://background.sfo3.digitaloceanspaces.com/team/output.webm"
@@ -40,44 +47,29 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     display: "flex",
     alignItems: "center",
     // background: "rgba(24, 34, 113, 0.6)",
-    background:
-      "linear-gradient(180deg, rgba(4, 13, 77, 0.7) -43.4%, rgba(50, 3, 111, 0.7) 222.51%)",
+    background: `url(${BG_BLUE_RADIAL}) top -900px right -900px no-repeat,
+      linear-gradient(180deg, rgba(4, 13, 77, 0.7) -43.4%, rgba(50, 3, 111, 0.7) 222.51%)`,
 
     [breakpoints.down("xs")]: {
       textAlign: "center",
     },
   },
   title: {
-    "fontFamily": "Brandon Grotesque",
-    "fontStyle": "normal",
-    "fontWeight": 900,
-    "fontSize": "60px",
-    "lineHeight": "100%",
-    "color": palette.text.primary,
+    lineHeight: "100%",
+    color: palette.primary.main,
 
-    "& > span": {
-      color: palette.text.secondary,
-    },
-
-    [breakpoints.down("xs")]: {
-      fontSize: "35px",
+    [`& > span`]: {
+      color: palette.secondary.main,
     },
   },
 
   content: {
-    fontFamily: "Museo Sans",
-    fontStyle: "normal",
-    fontWeight: 300,
-    fontSize: "16px",
     lineHeight: "25px",
-    width: "50%",
-    color: palette.text.primary,
+    width: "100%",
     marginTop: "30px",
 
     [breakpoints.down("xs")]: {
-      fontSize: "16px",
       lineHeight: "18.4px",
-      width: "100%",
       marginTop: "15px",
       padding: "0px 10px",
     },
@@ -101,26 +93,42 @@ const MainSection: React.FC = () => {
         height={"600px"}
         playbackRate={0.3}
       />
-      {/* <Box className={cx(classes.background)}>
-        <img src={BG_VECTEEZY} alt="bg" />
-      </Box> */}
       <Box className={cx(classes.container)}>
         <Container>
-          <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-            <Box className={cx(classes.title)} mt="50px">
-              Ardana has a <br />
-              <span>world class</span> team
-            </Box>
-          </ScrollAnimation>
-          <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-            <Box className={cx(classes.content)}>
-              Our team is comprised of technical talent, early contributors,
-              students and ambassadors of reputable companies and blockchain
-              projects such as Apple, Microsoft, Barclays, Citi Bank, State
-              Street, Mina Protocol, Cardano, the Plutus Pioneers Program and
-              Emurgo Academy.
-            </Box>
-          </ScrollAnimation>
+          <Box mt="50px" />
+          <Grid
+            container
+            spacing={2}
+            direction={!mobile ? "row" : "column-reverse"}
+            alignItems="center"
+          >
+            <Grid item xs={12} md={7}>
+              <Typography
+                variant="h3"
+                component="h3"
+                className={cx(classes.title)}
+              >
+                Ardana has a <br />
+                <span>world class</span> team
+              </Typography>
+              <Typography
+                variant="h4"
+                component="h4"
+                className={cx(classes.content)}
+              >
+                Our team is comprised of technical talent, early contributors,
+                students and ambassadors of reputable companies and blockchain
+                projects such as Apple, Microsoft, Barclays, Citi Bank, State
+                Street, Mina Protocol, Cardano, the Plutus Pioneers Program and
+                Emurgo Academy.
+              </Typography>
+            </Grid>
+            <Grid item xs={12} md={5}>
+              <Box display="flex" justifyContent={"center"}>
+                <img src={MembersImage} alt="team" width="80%" />
+              </Box>
+            </Grid>
+          </Grid>
         </Container>
       </Box>
     </Box>

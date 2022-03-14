@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react"
 import { Box, useMediaQuery } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
-import { useIsDarkMode } from "state/user/hooks"
 import cx from "classnames"
+
+import * as Theme from "Data/User/Theme"
+
+import { useUserTheme } from "state/user/hooks"
 import { LaunchTotalStats, LaunchHeader, LaunchPartialStats } from "./sections"
 
 import IMG_ScrollDown from "assets/icons/scroll-down.png"
@@ -28,8 +31,11 @@ const useStyles = makeStyles(({ palette }) => ({
 const Launch: React.FC = () => {
   const { breakpoints } = useTheme()
   const mobile = useMediaQuery(breakpoints.down("xs"))
-  const dark = useIsDarkMode()
-  const classes = useStyles({ dark, mobile })
+  const userTheme: Theme.Theme = useUserTheme()
+  const classes = useStyles({
+    dark: Theme.Eq.equals(userTheme, Theme.Theme.Dark),
+    mobile,
+  })
 
   const [nav, setNav] = useState(1)
 

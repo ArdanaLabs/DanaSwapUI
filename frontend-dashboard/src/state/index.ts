@@ -1,10 +1,20 @@
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit"
+import { configureStore } from "@reduxjs/toolkit"
 import { save, load } from "redux-localstorage-simple"
+
 import user from "./user/reducer"
 import home from "./home/reducer"
 import chart from "./chart/reducer"
 
 const PERSISTED_KEYS: string[] = ["user"]
+
+export const logger = (store: any) => (next: any) => (action: any) => {
+  console.group(action.type)
+  console.info("dispatching", action)
+  let result = next(action)
+  console.log("next state", store.getState())
+  console.groupEnd()
+  return result
+}
 
 const store = configureStore({
   reducer: {
@@ -12,14 +22,12 @@ const store = configureStore({
     home,
     chart,
   },
-  middleware: [
-    ...getDefaultMiddleware({
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
       thunk: false,
-      immutableCheck: false,
+      immutableCheck: true,
       serializableCheck: false,
-    }),
-    save({ states: PERSISTED_KEYS }),
-  ],
+    }).concat(/*logger,*/ save({ states: PERSISTED_KEYS })),
   preloadedState: load({
     states: PERSISTED_KEYS,
     disableWarnings: true,

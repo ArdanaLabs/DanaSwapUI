@@ -8,10 +8,14 @@ import {
 import { ParallaxProvider } from "react-scroll-parallax"
 import { I18nextProvider } from "react-i18next"
 
+import * as Theme from "Data/User/Theme"
+
 import i18n from "./i18n"
-import { useIsDarkMode } from "state/user/hooks"
-import { darkTheme, lightTheme } from "./theme"
+import { useUserTheme } from "state/user/hooks"
+import { getTheme } from "./theme"
 import store from "./state"
+
+import * as PoolSetName from "Data/Pool/PoolSetName"
 
 import {
   Home,
@@ -43,8 +47,10 @@ const StateUpdaters: React.FC = () => {
 
 const ThemeProvider: React.FC = ({ children }) => {
   // const location = useLocation();
-  const darkMode = useIsDarkMode()
-  let theme = darkMode ? darkTheme : lightTheme
+  const userTheme: Theme.Theme = useUserTheme()
+  const theme = getTheme(userTheme)
+
+  console.log({ useUserTheme, theme })
 
   // if (location.pathname.replace('/', '') === '') {
   //   theme = darkTheme;
@@ -126,11 +132,14 @@ const App: React.FC = () => {
           </Layout>
         </Route>
 
-        <Route exact path="/spec">
-          <Layout>
-            <SpecPool />
-          </Layout>
-        </Route>
+        <Route
+          path="/spec/:poolSet"
+          render={({ match }) => (
+            <Layout>
+              <SpecPool poolSet={PoolSetName.iso.wrap(match.params.poolSet)} />
+            </Layout>
+          )}
+        />
 
         <Route exact path="/launch">
           <Launch />

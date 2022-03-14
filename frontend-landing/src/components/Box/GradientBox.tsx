@@ -10,6 +10,7 @@ const useStyles = makeStyles(({ palette }) => ({
     position: "relative",
     lineHeight: "0px",
     display: "inline-block",
+    width: "fit-content",
     zIndex: 102,
   },
   children: {

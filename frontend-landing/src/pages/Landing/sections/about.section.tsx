@@ -1,9 +1,13 @@
 import React from "react"
-import { Box, useMediaQuery, Container, Grid } from "@material-ui/core"
+import {
+  Box,
+  useMediaQuery,
+  Container,
+  Grid,
+  Typography,
+} from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
-import ScrollAnimation from "react-animate-on-scroll"
-import i18next from "i18next"
 import ReactPlayer from "react-player"
 
 import { useIsDarkMode } from "state/user/hooks"
@@ -17,8 +21,7 @@ import BG_RIGHT from "assets/backgrounds/cyan-gradient.png"
 import { ArdanaFeatures } from "data"
 import { GradientButton } from "components"
 
-const aboutVideo =
-  "https://background.sfo3.digitaloceanspaces.com/about/output.m3u8"
+const aboutVideo = "https://www.youtube.com/watch?v=pn8OiMxToV8"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
@@ -37,36 +40,23 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   title: {
-    "color": palette.text.primary,
-    "fontSize": "60px",
-    "fontWeight": 900,
-    "fontFamily": "Brandon Grotesque",
-    "fontStyle": "normal",
-    "lineHeight": "100%",
-    "marginBottom": "30px",
+    lineHeight: "100%",
+    marginBottom: "30px",
 
-    "& > span": {
-      color: palette.text.secondary,
+    [`& span`]: {
+      color: palette.secondary.main,
     },
 
     [breakpoints.down("xs")]: {
-      fontSize: "35px",
       marginBottom: "15px",
     },
   },
 
   content: {
-    color: palette.text.primary,
-    whiteSpace: "pre-line",
-    fontWeight: 300,
-    fontSize: "16px",
-    fontFamily: "Museo Sans",
-    fontStyle: "normal",
     lineHeight: "26px",
 
     [breakpoints.down("xs")]: {
-      fontSize: "16px",
-      lineHeight: "18.4px",
+      lineHeight: "18px",
       paddingLeft: "10px",
       paddingRight: "10px",
     },
@@ -74,10 +64,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
   socialIconLink: {
     "cursor": "pointer",
-    "color": palette.text.primary,
+    "color": palette.primary.main,
 
     "&:hover path": {
-      fill: palette.text.secondary,
+      fill: palette.secondary.main,
     },
   },
 
@@ -90,7 +80,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
         objectFit: "cover",
       },
     },
-    "& > div > video, & .react-player__preview": {
+    "& > div > video, & .react-player__preview, & iframe": {
       borderRadius: "10px",
     },
     [breakpoints.down("xs")]: {
@@ -141,14 +131,22 @@ const AboutSection: React.FC = () => {
         <Box>
           <Grid container spacing={3} alignItems="center">
             <Grid item xs={12} sm={6}>
-              <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-                <Box className={cx(classes.title)}>
-                  What is <span>Ardana</span>?
-                </Box>
-                <Box className={cx(classes.content)}>
-                  {i18next.t("PAGE.LANDING.ARDANA.DESC")}
-                </Box>
-              </ScrollAnimation>
+              <Typography
+                variant="h3"
+                component="h3"
+                className={cx(classes.title)}
+              >
+                What is <span>Ardana</span>?
+              </Typography>
+              <Typography
+                variant="h4"
+                component="h4"
+                className={cx(classes.content)}
+              >
+                Ardana is a decentralized stablecoin hub which will bring the
+                necessary DeFi primitives needed to bootstrap & maintain any
+                economy to Cardano.
+              </Typography>
             </Grid>
             <Grid item xs={12} sm={6}>
               <Box className={cx(classes.aboutVideo)}>
@@ -176,23 +174,6 @@ const AboutSection: React.FC = () => {
                     </Box>
                   }
                 />
-                {/* {!playing && (
-                  <Box
-                    className={cx(classes.playIcon)}
-                    onClick={() => setPlaying(true)}
-                  >
-                    <GradientButton
-                      width={!mobile ? 145 : 81}
-                      height={!mobile ? 145 : 81}
-                    />
-                    <img
-                      className={cx(classes.photo)}
-                      src={ICON_PLAY}
-                      alt="playIcon"
-                      width="100px"
-                    />
-                  </Box>
-                )} */}
               </Box>
             </Grid>
           </Grid>

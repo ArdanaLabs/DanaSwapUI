@@ -1,10 +1,15 @@
 import React from "react"
-import { Box, useMediaQuery, Container, Grid, Link } from "@material-ui/core"
+import {
+  Box,
+  useMediaQuery,
+  Container,
+  Grid,
+  Link,
+  Typography,
+} from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
 import ReactPlayer from "react-player"
-import ScrollAnimation from "react-animate-on-scroll"
-import i18next from "i18next"
 
 import { useIsDarkMode } from "state/user/hooks"
 import { GradientButton } from "components/Button"
@@ -49,32 +54,17 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     },
   },
   title: {
-    fontFamily: "Brandon Grotesque",
-    fontStyle: "normal",
-    fontWeight: 900,
-    fontSize: "60px",
     lineHeight: "100%",
-    color: "#73D6F1",
-
-    [breakpoints.down("sm")]: {
-      fontSize: "35px",
-    },
+    color: palette.secondary.main,
   },
 
   content: {
-    fontFamily: "Museo Sans",
-    fontStyle: "normal",
-    fontWeight: 300,
-    fontSize: "16px",
     lineHeight: "26px",
     width: "100%",
-    color: palette.text.primary,
     marginTop: "30px",
 
     [breakpoints.down("sm")]: {
-      fontSize: "16px",
       lineHeight: "18.4px",
-      width: "100%",
       marginTop: "15px",
       padding: "0px 10px",
     },
@@ -102,31 +92,29 @@ const RoadMapSection: React.FC = () => {
         <Container>
           <Grid container spacing={2} alignItems="center">
             <Grid item xs={12} sm={6}>
-              <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-                <Box className={cx(classes.title)}>
-                  {i18next.t("PAGE.LANDING.ROADMAP.TITLE")}
-                </Box>
-              </ScrollAnimation>
-              <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-                <Box
-                  className={cx(classes.content)}
-                  dangerouslySetInnerHTML={{
-                    __html: i18next.t("PAGE.LANDING.ROADMAP.CONTENT", {
-                      interpolation: { escapeValue: false },
-                    }),
-                  }}
-                />
-              </ScrollAnimation>
+              <Typography
+                variant="h3"
+                component="h3"
+                className={cx(classes.title)}
+              >
+                Roadmap
+              </Typography>
+              <Typography
+                component="h4"
+                variant="h4"
+                className={cx(classes.content)}
+              >
+                Ardana is building the first All-in-One Stablecoin Ecosystem
+                Built on Cardano. Learn more about our roadmap below.
+              </Typography>
               <Box mt={!mobile ? "50px" : "30px"} />
-              <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-                <Link href={"/roadmap"}>
-                  <GradientButton
-                    label={"VIEW ROADMAP"}
-                    width={160}
-                    height={40}
-                  />
-                </Link>
-              </ScrollAnimation>
+              <Link href={"/roadmap"}>
+                <GradientButton
+                  label={"VIEW ROADMAP"}
+                  width={160}
+                  height={40}
+                />
+              </Link>
             </Grid>
           </Grid>
         </Container>

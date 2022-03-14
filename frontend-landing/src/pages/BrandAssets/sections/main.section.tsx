@@ -1,9 +1,8 @@
 import React from "react"
-import { Box, useMediaQuery, Container } from "@material-ui/core"
+import { Box, useMediaQuery, Container, Typography } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
 // import ReactPlayer from "react-player";
-import ScrollAnimation from "react-animate-on-scroll"
 
 import { useIsDarkMode } from "state/user/hooks"
 
@@ -36,34 +35,15 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     },
   },
   title: {
-    "fontFamily": "Brandon Grotesque",
-    "fontStyle": "normal",
-    "fontWeight": 900,
-    "fontSize": "60px",
-    "lineHeight": "100%",
-    "color": palette.text.primary,
-
-    "& > span": {
-      color: palette.text.secondary,
-    },
-
-    [breakpoints.down("xs")]: {
-      fontSize: "35px",
-    },
+    lineHeight: "100%",
   },
 
   content: {
-    fontFamily: "Museo Sans",
-    fontStyle: "normal",
-    fontWeight: 300,
-    fontSize: "16px",
     lineHeight: "25px",
     width: "50%",
-    color: palette.text.primary,
     marginTop: "30px",
 
     [breakpoints.down("xs")]: {
-      fontSize: "16px",
       lineHeight: "18.4px",
       width: "100%",
       marginTop: "15px",
@@ -90,18 +70,20 @@ const MainSection: React.FC = () => {
       /> */}
       <Box className={cx(classes.container)}>
         <Container>
-          <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-            <Box className={cx(classes.title)} mt="50px">
-              Brand Assets
-            </Box>
-          </ScrollAnimation>
-          <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-            <Box className={cx(classes.content)}>
-              Our brand’s purpose is translated through our branding and
-              designs. We have curated these assets with full instructions on
-              how to properly utilise them.
-            </Box>
-          </ScrollAnimation>
+          <Box mt="50px" />
+          <Typography variant="h3" component="h3" className={cx(classes.title)}>
+            Brand Assets
+          </Typography>
+          <Box mt="50px" />
+          <Typography
+            variant="h4"
+            component="h4"
+            className={cx(classes.content)}
+          >
+            Our brand’s purpose is translated through our branding and designs.
+            We have curated these assets with full instructions on how to
+            properly utilise them.
+          </Typography>
         </Container>
       </Box>
     </Box>

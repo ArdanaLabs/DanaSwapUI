@@ -1,10 +1,14 @@
 import React from "react"
-import { Box, useMediaQuery, Container, Link } from "@material-ui/core"
+import {
+  Box,
+  useMediaQuery,
+  Container,
+  Link,
+  Typography,
+} from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
-import ScrollAnimation from "react-animate-on-scroll"
 
-import i18next from "i18next"
 import { useIsDarkMode } from "state/user/hooks"
 
 import { Investors } from "data"
@@ -19,16 +23,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     },
   },
   title: {
-    fontFamily: "Brandon Grotesque",
-    fontWeight: 900,
-    fontSize: "60px",
     lineHeight: "100%",
-    color: palette.text.secondary,
+    color: palette.secondary.main,
     textAlign: "center",
-
-    [breakpoints.down("xs")]: {
-      fontSize: "35px",
-    },
   },
   partner: {
     "textAlign": "center",
@@ -49,49 +46,46 @@ const InvestorsSection: React.FC = () => {
   return (
     <Box className={cx(classes.bg)}>
       <Container maxWidth="md">
-        <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-          <Box className={cx(classes.title)}>
-            {i18next.t("PAGE.LANDING.INVESTORS")}
-          </Box>
-        </ScrollAnimation>
+        <Typography variant="h3" component="h3" className={cx(classes.title)}>
+          Investors
+        </Typography>
 
-        <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-          <Box
-            display="flex"
-            flexWrap="wrap"
-            alignItems="center"
-            justifyContent="center"
-            mt="30px"
-            style={{ opacity: 0.8 }}
-          >
-            {Investors.map((investor, index) => (
-              <Box
-                key={index}
-                textAlign="center"
-                p={!mobile ? "20px 0px" : "10px"}
-                flex="1 0 21%"
-              >
-                {investor.url && (
-                  <Link href={investor.url} target="_blank" underline="none">
-                    <img
-                      src={investor.src}
-                      alt="investor"
-                      height={!mobile ? "45px" : "25px"}
-                      style={{ maxWidth: "max-content" }}
-                    />
-                  </Link>
-                )}
-                {!investor.url && (
+        <Box
+          display="flex"
+          flexWrap="wrap"
+          alignItems="center"
+          justifyContent="center"
+          mt="30px"
+          style={{ opacity: 0.8 }}
+        >
+          {Investors.map((investor, index) => (
+            <Box
+              key={index}
+              textAlign="center"
+              p={!mobile ? "20px 0px" : "10px"}
+              flex="1 0 21%"
+            >
+              {investor.url && (
+                <Link href={investor.url} target="_blank" underline="none">
                   <img
                     src={investor.src}
                     alt="investor"
                     height={!mobile ? "45px" : "25px"}
                     style={{ maxWidth: "max-content" }}
                   />
-                )}
-              </Box>
-            ))}
-            {/* {Investors.flatMap((investor, index) => [
+                </Link>
+              )}
+              {!investor.url && (
+                <img
+                  src={investor.src}
+                  alt="investor"
+                  height={!mobile ? "45px" : "25px"}
+                  style={{ maxWidth: "max-content" }}
+                />
+              )}
+            </Box>
+          ))}
+          {/* {Investors.flatMap((investor, index) => [
               <Box key={index} textAlign="center" p={!mobile ? "20px" : "10px"}>
                 {investor.url && (
                   <Link href={investor.url} target="_blank" underline="none">
@@ -116,8 +110,7 @@ const InvestorsSection: React.FC = () => {
                 <Box key={"wrap" + index} flexBasis="100%" />
               ),
             ])} */}
-          </Box>
-        </ScrollAnimation>
+        </Box>
       </Container>
     </Box>
   )

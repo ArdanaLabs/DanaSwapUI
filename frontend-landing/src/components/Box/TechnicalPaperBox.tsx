@@ -3,7 +3,7 @@ import cx from "classnames"
 import { Box, Link, useMediaQuery } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import { useIsDarkMode } from "state/user/hooks"
-import { GradientButton } from "components"
+import { GradientButton } from "components/Button"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -54,7 +54,9 @@ const TechnicalPaperBox: React.FC<TechnicalPaperBoxProps> = ({
         <Box mt="20px" />
         <Box>
           <Link target="_blank" underline="none" href={link}>
-            <GradientButton label="LEARN MORE" width={145} height={40} />
+            <Box>
+              <GradientButton label="LEARN MORE" width={145} height={40} />
+            </Box>
           </Link>
         </Box>
       </Box>

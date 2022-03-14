@@ -13,6 +13,8 @@ import {
   InvestorsSection,
   TechSection,
   RoadMapSection,
+  CommunitySection,
+  NewsSection,
 } from "./sections"
 
 import BG_PURPLE_GRADIENT from "assets/backgrounds/pink-gradient.png"
@@ -21,7 +23,8 @@ import BG_CYAN_GRADIENT from "assets/backgrounds/cyan-gradient.png"
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   danaBG: {
     background: ` url(${BG_PURPLE_GRADIENT}) top -200px left -700px no-repeat,
-                  url(${BG_CYAN_GRADIENT}) top 600px left -900px no-repeat`,
+                  url(${BG_CYAN_GRADIENT}) top 600px left -900px no-repeat,
+                  url(${BG_PURPLE_GRADIENT}) bottom 0px left -700px no-repeat`,
   },
 }))
 
@@ -40,6 +43,8 @@ const Landing: React.FC = () => {
         <DanaSwapSection />
         <DanaTokenSection />
         <TechSection />
+        <CommunitySection />
+        <NewsSection />
       </Box>
       <RoadMapSection />
       <PartnerSection />

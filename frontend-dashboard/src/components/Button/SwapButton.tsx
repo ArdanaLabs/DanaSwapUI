@@ -2,7 +2,10 @@ import React from "react"
 import { Box, useMediaQuery } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
-import { useIsDarkMode } from "state/user/hooks"
+
+import * as Theme from "Data/User/Theme"
+
+import { useUserTheme } from "state/user/hooks"
 
 import ICO_ArrowUp from "assets/icons/arrow-up.png"
 import ICO_ArrowDown from "assets/icons/arrow-down.png"
@@ -41,12 +44,21 @@ const SwapButton: React.FC<SwapButtonProps> = ({
   onButtonClick,
 }) => {
   const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
+  const userTheme: Theme.Theme = useUserTheme()
   const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const classes = useStyles({
+    dark: Theme.Eq.equals(userTheme, Theme.Theme.Dark),
+    mobile,
+  })
   return (
-    <Box className={cx(classes.dropdown)} onClick={onButtonClick} style={style}>
+    <Box
+      className={cx(classes.dropdown)}
+      onClick={onButtonClick}
+      style={style}
+      role="button"
+    >
       <img src={ICO_ArrowUp} alt={"<"} />
+      {/* TODO: use padding/gap, not <div>s */}
       <Box mx="1px"></Box>
       <img src={ICO_ArrowDown} alt={">"} />
     </Box>

@@ -1,9 +1,19 @@
 import React, { useEffect, useState } from "react"
 import { Box, Container, Grid, Fade, useMediaQuery } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
-import { useIsDarkMode } from "state/user/hooks"
 import cx from "classnames"
+
+import * as O from "fp-ts/Option"
+import { RemoteData } from "fp-ts-remote-data"
+
+import { ByTxType } from "Data/ByTxType"
+import { FetchDecodeError } from "Data/FetchDecode"
+import { TotalDeposits, TotalDailyVolume } from "Data/Stats/AggregateStats"
+import { TotalStats } from "Data/Stats/CombinedStats"
+import * as Theme from "Data/User/Theme"
+
 import { StatBox } from "components/Box"
+import { useUserTheme } from "state/user/hooks"
 
 import IMG_TVL from "assets/icons/tvl.png"
 import IMG_Worth from "assets/icons/worth.png"
@@ -68,12 +78,15 @@ const PartialStatsSection: React.FC<PartialStatsSectionProps> = ({
 }) => {
   const { breakpoints } = useTheme()
   const mobile = useMediaQuery(breakpoints.down("xs"))
-  const dark = useIsDarkMode()
-  const classes = useStyles({ dark, mobile })
+  const userTheme: Theme.Theme = useUserTheme()
+  const classes = useStyles({
+    dark: Theme.Eq.equals(userTheme, Theme.Theme.Dark),
+    mobile,
+  })
 
   const [activeIndex, setActiveIndex] = useState(-1)
 
-  const { totalDepositsAllPoolsUSD, totalDailyVolumeUSD } = useTotalStats()
+  const totalStats: RemoteData<FetchDecodeError, TotalStats> = useTotalStats()
 
   useEffect(() => {
     setTimeout(() => {
@@ -81,6 +94,95 @@ const PartialStatsSection: React.FC<PartialStatsSectionProps> = ({
       !show && setActiveIndex(-1)
     }, 300)
   }, [show])
+
+  function renderTotalDeposits(totalDeposits: TotalDeposits.Type) {
+    return (
+      <StatBox
+        image={IMG_Worth}
+        title={`TOTAL LIQUIDITY`}
+        content={printCurrencyUSD(TotalDeposits.iso.unwrap(totalDeposits), {
+          minimumFractionDigits: 2,
+        })}
+        delay={500}
+      />
+    )
+  }
+
+  function renderTotalDailyVolume(
+    totalDailyVolume: ByTxType<O.Option<TotalDailyVolume.Type>>
+  ) {
+    return (
+      <StatBox
+        image={IMG_Ratio}
+        title="24HR TRADE VOLUME"
+        content={O.fold(
+          () => "",
+          (tdv: TotalDailyVolume.Type) =>
+            printCurrencyUSD(TotalDailyVolume.iso.unwrap(tdv), {
+              minimumFractionDigits: 2,
+            })
+        )(totalDailyVolume.trade)}
+        delay={1000}
+      />
+    )
+  }
+
+  function renderTotalStats(rts: RemoteData<FetchDecodeError, TotalStats>) {
+    switch (rts._tag) {
+      case "Success":
+        const ts: TotalStats = rts.success
+        return (
+          <>
+            <Fade in={activeIndex === 0}>
+              <Grid item xs={4}>
+                <StatBox
+                  image={IMG_TVL}
+                  title="TOTAL VALUE LOCKED"
+                  content="$1,234,567"
+                  delay={0}
+                />
+              </Grid>
+            </Fade>
+            <Fade
+              in={activeIndex === 0}
+              style={{
+                transitionDelay: activeIndex === 0 ? "500ms" : "0ms",
+              }}
+            >
+              <Grid item xs={4}>
+                {O.fold(
+                  () => null,
+                  renderTotalDeposits
+                )(ts.totalDepositsAllPoolsUSD)}
+              </Grid>
+            </Fade>
+            <Fade
+              in={activeIndex === 0}
+              style={{
+                transitionDelay: activeIndex === 0 ? "1000ms" : "0ms",
+              }}
+            >
+              <Grid item xs={4}>
+                {renderTotalDailyVolume(ts.totalDailyVolumeUSD)}
+              </Grid>
+            </Fade>
+          </>
+        )
+      case "Pending":
+        // TODO: loading
+        return <span>loading …</span>
+      case "Failure":
+        // TODO: failure
+        return (
+          <summary>
+            Error
+            <details>
+              <pre>{JSON.stringify(rts.failure, null, 2)}</pre>
+            </details>
+          </summary>
+        )
+    }
+  }
 
   return (
     <Box className={cx(classes.root)} top={top}>
@@ -109,49 +211,7 @@ const PartialStatsSection: React.FC<PartialStatsSectionProps> = ({
               spacing={3}
               alignContent="flex-end"
             >
-              <Fade in={activeIndex === 0}>
-                <Grid item xs={4}>
-                  <StatBox
-                    image={IMG_TVL}
-                    title="TOTAL VALUE LOCKED"
-                    content="$1,234,567"
-                    delay={0}
-                  />
-                </Grid>
-              </Fade>
-              <Fade
-                in={activeIndex === 0}
-                style={{
-                  transitionDelay: activeIndex === 0 ? "500ms" : "0ms",
-                }}
-              >
-                <Grid item xs={4}>
-                  <StatBox
-                    image={IMG_Worth}
-                    title={`TOTAL LIQUIDITY`}
-                    content={printCurrencyUSD(totalDepositsAllPoolsUSD, 2)}
-                    delay={500}
-                  />
-                </Grid>
-              </Fade>
-              <Fade
-                in={activeIndex === 0}
-                style={{
-                  transitionDelay: activeIndex === 0 ? "1000ms" : "0ms",
-                }}
-              >
-                <Grid item xs={4}>
-                  <StatBox
-                    image={IMG_Ratio}
-                    title="24HR TRADE VOLUME"
-                    content={printCurrencyUSD(
-                      totalDailyVolumeUSD ? totalDailyVolumeUSD.trade : 0,
-                      2
-                    )}
-                    delay={1000}
-                  />
-                </Grid>
-              </Fade>
+              {renderTotalStats(totalStats)}
             </Grid>
           )}
 

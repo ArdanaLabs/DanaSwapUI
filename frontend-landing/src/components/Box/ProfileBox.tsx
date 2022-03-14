@@ -23,6 +23,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
     [breakpoints.down("xs")]: {
       "padding": "50px 10px 40px",
+      "transition": "all .2s",
       "&.collapsed": {
         height: "180px",
       },
@@ -42,7 +43,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontWeight: 900,
     fontSize: "24px",
     lineHeight: "110%",
-    color: palette.text.primary,
+    color: palette.primary.main,
     marginBottom: "5px",
 
     [breakpoints.down("xs")]: {
@@ -56,7 +57,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontWeight: 600,
     fontSize: "18px",
     lineHeight: "110%",
-    color: palette.text.secondary,
+    color: palette.secondary.main,
     marginBottom: "20px",
 
     [breakpoints.down("sm")]: {
@@ -69,7 +70,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     "fontStyle": "normal",
     "fontSize": "16px",
     "lineHeight": "110%",
-    "color": palette.text.primary,
+    "color": palette.primary.main,
     "whiteSpace": "pre-line",
     "opacity": 1,
 

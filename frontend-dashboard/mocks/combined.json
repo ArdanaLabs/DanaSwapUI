@@ -1,0 +1,167 @@
+{
+  "totalDailyTxCount": null,
+  "totalDailyFeeVolumeUSD": 71047694202.87166,
+  "totalDailyVolumeUSD": {
+    "addLiquidity": 19493847459.027725,
+    "total": 106008801539.01672,
+    "trade": 128478772825.37024,
+    "removeLiquidity": 115111651835.61945
+  },
+  "poolStats": {
+    "DTG": {
+      "liquidityUtilization": 0.18123899999999998,
+      "amplificationCoefficient": 0.7000000000000001,
+      "recentDailyVolumeUSD": {
+        "addLiquidity": 125308042054.99077,
+        "total": 186601091867.67712,
+        "trade": 278576337131.73334,
+        "removeLiquidity": 120577553601.56569
+      },
+      "dailyTxCount": {
+        "addLiquidity": 2380057994,
+        "total": 1553706600,
+        "trade": 1669612375,
+        "removeLiquidity": 1660255069
+      },
+      "totalAPYPercent": null,
+      "liquidityTokenPriceUSD": null,
+      "adminFeePercent": null,
+      "feePercent": 0.272,
+      "recentMonthlyAPYPercent": null,
+      "dailyFeeVolumeUSD": null,
+      "navUSD": null,
+      "reserves": {
+        "Josn": {
+          "actual": 161332698196.25497,
+          "nominal": 232074166548.11957
+        },
+        "HkzR0P": {
+          "actual": 70938670114.54744,
+          "nominal": 198557711932.0304
+        }
+      },
+      "virtualPriceUSD": null,
+      "recentWeeklyAPYPercent": null,
+      "recentAnnualAPYPercent": null,
+      "recentDailyAPYPercent": null
+    },
+    "tt1s0": {
+      "liquidityUtilization": 0.26023999999999997,
+      "amplificationCoefficient": null,
+      "recentDailyVolumeUSD": {
+        "addLiquidity": 278399940112.47345,
+        "total": 9590713266.507421,
+        "trade": 176477723344.7374,
+        "removeLiquidity": 97869501108.15012
+      },
+      "dailyTxCount": null,
+      "totalAPYPercent": null,
+      "liquidityTokenPriceUSD": null,
+      "adminFeePercent": null,
+      "feePercent": 0.117,
+      "recentMonthlyAPYPercent": 0.249,
+      "dailyFeeVolumeUSD": null,
+      "navUSD": 163164503818.25568,
+      "reserves": {
+        "911r": {
+          "actual": 15020865352.52918,
+          "nominal": 217044066880.92065
+        },
+        "ixtiA": {
+          "actual": 240736522678.41962,
+          "nominal": 300104544227.26105
+        },
+        "Q7n3": {
+          "actual": 63260524967.70379,
+          "nominal": 160266843424.92996
+        }
+      },
+      "virtualPriceUSD": null,
+      "recentWeeklyAPYPercent": 0.111,
+      "recentAnnualAPYPercent": 0.183,
+      "recentDailyAPYPercent": 0.238
+    },
+    "FR": {
+      "liquidityUtilization": 0.23427199999999998,
+      "amplificationCoefficient": null,
+      "recentDailyVolumeUSD": {
+        "addLiquidity": 27277089005.48363,
+        "total": 96295425660.0481,
+        "trade": 289029465281.4997,
+        "removeLiquidity": 109459868645.78345
+      },
+      "dailyTxCount": null,
+      "totalAPYPercent": null,
+      "liquidityTokenPriceUSD": null,
+      "adminFeePercent": null,
+      "feePercent": 0.089,
+      "recentMonthlyAPYPercent": null,
+      "dailyFeeVolumeUSD": null,
+      "navUSD": 88028345979.10228,
+      "reserves": {
+        "mleyUl": {
+          "actual": 183923074592.74097,
+          "nominal": 241762092458.37332
+        },
+        "akA0D": {
+          "actual": 28519812727.6378,
+          "nominal": 218893998958.6408
+        },
+        "Z": {
+          "actual": 120878265414.52676,
+          "nominal": 291155614970.2904
+        },
+        "mP": {
+          "actual": 281172252396.2262,
+          "nominal": 296321335232.08594
+        }
+      },
+      "virtualPriceUSD": null,
+      "recentWeeklyAPYPercent": null,
+      "recentAnnualAPYPercent": null,
+      "recentDailyAPYPercent": null
+    },
+    "h6Xi": {
+      "liquidityUtilization": null,
+      "amplificationCoefficient": null,
+      "recentDailyVolumeUSD": {
+        "addLiquidity": 226110745119.6118,
+        "total": 182493779370.94492,
+        "trade": 36278098803.8161,
+        "removeLiquidity": 121579537226.34955
+      },
+      "dailyTxCount": null,
+      "totalAPYPercent": null,
+      "liquidityTokenPriceUSD": 63789601759.54534,
+      "adminFeePercent": null,
+      "feePercent": 0.266,
+      "recentMonthlyAPYPercent": 0.207,
+      "dailyFeeVolumeUSD": null,
+      "navUSD": 157530888156.22925,
+      "reserves": {
+        "XPGwoK": {
+          "actual": 21914942790.237198,
+          "nominal": 285978177040.6138
+        },
+        "xKc": {
+          "actual": 173528782327.22034,
+          "nominal": 12033624675.643847
+        },
+        "EJhRf": {
+          "actual": 150795011874.846,
+          "nominal": 114923334623.18271
+        },
+        "WfX": {
+          "actual": 115962553583.25026,
+          "nominal": 185077396157.41968
+        }
+      },
+      "virtualPriceUSD": null,
+      "recentWeeklyAPYPercent": null,
+      "recentAnnualAPYPercent": null,
+      "recentDailyAPYPercent": 0.221
+    }
+  },
+  "totalDepositsAllPoolsUSD": 126547848663.64876,
+  "totalLiquidityUtilization": 94597561116.64015
+}

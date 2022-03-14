@@ -1,38 +1,44 @@
 import { useSelector } from "react-redux"
+
+import { fetchJSON } from "fp-fetch"
+import * as TaskEither from "fp-ts/TaskEither"
+import * as RemoteData from "fp-ts-remote-data"
+
+import * as CombinedStats from "Data/Stats/CombinedStats"
+import { FetchDecodeTask, FetchDecodeError } from "Data/FetchDecode"
+
 import { AppState } from "state"
-import { API_URL } from "config/endpoints"
+import { apiURL } from "hooks"
 
-export function useTotalStats() {
-  const {
-    totalDepositsAllPoolsUSD,
-    totalDailyVolumeUSD,
-    totalDailyFeeVolumeUSD,
-    totalLiquidityUtilization,
-  } = useSelector<AppState, AppState["home"]>((state) => state.home)
-
-  return {
-    totalDepositsAllPoolsUSD,
-    totalDailyVolumeUSD,
-    totalDailyFeeVolumeUSD,
-    totalLiquidityUtilization,
-  }
-}
-
-export function usePoolStats() {
-  const { poolStats } = useSelector<AppState, AppState["home"]>(
-    (state) => state.home
+export function useTotalStats(): RemoteData.RemoteData<
+  FetchDecodeError,
+  CombinedStats.TotalStats
+> {
+  return RemoteData.map(CombinedStats.totalStatsFromCombined)(
+    useCombinedStats()
   )
-
-  return poolStats
 }
 
-export async function getStats() {
-  try {
-    const result = await fetch(API_URL + "/combined")
+export function usePoolStats(): RemoteData.RemoteData<
+  FetchDecodeError,
+  CombinedStats.PoolStatsMap.Type
+> {
+  return RemoteData.map((r: CombinedStats.Type) => r.poolStats)(
+    useCombinedStats()
+  )
+}
 
-    return result.json()
-  } catch (e) {
-    console.log("error fetching", e)
-    return null
-  }
+export function useCombinedStats(): RemoteData.RemoteData<
+  FetchDecodeError,
+  CombinedStats.Type
+> {
+  return useSelector<AppState, AppState["home"]>((state) => state.home)
+}
+
+export function fetchPoolCombinedStats(): FetchDecodeTask<CombinedStats.Type> {
+  const url: URL = apiURL("/combined")
+
+  return TaskEither.chainEitherKW(CombinedStats.codec.decode)(
+    fetchJSON(url.toString())
+  )
 }

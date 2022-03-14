@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import cx from "classnames"
-import { Box, useMediaQuery } from "@material-ui/core"
+import { Box, Typography, useMediaQuery } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import { useIsDarkMode } from "state/user/hooks"
 import { GradientButton } from "components/Button"
@@ -58,26 +58,13 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   title: {
-    fontFamily: "Brandon Grotesque",
-    fontWeight: 900,
-    fontSize: "26px",
     lineHeight: "110%",
-    color: palette.text.primary,
-
-    [breakpoints.down("xs")]: {
-      fontSize: "25px",
-      lineHeight: "27.5px",
-    },
   },
 
   content: {
-    fontFamily: "Museo Sans",
-    fontSize: "16px",
     lineHeight: "24px",
-    color: palette.text.primary,
 
     [breakpoints.down("xs")]: {
-      fontSize: "16px",
       lineHeight: "19.2px",
     },
   },
@@ -124,9 +111,13 @@ const DanaswapFeature: React.FC<DanaswapFeatureProps> = ({
         />
         <img className={cx(classes.photo)} src={image} alt="" />
       </Box>
-      <Box className={cx(classes.title)}>{title}</Box>
+      <Typography component="h5" variant="h5" className={cx(classes.title)}>
+        {title}
+      </Typography>
       <Box mt={!mobile ? "30px" : "15px"} />
-      <Box className={cx(classes.content)}>{content}</Box>
+      <Typography component="h4" variant="h4" className={cx(classes.content)}>
+        {content}
+      </Typography>
       <Box className={cx(classes.border, { hover: hover })} />
     </Box>
   )

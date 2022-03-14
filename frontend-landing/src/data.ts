@@ -1,4 +1,3 @@
-import i18next from "i18next"
 import { ProfileType } from "components/Box/ProfileBox"
 import { ReactComponent as TwitterIcon } from "assets/icons/twitter.svg"
 import { ReactComponent as DiscordIcon } from "assets/icons/discord.svg"
@@ -9,82 +8,90 @@ import { ReactComponent as LinkedinIcon } from "assets/icons/linkedin.svg"
 
 export const Menus = [
   {
-    label: i18next.t("PAGE.LANDING.HEADER.LINKS.0"),
+    label: "Home",
     to: "/",
   },
   {
-    label: i18next.t("PAGE.LANDING.HEADER.LINKS.1"),
+    label: "Technology",
     to: "/tech",
   },
   {
-    label: i18next.t("PAGE.LANDING.HEADER.LINKS.2"),
+    label: "Documentation",
     to: "https://docs.ardana.org/",
     blank: true,
   },
+  // {
+  //   label: "Team",
+  //   to: "/team",
+  // },
   {
-    label: i18next.t("PAGE.LANDING.HEADER.LINKS.3"),
+    label: "Community",
+    to: "/community",
+  },
+  {
+    label: "News",
+    to: "/news",
+  },
+  {
+    label: "Roadmap",
     // to: "https://faceted-wash-97d.notion.site/cb0d147034e6439f8e70b2698ce199f2?v=fbf6185ab5f143eb9e22064fd9647814",
     to: "/roadmap",
-  },
-  {
-    label: i18next.t("PAGE.LANDING.HEADER.LINKS.4"),
-    to: "/team",
-  },
-  {
-    label: i18next.t("PAGE.LANDING.HEADER.LINKS.5"),
-    to: "https://medium.com/ardana-hub",
-    blank: true,
   },
 ]
 
 export const ArdanaFeatures = [
   {
     image: require("assets/logos/fully-decentralized.png").default,
-    title: i18next.t("PAGE.LANDING.ARDANA.FEATURES.0.TITLE"),
-    content: i18next.t("PAGE.LANDING.ARDANA.FEATURES.0.CONTENT"),
+    title: "Fully\nDecentralized",
+    content: "Unbiased, collateral backed and pegged to the US Dollar.",
   },
   {
     image: require("assets/logos/borrowing.png").default,
-    title: i18next.t("PAGE.LANDING.ARDANA.FEATURES.1.TITLE"),
-    content: i18next.t("PAGE.LANDING.ARDANA.FEATURES.1.CONTENT"),
+    title: "Borrowing",
+    content: "Allows users to borrow stablecoins against locked collateral.",
   },
   {
     image: require("assets/logos/store-of-value.png").default,
-    title: i18next.t("PAGE.LANDING.ARDANA.FEATURES.2.TITLE"),
-    content: i18next.t("PAGE.LANDING.ARDANA.FEATURES.2.CONTENT"),
+    title: "Store of\nValue",
+    content: "Secure store of value preserving value even in volatile markets.",
   },
   {
     image: require("assets/logos/powered-by-cardano.png").default,
-    title: i18next.t("PAGE.LANDING.ARDANA.FEATURES.3.TITLE"),
-    content: i18next.t("PAGE.LANDING.ARDANA.FEATURES.3.CONTENT"),
+    title: "Powered by\nCardano",
+    content: "Built utilizing Cardano’s speed, scalability and security.",
   },
 ]
 
 export const DanaSwapFeatures = [
   {
     image: require("assets/logos/ultra-low-slippage.png").default,
-    title: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.0.TITLE"),
-    content: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.0.CONTENT"),
+    title: "Ultra-low Slippage",
+    content:
+      "Swap between stablecoins and stable assets such as wrapped/synthetic Bitcoin with minimal slippage.",
   },
   {
     image: require("assets/logos/earn-trading-fees.png").default,
-    title: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.1.TITLE"),
-    content: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.1.CONTENT"),
+    title: "Earn Trading Fees",
+    content:
+      "Deposit your assets into a DanaSwap pool and earn a proportion of the market making fees.",
   },
   {
     image: require("assets/logos/foreign-exchange.png").default,
-    title: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.2.TITLE"),
-    content: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.2.CONTENT"),
+    title: "Foreign Exchange",
+    content:
+      "Swap between international stablecoins such as dUSD, dEUR, dGBP and more.",
   },
   {
     image: require("assets/logos/dana-token.png").default,
-    title: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.3.TITLE"),
-    content: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.3.CONTENT"),
+    title: "DANA Token",
+    content:
+      "The governance token rewarded to users for supporting the ecosystem through liquidity provision.",
   },
   {
     image: require("assets/logos/governance.png").default,
-    title: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.4.TITLE"),
-    content: i18next.t("PAGE.LANDING.DANASWAP.FEATURES.4.CONTENT"),
+    title: "Governance",
+    content:
+      "DANA token holders can participate in polling and voting to influence the development of Ardana.",
   },
 ]
 
@@ -96,7 +103,9 @@ export const Members: ProfileType[] = [
     info: `Serial entrepreneur in B2B/B2C sales and e-commerce.\n\nLeadership positions in various Ethereum based projects.`,
     socials: {
       linkedin: "https://www.linkedin.com/in/ryan-matovu-517988203",
-      twitter: "https://twitter.com/ryanmatovu",
+      // twitter: "https://twitter.com/ryanmatovu",
+      twitter:
+        "https://twitter.com/infinit3booker?t=QBsb3CsDPsTNStkDIdlLgA&s=09",
     },
   },
   {
@@ -307,7 +316,7 @@ export const Advisors: ProfileType[] = [
     },
   },
   // {
-  //   avatar: require("assets/avatars/YosefShaftal.png").default,
+  //   avatar: require("assets/avatars/YosefShaftal.png"),
   //   name: "Yosef Shaftal",
   //   role: "Business",
   //   info: `Executive director of the <strong>Israeli Blockchain Association.</strong>\n\nStrategic advisor to startups, corporations and governments.`,
@@ -316,7 +325,7 @@ export const Advisors: ProfileType[] = [
   //   },
   // },
   // {
-  //   avatar: require("assets/avatars/JDGagnon.png").default,
+  //   avatar: require("assets/avatars/JDGagnon.png"),
   //   name: "JD Gagnon",
   //   role: "DeFi",
   //   info: `Founder of <strong>Benqi</strong>, liquidity market protocol on Avalanche.\nDivision director at IG Wealth Management.`,
@@ -384,6 +393,10 @@ export const Partners = [
   {
     src: require("assets/logos/chaoslabs.svg").default,
     url: "https://chaoslabs.xyz/",
+  },
+  {
+    src: require("assets/logos/indigo.png").default,
+    url: "https://indigoprotocol.io/",
   },
   // require("assets/logos/mlabs.svg").default,
   // require("assets/logos/defire.svg").default,
@@ -533,27 +546,16 @@ export const Roadmap = {
   "Q1 2021": ["Project Conception", "Danaswap Development"],
   "Q2 2021": ["Stablecoin Development", "Seed Sale", "Whitepaper Release"],
   "Q3 2021": ["Plutus Contract Audits", "Private Sale", "AREM Development"],
-  "Q4 2021": [
-    "Public Sale",
-    "Token Generation Event",
-    "CEX Listing",
-    "Ardana Academy Opening",
-  ],
-  "Q1 2022": [
-    "Futher Wallet Integration",
-    "Stablecoin Release",
-    "Danaswap Release",
-  ],
-  "Q2 2022": [
-    "Danaswap V2 Release",
-    "Community Ambassador Program",
-    "Governance Transition",
-  ],
+  "Q4 2021": ["Public Sale", "Token Generation Event", "CEX Listing"],
+  "Q1 2022": ["Futher Wallet Integration", "Ardana Academy Opening"],
+  "Q2 2022": ["Community Ambassador Program", "Governance Transition"],
   "Q3 2022": [
     "Third Party Integration Expansion",
     "Partnership Project Integrations",
+    "Stablecoin Release",
+    "Danaswap Release",
   ],
-  "Q4 2022": ["Danaswap Foreign Exchange"],
+  "Q4 2022": ["Danaswap Foreign Exchange", "Danaswap V2 Release"],
   "2023+": [
     "Tokenized Asset Vaults",
     "Alternative Stablecoin Currency Vaults",
@@ -562,5 +564,245 @@ export const Roadmap = {
     "Fiat Gateways",
     "Institutional Platform Development",
     "Liquidity Incentives Program",
-  ]
+  ],
 }
+
+export const CommunityList = [
+  {
+    image: require("assets/logos/newspaper.png").default,
+    title: "Find out the\nlatest news",
+    content:
+      "Be up to the date on the latest Ardana updates  and announcements.",
+    cta: {
+      label: "Ardana Hub on Medium",
+      link: "https://medium.com/ardana-hub",
+      width: 220,
+      height: 40,
+    },
+  },
+  {
+    image: require("assets/logos/communication-chat-bubble.png").default,
+    title: "Join the\nconversation",
+    content: "Join our Telegram channel and Discord server.",
+    cta: {
+      label: "Follow us on Twitter",
+      link: "https://twitter.com/ardanaproject",
+      width: 220,
+      height: 40,
+    },
+  },
+  {
+    image: require("assets/logos/startup.png").default,
+    title: "Become an\nambassador",
+    content: "Be part of the Team and become an Ardana ambassador.",
+    cta: {
+      label: "Coming Soon",
+      link: "/",
+      width: 160,
+      height: 40,
+    },
+  },
+]
+
+export const TelegramChannelList = [
+  {
+    country: "Chinese",
+    flag: require("assets/telegramchannels/flags/chinese.svg").default,
+    link: "/",
+  },
+  {
+    country: "German",
+    flag: require("assets/telegramchannels/flags/german.svg").default,
+    link: "/",
+  },
+  {
+    country: "Indonesian",
+    flag: require("assets/telegramchannels/flags/indonesian.svg").default,
+    link: "/",
+  },
+  {
+    country: "Italian",
+    flag: require("assets/telegramchannels/flags/italian.svg").default,
+    link: "/",
+  },
+  {
+    country: "Japanese",
+    flag: require("assets/telegramchannels/flags/japanese.svg").default,
+    link: "/",
+  },
+  {
+    country: "Korean",
+    flag: require("assets/telegramchannels/flags/southkorea.svg").default,
+    link: "/",
+  },
+  {
+    country: "Portuguese",
+    flag: require("assets/telegramchannels/flags/portuguese.svg").default,
+    link: "/",
+  },
+  {
+    country: "Russian",
+    flag: require("assets/telegramchannels/flags/russian.svg").default,
+    link: "/",
+  },
+  {
+    country: "Spanish",
+    flag: require("assets/telegramchannels/flags/spanish.svg").default,
+    link: "/",
+  },
+  {
+    country: "Thai",
+    flag: require("assets/telegramchannels/flags/thai.svg").default,
+    link: "/",
+  },
+  {
+    country: "Turkish",
+    flag: require("assets/telegramchannels/flags/turkish.svg").default,
+    link: "/",
+  },
+  {
+    country: "Vietnamese",
+    flag: require("assets/telegramchannels/flags/vietnamese.svg").default,
+    link: "/",
+  },
+]
+
+export const NewsOnMediumList = [
+  {
+    image: require("assets/news/medium/ASPA_PARTNER_FOCUS_8.png").default,
+    title:
+      "ASPA Partner Focus #8 — Announcing the Latest Stake Pool Operators Partnering with Ardana",
+    content:
+      "Welcome to the eighth edition of our ASPA Partner Focus series. We have interviewed the latest new joiners and would like to share their mission and Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum",
+    date: "December 16, 2021",
+    link: "https://medium.com/ardana-hub/aspa-partner-focus-8-announcing-the-latest-stake-pool-operators-partnering-with-ardana-1f4f8f3ca45a?source=collection_home---4------1-----------------------",
+  },
+  {
+    image: require("assets/news/medium/ASPA_PARTNER_FOCUS_7.png").default,
+    title:
+      "ASPA Partner Focus #7 — Announcing the Latest Stake Pool Operators Partnering with Ardana",
+    content:
+      "In the seventh edition of our ASPA Partner Focus series, we welcome the latest ASPA joiners to Ardana! ASPA applications are now closed! We sat down and Lorem Lorem Lorem ",
+    date: "December 9, 2021",
+    link: "https://medium.com/ardana-hub/aspa-partner-focus-7-announcing-the-latest-stake-pool-operators-partnering-with-ardana-23bff202860f?source=collection_home---4------2-----------------------",
+  },
+  {
+    image: require("assets/news/medium/ASPA_PARTNER_FOCUS_6.png").default,
+    title:
+      "ASPA Partner Focus #6 — Announcing the Latest Stake Pool Operators Partnering with Ardana",
+    content:
+      "Please join us in welcoming the latest ASPA joiners to Ardana! We sat down and interviewed each stake pool to find out their mission and goals, who they are as Lorem Lorem Lorem Lorem Lorem Lorem",
+    date: "December 5, 2021",
+    link: "https://medium.com/ardana-hub/aspa-partner-focus-6-announcing-the-latest-stake-pool-operators-partnering-with-ardana-ae67525924c4?source=collection_home---4------3-----------------------",
+  },
+  {
+    image: require("assets/news/medium/NEAR_PROTOCOL.png").default,
+    title: "Ardana is Partnering with NEAR Protocol",
+    content:
+      "Today, we at Ardana are excited to announce our latest strategic partnership with NEAR, a decentralized application platform (dApp) that focuses on both developer and user experience. Through this partnership with NEAR, which includes a grant",
+    date: "November 23, 2021",
+    link: "https://medium.com/ardana-hub/ardana-is-partnering-with-near-protocol-281a6e64e031?source=collection_home---4------4-----------------------",
+  },
+  {
+    image: require("assets/news/medium/DANA_TOKEN.png").default,
+    title: "DANA Token Going Live on Gate, Bitmart and MEXC!",
+    content:
+      "The growing community around Ardana has been eagerly awaiting the token launch since the project began. Today, we are thrilled to announce that the token launch will take place on Monday, 22nd...",
+    date: "November 17, 2021",
+    link: "https://medium.com/ardana-hub/dana-token-going-live-on-gate-bitmart-and-mxec-72ed54702527?source=collection_home---4------5-----------------------",
+  },
+  {
+    image: require("assets/news/medium/ARDANA_QCP.png").default,
+    title:
+      "Crypto Options leader QCP Capital Makes a Strategic Investment in Ardana",
+    content:
+      "Today, we are very pleased to announce that QCP Capital has made a strategic investment in Ardana. We are excited to be supported by QCP Capital, who has a strong presence in the Asian markets as we",
+    date: "December 5, 2021",
+    link: "https://medium.com/ardana-hub/crypto-options-leader-qcp-capital-makes-a-strategic-investment-in-ardana-e51de7397e35?source=collection_home---4------6-----------------------",
+  },
+]
+
+export const NewsOnTwitterList = [
+  {
+    title: "Ardana - DeFi Hub of Cardano",
+    type: "@ArdanaProject",
+    content: `⭐️ Ardana has formed a strategic partnership w/ <span>#dApp</span> platform <span>@NEARProtocol</span>\n\n🌈 Through this collab, which includes a grant, we'll <span>#BUIDL</span> the first-ever bridge between <span>#Cardano</span> & <span>#NEAR</span> ecosystems to facilitate seamless asset transfers and more ⤵️`,
+    image: require("assets/news/twitter/twitter1.png").default,
+    datetime: "10:21 PM · Nov 23, 2021",
+  },
+  {
+    title: "Ardana - DeFi Hub of Cardano",
+    type: "@ArdanaProject",
+    content: `4/ ✨ WIthout this protection measure, collateral could be manipulated, for example withdrawn from a vault under false pretences. The operations of Emergency Oracles and price delays by the OGM are also managed by <span>#Ardana</span> governance.`,
+    datetime: "10:21 PM · Nov 23, 2021",
+  },
+  {
+    title: "Ardana - DeFi Hub of Cardano",
+    type: "@ArdanaProject",
+    content: `3/ 🌐 The OGM serves as a layer of defense between the oracles and the protocol by delaying the price feed by one hour. This delay allows Emergency Oracles or an #Ardana governance vote to individually freeze compromised oracles.`,
+    datetime: "10:21 PM · Nov 23, 2021",
+  },
+]
+
+export const NewsOnMediaList = [
+  {
+    image: require("assets/news/media/Y4SEOFO3SNHCZMJOIWYGPOZD24 1.png")
+      .default,
+    label: "Coindesk",
+    title: "Ardana and Near Join Forces to Build a Crosschain Bridge",
+    content:
+      "On Tuesday morning, Ardana, a stablecoin and lending hub on the Cardano blockchain platform, announced an agreement with Near protocol, a layer 1 Ethereum alternative. Ardana received a grant",
+    link: "https://www.coindesk.com/business/2021/11/23/ardana-and-near-join-forces-to-build-a-crosschain-bridge/#:~:text=Ardana%20received%20a%20grant%20from,press%20release%20provided%20to%20CoinDesk.&text=In%20October%2C%20Near%20announced%20an,a%20bid%20to%20attract%20developers",
+  },
+  {
+    label: "CoinTelegraph",
+    image:
+      require("assets/news/media/1434_aHR0cHM6Ly9zMy5jb2ludGVsZWdyYXBoLmNvbS91cGxvYWRzLzIwMjEtMTEvNzZhNjcyYjYtZGQ0NS00NjViLThlNTUtNTEwYzViNmJkZjA4LmpwZw== 1.png")
+        .default,
+    title:
+      "Ardana partners with Near protocol on Cardano bridge infrastructure",
+    content:
+      "Ardana, Cardano’s growing stablecoin hub, announced a strategic partnership with Near protocol on Tuesday. The partnership allows for asset transfer between the two protocols in which Ardana will",
+    link: "https://cointelegraph.com/news/ardana-partners-with-near-protocol-on-cardano-bridge-infrastructure",
+  },
+  {
+    image: require("assets/news/media/69ea73c64e0929176878276fd614c409 1.png")
+      .default,
+    label: "Yahoo Finance",
+    title: "Cardano DeFi platform Ardana partners with NEAR protocol",
+    content:
+      "Recently-launched Ardana – a Cardano based decentralised stablecoin solution – has partnered with Ethereum rival NEAR protocol.The move aims to deliver an interconnected bridge between the DeFi",
+    link: "https://finance.yahoo.com/news/cardano-defi-platform-ardana-partners-135929378.html",
+  },
+  {
+    image:
+      require("assets/news/media/cardano-stablecoin-protocol-ardana-toasts-10m-capital-injection-led-by-three-arrows-capital-and-ascensive-assets 1.png")
+        .default,
+    label: "Bitcoin.com",
+    title:
+      "Cardano Stablecoin Protocol Ardana Toasts $10m Capital Injection Led by Three Arrows Capital and Ascensive Assets",
+    content:
+      "Ardana, the asset-backed stablecoin protocol and decentralized exchange, has attracted $10 million of investment in its latest strategic funding round",
+    link: "https://news.bitcoin.com/cardano-stablecoin-protocol-ardana-toasts-10m-capital-injection-led-by-three-arrows-capital-and-ascensive-assets/",
+  },
+  {
+    label: "CoinDesk",
+    image: require("assets/news/media/KHAH5Z2K3FBRHDQTPX4UVPVK3Q 1.png")
+      .default,
+    title: "Three Arrows Capital Backs $10M Raise for DeFi on Cardano",
+    content:
+      "Cardano’s decentralized finance (DeFi) ecosystem may be showing glimmers of primordial life following the close of a $10 million raise for Ardana, a new protocol that aims to provide stablecoin minting",
+    link: "https://www.coindesk.com/tech/2021/10/29/three-arrows-capital-backs-10m-raise-for-defi-on-cardano/",
+  },
+  {
+    image:
+      require("assets/news/media/cardano-stablecoin-protocol-ardana-toasts-10m-capital-injection-led-by-three-arrows-capital-and-ascensive-assets 1.png")
+        .default,
+    label: "Benzinga",
+    title:
+      "Cardano Stablecoin Protocol Ardana Toasts $10m Capital Injection Led by Three Arrows Capital and Ascensive Assets",
+    content:
+      "Ardana, the asset-backed stablecoin protocol and decentralized exchange, has attracted $10 million of investment in its latest strategic funding round",
+    link: "https://www.benzinga.com/markets/cryptocurrency/21/10/23749212/cardano-stablecoin-protocol-ardana-closes-10m-round-led-by-three-arrows-capital-ascensive-",
+  },
+]

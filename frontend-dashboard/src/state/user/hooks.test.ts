@@ -1,17 +1,25 @@
-import { useSelector } from "react-redux"
-import configureMockStore from "redux-mock-store"
-import { updateUserDarkMode } from "./actions"
-import { useIsDarkMode, useDarkModeManager } from "./hooks"
+import { testProp } from "jest-fast-check"
+// import { useSelector } from "react-redux"
+// import configureMockStore from "redux-mock-store"
 
+import * as O from "fp-ts/Option"
+import { pipe } from "fp-ts/function"
+import { getOption } from "fp-ts-laws/lib/Option"
+
+import * as Theme from "Data/User/Theme"
+import { genTheme, genSupportedW3ColorScheme } from "Data/User/Theme/Gen"
+
+import { getTheme } from "./hooks"
+// import { UserState, initialState } from "./reducer"
+
+require("@relmify/jest-fp-ts")
+
+/*
 const mockStore = configureMockStore([])
 
 let store: any
-const initialState = {
-  user: {
-    userDarkMode: null,
-    mediaDarkMode: false,
-    timestamp: new Date().getTime(),
-  },
+const initState: { user: UserState } = {
+  user: initialState,
 }
 
 const mockDispatch = jest.fn()
@@ -22,10 +30,12 @@ jest.mock("react-redux", () => ({
 }))
 
 beforeEach(() => {
-  store = mockStore(initialState)
+  store = mockStore(initState)
 })
+*/
 
 describe("User hooks", () => {
+  /*
   beforeEach(() => {
     ;(useSelector as jest.Mock).mockImplementation((callback) => {
       return callback(initialState)
@@ -35,31 +45,67 @@ describe("User hooks", () => {
   afterEach(() => {
     ;(useSelector as jest.Mock).mockClear()
   })
+  */
 
-  describe("useIsDarkMode", () => {
-    it("should return darkMode status", () => {
-      const darkMode = useIsDarkMode()
-      const userDarkMode = store.getState().user.userDarkMode
-      const mediaDarkMode = store.getState().user.mediaDarkMode
-
-      expect(darkMode).toEqual(
-        userDarkMode === null ? mediaDarkMode : userDarkMode
-      )
+  describe("getTheme", () => {
+    it("should pick default with nothing set", () => {
+      const theme: Theme.Theme = getTheme({
+        theme: O.none,
+        prefersColorScheme: O.none,
+      })
+      expect(theme).toEqual(Theme.defaultTheme)
     })
-  })
 
-  describe("useDarkModeManager", () => {
-    it("should return darkMode status and setDarkMode functions", () => {
-      const [darkMode, setDarkMode] = useDarkModeManager()
-      const expectedDarkMode = useIsDarkMode()
+    testProp(
+      "should prefer the user agent to our default",
+      [genSupportedW3ColorScheme],
+      (scheme: Theme.SupportedW3ColorScheme) => {
+        const theme: Theme.Theme = getTheme({
+          theme: O.none,
+          prefersColorScheme: O.some(scheme),
+        })
+        return O.fold(
+          () => false,
+          (p: Theme.Theme) => Theme.Eq.equals(theme, p)
+        )(Theme.fromW3ColorScheme(scheme))
+      }
+    )
 
-      expect(darkMode).toEqual(expectedDarkMode)
+    testProp(
+      "should prefer the explicitly set theme",
+      [genTheme, getOption(genSupportedW3ColorScheme)],
+      (
+        theme_: Theme.Theme,
+        oscheme: O.Option<Theme.SupportedW3ColorScheme>
+      ) => {
+        const theme: Theme.Theme = getTheme({
+          theme: O.some(theme_),
+          prefersColorScheme: oscheme,
+        })
+        return Theme.Eq.equals(theme, theme_)
+      }
+    )
 
-      setDarkMode(true)
-      expect(mockDispatch).toHaveBeenCalledTimes(1)
-      expect(mockDispatch).toHaveBeenCalledWith(
-        updateUserDarkMode({ userDarkMode: true })
-      )
-    })
+    testProp(
+      "should choose the appropriate theme for optional values",
+      [getOption(genTheme), getOption(genSupportedW3ColorScheme)],
+      (
+        otheme: O.Option<Theme.Theme>,
+        oscheme: O.Option<Theme.SupportedW3ColorScheme>
+      ) => {
+        const theme: Theme.Theme = getTheme({
+          theme: otheme,
+          prefersColorScheme: oscheme,
+        })
+        return Theme.Eq.equals(
+          theme,
+          pipe(
+            otheme, // prefer explicit
+            O.alt(() => O.chain(Theme.fromW3ColorScheme)(oscheme)), // prefer user agent
+            O.getOrElse(() => Theme.defaultTheme) // else use default
+          )
+        )
+      }
+    )
   })
 })

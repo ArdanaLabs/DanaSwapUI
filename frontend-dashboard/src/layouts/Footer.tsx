@@ -3,7 +3,9 @@ import { Box, useMediaQuery, Container, Link } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
 
-import { useIsDarkMode } from "state/user/hooks"
+import * as Theme from "Data/User/Theme"
+
+import { useUserTheme } from "state/user/hooks"
 
 import LOGO_White from "assets/logo_white.png"
 import LOGO_Text from "assets/logo_text.png"
@@ -38,10 +40,15 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     },
   },
 
+  // TODO: change container to use `gap` instead of this `margin-right` hack
   socialIconLink: {
+    "display": "inline-flex",
+    "height": "2.25em",
+    "width": "2.25em",
+    "alignItems": "center",
+    "justifyContent": "center",
     "borderRadius": "50%",
     "backgroundColor": "white",
-    "padding": "10px",
     "marginRight": "20px",
     "cursor": "pointer",
     "color": "gray",
@@ -62,32 +69,57 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
 const Footer: React.FC = () => {
   const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
+  const userTheme: Theme.Theme = useUserTheme()
   const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const classes = useStyles({
+    dark: Theme.Eq.equals(userTheme, Theme.Theme.Dark),
+    mobile,
+  })
 
   return (
     <Box className={cx(classes.bg)}>
       <Container>
         <Box className={cx(classes.container)}>
           <Box className={cx(classes.logo)}>
-            <img src={LOGO_White} alt="logo" />
-            <img src={LOGO_Text} alt="logo" />
+            {/* TODO: make this one image so the titles make sense; link to the homepage */}
+            <img src={LOGO_White} alt="Ardana" />
+            <img src={LOGO_Text} alt="" />
           </Box>
+          {/* TODO: style this as flex or grid; aria labels; titles */}
           <Box>
-            <Link className={cx(classes.socialIconLink)} href="#">
+            <Link
+              className={cx(classes.socialIconLink)}
+              href="#"
+              rel="noopener"
+            >
               <i className="fab fa-twitter"></i>
             </Link>
-            <Link className={cx(classes.socialIconLink)} href="#">
+            <Link
+              className={cx(classes.socialIconLink)}
+              href="#"
+              rel="noopener"
+            >
               <i className="fab fa-instagram"></i>
             </Link>
-            <Link className={cx(classes.socialIconLink)} href="#">
+            <Link
+              className={cx(classes.socialIconLink)}
+              href="#"
+              rel="noopener"
+            >
               <i className="fab fa-medium"></i>
             </Link>
-            <Link className={cx(classes.socialIconLink)} href="#">
+            <Link
+              className={cx(classes.socialIconLink)}
+              href="#"
+              rel="noopener"
+            >
               <i className="fab fa-youtube"></i>
             </Link>
-            <Link className={cx(classes.socialIconLink)} href="#">
+            <Link
+              className={cx(classes.socialIconLink)}
+              href="#"
+              rel="noopener"
+            >
               <i className="fab fa-linkedin"></i>
             </Link>
           </Box>

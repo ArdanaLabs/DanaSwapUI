@@ -10,7 +10,9 @@ import { makeStyles, useTheme } from "@material-ui/core/styles"
 import Hamburger from "hamburger-react"
 import cx from "classnames"
 
-import { useIsDarkMode } from "state/user/hooks"
+import * as Theme from "Data/User/Theme"
+
+import { useUserTheme } from "state/user/hooks"
 import { useHistory, useLocation } from "react-router-dom"
 import ThemeSwitch from "components/ThemeSwitch"
 import { Button } from "components/Button"
@@ -91,8 +93,11 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 const Header: React.FC = () => {
   const theme = useTheme()
   const mobile = useMediaQuery(theme.breakpoints.down("sm"))
-  const dark = useIsDarkMode()
-  const classes = useStyles({ dark, mobile })
+  const userTheme: Theme.Theme = useUserTheme()
+  const classes = useStyles({
+    dark: Theme.Eq.equals(userTheme, Theme.Theme.Dark),
+    mobile,
+  })
   const history = useHistory()
   const { pathname } = useLocation<{ previous: string }>()
 
@@ -114,9 +119,11 @@ const Header: React.FC = () => {
     <Box className={cx(classes.self)}>
       <Container>
         <Box className={cx(classes.container)}>
+          {/* TODO: make this a link, not onclick */}
           <Box className={cx(classes.logo)} onClick={() => history.push("/")}>
-            <img src={LOGO_Blue} alt="Ardana Logo" />
-            <img src={LOGO_Text} alt="Ardana Logo" />
+            {/* TODO: make this one image */}
+            <img src={LOGO_Blue} alt="Ardana" />
+            <img src={LOGO_Text} alt="" />
           </Box>
 
           {!mobile && (
