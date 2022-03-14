@@ -2,19 +2,23 @@ import Adapter from "@wojtekmaj/enzyme-adapter-react-17"
 import * as Enzyme from "enzyme"
 import { shallow } from "enzyme"
 import React from "react"
+
+import * as O from "fp-ts/Option"
+
+import { UserState } from "state/user/reducer"
 import { SearchInput } from "."
 
 Enzyme.configure({ adapter: new Adapter() })
 
+const mockUserState: UserState = {
+  theme: O.none,
+  prefersColorScheme: O.none,
+  timestamp: 0,
+}
+
 jest.mock("react-redux", () => ({
   useDispatch: () => {},
-  useSelector: () => ({
-    user: {
-      userDarkMode: null,
-      mediaDarkMode: false,
-      timestamp: "dfd",
-    },
-  }),
+  useSelector: (): UserState => mockUserState,
 }))
 
 let wrapper: Enzyme.ShallowWrapper

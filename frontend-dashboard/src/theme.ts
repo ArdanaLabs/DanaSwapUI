@@ -5,6 +5,8 @@ import {
 } from "@material-ui/core"
 import { merge } from "lodash"
 
+import { Theme } from "Data/User/Theme"
+
 // custom colors
 
 const primaryLightDay =
@@ -1189,6 +1191,11 @@ export const darkTheme = responsiveFontSizes(
   })
 )
 
-const theme = { lightTheme, darkTheme }
-
-export default theme
+export function getTheme(theme: Theme) {
+  switch (theme) {
+    case Theme.Light:
+      return lightTheme
+    case Theme.Dark:
+      return darkTheme
+  }
+}

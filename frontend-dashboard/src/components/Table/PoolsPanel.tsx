@@ -12,9 +12,6 @@ import {
 } from "@material-ui/core"
 import { makeStyles, useTheme, withStyles } from "@material-ui/core/styles"
 import cx from "classnames"
-import { useIsDarkMode } from "state/user/hooks"
-import { SearchInput } from "components/Input"
-import { Button } from "components/Button"
 import { useHistory } from "react-router-dom"
 
 import * as O from "fp-ts/Option"
@@ -25,9 +22,13 @@ import { FetchDecodeError } from "Data/FetchDecode"
 import * as PoolSetName from "Data/Pool/PoolSetName"
 import { PoolStats } from "Data/Stats/PoolStats"
 import { Percent, USD } from "Data/Unit"
+import * as Theme from "Data/User/Theme"
 
 import { usePoolStats } from "state/home/hooks"
 import { printCurrencyUSD, printPercentage } from "hooks"
+import { useUserTheme } from "state/user/hooks"
+import { SearchInput } from "components/Input"
+import { Button } from "components/Button"
 
 enum FilterOn {
   StableCoins = 0,
@@ -149,9 +150,12 @@ export interface PoolsPanelProps {
 
 const PoolsPanel: React.FC<PoolsPanelProps> = ({ overview = false }) => {
   const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
+  const userTheme: Theme.Theme = useUserTheme()
   const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const classes = useStyles({
+    dark: Theme.Eq.equals(userTheme, Theme.Theme.Dark),
+    mobile,
+  })
   const history = useHistory()
 
   const columns: string[] = [

@@ -2,13 +2,16 @@ import React, { useState } from "react"
 import { Box, useMediaQuery } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
-import { useIsDarkMode } from "state/user/hooks"
-import { Button } from "components/Button"
 import {
   DataGrid,
   GridColDef,
   GridValueGetterParams,
 } from "@material-ui/data-grid"
+
+import * as Theme from "Data/User/Theme"
+
+import { useUserTheme } from "state/user/hooks"
+import { Button } from "components/Button"
 
 const FILTER_ALL = 0
 const FILTER_SWAP = 1
@@ -78,9 +81,12 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
 const TransactionGrid: React.FC = () => {
   const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
+  const userTheme: Theme.Theme = useUserTheme()
   const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const classes = useStyles({
+    dark: Theme.Eq.equals(userTheme, Theme.Theme.Dark),
+    mobile,
+  })
 
   // const columns = [
   //   '',

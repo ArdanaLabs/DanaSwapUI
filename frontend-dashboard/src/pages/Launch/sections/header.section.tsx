@@ -1,10 +1,14 @@
 import React from "react"
 import { Box, Container, useMediaQuery } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
-import { useIsDarkMode } from "state/user/hooks"
 import cx from "classnames"
-import IMG_logo from "assets/logos/Ardana_hor_white.png"
 import { useHistory } from "react-router-dom"
+
+import * as Theme from "Data/User/Theme"
+
+import { useUserTheme } from "state/user/hooks"
+
+import IMG_logo from "assets/logos/Ardana_hor_white.png"
 
 const useStyles = makeStyles(({ palette }) => ({
   header: {
@@ -32,6 +36,7 @@ const useStyles = makeStyles(({ palette }) => ({
     "background": "transparent",
     "color": "white",
     "textAlign": "center",
+    "textTransform": "uppercase",
     "fontFamily": "Museo Sans",
     "fontStyle": "normal",
     "fontWeight": 700,
@@ -64,15 +69,20 @@ export interface LaunchHeaderProps {
 const LaunchHeader: React.FC<LaunchHeaderProps> = ({ nav, updateNav }) => {
   const { breakpoints } = useTheme()
   const mobile = useMediaQuery(breakpoints.down("xs"))
-  const dark = useIsDarkMode()
-  const classes = useStyles({ dark, mobile })
+  const userTheme: Theme.Theme = useUserTheme()
+  const classes = useStyles({
+    dark: Theme.Eq.equals(userTheme, Theme.Theme.Dark),
+    mobile,
+  })
   const history = useHistory()
+
+  // TODO: actually define nav
 
   return (
     <Box className={cx(classes.header)}>
       <Container>
         <Box onClick={() => history.push("/")}>
-          <img src={IMG_logo} alt="Ardana Logo" />
+          <img src={IMG_logo} alt="Ardana" />
         </Box>
         <Box className={cx(classes.navGroup)}>
           <Box
@@ -81,7 +91,7 @@ const LaunchHeader: React.FC<LaunchHeaderProps> = ({ nav, updateNav }) => {
             })}
             onClick={() => updateNav(0)}
           >
-            LAUNCH ARDANA STABLECOINS
+            Launch Ardana Stablecoins
           </Box>
           <Box
             className={cx(classes.navItem, {
@@ -89,7 +99,7 @@ const LaunchHeader: React.FC<LaunchHeaderProps> = ({ nav, updateNav }) => {
             })}
             onClick={() => updateNav(1)}
           >
-            LAUNCH DANASWAP
+            Launch DANASwap
           </Box>
           <Box
             className={cx(classes.navItem, {
@@ -97,7 +107,7 @@ const LaunchHeader: React.FC<LaunchHeaderProps> = ({ nav, updateNav }) => {
             })}
             onClick={() => updateNav(2)}
           >
-            MY DASHBOARD
+            My Dashboard
           </Box>
         </Box>
       </Container>
