@@ -31,7 +31,7 @@ describe("Components / Box / TokenBox", () => {
         className={"someClassName"}
         value={"someValue"}
         placeholder="SEARCH..."
-        isIcon={true}
+        hasIcon={true}
         onChange={onFilterChange}
       />
     )

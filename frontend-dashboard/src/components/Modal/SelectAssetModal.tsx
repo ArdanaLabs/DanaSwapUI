@@ -169,7 +169,7 @@ const SelectAssetModal: React.FunctionComponent<Props> = ({
           className={classes.filterByTextInput}
           value={filter.text}
           placeholder="Search..."
-          isIcon={true}
+          hasIcon={true}
           onChange={(e: ChangeEvent<HTMLInputElement>) => {
             setFilter({
               ...filter,

@@ -45,7 +45,7 @@ const useStyles = makeStyles(({ palette }) => ({
 export interface SearchInputProps {
   value: string | number
   onChange: (e: ChangeEvent<HTMLInputElement>) => void
-  isIcon?: boolean
+  hasIcon?: boolean
   placeholder?: string
   className?: string
 }
@@ -54,7 +54,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
   value,
   className = "",
   placeholder = "Search Input",
-  isIcon = false,
+  hasIcon = false,
   onChange,
 }) => {
   const { breakpoints } = useTheme()
@@ -74,7 +74,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
         value={value}
         onChange={onChange}
       ></input>
-      {isIcon && <SearchIcon className={classes.icon} />}
+      {hasIcon && <SearchIcon className={classes.icon} aria-hidden="true" />}
     </Box>
   )
 }
