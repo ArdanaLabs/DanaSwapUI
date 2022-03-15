@@ -7,14 +7,14 @@ import * as Theme from "Data/User/Theme"
 import { useUserTheme } from "state/user/hooks"
 import LogoLight from "assets/logo-light.png"
 
-import TwitterIcon from "assets/components/twitter"
-import DiscordIcon from "assets/components/discord"
-import LinkedinIcon from "assets/components/linkedin"
-import MediumIcon from "assets/components/medium"
-import YoutubeIcon from "assets/components/youtube"
-import TelegramIcon from "assets/components/telegram"
+import { ReactComponent as TwitterIcon } from "assets/imgs/twitter.svg"
+import { ReactComponent as DiscordIcon } from "assets/imgs/discord.svg"
+import { ReactComponent as LinkedinIcon } from "assets/imgs/linkedin.svg"
+import { ReactComponent as MediumIcon } from "assets/imgs/medium.svg"
+import { ReactComponent as YoutubeIcon } from "assets/imgs/youtube.svg"
+import { ReactComponent as TelegramIcon } from "assets/imgs/telegram.svg"
 
-export const Socials = [
+const Socials = [
   {
     name: "Twitter",
     icon: TwitterIcon,

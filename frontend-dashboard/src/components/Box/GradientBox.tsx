@@ -41,7 +41,7 @@ interface GradientBoxProps {
   clickable?: boolean
   glow?: boolean
   fill?: boolean
-  onClick: () => void
+  onClick: (_event: any) => void
 }
 
 const GradientBox: React.FC<GradientBoxProps> = ({
