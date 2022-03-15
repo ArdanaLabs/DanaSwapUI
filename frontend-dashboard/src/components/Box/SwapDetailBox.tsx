@@ -60,7 +60,7 @@ const SwapDetailBox: React.FC<Props> = ({
         <Box ml={1}>
           <img
             src={isDarkTheme ? CircleInfoCyanIcon : CircleInfoDarkBlueIcon}
-            alt="info"
+            alt="more info"
           />
         </Box>
       </Box>
