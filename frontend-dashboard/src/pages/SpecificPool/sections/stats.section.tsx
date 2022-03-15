@@ -47,7 +47,7 @@ const useStyles = makeStyles(({ palette }) => ({
   totalTokensLocked: {
     display: "flex",
     flexDirection: "column",
-    gridGap: "20px 0",
+    gap: "20px 0",
   },
 
   balancePanel: {

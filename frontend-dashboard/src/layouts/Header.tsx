@@ -197,7 +197,7 @@ const Header: React.FC = () => {
                   />
                 </IconButton>
                 <Drawer anchor={"left"} open={openMenu} onClose={toggleMenu}>
-                  <Box width={"50vw"}>
+                  <Box width={"200px"}>
                     {navList.map((navItem, index) => (
                       <Box
                         key={index}
