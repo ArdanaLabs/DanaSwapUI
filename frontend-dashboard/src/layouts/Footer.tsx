@@ -81,10 +81,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
     [`& a`]: {
       lineHeight: 0,
-    },
 
-    [`& svg:hover path`]: {
-      fill: palette.secondary.main,
+      [`&:hover > svg path`]: {
+        fill: palette.secondary.main,
+      },
     },
   },
 }))
