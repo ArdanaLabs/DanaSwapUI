@@ -7,7 +7,7 @@ Enzyme.configure({ adapter: new Adapter() })
 
 let wrapper: Enzyme.ShallowWrapper
 const handleDialogClose = () => {
-  console.log("hello")
+  console.log("goodbye")
 }
 
 describe("Components / Dialog / Dialog", () => {

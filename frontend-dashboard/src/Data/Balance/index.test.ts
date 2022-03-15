@@ -14,7 +14,7 @@ describe("Balances", () => {
     const result = Balances.codec.decode(mock)
 
     if (E.isLeft(result)) {
-      console.info(JSON.stringify(result.left, null, 2))
+      console.error(JSON.stringify(result.left, null, 2))
     }
 
     expect(result).toBeRight()
