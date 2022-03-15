@@ -50,37 +50,108 @@
          pkgs = nixpkgs.legacyPackages.x86_64-linux;
          hci-effects = hercules-ci-effects.lib.withPkgs pkgs;
          system = "x86_64-linux";
+         robotsTxt = builtins.toFile "robots.txt" ''
+           User-agent: *
+           Disallow: /
+         '';
+         # TODO: put mkWebsite and mkGitBranchViaEffect into a library such as
+         # danalib or hercules-ci-effects itself.
+         mkWebsite = args: mkGitBranchViaEffect (args // {
+           gitRemote = "git@codeberg.org";
+           hostKey = "codeberg.org ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIVIC02vnjFyL+I4RHfvIGNtOgJMe769VTF1VR4EB3ZB";
+           owner = "ardanalabs";
+           repo = "pages";
+           committerEmail = "matthew.croughan@platonic.systems";
+           committerName = "Hercules-CI Effects";
+           authorName = "Hercules-CI Effects";
+         });
+         mkGitBranchViaEffect = { gitRemote, hostKey, triggerBranch, pushToBranch, owner, repo, branchRoot, committerEmail, committerName, authorName, preGitInit ? "", ... }:
+           hci-effects.runIf (src.ref == "refs/heads/${triggerBranch}") (
+             hci-effects.mkEffect {
+               src = self;
+               buildInputs = with pkgs; [ openssh git ];
+               secretsMap = {
+                 "ssh" = "ssh";
+               };
+               effectScript =
+               ''
+                 writeSSHKey
+                 echo ${hostKey} >> ~/.ssh/known_hosts
+                 export GIT_AUTHOR_NAME="${authorName}"
+                 export GIT_COMMITTER_NAME="${committerName}"
+                 export EMAIL="${committerEmail}"
+                 cp -r --no-preserve=mode ${branchRoot} ./${pushToBranch} && cd ${pushToBranch}
+                 ${preGitInit}
+                 git init -b ${pushToBranch}
+                 git remote add origin ${gitRemote}:${owner}/${repo}.git
+                 git add .
+                 git commit -m "Deploy to ${pushToBranch}"
+                 git push -f origin ${pushToBranch}:${pushToBranch}
+               '';
+             }
+           );
        in
        {
-         gh-pages = hci-effects.runIf (src.ref == "refs/heads/main") (
-           hci-effects.mkEffect {
-             src = self;
-             buildInputs = with pkgs; [ openssh git ];
-             secretsMap = {
-               "ssh" = "ssh";
-             };
-             effectScript =
-             let
-               CNAME = "ardana.org";
-               githubHostKey = "github.com ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==";
-             in
-             ''
-               export WEBSITE="${self.packages.${system}.frontend-landing}/lib/node_modules/ardana-landing/build"
-               writeSSHKey
-               echo ${githubHostKey} >> ~/.ssh/known_hosts
-               export GIT_AUTHOR_NAME="Hercules-CI Effects"
-               export GIT_COMMITTER_NAME="Hercules-CI Effects"
-               export EMAIL="github@croughan.sh"
-               cp -r --no-preserve=mode "$WEBSITE" ./gh-pages && cd gh-pages
-               echo "${CNAME}" > CNAME
-               git init -b gh-pages
-               git remote add origin git@github.com:ArdanaLabs/DanaSwapUI.git
-               git add .
-               git commit -m "Deploy to gh-pages"
-               git push -f origin gh-pages:gh-pages
+         # TODO: Create a function that creates staging/production from our
+         # existing packages attribute, which also templates branchRoot like
+         # node_modules/ardana-landing -> node_modules/${packageName}
+         # TODO: Remove recurseIntoAttrs, it won't be needed in a later Hercules
+         # version.
+         staging = nixpkgs.lib.recurseIntoAttrs {
+           frontend-landing = mkWebsite {
+             branchRoot = "${self.packages.${system}.frontend-landing}/lib/node_modules/ardana-landing/build";
+             triggerBranch = "staging";
+             pushToBranch = "staging-frontend-landing";
+             preGitInit = ''
+               cat ${robotsTxt} > robots.txt
+               echo "staging-frontend-landing-dc1ece41.ardana.org" > .domains
              '';
-           }
-         );
+           };
+           frontend-dashboard = mkWebsite {
+             branchRoot = "${self.packages.${system}.frontend-dashboard}/lib/node_modules/ardana-application/build";
+             triggerBranch = "staging";
+             pushToBranch = "staging-frontend-dashboard";
+             preGitInit = ''
+               cat ${robotsTxt} > robots.txt
+               echo "staging-frontend-dashboard-dc1ece41.ardana.org" > .domains
+             '';
+           };
+           frontend-vault = mkWebsite {
+             branchRoot = "${self.packages.${system}.frontend-vault}/lib/node_modules/ardana-vault/build";
+             triggerBranch = "staging";
+             pushToBranch = "staging-frontend-vault";
+             preGitInit = ''
+               cat ${robotsTxt} > robots.txt
+               echo "staging-frontend-vault-dc1ece41.ardana.org" > .domains
+             '';
+           };
+         };
+         production = nixpkgs.lib.recurseIntoAttrs {
+           frontend-landing = mkWebsite {
+             branchRoot = "${self.packages.${system}.frontend-landing}/lib/node_modules/ardana-landing/build";
+             triggerBranch = "main";
+             pushToBranch = "production-frontend-landing";
+             preGitInit = ''
+               echo "ardana.org" > .domains
+             '';
+           };
+           frontend-dashboard = mkWebsite {
+             branchRoot = "${self.packages.${system}.frontend-dashboard}/lib/node_modules/ardana-application/build";
+             triggerBranch = "main";
+             pushToBranch = "production-frontend-dashboard";
+             preGitInit = ''
+               echo "dashboard.ardana.org" > .domains
+             '';
+           };
+           frontend-vault = mkWebsite {
+             branchRoot = "${self.packages.${system}.frontend-vault}/lib/node_modules/ardana-vault/build";
+             triggerBranch = "main";
+             pushToBranch = "production-frontend-vault";
+             preGitInit = ''
+               echo "vault.ardana.org" > .domains
+             '';
+           };
+         };
        };
 
       packages = forAllSystems (system: {
