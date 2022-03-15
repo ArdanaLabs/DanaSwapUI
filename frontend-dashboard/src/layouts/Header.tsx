@@ -44,6 +44,16 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     },
   },
 
+  nav: {
+    display: "flex",
+    justifyContent: "flex-start",
+    width: "100%",
+
+    [breakpoints.down("xs")]: {
+      justifyContent: "space-between",
+    },
+  },
+
   logo: {
     paddingLeft: "10px",
     display: "flex",
@@ -73,7 +83,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       color: palette.text.secondary,
     },
 
-    [`&.active`]: {
+    [`&.isActive`]: {
       color: palette.text.secondary,
       [`&::before`]: {
         content: "' '",
@@ -96,7 +106,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     },
   },
 
-  subHeader: {
+  cta: {
     display: "flex",
     justifyContent: "flex-end",
     alignItem: "center",
@@ -153,36 +163,29 @@ const Header: React.FC = () => {
   }, [theme])
 
   return (
-    <Box className={cx(classes.root)} style={{ background: bgColor }}>
+    <Box className={classes.root} style={{ background: bgColor }}>
       <Container>
-        <Box className={cx(classes.container)}>
-          <Box
-            display="flex"
-            justifyContent={!mobile ? "flex-start" : "space-between"}
-            width="100%"
-          >
-            <Box className={cx(classes.logo)} onClick={() => history.push("/")}>
+        <Box className={classes.container}>
+          <Box className={classes.nav}>
+            <Box className={classes.logo} onClick={() => history.push("/")}>
               <img src={isDarkTheme ? LogoLight : LogoDark} alt="logo" />
             </Box>
-            {!mobile && (
+
+            {!mobile ? (
               <Box display="flex" ml="30px">
                 {navList.map((navItem, index) => (
                   <Box
                     className={cx(classes.menuItem, {
-                      active: isActiveURL(navItem.link),
+                      isActive: isActiveURL(navItem.link),
                     })}
-                    onClick={() => {
-                      history.push(navItem.link)
-                    }}
+                    onClick={() => history.push(navItem.link)}
                     key={index}
                   >
                     {navItem.label}
                   </Box>
                 ))}
               </Box>
-            )}
-
-            {mobile && (
+            ) : (
               <>
                 <IconButton
                   style={{ height: "48px", padding: 0 }}
@@ -201,7 +204,7 @@ const Header: React.FC = () => {
                     {navList.map((navItem, index) => (
                       <Box
                         key={index}
-                        className={cx(classes.menuItem)}
+                        className={classes.menuItem}
                         onClick={() => {
                           history.push(navItem.link)
                         }}
@@ -214,7 +217,7 @@ const Header: React.FC = () => {
               </>
             )}
           </Box>
-          <Box className={cx(classes.subHeader)}>
+          <Box className={classes.cta}>
             <ThemeSwitch />
             <GradientBox onClick={onConnectWallet}>
               <Typography

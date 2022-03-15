@@ -25,7 +25,7 @@ import { usePoolVolume, usePoolLiquidity } from "state/chart/hooks"
 import { ReactComponent as ArrowDown } from "assets/imgs/arrow-down.svg"
 import { SwitchWithGlider } from "components"
 
-const useStyles = makeStyles(({ palette }) => ({
+const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
     marginBottom: 50,
   },
@@ -139,17 +139,19 @@ const useStyles = makeStyles(({ palette }) => ({
     justifyContent: "flex-end",
   },
 
-  currentRatio: {
-    fontFamily: "Museo Sans",
-    fontStyle: "normal",
-    fontWeight: 500,
+  chartXaxis: {
     fontSize: "13px",
-    lineHeight: "100%",
-    color: palette.text.secondary,
 
-    [`& > span`]: {
-      fontWeight: 700,
-      fontSize: "11px",
+    [breakpoints.down("xs")]: {
+      fontSize: "8px",
+    },
+  },
+
+  chartYaxis: {
+    fontSize: "16px",
+
+    [breakpoints.down("xs")]: {
+      fontSize: "10px",
     },
   },
 }))
@@ -290,9 +292,9 @@ const StatsSection: React.FC<Props> = ({ poolSet, poolStats }: Props) => {
           show: true,
           style: {
             colors: palette.secondary.main,
-            fontSize: !mobile ? "13px" : "8px",
             fontFamily: "Museo Sans",
             fontWeight: 600,
+            cssClass: classes.chartXaxis,
           },
           // formatter: (n) => printDate(n),
         },
@@ -313,7 +315,7 @@ const StatsSection: React.FC<Props> = ({ poolSet, poolStats }: Props) => {
             colors: palette.primary.main,
             fontFamily: "Museo Sans",
             fontWeight: 600,
-            fontSize: !mobile ? "16px" : "10px",
+            cssClass: classes.chartYaxis,
           },
           formatter: (n) => printCurrencyUSD(USD.iso.wrap(n)),
         },
@@ -350,7 +352,7 @@ const StatsSection: React.FC<Props> = ({ poolSet, poolStats }: Props) => {
     }
   }, [
     palette,
-    mobile,
+    classes,
     activeChart,
     poolVolumeChartOptions,
     poolLiquidityChartOptions,
