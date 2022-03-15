@@ -37,7 +37,7 @@ const SwapButton: React.FC<SwapButtonProps> = ({ handleClick }) => {
 
   return (
     <Box className={classes.root} onClick={handleClick}>
-      <img src={ArrowLeftRightIcon} alt="swp" />
+      <img src={ArrowLeftRightIcon} alt="swap" />
     </Box>
   )
 }
