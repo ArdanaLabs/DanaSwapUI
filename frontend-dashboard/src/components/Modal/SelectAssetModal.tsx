@@ -43,7 +43,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   filterByTextInput: {
     background: `${palette.secondary.main}32`,
     borderRadius: "50px",
-    fontFamily: "Museo Sans",
+    fontFamily: "Museo Sans, sans-serif",
     fontSize: "16px",
     fontWeight: 600,
     lineHeight: "100%",

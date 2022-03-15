@@ -12,7 +12,7 @@ import { TransactionTable } from "components"
 const useStyles = makeStyles(({ palette }) => ({
   root: {},
   label: {
-    fontFamily: "Brandon Grotesque",
+    fontFamily: "Brandon Grotesque, fantasy",
     fontStyle: "normal",
     fontWeight: 900,
     fontSize: "18px",

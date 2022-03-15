@@ -77,7 +77,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       padding: "15px 50px",
       width: 500,
       color: palette.primary.main,
-      fontFamily: "Museo Sans",
+      fontFamily: "Museo Sans, sans-serif",
       fontWeight: 600,
       fontSize: "13px",
       lineHeight: "100%",

@@ -48,19 +48,19 @@ const breakpoints = createBreakpoints({})
 
 const typography = {
   h1: {
-    fontFamily: "Brandon Grotesque",
+    fontFamily: "Brandon Grotesque, fantasy",
     fontStyle: "normal",
     fontWeight: 700,
     fontSize: 30,
   },
   h3: {
-    fontFamily: "Brandon Grotesque",
+    fontFamily: "Brandon Grotesque, fantasy",
     fontStyle: "normal",
     fontWeight: 700,
     fontSize: 20,
   },
   h5: {
-    fontFamily: "Brandon Grotesque",
+    fontFamily: "Brandon Grotesque, fantasy",
     fontStyle: "normal",
     fontWeight: "normal",
     fontSize: 16,
@@ -70,13 +70,13 @@ const typography = {
     },
   },
   h2: {
-    fontFamily: "Museo Sans",
+    fontFamily: "Museo Sans, sans-serif",
     fontStyle: "normal",
     fontWeight: 700,
     fontSize: 20,
   },
   h4: {
-    fontFamily: "Museo Sans",
+    fontFamily: "Museo Sans, sans-serif",
     fontStyle: "normal",
     fontWeight: 700,
     fontSize: 18,
@@ -86,7 +86,7 @@ const typography = {
     },
   },
   h6: {
-    fontFamily: "Museo Sans",
+    fontFamily: "Museo Sans, sans-serif",
     fontStyle: "normal",
     fontWeight: 700,
     fontSize: 13,
@@ -97,14 +97,14 @@ const typography = {
   },
   subtitle1: {},
   subtitle2: {
-    fontFamily: "Museo Sans",
+    fontFamily: "Museo Sans, sans-serif",
     fontStyle: "normal",
     fontWeight: 700,
     fontSize: 18,
   },
   body1: {},
   body2: {
-    fontFamily: "Museo Sans",
+    fontFamily: "Museo Sans, sans-serif",
     fontStyle: "normal",
     fontWeight: 700,
     fontSize: 13,

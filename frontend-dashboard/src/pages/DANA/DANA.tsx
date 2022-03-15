@@ -24,7 +24,7 @@ const useStyles = makeStyles(({ palette }) => ({
     padding: "30px",
     background: palette.info.main,
     color: palette.secondary.main,
-    fontFamily: "Museo Sans",
+    fontFamily: "Museo Sans, sans-serif",
     fontStyle: "normal",
     fontWeight: 300,
     fontSize: "13px",
@@ -32,7 +32,7 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 
   displayText: {
-    "fontFamily": "Museo Sans",
+    "fontFamily": "Museo Sans, sans-serif",
     "fontStyle": "normal",
     "fontWeight": 100,
     "fontSize": "14px",
@@ -51,7 +51,7 @@ const useStyles = makeStyles(({ palette }) => ({
     "padding": "10px 20px",
     "borderRadius": "5px",
     "color": palette.common.white,
-    "fontFamily": "Museo Sans",
+    "fontFamily": "Museo Sans, sans-serif",
     "fontStyle": "normal",
     "fontWeight": 600,
     "fontSize": "13px",
@@ -69,7 +69,7 @@ const useStyles = makeStyles(({ palette }) => ({
       palette.type === "light" ? palette.secondary.dark : palette.info.main,
     borderRadius: "10px",
     padding: "20px",
-    fontFamily: "Museo Sans",
+    fontFamily: "Museo Sans, sans-serif",
     fontStyle: "normal",
     fontWeight: 600,
     fontSize: "14px",
@@ -78,7 +78,7 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 
   title: {
-    fontFamily: "Brandon Grotesque",
+    fontFamily: "Brandon Grotesque, fantasy",
     fontStyle: "normal",
     fontWeight: 900,
     fontSize: "34px",
@@ -87,7 +87,7 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 
   listHeader: {
-    fontFamily: "Museo Sans",
+    fontFamily: "Museo Sans, sans-serif",
     fontStyle: "normal",
     fontWeight: 500,
     fontSize: "16px",
@@ -97,7 +97,7 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 
   listContent: {
-    fontFamily: "Museo Sans",
+    fontFamily: "Museo Sans, sans-serif",
     fontStyle: "normal",
     fontWeight: 100,
     fontSize: "12px",

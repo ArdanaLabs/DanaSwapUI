@@ -39,7 +39,7 @@ const StyledTableCellHead = withStyles(({ palette }) => ({
     border: "unset",
   },
   head: {
-    fontFamily: "Museo Sans",
+    fontFamily: "Museo Sans, sans-serif",
     fontStyle: "normal",
     fontWeight: 500,
     fontSize: "13px",
@@ -49,7 +49,7 @@ const StyledTableCellHead = withStyles(({ palette }) => ({
     color: palette.text.hint,
   },
   body: {
-    fontFamily: "Museo Sans",
+    fontFamily: "Museo Sans, sans-serif",
     fontStyle: "normal",
     fontWeight: 500,
     fontSize: "13px",
@@ -65,7 +65,7 @@ const StyledTableCell = withStyles(({ palette }) => ({
     border: "unset",
   },
   body: {
-    fontFamily: "Museo Sans",
+    fontFamily: "Museo Sans, sans-serif",
     fontStyle: "normal",
     fontWeight: 900,
     fontSize: "12px",
@@ -78,7 +78,7 @@ const StyledTableCell = withStyles(({ palette }) => ({
 
 const StyledTablePagination = withStyles(({ palette }) => ({
   caption: {
-    fontFamily: "Museo Sans",
+    fontFamily: "Museo Sans, sans-serif",
     fontStyle: "normal",
     fontWeight: 900,
     fontSize: "12px",
@@ -86,7 +86,7 @@ const StyledTablePagination = withStyles(({ palette }) => ({
     color: palette.secondary.main,
   },
   select: {
-    fontFamily: "Museo Sans",
+    fontFamily: "Museo Sans, sans-serif",
     fontStyle: "normal",
     fontWeight: 900,
     fontSize: "12px",
@@ -94,7 +94,7 @@ const StyledTablePagination = withStyles(({ palette }) => ({
     color: palette.secondary.main,
   },
   menuItem: {
-    fontFamily: "Museo Sans",
+    fontFamily: "Museo Sans, sans-serif",
     fontStyle: "normal",
     fontWeight: 900,
     fontSize: "12px",

@@ -18,7 +18,7 @@ const styles = (theme: Theme) =>
       color: theme.palette.primary.main,
 
       [`& h6`]: {
-        fontFamily: "Brandon Grotesque",
+        fontFamily: "Brandon Grotesque, fantasy",
         fontStyle: "normal",
         fontWeight: 900,
         fontSize: "15px",

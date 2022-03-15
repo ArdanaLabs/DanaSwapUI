@@ -18,7 +18,7 @@ const useStyles = makeStyles(({ palette }) => ({
     left: "calc(50vw - 30px)",
     cursor: "pointer",
 
-    fontFamily: "Brandon Grotesque",
+    fontFamily: "Brandon Grotesque, fantasy",
     fontStyle: "normal",
     fontWeight: 300,
     fontSize: "13px",

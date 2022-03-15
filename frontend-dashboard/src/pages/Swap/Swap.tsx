@@ -69,14 +69,6 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     background: `linear-gradient(126.33deg, ${palette.background.paper} 9.83%, #00000000 96.44%);`,
     borderRadius: "5px",
     boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-
-    fontFamily: "Museo Sans",
-    fontStyle: "normal",
-    fontWeight: 500,
-    fontSize: "15px",
-    lineHeight: "100%",
-    color: palette.secondary.main,
-
     padding: "20px",
     textAlign: "center",
 
@@ -98,37 +90,12 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     width: "5px",
     height: "100%",
     background: `linear-gradient(180deg, ${palette.secondary.main} 0%, ${palette.secondary.dark} 100%)`,
-    fontFamily: "auto",
   },
 
   slider: {
     display: "flex",
     alignItems: "center",
     margin: "10px 0px 10px 10px",
-  },
-
-  info: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    fontFamily: "Museo Sans",
-    fontStyle: "normal",
-    fontWeight: 500,
-    fontSize: "15px",
-    lineGeight: "100%",
-    color: palette.secondary.main,
-  },
-
-  optionTitle: {
-    fontFamily: "Museo Sans",
-    fontStyle: "normal",
-    fontWeight: 500,
-    fontSize: "16px",
-    lineHeight: "24px",
-    color: palette.type === "light" ? palette.text.primary : palette.text.hint,
-    display: "flex",
-    alignItems: "center",
-    cursor: "pointer",
   },
 
   submit: {

@@ -27,7 +27,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     opacity: 1,
     top: "112px",
     transition: "transform 0.4s ease, opacity 0.4s ease",
-    fontFamily: "'Brandon Grotesque'",
+    fontFamily: "Brandon Grotesque, fantasy",
     fontStyle: "normal",
     fontWeight: 100,
     fontSize: "28px",

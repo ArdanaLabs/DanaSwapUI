@@ -14,7 +14,7 @@ const useStyles = makeStyles(({ palette }) => ({
     position: "relative",
     [`& input`]: {
       border: "unset",
-      fontFamily: "Museo Sans",
+      fontFamily: "Museo Sans, sans-serif",
       fontStyle: "normal",
 
       [`&:focus-visible`]: {

@@ -26,7 +26,6 @@ const useStyles = makeStyles(({ palette }) => ({
     height: "100%",
     background: `linear-gradient(180deg, ${palette.secondary.main} 0%, ${palette.secondary.dark} 100%)`,
     borderRadius: "10px",
-    fontFamily: "auto",
   },
   info: {
     position: "absolute",
@@ -45,7 +44,6 @@ const useStyles = makeStyles(({ palette }) => ({
     },
     [`& p:last-child`]: {
       color: palette.primary.main,
-      fontFamily: "Museo Sans",
     },
   },
 }))

@@ -1,6 +1,6 @@
 import React from "react"
 import cx from "classnames"
-import { Box } from "@material-ui/core"
+import { Box, Typography } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 
 import * as O from "fp-ts/Option"
@@ -28,13 +28,9 @@ const useStyles = makeStyles(({ palette }) => ({
     lineHeight: "0",
   },
   switchLabel: {
-    fontSize: "13px",
-    fontWeight: 700,
-    fontFamily: "Museo Sans",
-    lineHeight: "15px",
     color: palette.common.white,
     textAlign: "center",
-    marginRight: "10px",
+    marginRight: 10,
     textTransform: "uppercase",
   },
 }))
@@ -57,9 +53,13 @@ const ThemeSwitch: React.FC = () => {
 
   return (
     <Box className={cx(classes.root)} onClick={toggleMode}>
-      <Box className={cx(classes.switchLabel)}>
+      <Typography
+        variant="h6"
+        component="span"
+        className={cx(classes.switchLabel)}
+      >
         {isLightTheme ? "DarkMode" : "LightMode"}
-      </Box>
+      </Typography>
       <Box className={cx(classes.switchIcon)}>
         <img src={ICO_Light} alt="Theme switch icon" />
       </Box>

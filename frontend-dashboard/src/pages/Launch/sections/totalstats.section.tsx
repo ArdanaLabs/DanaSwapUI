@@ -68,7 +68,7 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 
   title: {
-    "fontFamily": "Brandon Grotesque",
+    "fontFamily": "Brandon Grotesque, fantasy",
     "fontStyle": "normal",
     "fontWeight": 300,
     "fontSize": "48px",
@@ -96,7 +96,7 @@ const useStyles = makeStyles(({ palette }) => ({
 
   StatBox: {
     "color": "white",
-    "fontFamily": "Brandon Grotesque",
+    "fontFamily": "Brandon Grotesque, fantasy",
     "fontStyle": "normal",
     "fontWeight": 900,
     "fontSize": "22px",
@@ -104,7 +104,7 @@ const useStyles = makeStyles(({ palette }) => ({
     "whiteSpace": "pre-line",
 
     "& > span": {
-      fontFamily: "Museo Sans",
+      fontFamily: "Museo Sans, sans-serif",
       fontSize: "12px",
       lineHeight: "16px",
       fontWeight: 100,

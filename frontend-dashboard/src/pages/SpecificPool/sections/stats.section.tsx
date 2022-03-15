@@ -85,7 +85,6 @@ const useStyles = makeStyles(({ palette }) => ({
       height: "100%",
       background: `linear-gradient(180deg, ${palette.secondary.main} 0%, ${palette.secondary.dark} 100%)`,
       borderRadius: "10px",
-      fontFamily: "auto",
     },
 
     [`& svg`]: {
@@ -140,7 +139,7 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 
   currentRatio: {
-    fontFamily: "Museo Sans",
+    fontFamily: "Museo Sans, sans-serif",
     fontStyle: "normal",
     fontWeight: 500,
     fontSize: "13px",
@@ -291,7 +290,7 @@ const StatsSection: React.FC<Props> = ({ poolSet, poolStats }: Props) => {
           style: {
             colors: palette.secondary.main,
             fontSize: !mobile ? "13px" : "8px",
-            fontFamily: "Museo Sans",
+            fontFamily: "Museo Sans, sans-serif",
             fontWeight: 600,
           },
           // formatter: (n) => printDate(n),
@@ -311,7 +310,7 @@ const StatsSection: React.FC<Props> = ({ poolSet, poolStats }: Props) => {
           align: "left",
           style: {
             colors: palette.primary.main,
-            fontFamily: "Museo Sans",
+            fontFamily: "Museo Sans, sans-serif",
             fontWeight: 600,
             fontSize: !mobile ? "16px" : "10px",
           },

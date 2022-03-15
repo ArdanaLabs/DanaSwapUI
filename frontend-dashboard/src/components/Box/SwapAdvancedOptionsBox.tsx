@@ -107,7 +107,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     border: "none",
     outline: "none",
     textAlign: "center",
-    fontFamily: "Museo Sans",
+    fontFamily: "Museo Sans, sans-serif",
     fontWeight: 600,
     fontSize: "9px",
     color: palette.primary.main,

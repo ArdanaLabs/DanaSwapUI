@@ -37,7 +37,7 @@ const useStyles = makeStyles(({ palette }) => ({
   carousel: {
     "display": "flex",
     "flexDirection": "column",
-    "fontFamily": "Brandon Grotesque",
+    "fontFamily": "Brandon Grotesque, fantasy",
     "fontStyle": "normal",
     "lineHeight": "120.5%",
     "cursor": "pointer",

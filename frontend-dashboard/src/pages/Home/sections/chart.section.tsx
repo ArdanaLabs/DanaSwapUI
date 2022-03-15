@@ -140,7 +140,7 @@ const ChartSection: React.FC = () => {
         style: {
           colors: palette.secondary.main,
           fontSize: !mobile ? "13px" : "8px",
-          fontFamily: "Museo Sans",
+          fontFamily: "Museo Sans, sans-serif",
           fontWeight: 600,
         },
         // formatter: (n) => printDate(n),
@@ -160,7 +160,7 @@ const ChartSection: React.FC = () => {
         align: "left",
         style: {
           colors: palette.primary.main,
-          fontFamily: "Museo Sans",
+          fontFamily: "Museo Sans, sans-serif",
           fontWeight: 600,
           fontSize: !mobile ? "16px" : "10px",
         },

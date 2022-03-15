@@ -77,7 +77,7 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 
   secondFont: {
-    fontFamily: "Museo Sans",
+    fontFamily: "Museo Sans, sans-serif",
     fontStyle: "normal",
     lineHeight: "100%",
   },
@@ -109,7 +109,7 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 
   tokenName: {
-    "fontFamily": "Museo Sans",
+    "fontFamily": "Museo Sans, sans-serif",
     "fontStyle": "normal",
     "lineHeight": "100%",
     "color": palette.secondary.main,
@@ -129,7 +129,7 @@ const useStyles = makeStyles(({ palette }) => ({
   submit: {
     "background": "linear-gradient(90deg, #5F72FF 0%, #73D6F1 100%)",
     "borderRadius": "20px",
-    "fontFamily": "Museo Sans",
+    "fontFamily": "Museo Sans, sans-serif",
     "fontStyle": "normal",
     "fontWeight": "bold",
     "fontSize": "24px",

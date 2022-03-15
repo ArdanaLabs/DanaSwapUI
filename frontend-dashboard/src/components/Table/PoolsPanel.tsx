@@ -40,7 +40,7 @@ const StyledTableCell = withStyles(({ palette }) => ({
     borderBottom: "1px solid #E5E5E5",
   },
   head: {
-    fontFamily: "Museo Sans",
+    fontFamily: "Museo Sans, sans-serif",
     fontStyle: "normal",
     fontWeight: 500,
     fontSize: "14px",
@@ -50,7 +50,7 @@ const StyledTableCell = withStyles(({ palette }) => ({
     color: palette.secondary.main,
   },
   body: {
-    fontFamily: "Museo Sans",
+    fontFamily: "Museo Sans, sans-serif",
     fontStyle: "normal",
     fontWeight: "bold",
     fontSize: "14px",
@@ -65,7 +65,7 @@ const StyledTableCell = withStyles(({ palette }) => ({
     "textAlign": "center",
 
     "& span": {
-      "fontFamily": "Museo Sans",
+      "fontFamily": "Museo Sans, sans-serif",
       "fontStyle": "normal",
       "fontWeight": "bold",
       "fontSize": "16px",

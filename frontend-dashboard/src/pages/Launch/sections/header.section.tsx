@@ -35,7 +35,7 @@ const useStyles = makeStyles(({ palette }) => ({
     background: "transparent",
     color: "white",
     textAlign: "center",
-    fontFamily: "Museo Sans",
+    fontFamily: "Museo Sans, sans-serif",
     fontStyle: "normal",
     fontWeight: 700,
     fontSize: "11px",
