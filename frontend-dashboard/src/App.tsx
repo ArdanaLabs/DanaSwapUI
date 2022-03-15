@@ -49,8 +49,6 @@ const ThemeProvider: React.FC = ({ children }) => {
   const userTheme: Theme.Theme = useUserTheme()
   const theme = getTheme(userTheme)
 
-  console.log({ useUserTheme, theme })
-
   return <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>
 }
 

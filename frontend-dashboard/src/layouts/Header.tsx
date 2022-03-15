@@ -135,7 +135,7 @@ const Header: React.FC = () => {
     return pathname.indexOf(link) > -1
   }
 
-  const onConnectWallet = () => {
+  const onConnectWallet = (_event: any) => {
     console.log("connect wallet button clicked!")
   }
 

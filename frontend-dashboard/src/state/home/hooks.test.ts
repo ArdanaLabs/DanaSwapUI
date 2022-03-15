@@ -39,7 +39,7 @@ describe("Home hooks", () => {
     const result = await fetchPoolCombinedStats()()
 
     if (E.isLeft(result)) {
-      console.log(JSON.stringify(result.left, null, 2))
+      console.warn(JSON.stringify(result.left, null, 2))
     }
 
     expect(result).toBeRight()

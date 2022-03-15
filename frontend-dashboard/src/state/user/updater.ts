@@ -42,10 +42,7 @@ export default function Updater(): null {
     const lightMatch: MediaQueryList = mkMatcher(SupportedW3ColorScheme.light)
     const darkMatch: MediaQueryList = mkMatcher(SupportedW3ColorScheme.dark)
 
-    function matchHandler(evt?: MediaQueryListEvent) {
-      // TODO: remove me
-      console.log("matchHandler", evt)
-
+    function matchHandler(_evt?: MediaQueryListEvent) {
       let scheme: O.Option<SupportedW3ColorScheme> = O.none
       if (lightMatch.matches) {
         scheme = O.some(SupportedW3ColorScheme.light)

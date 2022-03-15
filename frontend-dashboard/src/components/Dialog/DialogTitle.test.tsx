@@ -8,14 +8,14 @@ Enzyme.configure({ adapter: new Adapter() })
 
 let wrapper: Enzyme.ShallowWrapper
 const handleDialogClose = () => {
-  console.log("hello")
+  console.log("goodbye")
 }
 
 describe("Components / Dialog / DialogTitle", () => {
   beforeEach(() => {
     wrapper = shallow(
       <DialogTitle id="customized-dialog-title" onClose={handleDialogClose}>
-        SELECT ASSET
+        Select asset
       </DialogTitle>
     )
   })
