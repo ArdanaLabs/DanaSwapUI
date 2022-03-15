@@ -176,11 +176,11 @@ const Swap: React.FC = () => {
   const [toToken, setToToken] = useState<Currency>(Currencies[1])
   const [selectAssetModalOpen, setSelectAssetModalOpen] = useState(0) //  0: close , 1: fromToken , 2: toToken
   const [filterOption, setFilterOption] = useState<FilterOptionType>(
-    FilterOptionType.INSERT
+    FilterOptionType.Insert
   )
   const [slippage, setSlippage] = useState<number>(0.5)
   const [gasPriceOption, setGasPriceOption] = useState<GasPriceOptionType>(
-    GasPriceOptionType.TWENTYEIGHT
+    GasPriceOptionType.Fast
   )
 
   const handleSwapTokens = () => {
