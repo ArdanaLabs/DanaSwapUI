@@ -50,8 +50,6 @@ const ThemeProvider: React.FC = ({ children }) => {
   const userTheme: Theme.Theme = useUserTheme()
   const theme = getTheme(userTheme)
 
-  console.log({ useUserTheme, theme })
-
   // if (location.pathname.replace('/', '') === '') {
   //   theme = darkTheme;
   // }

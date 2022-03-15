@@ -24,7 +24,7 @@ describe("Transaction", () => {
       Transaction.withTotalValueAdaptedFromAeson
     ).decode(fileMock)
     if (E.isLeft(result)) {
-      console.info(JSON.stringify(result.left, null, 2))
+      console.warn(JSON.stringify(result.left, null, 2))
     }
     expect(result).toBeRight()
   })
