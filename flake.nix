@@ -28,10 +28,11 @@
       # Nixpkgs instantiated for supported system types.
       nixpkgsFor = forAllSystems (system: import nixpkgs { inherit system; overlays = [ self.overlay ]; });
 
-      dream2nix = inputs.dream2nix.lib.init {
+      dream2nix = inputs.dream2nix.lib2.init {
         systems = supportedSystems;
         config = {
           overridesDirs = [ "${inputs.dream2nix}/overrides" ];
+          projectRoot = ./.;
         };
       };
     in
@@ -83,15 +84,15 @@
        };
 
       packages = forAllSystems (system: {
-        frontend-dashboard = (dream2nix.riseAndShine {
+        frontend-dashboard = (dream2nix.makeFlakeOutputs {
           source = ./frontend-dashboard;
-        }).defaultPackage.${system};
-        frontend-landing = (dream2nix.riseAndShine {
+        }).packages.${system}.ardana-application;
+        frontend-landing = (dream2nix.makeFlakeOutputs {
           source = ./frontend-landing;
-        }).defaultPackage.${system};
-        frontend-vault = (dream2nix.riseAndShine {
+        }).packages.${system}.ardana-landing;
+        frontend-vault = (dream2nix.makeFlakeOutputs {
           source = ./frontend-vault;
-        }).defaultPackage.${system};
+        }).packages.${system}.ardana-vault;
       });
 
       devShell = forAllSystems (system:
