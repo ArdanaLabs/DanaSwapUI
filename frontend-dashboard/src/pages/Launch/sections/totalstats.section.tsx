@@ -10,6 +10,7 @@ import * as Theme from "Data/User/Theme"
 import { useUserTheme } from "state/user/hooks"
 
 import IMG_bg from "assets/backgrounds/launch-bg.png"
+import { FontFamilies } from "data"
 
 const heroVideo =
   "https://background.sfo3.digitaloceanspaces.com/background/output.m3u8"
@@ -68,7 +69,7 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 
   title: {
-    "fontFamily": "Brandon Grotesque, fantasy",
+    "fontFamily": FontFamilies.Brandon,
     "fontStyle": "normal",
     "fontWeight": 300,
     "fontSize": "48px",
@@ -96,7 +97,7 @@ const useStyles = makeStyles(({ palette }) => ({
 
   StatBox: {
     "color": "white",
-    "fontFamily": "Brandon Grotesque, fantasy",
+    "fontFamily": FontFamilies.Brandon,
     "fontStyle": "normal",
     "fontWeight": 900,
     "fontSize": "22px",
@@ -104,7 +105,7 @@ const useStyles = makeStyles(({ palette }) => ({
     "whiteSpace": "pre-line",
 
     "& > span": {
-      fontFamily: "Museo Sans, sans-serif",
+      fontFamily: FontFamilies.Museo,
       fontSize: "12px",
       lineHeight: "16px",
       fontWeight: 100,

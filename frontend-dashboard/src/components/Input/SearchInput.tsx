@@ -8,13 +8,14 @@ import * as Theme from "Data/User/Theme"
 import { useUserTheme } from "state/user/hooks"
 
 import { ReactComponent as SearchIcon } from "assets/imgs/search.svg"
+import { FontFamilies } from "data"
 
 const useStyles = makeStyles(({ palette }) => ({
   input: {
     position: "relative",
     [`& input`]: {
       border: "unset",
-      fontFamily: "Museo Sans, sans-serif",
+      fontFamily: FontFamilies.Museo,
       fontStyle: "normal",
 
       [`&:focus-visible`]: {

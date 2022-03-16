@@ -8,6 +8,7 @@ import { USD } from "Data/Unit"
 import { Currency } from "pages/Swap/Swap"
 import * as Theme from "Data/User/Theme"
 import { useUserTheme } from "state/user/hooks"
+import { FontFamilies } from "data"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -27,7 +28,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
   amount: {
     color: palette.primary.main,
-    fontFamily: "Museo Sans, sans-serif",
+    fontFamily: FontFamilies.Museo,
     fontStyle: "normal",
     fontSize: "30px",
     outline: "none",

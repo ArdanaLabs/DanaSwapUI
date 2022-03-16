@@ -24,6 +24,7 @@ import { usePoolVolume, usePoolLiquidity } from "state/chart/hooks"
 
 import { ReactComponent as ArrowDown } from "assets/imgs/arrow-down.svg"
 import { SwitchWithGlider } from "components"
+import { FontFamilies } from "data"
 
 const useStyles = makeStyles(({ palette }) => ({
   root: {
@@ -139,7 +140,7 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 
   currentRatio: {
-    fontFamily: "Museo Sans, sans-serif",
+    fontFamily: FontFamilies.Museo,
     fontStyle: "normal",
     fontWeight: 500,
     fontSize: "13px",
@@ -290,7 +291,7 @@ const StatsSection: React.FC<Props> = ({ poolSet, poolStats }: Props) => {
           style: {
             colors: palette.secondary.main,
             fontSize: !mobile ? "13px" : "8px",
-            fontFamily: "Museo Sans, sans-serif",
+            fontFamily: FontFamilies.Museo,
             fontWeight: 600,
           },
           // formatter: (n) => printDate(n),
@@ -310,7 +311,7 @@ const StatsSection: React.FC<Props> = ({ poolSet, poolStats }: Props) => {
           align: "left",
           style: {
             colors: palette.primary.main,
-            fontFamily: "Museo Sans, sans-serif",
+            fontFamily: FontFamilies.Museo,
             fontWeight: 600,
             fontSize: !mobile ? "16px" : "10px",
           },

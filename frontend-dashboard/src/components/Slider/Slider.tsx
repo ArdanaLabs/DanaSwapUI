@@ -1,5 +1,6 @@
 import { Slider } from "@material-ui/core"
 import { withStyles } from "@material-ui/core/styles"
+import { FontFamilies } from "data"
 
 const StyledSlider = withStyles((theme) => ({
   root: {
@@ -30,7 +31,7 @@ const StyledSlider = withStyles((theme) => ({
   markLabel: {
     paddingTop: "5px",
     color: theme.palette.primary.main,
-    fontFamily: "Museo Sans, sans-serif",
+    fontFamily: FontFamilies.Museo,
     fontStyle: "normal",
     fontWeight: 300,
     fontSize: "16px",

@@ -8,6 +8,7 @@ import { useHistory } from "react-router-dom"
 import * as Theme from "Data/User/Theme"
 
 import { useUserTheme } from "state/user/hooks"
+import { FontFamilies } from "data"
 
 const useStyles = makeStyles(({ palette }) => ({
   header: {
@@ -35,7 +36,7 @@ const useStyles = makeStyles(({ palette }) => ({
     background: "transparent",
     color: "white",
     textAlign: "center",
-    fontFamily: "Museo Sans, sans-serif",
+    fontFamily: FontFamilies.Museo,
     fontStyle: "normal",
     fontWeight: 700,
     fontSize: "11px",

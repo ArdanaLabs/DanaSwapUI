@@ -21,6 +21,7 @@ import IMG_Ratio from "assets/imgs/ratio.png"
 import VerticalCarousel from "components/Carousel"
 import { useTotalStats } from "state/home/hooks"
 import { printCurrencyUSD } from "hooks"
+import { FontFamilies } from "data"
 
 const useStyles = makeStyles(({ palette }) => ({
   root: {
@@ -37,7 +38,7 @@ const useStyles = makeStyles(({ palette }) => ({
   carousel: {
     "display": "flex",
     "flexDirection": "column",
-    "fontFamily": "Brandon Grotesque, fantasy",
+    "fontFamily": FontFamilies.Brandon,
     "fontStyle": "normal",
     "lineHeight": "120.5%",
     "cursor": "pointer",

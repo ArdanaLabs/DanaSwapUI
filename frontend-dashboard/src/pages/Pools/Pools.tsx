@@ -30,6 +30,7 @@ import { PoolStats } from "Data/Stats/PoolStats"
 import * as PoolSetName from "Data/Pool/PoolSetName"
 
 import { ReactComponent as SearchIcon } from "assets/imgs/search.svg"
+import { FontFamilies } from "data"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -77,7 +78,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       padding: "15px 50px",
       width: 500,
       color: palette.primary.main,
-      fontFamily: "Museo Sans, sans-serif",
+      fontFamily: FontFamilies.Museo,
       fontWeight: 600,
       fontSize: "13px",
       lineHeight: "100%",

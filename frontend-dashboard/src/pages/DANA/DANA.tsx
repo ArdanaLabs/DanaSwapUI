@@ -6,7 +6,12 @@ import cx from "classnames"
 import * as Theme from "Data/User/Theme"
 
 import { useUserTheme } from "state/user/hooks"
-import { PoolRatePerDANAList, WeeklyFeeList, depositePools } from "data"
+import {
+  PoolRatePerDANAList,
+  WeeklyFeeList,
+  depositePools,
+  FontFamilies,
+} from "data"
 import { CheckGroup } from "components/Button"
 
 const useStyles = makeStyles(({ palette }) => ({
@@ -24,7 +29,7 @@ const useStyles = makeStyles(({ palette }) => ({
     padding: "30px",
     background: palette.info.main,
     color: palette.secondary.main,
-    fontFamily: "Museo Sans, sans-serif",
+    fontFamily: FontFamilies.Museo,
     fontStyle: "normal",
     fontWeight: 300,
     fontSize: "13px",
@@ -32,7 +37,7 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 
   displayText: {
-    "fontFamily": "Museo Sans, sans-serif",
+    "fontFamily": FontFamilies.Museo,
     "fontStyle": "normal",
     "fontWeight": 100,
     "fontSize": "14px",
@@ -51,7 +56,7 @@ const useStyles = makeStyles(({ palette }) => ({
     "padding": "10px 20px",
     "borderRadius": "5px",
     "color": palette.common.white,
-    "fontFamily": "Museo Sans, sans-serif",
+    "fontFamily": FontFamilies.Museo,
     "fontStyle": "normal",
     "fontWeight": 600,
     "fontSize": "13px",
@@ -69,7 +74,7 @@ const useStyles = makeStyles(({ palette }) => ({
       palette.type === "light" ? palette.secondary.dark : palette.info.main,
     borderRadius: "10px",
     padding: "20px",
-    fontFamily: "Museo Sans, sans-serif",
+    fontFamily: FontFamilies.Museo,
     fontStyle: "normal",
     fontWeight: 600,
     fontSize: "14px",
@@ -78,7 +83,7 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 
   title: {
-    fontFamily: "Brandon Grotesque, fantasy",
+    fontFamily: FontFamilies.Brandon,
     fontStyle: "normal",
     fontWeight: 900,
     fontSize: "34px",
@@ -87,7 +92,7 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 
   listHeader: {
-    fontFamily: "Museo Sans, sans-serif",
+    fontFamily: FontFamilies.Museo,
     fontStyle: "normal",
     fontWeight: 500,
     fontSize: "16px",
@@ -97,7 +102,7 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 
   listContent: {
-    fontFamily: "Museo Sans, sans-serif",
+    fontFamily: FontFamilies.Museo,
     fontStyle: "normal",
     fontWeight: 100,
     fontSize: "12px",

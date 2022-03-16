@@ -27,6 +27,7 @@ import { useUserTheme } from "state/user/hooks"
 import { ApexOptions } from "apexcharts"
 import { useAggVolume, useAggLiquidity } from "state/chart/hooks"
 import { extractDateAxis, printCurrencyUSD, printDate } from "hooks"
+import { FontFamilies } from "data"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -140,7 +141,7 @@ const ChartSection: React.FC = () => {
         style: {
           colors: palette.secondary.main,
           fontSize: !mobile ? "13px" : "8px",
-          fontFamily: "Museo Sans, sans-serif",
+          fontFamily: FontFamilies.Museo,
           fontWeight: 600,
         },
         // formatter: (n) => printDate(n),
@@ -160,7 +161,7 @@ const ChartSection: React.FC = () => {
         align: "left",
         style: {
           colors: palette.primary.main,
-          fontFamily: "Museo Sans, sans-serif",
+          fontFamily: FontFamilies.Museo,
           fontWeight: 600,
           fontSize: !mobile ? "16px" : "10px",
         },

@@ -3,6 +3,11 @@ import LOGO_Cardano from "assets/coins/cardano.png"
 
 import { Currency } from "pages/Swap/Swap"
 
+export const FontFamilies = {
+  Brandon: "Brandon Grotesque, fantasy",
+  Museo: "Museo Sans, sans-serif",
+}
+
 export const navList = [
   {
     label: "Home",

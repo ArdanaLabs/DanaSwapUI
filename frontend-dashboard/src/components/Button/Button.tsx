@@ -1,5 +1,6 @@
 import { withStyles } from "@material-ui/core/styles"
 import Button from "@material-ui/core/Button"
+import { FontFamilies } from "data"
 
 const StyledButton = withStyles({
   root: {
@@ -8,7 +9,7 @@ const StyledButton = withStyles({
     // backgroundColor: "#A5A5A5",
     color: "#FFFFFF",
     whiteSpace: "nowrap",
-    fontFamily: "Museo Sans, sans-serif",
+    fontFamily: FontFamilies.Museo,
     fontStyle: "normal",
     fontWeight: "bold",
     fontSize: "13px",
