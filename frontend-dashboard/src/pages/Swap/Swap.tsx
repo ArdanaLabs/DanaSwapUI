@@ -22,10 +22,7 @@ import {
   SwapButton,
   SwapAdvancedOptionsBox,
 } from "components"
-// import { options } from "data"
 import { Currencies } from "data"
-
-// import CircleInfoCyanIcon from "assets/imgs/circle-info-cyan.png"
 
 import CyanBG from "assets/backgrounds/cyan.svg"
 import PinkBG from "assets/backgrounds/pink.svg"
