@@ -7,42 +7,31 @@ import * as Theme from "Data/User/Theme"
 import { useUserTheme } from "state/user/hooks"
 import LogoLight from "assets/logo-light.png"
 
-import { ReactComponent as TwitterIcon } from "assets/imgs/twitter.svg"
-import { ReactComponent as DiscordIcon } from "assets/imgs/discord.svg"
-import { ReactComponent as LinkedinIcon } from "assets/imgs/linkedin.svg"
-import { ReactComponent as MediumIcon } from "assets/imgs/medium.svg"
-import { ReactComponent as YoutubeIcon } from "assets/imgs/youtube.svg"
-import { ReactComponent as TelegramIcon } from "assets/imgs/telegram.svg"
+import SocialMediasIcon from "assets/imgs/social-medias.svg"
 
 const Socials = [
   {
-    name: "Twitter",
-    icon: TwitterIcon,
+    name: "twitter",
     link: "https://twitter.com/ardanaproject",
   },
   {
-    name: "Discord",
-    icon: DiscordIcon,
+    name: "discord",
     link: "https://discord.gg/c9skrZvsqH",
   },
   {
-    name: "Telegram",
-    icon: TelegramIcon,
+    name: "telegram",
     link: "https://t.me/ardanaofficial",
   },
   {
-    name: "Medium",
-    icon: MediumIcon,
+    name: "medium",
     link: "https://medium.com/ardana-hub",
   },
   {
-    name: "Youtube",
-    icon: YoutubeIcon,
+    name: "youtube",
     link: "https://www.youtube.com/channel/UCuVtpKzlmsD6s0ZiC0hakkA",
   },
   {
-    name: "Linkedin",
-    icon: LinkedinIcon,
+    name: "linkedin",
     link: "https://www.linkedin.com/company/ardanalabs/",
   },
 ]
@@ -82,8 +71,14 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     [`& a`]: {
       lineHeight: 0,
 
-      [`&:hover > svg path`]: {
-        fill: palette.secondary.main,
+      [`& > .icon`]: {
+        width: 26,
+        height: 21,
+        fill: palette.common.white,
+
+        [`&:hover`]: {
+          fill: palette.secondary.main,
+        },
       },
     },
   },
@@ -103,12 +98,19 @@ const Footer: React.FC = () => {
       <Container>
         <Box className={classes.container}>
           <Link href="/" className={classes.logo}>
-            <img src={LogoLight} alt="logo" height={"50px"} />
+            <img src={LogoLight} alt="" height={"50px"} />
           </Link>
           <Box className={classes.socialLinks}>
             {Socials.map((social) => (
               <Link key={social.name} href={social.link} target="_blank">
-                <social.icon />
+                {/* <social.icon /> */}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlnsXlink="http://www.w3.org/1999/xlink"
+                  className="icon"
+                >
+                  <use xlinkHref={`${SocialMediasIcon}#${social.name}`} />
+                </svg>
               </Link>
             ))}
           </Box>
