@@ -195,7 +195,7 @@ const PoolsPanel: React.FC<PoolsPanelProps> = ({ overview = false }) => {
     // TODO: use SVG sprite, like `coins.svg#${poolName}`
     // const icon = require(`assets/coins/${poolName}.png`).default
     const poolSetNameStr: string = PoolSetName.iso.unwrap(poolName)
-    const icon = require(`assets/coins/BTC.png`).default
+    const icon = require(`assets/coins/BTC.svg`).default
     return (
       <TableRow
         hover={true}

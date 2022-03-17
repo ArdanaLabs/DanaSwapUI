@@ -61,7 +61,7 @@ const ThemeSwitch: React.FC = () => {
         {isLightTheme ? "DarkMode" : "LightMode"}
       </Typography>
       <Box className={cx(classes.switchIcon)}>
-        <img src={ICO_Light} alt="Theme switch icon" />
+        <img src={ICO_Light} alt="" />
       </Box>
     </Box>
   )

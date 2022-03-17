@@ -22,10 +22,7 @@ import {
   SwapButton,
   SwapAdvancedOptionsBox,
 } from "components"
-// import { options } from "data"
 import { Currencies } from "data"
-
-// import CircleInfoCyanIcon from "assets/imgs/circle-info-cyan.png"
 
 import CyanBG from "assets/backgrounds/cyan.svg"
 import PinkBG from "assets/backgrounds/pink.svg"
@@ -143,11 +140,11 @@ const Swap: React.FC = () => {
   const [toToken, setToToken] = useState<Currency>(Currencies[1])
   const [selectAssetModalOpen, setSelectAssetModalOpen] = useState(0) //  0: close , 1: fromToken , 2: toToken
   const [filterOption, setFilterOption] = useState<FilterOptionType>(
-    FilterOptionType.INSERT
+    FilterOptionType.Insert
   )
   const [slippage, setSlippage] = useState<number>(0.5)
   const [gasPriceOption, setGasPriceOption] = useState<GasPriceOptionType>(
-    GasPriceOptionType.TWENTYEIGHT
+    GasPriceOptionType.Fast
   )
 
   const handleSwapTokens = () => {

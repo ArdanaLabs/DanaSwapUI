@@ -7,8 +7,8 @@ import * as Theme from "Data/User/Theme"
 
 import { useUserTheme } from "state/user/hooks"
 
-import CircleInfoCyanIcon from "assets/imgs/circle-info-cyan.png"
-import CircleInfoDarkBlueIcon from "assets/imgs/circle-info-darkblue.png"
+import CircleInfoCyanIcon from "assets/imgs/circle-info-cyan.svg"
+import CircleInfoDarkBlueIcon from "assets/imgs/circle-info-darkblue.svg"
 
 const useStyles = makeStyles(({ palette }) => ({
   root: {

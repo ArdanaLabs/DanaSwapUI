@@ -76,7 +76,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
   panelFilterByType: {
     display: "flex",
-    [`& .active`]: {
+    [`& .isActive`]: {
       color: palette.secondary.main,
     },
   },
@@ -88,7 +88,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       borderRadius: "25px",
       padding: "6px 15px",
 
-      [`&.active`]: {
+      [`&.isActive`]: {
         background: `linear-gradient(90deg, ${palette.secondary.dark} 0%, ${palette.secondary.main} 100%)`,
         color: palette.common.white,
       },
@@ -96,6 +96,22 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       [breakpoints.down("sm")]: {
         padding: "4px 10px",
       },
+    },
+  },
+
+  chartXaxis: {
+    fontSize: "13px",
+
+    [breakpoints.down("xs")]: {
+      fontSize: "8px",
+    },
+  },
+
+  chartYaxis: {
+    fontSize: "16px",
+
+    [breakpoints.down("xs")]: {
+      fontSize: "10px",
     },
   },
 }))
@@ -140,9 +156,9 @@ const ChartSection: React.FC = () => {
         show: true,
         style: {
           colors: palette.secondary.main,
-          fontSize: !mobile ? "13px" : "8px",
           fontFamily: FontFamilies.Museo,
           fontWeight: 600,
+          cssClass: classes.chartXaxis,
         },
         // formatter: (n) => printDate(n),
       },
@@ -163,7 +179,7 @@ const ChartSection: React.FC = () => {
           colors: palette.primary.main,
           fontFamily: FontFamilies.Museo,
           fontWeight: 600,
-          fontSize: !mobile ? "16px" : "10px",
+          cssClass: classes.chartYaxis,
         },
         formatter: (n) => printCurrencyUSD(USD.iso.wrap(n)),
       },
@@ -408,7 +424,7 @@ const ChartSection: React.FC = () => {
                       handleVolumeChartFilterChange({ type: transactionType })
                     }
                     className={cx({
-                      active: volumeChartFilter.type === transactionType,
+                      isActive: volumeChartFilter.type === transactionType,
                     })}
                   >
                     {label}
@@ -428,7 +444,7 @@ const ChartSection: React.FC = () => {
                       handleVolumeChartFilterChange({ date: granularity })
                     }
                     className={cx({
-                      active: volumeChartFilter.date === granularity,
+                      isActive: volumeChartFilter.date === granularity,
                     })}
                   >
                     {label}
@@ -458,7 +474,7 @@ const ChartSection: React.FC = () => {
                       handleLiquidityChartFilterChange({ date: granularity })
                     }
                     className={cx({
-                      active: liquidityChartFilter.date === granularity,
+                      isActive: liquidityChartFilter.date === granularity,
                     })}
                   >
                     {label}

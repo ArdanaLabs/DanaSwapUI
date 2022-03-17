@@ -81,7 +81,7 @@ const LaunchHeader: React.FC<LaunchHeaderProps> = ({ nav, updateNav }) => {
     <Box className={cx(classes.header)}>
       <Container>
         <Box onClick={() => history.push("/")}>
-          <img src={ArdanaLogo} alt="Ardana Logo" />
+          <img src={ArdanaLogo} alt="Ardana" />
         </Box>
         <Box className={cx(classes.navGroup)}>
           <Box
