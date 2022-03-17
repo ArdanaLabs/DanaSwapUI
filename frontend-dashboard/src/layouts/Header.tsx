@@ -168,7 +168,7 @@ const Header: React.FC = () => {
         <Box className={classes.container}>
           <Box className={classes.nav}>
             <Box className={classes.logo} onClick={() => history.push("/")}>
-              <img src={isDarkTheme ? LogoLight : LogoDark} alt="logo" />
+              <img src={isDarkTheme ? LogoLight : LogoDark} alt="" />
             </Box>
 
             {!mobile ? (

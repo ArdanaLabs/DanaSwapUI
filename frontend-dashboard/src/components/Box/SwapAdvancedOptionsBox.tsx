@@ -24,7 +24,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     alignItems: "center",
     marginBottom: 20,
 
-    [`& > span`]: {
+    [`& > .title`]: {
       color: palette.primary.main,
       textTransform: "uppercase",
     },
@@ -123,18 +123,18 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 }))
 
 export enum FilterOptionType {
-  INSERT = "Insert",
-  FILTER = "Filter",
-  NAMES = "Names",
-  HERE = "Here",
-  ACCORDINGLY = "Accordingly",
+  Insert = "Insert",
+  Filter = "Filter",
+  Names = "Names",
+  Here = "Here",
+  Accordingly = "Accordingly",
 }
 
 export enum GasPriceOptionType {
-  TWENTYANDHALF = 20.5,
-  TWENTYFIVE = 25,
-  TWENTYEIGHT = 28,
-  THIRTYTWO = 32,
+  Slow = 20.5,
+  Standard = 25,
+  Fast = 28,
+  Instant = 32,
 }
 
 interface Props {
@@ -222,7 +222,7 @@ const SwapAdvancedOptionsBox: React.FC<Props> = ({
 
   const renderHeader = () => (
     <Box className={classes.header}>
-      <Typography variant="h4" component="span">
+      <Typography variant="h4" component="span" className="title">
         Advanced Options
       </Typography>
       <ChevUpIcon
@@ -253,11 +253,11 @@ const SwapAdvancedOptionsBox: React.FC<Props> = ({
         }
       >
         {[
-          FilterOptionType.INSERT,
-          FilterOptionType.FILTER,
-          FilterOptionType.NAMES,
-          FilterOptionType.HERE,
-          FilterOptionType.ACCORDINGLY,
+          FilterOptionType.Insert,
+          FilterOptionType.Filter,
+          FilterOptionType.Names,
+          FilterOptionType.Here,
+          FilterOptionType.Accordingly,
         ].map((optionText) => (
           <StyledFormControlLabel
             key={optionText}
@@ -356,10 +356,10 @@ const SwapAdvancedOptionsBox: React.FC<Props> = ({
         }
       >
         {[
-          [GasPriceOptionType.TWENTYANDHALF, "Slow"],
-          [GasPriceOptionType.TWENTYFIVE, "Standard"],
-          [GasPriceOptionType.TWENTYEIGHT, "Fast"],
-          [GasPriceOptionType.THIRTYTWO, "Instant"],
+          [GasPriceOptionType.Slow, "Slow"],
+          [GasPriceOptionType.Standard, "Standard"],
+          [GasPriceOptionType.Fast, "Fast"],
+          [GasPriceOptionType.Instant, "Instant"],
         ].map(([optionText, speed]) => (
           <StyledFormControlLabel
             key={optionText}
