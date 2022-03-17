@@ -4,8 +4,8 @@ import { makeStyles, useTheme } from "@material-ui/core/styles"
 import { useUserTheme } from "state/user/hooks"
 import * as Theme from "Data/User/Theme"
 
-import CircleInfoCyanIcon from "assets/imgs/circle-info-cyan.png"
-import CircleInfoDarkBlueIcon from "assets/imgs/circle-info-darkblue.png"
+import CircleInfoCyanIcon from "assets/imgs/circle-info-cyan.svg"
+import CircleInfoDarkBlueIcon from "assets/imgs/circle-info-darkblue.svg"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -60,7 +60,7 @@ const SwapDetailBox: React.FC<Props> = ({
         <Box ml={1}>
           <img
             src={isDarkTheme ? CircleInfoCyanIcon : CircleInfoDarkBlueIcon}
-            alt="info"
+            alt="more info"
           />
         </Box>
       </Box>

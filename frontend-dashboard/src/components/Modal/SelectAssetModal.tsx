@@ -85,8 +85,8 @@ interface Props {
 }
 
 enum AssetFilterType {
-  ALL = "All",
-  NATIVE = "Native",
+  All = "All",
+  Native = "Native",
   ERC20 = "ERC20",
   BEP20 = "BEP20",
 }
@@ -105,7 +105,7 @@ const SelectAssetModal: React.FunctionComponent<Props> = ({
   })
   const [filter, setFilter] = useState({
     text: "",
-    type: AssetFilterType.ALL,
+    type: AssetFilterType.All,
   })
 
   return (
@@ -122,8 +122,8 @@ const SelectAssetModal: React.FunctionComponent<Props> = ({
 
       <Box className={classes.filterByTypeWrapper} mt={3}>
         {[
-          AssetFilterType.ALL,
-          AssetFilterType.NATIVE,
+          AssetFilterType.All,
+          AssetFilterType.Native,
           AssetFilterType.ERC20,
           AssetFilterType.BEP20,
         ].map((filterType) =>
@@ -169,7 +169,7 @@ const SelectAssetModal: React.FunctionComponent<Props> = ({
           className={classes.filterByTextInput}
           value={filter.text}
           placeholder="Search..."
-          isIcon={true}
+          hasIcon={true}
           onChange={(e: ChangeEvent<HTMLInputElement>) => {
             setFilter({
               ...filter,

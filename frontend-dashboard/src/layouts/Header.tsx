@@ -162,7 +162,7 @@ const Header: React.FC = () => {
             width="100%"
           >
             <Box className={cx(classes.logo)} onClick={() => history.push("/")}>
-              <img src={isDarkTheme ? LogoLight : LogoDark} alt="logo" />
+              <img src={isDarkTheme ? LogoLight : LogoDark} alt="" />
             </Box>
             {!mobile && (
               <Box display="flex" ml="30px">

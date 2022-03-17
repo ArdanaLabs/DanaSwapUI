@@ -433,9 +433,9 @@ const StatsSection: React.FC<Props> = ({ poolSet, poolStats }: Props) => {
               const assetStr: string = Asset.iso.unwrap(token.asset)
               let icon
               try {
-                icon = require(`assets/coins/${assetStr}.png`).default
+                icon = require(`assets/coins/${assetStr}.svg`).default
               } catch (e) {
-                icon = require(`assets/coins/BTC.png`).default
+                icon = require(`assets/coins/BTC.svg`).default
               }
               return (
                 <Box
