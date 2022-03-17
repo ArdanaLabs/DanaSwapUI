@@ -24,6 +24,11 @@ const useStyles = makeStyles(({ palette }) => ({
     paddingTop: "180px",
     paddingBottom: "50px",
   },
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "70px 0",
+  },
 }))
 
 const Home: React.FC = () => {
@@ -38,19 +43,10 @@ const Home: React.FC = () => {
   return (
     <Fade in={true}>
       <Box className={classes.root}>
-        <Container>
+        <Container className={classes.container}>
           <OverViewSection />
-
-          <Box mt="50px" />
-
           <ChartSection />
-
-          <Box mt="70px" />
-
           <PoolsSection />
-
-          <Box mt="70px" />
-
           <StatsSection />
         </Container>
       </Box>

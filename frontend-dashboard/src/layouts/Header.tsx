@@ -103,6 +103,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
     [breakpoints.down("xs")]: {
       margin: "10px",
+      padding: "10px 20px",
     },
   },
 
@@ -200,7 +201,7 @@ const Header: React.FC = () => {
                   />
                 </IconButton>
                 <Drawer anchor={"left"} open={openMenu} onClose={toggleMenu}>
-                  <Box width={"50vw"}>
+                  <Box width={"100%"} maxWidth={"200px"}>
                     {navList.map((navItem, index) => (
                       <Box
                         key={index}
