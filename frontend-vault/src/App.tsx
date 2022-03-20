@@ -1,7 +1,5 @@
-import {
-  CssBaseline,
-  ThemeProvider as MuiThemeProvider,
-} from "@material-ui/core"
+import { CssBaseline } from "@mui/material"
+import { ThemeProvider as MuiThemeProvider } from "@mui/material/styles"
 import Layout from "layouts/Layout"
 import React, { Suspense } from "react"
 import { Provider as StateProvider } from "react-redux"
@@ -32,6 +30,8 @@ const StateUpdaters: React.FC = () => (
 const ThemeProvider: React.FC = ({ children }) => {
   const darkMode = useIsDarkMode()
   let theme = darkMode ? darkTheme : lightTheme
+
+  console.log("theme ---->", theme)
 
   return <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>
 }

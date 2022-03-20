@@ -1,19 +1,21 @@
 import React from "react"
-import { Box, useMediaQuery } from "@material-ui/core"
-import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
-import { useIsDarkMode } from "state/user/hooks"
+import { Box, useTheme, Theme, Typography } from "@mui/material"
+import { makeStyles } from "@mui/styles"
+
 import { VaultButton } from "components"
 import { useUiModal } from "state/ui/hooks"
 import { VaultInfo } from "state/vault/types"
 import { numberFormatter, percentageFormatter } from "hooks"
 
-const useStyles = makeStyles(({ palette, breakpoints }) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
-    border: `1px solid ${palette.primary.main}88`,
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: `${theme.palette.primary.main}88`,
     borderRadius: "30px",
     padding: "20px 20px",
-    color: palette.primary.main,
+    color: theme.palette.primary.main,
     marginBottom: "20px",
   },
   typographyPrimary: {
@@ -35,13 +37,18 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontSize: "16px",
   },
   value: {
-    "display": "flex",
-    "alignItems": "center",
-    "fontSize": "16px",
-    "& > img": {
+    display: "flex",
+    alignItems: "center",
+    fontSize: "16px",
+    [`& > img`]: {
       width: "20px",
       marginRight: "10px",
     },
+  },
+  vaultButton: {
+    textTransform: "uppercase",
+    color: theme.palette.common.white,
+    lineHeight: "100%",
   },
 }))
 
@@ -50,10 +57,8 @@ export interface TokenAssetCardProps {
 }
 
 const TokenAssetCard: React.FC<TokenAssetCardProps> = ({ row }) => {
-  const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
-  const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const theme = useTheme()
+  const classes = useStyles(theme)
   const { toggleModal } = useUiModal()
 
   const handleOpenVault = () => {
@@ -64,8 +69,8 @@ const TokenAssetCard: React.FC<TokenAssetCardProps> = ({ row }) => {
   }
 
   return (
-    <Box className={cx(classes.root)}>
-      <Box className={cx(classes.row)}>
+    <Box className={classes.root}>
+      <Box className={classes.row}>
         <Box className={cx(classes.property, classes.typographyPrimary)}>
           Asset
         </Box>
@@ -74,7 +79,7 @@ const TokenAssetCard: React.FC<TokenAssetCardProps> = ({ row }) => {
           {row.asset}
         </Box>
       </Box>
-      <Box className={cx(classes.row)}>
+      <Box className={classes.row}>
         <Box className={cx(classes.property, classes.typographyPrimary)}>
           Type
         </Box>
@@ -82,7 +87,7 @@ const TokenAssetCard: React.FC<TokenAssetCardProps> = ({ row }) => {
           {row.type}
         </Box>
       </Box>
-      <Box className={cx(classes.row)}>
+      <Box className={classes.row}>
         <Box className={cx(classes.property, classes.typographyPrimary)}>
           dUSD Available
         </Box>
@@ -90,7 +95,7 @@ const TokenAssetCard: React.FC<TokenAssetCardProps> = ({ row }) => {
           {numberFormatter(row.locked)}
         </Box>
       </Box>
-      <Box className={cx(classes.row)}>
+      <Box className={classes.row}>
         <Box className={cx(classes.property, classes.typographyPrimary)}>
           Stability Fee
         </Box>
@@ -98,16 +103,20 @@ const TokenAssetCard: React.FC<TokenAssetCardProps> = ({ row }) => {
           {percentageFormatter(row.stabilityFee)}
         </Box>
       </Box>
-      <Box className={cx(classes.row)}>
+      <Box className={classes.row}>
         <Box className={cx(classes.property, classes.typographyPrimary)}>
           Min Coll. Ratio
         </Box>
-        <Box className={cx(classes.value, classes.typographySecondary)}>
+        <Box className={(classes.value, classes.typographySecondary)}>
           {percentageFormatter(row.minCollRatio, 0)}
         </Box>
       </Box>
       <Box justifyContent="center" display="flex" mt="20px">
-        <VaultButton onClick={handleOpenVault}>Open Vault</VaultButton>
+        <VaultButton onClick={handleOpenVault}>
+          <Typography variant="h3" className={classes.vaultButton}>
+            Open Vault
+          </Typography>
+        </VaultButton>
       </Box>
     </Box>
   )

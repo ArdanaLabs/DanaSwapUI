@@ -1,9 +1,6 @@
 import React, { useMemo, useState } from "react"
-import { Box, Container, useMediaQuery } from "@material-ui/core"
-import { makeStyles, useTheme } from "@material-ui/core/styles"
 import _ from "lodash"
 import cx from "classnames"
-import { useIsDarkMode } from "state/user/hooks"
 import {
   TokenAssetGrid,
   TokenAssetGridFilter,
@@ -14,7 +11,7 @@ import {
   GridCellParams,
   GridColDef,
   GridValueGetterParams,
-} from "@material-ui/data-grid"
+} from "@mui/x-data-grid"
 import {
   FilterOption,
   FilterType,
@@ -26,7 +23,17 @@ import { numberFormatter, percentageFormatter } from "hooks/formatter"
 import { ReactComponent as ChevDownIcon } from "assets/image/svgs/chev-down.svg"
 import { VaultInfo } from "state/vault/types"
 
-const useStyles = makeStyles(({ palette, breakpoints }) => ({
+import { makeStyles } from "@mui/styles"
+import {
+  Box,
+  Container,
+  Theme,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material"
+
+const useStyles = makeStyles((theme: Theme) => ({
   root: {},
   filter: {},
   assetList: {
@@ -34,7 +41,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
   sortIcon: {
     [`& path`]: {
-      fill: palette.primary.main,
+      fill: theme.palette.primary.main,
     },
   },
   uppercase: {
@@ -43,13 +50,17 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   flip: {
     transform: "rotateX(180deg)",
   },
+  vaultButton: {
+    color: theme.palette.primary.main,
+    textTransform: "uppercase",
+    lineHeight: "100%",
+  },
 }))
 
 const AssetSection: React.FC = () => {
-  const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
-  const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const theme = useTheme()
+  const mobile = useMediaQuery(theme.breakpoints.down("sm"))
+  const classes = useStyles(theme)
   const [filterOption, setFilterOption] = useState<FilterOption>({
     filterType: FilterType.POPULAR,
     keyword: "",
@@ -155,7 +166,9 @@ const AssetSection: React.FC = () => {
         const type: string = params.getValue(params.id, "type") as string
         return (
           <VaultButton onClick={() => handleOpenVault(type)}>
-            Open Vault
+            <Typography variant="h3" className={classes.vaultButton}>
+              Open Vault
+            </Typography>
           </VaultButton>
         )
       },
@@ -186,9 +199,9 @@ const AssetSection: React.FC = () => {
   )
 
   return (
-    <Box className={cx(classes.root)}>
+    <Box className={classes.root}>
       <Container>
-        <Box className={cx(classes.filter)}>
+        <Box className={classes.filter}>
           <TokenAssetGridFilter
             filterOption={filterOption}
             avFilterTypes={[
@@ -200,8 +213,8 @@ const AssetSection: React.FC = () => {
             handleFilterChange={(newOption) => setFilterOption(newOption)}
           />
         </Box>
-        <Box className={cx(classes.assetList)}>
-          {!mobile && (
+        <Box className={classes.assetList}>
+          {!mobile ? (
             <TokenAssetGrid
               rows={filteredVaults}
               columns={columns}
@@ -217,11 +230,11 @@ const AssetSection: React.FC = () => {
                 ColumnSortedAscendingIcon: SortedAscendingIcon,
               }}
             />
-          )}
-          {mobile &&
+          ) : (
             filteredVaults.map((row) => (
               <TokenAssetCard key={row.id} row={row} />
-            ))}
+            ))
+          )}
         </Box>
       </Container>
     </Box>

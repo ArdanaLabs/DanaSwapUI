@@ -1,11 +1,18 @@
 import React from "react"
-import { Box, MenuItem, Select, useMediaQuery } from "@material-ui/core"
-import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
-import { useIsDarkMode } from "state/user/hooks"
 import { BootstrapInput, SearchInput } from "components"
+import { makeStyles } from "@mui/styles"
+import {
+  Box,
+  MenuItem,
+  Select,
+  useMediaQuery,
+  useTheme,
+  Theme,
+  SelectChangeEvent,
+} from "@mui/material"
 
-const useStyles = makeStyles(({ palette, breakpoints }) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
     display: "flex",
     justifyContent: "space-between",
@@ -25,33 +32,33 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     display: "flex",
   },
   filterItem: {
-    "border": "1px solid transparent",
-    "borderRadius": "20px",
-    "fontSize": "16px",
-    "lineHeight": "100%",
-    "display": "flex",
-    "alignItems": "center",
-    "background": "transparent",
-    "cursor": "pointer",
-    "color": palette.primary.main,
-    "padding": "5px 20px",
-    "marginRight": "20px",
+    border: "1px solid transparent",
+    borderRadius: "20px",
+    fontSize: "16px",
+    lineHeight: "100%",
+    display: "flex",
+    alignItems: "center",
+    background: "transparent",
+    cursor: "pointer",
+    color: theme.palette.primary.main,
+    padding: "5px 20px",
+    marginRight: "20px",
 
-    "&.active": {
-      background: palette.info.light,
-      color: palette.common.white,
+    [`&.active`]: {
+      background: theme.palette.info.light,
+      color: theme.palette.common.white,
     },
-    "&:hover": {
-      border: `1px solid ${palette.primary.main}`,
+    [`&:hover`]: {
+      border: `1px solid ${theme.palette.primary.main}`,
     },
   },
   searchBox: {
-    [breakpoints.down("xs")]: {
+    [theme.breakpoints.down("sm")]: {
       width: "100%",
     },
   },
   menuItem: {
-    color: palette.primary.main,
+    color: theme.palette.primary.main,
   },
 }))
 
@@ -79,10 +86,9 @@ const TokenAssetGridFilter: React.FC<TokenAssetGridFilterProps> = ({
   avFilterTypes,
   handleFilterChange,
 }) => {
-  const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
-  const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const theme = useTheme()
+  const mobile = useMediaQuery(theme.breakpoints.down("sm"))
+  const classes = useStyles(theme)
   const { filterType, keyword } = filterOption
 
   const hanldeFilterTypeChange = (type: FilterType) => {
@@ -100,9 +106,9 @@ const TokenAssetGridFilter: React.FC<TokenAssetGridFilterProps> = ({
   }
 
   return (
-    <Box className={cx(classes.root)} flexDirection={mobile ? "column" : "row"}>
-      {!mobile && (
-        <Box className={cx(classes.filterType)}>
+    <Box className={classes.root} flexDirection={mobile ? "column" : "row"}>
+      {!mobile ? (
+        <Box className={classes.filterType}>
           {avFilterTypes.map((avFilterType) => (
             <Box
               key={avFilterType}
@@ -115,15 +121,13 @@ const TokenAssetGridFilter: React.FC<TokenAssetGridFilterProps> = ({
             </Box>
           ))}
         </Box>
-      )}
-
-      {mobile && (
+      ) : (
         <Box mb="20px" width="100%">
           <Select
             labelId="Filter"
             id="Filter Select"
             value={filterOption.filterType}
-            onChange={(event: React.ChangeEvent<{ value: unknown }>) => {
+            onChange={(event: SelectChangeEvent<FilterType>) => {
               hanldeFilterTypeChange(event.target.value as FilterType)
             }}
             input={<BootstrapInput />}

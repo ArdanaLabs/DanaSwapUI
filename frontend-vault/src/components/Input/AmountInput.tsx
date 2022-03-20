@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from "react"
-import { Box, Typography, useMediaQuery } from "@material-ui/core"
-import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
-import { useIsDarkMode } from "state/user/hooks"
 
 import { ReactComponent as SwapIcon } from "assets/image/svgs/swap.svg"
+import { Box, Theme, Typography, useTheme } from "@mui/material"
+import { makeStyles } from "@mui/styles"
 
-const useStyles = makeStyles(({ palette, breakpoints }) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {},
   input: {
-    border: `2px solid ${palette.info.dark}`,
+    border: `2px solid ${theme.palette.info.dark}`,
     borderRadius: "10px",
-    background: `${palette.background.default}55`,
+    background: `${theme.palette.background.default}55`,
     padding: "10px 20px",
     position: "relative",
 
     [`& input`]: {
-      color: palette.primary.main,
+      color: theme.palette.primary.main,
       border: "none",
       outline: "none",
       background: "transparent",
@@ -26,7 +25,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       fontSize: 45,
       width: "100%",
 
-      [breakpoints.down("xs")]: {
+      [theme.breakpoints.down("sm")]: {
         fontSize: 30,
       },
 
@@ -44,7 +43,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       cursor: "pointer",
 
       [`& path`]: {
-        fill: palette.primary.main,
+        fill: theme.palette.primary.main,
       },
     },
   },
@@ -56,10 +55,8 @@ export interface AmountInputProps {
 }
 
 const AmountInput: React.FC<AmountInputProps> = ({ token, inputChange }) => {
-  const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
-  const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const theme = useTheme()
+  const classes = useStyles(theme)
 
   const [depositCurrency, setDepositCurrency] = useState<string>(token)
   const [tokenInputAmount, setTokenInputAmount] = useState<number>(0)
@@ -93,7 +90,7 @@ const AmountInput: React.FC<AmountInputProps> = ({ token, inputChange }) => {
   }, [inputChange, tokenInputAmount])
 
   return (
-    <Box className={cx(classes.root)}>
+    <Box className={classes.root}>
       <Box
         display="flex"
         justifyContent={"space-between"}

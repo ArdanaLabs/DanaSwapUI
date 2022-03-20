@@ -1,21 +1,18 @@
 import React from "react"
-import { Box, useMediaQuery, Container, Link } from "@material-ui/core"
-import { makeStyles, useTheme } from "@material-ui/core/styles"
-import cx from "classnames"
 import { useHistory } from "react-router-dom"
-
-import { useIsDarkMode } from "state/user/hooks"
 
 import DUSD_LOGO_BLUE from "assets/image/DUSD-LOGO-BLUE.png"
 import DUSD_LOGO_WHITE from "assets/image/DUSD-LOGO-WHITE.png"
 import BG_BLUE from "assets/image/backgrounds/BG-FOOTER-BLUE.png"
 import BG_WHITE from "assets/image/backgrounds/BG-FOOTER-WHITE.png"
 import { socials } from "data"
+import { makeStyles } from "@mui/styles"
+import { Box, Container, Link, Theme, useTheme } from "@mui/material"
 
-const useStyles = makeStyles(({ palette, breakpoints }) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
     background: `url(${
-      palette.type === "dark" ? BG_BLUE : BG_WHITE
+      theme.palette.mode === "dark" ? BG_BLUE : BG_WHITE
     }) center center no-repeat`,
     backgroundSize: "cover",
     marginTop: "50px",
@@ -23,14 +20,14 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   logo: {
-    "paddingLeft": "10px",
-    "display": "flex",
-    "alignItems": "center",
-    "cursor": "pointer",
-    "& img": {
+    paddingLeft: "10px",
+    display: "flex",
+    alignItems: "center",
+    cursor: "pointer",
+    [`& img`]: {
       width: "60px",
 
-      [breakpoints.down("xs")]: {
+      [theme.breakpoints.down("sm")]: {
         marginBottom: "30px",
       },
     },
@@ -43,50 +40,48 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     transition: "background .2s ease-in",
     padding: "20px 0px",
 
-    [breakpoints.down("xs")]: {
+    [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
     },
   },
 
   socials: {
-    "display": "flex",
-    "justifyContent": "space-between",
-    "alignItems": "center",
-    "width": "300px",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    width: "300px",
 
-    "& > .link": {
+    [`& > .link`]: {
       lineHeight: 0,
     },
 
-    "& > .link svg": {
+    [`& > .link svg`]: {
       width: "25px",
     },
-    "& > .link path": {
-      fill: palette.primary.main,
+    [`& > .link path`]: {
+      fill: theme.palette.primary.main,
     },
   },
 }))
 
 const Footer: React.FC = () => {
   const theme = useTheme()
-  const dark = useIsDarkMode()
-  const mobile = useMediaQuery(theme.breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const classes = useStyles(theme)
   const history = useHistory()
 
   return (
-    <Box className={cx(classes.root)}>
+    <Box className={classes.root}>
       <Container>
-        <Box className={cx(classes.container)}>
-          <Box className={cx(classes.logo)} onClick={() => history.push("/")}>
+        <Box className={classes.container}>
+          <Box className={classes.logo} onClick={() => history.push("/")}>
             <img
               src={
-                theme.palette.type === "dark" ? DUSD_LOGO_WHITE : DUSD_LOGO_BLUE
+                theme.palette.mode === "dark" ? DUSD_LOGO_WHITE : DUSD_LOGO_BLUE
               }
-              alt="DANA Logo"
+              alt=""
             />
           </Box>
-          <Box className={cx(classes.socials)}>
+          <Box className={classes.socials}>
             {socials.map((social, index) => (
               <Link
                 className="link"

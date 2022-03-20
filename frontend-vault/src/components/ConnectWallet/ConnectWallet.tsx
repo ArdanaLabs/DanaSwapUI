@@ -1,20 +1,19 @@
 import React from "react"
-import cx from "classnames"
-import { Box } from "@material-ui/core"
-import { makeStyles } from "@material-ui/core/styles"
 
 import { ReactComponent as ArrowRightIcon } from "assets/image/svgs/arrow-right.svg"
 import { useWallet } from "state/wallet/hooks"
+import { Box, Theme, Typography } from "@mui/material"
+import { makeStyles } from "@mui/styles"
 
-const useStyles = makeStyles(({ palette }) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
-    "margin": "0 10px",
-    "cursor": "pointer",
-    "display": "flex",
-    "alignItems": "center",
-    "opacity": 1,
+    margin: "0 10px",
+    cursor: "pointer",
+    display: "flex",
+    alignItems: "center",
+    opacity: 1,
 
-    "&:hover": {
+    [`&:hover`]: {
       opacity: 0.75,
     },
   },
@@ -22,15 +21,16 @@ const useStyles = makeStyles(({ palette }) => ({
     fontSize: "14px",
     fontWeight: 700,
     fontFamily: "Brandon Grotesque",
-    color: palette.primary.main,
+    color: theme.palette.primary.main,
     textAlign: "center",
     lineHeight: "150%",
+    textTransform: "uppercase",
   },
   icon: {
-    "marginLeft": "10px",
+    marginLeft: "10px",
 
-    "& path": {
-      fill: palette.primary.main,
+    [`& path`]: {
+      fill: theme.palette.primary.main,
     },
   },
 }))
@@ -44,9 +44,11 @@ const ConnectWallet: React.FC = () => {
   }
 
   return (
-    <Box className={cx(classes.root)} onClick={handleConnectWallet}>
-      <Box className={cx(classes.label)}>CONNECT A WALLET</Box>
-      <ArrowRightIcon className={cx(classes.icon)} />
+    <Box className={classes.root} onClick={handleConnectWallet}>
+      <Typography variant="h5" className={classes.label}>
+        Connect a wallet
+      </Typography>
+      <ArrowRightIcon className={classes.icon} />
     </Box>
   )
 }

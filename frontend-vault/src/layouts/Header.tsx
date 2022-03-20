@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from "react"
-import {
-  Box,
-  useMediaQuery,
-  Container,
-  Typography,
-  Drawer,
-} from "@material-ui/core"
-import { makeStyles, useTheme } from "@material-ui/core/styles"
-import cx from "classnames"
+
 import { useHistory } from "react-router-dom"
 import Hamburger from "hamburger-react"
 
-import { useIsDarkMode } from "state/user/hooks"
 import { ThemeSwitch, ConnectWallet, AddressCard } from "components"
 import { useWallet } from "state/wallet/hooks"
 
 import DUSD_LOGO_BLUE from "assets/image/DUSD-LOGO-BLUE.png"
 import DUSD_LOGO_WHITE from "assets/image/DUSD-LOGO-WHITE.png"
+import {
+  Box,
+  Container,
+  Drawer,
+  Theme,
+  Typography,
+  useMediaQuery,
+} from "@mui/material"
+import { useTheme } from "@mui/system"
+import { makeStyles } from "@mui/styles"
 
 const MenuList = [
   {
@@ -29,8 +30,8 @@ const MenuList = [
   },
 ]
 
-const useStyles = makeStyles(({ palette, breakpoints }) => ({
-  root: {
+const useStyles = makeStyles((theme: Theme) => ({
+  self: {
     position: "fixed",
     top: 0,
     zIndex: 100,
@@ -48,14 +49,14 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   logo: {
-    "paddingLeft": "10px",
-    "display": "flex",
-    "alignItems": "center",
-    "cursor": "pointer",
-    "& img": {
+    paddingLeft: "10px",
+    display: "flex",
+    alignItems: "center",
+    cursor: "pointer",
+    [`& img`]: {
       width: "60px",
 
-      [breakpoints.down("xs")]: {
+      [theme.breakpoints.down("sm")]: {
         width: "40px",
       },
     },
@@ -67,42 +68,41 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     justifyContent: "space-between",
     width: "265px",
 
-    [breakpoints.down("xs")]: {
+    [theme.breakpoints.down("sm")]: {
       width: "auto",
     },
   },
 
   menubar: {
-    "& .menu > div": {
+    [`& .menu > div`]: {
       cursor: "pointer",
       margin: "5px 10px",
       textTransform: "uppercase",
-      color: palette.primary.main,
+      color: theme.palette.primary.main,
     },
   },
 
   drawerContainer: {
-    "& .MuiDrawer-paper": {
-      background: palette.background.default,
+    [`& .MuiDrawer-paper`]: {
+      background: theme.palette.background.default,
     },
   },
 
   drawer: {
-    "textAlign": "center",
-    "marginTop": "50px",
+    textAlign: "center",
+    marginTop: "50px",
 
-    "& h3": {
+    [`& h3`]: {
       padding: "10px 20px",
-      color: palette.primary.main,
+      color: theme.palette.primary.main,
     },
   },
 }))
 
 const Header: React.FC = () => {
   const theme = useTheme()
-  const mobile = useMediaQuery(theme.breakpoints.down("xs"))
-  const dark = useIsDarkMode()
-  const classes = useStyles({ dark, mobile })
+  const mobile = useMediaQuery(theme.breakpoints.down("sm"))
+  const classes = useStyles(theme)
   const history = useHistory()
   const { address } = useWallet()
   const [bgColor, setBGColor] = useState("transparent")
@@ -122,18 +122,18 @@ const Header: React.FC = () => {
   }, [theme])
 
   return (
-    <Box className={cx(classes.root)} style={{ background: bgColor }}>
+    <Box className={classes.self} style={{ background: bgColor }}>
       <Container>
-        <Box className={cx(classes.container)}>
+        <Box className={classes.container}>
           <Box display={"flex"} alignItems={"center"}>
             <Box
-              className={cx(classes.logo)}
+              className={classes.logo}
               onClick={() => history.push("/")}
               mr={!mobile ? "30px" : "0px"}
             >
               <img
                 src={
-                  theme.palette.type === "dark"
+                  theme.palette.mode === "dark"
                     ? DUSD_LOGO_WHITE
                     : DUSD_LOGO_BLUE
                 }
@@ -144,14 +144,14 @@ const Header: React.FC = () => {
           </Box>
 
           {!address && (
-            <Box className={cx(classes.toolbar)}>
+            <Box className={classes.toolbar}>
               {!mobile && <ThemeSwitch />}
               <ConnectWallet />
             </Box>
           )}
           {address && (
             <Box
-              className={cx(classes.menubar)}
+              className={classes.menubar}
               display={"flex"}
               alignItems={"center"}
             >
@@ -186,12 +186,12 @@ const Header: React.FC = () => {
         </Box>
 
         <Drawer
-          className={cx(classes.drawerContainer)}
+          className={classes.drawerContainer}
           anchor={"left"}
           open={openMenu}
           onClose={() => setOpenMenu(false)}
         >
-          <Box className={cx(classes.drawer)}>
+          <Box className={classes.drawer}>
             {MenuList.map((item) => (
               <Box key={item.text} onClick={() => history.push(item.link)}>
                 <Typography variant="h3" component="h3" key={item.text}>

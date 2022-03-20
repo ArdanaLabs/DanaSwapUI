@@ -1,39 +1,32 @@
-import {
-  Box,
-  makeStyles,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from "@material-ui/core"
 import React from "react"
-import cx from "classnames"
-import { useIsDarkMode } from "state/user/hooks"
+import { Box, Theme, Typography, useTheme } from "@mui/material"
+import { makeStyles } from "@mui/styles"
 
-const useStyles = makeStyles(({ palette, breakpoints }) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
-    "background":
-      palette.type === "dark"
-        ? palette.background.paper
+    background:
+      theme.palette.mode === "dark"
+        ? theme.palette.background.paper
         : "linear-gradient(359deg, #B9D4FF -129.98%, #FFFFFF 99.14%)",
-    "borderRadius": "20px",
-    "padding": "50px",
+    borderRadius: "20px",
+    padding: "50px",
 
-    "& h1, & h6": {
-      color: palette.primary.main,
+    [`& h1, & h6`]: {
+      color: theme.palette.primary.main,
     },
-    "& h5": {
-      color: palette.common.white,
+    [`& h5`]: {
+      color: theme.palette.common.white,
       lineHeight: "100% !important",
     },
 
-    [breakpoints.down("xs")]: {
+    [theme.breakpoints.down("sm")]: {
       textAlign: "center",
       padding: "100px 10px",
     },
   },
 
   openVault: {
-    background: palette.info.light,
+    background: theme.palette.info.light,
     textTransform: "uppercase",
     padding: "10px 20px",
     borderRadius: "100px",
@@ -42,10 +35,8 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 }))
 
 const NoVaultStatCard = () => {
-  const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
-  const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const theme = useTheme()
+  const classes = useStyles(theme)
 
   const handleOpenVault = () => {
     console.log("handle")
@@ -53,7 +44,7 @@ const NoVaultStatCard = () => {
 
   return (
     <Box
-      className={cx(classes.root)}
+      className={classes.root}
       display={"flex"}
       flexDirection={"column"}
       justifyContent={"center"}
@@ -72,7 +63,7 @@ const NoVaultStatCard = () => {
 
       <Box mb="30px" />
 
-      <Box className={cx(classes.openVault)} onClick={handleOpenVault}>
+      <Box className={classes.openVault} onClick={handleOpenVault}>
         <Typography variant="h5" component="h5">
           Open Vault
         </Typography>

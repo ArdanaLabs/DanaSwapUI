@@ -1,5 +1,3 @@
-import { Box, Container, useMediaQuery } from "@material-ui/core"
-import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
 import _ from "lodash"
 import {
@@ -13,26 +11,27 @@ import {
   FilterType,
 } from "components/DataGrid/TokenAssetGridFilter"
 import React, { useMemo, useState } from "react"
-import { useIsDarkMode } from "state/user/hooks"
 import { useWallet } from "state/wallet/hooks"
 
 import {
   GridCellParams,
   GridColDef,
   GridValueGetterParams,
-} from "@material-ui/data-grid"
+} from "@mui/x-data-grid"
 import { currencyFormatter, percentageFormatter } from "hooks"
 import { useUiModal } from "state/ui/hooks"
 import { MyVaultInfo } from "state/wallet/types"
 import { ReactComponent as ChevDownIcon } from "assets/image/svgs/chev-down.svg"
+import { Box, Container, useMediaQuery, useTheme, Theme } from "@mui/material"
+import { makeStyles } from "@mui/styles"
 
-const useStyles = makeStyles(({ palette, breakpoints }) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
     margin: "50px 0px",
   },
   sortIcon: {
     [`& path`]: {
-      fill: palette.primary.main,
+      fill: theme.palette.primary.main,
     },
   },
   uppercase: {
@@ -44,10 +43,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 }))
 
 const VaultListSection: React.FC = () => {
-  const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
-  const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const theme = useTheme()
+  const mobile = useMediaQuery(theme.breakpoints.down("sm"))
+  const classes = useStyles(theme)
 
   const { myVaults } = useWallet()
   const { toggleModal } = useUiModal()
@@ -181,7 +179,7 @@ const VaultListSection: React.FC = () => {
   )
 
   return (
-    <Box className={cx(classes.root)}>
+    <Box className={classes.root}>
       <Container>
         <Box>
           <TokenAssetGridFilter
@@ -195,7 +193,7 @@ const VaultListSection: React.FC = () => {
           />
         </Box>
         <Box>
-          {!mobile && (
+          {!mobile ? (
             <TokenAssetGrid
               rows={filteredVaults}
               columns={columns}
@@ -211,11 +209,11 @@ const VaultListSection: React.FC = () => {
                 ColumnSortedAscendingIcon: SortedAscendingIcon,
               }}
             />
-          )}
-          {mobile &&
+          ) : (
             filteredVaults.map((row: MyVaultInfo) => (
               <VaultCard key={row.id} row={row} />
-            ))}
+            ))
+          )}
         </Box>
       </Container>
     </Box>
