@@ -14,7 +14,7 @@ import {
 import * as Theme from "Data/User/Theme"
 import { useUserTheme } from "state/user/hooks"
 import { GradientBox, SearchInput } from "components"
-import { Currencies } from "data"
+import { Currencies, FontFamilies } from "data"
 import { Currency } from "pages/Swap/Swap"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
@@ -43,7 +43,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   filterByTextInput: {
     background: `${palette.secondary.main}32`,
     borderRadius: "50px",
-    fontFamily: "Museo Sans",
+    fontFamily: FontFamilies.Museo,
     fontSize: "16px",
     fontWeight: 600,
     lineHeight: "100%",

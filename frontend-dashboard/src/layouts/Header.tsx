@@ -18,7 +18,7 @@ import { useHistory, useLocation } from "react-router-dom"
 import ThemeSwitch from "components/ThemeSwitch"
 import { GradientBox } from "components"
 
-import { navList } from "data"
+import { FontFamilies, navList } from "data"
 import LogoLight from "assets/logo-light.png"
 import LogoDark from "assets/logo-dark.png"
 
@@ -66,7 +66,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   menuItem: {
-    fontFamily: "Museo Sans",
+    fontFamily: FontFamilies.Museo,
     fontWeight: 900,
     fontStyle: "normal",
     lineHeight: "100%",

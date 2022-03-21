@@ -11,6 +11,7 @@ import { Slider } from "components"
 import { Radio } from "components/Button"
 
 import LOGO_Ardana from "assets/coins/ardana.png"
+import { FontFamilies } from "data"
 
 const options = [
   {
@@ -77,7 +78,7 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 
   secondFont: {
-    fontFamily: "Museo Sans",
+    fontFamily: FontFamilies.Museo,
     fontStyle: "normal",
     lineHeight: "100%",
   },
@@ -109,7 +110,7 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 
   tokenName: {
-    "fontFamily": "Museo Sans",
+    "fontFamily": FontFamilies.Museo,
     "fontStyle": "normal",
     "lineHeight": "100%",
     "color": palette.secondary.main,
@@ -129,7 +130,7 @@ const useStyles = makeStyles(({ palette }) => ({
   submit: {
     "background": "linear-gradient(90deg, #5F72FF 0%, #73D6F1 100%)",
     "borderRadius": "20px",
-    "fontFamily": "Museo Sans",
+    "fontFamily": FontFamilies.Museo,
     "fontStyle": "normal",
     "fontWeight": "bold",
     "fontSize": "24px",

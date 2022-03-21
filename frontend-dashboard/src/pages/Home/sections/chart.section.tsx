@@ -27,6 +27,7 @@ import { useUserTheme } from "state/user/hooks"
 import { ApexOptions } from "apexcharts"
 import { useAggVolume, useAggLiquidity } from "state/chart/hooks"
 import { extractDateAxis, printCurrencyUSD, printDate } from "hooks"
+import { FontFamilies } from "data"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -155,7 +156,7 @@ const ChartSection: React.FC = () => {
         show: true,
         style: {
           colors: palette.secondary.main,
-          fontFamily: "Museo Sans",
+          fontFamily: FontFamilies.Museo,
           fontWeight: 600,
           cssClass: classes.chartXaxis,
         },
@@ -176,7 +177,7 @@ const ChartSection: React.FC = () => {
         align: "left",
         style: {
           colors: palette.primary.main,
-          fontFamily: "Museo Sans",
+          fontFamily: FontFamilies.Museo,
           fontWeight: 600,
           cssClass: classes.chartYaxis,
         },

@@ -7,6 +7,7 @@ import {
 import MuiDialogTitle from "@material-ui/core/DialogTitle"
 import { IconButton } from "@material-ui/core"
 import CloseIcon from "@material-ui/icons/Close"
+import { FontFamilies } from "data"
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -18,7 +19,7 @@ const styles = (theme: Theme) =>
       color: theme.palette.primary.main,
 
       [`& h6`]: {
-        fontFamily: "Brandon Grotesque",
+        fontFamily: FontFamilies.Brandon,
         fontStyle: "normal",
         fontWeight: 900,
         fontSize: "15px",

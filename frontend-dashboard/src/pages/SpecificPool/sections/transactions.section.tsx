@@ -8,11 +8,12 @@ import * as Theme from "Data/User/Theme"
 
 import { useUserTheme } from "state/user/hooks"
 import { TransactionTable } from "components"
+import { FontFamilies } from "data"
 
 const useStyles = makeStyles(({ palette }) => ({
   root: {},
   label: {
-    fontFamily: "Brandon Grotesque",
+    fontFamily: FontFamilies.Brandon,
     fontStyle: "normal",
     fontWeight: 900,
     fontSize: "18px",

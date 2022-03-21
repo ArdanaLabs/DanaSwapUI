@@ -14,6 +14,7 @@ import { useUserTheme } from "state/user/hooks"
 import * as Theme from "Data/User/Theme"
 
 import { ReactComponent as ChevUpIcon } from "assets/imgs/chev-up.svg"
+import { FontFamilies } from "data"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -107,7 +108,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     border: "none",
     outline: "none",
     textAlign: "center",
-    fontFamily: "Museo Sans",
+    fontFamily: FontFamilies.Museo,
     fontWeight: 600,
     fontSize: "9px",
     color: palette.primary.main,

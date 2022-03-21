@@ -24,6 +24,7 @@ import { usePoolVolume, usePoolLiquidity } from "state/chart/hooks"
 
 import { ReactComponent as ArrowDown } from "assets/imgs/arrow-down.svg"
 import { SwitchWithGlider } from "components"
+import { FontFamilies } from "data"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -85,7 +86,6 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       height: "100%",
       background: `linear-gradient(180deg, ${palette.secondary.main} 0%, ${palette.secondary.dark} 100%)`,
       borderRadius: "10px",
-      fontFamily: "auto",
     },
 
     [`& svg`]: {
@@ -292,7 +292,7 @@ const StatsSection: React.FC<Props> = ({ poolSet, poolStats }: Props) => {
           show: true,
           style: {
             colors: palette.secondary.main,
-            fontFamily: "Museo Sans",
+            fontFamily: FontFamilies.Museo,
             fontWeight: 600,
             cssClass: classes.chartXaxis,
           },
@@ -313,7 +313,7 @@ const StatsSection: React.FC<Props> = ({ poolSet, poolStats }: Props) => {
           align: "left",
           style: {
             colors: palette.primary.main,
-            fontFamily: "Museo Sans",
+            fontFamily: FontFamilies.Museo,
             fontWeight: 600,
             cssClass: classes.chartYaxis,
           },

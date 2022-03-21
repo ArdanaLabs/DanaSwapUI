@@ -7,6 +7,7 @@ import ScrollAnimation from "react-animate-on-scroll"
 import * as Theme from "Data/User/Theme"
 
 import { useUserTheme } from "state/user/hooks"
+import { FontFamilies } from "data"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
@@ -29,7 +30,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     whiteSpace: "pre-line",
     fontSize: "11px",
     fontWeight: 100,
-    fontFamily: "Museo Sans",
+    fontFamily: FontFamilies.Museo,
     fontStyle: "normal",
     lineHeight: "16px",
 
@@ -44,7 +45,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontSize: "34px",
     lineHeight: "110%",
     fontWeight: 900,
-    fontFamily: "Brandon Grotesque",
+    fontFamily: FontFamilies.Brandon,
     fontStyle: "normal",
 
     [breakpoints.down("sm")]: {

@@ -33,13 +33,14 @@ import { printAssetQuantity, printDate } from "hooks"
 import { useUserTheme } from "state/user/hooks"
 import { Button } from "components/Button"
 import { fetchPoolTransactions } from "state/chart/hooks"
+import { FontFamilies } from "data"
 
 const StyledTableCellHead = withStyles(({ palette }) => ({
   root: {
     border: "unset",
   },
   head: {
-    fontFamily: "Museo Sans",
+    fontFamily: FontFamilies.Museo,
     fontStyle: "normal",
     fontWeight: 500,
     fontSize: "13px",
@@ -49,7 +50,7 @@ const StyledTableCellHead = withStyles(({ palette }) => ({
     color: palette.text.hint,
   },
   body: {
-    fontFamily: "Museo Sans",
+    fontFamily: FontFamilies.Museo,
     fontStyle: "normal",
     fontWeight: 500,
     fontSize: "13px",
@@ -65,7 +66,7 @@ const StyledTableCell = withStyles(({ palette }) => ({
     border: "unset",
   },
   body: {
-    fontFamily: "Museo Sans",
+    fontFamily: FontFamilies.Museo,
     fontStyle: "normal",
     fontWeight: 900,
     fontSize: "12px",
@@ -78,7 +79,7 @@ const StyledTableCell = withStyles(({ palette }) => ({
 
 const StyledTablePagination = withStyles(({ palette }) => ({
   caption: {
-    fontFamily: "Museo Sans",
+    fontFamily: FontFamilies.Museo,
     fontStyle: "normal",
     fontWeight: 900,
     fontSize: "12px",
@@ -86,7 +87,7 @@ const StyledTablePagination = withStyles(({ palette }) => ({
     color: palette.secondary.main,
   },
   select: {
-    fontFamily: "Museo Sans",
+    fontFamily: FontFamilies.Museo,
     fontStyle: "normal",
     fontWeight: 900,
     fontSize: "12px",
@@ -94,7 +95,7 @@ const StyledTablePagination = withStyles(({ palette }) => ({
     color: palette.secondary.main,
   },
   menuItem: {
-    fontFamily: "Museo Sans",
+    fontFamily: FontFamilies.Museo,
     fontStyle: "normal",
     fontWeight: 900,
     fontSize: "12px",

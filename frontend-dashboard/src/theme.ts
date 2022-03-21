@@ -7,6 +7,7 @@ import createBreakpoints from "@material-ui/core/styles/createBreakpoints"
 import { merge } from "lodash"
 
 import { Theme } from "Data/User/Theme"
+import { FontFamilies } from "data"
 
 // custom colors
 
@@ -48,19 +49,19 @@ const breakpoints = createBreakpoints({})
 
 const typography = {
   h1: {
-    fontFamily: "Brandon Grotesque",
+    fontFamily: FontFamilies.Brandon,
     fontStyle: "normal",
     fontWeight: 700,
     fontSize: 30,
   },
   h3: {
-    fontFamily: "Brandon Grotesque",
+    fontFamily: FontFamilies.Brandon,
     fontStyle: "normal",
     fontWeight: 700,
     fontSize: 20,
   },
   h5: {
-    fontFamily: "Brandon Grotesque",
+    fontFamily: FontFamilies.Brandon,
     fontStyle: "normal",
     fontWeight: "normal",
     fontSize: 16,
@@ -70,13 +71,13 @@ const typography = {
     },
   },
   h2: {
-    fontFamily: "Museo Sans",
+    fontFamily: FontFamilies.Museo,
     fontStyle: "normal",
     fontWeight: 700,
     fontSize: 20,
   },
   h4: {
-    fontFamily: "Museo Sans",
+    fontFamily: FontFamilies.Museo,
     fontStyle: "normal",
     fontWeight: 700,
     fontSize: 18,
@@ -86,7 +87,7 @@ const typography = {
     },
   },
   h6: {
-    fontFamily: "Museo Sans",
+    fontFamily: FontFamilies.Museo,
     fontStyle: "normal",
     fontWeight: 700,
     fontSize: 13,
@@ -97,14 +98,14 @@ const typography = {
   },
   subtitle1: {},
   subtitle2: {
-    fontFamily: "Museo Sans",
+    fontFamily: FontFamilies.Museo,
     fontStyle: "normal",
     fontWeight: 700,
     fontSize: 18,
   },
   body1: {},
   body2: {
-    fontFamily: "Museo Sans",
+    fontFamily: FontFamilies.Museo,
     fontStyle: "normal",
     fontWeight: 700,
     fontSize: 13,

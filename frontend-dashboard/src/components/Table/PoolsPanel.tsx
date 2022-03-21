@@ -29,6 +29,7 @@ import { printCurrencyUSD, printPercentage } from "hooks"
 import { useUserTheme } from "state/user/hooks"
 import { SearchInput } from "components/Input"
 import { Button } from "components/Button"
+import { FontFamilies } from "data"
 
 enum FilterOn {
   StableCoins = 0,
@@ -40,7 +41,7 @@ const StyledTableCell = withStyles(({ palette }) => ({
     borderBottom: "1px solid #E5E5E5",
   },
   head: {
-    fontFamily: "Museo Sans",
+    fontFamily: FontFamilies.Museo,
     fontStyle: "normal",
     fontWeight: 500,
     fontSize: "14px",
@@ -50,7 +51,7 @@ const StyledTableCell = withStyles(({ palette }) => ({
     color: palette.secondary.main,
   },
   body: {
-    fontFamily: "Museo Sans",
+    fontFamily: FontFamilies.Museo,
     fontStyle: "normal",
     fontWeight: "bold",
     fontSize: "14px",
@@ -65,7 +66,7 @@ const StyledTableCell = withStyles(({ palette }) => ({
     "textAlign": "center",
 
     "& span": {
-      "fontFamily": "Museo Sans",
+      "fontFamily": FontFamilies.Museo,
       "fontStyle": "normal",
       "fontWeight": "bold",
       "fontSize": "16px",
