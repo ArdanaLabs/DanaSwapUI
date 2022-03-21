@@ -1,71 +1,77 @@
-import {
-  Dialog,
-  Box,
-  useTheme,
-  useMediaQuery,
-  makeStyles,
-  Button,
-  styled,
-  Typography,
-} from "@material-ui/core"
 import React from "react"
-import cx from "classnames"
-import { useIsDarkMode } from "state/user/hooks"
+import {
+  Box,
+  Dialog,
+  styled,
+  Theme,
+  Typography,
+  useTheme,
+  Button,
+} from "@mui/material"
+import { makeStyles } from "@mui/styles"
 
 import CloseIcon from "assets/image/svgs/close.svg"
 import { useHistory } from "react-router-dom"
 import { ModalUIState } from "state/ui/reducer"
 
-const StyledDialog = styled(Dialog)(({ theme }) => ({
-  "& .MuiDialog-paper": {
+const StyledDialog = styled(Dialog)(() => ({
+  [`& .MuiDialog-paper`]: {
     borderRadius: "20px",
   },
 }))
 
-const useStyles = makeStyles(({ palette, breakpoints }) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
-    background: palette.background.paper,
+    background: theme.palette.background.paper,
     padding: "50px 25px",
     maxWidth: "400px",
     position: "relative",
   },
   close: {
-    position: "absolute",
+    position: "absolute!important" as "absolute",
     top: "20px",
     right: "20px",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    background: palette.info.light,
-    borderRadius: "100%",
+    background: theme.palette.info.light,
+    borderRadius: "100%!important" as "100%",
     boxShadow: "5px 5px 10px rgba(18, 36, 82, 0.25)",
     width: "30px",
-    minWidth: "30px",
+    minWidth: "30px!important" as "30px",
     height: "30px",
     cursor: "pointer",
   },
 
   body: {
     [`& .title, & .label, & .content`]: {
-      color: palette.primary.main,
+      color: theme.palette.primary.main,
+    },
+    [`& .title`]: {
+      fontSize: 30,
+      [theme.breakpoints.down("sm")]: {
+        fontSize: 25,
+      },
     },
     [`& .label`]: {
       textTransform: "uppercase",
     },
     [`& .action`]: {
-      background: palette.info.light,
+      background: theme.palette.info.light,
       borderRadius: "100px",
       width: "100%",
       padding: "10px",
 
       [`& h5`]: {
-        color: palette.common.white,
+        color: theme.palette.common.white,
         textTransform: "uppercase",
       },
     },
 
     [`& .divider`]: {
-      border: `1px solid ${palette.info.dark}`,
+      borderStyle: "solid",
+      borderWidth: 1,
+      borderColor: theme.palette.info.dark,
       opacity: 0.6,
     },
   },
@@ -77,10 +83,8 @@ interface Props {
 }
 
 const VaultModal: React.FC<Props> = ({ info, handleClose }) => {
-  const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
-  const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const theme = useTheme()
+  const classes = useStyles(theme)
   const history = useHistory()
 
   const handleMultiply = () => {
@@ -100,16 +104,14 @@ const VaultModal: React.FC<Props> = ({ info, handleClose }) => {
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
     >
-      <Box className={cx(classes.root)}>
-        <Button className={cx(classes.close)} onClick={handleClose}>
+      <Box className={classes.root}>
+        <Button className={classes.close} onClick={handleClose}>
           <img src={CloseIcon} alt="close" />
         </Button>
 
-        <Box className={cx(classes.body)} mt={"10px"}>
+        <Box className={classes.body} mt={"10px"}>
           <Typography variant="h3" component="h3" className="title">
-            What do you want to do
-            <br />
-            with your ETH?
+            {`What do you want to do\nwith your ETH?`}
           </Typography>
 
           <Box mt="15px" />

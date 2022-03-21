@@ -1,31 +1,27 @@
-import { Box, Container, useMediaQuery } from "@material-ui/core"
-import { makeStyles, useTheme } from "@material-ui/core/styles"
-import cx from "classnames"
+import { Box, Container, useTheme, Theme } from "@mui/material"
+import { makeStyles } from "@mui/styles"
 import { VaultStatCard, NoVaultStatCard } from "components/Card"
 import React from "react"
-import { useIsDarkMode } from "state/user/hooks"
 import { useWallet } from "state/wallet/hooks"
 
-const useStyles = makeStyles(({ palette, breakpoints }) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
     marginTop: "-150px",
 
-    [breakpoints.down("xs")]: {
+    [theme.breakpoints.down("sm")]: {
       marginTop: "30px",
     },
   },
 }))
 
 const VaultStatSection: React.FC = () => {
-  const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
-  const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const theme = useTheme()
+  const classes = useStyles(theme)
 
   const { myVaults } = useWallet()
 
   return (
-    <Box className={cx(classes.root)}>
+    <Box className={classes.root}>
       <Container>
         {myVaults.length > 0 && <VaultStatCard vaultList={myVaults} />}
         {myVaults.length === 0 && <NoVaultStatCard />}

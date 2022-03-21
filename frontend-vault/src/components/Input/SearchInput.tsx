@@ -1,34 +1,36 @@
 import React, { ChangeEvent } from "react"
-import { Box, useMediaQuery } from "@material-ui/core"
-import { makeStyles, useTheme } from "@material-ui/core/styles"
-import cx from "classnames"
-import { useIsDarkMode } from "state/user/hooks"
+
+import { useTheme } from "@mui/system"
+import { makeStyles } from "@mui/styles"
+import { Theme, Box } from "@mui/material"
 
 import { ReactComponent as SearchIcon } from "assets/image/svgs/search.svg"
 
-const useStyles = makeStyles(({ palette }) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   input: {
-    "position": "relative",
-    "& > input": {
-      "background": "transparent",
-      "border": `1px solid ${palette.primary.main}`,
-      "borderRadius": "50px",
-      "padding": "10px 10px 10px 40px",
-      "color": palette.primary.main,
+    position: "relative",
+    [`& > input`]: {
+      background: "transparent",
+      borderWidth: 1,
+      borderStyle: "solid",
+      boderColor: theme.palette.primary.main,
+      borderRadius: "50px",
+      padding: "10px 10px 10px 40px",
+      color: theme.palette.primary.main,
 
-      "&:focus-visible": {
+      [`&:focus-visible`]: {
         outline: "unset",
       },
     },
-    "& > svg": {
-      "position": "absolute",
-      "left": "25px",
-      "top": "50%",
-      "transform": "translate(-50%, -50%)",
-      "fontSize": "12px",
+    [`& > svg`]: {
+      position: "absolute",
+      left: "25px",
+      top: "50%",
+      transform: "translate(-50%, -50%)",
+      fontSize: "12px",
 
-      "& path": {
-        fill: palette.primary.main,
+      [`& path`]: {
+        fill: theme.palette.primary.main,
       },
     },
   },
@@ -47,13 +49,11 @@ const SearchInput: React.FC<SearchInputProps> = ({
   placeholder = "",
   onChange,
 }) => {
-  const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
-  const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const theme = useTheme()
+  const classes = useStyles(theme)
 
   return (
-    <Box className={cx(classes.input)}>
+    <Box className={classes.input}>
       <SearchIcon />
       <input
         type="text"

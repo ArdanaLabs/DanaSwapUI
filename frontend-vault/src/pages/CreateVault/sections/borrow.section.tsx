@@ -1,23 +1,22 @@
 import React, { useState } from "react"
 import { useHistory, useParams } from "react-router-dom"
+import cx from "classnames"
 import {
   Box,
-  useMediaQuery,
-  Container,
+  Button,
   Grid,
   Typography,
-  Button,
-} from "@material-ui/core"
-import { makeStyles, useTheme } from "@material-ui/core/styles"
-import cx from "classnames"
-
-import { useIsDarkMode } from "state/user/hooks"
+  Theme,
+  useTheme,
+  Container,
+} from "@mui/material"
+import { makeStyles } from "@mui/styles"
 
 import { ReactComponent as CircleQuestionIcon } from "assets/image/svgs/circle-question.svg"
 import { currencyFormatter, numberFormatter, percentageFormatter } from "hooks"
 import { AmountInput } from "components"
 
-const useStyles = makeStyles(({ palette, breakpoints }) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
     [`& .MuiGrid-item`]: {
       padding: "8px",
@@ -29,27 +28,25 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
   card: {
     background:
-      palette.type === "light"
+      theme.palette.mode === "light"
         ? "linear-gradient(359deg, #B9D4FF -129.98%, #FFFFFF 99.14%)"
-        : palette.background.paper,
+        : theme.palette.background.paper,
     borderRadius: "20px",
     padding: "25px",
     height: "100%",
-    // margin: "5px",
-    // minHeight: "180px",
 
     [`& h5`]: {
       textTransform: "uppercase",
     },
     [`& h1, & h3, & h5, & h6`]: {
-      color: palette.primary.main,
+      color: theme.palette.primary.main,
     },
   },
   badge: {
     borderRadius: "100px",
     padding: "5px 15px",
-    background: palette.success.light,
-    color: `${palette.success.main} !important`,
+    background: theme.palette.success.light,
+    color: `${theme.palette.success.main} !important`,
     display: "inline-block",
     fontWeight: 600,
   },
@@ -58,24 +55,24 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     height: "20px",
 
     [`& path`]: {
-      fill: palette.primary.main,
+      fill: theme.palette.primary.main,
     },
     [`& rect`]: {
-      stroke: palette.primary.main,
+      stroke: theme.palette.primary.main,
     },
   },
   highlight: {
-    color: `${palette.info.dark} !important`,
+    color: `${theme.palette.info.dark} !important`,
   },
   button: {
-    borderRadius: "50px",
+    borderRadius: "50px!important" as "50px",
     width: "100%",
     padding: "10px",
-    background: palette.info.light,
+    background: theme.palette.info.light,
 
     [`& h5`]: {
       textTransform: "capitalize",
-      color: palette.common.white,
+      color: theme.palette.common.white,
     },
 
     [`&.disabled`]: {
@@ -84,28 +81,26 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     },
   },
   divider: {
-    background: palette.info.dark,
+    background: theme.palette.info.dark,
     width: "100%",
     height: "1px",
     marginTop: "30px",
     marginBottom: "30px",
   },
   alert: {
-    background: palette.error.light,
+    background: theme.palette.error.light,
     padding: "20px",
     borderRadius: "10px",
 
     [`& h6`]: {
-      color: `${palette.error.main} !important`,
+      color: `${theme.palette.error.main} !important`,
     },
   },
 }))
 
 const MainSection: React.FC = () => {
-  const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
-  const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const theme = useTheme()
+  const classes = useStyles(theme)
   const { type } = useParams<{ type: string }>()
   const history = useHistory()
   const [errMsgs] = useState([
@@ -151,7 +146,7 @@ const MainSection: React.FC = () => {
   }
 
   const renderLiquidationPrice = () => (
-    <Box className={cx(classes.card)}>
+    <Box className={classes.card}>
       <Box
         display={"flex"}
         justifyContent={"space-between"}
@@ -161,7 +156,7 @@ const MainSection: React.FC = () => {
         <Typography component="h5" variant="h5">
           Liquidation Price
         </Typography>
-        <CircleQuestionIcon className={cx(classes.questionIcon)} />
+        <CircleQuestionIcon className={classes.questionIcon} />
       </Box>
       <Box mb={"15px"}>
         <Typography component="h1" variant="h1">
@@ -169,14 +164,14 @@ const MainSection: React.FC = () => {
         </Typography>
       </Box>
 
-      <Typography component="h6" variant="h6" className={cx(classes.badge)}>
+      <Typography component="h6" variant="h6" className={classes.badge}>
         {currencyFormatter(liquidationPriceAfter)} after
       </Typography>
     </Box>
   )
 
   const renderBuyingPower = () => (
-    <Box className={cx(classes.card)}>
+    <Box className={classes.card}>
       <Box
         display={"flex"}
         justifyContent={"space-between"}
@@ -186,7 +181,7 @@ const MainSection: React.FC = () => {
         <Typography component="h5" variant="h5">
           Buying Power
         </Typography>
-        <CircleQuestionIcon className={cx(classes.questionIcon)} />
+        <CircleQuestionIcon className={classes.questionIcon} />
       </Box>
       <Box mb={"15px"}>
         <Typography component="h1" variant="h1">
@@ -194,14 +189,14 @@ const MainSection: React.FC = () => {
         </Typography>
       </Box>
 
-      <Typography component="h6" variant="h6" className={cx(classes.badge)}>
+      <Typography component="h6" variant="h6" className={classes.badge}>
         {currencyFormatter(buyingPowerAfter)} after
       </Typography>
     </Box>
   )
 
   const renderCurrentPrice = () => (
-    <Box className={cx(classes.card)}>
+    <Box className={classes.card}>
       <Box
         display={"flex"}
         justifyContent={"space-between"}
@@ -211,7 +206,7 @@ const MainSection: React.FC = () => {
         <Typography component="h5" variant="h5">
           Current Price
         </Typography>
-        <CircleQuestionIcon className={cx(classes.questionIcon)} />
+        <CircleQuestionIcon className={classes.questionIcon} />
       </Box>
       <Box mb={"15px"}>
         <Typography component="h1" variant="h1">
@@ -221,7 +216,7 @@ const MainSection: React.FC = () => {
 
       <Typography component="h6" variant="h6">
         Next:{" "}
-        <strong className={cx(classes.highlight)}>
+        <strong className={classes.highlight}>
           {currencyFormatter(nextPrice)}
         </strong>{" "}
         <small>{percentageFormatter(increasedPercent)}</small>
@@ -230,7 +225,7 @@ const MainSection: React.FC = () => {
   )
 
   const renderNetValue = () => (
-    <Box className={cx(classes.card)}>
+    <Box className={classes.card}>
       <Box
         display={"flex"}
         justifyContent={"space-between"}
@@ -240,7 +235,7 @@ const MainSection: React.FC = () => {
         <Typography component="h5" variant="h5">
           Net Value
         </Typography>
-        <CircleQuestionIcon className={cx(classes.questionIcon)} />
+        <CircleQuestionIcon className={classes.questionIcon} />
       </Box>
       <Box mb={"15px"}>
         <Typography component="h1" variant="h1">
@@ -248,14 +243,14 @@ const MainSection: React.FC = () => {
         </Typography>
       </Box>
 
-      <Typography component="h6" variant="h6" className={cx(classes.badge)}>
+      <Typography component="h6" variant="h6" className={classes.badge}>
         {currencyFormatter(netValueAfter)} after
       </Typography>
     </Box>
   )
 
   const renderVaultStat = () => (
-    <Box className={cx(classes.card)}>
+    <Box className={classes.card}>
       <Grid container>
         <Grid item xs={12} md={4}>
           <Typography component="h5" variant="h5">
@@ -266,7 +261,7 @@ const MainSection: React.FC = () => {
             {numberFormatter(debt)} DAI
           </Typography>
           <Box mb="15px" />
-          <Typography component="h6" variant="h6" className={cx(classes.badge)}>
+          <Typography component="h6" variant="h6" className={classes.badge}>
             {currencyFormatter(debtAfter)} after
           </Typography>
         </Grid>
@@ -279,7 +274,7 @@ const MainSection: React.FC = () => {
             {numberFormatter(withdraw)} ETH
           </Typography>
           <Box mb="15px" />
-          <Typography component="h6" variant="h6" className={cx(classes.badge)}>
+          <Typography component="h6" variant="h6" className={classes.badge}>
             {numberFormatter(withdrawAfter)} after
           </Typography>
         </Grid>
@@ -292,7 +287,7 @@ const MainSection: React.FC = () => {
             {numberFormatter(generate)}x
           </Typography>
           <Box mb="15px" />
-          <Typography component="h6" variant="h6" className={cx(classes.badge)}>
+          <Typography component="h6" variant="h6" className={classes.badge}>
             {numberFormatter(generateAfter)} after
           </Typography>
         </Grid>
@@ -323,16 +318,12 @@ const MainSection: React.FC = () => {
       </Box>
     )
     return (
-      <Box className={cx(classes.card)}>
+      <Box className={classes.card}>
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <Typography component="h3" variant="h3">
             Configure your Vault
           </Typography>
-          <Typography
-            component="h5"
-            variant="h5"
-            className={cx(classes.highlight)}
-          >
+          <Typography component="h5" variant="h5" className={classes.highlight}>
             1/3
           </Typography>
         </Box>
@@ -358,7 +349,7 @@ const MainSection: React.FC = () => {
             Generate DAI with this transaction
           </Typography>
         </Button>
-        <Box className={cx(classes.divider)} />
+        <Box className={classes.divider} />
         <Typography component="h3" variant="h3">
           Order Information
         </Typography>
@@ -395,7 +386,7 @@ const MainSection: React.FC = () => {
           {renderUpdateInfo(`FEES + (max gas fee)`, `${21.07} + `, `(n/a)`)}
         </Box>
         <Box mb="15px" />
-        <Box className={cx(classes.alert)}>
+        <Box className={classes.alert}>
           <Box component="ul" paddingLeft={"20px"}>
             {errMsgs.map((msg, index) => (
               <Typography component="h6" variant="h6">
@@ -417,8 +408,8 @@ const MainSection: React.FC = () => {
             Setup Proxy
           </Typography>
         </Button>
-        <Box className={cx(classes.divider)} />
-        <Button className={cx(classes.button)} onClick={handleSwitchToMultiply}>
+        <Box className={classes.divider} />
+        <Button className={classes.button} onClick={handleSwitchToMultiply}>
           <Typography
             component="h5"
             variant="h5"
@@ -432,7 +423,7 @@ const MainSection: React.FC = () => {
   }
 
   return (
-    <Box className={cx(classes.root)}>
+    <Box className={classes.root}>
       <Container>
         <Grid container spacing={0} alignItems={"flex-start"}>
           <Grid

@@ -1,35 +1,33 @@
 import React, { useMemo } from "react"
-import cx from "classnames"
+import { percentageFormatter } from "hooks"
+import { MyVaultInfo } from "state/wallet/types"
 import {
   Box,
   Container,
   Grid,
-  makeStyles,
+  Theme,
   Typography,
-  useMediaQuery,
   useTheme,
-} from "@material-ui/core"
-import { useIsDarkMode } from "state/user/hooks"
-import { percentageFormatter } from "hooks"
-import { MyVaultInfo } from "state/wallet/types"
+} from "@mui/material"
+import { makeStyles } from "@mui/styles"
 
-const useStyles = makeStyles(({ palette, breakpoints }) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
-    "background":
-      palette.type === "dark"
-        ? palette.background.paper
+    background:
+      theme.palette.mode === "dark"
+        ? theme.palette.background.paper
         : "linear-gradient(359deg, #B9D4FF -129.98%, #FFFFFF 99.14%)",
-    "borderRadius": "20px",
-    "padding": "30px",
+    borderRadius: "20px",
+    padding: "30px",
 
-    "& h5": {
+    [`& h5`]: {
       textTransform: "uppercase",
     },
-    "& h1, & h5, & h6": {
-      color: palette.primary.main,
+    [`& h1, & h5, & h6`]: {
+      color: theme.palette.primary.main,
     },
 
-    [breakpoints.down("xs")]: {
+    [theme.breakpoints.down("sm")]: {
       textAlign: "left",
       padding: "30px 10px",
     },
@@ -38,12 +36,12 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   divider: {
     width: "100%",
     height: "5px",
-    background: palette.info.light,
+    background: theme.palette.info.light,
     borderRadius: "55px",
   },
 
   vault: {
-    "& .coin": {
+    [`& .coin`]: {
       width: "35px",
       height: "35px",
       background: "white",
@@ -57,10 +55,8 @@ interface Props {
 }
 
 const VaultStatCard: React.FC<Props> = ({ vaultList }) => {
-  const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
-  const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const theme = useTheme()
+  const classes = useStyles(theme)
 
   const totalLockedUSD = useMemo(
     () => vaultList.reduce((prev, current) => prev + current.locked, 0),
@@ -75,7 +71,7 @@ const VaultStatCard: React.FC<Props> = ({ vaultList }) => {
   const renderVault = (name: string, image: string, percentage: number) => (
     <Box
       key={name}
-      className={cx(classes.vault)}
+      className={classes.vault}
       display="flex"
       alignItems={"center"}
       mr="20px"
@@ -101,7 +97,7 @@ const VaultStatCard: React.FC<Props> = ({ vaultList }) => {
   )
 
   return (
-    <Box className={cx(classes.root)}>
+    <Box className={classes.root}>
       <Container>
         <Grid container>
           <Grid item xs={12} sm={6} md={3}>
@@ -158,7 +154,7 @@ const VaultStatCard: React.FC<Props> = ({ vaultList }) => {
           </Grid>
         </Grid>
 
-        <Box className={cx(classes.divider)} />
+        <Box className={classes.divider} />
 
         <Box mb={"20px"} />
 

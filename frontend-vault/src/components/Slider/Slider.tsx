@@ -1,7 +1,7 @@
-import { Slider } from "@material-ui/core"
-import { withStyles } from "@material-ui/core/styles"
+import { Slider, Theme } from "@mui/material"
+import { withStyles } from "@mui/styles"
 
-const StyledSlider = withStyles((theme) => ({
+const StyledSlider = withStyles((theme: Theme) => ({
   root: {},
   track: {
     height: 6,
@@ -11,14 +11,12 @@ const StyledSlider = withStyles((theme) => ({
   thumb: {
     height: 24,
     width: 24,
-    marginTop: -11,
-    marginLeft: -10,
     background: theme.palette.info.light,
   },
   rail: {
     height: "4px",
-    background: theme.palette.info.dark,
-    opacity: 1,
+    backgroundColor: `${theme.palette.info.dark}!important`,
+    opacity: "1 !important",
     borderRadius: 10,
   },
   mark: {
