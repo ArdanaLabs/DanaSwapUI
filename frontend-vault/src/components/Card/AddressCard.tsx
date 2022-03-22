@@ -28,6 +28,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     textAlign: "center",
     width: "100%",
     color: theme.palette.primary.main,
+    display: "inline-block",
+    verticalAlign: "bottom",
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
 
     [theme.breakpoints.down("sm")]: {
       fontSize: 10,
@@ -71,27 +76,10 @@ const AddressCard: React.FC = () => {
   const classes = useStyles(theme)
   const { address, balance } = useWallet()
 
-  const smartTrim = (string: string, maxLength: number): string => {
-    if (!string) return string
-    if (maxLength < 1) return string
-    if (string.length <= maxLength) return string
-    if (maxLength === 1) return string.substring(0, 1) + "..."
-
-    var midpoint = Math.ceil(string.length / 2)
-    var toremove = string.length - maxLength
-    var lstrip = Math.ceil(toremove / 2)
-    var rstrip = toremove - lstrip
-    return (
-      string.substring(0, midpoint - lstrip) +
-      "..." +
-      string.substring(midpoint + rstrip)
-    )
-  }
-
   return (
     <Box className={classes.root}>
       <Typography variant="h6" component="h6" className={classes.address}>
-        {smartTrim(address, 9)}
+        {address}
       </Typography>
       <Box className={classes.balance} display={"flex"} alignItems="center">
         <Box className="wallet">
