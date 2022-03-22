@@ -1,6 +1,11 @@
 import { createTheme, responsiveFontSizes } from "@mui/material/styles"
 import createBreakpoints from "@mui/system/createTheme/createBreakpoints"
 
+export const FontFamilies = {
+  Brandon: "Brandon Grotesque, fantasy",
+  Museo: "Museo Sans, sans-serif",
+}
+
 // custom colors
 
 const primaryNight = {
@@ -87,7 +92,7 @@ const breakpoints = createBreakpoints({})
 const typography = {
   fontFamily: "Brandon Grotesque, Museo Sans, fantasy, sans-serif",
   h1: {
-    fontFamily: "Brandon Grotesque",
+    fontFamily: FontFamilies.Brandon,
     fontStyle: "normal",
     fontWeight: 700,
     fontSize: 50,
@@ -98,7 +103,7 @@ const typography = {
   },
   h2: {},
   h3: {
-    fontFamily: "Brandon Grotesque",
+    fontFamily: FontFamilies.Brandon,
     fontStyle: "normal",
     fontWeight: 700,
     fontSize: 20,
@@ -108,19 +113,19 @@ const typography = {
     },
   },
   h4: {
-    fontFamily: "Museo Sans",
+    fontFamily: FontFamilies.Museo,
     fontStyle: "normal",
     fontWeight: "normal",
     fontSize: 20,
   },
   h5: {
-    fontFamily: "Brandon Grotesque",
+    fontFamily: FontFamilies.Brandon,
     fontStyle: "normal",
     fontWeight: 700,
     fontSize: 14,
   },
   h6: {
-    fontFamily: "Museo Sans",
+    fontFamily: FontFamilies.Museo,
     fontStyle: "normal",
     fontWeight: "normal",
     fontSize: 14,

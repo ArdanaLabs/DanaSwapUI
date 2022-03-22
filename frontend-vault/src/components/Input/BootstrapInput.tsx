@@ -1,5 +1,6 @@
 import { Theme, createStyles, InputBase } from "@mui/material"
 import { withStyles } from "@mui/styles"
+import { FontFamilies } from "theme"
 
 const BootstrapInput = withStyles((theme: Theme) =>
   createStyles({
@@ -11,7 +12,7 @@ const BootstrapInput = withStyles((theme: Theme) =>
       },
     },
     input: {
-      fontFamily: "Brandon Grotesque !important",
+      fontFamily: FontFamilies.Brandon,
       fontWeight: "900 !important",
       borderRadius: "100px !important",
       color: `${theme.palette.common.white} !important`,

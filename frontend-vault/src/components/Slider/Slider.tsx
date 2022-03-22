@@ -1,5 +1,6 @@
 import { Slider, Theme } from "@mui/material"
 import { withStyles } from "@mui/styles"
+import { FontFamilies } from "theme"
 
 const StyledSlider = withStyles((theme: Theme) => ({
   root: {},
@@ -25,7 +26,7 @@ const StyledSlider = withStyles((theme: Theme) => ({
   markLabel: {
     paddingTop: "5px",
     color: theme.palette.primary.main,
-    fontFamily: "Museo Sans",
+    fontFamily: FontFamilies.Museo,
     fontStyle: "normal",
     fontWeight: 300,
     fontSize: "14px",
