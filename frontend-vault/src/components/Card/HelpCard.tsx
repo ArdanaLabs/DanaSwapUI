@@ -74,7 +74,7 @@ const HelpCard: React.FC<HelpCardProps> = ({ title, content, background }) => {
         </Typography>
       </Box>
       <Box className={classes.link}>
-        <img src={ArrowRightIcon} alt="right" />
+        <img src={ArrowRightIcon} alt="" />
       </Box>
     </Box>
   )

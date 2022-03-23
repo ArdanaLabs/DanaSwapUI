@@ -137,7 +137,7 @@ const Header: React.FC = () => {
                     ? DUSD_LOGO_WHITE
                     : DUSD_LOGO_BLUE
                 }
-                alt="DANA Logo"
+                alt="DANA"
               />
             </Box>
             {address && !mobile && <ThemeSwitch />}

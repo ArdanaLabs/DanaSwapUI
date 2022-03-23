@@ -109,13 +109,13 @@ const AdSection: React.FC = () => {
               <Box mt="30px" />
 
               <Box ml={mobile ? "12px" : 0} className={classes.coins}>
-                <img src={COIN_CARDANO} alt="cardano" />
-                <img src={COIN_CARDANO} alt="cardano" />
-                <img src={COIN_CARDANO} alt="cardano" />
-                <img src={COIN_CARDANO} alt="cardano" />
-                <img src={COIN_CARDANO} alt="cardano" />
-                <img src={COIN_CARDANO} alt="cardano" />
-                <img src={COIN_CARDANO} alt="cardano" />
+                <img src={COIN_CARDANO} alt="" />
+                <img src={COIN_CARDANO} alt="" />
+                <img src={COIN_CARDANO} alt="" />
+                <img src={COIN_CARDANO} alt="" />
+                <img src={COIN_CARDANO} alt="" />
+                <img src={COIN_CARDANO} alt="" />
+                <img src={COIN_CARDANO} alt="" />
               </Box>
 
               <Box mt={!mobile ? "20px" : "20px"} />

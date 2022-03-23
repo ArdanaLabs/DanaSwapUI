@@ -87,7 +87,7 @@ const VaultStatCard: React.FC<Props> = ({ vaultList }) => {
         alignItems={"center"}
         justifyContent={"center"}
       >
-        <img src={image} alt="name" />
+        <img src={image} alt="" />
       </Box>
       <Box display="flex" flexDirection={"column"}>
         <Typography variant="h5" component="h5" className="name">
