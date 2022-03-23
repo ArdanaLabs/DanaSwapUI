@@ -102,7 +102,7 @@ const VaultStatCard: React.FC<Props> = ({ vaultList }) => {
         <Grid container>
           <Grid item xs={12} sm={6} md={3}>
             <Typography variant="h5" component="h5">
-              No. of vaults
+              <abbr title="Number">No.</abbr> of vaults
             </Typography>
             <Box mb={"20px"} />
             <Typography variant="h1" component="h1">
