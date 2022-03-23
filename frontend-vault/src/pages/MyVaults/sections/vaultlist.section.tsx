@@ -1,5 +1,4 @@
 import cx from "classnames"
-import _ from "lodash"
 import {
   TokenAssetGrid,
   VaultCard,
@@ -58,8 +57,8 @@ const VaultListSection: React.FC = () => {
   const filteredVaults: MyVaultInfo[] = useMemo(() => {
     let filteredByKeyword: MyVaultInfo[] = myVaults.filter(
       (vault: MyVaultInfo) =>
-        _.isEmpty(filterOption.keyword) ||
-        vault.asset.indexOf(filterOption.keyword) !== -1
+        filterOption.keyword !== "" ||
+        vault.asset.includes(filterOption.keyword)
     )
     switch (filterOption.filterType) {
       case FilterType.Stablecoins:

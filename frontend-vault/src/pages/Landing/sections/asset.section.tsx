@@ -1,5 +1,4 @@
 import React, { useMemo, useState } from "react"
-import _ from "lodash"
 import cx from "classnames"
 import {
   TokenAssetGrid,
@@ -72,8 +71,8 @@ const AssetSection: React.FC = () => {
   const filteredVaults: VaultInfo[] = useMemo(() => {
     let filteredByKeyword: VaultInfo[] = vaults.filter(
       (vault: VaultInfo) =>
-        _.isEmpty(filterOption.keyword) ||
-        vault.asset.indexOf(filterOption.keyword) !== -1
+        filterOption.keyword !== "" ||
+        vault.asset.includes(filterOption.keyword)
     )
     switch (filterOption.filterType) {
       case FilterType.Popular:
