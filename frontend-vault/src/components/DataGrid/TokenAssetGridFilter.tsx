@@ -63,11 +63,11 @@ const useStyles = makeStyles((theme: Theme) => ({
 }))
 
 export enum FilterType {
-  POPULAR = "Popular Assets",
-  ALL = "All Assets",
-  YOUR = "Your Vaults",
-  STABLECOINS = "Stablecoins",
-  LP = "LP Token",
+  Popular = "Popular Assets",
+  All = "All Assets",
+  Your = "Your Vaults",
+  Stablecoins = "Stablecoins",
+  LiquidityPool = "LP Token",
 }
 
 export interface FilterOption {
