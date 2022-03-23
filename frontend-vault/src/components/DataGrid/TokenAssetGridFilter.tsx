@@ -32,7 +32,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: "flex",
   },
   filterItem: {
-    border: "1px solid transparent",
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: "transparent",
     borderRadius: "20px",
     fontSize: "16px",
     lineHeight: "100%",
@@ -49,7 +51,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       color: theme.palette.common.white,
     },
     [`&:hover`]: {
-      border: `1px solid ${theme.palette.primary.main}`,
+      borderColor: theme.palette.primary.main,
     },
   },
   searchBox: {

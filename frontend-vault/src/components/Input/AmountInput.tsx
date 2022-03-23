@@ -8,7 +8,9 @@ import { makeStyles } from "@mui/styles"
 const useStyles = makeStyles((theme: Theme) => ({
   root: {},
   input: {
-    border: `2px solid ${theme.palette.info.dark}`,
+    borderWidth: 2,
+    borderStyle: "solid",
+    borderColor: theme.palette.info.dark,
     borderRadius: "10px",
     background: `${theme.palette.background.default}55`,
     padding: "10px 20px",

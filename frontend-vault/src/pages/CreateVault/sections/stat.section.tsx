@@ -51,10 +51,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
 
-  border: {
+  isActiveBorder: {
     paddingRight: "20px",
     marginRight: "20px",
-    borderRight: `1px solid ${theme.palette.info.dark}`,
+    borderRightWidth: 1,
+    borderRightStyle: "solid",
+    borderRightColor: theme.palette.info.dark,
   },
 }))
 
@@ -74,11 +76,11 @@ const StatSection: React.FC = () => {
   const renderIndividual = (
     label: string,
     value: string,
-    border: boolean = true
+    hasBorder: boolean = true
   ): JSX.Element => (
     <Box
       className={cx(classes.individual, {
-        [classes.border]: border && !mobile,
+        [classes.isActiveBorder]: hasBorder && !mobile,
       })}
     >
       <Typography component="h6" variant="h6">
