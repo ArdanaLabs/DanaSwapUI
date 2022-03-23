@@ -23,8 +23,11 @@ const VaultStatSection: React.FC = () => {
   return (
     <Box className={classes.root}>
       <Container>
-        {myVaults.length > 0 && <VaultStatCard vaultList={myVaults} />}
-        {myVaults.length === 0 && <NoVaultStatCard />}
+        {myVaults.length === 0 ? (
+          <NoVaultStatCard />
+        ) : (
+          <VaultStatCard vaultList={myVaults} />
+        )}
       </Container>
     </Box>
   )

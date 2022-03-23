@@ -109,21 +109,7 @@ const TokenAssetGridFilter: React.FC<TokenAssetGridFilterProps> = ({
 
   return (
     <Box className={classes.root} flexDirection={mobile ? "column" : "row"}>
-      {!mobile ? (
-        <Box className={classes.filterType}>
-          {avFilterTypes.map((avFilterType) => (
-            <Box
-              key={avFilterType}
-              className={cx(classes.typographyPrimary, classes.filterItem, {
-                active: filterType === avFilterType,
-              })}
-              onClick={() => hanldeFilterTypeChange(avFilterType)}
-            >
-              {avFilterType}
-            </Box>
-          ))}
-        </Box>
-      ) : (
+      {mobile ? (
         <Box mb="20px" width="100%">
           <Select
             labelId="Filter"
@@ -144,6 +130,20 @@ const TokenAssetGridFilter: React.FC<TokenAssetGridFilterProps> = ({
               </MenuItem>
             ))}
           </Select>
+        </Box>
+      ) : (
+        <Box className={classes.filterType}>
+          {avFilterTypes.map((avFilterType) => (
+            <Box
+              key={avFilterType}
+              className={cx(classes.typographyPrimary, classes.filterItem, {
+                active: filterType === avFilterType,
+              })}
+              onClick={() => hanldeFilterTypeChange(avFilterType)}
+            >
+              {avFilterType}
+            </Box>
+          ))}
         </Box>
       )}
 
