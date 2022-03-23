@@ -12,18 +12,12 @@ const Landing: React.FC = () => {
   const mobile = useMediaQuery(theme.breakpoints.down("sm"))
 
   return (
-    <Box>
+    <Box display="flex" flexDirection="column" gap={!mobile ? "100px" : "70px"}>
       <AdSection />
-
-      <Box mt={!mobile ? "100px" : "70px"} />
 
       <FeatureSection />
 
-      <Box mt={"30px"} />
-
       <AssetSection />
-
-      <Box mt={!mobile ? "150px" : "100px"} />
 
       <HelpSection />
     </Box>

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react"
-import cx from "classnames"
 
 import { ReactComponent as SwapIcon } from "assets/image/svgs/swap.svg"
 import { Box, Theme, Typography, useTheme } from "@mui/material"
@@ -98,6 +97,7 @@ const AmountInput: React.FC<AmountInputProps> = ({ token, inputChange }) => {
         display="flex"
         justifyContent={"space-between"}
         alignItems={"center"}
+        mb="5px"
       >
         <Typography component="h5" variant="h5">
           <small style={{ textTransform: "uppercase" }}>Deposit {token}</small>
@@ -109,8 +109,7 @@ const AmountInput: React.FC<AmountInputProps> = ({ token, inputChange }) => {
           </small>
         </Typography>
       </Box>
-      <Box mb="5px" />
-      <Box className={cx(classes.input)}>
+      <Box className={classes.input}>
         <input
           type="number"
           step=".01"

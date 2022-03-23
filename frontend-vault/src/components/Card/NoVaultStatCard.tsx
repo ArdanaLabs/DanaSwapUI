@@ -4,15 +4,25 @@ import { makeStyles } from "@mui/styles"
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
     background:
       theme.palette.mode === "dark"
         ? theme.palette.background.paper
         : "linear-gradient(359deg, #B9D4FF -129.98%, #FFFFFF 99.14%)",
     borderRadius: "20px",
     padding: "50px",
+    color: theme.palette.primary.main,
 
-    [`& h1, & h6`]: {
-      color: theme.palette.primary.main,
+    [`& h1`]: {
+      color: "currentColor",
+      marginBottom: "10px",
+    },
+    [`& h6`]: {
+      color: "currentColor",
+      marginBottom: "30px",
     },
     [`& h5`]: {
       color: theme.palette.common.white,
@@ -43,25 +53,15 @@ const NoVaultStatCard = () => {
   }
 
   return (
-    <Box
-      className={classes.root}
-      display={"flex"}
-      flexDirection={"column"}
-      justifyContent={"center"}
-      alignItems={"center"}
-    >
+    <Box className={classes.root}>
       <Typography variant="h1" component="h1">
         You have no open Vaults
       </Typography>
-
-      <Box mb="10px" />
 
       <Typography variant="h6" component="h6">
         Open a Maker Vault, deposit your collateral, and borrow Dai or buy
         additional collateral against it.
       </Typography>
-
-      <Box mb="30px" />
 
       <Box className={classes.openVault} onClick={handleOpenVault}>
         <Typography variant="h5" component="h5">
