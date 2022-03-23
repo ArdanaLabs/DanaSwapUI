@@ -13,9 +13,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     background: `${theme.palette.background.default}55`,
     padding: "10px 20px",
     position: "relative",
+    color: theme.palette.primary.main,
 
     [`& input`]: {
-      color: theme.palette.primary.main,
+      color: "currentColor",
       border: "none",
       outline: "none",
       background: "transparent",
@@ -43,7 +44,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       cursor: "pointer",
 
       [`& path`]: {
-        fill: theme.palette.primary.main,
+        fill: "currentColor",
       },
     },
   },

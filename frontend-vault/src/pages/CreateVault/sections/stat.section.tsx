@@ -37,16 +37,17 @@ const useStyles = makeStyles((theme: Theme) => ({
     alignItems: "center",
     marginBottom: "10px",
     gap: "0 5px",
+    color: theme.palette.primary.main,
 
     [`& h5, & h6`]: {
-      color: theme.palette.primary.main,
+      color: "currentColor",
     },
 
     [`& path`]: {
-      fill: theme.palette.primary.main,
+      fill: "currentColor",
     },
     [`& rect`]: {
-      stroke: theme.palette.primary.main,
+      stroke: "currentColor",
     },
   },
 

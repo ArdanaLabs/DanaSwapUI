@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     transform: "rotateX(180deg)",
   },
   vaultButton: {
-    color: theme.palette.primary.main,
+    color: theme.palette.common.white,
     textTransform: "uppercase",
     lineHeight: "100%",
   },

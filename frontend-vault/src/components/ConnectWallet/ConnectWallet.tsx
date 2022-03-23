@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     cursor: "pointer",
     display: "flex",
     alignItems: "center",
+    color: theme.palette.primary.main,
     opacity: 1,
 
     [`&:hover`]: {
@@ -21,7 +22,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontSize: "14px",
     fontWeight: 700,
     fontFamily: "Brandon Grotesque",
-    color: theme.palette.primary.main,
     textAlign: "center",
     lineHeight: "150%",
     textTransform: "uppercase",
@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginLeft: "10px",
 
     [`& path`]: {
-      fill: theme.palette.primary.main,
+      fill: "currentColor",
     },
   },
 }))
