@@ -5,15 +5,10 @@
       url = "github:davhau/dream2nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    flake-compat-ci.url = "github:hercules-ci/flake-compat-ci";
-    flake-compat = {
-      url = "github:edolstra/flake-compat";
-      flake = false;
-    };
     hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
   };
 
-  outputs = { self, nixpkgs, flake-compat, flake-compat-ci, dream2nix, hercules-ci-effects }@inputs:
+  outputs = { self, nixpkgs, dream2nix, hercules-ci-effects }@inputs:
     let
 
       # Generate a user-friendly version number.
@@ -38,12 +33,6 @@
     in
     {
       overlay = final: prev: { };
-
-      ciNix = args@{ src }: flake-compat-ci.lib.recurseIntoFlakeWith {
-        flake = self;
-        systems = [ "x86_64-linux" ];
-        effectsArgs = args;
-      };
 
      effects = { src }:
        let
@@ -95,6 +84,8 @@
         }).packages.${system}.ardana-vault;
       });
 
+      defaultPackage = forAllSystems (system: self.packages.${system}.frontend-vault);
+
       devShell = forAllSystems (system:
         let
           pkgs = nixpkgsFor."${system}";
@@ -108,5 +99,7 @@
             export PATH="$PWD/node_modules/.bin/:$PATH"
           '';
         });
+
+      herculesCI.ciSystems = [ "x86_64-linux" ];
     };
 }
