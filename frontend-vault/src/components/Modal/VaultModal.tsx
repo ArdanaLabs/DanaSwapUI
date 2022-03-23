@@ -49,12 +49,18 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     [`& .title`]: {
       fontSize: 30,
+      marginBottom: 15,
+
       [theme.breakpoints.down("sm")]: {
         fontSize: 25,
       },
     },
     [`& .label`]: {
       textTransform: "uppercase",
+      marginBottom: 10,
+    },
+    [`& .content`]: {
+      marginBottom: 10,
     },
     [`& .action`]: {
       background: theme.palette.info.light,
@@ -73,6 +79,8 @@ const useStyles = makeStyles((theme: Theme) => ({
       borderWidth: 1,
       borderColor: theme.palette.info.dark,
       opacity: 0.6,
+      marginTop: 20,
+      marginBottom: 20,
     },
   },
 }))
@@ -114,18 +122,14 @@ const VaultModal: React.FC<Props> = ({ info, handleClose }) => {
             {`What do you want to do\nwith your ETH?`}
           </Typography>
 
-          <Box mt="15px" />
-
           <>
             <Typography variant="h5" component="h5" className="label">
               Multiply my ETH
             </Typography>
-            <Box mt="10px" />
             <Typography variant="h6" component="h6" className="content">
               Create a Multiply position and get up to 3.22x exposure on your
               ETH.
             </Typography>
-            <Box mt="10px" />
             <Button className="action" onClick={handleMultiply}>
               <Typography variant="h5" component="h5">
                 Myltiply ETH
@@ -139,11 +143,9 @@ const VaultModal: React.FC<Props> = ({ info, handleClose }) => {
             <Typography variant="h5" component="h5" className="label">
               Borrow against my ETH
             </Typography>
-            <Box mt="10px" />
             <Typography variant="h6" component="h6" className="content">
               Borrow up to 50000 DAI for every $100,000 worth of ETH.
             </Typography>
-            <Box mt="10px" />
             <Button className="action" onClick={handleBorrow}>
               <Typography variant="h5" component="h5">
                 Borrow against ETH
