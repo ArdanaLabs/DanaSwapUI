@@ -12,11 +12,11 @@ import cx from "classnames"
 import Hamburger from "hamburger-react"
 
 import { useIsDarkMode } from "state/user/hooks"
-import { Menus } from "data"
+import { Menus, NavInfoType } from "data"
 
 import LOGO_White from "assets/logo_white.png"
 import LOGO_Text from "assets/logo_text.png"
-import { useHistory } from "react-router"
+import { useHistory } from "react-router-dom"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -64,6 +64,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     "textAlign": "center",
     "textTransform": "uppercase",
     "transition": "all .2s",
+    "cursor": "pointer",
 
     "&:hover": {
       color: "#73D6F1",
@@ -103,11 +104,16 @@ const HeaderSection: React.FC = () => {
   }
 
   const activeMenu = (to: string): boolean => {
-    const path = "/" + window.location.pathname.split("/").pop()
-    if (to === path) {
-      return true
+    return window.location.href.endsWith(to)
+  }
+
+  function handleNavigate(link: NavInfoType) {
+    const { to, blank } = link
+    if (blank) {
+      window.open(to)
+    } else {
+      history.push(to)
     }
-    return false
   }
 
   return (
@@ -122,18 +128,15 @@ const HeaderSection: React.FC = () => {
             <Box>
               {Menus.map((link, index) => {
                 return (
-                  <Link
-                    href={link.to}
+                  <span
                     className={cx(classes.menuItem, {
                       active: activeMenu(link.to),
                     })}
                     key={index}
-                    underline="none"
-                    rel="noopener noreferrer"
-                    target={link.blank ? "_blank" : "_self"}
+                    onClick={() => handleNavigate(link)}
                   >
                     {link.label}
-                  </Link>
+                  </span>
                 )
               })}
             </Box>

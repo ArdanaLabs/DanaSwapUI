@@ -6,6 +6,12 @@ import { ReactComponent as MediumIcon } from "assets/icons/medium.svg"
 import { ReactComponent as YoutubeIcon } from "assets/icons/youtube.svg"
 import { ReactComponent as LinkedinIcon } from "assets/icons/linkedin.svg"
 
+export interface NavInfoType {
+  label: string
+  to: string
+  blank?: boolean
+}
+
 export const Menus = [
   {
     label: "Home",
@@ -20,10 +26,6 @@ export const Menus = [
     to: "https://docs.ardana.org/",
     blank: true,
   },
-  // {
-  //   label: "Team",
-  //   to: "/team",
-  // },
   {
     label: "Community",
     to: "/community",

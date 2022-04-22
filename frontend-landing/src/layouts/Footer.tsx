@@ -1,5 +1,5 @@
 import React from "react"
-import { Box, useMediaQuery, Link, Container } from "@material-ui/core"
+import { Box, useMediaQuery, Container } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
 import _ from "lodash"
@@ -11,6 +11,7 @@ import BG_WAVE from "assets/backgrounds/wave-gradient.png"
 import BG_WAVE_MOBILE from "assets/backgrounds/wave-mobile180-bg.png"
 import LOGO_BLUE from "assets/logo_blue.png"
 import { GradientButton, SocialBar } from "components"
+import { useHistory } from "react-router-dom"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -154,6 +155,19 @@ const Footer: React.FC = () => {
   const dark = useIsDarkMode()
   const mobile = useMediaQuery(breakpoints.down("xs"))
   const classes = useStyles({ dark, mobile })
+  const history = useHistory()
+
+  function handleNavigate(link: string) {
+    if (
+      link.startsWith("https://") ||
+      link.startsWith("http://") ||
+      link.startsWith("mailto:")
+    ) {
+      window.open(link)
+    } else {
+      history.push(link)
+    }
+  }
 
   return (
     <Box className={cx(classes.root)}>
@@ -175,26 +189,11 @@ const Footer: React.FC = () => {
               <Box className="section" key={group}>
                 <span>{group}</span>
                 {_.keys(externals[group]).map((external) => (
-                  <span key={external}>
-                    <Link
-                      rel="noopener noreferrer"
-                      target={
-                        externals[group][external].charAt(0) === "/"
-                          ? "_self"
-                          : "_blank"
-                      }
-                      href={externals[group][external]}
-                      underline={
-                        externals[group][external] === "#" ? "none" : "hover"
-                      }
-                      style={
-                        externals[group][external] === "#"
-                          ? { pointerEvents: "none" }
-                          : { pointerEvents: "initial" }
-                      }
-                    >
-                      {external}
-                    </Link>
+                  <span
+                    key={external}
+                    onClick={() => handleNavigate(externals[group][external])}
+                  >
+                    {external}
                   </span>
                 ))}
               </Box>
