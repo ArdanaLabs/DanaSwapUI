@@ -65,12 +65,13 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     "textTransform": "uppercase",
     "transition": "all .2s",
     "cursor": "pointer",
+    "textDecoration": "none",
 
     "&:hover": {
       color: "#73D6F1",
     },
 
-    "&.active": {
+    "&.isActive": {
       "color": palette.secondary.main,
       "&::before": {
         content: "' '",
@@ -104,7 +105,7 @@ const HeaderSection: React.FC = () => {
   }
 
   const activeMenu = (url: URL): boolean => {
-    return baseURL.origin === url.origin && baseURL.pathname === url.pathname
+    return baseURL.origin === url.origin && baseURL.hash.endsWith(url.pathname)
   }
 
   return (
@@ -166,7 +167,7 @@ const HeaderSection: React.FC = () => {
                     <NavLink
                       key={link.label}
                       className={cx(classes.menuItem, {
-                        active: activeMenu(link.url),
+                        isActive: activeMenu(link.url),
                       })}
                       to={link.url.href.replace(link.url.origin, "")}
                     >
@@ -178,7 +179,7 @@ const HeaderSection: React.FC = () => {
                     <Link
                       key={link.label}
                       className={cx(classes.menuItem, {
-                        active: activeMenu(link.url),
+                        isActive: activeMenu(link.url),
                       })}
                       href={link.url.href}
                     >

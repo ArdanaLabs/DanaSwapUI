@@ -14,40 +14,12 @@ import { GradientButton, SocialBar } from "components"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
-    "background": `url(${BG_WAVE}) top left no-repeat`,
-    "backgroundSize": "100%",
-    "padding": "150px 0px 60px",
-    "display": "flex",
-    "justifyContent": "space-between",
-    "alignItems": "flex-start",
-
-    "& span": {
-      "&:first-child": {
-        fontFamily: "Brandon Grotesque",
-        fontSize: "20px",
-        lineHeight: "36px",
-        color: palette.secondary.main,
-        marginBottom: "12px",
-        fontWeight: 900,
-
-        [breakpoints.down("xs")]: {
-          fontSize: "20px",
-          marginBottom: "10px",
-        },
-      },
-      "& > a": {
-        color: palette.common.white,
-      },
-      "fontFamily": "Museo Sans",
-      "fontSize": "16px",
-      "lineHeight": "24px",
-      "cursor": "pointer",
-
-      [breakpoints.down("xs")]: {
-        fontSize: "16px",
-        lineHeight: "20px",
-      },
-    },
+    background: `url(${BG_WAVE}) top left no-repeat`,
+    backgroundSize: "100%",
+    padding: "150px 0px 60px",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
 
     [breakpoints.down("xs")]: {
       flexDirection: "column",
@@ -147,6 +119,38 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       width: "100%",
     },
   },
+
+  label: {
+    fontFamily: "Brandon Grotesque",
+    fontSize: "20px",
+    lineHeight: "36px",
+    color: palette.secondary.main,
+    marginBottom: "12px",
+    fontWeight: 900,
+
+    [breakpoints.down("xs")]: {
+      fontSize: "20px",
+      marginBottom: "10px",
+    },
+  },
+
+  link: {
+    textDecoration: "none",
+    color: palette.common.white,
+    fontFamily: "Museo Sans",
+    fontSize: "16px",
+    lineHeight: "24px",
+
+    [`&:hover`]: {
+      textDecoration: "none",
+    },
+  },
+
+  followus: {
+    fontFamily: "Museo Sans",
+    fontSize: "16px",
+    lineHeight: "24px",
+  },
 }))
 
 const Footer: React.FC = () => {
@@ -174,7 +178,7 @@ const Footer: React.FC = () => {
           <Box className={cx(classes.guide)}>
             {Object.entries(externals).map(([group, subgroup]) => (
               <Box className="section" key={group}>
-                <span>{group}</span>
+                <span className={classes.label}>{group}</span>
                 {Object.entries(subgroup).map(([name, url]) => {
                   if (url === null || url.origin === baseOrigin) {
                     return (
@@ -186,13 +190,14 @@ const Footer: React.FC = () => {
                         style={{
                           pointerEvents: url === null ? "none" : "initial",
                         }}
+                        className={classes.link}
                       >
                         {name}
                       </NavLink>
                     )
                   } else {
                     return (
-                      <Link key={name} href={url.href}>
+                      <Link key={name} href={url.href} className={classes.link}>
                         {name}
                       </Link>
                     )
@@ -201,8 +206,8 @@ const Footer: React.FC = () => {
               </Box>
             ))}
             <Box className={cx(classes.socials)}>
-              <span>Our Socials</span>
-              <span>
+              <span className={classes.label}>Our Socials</span>
+              <span className={classes.followus}>
                 Follow us to hear about Ardana
                 <br />
                 news and events.
