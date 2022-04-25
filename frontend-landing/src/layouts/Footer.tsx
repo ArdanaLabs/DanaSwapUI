@@ -1,8 +1,8 @@
 import React from "react"
-import { Box, useMediaQuery, Container } from "@material-ui/core"
+import { NavLink } from "react-router-dom"
+import { Box, useMediaQuery, Container, Link } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
-import _ from "lodash"
 
 import { useIsDarkMode } from "state/user/hooks"
 
@@ -11,7 +11,6 @@ import BG_WAVE from "assets/backgrounds/wave-gradient.png"
 import BG_WAVE_MOBILE from "assets/backgrounds/wave-mobile180-bg.png"
 import LOGO_BLUE from "assets/logo_blue.png"
 import { GradientButton, SocialBar } from "components"
-import { useHistory } from "react-router-dom"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -155,19 +154,7 @@ const Footer: React.FC = () => {
   const dark = useIsDarkMode()
   const mobile = useMediaQuery(breakpoints.down("xs"))
   const classes = useStyles({ dark, mobile })
-  const history = useHistory()
-
-  function handleNavigate(link: string) {
-    if (
-      link.startsWith("https://") ||
-      link.startsWith("http://") ||
-      link.startsWith("mailto:")
-    ) {
-      window.open(link)
-    } else {
-      history.push(link)
-    }
-  }
+  const baseOrigin = new URL(document.baseURI).origin
 
   return (
     <Box className={cx(classes.root)}>
@@ -185,17 +172,32 @@ const Footer: React.FC = () => {
             <img className={cx(classes.photo)} src={LOGO_BLUE} alt="logo" />
           </Box>
           <Box className={cx(classes.guide)}>
-            {_.keys(externals).map((group) => (
+            {Object.entries(externals).map(([group, subgroup]) => (
               <Box className="section" key={group}>
                 <span>{group}</span>
-                {_.keys(externals[group]).map((external) => (
-                  <span
-                    key={external}
-                    onClick={() => handleNavigate(externals[group][external])}
-                  >
-                    {external}
-                  </span>
-                ))}
+                {Object.entries(subgroup).map(([name, url]) => {
+                  if (url === null || url.origin === baseOrigin) {
+                    return (
+                      <NavLink
+                        key={name}
+                        to={
+                          url === null ? "#" : url.href.replace(url.origin, "")
+                        }
+                        style={{
+                          pointerEvents: url === null ? "none" : "initial",
+                        }}
+                      >
+                        {name}
+                      </NavLink>
+                    )
+                  } else {
+                    return (
+                      <Link key={name} href={url.href}>
+                        {name}
+                      </Link>
+                    )
+                  }
+                })}
               </Box>
             ))}
             <Box className={cx(classes.socials)}>

@@ -8,36 +8,34 @@ import { ReactComponent as LinkedinIcon } from "assets/icons/linkedin.svg"
 
 export interface NavInfoType {
   label: string
-  to: string
-  blank?: boolean
+  url: URL
 }
 
-export const Menus = [
+export const Menus: NavInfoType[] = [
   {
     label: "Home",
-    to: "/",
+    url: new URL("/", document.baseURI),
   },
   {
     label: "Technology",
-    to: "/tech",
+    url: new URL("/tech", document.baseURI),
   },
   {
     label: "Documentation",
-    to: "https://docs.ardana.org/",
-    blank: true,
+    url: new URL("https://docs.ardana.org/"),
   },
   {
     label: "Community",
-    to: "/community",
+    url: new URL("/community", document.baseURI),
   },
   {
     label: "News",
-    to: "/news",
+    url: new URL("/news", document.baseURI),
   },
   {
     label: "Roadmap",
     // to: "https://faceted-wash-97d.notion.site/cb0d147034e6439f8e70b2698ce199f2?v=fbf6185ab5f143eb9e22064fd9647814",
-    to: "/roadmap",
+    url: new URL("/roadmap", document.baseURI),
   },
 ]
 
@@ -469,23 +467,25 @@ export const Investors = [
   // require("assets/logos/sundaeswap.svg").default,
 ]
 
-export const externals: any = {
+export const externals: {
+  [group: string]: { [subgroup: string]: URL | null }
+} = {
   Resources: {
-    "Technology": "/tech",
-    "Documentation": "https://docs.ardana.org/",
+    "Technology": new URL("/tech", document.baseURI),
+    "Documentation": new URL("https://docs.ardana.org/"),
     // "Pitch Deck": "https://docsend.com/view/kc5m2snw7t77fs5r",
-    "Pitch Deck": "https://docsend.com/view/ps9hsr88m834pj98",
-    "Brand Assets": "/brandassets",
+    "Pitch Deck": new URL("https://docsend.com/view/ps9hsr88m834pj98"),
+    "Brand Assets": new URL("/brandassets", document.baseURI),
   },
   Products: {
-    Dashboard: "#",
-    DEX: "#",
-    Stablecoin: "#",
+    Dashboard: null,
+    DEX: null,
+    Stablecoin: null,
   },
   Company: {
-    "Team": "/team",
-    "Contact Us": "mailto:enquiries@ardana.org",
-    "Careers": "mailto:careers@ardana.org",
+    "Team": new URL("/team", document.baseURI),
+    "Contact Us": new URL("mailto:enquiries@ardana.org"),
+    "Careers": new URL("mailto:careers@ardana.org"),
   },
 }
 

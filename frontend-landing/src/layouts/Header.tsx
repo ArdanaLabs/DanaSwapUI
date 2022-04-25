@@ -1,11 +1,12 @@
 import React, { useState } from "react"
+import { NavLink } from "react-router-dom"
 import {
   useMediaQuery,
   Box,
-  Link,
+  Container,
   Drawer,
   IconButton,
-  Container,
+  Link,
 } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
@@ -16,7 +17,6 @@ import { Menus, NavInfoType } from "data"
 
 import LOGO_White from "assets/logo_white.png"
 import LOGO_Text from "assets/logo_text.png"
-import { useHistory } from "react-router-dom"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -95,7 +95,7 @@ const HeaderSection: React.FC = () => {
   const dark = useIsDarkMode()
   const mobile = useMediaQuery(breakpoints.down("xs"))
   const classes = useStyles({ dark, mobile })
-  const history = useHistory()
+  const baseURL: URL = new URL(document.baseURI)
 
   const [openMenu, setOpenMenu] = useState<boolean>(false)
 
@@ -103,45 +103,19 @@ const HeaderSection: React.FC = () => {
     setOpenMenu((prev: boolean) => !prev)
   }
 
-  const activeMenu = (to: string): boolean => {
-    return window.location.href.endsWith(to)
-  }
-
-  function handleNavigate(link: NavInfoType) {
-    const { to, blank } = link
-    if (blank) {
-      window.open(to)
-    } else {
-      history.push(to)
-    }
+  const activeMenu = (url: URL): boolean => {
+    return baseURL.origin === url.origin && baseURL.pathname === url.pathname
   }
 
   return (
     <Box className={cx(classes.root)}>
       <Container>
         <Box className={cx(classes.self)}>
-          <Box className={cx(classes.logo)} onClick={() => history.push("/")}>
+          <NavLink className={cx(classes.logo)} to={"/"}>
             <img src={LOGO_White} alt="logo" />
             <img src={LOGO_Text} alt="logo" />
-          </Box>
-          {!mobile && (
-            <Box>
-              {Menus.map((link, index) => {
-                return (
-                  <span
-                    className={cx(classes.menuItem, {
-                      active: activeMenu(link.to),
-                    })}
-                    key={index}
-                    onClick={() => handleNavigate(link)}
-                  >
-                    {link.label}
-                  </span>
-                )
-              })}
-            </Box>
-          )}
-          {mobile && (
+          </NavLink>
+          {mobile ? (
             <>
               <IconButton
                 style={{ height: "48px", padding: 0 }}
@@ -161,20 +135,59 @@ const HeaderSection: React.FC = () => {
                 open={openMenu}
                 onClose={toggleMenu}
               >
-                {Menus.map((link, index) => (
-                  <Link
-                    key={index}
-                    className={cx(classes.menuItem)}
-                    href={link.to}
-                    underline="none"
-                    rel="noopener noreferrer"
-                    target={link.blank ? "_blank" : "_self"}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
+                {Menus.map((link: NavInfoType) => {
+                  // isInternal link
+                  if (link.url.origin === baseURL.origin) {
+                    return (
+                      <NavLink
+                        key={link.label}
+                        className={cx(classes.menuItem)}
+                        to={link.url.href.replace(link.url.origin, "")}
+                      >
+                        {link.label}
+                      </NavLink>
+                    )
+                  } else {
+                    return (
+                      <Link key={link.label} href={link.url.href}>
+                        {link.label}
+                      </Link>
+                    )
+                  }
+                })}
               </Drawer>
             </>
+          ) : (
+            <Box>
+              {Menus.map((link: NavInfoType) => {
+                // isInternal link
+                if (link.url.origin === baseURL.origin) {
+                  return (
+                    <NavLink
+                      key={link.label}
+                      className={cx(classes.menuItem, {
+                        active: activeMenu(link.url),
+                      })}
+                      to={link.url.href.replace(link.url.origin, "")}
+                    >
+                      {link.label}
+                    </NavLink>
+                  )
+                } else {
+                  return (
+                    <Link
+                      key={link.label}
+                      className={cx(classes.menuItem, {
+                        active: activeMenu(link.url),
+                      })}
+                      href={link.url.href}
+                    >
+                      {link.label}
+                    </Link>
+                  )
+                }
+              })}
+            </Box>
           )}
         </Box>
       </Container>
