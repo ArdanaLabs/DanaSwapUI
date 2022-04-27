@@ -55,7 +55,6 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     "fontFamily": "Museo Sans",
     "fontWeight": 700,
     "fontStyle": "normal",
-    "lineHeight": "100%",
     "margin": "auto 20px",
     "padding": "8px 0px",
     "color": "white",
@@ -150,7 +149,11 @@ const HeaderSection: React.FC = () => {
                     )
                   } else {
                     return (
-                      <Link key={link.label} href={link.url.href}>
+                      <Link
+                        key={link.label}
+                        href={link.url.href}
+                        className={cx(classes.menuItem)}
+                      >
                         {link.label}
                       </Link>
                     )

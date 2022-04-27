@@ -101,7 +101,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       marginBottom: "20px",
 
       [breakpoints.down("xs")]: {
-        width: "33%",
+        justifyContent: "space-around",
+        flex: "0 1 auto",
+        minWidth: "33%",
       },
     },
 
@@ -132,6 +134,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       fontSize: "20px",
       marginBottom: "10px",
     },
+  },
+
+  linkItem: {
+    margin: "0",
   },
 
   link: {
@@ -167,41 +173,47 @@ const Footer: React.FC = () => {
           <Box className={cx(classes.title)}>
             Ardana is the leading stablecoin and stableswap DEX on Cardano
           </Box>
-          <Box my={"30px"} className={cx(classes.logo)}>
+          <Box my={"30px"} className={cx(classes.logo)} aria-hidden="true">
             <GradientButton
-              width={!mobile ? 175 : 100}
-              height={!mobile ? 175 : 100}
+              width={mobile ? 100 : 175}
+              height={mobile ? 100 : 175}
               clickable={false}
             />
-            <img className={cx(classes.photo)} src={LOGO_BLUE} alt="logo" />
+            <img className={cx(classes.photo)} src={LOGO_BLUE} alt="" />
           </Box>
           <Box className={cx(classes.guide)}>
             {Object.entries(externals).map(([group, subgroup]) => (
-              <Box className="section" key={group}>
-                <span className={classes.label}>{group}</span>
+              <Box component="dl" className="section" key={group}>
+                <dt className={classes.label}>{group}</dt>
                 {Object.entries(subgroup).map(([name, url]) => {
-                  if (url === null || url.origin === baseOrigin) {
-                    return (
-                      <NavLink
-                        key={name}
-                        to={
-                          url === null ? "#" : url.href.replace(url.origin, "")
-                        }
-                        style={{
-                          pointerEvents: url === null ? "none" : "initial",
-                        }}
-                        className={classes.link}
-                      >
-                        {name}
-                      </NavLink>
-                    )
-                  } else {
-                    return (
-                      <Link key={name} href={url.href} className={classes.link}>
-                        {name}
-                      </Link>
-                    )
-                  }
+                  return (
+                    <dd className={classes.linkItem}>
+                      {url === null || url.origin === baseOrigin ? (
+                        <NavLink
+                          key={name}
+                          to={
+                            url === null
+                              ? "#"
+                              : url.href.replace(url.origin, "")
+                          }
+                          style={{
+                            pointerEvents: url === null ? "none" : "initial",
+                          }}
+                          className={classes.link}
+                        >
+                          {name}
+                        </NavLink>
+                      ) : (
+                        <Link
+                          key={name}
+                          href={url.href}
+                          className={classes.link}
+                        >
+                          {name}
+                        </Link>
+                      )}
+                    </dd>
+                  )
                 })}
               </Box>
             ))}
