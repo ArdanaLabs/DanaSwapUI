@@ -4,12 +4,11 @@ import {
   useMediaQuery,
   Container,
   Grid,
-  Typography,
-  Link,
+  Typography
 } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
-
+import { NavLink } from "react-router-dom"
 import { useIsDarkMode } from "state/user/hooks"
 import { CommunityBox, GradientBox } from "components"
 import { CommunityList } from "data"
@@ -56,13 +55,13 @@ const CommunitySection: React.FC = () => {
                 by a world-class team found all across the globe.
               </Typography>
               <Box mb="30px" />
-              <Link href="/community">
+              <NavLink to={"/community"}>
                 <GradientBox width={145} height={40}>
                   <Typography component="div" variant="button">
                     Learn More
                   </Typography>
                 </GradientBox>
-              </Link>
+              </NavLink>
             </Box>
           </Grid>
 
