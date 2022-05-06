@@ -1,0 +1,195 @@
+<div class="home-main-bg">
+    <div class="home-main-container">
+        <div class="Container-root Container-maxWidthLg">
+            <div class="Grid-container Grid-spacing-xs-3 Grid-align-items-xs-center">
+                <div class="Grid-item Grid-grid-xs-12 Grid-grid-sm-6">
+                    <h3 class="Typography-root title-color Typography-h3">
+                        Danaswap
+                    </h3>
+                    <div class="mt-20"></div>
+                    <h4 class="Typography-root home-main-content Typography-h4">
+                        An automated market maker (AMM) decentralized exchange
+                        for stable multi-asset pools. Danaswap is highly capital
+                        efficient enabling swaps with minimal slippage while
+                        providing low-risk yield opportunities for liquidity
+                        providers.
+                    </h4>
+                    <div class="home-btn-mt"></div>
+                    <% let main_btn = {width: 166, name: "COMING SOON"} %>
+                    <%- include('../../../components/button.ejs', {btn: main_btn}) %>
+                </div>
+                <div class="Grid-item Grid-grid-xs-12 Grid-grid-sm-6">
+                    <div class="rec carousel">
+                        <div class="common-display rec rec-carousel-main">
+                            <div class="rec rec-slider rec-slider-container">
+                                <div class="rec-slider-pos rec-slider-card rec">
+                                    <div class="rec rec-swipable">
+                                        <% let cards = [
+                                            {
+                                                index: 0,
+                                                img_src: "../../../../assets/logos/ultra-low-slippage.png",
+                                                title: "Ultra-low Slippage",
+                                                info: "Swap between stablecoins and stable assets such as wrapped/synthetic Bitcoin with minimal slippage."
+                                            }, {
+                                                index: 1,
+                                                img_src: "../../../../assets/logos/earn-trading-fees.png",
+                                                title: "Earn Trading Fees",
+                                                info: "Deposit your assets into a DanaSwap pool and earn a proportion of the market making fees."
+                                            }, {
+                                                index: 2,
+                                                img_src: "../../../../assets/logos/foreign-exchange.png",
+                                                title: "Foreign Exchange",
+                                                info: "Swap between international stablecoins such as dUSD, dEUR, dGBP and more."
+                                            }, {
+                                                index: 3,
+                                                img_src: "../../../../assets/logos/dana-token.png",
+                                                title: "DANA Token",
+                                                info: "The governance token rewarded to users for supporting the ecosystem through liquidity provision."
+                                            }, {
+                                                index: 4,
+                                                img_src: "../../../../assets/logos/governance.png",
+                                                title: "Governance",
+                                                info: "DANA token holders can participate in polling and voting to influence the development of Ardana."
+                                            }
+                                        ] %>
+                                        <% cards.forEach(function(card){ %>
+                                        <div id="dana_<%=card.index%>" class="rec rec-carousel-item rec-carousel-item-<%=card.index%>">
+                                            <div class="rec-carousel-item-pos rec dana-carousel-item">
+                                                <div class="home-main-carousel-item" onmouseover="onBorder('<%=card.index%>')" onmouseout="offBorder()">
+                                                    <div class="home-main-carousel-img">
+                                                        <%- include('../../../components/circle_btn.ejs', {btn: 127}) %>
+                                                        <img class="common-photo carousel-img-w" src="<%=card.img_src%>" alt="" />
+                                                    </div>
+                                                    <h5
+                                                        class="Typography-root home-main-carousel-title Typography-h5">
+                                                        <%=card.title%>
+                                                    </h5>
+                                                    <div class="mt-30"></div>
+                                                    <h4
+                                                        class="Typography-root home-main-carousel-content Typography-h4">
+                                                        <%=card.info%>
+                                                    </h4>
+                                                    <div class="home-main-carousel-border">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <% }); %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="home-main-carouselAction">
+                        <div class="my-30 prev-next-btn" onclick="dana_prev()">
+                            <%- include('../../../components/circle_btn.ejs', {btn: 81}) %>
+                            <img class="common-photo-25" src="../../../../assets/icons/carousel-prev.svg" alt="prev" />
+                        </div>
+                        <div class="my-30 prev-next-btn" onclick="dana_next()">
+                            <%- include('../../../components/circle_btn.ejs', {btn: 81}) %>
+                            <img class="common-photo-25" src="../../../../assets/icons/carousel-next.svg" alt="next" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="home-token-bg">
+        <div class="Container-root Container-maxWidthMd">
+            <h3 class="Typography-root home-token-title Typography-h3">
+                <span>DANA</span> Tokens
+            </h3>
+            <div class="mt-20"></div>
+            <h4 class="Typography-root home-token-content Typography-h4">
+                The DANA token is the utility and governance token of the
+                Ardana ecosystem which rewards holders with profits from
+                Ardana and allows those who hold it to vote on changes to the
+                project’s parameters.
+            </h4>
+            <div class="mt-20"></div>
+            <div class="flex"></div>
+        </div>
+    </div>
+    <%- include('../../../components/explore.ejs', {currentUrl: '/'}); %>
+    <div class="home-main-com">
+        <div class="Container-root Container-maxWidthLg">
+            <div class="Grid-container Grid-spacing-xs-3 Grid-justify-content-xs-center">
+                <div class="Grid-item Grid-grid-xs-12 Grid-grid-md-6">
+                    <div class="col-center">
+                        <img src="../../../../assets/logos/community.png" alt="community" />
+                        <div class="mb-30"></div>
+                        <h3 class="Typography-root title-color Typography-h3">
+                            Ardana Community
+                        </h3>
+                        <div class="mb-30"></div>
+                        <h4 class="Typography-root Typography-h4">
+                            Ardana is formed by people from various, different
+                            backgrounds. A whole community of developers, token
+                            holders and members. Led by a world-class team found all
+                            across the globe.
+                        </h4>
+                        <div class="mb-30"></div>
+                        <a class="Typography-root Link-underlineHover Typography-colorPrimary" href="/community">
+                            <% let combtn = {width: 151, name: "Learn More"} %>
+                            <%- include('../../../components/button.ejs', {btn: combtn}) %>
+                        </a>
+                    </div>
+                </div>
+                <div
+                    class="Grid-container Grid-spacing-xs-3 Grid-item Grid-grid-xs-12 Grid-grid-md-9">
+                    <% let info = false; %>
+                    <%- include('../../../components/community_cards.ejs', {info:info}) %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="py-50">
+        <div class="Container-root Container-maxWidthLg">
+            <div class="Grid-container Grid-spacing-xs-3 Grid-justify-content-xs-center">
+                <div class="Grid-item Grid-grid-xs-12 Grid-grid-md-5">
+                    <div class="col-center">
+                        <h3 class="Typography-root home-news-title Typography-h3">
+                            Ardana <span>News</span>
+                        </h3>
+                        <div class="mb-30"></div>
+                        <h4 class="Typography-root Typography-h4">
+                            For the latest news, make sure to follow Ardana’s social
+                            media accounts and keep checking back in to the Ardana
+                            platform.
+                        </h4>
+                        <div class="mb-30"></div>
+                        <a class="Typography-root Link-underlineHover Typography-colorPrimary" href="/news">
+                            <% let btn = {width: 151, name: "View More"} %>
+                            <%- include('../../../components/button.ejs', {btn: btn}) %>
+                        </a>
+                    </div>
+                </div>
+                <div class="Grid-container Grid-spacing-xs-3 Grid-item Grid-grid-xs-12">
+                    <% cards = [{
+                            img: "medium/ASPA_PARTNER_FOCUS_8.png",
+                            title: "ASPA Partner Focus #8&hairsp;—&hairsp;Announcing the Latest Stake Pool Operators Partnering with Ardana",
+                            date: "December 16, 2021",
+                            info: "Welcome to the eighth edition of our ASPA Partner Focus series. We have interviewed the latest new joiners and would like to share their mission and Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum",
+                            href: "https://medium.com/ardana-hub/aspa-partner-focus-8-announcing-the-latest-stake-pool-operators-partnering-with-ardana-1f4f8f3ca45a?source=collection_home---4------1-----------------------"
+                        }, {
+                            img: "medium/ASPA_PARTNER_FOCUS_7.png",
+                            title: "ASPA Partner Focus #7&hairsp;—&hairsp;Announcing the Latest Stake Pool Operators Partnering with Ardana",
+                            date: "December 9, 2021",
+                            info: "In the seventh edition of our ASPA Partner Focus series, we welcome the latest ASPA joiners to Ardana! ASPA applications are now closed! We sat down and Lorem Lorem Lorem",
+                            href: "https://medium.com/ardana-hub/aspa-partner-focus-7-announcing-the-latest-stake-pool-operators-partnering-with-ardana-23bff202860f?source=collection_home---4------2-----------------------"
+                        }, {
+                            img: "medium/ASPA_PARTNER_FOCUS_6.png",
+                            title: "ASPA Partner Focus #6&hairsp;—&hairsp;Announcing the Latest Stake Pool Operators Partnering with Ardana",
+                            date: "December 5, 2021",
+                            info: "Please join us in welcoming the latest ASPA joiners to Ardana! We sat down and interviewed each stake pool to find out their mission and goals, who they are as Lorem Lorem Lorem Lorem Lorem Lorem",
+                            href: "https://medium.com/ardana-hub/aspa-partner-focus-6-announcing-the-latest-stake-pool-operators-partnering-with-ardana-1f4f8f3ca45a?source=collection_home---4------3-----------------------"
+                        }
+                    ]
+                    cards.forEach(function(card) { %>
+                        <%- include('../../../components/news_card.ejs', {card: card}) %>
+                    <% }); %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

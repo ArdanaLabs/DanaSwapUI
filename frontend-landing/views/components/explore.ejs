@@ -1,0 +1,81 @@
+<% if (currentUrl == '/') { %>
+<div class="explore-home">
+<% } %>
+<% if (currentUrl != '/') { %>
+<div class="explore">
+<% } %>
+    <div class="Container-root Container-maxWidthLg">
+        <div class="Grid-container Grid-align-items-xs-flex-start">
+            <div class="Grid-item Grid-grid-xs-12 Grid-grid-sm-3 Grid-grid-md-4">
+                <h3 class="Typography-root title-color-lh Typography-h3">
+                    Explore
+                </h3>
+                <h4 class="Typography-root explore-content Typography-h4">
+                    Browse through our technical papers to learn more about
+                    the Ardana ecosystem.
+                </h4>
+            </div>
+            <div class="Grid-item Grid-grid-xs-12 Grid-grid-sm-9 Grid-grid-md-8">
+                <div class="rec rec-display">
+                    <div class="common-display rec rec-carousel-explore">
+                        <div class="rec rec-slider rec-slider-container">
+                            <div class="rec rec-slider-pos rec-slider-card rec-slider">
+                                <div class="rec rec-swipable">
+                                    <% let carouselItems = [{
+                                        index: 0,
+                                        img: "eUTXOModels.png",
+                                        title: "eUTXO Models",
+                                        href: "d2g9qajrb4w23eyq"
+                                    }, {
+                                        index: 1,
+                                        img: "DanaswapTechnicalPaper.png",
+                                        title: "Danaswap Technical Paper",
+                                        href: "v4w3muusi6im3ay2"
+                                    }
+                                    ] %>
+                                    <% carouselItems.forEach(function(item) { %>
+                                    <div id="ex_<%=item.index%>" class="rec rec-carousel-item rec-carousel-item-<%=item.index%>">
+                                        <div class="rec rec-carousel-item-pos explore-carousel-item">
+                                            <div class="explore-carousel-position explore-carousel-w">
+                                                <div
+                                                    class="explore-carousel-bg">
+                                                    <img src="../../assets/papers/<%=item.img%>" alt="background"
+                                                        width="100%" />
+                                                </div>
+                                                <div class="explore-carousel-content">
+                                                    <div class="explore-carousel-title">
+                                                        <%=item.title%>
+                                                    </div>
+                                                    <div class="mt-20"></div>
+                                                    <div class="explore-carousel-cta">
+                                                        <a class="Typography-root Link-underlineNone Typography-colorPrimary"
+                                                            target="_blank"
+                                                            href="https://docsend.com/view/<%=item.href%>">
+                                                            <% let exploreBtn = {width: 151, name: "LEARN MORE"} %>
+                                                            <%- include('../components/button.ejs', {btn: exploreBtn}) %>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <% }); %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="explore-carousel-action">
+                    <div class="prev-next-btn" onclick="explore_prev()">
+                        <%- include('../components/circle_btn.ejs', {btn: 81}) %>
+                        <img class="common-photo-25" src="../../assets/icons/carousel-prev.svg" alt="prev" />
+                    </div>
+                    <div class="prev-next-btn" onclick="explore_next()">
+                        <%- include('../components/circle_btn.ejs', {btn: 81}) %>
+                        <img class="common-photo-25" src="../../assets/icons/carousel-next.svg" alt="next" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

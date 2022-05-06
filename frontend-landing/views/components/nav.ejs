@@ -1,0 +1,64 @@
+<div class="nav">
+    <div class="Container-root Container-maxWidthLg">
+        <div class="nav-self">
+            <div class="nav-logo">
+                <img src="../../assets/logo_white.png"
+                    alt="logo" /><img
+                    src="../../assets/logo_text.png"
+                    alt="logo" />
+            </div>
+            <div class="nav-menu">
+                <% let menus = [
+                    {url: "/", name: "Home"}, {url: "/tech", name: "Technology"}, 
+                    {url: "https://docs.ardana.org/", name: "Documentation"}, {url: "/community", name: "Community"}, 
+                    {url: "/news", name: "News"}, {url: "/roadmap", name: "Roadmap"},
+                ] %>
+                <% menus.forEach(function(menu) { %>
+                    <a class="<% if (currentUrl == menu.url) { %>active <% } %>Typography-root Link-underlineNone nav-menuItem Typography-colorPrimary"
+                        href="<%=menu.url%>" rel="noopener noreferrer" target="_self">
+                        <%=menu.name%>
+                    </a>
+                <% }); %>
+            </div>
+            <button class="ButtonBase-root IconButton-root" data-bs-toggle="dropdown" tabindex="0" type="button"
+                onclick="dropMenu()" style="height: 48px; padding: 0px;"><span class="IconButton-label">
+                    <div class="hamburger-react" aria-expanded="false" role="button" tabindex="0"
+                        style="cursor: pointer; height: 48px; position: relative; transition: all 0.4s cubic-bezier(0, 0, 0, 1) 0s; user-select: none; width: 48px; outline: none; transform: none;">
+                        <div
+                            style="background: rgb(255, 255, 255); height: 2px; left: 12px; position: absolute; width: 24px; top: 15px; transition: all 0.4s cubic-bezier(0, 0, 0, 1) 0s; transform: none;">
+                        </div>
+                        <div
+                            style="background: rgb(255, 255, 255); height: 2px; left: 12px; position: absolute; width: 24px; top: 23px; transition: all 0.4s cubic-bezier(0, 0, 0, 1) 0s; transform: none;">
+                        </div>
+                        <div
+                            style="background: rgb(255, 255, 255); height: 2px; left: 12px; position: absolute; width: 24px; top: 31px; transition: all 0.4s cubic-bezier(0, 0, 0, 1) 0s; transform: none;">
+                        </div>
+                    </div>
+                </span><span class="TouchRipple-root"></span>
+            </button>
+        </div>
+    </div>
+</div>
+<div id="navMenu" class="drop-menu">
+    <div class="Drawer-root Drawer-modal nav-drawer dropdown-menu"
+        style="position: fixed; z-index: 1300; inset: 0px;">
+        <div class="Backdrop-root" aria-hidden="true"
+        style="opacity: 1; transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"></div>
+        <div tabindex="0" data-test="sentinelStart"></div>
+        <div class="Paper-root Drawer-paper Drawer-paperAnchorTop Paper-elevation16" tabindex="-1"
+        style="transform: none; transition: transform 225ms cubic-bezier(0, 0, 0.2, 1) 0ms;"><a
+            class="Typography-root Link-underlineNone nav-menuItem Typography-colorPrimary"
+            href="/" rel="noopener noreferrer" target="_self">Home</a><a
+            class="Typography-root Link-underlineNone nav-menuItem Typography-colorPrimary"
+            href="/tech" rel="noopener noreferrer" target="_self">Technology</a><a
+            class="Typography-root Link-underlineNone nav-menuItem Typography-colorPrimary"
+            href="https://docs.ardana.org/" rel="noopener noreferrer" target="_blank">Documentation</a><a
+            class="Typography-root Link-underlineNone nav-menuItem Typography-colorPrimary"
+            href="/community" rel="noopener noreferrer" target="_self">Community</a><a
+            class="Typography-root Link-underlineNone nav-menuItem Typography-colorPrimary"
+            href="/news" rel="noopener noreferrer" target="_self">News</a><a
+            class="Typography-root Link-underlineNone nav-menuItem Typography-colorPrimary"
+            href="/roadmap" rel="noopener noreferrer" target="_self">Roadmap</a></div>
+        <div tabindex="0" data-test="sentinelEnd"></div>
+    </div>
+</div>

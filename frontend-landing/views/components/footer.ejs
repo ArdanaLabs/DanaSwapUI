@@ -1,0 +1,96 @@
+<div class="footer">
+    <div class="Container-root Container-maxWidthMd">
+        <div class="col-center">
+            <div class="footer-title">
+                Ardana is the leading stablecoin and stableswap DEX on Cardano
+            </div>
+            <div class="my-30 footer-logo">
+                <%- include('../components/circle_btn.ejs', {btn: 181}) %>
+                <img class="common-photo"
+                    src="../../assets/logo_blue.png"
+                    alt="logo" />
+            </div>
+            <div class="footer-guide">
+                <div class="section">
+                    <span>Resources</span>
+                    <% let resources = [{
+                        target: "_self",
+                        href: "/tech",
+                        name: "Technology"
+                    }, {
+                        target: "_blank",
+                        href: "https://docs.ardana.org/",
+                        name: "Documentation"
+                    }, {
+                        target: "_blank",
+                        href: "https://docsend.com/view/ps9hsr88m834pj98",
+                        name: "Pitch Deck"
+                    }, {
+                        target: "_self",
+                        href: "/brandassets",
+                        name: "Brand Assets"
+                    }
+                    ] %>
+                    <% resources.forEach(function(item) { %>
+                    <span><a
+                        class="Typography-root Link-underlineHover Typography-colorPrimary"
+                        rel="noopener noreferrer" target="<%=item.target%>" href="<%=item.href%>"
+                        style="pointer-events: initial"><%=item.name%></a></span>
+                    <% }); %>
+                </div>
+                <div class="section">
+                    <span>Products</span>
+                    <% let products = [{
+                        target: "_blank",
+                        href: "#",
+                        name: "Dashboard"
+                    }, {
+                        target: "_blank",
+                        href: "#",
+                        name: "DEX"
+                    }, {
+                        target: "_blank",
+                        href: "#",
+                        name: "Stablecoin"
+                    }
+                    ] %>
+                    <% products.forEach(function(item) { %>
+                    <span><a
+                        class="Typography-root Link-underlineHover Typography-colorPrimary"
+                        rel="noopener noreferrer" target="<%=item.target%>" href="<%=item.href%>"
+                        style="pointer-events: initial"><%=item.name%></a></span>
+                    <% }); %>
+                </div>
+                <div class="section">
+                    <span>Company</span>
+                    <% let companies = [{
+                        target: "_self",
+                        href: "/team",
+                        name: "Team"
+                    }, {
+                        target: "_blank",
+                        href: "mailto:enquiries@ardana.org",
+                        name: "Contact Us"
+                    }, {
+                        target: "_blank",
+                        href: "mailto:careers@ardana.org",
+                        name: "Careers"
+                    }
+                    ] %>
+                    <% companies.forEach(function(item) { %>
+                    <span><a
+                        class="Typography-root Link-underlineHover Typography-colorPrimary"
+                        rel="noopener noreferrer" target="<%=item.target%>" href="<%=item.href%>"
+                        style="pointer-events: initial"><%=item.name%></a></span>
+                    <% }); %>
+                </div>
+                <div class="footer-socials">
+                    <span>Our Socials</span>
+                    <span>Follow us to hear about Ardana<br />news and events.</span>
+                    <div class="mt-25"></div>
+                    <%- include('../components/socialIcon_bar.ejs') %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

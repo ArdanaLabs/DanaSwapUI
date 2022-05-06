@@ -1,0 +1,51 @@
+<div class="home-partner-bg">
+    <div class="Container-root Container-maxWidthMd">
+        <h3 class="Typography-root home-partner-title Typography-h3">
+            Partners
+        </h3>
+        <div class="home-partner-logos">
+            <% let logos = [
+                {
+                    href: "https://platonic.systems/",
+                    img_src: "../../../../assets/logos/platonic-systems.svg",
+                    img_alt: "partner"
+                }, {
+                    href: "https://occam.fi/",
+                    img_src: "../../../../assets/logos/occamfi.svg",
+                    img_alt: "partner"
+                }, {
+                    href: "https://coti.io/",
+                    img_src: "../../../../assets/logos/coti.svg",
+                    img_alt: "partner"
+                }, {
+                    href: "https://elrond.com/",
+                    img_src: "../../../../assets/logos/elrond.svg",
+                    img_alt: "partner"
+                }, {
+                    href: "https://mlabs.city/",
+                    img_src: "../../../../assets/logos/mlabs.svg",
+                    img_alt: "partner"
+                }, {
+                    href: "https://www.liqwid.finance/",
+                    img_src: "../../../../assets/logos/liqwid.svg",
+                    img_alt: "partner"
+                }, {
+                    href: "https://near.org/",
+                    img_src: "../../../../assets/logos/near.svg",
+                    img_alt: "partner"
+                }, {
+                    href: "https://chaoslabs.xyz/",
+                    img_src: "../../../../assets/logos/chaoslabs.svg",
+                    img_alt: "partner"
+                }, {
+                    href: "https://indigoprotocol.io/",
+                    img_src: "../../../../assets/logos/indigo.png",
+                    img_alt: "partner"
+                }, 
+            ] %>
+            <% logos.forEach(function(logo){ %>
+                <%- include('../../../components/logo.ejs', {logo: logo}) %>
+            <% }); %>
+        </div>
+    </div>
+</div>

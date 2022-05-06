@@ -1,0 +1,39 @@
+<div class="team_card-alignStretch Grid-item Grid-grid-xs-6 Grid-grid-sm-4 Grid-grid-md-3">
+    <div class="team_card-bg">
+        <div class="team_card-img">
+            <div class="team_card-btn">
+                <%- include('./circle_btn.ejs', {btn: 151}) %>
+                <img class="team_card-photo" src="<%=card.avatar%>" alt="avatar">
+            </div>
+        </div>
+        <div class="team_card-name">
+            <%=card.name%>
+        </div>
+        <div class="team_card-role">
+            <%=card.role%>
+        </div>
+        <div class="team_card-info">
+            <%-card.info%>
+        </div>
+        <div class="team_card-socials">
+            <% if(card.socials.linkedin){ %>
+                <a class="Typography-root Link-underlineHover Typography-colorPrimary"
+                href="<%=card.socials.linkedin%>" target="_blank">
+                <img src="../../assets/icons/linkedin.svg" alt="linkedin"></a>
+            <% } %>
+            <% if(card.socials.twitter){ %>
+                <a class="Typography-root Link-underlineHover Typography-colorPrimary"
+                href="<%=card.socials.twitter%>" target="_blank">
+                <img src="../../assets/icons/twitter.svg" alt="twitter"></a>
+            <% } %>
+            <% if(card.socials.github){ %>
+                <a class="Typography-root Link-underlineHover Typography-colorPrimary"
+                href="<%=card.socials.github%>" target="_blank">
+                <img src="../../assets/icons/github.svg" alt="github"></a>
+            <% } %>
+        </div>
+        <div class="team_card-expandBtn">
+            <img src="../../assets/icons/expand.svg" alt="expand">
+        </div>
+    </div>
+</div>

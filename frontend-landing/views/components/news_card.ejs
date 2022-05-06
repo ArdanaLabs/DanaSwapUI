@@ -1,0 +1,34 @@
+<div class="Grid-item Grid-grid-xs-12 Grid-grid-sm-6 Grid-grid-md-4">
+    <div class="my-30">
+        <div class="news_card-img">
+            <img src="../../assets/news/<%=card.img%>" alt="news" width="100%" />
+        </div>
+        <div class="news_card-medium-label">
+            <% if (!card.summary) { %>
+                <h5 class="Typography-root Typography-h5" style="line-height: 100%">
+                    <small><%-card.title%></small>
+                </h5>
+                <div class="news_card-label-gap"></div>
+                <h4 class="Typography-root news_card-date Typography-h4">
+                    <small><%=card.date%></small>
+                </h4>
+            <% } %>
+            <% if (card.summary) { %>
+                <h4 class="Typography-root news_card-media-label Typography-h4"><%=card.title%></h4>
+                <div class="mb-15"></div>
+                <h5 class="Typography-root Typography-h5" style="line-height: 100%;"><small><%=card.summary%></small></h5>
+            <% } %>                        
+            <div class="news_card-content-gap"></div>
+            <h4 class="Typography-root news_card-content Typography-h4">
+                <small><%=card.info%></small>
+            </h4>
+            <div class="mb-20"></div>
+            <a class="Typography-root Link-underlineHover Typography-colorPrimary"
+                href="<%=card.href%>"
+                target="_blank">
+                <% let btn = {width: 146, name: "Read More"} %>
+                <%- include('../components/button.ejs', {btn: btn}) %>
+            </a>
+        </div>
+    </div>
+</div>

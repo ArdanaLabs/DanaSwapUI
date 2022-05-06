@@ -1,0 +1,29 @@
+<div class="Grid-item Grid-grid-xs-12 Grid-grid-md-4">
+    <% if (info) { %>
+    <div class="com-card-exInfo">
+    <% } %>
+    <% if (!info) { %>
+    <div class="com-card-noneInfo">
+    <% } %>
+        <div class="com-card-img">
+            <%- include('./circle_btn.ejs', {btn: 156}) %>
+            <div class="common-children">
+                <img class="community-card-img" src="<%=card.img_src%>"
+                    alt="" width="auto" />
+            </div>
+        </div>
+        <h5 class="Typography-root Typography-h5">
+            <%=card.title%>
+        </h5>
+        <div class="mb-20"></div>
+        <% if (card.info) { %>
+        <h4 class="Typography-root Typography-h4"><%=card.info%></h4>
+        <div class="com-card-info"></div>
+        <% } %>
+        <div class="mb-30"></div>
+        <a class="Typography-root Link-underlineHover com-card-cta Typography-colorPrimary"
+            href="<%=card.href%>" target="_blank">
+            <%- include('./button.ejs', {btn: card.btn}) %>
+        </a>
+    </div>
+</div>
