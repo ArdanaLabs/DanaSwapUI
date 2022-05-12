@@ -1,4 +1,4 @@
-import React, { useRef } from "react"
+import React, { useRef, useEffect } from "react"
 import { Box } from "@material-ui/core"
 
 import { HeroSection, MapSection } from "./sections"
@@ -13,6 +13,9 @@ const RoadMap: React.FC = () => {
       carouselRef.current.slidePrev()
     }
   }
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   return (
     <Box>
