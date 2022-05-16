@@ -11,9 +11,13 @@
       flake = false;
     };
     hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
+    lighthouse-src = {
+      url = "github:GoogleChrome/lighthouse/v9.5.0";
+      flake = false;
+    };
   };
 
-  outputs = { self, nixpkgs, flake-compat, flake-compat-ci, dream2nix, hercules-ci-effects }@inputs:
+  outputs = { self, nixpkgs, flake-compat, flake-compat-ci, dream2nix, hercules-ci-effects, lighthouse-src }@inputs:
     let
 
       # Generate a user-friendly version number.
@@ -31,7 +35,7 @@
       dream2nix = inputs.dream2nix.lib2.init {
         systems = supportedSystems;
         config = {
-          overridesDirs = [ "${inputs.dream2nix}/overrides" ];
+          overridesDirs = [ "${inputs.dream2nix}/overrides" ./dream2nix-overrides ];
           projectRoot = ./.;
         };
       };
@@ -164,6 +168,9 @@
         frontend-vault = (dream2nix.makeFlakeOutputs {
           source = ./frontend-vault;
         }).packages.${system}.ardana-vault;
+        lighthouse = (dream2nix.makeFlakeOutputs {
+          source = lighthouse-src;
+        }).packages.${system}.lighthouse;
       });
 
       devShell = forAllSystems (system:
