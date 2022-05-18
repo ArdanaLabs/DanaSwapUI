@@ -1,0 +1,143 @@
+.roadmap-roadmap {
+    position: relative;
+}
+
+.roadmap-roadmap-display {
+    width: 100%; 
+    height: 600px;
+}
+
+.roadmap-roadmap-container {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: absolute;
+    background: linear-gradient(180deg, rgba(4, 13, 77, 0.7) -43.4%, rgba(50, 3, 111, 0.7) 222.51%);
+    align-items: center;
+    justify-content: center;
+}
+
+.roadmap-roadmap-title {
+    color: #73D6F1;
+    line-height: 100%;
+}
+
+.roadmap-roadmap-content {
+    width: 100%;
+    margin-top: 30px;
+    line-height: 25px;
+}
+
+.roadmap-roadmap-actionBar {
+    left: 50%;
+    bottom: 20px;
+    display: flex;
+    position: absolute;
+    transform: translate(-50%, 0%);
+}
+
+.roadmap-roadmap-photo {
+    top: 50%;
+    left: 50%;
+    width: 25px;
+    display: inline-flex;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    border-radius: 50%;
+    justify-content: center;
+}
+
+.roadmap-todolist {
+    min-height: 100vh;
+}
+
+.roadmap-todolist .rec {
+    pointer-events: none;
+}
+
+.roadmap-todolist-carousel {
+    width: 100%;
+    padding: 20px;
+}
+
+.MuiBox-root-59 {
+    display: flex;
+    flex-direction: column;
+}
+
+.roadmap-todolist-carousel .title {
+    padding: 20px 0px 20px 0px;
+    position: relative;
+}
+
+.MuiBox-root-65 {
+    display: inline-block;
+    position: relative;
+    line-height: 0;
+}
+
+.roadmap-todolist-carousel .title span {
+    color: #ffffff;
+    font-size: 20px;
+    font-family: Brandon Grotesque;
+    font-weight: 700;
+    line-height: 100%;
+}
+
+.roadmap-todolist-carousel .plan {
+    color: #ffffff;
+    width: 100%;
+    margin: 15px 0px;
+    padding: 10px;
+    font-size: 15px;
+    background: #1D277A;
+    text-align: center;
+    font-family: Brandon Grotesque;
+    font-weight: 700;
+    line-height: 100%;
+    border-radius: 10px;
+}
+
+@media (max-width: 599px) {
+    .roadmap-todolist-carousel .title span {
+        color: #ffffff;
+        font-size: 14px;
+        font-family: Brandon Grotesque;
+        font-weight: 700;
+        line-height: 100%;
+    }
+
+    .roadmap-roadmap-content {
+        padding: 0px 10px;
+        margin-top: 15px;
+        line-height: 18.4px;
+    }
+
+    .roadmap-roadmap-container {
+        text-align: center;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        position: absolute;
+        background: linear-gradient(180deg, rgba(4, 13, 77, 0.7) -43.4%, rgba(50, 3, 111, 0.7) 222.51%);
+        align-items: center;
+        justify-content: center;
+    }
+
+    .roadmap-roadmap-photo {
+        top: 50%;
+        left: 50%;
+        width: 18px;
+        display: inline-flex;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        align-items: center;
+        border-radius: 50%;
+        justify-content: center;
+    }
+}

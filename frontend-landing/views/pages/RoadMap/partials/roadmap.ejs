@@ -1,0 +1,30 @@
+<div class="roadmap-roadmap">
+    <div class="roadmap-roadmap-display"><video
+            src="https://background.sfo3.digitaloceanspaces.com/team/output.webm" preload="auto" autoplay="" loop=""
+            style="width: 100%; height: 100%;"></video></div>
+    <div class="roadmap-roadmap-container">
+        <div class="Container-root Container-maxWidthLg">
+            <div class="Grid-container Grid-spacing-xs-2 Grid-align-items-xs-center Grid-reverse">
+                <div class="Grid-item Grid-grid-xs-12 Grid-grid-md-7">
+                    <h3 class="Typography-root roadmap-roadmap-title Typography-h3">Roadmap</h3>
+                    <h4 class="Typography-root roadmap-roadmap-content Typography-h4">Ardana is building the first
+                        All-in-One Stablecoin Ecosystem Built on Cardano. Learn more about our roadmap below.</h4>
+                </div>
+                <div class="Grid-item Grid-grid-xs-12 Grid-grid-md-5">
+                    <div class="flex"><img src="../../../../assets/logos/roadmap.png" alt="roadmap"
+                            width="80%"></div>
+                </div>
+            </div>
+        </div>
+        <div class="roadmap-roadmap-actionBar">
+            <div class="prev-next-btn" onclick="roadmap_prev()">
+                <%- include('../../../components/circle_btn.ejs', {btn: 81}); %>
+                <img class="roadmap-roadmap-photo" src="../../../../assets/icons/carousel-prev.svg" alt="prev">
+            </div>
+            <div class="prev-next-btn" onclick="roadmap_next()">
+                <%- include('../../../components/circle_btn.ejs', {btn: 81}); %>
+                <img class="roadmap-roadmap-photo" src="../../../../assets/icons/carousel-next.svg" alt="next">
+            </div>
+        </div>
+    </div>
+</div>

@@ -14,36 +14,30 @@ app.get("/", function (req, res) {
 });
 
 app.get("/tech", function (req, res) {
-  // res.render("pages/technology/index", {currentUrl : req.url});
-  res.render("pages/home/index", {currentUrl : req.url});
+  res.render("pages/technology/index", {currentUrl : req.url});
 });
 
 app.get("/community", function (req, res) {
-  // res.render("pages/community/index", {currentUrl : req.url});
-  res.render("pages/home/index", {currentUrl : req.url});
+  res.render("pages/community/index", {currentUrl : req.url});
 });
 
 app.get("/news", function (req, res) {
-  // res.render("pages/news/index", {currentUrl : req.url});
-  res.render("pages/home/index", {currentUrl : req.url});
+  res.render("pages/news/index", {currentUrl : req.url});
 });
 
 app.get("/roadmap", function (req, res) {
-  // res.render("pages/roadmap/index", {currentUrl : req.url});
-  res.render("pages/home/index", {currentUrl : req.url});
+  res.render("pages/roadmap/index", {currentUrl : req.url});
 });
 
 app.get("/brandassets", function (req, res) {
-  // res.render("pages/brandassets/index", {currentUrl : req.url});
-  res.render("pages/home/index", {currentUrl : req.url});
+  res.render("pages/brandassets/index", {currentUrl : req.url});
 });
 
 app.get("/team", function (req, res) {
-  // res.render("pages/team/index", {currentUrl : req.url});
-  res.render("pages/home/index", {currentUrl : req.url});
+  res.render("pages/team/index", {currentUrl : req.url});
 });
 
 // about page
 
-app.listen(4000);
-console.log("Server is listening on port 4000");
+app.listen(5000);
+console.log("Server is listening on port 5000");

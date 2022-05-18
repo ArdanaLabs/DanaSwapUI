@@ -1,5 +1,5 @@
 <div class="team_card-alignStretch Grid-item Grid-grid-xs-6 Grid-grid-sm-4 Grid-grid-md-3">
-    <div class="team_card-bg">
+    <div id="team_card-bg-<%=card.index%>" class="team_card-bg">
         <div class="team_card-img">
             <div class="team_card-btn">
                 <%- include('./circle_btn.ejs', {btn: 151}) %>
@@ -12,10 +12,10 @@
         <div class="team_card-role">
             <%=card.role%>
         </div>
-        <div class="team_card-info">
+        <div id="team_card-info-<%=card.index%>" class="team_card-info">
             <%-card.info%>
         </div>
-        <div class="team_card-socials">
+        <div id="team_card-socials-<%=card.index%>" class="team_card-socials">
             <% if(card.socials.linkedin){ %>
                 <a class="Typography-root Link-underlineHover Typography-colorPrimary"
                 href="<%=card.socials.linkedin%>" target="_blank">
@@ -32,8 +32,11 @@
                 <img src="../../assets/icons/github.svg" alt="github"></a>
             <% } %>
         </div>
-        <div class="team_card-expandBtn">
+        <div id="expansion-<%=card.index%>" class="team_card-expansionBtn" onclick="expand('<%=card.index%>')">
             <img src="../../assets/icons/expand.svg" alt="expand">
+        </div>
+        <div id="collapse-<%=card.index%>" class="team_card-collapseBtn hide" onclick="collap('<%=card.index%>')">
+            <img src="../../assets/icons/collapse.svg" alt="collapse">
         </div>
     </div>
 </div>

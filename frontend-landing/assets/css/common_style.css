@@ -115,6 +115,10 @@
     visibility: hidden;
 }
 
+.hide {
+    display: none !important;
+}
+
 .prev-next-btn {
     margin: 20px 10px;
     position: relative;
@@ -1103,6 +1107,10 @@ body::backdrop {
     }
 }
 
+.no-js:root .nav-menu {
+    display: block !important;
+}
+
 .IconButton-root {
     flex: 0 0 auto;
     color: #fff;
@@ -1144,6 +1152,10 @@ body::backdrop {
     .IconButton-root {
         display: none;
     }
+}
+
+.no-js:root .IconButton-root {
+    display: none;
 }
 
 .IconButton-label {
@@ -1299,7 +1311,7 @@ body::backdrop {
     left: 30px;
     bottom: 30px;
     position: absolute;
-    text-align: left;
+    text-align-last: left;
 }
 
 .news_card-label-gap {

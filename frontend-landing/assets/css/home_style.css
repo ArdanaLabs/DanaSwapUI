@@ -577,6 +577,11 @@
     position: relative;
 }
 
+.home-roadmap-video {
+    width: 100%;
+    height: 600px;
+}
+
 .home-roadmap video {
     object-fit: cover;
 }
