@@ -4,12 +4,11 @@ import {
   useMediaQuery,
   Container,
   Grid,
-  Typography,
-  Link,
+  Typography
 } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
-
+import { NavLink } from "react-router-dom"
 import { useIsDarkMode } from "state/user/hooks"
 import { GradientBox, NewsBox } from "components"
 import { NewsOnMediumList } from "data"
@@ -56,13 +55,13 @@ const CommunitySection: React.FC = () => {
                 accounts and keep checking back in to the Ardana platform.
               </Typography>
               <Box mb="30px" />
-              <Link href="/news">
+              <NavLink to={"/news"}>
                 <GradientBox width={145} height={40}>
                   <Typography component="div" variant="button">
                     View More
                   </Typography>
                 </GradientBox>
-              </Link>
+              </NavLink>
             </Box>
           </Grid>
 

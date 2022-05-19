@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Box, makeStyles, useMediaQuery, useTheme } from "@material-ui/core"
 
 import { HeroSection, TelegramSection } from "./sections"
@@ -34,7 +34,9 @@ const Community: React.FC = () => {
   const dark = useIsDarkMode()
   const mobile = useMediaQuery(breakpoints.down("xs"))
   const classes = useStyles({ dark, mobile })
-
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <Box className={classes.root}>
       <HeroSection />

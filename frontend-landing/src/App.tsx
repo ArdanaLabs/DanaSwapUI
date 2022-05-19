@@ -1,5 +1,10 @@
 import React, { Suspense } from "react"
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom"
+import {
+  HashRouter as BrowserRouter,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom"
 import { Provider as StateProvider } from "react-redux"
 import {
   ThemeProvider as MuiThemeProvider,
@@ -34,7 +39,7 @@ const ThemeProvider: React.FC = ({ children }) => {
 
 const Providers: React.FC = ({ children }) => {
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <BrowserRouter basename="/">
       <Suspense fallback={null}>
         <StateProvider store={store}>
           <ThemeProvider>
@@ -69,7 +74,7 @@ const App: React.FC = () => {
           </Layout>
         </Route>
 
-        <Route strict path="/tech">
+        <Route path="/tech">
           <Layout>
             <TechPage />
           </Layout>

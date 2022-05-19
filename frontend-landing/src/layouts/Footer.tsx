@@ -1,8 +1,8 @@
 import React from "react"
-import { Box, useMediaQuery, Link, Container } from "@material-ui/core"
+import { NavLink } from "react-router-dom"
+import { Box, useMediaQuery, Container, Link } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
-import _ from "lodash"
 
 import { useIsDarkMode } from "state/user/hooks"
 
@@ -14,40 +14,12 @@ import { GradientButton, SocialBar } from "components"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
-    "background": `url(${BG_WAVE}) top left no-repeat`,
-    "backgroundSize": "100%",
-    "padding": "150px 0px 60px",
-    "display": "flex",
-    "justifyContent": "space-between",
-    "alignItems": "flex-start",
-
-    "& span": {
-      "&:first-child": {
-        fontFamily: "Brandon Grotesque",
-        fontSize: "20px",
-        lineHeight: "36px",
-        color: palette.secondary.main,
-        marginBottom: "12px",
-        fontWeight: 900,
-
-        [breakpoints.down("xs")]: {
-          fontSize: "20px",
-          marginBottom: "10px",
-        },
-      },
-      "& > a": {
-        color: palette.common.white,
-      },
-      "fontFamily": "Museo Sans",
-      "fontSize": "16px",
-      "lineHeight": "24px",
-      "cursor": "pointer",
-
-      [breakpoints.down("xs")]: {
-        fontSize: "16px",
-        lineHeight: "20px",
-      },
-    },
+    background: `url(${BG_WAVE}) top left no-repeat`,
+    backgroundSize: "100%",
+    padding: "150px 0px 60px",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
 
     [breakpoints.down("xs")]: {
       flexDirection: "column",
@@ -129,7 +101,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       marginBottom: "20px",
 
       [breakpoints.down("xs")]: {
-        width: "33%",
+        justifyContent: "space-around",
+        flex: "0 1 auto",
+        minWidth: "33%",
       },
     },
 
@@ -147,6 +121,42 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       width: "100%",
     },
   },
+
+  label: {
+    fontFamily: "Brandon Grotesque",
+    fontSize: "20px",
+    lineHeight: "36px",
+    color: palette.secondary.main,
+    marginBottom: "12px",
+    fontWeight: 900,
+
+    [breakpoints.down("xs")]: {
+      fontSize: "20px",
+      marginBottom: "10px",
+    },
+  },
+
+  linkItem: {
+    margin: "0",
+  },
+
+  link: {
+    textDecoration: "none",
+    color: palette.common.white,
+    fontFamily: "Museo Sans",
+    fontSize: "16px",
+    lineHeight: "24px",
+
+    [`&:hover`]: {
+      textDecoration: "none",
+    },
+  },
+
+  followus: {
+    fontFamily: "Museo Sans",
+    fontSize: "16px",
+    lineHeight: "24px",
+  },
 }))
 
 const Footer: React.FC = () => {
@@ -154,6 +164,7 @@ const Footer: React.FC = () => {
   const dark = useIsDarkMode()
   const mobile = useMediaQuery(breakpoints.down("xs"))
   const classes = useStyles({ dark, mobile })
+  const baseOrigin = new URL(document.baseURI).origin
 
   return (
     <Box className={cx(classes.root)}>
@@ -162,46 +173,53 @@ const Footer: React.FC = () => {
           <Box className={cx(classes.title)}>
             Ardana is the leading stablecoin and stableswap DEX on Cardano
           </Box>
-          <Box my={"30px"} className={cx(classes.logo)}>
+          <Box my={"30px"} className={cx(classes.logo)} aria-hidden="true">
             <GradientButton
-              width={!mobile ? 175 : 100}
-              height={!mobile ? 175 : 100}
+              width={mobile ? 100 : 175}
+              height={mobile ? 100 : 175}
               clickable={false}
             />
-            <img className={cx(classes.photo)} src={LOGO_BLUE} alt="logo" />
+            <img className={cx(classes.photo)} src={LOGO_BLUE} alt="" />
           </Box>
           <Box className={cx(classes.guide)}>
-            {_.keys(externals).map((group) => (
-              <Box className="section" key={group}>
-                <span>{group}</span>
-                {_.keys(externals[group]).map((external) => (
-                  <span key={external}>
-                    <Link
-                      rel="noopener noreferrer"
-                      target={
-                        externals[group][external].charAt(0) === "/"
-                          ? "_self"
-                          : "_blank"
-                      }
-                      href={externals[group][external]}
-                      underline={
-                        externals[group][external] === "#" ? "none" : "hover"
-                      }
-                      style={
-                        externals[group][external] === "#"
-                          ? { pointerEvents: "none" }
-                          : { pointerEvents: "initial" }
-                      }
-                    >
-                      {external}
-                    </Link>
-                  </span>
-                ))}
+            {Object.entries(externals).map(([group, subgroup]) => (
+              <Box component="dl" className="section" key={group}>
+                <dt className={classes.label}>{group}</dt>
+                {Object.entries(subgroup).map(([name, url]) => {
+                  return (
+                    <dd className={classes.linkItem}>
+                      {url === null || url.origin === baseOrigin ? (
+                        <NavLink
+                          key={name}
+                          to={
+                            url === null
+                              ? "#"
+                              : url.href.replace(url.origin, "")
+                          }
+                          style={{
+                            pointerEvents: url === null ? "none" : "initial",
+                          }}
+                          className={classes.link}
+                        >
+                          {name}
+                        </NavLink>
+                      ) : (
+                        <Link
+                          key={name}
+                          href={url.href}
+                          className={classes.link}
+                        >
+                          {name}
+                        </Link>
+                      )}
+                    </dd>
+                  )
+                })}
               </Box>
             ))}
             <Box className={cx(classes.socials)}>
-              <span>Our Socials</span>
-              <span>
+              <span className={classes.label}>Our Socials</span>
+              <span className={classes.followus}>
                 Follow us to hear about Ardana
                 <br />
                 news and events.

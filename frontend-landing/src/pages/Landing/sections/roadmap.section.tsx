@@ -4,13 +4,12 @@ import {
   useMediaQuery,
   Container,
   Grid,
-  Link,
   Typography,
 } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
 import ReactPlayer from "react-player"
-
+import { NavLink } from "react-router-dom"
 import { useIsDarkMode } from "state/user/hooks"
 import { GradientButton } from "components/Button"
 
@@ -108,13 +107,13 @@ const RoadMapSection: React.FC = () => {
                 Built on Cardano. Learn more about our roadmap below.
               </Typography>
               <Box mt={!mobile ? "50px" : "30px"} />
-              <Link href={"/roadmap"}>
+              <NavLink to={"/roadmap"}>
                 <GradientButton
                   label={"VIEW ROADMAP"}
                   width={160}
                   height={40}
                 />
-              </Link>
+              </NavLink>
             </Grid>
           </Grid>
         </Container>

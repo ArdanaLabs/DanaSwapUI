@@ -1,22 +1,22 @@
 import React, { useState } from "react"
+import { NavLink } from "react-router-dom"
 import {
   useMediaQuery,
   Box,
-  Link,
+  Container,
   Drawer,
   IconButton,
-  Container,
+  Link,
 } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
 import Hamburger from "hamburger-react"
 
 import { useIsDarkMode } from "state/user/hooks"
-import { Menus } from "data"
+import { Menus, NavInfoType } from "data"
 
 import LOGO_White from "assets/logo_white.png"
 import LOGO_Text from "assets/logo_text.png"
-import { useHistory } from "react-router"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   root: {
@@ -55,7 +55,6 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     "fontFamily": "Museo Sans",
     "fontWeight": 700,
     "fontStyle": "normal",
-    "lineHeight": "100%",
     "margin": "auto 20px",
     "padding": "8px 0px",
     "color": "white",
@@ -64,12 +63,14 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     "textAlign": "center",
     "textTransform": "uppercase",
     "transition": "all .2s",
+    "cursor": "pointer",
+    "textDecoration": "none",
 
     "&:hover": {
       color: "#73D6F1",
     },
 
-    "&.active": {
+    "&.isActive": {
       "color": palette.secondary.main,
       "&::before": {
         content: "' '",
@@ -94,7 +95,7 @@ const HeaderSection: React.FC = () => {
   const dark = useIsDarkMode()
   const mobile = useMediaQuery(breakpoints.down("xs"))
   const classes = useStyles({ dark, mobile })
-  const history = useHistory()
+  const baseURL: URL = new URL(document.baseURI)
 
   const [openMenu, setOpenMenu] = useState<boolean>(false)
 
@@ -102,43 +103,19 @@ const HeaderSection: React.FC = () => {
     setOpenMenu((prev: boolean) => !prev)
   }
 
-  const activeMenu = (to: string): boolean => {
-    const path = "/" + window.location.pathname.split("/").pop()
-    if (to === path) {
-      return true
-    }
-    return false
+  const activeMenu = (url: URL): boolean => {
+    return baseURL.origin === url.origin && baseURL.hash.endsWith(url.pathname)
   }
 
   return (
     <Box className={cx(classes.root)}>
       <Container>
         <Box className={cx(classes.self)}>
-          <Box className={cx(classes.logo)} onClick={() => history.push("/")}>
+          <NavLink className={cx(classes.logo)} to={"/"}>
             <img src={LOGO_White} alt="logo" />
             <img src={LOGO_Text} alt="logo" />
-          </Box>
-          {!mobile && (
-            <Box>
-              {Menus.map((link, index) => {
-                return (
-                  <Link
-                    href={link.to}
-                    className={cx(classes.menuItem, {
-                      active: activeMenu(link.to),
-                    })}
-                    key={index}
-                    underline="none"
-                    rel="noopener noreferrer"
-                    target={link.blank ? "_blank" : "_self"}
-                  >
-                    {link.label}
-                  </Link>
-                )
-              })}
-            </Box>
-          )}
-          {mobile && (
+          </NavLink>
+          {mobile ? (
             <>
               <IconButton
                 style={{ height: "48px", padding: 0 }}
@@ -158,20 +135,63 @@ const HeaderSection: React.FC = () => {
                 open={openMenu}
                 onClose={toggleMenu}
               >
-                {Menus.map((link, index) => (
-                  <Link
-                    key={index}
-                    className={cx(classes.menuItem)}
-                    href={link.to}
-                    underline="none"
-                    rel="noopener noreferrer"
-                    target={link.blank ? "_blank" : "_self"}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
+                {Menus.map((link: NavInfoType) => {
+                  // isInternal link
+                  if (link.url.origin === baseURL.origin) {
+                    return (
+                      <NavLink
+                        key={link.label}
+                        className={cx(classes.menuItem)}
+                        to={link.url.href.replace(link.url.origin, "")}
+                      >
+                        {link.label}
+                      </NavLink>
+                    )
+                  } else {
+                    return (
+                      <Link
+                        key={link.label}
+                        href={link.url.href}
+                        className={cx(classes.menuItem)}
+                      >
+                        {link.label}
+                      </Link>
+                    )
+                  }
+                })}
               </Drawer>
             </>
+          ) : (
+            <Box>
+              {Menus.map((link: NavInfoType) => {
+                // isInternal link
+                if (link.url.origin === baseURL.origin) {
+                  return (
+                    <NavLink
+                      key={link.label}
+                      className={cx(classes.menuItem, {
+                        isActive: activeMenu(link.url),
+                      })}
+                      to={link.url.href.replace(link.url.origin, "")}
+                    >
+                      {link.label}
+                    </NavLink>
+                  )
+                } else {
+                  return (
+                    <Link
+                      key={link.label}
+                      className={cx(classes.menuItem, {
+                        isActive: activeMenu(link.url),
+                      })}
+                      href={link.url.href}
+                    >
+                      {link.label}
+                    </Link>
+                  )
+                }
+              })}
+            </Box>
           )}
         </Box>
       </Container>
