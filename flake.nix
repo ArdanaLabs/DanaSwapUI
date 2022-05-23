@@ -99,7 +99,7 @@
          # version.
          staging = nixpkgs.lib.recurseIntoAttrs {
            frontend-landing = mkWebsite {
-             branchRoot = "${self.packages.${system}.frontend-landing}/lib/node_modules/orbis-protocol/build";
+             branchRoot = "${self.packages.${system}.frontend-landing}/lib/node_modules/ardana-landing/build";
              triggerBranch = "staging";
              pushToBranch = "staging-frontend-landing";
              preGitInit = ''
@@ -128,7 +128,7 @@
          };
          production = nixpkgs.lib.recurseIntoAttrs {
            frontend-landing = mkWebsite {
-             branchRoot = "${self.packages.${system}.frontend-landing}/lib/node_modules/orbis-protocol/build";
+             branchRoot = "${self.packages.${system}.frontend-landing}/lib/node_modules/ardana-landing/build";
              triggerBranch = "main";
              pushToBranch = "production-frontend-landing";
              preGitInit = ''
@@ -160,7 +160,7 @@
         }).packages.${system}.ardana-application;
         frontend-landing = (dream2nix.makeFlakeOutputs {
           source = ./frontend-landing;
-        }).packages.${system}.orbis-protocol;
+        }).packages.${system}.ardana-landing;
         frontend-vault = (dream2nix.makeFlakeOutputs {
           source = ./frontend-vault;
         }).packages.${system}.ardana-vault;
