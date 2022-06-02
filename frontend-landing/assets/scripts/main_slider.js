@@ -28,6 +28,9 @@ var current_width = window.innerWidth
     } else if (dana_cards.length != 0) {
       card_items[nextItemIndex].classList.add("rec-carousel-item-next")
     }
+    if (current_width < 600 && dana_cards.length == 0 && card_index == 1) {
+      card_items[nextItemIndex].classList.add("rec-carousel-item-next")
+    }
   })
 })()
 
@@ -59,12 +62,14 @@ window.addEventListener("resize", () => {
             card_items[i + 1].classList.add("rec-carousel-item-next")
           }
           break
-        } else if (i == card_items.length - 1 && card_items.length > 2) {
+        } else if (i == card_items.length - 1) {
           card_items[i - 1].classList.remove(
             "rec-carousel-item-prev",
             "rec-carousel-item-hidden"
           )
-          card_items[i - 2].classList.add("rec-carousel-item-prev")
+          if (i > 1) {
+            card_items[i - 2].classList.add("rec-carousel-item-prev")
+          }
         }
       }
     }
