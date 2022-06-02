@@ -59,7 +59,7 @@ window.addEventListener("resize", () => {
             card_items[i + 1].classList.add("rec-carousel-item-next")
           }
           break
-        } else if (i == card_items.length - 1) {
+        } else if (i == card_items.length - 1 && card_items.length > 2) {
           card_items[i - 1].classList.remove(
             "rec-carousel-item-prev",
             "rec-carousel-item-hidden"
