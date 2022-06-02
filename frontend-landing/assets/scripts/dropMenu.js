@@ -1,8 +1,11 @@
+const dropBtn = document.getElementById("dropBtn")
+dropBtn.addEventListener("click", dropMenu)
+
 function dropMenu() {
-    var drower = document.getElementById("navMenu");
-    if (drower.className === "drop-menu") {
-        drower.className += " responsive";
-    } else {
-        drower.className = "drop-menu";
-    }
+  var drawer = document.getElementById("navMenu")
+  if (drawer.className === "drop-menu") {
+    drawer.className += " responsive"
+  } else {
+    drawer.className = "drop-menu"
+  }
 }

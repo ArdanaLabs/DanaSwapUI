@@ -1112,6 +1112,7 @@ body::backdrop {
 }
 
 .IconButton-root {
+    height: 48px;
     flex: 0 0 auto;
     color: #fff;
     padding: 12px;

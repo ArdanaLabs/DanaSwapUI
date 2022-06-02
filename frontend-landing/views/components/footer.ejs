@@ -8,7 +8,7 @@
                 <%- include('../components/circle_btn.ejs', {btn: 181}) %>
                 <img class="common-photo"
                     src="../../assets/logo_blue.png"
-                    alt="logo" />
+                    alt="" />
             </div>
             <div class="footer-guide">
                 <div class="section">
@@ -34,7 +34,7 @@
                     <% resources.forEach(function(item) { %>
                     <span><a
                         class="Typography-root Link-underlineHover Typography-colorPrimary"
-                        rel="noopener noreferrer" target="<%=item.target%>" href="<%=item.href%>"
+                        rel="noopener noreferrer" href="<%=item.href%>"
                         style="pointer-events: initial"><%=item.name%></a></span>
                     <% }); %>
                 </div>
