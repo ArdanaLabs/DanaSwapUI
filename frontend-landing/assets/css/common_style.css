@@ -1,3 +1,68 @@
+/* DELETE ME AFTER REVIEW */
+:is(div, p, span):empty {
+    /* empty elements are a smell */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    visibility: visible;
+    background: orange !important;;
+    min-height: 2em;
+    min-width: 6em;
+    color: navy;
+    border: 4px solid lime !important;
+}
+:is(div, p, span):empty::before {
+    content: "👀 Needed?";
+    display: block;
+}
+body :is(script, style) {
+    display: block !important;
+    background: pink !important;
+    color: black !important;
+    min-height: 2em;
+    border: 4px solid lime !important;
+}
+body :is(script, style)::before {
+    content: "I should not be in the body";
+}
+body [style] {
+    /* inline styles will fail CSP */
+    background: yellow;
+    color: black;
+    border: 4px solid lime !important;
+}
+body [style]::before {
+    content: "✂️";
+}
+a[rel="noopener noreferrer"][href^="/"] {
+    /* these don’t need this rel attribute */
+    background: magenta !important;
+    color: black !important;
+    border: 4px solid lime !important;
+}
+img:not([alt]) {
+    /* images need alt tags... even if an empty alt */
+    outline: 10px solid azure !important;
+}
+.brandLogo-flex img:is([alt=""], [alt="partner"], [alt="investor"]),
+[alt="title"] {
+    /* use real names for SEO */
+    outline: solid deeppink !important;
+    background: yellow !important;
+}
+:is(.brandLogo-flex, .home-listingItem, .socialIconBar) a[target="_blank"] {
+    /* Don’t break user agent defaults and accessibility */
+    outline: 10px solid moccasin !important;
+    background: blue !important;
+}
+/* /DELETE */
+
+
+
+
+
+
 @font-face {
     font-family: "Museo Sans";
     src: local("Museo Sans 300"),
@@ -45,6 +110,9 @@
     src: local("Brandon Grotesque Black"),
         url(../../assets/fonts/brandon-Grotesque-Font-Family/brandon-grotesque-black.woff2) format("woff2");
     font-weight: 900;
+}
+
+div:empty {
 }
 
 .mt-20 {
@@ -1254,7 +1322,7 @@ body::backdrop {
 }
 
 .rec-swipable {
-    display: flex; 
+    display: flex;
     flex-direction: row;
     width: 100%;
 
@@ -1330,8 +1398,8 @@ body::backdrop {
 }
 
 .explore {
-    background: url(../../assets/backgrounds/pink-gradient.png) top -700px right -700px no-repeat, 
-        url(../../assets/backgrounds/cyan-gradient.png) top -700px left -1000px no-repeat, 
+    background: url(../../assets/backgrounds/pink-gradient.png) top -700px right -700px no-repeat,
+        url(../../assets/backgrounds/cyan-gradient.png) top -700px left -1000px no-repeat,
         url(../../assets/backgrounds/two-circle.png) top 100px left no-repeat;
     padding-top: 300px;
     background-size: auto, auto, auto calc(100% - 200px);
@@ -1430,7 +1498,7 @@ body::backdrop {
         text-align: center;
         border-radius: 10px;
         margin-bottom: 30px;
-    }   
+    }
 }
 
 @media (max-width: 599.95px) {
@@ -1888,7 +1956,7 @@ body::backdrop {
         flex-wrap: wrap;
         box-sizing: border-box;
     }
-    
+
     .svg-circle-181 {
         width: 181;
         height: 181;
@@ -1927,7 +1995,7 @@ body::backdrop {
     }
     .svg-circle-156 {
         width: 156;
-        height: 156;        
+        height: 156;
     }
     .svg-circle-156 rect {
         width: 150;
@@ -1953,7 +2021,7 @@ body::backdrop {
     }
 }
 
-@media (max-width: 599px) {  
+@media (max-width: 599px) {
     .brandLogo-flex {
         padding: 12px;
     }
@@ -2040,7 +2108,7 @@ body::backdrop {
     .Grid-reverse {
         flex-direction: column-reverse;
     }
-    
+
     .nav-menuItem {
         color: white;
         margin: auto 18.5px;
