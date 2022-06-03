@@ -34,7 +34,7 @@
 
 .team-member-bg {
     padding: 100px 0;
-    background: url(../../assets/backgrounds/cyan-gradient.png) top -500px left -1000px no-repeat, 
+    background: url(../../assets/backgrounds/cyan-gradient.png) top -500px left -1000px no-repeat,
         url(../../assets/backgrounds/cyan-gradient.png) bottom -300px right -1000px no-repeat;
 }
 
@@ -108,7 +108,7 @@
     color: #F5FCFE;
     font-size: 24px;
     font-style: normal;
-    font-family: Brandon Grotesque;
+    font-family: "Brandon Grotesque", sans-serif;
     font-weight: 900;
     line-height: 110%;
     margin-bottom: 5px;
@@ -118,7 +118,7 @@
     color: #73D6F1;
     font-size: 18px;
     font-style: normal;
-    font-family: Museo Sans;
+    font-family: "Museo Sans", sans-serif;
     font-weight: 600;
     line-height: 110%;
     margin-bottom: 2px;
@@ -129,7 +129,7 @@
     opacity: 1;
     font-size: 16px;
     font-style: normal;
-    font-family: Museo Sans;
+    font-family: "Museo Sans", sans-serif;
     line-height: 112%;
     white-space: pre-line;
 }
@@ -162,7 +162,7 @@
 
 .team-advisor-bg {
     padding: 0px 20px 100px 20px;
-    background: url(../../assets/backgrounds/cyan-gradient.png) top -300px left -1000px no-repeat, 
+    background: url(../../assets/backgrounds/cyan-gradient.png) top -300px left -1000px no-repeat,
         url(../../assets/backgrounds/cyan-gradient.png) bottom -300px right -1000px no-repeat;
 }
 
@@ -171,7 +171,7 @@
     margin: 30px 0 100px;
     font-size: 60px;
     text-align: center;
-    font-family: Brandon Grotesque;
+    font-family: "Brandon Grotesque", sans-serif;
     font-weight: bold;
     line-height: 100%;
 }
