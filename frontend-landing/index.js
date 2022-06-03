@@ -10,23 +10,23 @@ app.set("view engine", "ejs");
 
 // index page
 app.get("/", function (req, res) {
-  res.render("pages/home/index", {currentUrl : req.url});
+  res.render("pages/Home/index", {currentUrl : req.url});
 });
 
 app.get("/tech", function (req, res) {
-  res.render("pages/technology/index", {currentUrl : req.url});
+  res.render("pages/Technology/index", {currentUrl : req.url});
 });
 
 app.get("/community", function (req, res) {
-  res.render("pages/community/index", {currentUrl : req.url});
+  res.render("pages/Community/index", {currentUrl : req.url});
 });
 
 app.get("/news", function (req, res) {
-  res.render("pages/news/index", {currentUrl : req.url});
+  res.render("pages/News/index", {currentUrl : req.url});
 });
 
 app.get("/roadmap", function (req, res) {
-  res.render("pages/roadmap/index", {currentUrl : req.url});
+  res.render("pages/Roadmap/index", {currentUrl : req.url});
 });
 
 app.get("/brandassets", function (req, res) {
