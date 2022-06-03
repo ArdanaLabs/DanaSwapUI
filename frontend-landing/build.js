@@ -13,7 +13,7 @@ const outdir = "build"
 ;(async () => {
     await esbuild
     .build({
-        entryPoints: ["views/pages/home/index.ejs"],
+        entryPoints: ["views/pages/Home/index.ejs"],
         outdir: outdir,
         minify: true,
         sourcemap: false,
