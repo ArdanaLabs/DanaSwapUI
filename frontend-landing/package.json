@@ -20,13 +20,11 @@
     "express": "^4.17.3",
     "html-minifier": "^4.0.0",
     "nodemon": "^2.0.15",
+    "postcss": "^8.4.13",
     "postcss-cli": "^9.1.0",
     "postcss-csso": "^6.0.0",
     "postcss-fail-on-warn": "^0.2.1",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-import": "^14.1.0"
-  },
-  "dependencies": {
-    "postcss": "^8.4.13"
   }
 }
