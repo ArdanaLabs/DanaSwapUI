@@ -10,71 +10,71 @@ function offBorder() {
   removeCls[0].classList.remove("hover")
 }
 
-const dana_cards = document.querySelectorAll(`[id^="dana_"]`)
-const explore_cards = document.querySelectorAll(`[id^="ex_"]`)
-const cards = [dana_cards, explore_cards]
-var current_width = window.innerWidth
+const danaCards = document.querySelectorAll(`[id^="dana_"]`)
+const exploreCards = document.querySelectorAll(`[id^="ex_"]`)
+const cards = [danaCards, exploreCards]
+var currentWidth = window.innerWidth
 
 ;(function () {
-  const nextItemIndex = current_width < 600 ? 1 : 2
+  const nextItemIndex = currentWidth < 600 ? 1 : 2
 
-  cards.forEach((card_items, card_index) => {
-    card_items.forEach((item, item_index) => {
-      if (item_index >= nextItemIndex) {
+  cards.forEach((cardItems, cardIndex) => {
+    cardItems.forEach((item, itemIndex) => {
+      if (itemIndex >= nextItemIndex) {
         item.classList.add("rec-carousel-item-hidden")
       }
     })
-    if (current_width >= 600 && card_index == 1) {
-    } else if (dana_cards.length != 0) {
-      card_items[nextItemIndex].classList.add("rec-carousel-item-next")
+    if (currentWidth >= 600 && cardIndex == 1) {
+    } else if (danaCards.length != 0) {
+      cardItems[nextItemIndex].classList.add("rec-carousel-item-next")
     }
-    if (current_width < 600 && dana_cards.length == 0 && card_index == 1) {
-      card_items[nextItemIndex].classList.add("rec-carousel-item-next")
+    if (currentWidth < 600 && danaCards.length == 0 && cardIndex == 1) {
+      cardItems[nextItemIndex].classList.add("rec-carousel-item-next")
     }
   })
 })()
 
 window.addEventListener("resize", () => {
-  cards.forEach((card_items) => {
-    for (var i = 0; i < card_items.length; i++) {
-      if (window.innerWidth < 600 && current_width >= 600) {
-        if (card_items[i].matches(".rec-carousel-item-next")) {
-          card_items[i].classList.remove("rec-carousel-item-next")
-          card_items[i - 1].classList.add(
+  cards.forEach((cardItems) => {
+    for (var i = 0; i < cardItems.length; i++) {
+      if (window.innerWidth < 600 && currentWidth >= 600) {
+        if (cardItems[i].matches(".rec-carousel-item-next")) {
+          cardItems[i].classList.remove("rec-carousel-item-next")
+          cardItems[i - 1].classList.add(
             "rec-carousel-item-hidden",
             "rec-carousel-item-next"
           )
           break
-        } else if (i == card_items.length - 1) {
-          card_items[i].classList.add(
+        } else if (i == cardItems.length - 1) {
+          cardItems[i].classList.add(
             "rec-carousel-item-hidden",
             "rec-carousel-item-next"
           )
         }
       }
-      if (window.innerWidth >= 600 && current_width < 600) {
-        if (card_items[i].matches(".rec-carousel-item-next")) {
-          card_items[i].classList.remove(
+      if (window.innerWidth >= 600 && currentWidth < 600) {
+        if (cardItems[i].matches(".rec-carousel-item-next")) {
+          cardItems[i].classList.remove(
             "rec-carousel-item-next",
             "rec-carousel-item-hidden"
           )
-          if (i < card_items.length - 1) {
-            card_items[i + 1].classList.add("rec-carousel-item-next")
+          if (i < cardItems.length - 1) {
+            cardItems[i + 1].classList.add("rec-carousel-item-next")
           }
           break
-        } else if (i == card_items.length - 1) {
-          card_items[i - 1].classList.remove(
+        } else if (i == cardItems.length - 1) {
+          cardItems[i - 1].classList.remove(
             "rec-carousel-item-prev",
             "rec-carousel-item-hidden"
           )
           if (i > 1) {
-            card_items[i - 2].classList.add("rec-carousel-item-prev")
+            cardItems[i - 2].classList.add("rec-carousel-item-prev")
           }
         }
       }
     }
   })
-  current_width = window.innerWidth
+  currentWidth = window.innerWidth
 })
 
 function prev(items) {
