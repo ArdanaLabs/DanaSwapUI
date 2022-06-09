@@ -33,10 +33,6 @@ app.get("/brandassets", function (req, res) {
   res.render("pages/brandassets/index", {currentUrl : req.url});
 });
 
-app.get("/team", function (req, res) {
-  res.render("pages/team/index", {currentUrl : req.url});
-});
-
 // about page
 
 app.listen(5000);

@@ -56,16 +56,12 @@
                     <% products.forEach(function(item) { %>
                     <span><a
                         class="Typography-root Link-underlineHover Typography-colorPrimary footer-links-pointer"
-                         href="<%=item.href%>"><%=item.name%></a></span>
+                        href="<%=item.href%>"><%=item.name%></a></span>
                     <% }); %>
                 </div>
                 <div class="section">
                     <span>Company</span>
                     <% let companies = [{
-                        target: "_self",
-                        href: "/team",
-                        name: "Team"
-                    }, {
                         target: "_blank",
                         href: "mailto:enquiries@ardana.org",
                         name: "Contact Us"
