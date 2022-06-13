@@ -13,10 +13,11 @@ function offBorder() {
 const danaCards = document.querySelectorAll(`[id^="dana_"]`)
 const exploreCards = document.querySelectorAll(`[id^="ex_"]`)
 const cards = [danaCards, exploreCards]
+const tabletWidth = 600
 var currentWidth = window.innerWidth
 
 ;(function () {
-  const nextItemIndex = currentWidth < 600 ? 1 : 2
+  const nextItemIndex = currentWidth < tabletWidth ? 1 : 2
 
   cards.forEach((cardItems, cardIndex) => {
     cardItems.forEach((item, itemIndex) => {
@@ -24,11 +25,11 @@ var currentWidth = window.innerWidth
         item.classList.add("rec-carousel-item-hidden")
       }
     })
-    if (currentWidth >= 600 && cardIndex == 1) {
+    if (currentWidth >= tabletWidth && cardIndex == 1) {
     } else if (danaCards.length != 0) {
       cardItems[nextItemIndex].classList.add("rec-carousel-item-next")
     }
-    if (currentWidth < 600 && danaCards.length == 0 && cardIndex == 1) {
+    if (currentWidth < tabletWidth && danaCards.length == 0 && cardIndex == 1) {
       cardItems[nextItemIndex].classList.add("rec-carousel-item-next")
     }
   })
@@ -37,7 +38,7 @@ var currentWidth = window.innerWidth
 window.addEventListener("resize", () => {
   cards.forEach((cardItems) => {
     for (var i = 0; i < cardItems.length; i++) {
-      if (window.innerWidth < 600 && currentWidth >= 600) {
+      if (window.innerWidth < tabletWidth && currentWidth >= tabletWidth) {
         if (cardItems[i].matches(".rec-carousel-item-next")) {
           cardItems[i].classList.remove("rec-carousel-item-next")
           cardItems[i - 1].classList.add(
@@ -52,7 +53,7 @@ window.addEventListener("resize", () => {
           )
         }
       }
-      if (window.innerWidth >= 600 && currentWidth < 600) {
+      if (window.innerWidth >= tabletWidth && currentWidth < tabletWidth) {
         if (cardItems[i].matches(".rec-carousel-item-next")) {
           cardItems[i].classList.remove(
             "rec-carousel-item-next",
@@ -87,7 +88,7 @@ function prev(items) {
         "rec-carousel-item-hidden",
         "rec-carousel-item-prev"
       )
-      if (window.innerWidth < 600) {
+      if (window.innerWidth < tabletWidth) {
         items[i + 1].classList.add("rec-carousel-item-hidden")
         items[i + 1].classList.add("rec-carousel-item-next")
         if (i < items.length - 2) {
@@ -114,7 +115,7 @@ function next(items) {
         "rec-carousel-item-hidden",
         "rec-carousel-item-next"
       )
-      if (window.innerWidth < 600) {
+      if (window.innerWidth < tabletWidth) {
         items[i - 1].classList.add("rec-carousel-item-hidden")
         items[i - 1].classList.add("rec-carousel-item-prev")
         if (i > 1) {

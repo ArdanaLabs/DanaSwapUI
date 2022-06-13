@@ -1389,7 +1389,7 @@ body::backdrop {
 
 .com-card-noneInfo {
     height: 260px;
-    padding: 80px 30px 80px 30px;
+    padding: 80px 40px 80px 40px;
     position: relative;
     background: #1d277a;
     margin-top: 110px;
@@ -2049,6 +2049,10 @@ body::backdrop {
     }
 }
 
+.mt-10 {
+    margin-top: 10px;
+}
+
 .mt-20 {
     margin-top: 20px;
 }
@@ -2075,6 +2079,10 @@ body::backdrop {
 
 .mb-20 {
     margin-bottom: 20px;
+}
+
+.mb-25 {
+    margin-bottom: 25px;
 }
 
 .mb-30 {
