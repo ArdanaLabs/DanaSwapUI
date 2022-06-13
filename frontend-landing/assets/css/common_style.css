@@ -115,62 +115,6 @@ img:not([alt]) {
 div:empty {
 }
 
-.mt-20 {
-    margin-top: 20px;
-}
-
-.mt-25 {
-    margin-top: 25px;
-}
-
-.mt-30 {
-    margin-top: 30px;
-}
-
-.mt-50 {
-    margin-top: 50px;
-}
-
-.mb-10 {
-    margin-bottom: 10px;
-}
-
-.mb-15 {
-    margin-bottom: 15px;
-}
-
-.mb-20 {
-    margin-bottom: 20px;
-}
-
-.mb-30 {
-    margin-bottom: 30px;
-}
-
-.mb-50 {
-    margin-bottom: 50px;
-}
-
-.my-30 {
-    margin-top: 30px;
-    margin-bottom: 30px;
-}
-
-.my-100 {
-    margin-top: 100px;
-    margin-bottom: 100px;
-}
-
-.py-50 {
-    padding-top: 50px;
-    padding-bottom: 50px;
-}
-
-.py-150 {
-    padding-top: 150px;
-    padding-bottom: 150px;
-}
-
 .text-left {
     text-align: left;
 }
@@ -205,11 +149,52 @@ div:empty {
     flex-direction: column;
 }
 
-.hamburger-react>div {
+.nav-dropBtn>div {
     height: 4px !important;
     border-radius: 5px;
     width: 30px !important;
     background: linear-gradient(90deg, #5f72ff 0%, #73d6f1 100%) !important;
+    cursor: pointer;
+    height: 48px;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0, 0, 0, 1) 0s;
+    user-select: none;
+    width: 48px;
+    outline: none;
+    transform: none;
+}
+
+.nav-dropBtn-bar1 {
+    background: rgb(255, 255, 255);
+    height: 2px;
+    left: 12px;
+    position: absolute;
+    width: 24px;
+    top: 15px;
+    transition: all 0.4s cubic-bezier(0, 0, 0, 1) 0s;
+    transform: none;
+}
+
+.nav-dropBtn-bar2 {
+    background: rgb(255, 255, 255);
+    height: 2px;
+    left: 12px;
+    position: absolute;
+    width: 24px;
+    top: 23px;
+    transition: all 0.4s cubic-bezier(0, 0, 0, 1) 0s;
+    transform: none;
+}
+
+.nav-dropBtn-bar3 {
+    background: rgb(255, 255, 255);
+    height: 2px;
+    left: 12px;
+    position: absolute;
+    width: 24px;
+    top: 31px;
+    transition: all 0.4s cubic-bezier(0, 0, 0, 1) 0s;
+    transform: none;
 }
 
 .drop-menu {
@@ -218,6 +203,12 @@ div:empty {
 
 .drop-menu.responsive {
     display: block !important;
+}
+
+.dropdown-menu {
+    position: fixed;
+    z-index: 1300;
+    inset: 0px;
 }
 
 .rec-display {
@@ -245,30 +236,6 @@ div:empty {
 
 .Typography-root {
     margin: 0;
-}
-
-.Typography-body2 {
-    font-size: 0.875rem;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-    font-weight: 400;
-    line-height: 1.43;
-    letter-spacing: 0.01071em;
-}
-
-.Typography-body1 {
-    font-size: 1rem;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-    font-weight: 400;
-    line-height: 1.5;
-    letter-spacing: 0.00938em;
-}
-
-.Typography-caption {
-    font-size: 0.75rem;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-    font-weight: 400;
-    line-height: 1.66;
-    letter-spacing: 0.03333em;
 }
 
 .Typography-button {
@@ -356,72 +323,6 @@ div:empty {
     font-weight: 500;
     line-height: 1.6;
     letter-spacing: 0.0075em;
-}
-
-.Typography-subtitle1 {
-    font-size: 1rem;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-    font-weight: 400;
-    line-height: 1.75;
-    letter-spacing: 0.00938em;
-}
-
-.Typography-subtitle2 {
-    font-size: 0.875rem;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-    font-weight: 500;
-    line-height: 1.57;
-    letter-spacing: 0.00714em;
-}
-
-.Typography-overline {
-    font-size: 0.75rem;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-    font-weight: 400;
-    line-height: 2.66;
-    letter-spacing: 0.08333em;
-    text-transform: uppercase;
-}
-
-.Typography-srOnly {
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    position: absolute;
-}
-
-.Typography-alignLeft {
-    text-align: left;
-}
-
-.Typography-alignCenter {
-    text-align: center;
-}
-
-.Typography-alignRight {
-    text-align: right;
-}
-
-.Typography-alignJustify {
-    text-align: justify;
-}
-
-.Typography-noWrap {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-.Typography-gutterBottom {
-    margin-bottom: 0.35em;
-}
-
-.Typography-paragraph {
-    margin-bottom: 16px;
-}
-
-.Typography-colorInherit {
-    color: inherit;
 }
 
 .Typography-colorPrimary {
@@ -1250,6 +1151,8 @@ body::backdrop {
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.5);
     -webkit-tap-highlight-color: transparent;
+    opacity: 1;
+    transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .Drawer-paperAnchorTop {
@@ -1276,6 +1179,8 @@ body::backdrop {
 
 .Paper-elevation16 {
     box-shadow: 0px 8px 10px -5px rgb(0 0 0 / 20%), 0px 16px 24px 2px rgb(0 0 0 / 14%), 0px 6px 30px 5px rgb(0 0 0 / 12%);
+    transform: none;
+    transition: transform 225ms cubic-bezier(0, 0, 0.2, 1) 0ms;
 }
 
 .Paper-root {
@@ -1387,10 +1292,6 @@ body::backdrop {
     margin-bottom: 16px;
 }
 
-.news_card-content-gap {
-    margin-bottom: 22px;
-}
-
 .brandLogo-flex {
     flex: 1 0 21%;
     padding: 20px 0px;
@@ -1433,6 +1334,15 @@ body::backdrop {
     color: #73D6F1;
     font-weight: 900;
     text-transform: uppercase;
+}
+
+.news_card-media-sum {
+    line-height: 100%;
+}
+
+.emotion {
+    font-size: 3em;
+    opacity: 0.25
 }
 
 .carousel-img-w {
@@ -1527,6 +1437,10 @@ body::backdrop {
 .news_card-medium-label {
     padding: 20px 15px 0px;
     border-left: 1px solid #72d2f3aa;
+}
+
+.news_card-medium-label {
+    line-height: 100%;
 }
 
 .news_card-date {
@@ -1811,6 +1725,10 @@ body::backdrop {
         font-size: 25px;
         line-height: 27.5px;
     }
+}
+
+.footer-links-pointer {
+    pointer-events: initial;
 }
 
 .footer-logo {
@@ -2129,4 +2047,70 @@ body::backdrop {
     .rec-carousel-explore {
         height: 336.938px !important;
     }
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mt-25 {
+    margin-top: 25px;
+}
+
+.mt-30 {
+    margin-top: 30px;
+}
+
+.mt-50 {
+    margin-top: 50px;
+}
+
+.mb-10 {
+    margin-bottom: 10px;
+}
+
+.mb-15 {
+    margin-bottom: 15px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.mb-30 {
+    margin-bottom: 30px;
+}
+
+.mb-50 {
+    margin-bottom: 50px;
+}
+
+.my-20 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.my-30 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.my-50 {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.my-100 {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.py-50 {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.py-150 {
+    padding-top: 150px;
+    padding-bottom: 150px;
 }

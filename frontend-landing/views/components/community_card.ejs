@@ -12,15 +12,12 @@
                     alt="" width="auto" />
             </div>
         </div>
-        <h5 class="Typography-root Typography-h5">
+        <h5 class="Typography-root Typography-h5 mb-20">
             <%=card.title%>
         </h5>
-        <div class="mb-20"></div>
         <% if (card.info) { %>
-        <h4 class="Typography-root Typography-h4"><%=card.info%></h4>
-        <div class="com-card-info"></div>
+        <h4 class="Typography-root Typography-h4 mb-30"><%=card.info%></h4>
         <% } %>
-        <div class="mb-30"></div>
         <a class="Typography-root Link-underlineHover com-card-cta Typography-colorPrimary"
             href="<%=card.href%>">
             <%- include('./button.ejs', {btn: card.btn}) %>

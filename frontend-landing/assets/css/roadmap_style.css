@@ -63,6 +63,10 @@
     padding: 20px;
 }
 
+.roadmap-todolist-height {
+    height: 100%;
+}
+
 .MuiBox-root-59 {
     display: flex;
     flex-direction: column;

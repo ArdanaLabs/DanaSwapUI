@@ -4,44 +4,32 @@
             <div class="Grid-item Grid-grid-xs-12 Grid-grid-md-3">
                 <div class="guideline_pressKit-title">Guidelines</div>
                 <hr class="brandassets-horizon">
-                <div class="guideline_pressKit-content">We also have separate brand guidelines
+                <div class="guideline_pressKit-content guideline-gap">We also have separate brand guidelines
                     documents for both our ASPA and dUSD brands.<br><br>Please ensure to utilise these
-                    accordingly.<br>Any queries or questions, please send us an email.</div>
-                <div class="guideline-gap"></div>
-            </div>
-            <% let cards = [{
-                    img_src: "../../../../assets/brands/Ardana.png",
-                    title: "Ardana",
-                    info: "A full document demonstrating how our brand is properly used.",
-                    href: "https://docsend.com/view/k4xzgh5qafknt8jz"
-                }, {
-                    img_src: "../../../../assets/brands/dUSD.png",
-                    title: "dUSD",
-                    info: "A full document demonstrating the proper usage of our dUSD brand.",
-                    href: "https://docsend.com/view/qywv6rjwfhvaaa2n"
-                }, {
-                    img_src: "../../../../assets/brands/ASPA.png",
-                    title: "ASPA",
-                    info: "A full document demonstrating the proper usage of our ASPA brand.",
-                    href: ""
-                }
-            ]
-            cards.forEach(function(card) { %>
-            <div class="Grid-item Grid-grid-xs-12 Grid-grid-md-3">
-                <div class="guideline_pressKit-card">
-                    <div class="guideline-brand"><img
-                            src="<%=card.img_src%>"
-                            alt="brand"></div>
-                    <div class="guideline_pressKit-card-title"><%=card.title%> Brand Guidelines</div>
-                    <div class="mt-20"></div>
-                    <div class="guideline_pressKit-card-content"><%=card.info%></div>
-                    <div class="mt-20"></div><a
-                        class="Typography-root Link-underlineNone Typography-colorPrimary"
-                        href="<%=card.href%>" target="_blank">
-                        <div class="guideline_pressKit-card-btn">DOWNLOAD BRAND GUIDELINES</div>
-                    </a>
+                    accordingly.<br>Any queries or questions, please send us an email.
                 </div>
             </div>
+            <% let cards=[{ img_src: "../../../../assets/brands/Ardana.png" , title: "Ardana" ,
+                info: "A full document demonstrating how our brand is properly used." ,
+                href: "https://docsend.com/view/k4xzgh5qafknt8jz" }, { img_src: "../../../../assets/brands/dUSD.png" ,
+                title: "dUSD" , info: "A full document demonstrating the proper usage of our dUSD brand." ,
+                href: "https://docsend.com/view/qywv6rjwfhvaaa2n" }, { img_src: "../../../../assets/brands/ASPA.png" ,
+                title: "ASPA" , info: "A full document demonstrating the proper usage of our ASPA brand." , href: "" } ]
+                cards.forEach(function(card) { %>
+                <div class="Grid-item Grid-grid-xs-12 Grid-grid-md-3">
+                    <div class="guideline_pressKit-card">
+                        <div class="guideline-brand"><img src="<%=card.img_src%>" alt="brand"></div>
+                        <div class="guideline_pressKit-card-title">
+                            <%=card.title%> Brand Guidelines
+                        </div>
+                        <div class="guideline_pressKit-card-content my-20">
+                            <%=card.info%>
+                        </div>
+                        <a class="Typography-root Link-underlineNone Typography-colorPrimary" href="<%=card.href%>">
+                            <div class="guideline_pressKit-card-btn">DOWNLOAD BRAND GUIDELINES</div>
+                        </a>
+                    </div>
+                </div>
             <% }) %>
         </div>
     </div>

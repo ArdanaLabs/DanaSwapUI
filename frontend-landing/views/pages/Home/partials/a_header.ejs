@@ -7,11 +7,9 @@
                         Mint, Trade, Stake<br/>and <span>Store Value</span>
                     </h1>
                 </div>
-                <div class="mt-20"></div>
-                <div class="home-subTitle">
+                <div class="home-subTitle mt-20 home-subTitle-mb">
                     The First All-in-One Stablecoin Ecosystem Built on Cardano
                 </div>
-                <div class="home-title-mt"></div>
                 <div class="home-trading-btn">
                     <% let btn = {width: 166, name: "TRADING NOW"} %>
                     <%- include('../../../components/button.ejs', {btn: btn}) %>
@@ -33,11 +31,9 @@
                         <% }); %>
                     </div>
                 </div>
-                <div class="home-socialIcon-gap"></div>
-                <div class="home-listingLabel">
+                <div class="home-listingLabel home-socialIcon-m">
                     LISTED ON:
                 </div>
-                <div class="home-listingItem-mt"></div>
                 <div class="home-listingItem-display home-listingItem">
                     <% let links = [{
                         href: "https://www.gate.io/trade/DANA_USDT",
@@ -48,18 +44,14 @@
                     }]
                     links.forEach(function(link) { %>
                     <a class="Typography-root Link-underlineNone Typography-colorPrimary"
-                        href="<%=link.href%>" target="_blank">
+                        href="<%=link.href%>" >
                         <img src="<%=link.src%>" alt="listing item" />
                     </a>
                     <% }) %>
                 </div>
             </div>
-            <div class="Grid-item Grid-grid-xs-12 Grid-grid-sm-6" style="pointer-events: none">
-                <div class="home-header-video">
-                    <!-- <video class="home-header-video" src="https://background.sfo3.digitaloceanspaces.com/sphere/output.webm" preload="auto"
-                        autoplay="" loop="" ></video> -->
-                        <img class="common-display" src="../../../../assets/backgrounds/bubble.png" alt="bubble" />
-                </div>
+            <div class="Grid-item Grid-grid-xs-12 Grid-grid-sm-6 home-header-video">
+                <img class="common-display" src="../../../../assets/backgrounds/bubble.png" alt="bubble" />
             </div>
         </div>
     </div>

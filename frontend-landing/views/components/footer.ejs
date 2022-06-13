@@ -33,9 +33,8 @@
                     ] %>
                     <% resources.forEach(function(item) { %>
                     <span><a
-                        class="Typography-root Link-underlineHover Typography-colorPrimary"
-                        rel="noopener noreferrer" href="<%=item.href%>"
-                        style="pointer-events: initial"><%=item.name%></a></span>
+                        class="Typography-root Link-underlineHover Typography-colorPrimary footer-links-pointer"
+                         href="<%=item.href%>"><%=item.name%></a></span>
                     <% }); %>
                 </div>
                 <div class="section">
@@ -56,9 +55,8 @@
                     ] %>
                     <% products.forEach(function(item) { %>
                     <span><a
-                        class="Typography-root Link-underlineHover Typography-colorPrimary"
-                        rel="noopener noreferrer" target="<%=item.target%>" href="<%=item.href%>"
-                        style="pointer-events: initial"><%=item.name%></a></span>
+                        class="Typography-root Link-underlineHover Typography-colorPrimary footer-links-pointer"
+                         href="<%=item.href%>"><%=item.name%></a></span>
                     <% }); %>
                 </div>
                 <div class="section">
@@ -79,15 +77,13 @@
                     ] %>
                     <% companies.forEach(function(item) { %>
                     <span><a
-                        class="Typography-root Link-underlineHover Typography-colorPrimary"
-                        rel="noopener noreferrer" target="<%=item.target%>" href="<%=item.href%>"
-                        style="pointer-events: initial"><%=item.name%></a></span>
+                        class="Typography-root Link-underlineHover Typography-colorPrimary footer-links-pointer"
+                         href="<%=item.href%>"><%=item.name%></a></span>
                     <% }); %>
                 </div>
                 <div class="footer-socials">
                     <span>Our Socials</span>
                     <span>Follow us to hear about Ardana<br />news and events.</span>
-                    <div class="mt-25"></div>
                     <%- include('../components/socialIcon_bar.ejs') %>
                 </div>
             </div>
