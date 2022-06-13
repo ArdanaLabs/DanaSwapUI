@@ -6,7 +6,7 @@
     align-items: center;
     margin: 0;
     visibility: visible;
-    background: orange !important;;
+    background: orange !important;
     min-height: 2em;
     min-width: 6em;
     color: navy;
@@ -34,7 +34,7 @@ body [style] {
 }
 body [style]::before {
     content: "✂️";
-}
+  }
 a[rel="noopener noreferrer"][href^="/"] {
     /* these don’t need this rel attribute */
     background: magenta !important;
