@@ -49,7 +49,7 @@
                                                     <div class="explore-carousel-cta mt-20">
                                                         <a class="Typography-root Link-underlineNone Typography-colorPrimary"
                                                             href="https://docsend.com/view/<%=item.href%>">
-                                                            <% let exploreBtn = {width: 151, name: "LEARN MORE"} %>
+                                                            <% let exploreBtn = {width: 151, name: "Learn More"} %>
                                                             <%- include('../components/button.ejs', {btn: exploreBtn}) %>
                                                         </a>
                                                     </div>
@@ -66,11 +66,11 @@
                 <div class="explore-carousel-action">
                     <div class="prev-next-btn" onclick="prev(exploreCards)">
                         <%- include('../components/circle_btn.ejs', {btn: 81}) %>
-                        <img class="common-photo-25" src="../../assets/icons/carousel-prev.svg" alt="prev" />
+                        <img class="common-photo-25" src="../../assets/icons/carousel-prev.svg" alt="Show previous card" />
                     </div>
                     <div class="prev-next-btn" onclick="next(exploreCards)">
                         <%- include('../components/circle_btn.ejs', {btn: 81}) %>
-                        <img class="common-photo-25" src="../../assets/icons/carousel-next.svg" alt="next" />
+                        <img class="common-photo-25" src="../../assets/icons/carousel-next.svg" alt="Show next card" />
                     </div>
                 </div>
             </div>

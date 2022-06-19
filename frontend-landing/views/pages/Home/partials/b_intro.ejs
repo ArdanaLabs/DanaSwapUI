@@ -7,7 +7,7 @@
                 </h3>
                 <p class="Typography-root home-intro-content Typography-h4">
                     Ardana is a decentralized stablecoin hub which will bring
-                    the necessary DeFi primitives needed to bootstrap &amp;
+                    the necessary <addr title="Decentralized Finance">DeFi</addr> primitives needed to bootstrap &amp;
                     maintain any economy to Cardano.
                 </p>
             </div>
@@ -24,7 +24,7 @@
                 </div>
             </div>
         </div>
-        <div class="Grid-container Grid-spacing-xs-3 home-intro-card-mt">
+        <dl class="Grid-container Grid-spacing-xs-3 home-intro-card-mt">
             <% let cards = [
                 {
                     video_src: "blob:http://localhost:3000/42533347-fbc0-4a45-9a48-9bf2da27b331",
@@ -62,11 +62,11 @@
                             <%- include('../../../components/circle_btn.ejs', {btn: 151}); %>
                             <img class="common-photo"
                                 src="<%=card.img_src%>"
-                                alt="title" />
+                                alt="" />
                         </div>
-                        <p class="Typography-root Typography-h5 home-intro-card-title">
+                        <h4 class="Typography-root Typography-h5 home-intro-card-title">
                             <%=card.title%>
-                        </p>
+                        </h4>
                         <p class="Typography-root Typography-h4 mb-30">
                             <%=card.info%>
                         </p>
@@ -74,6 +74,6 @@
                 </div>
             </div>
             <% }); %>
-        </div>
+        </dl>
     </div>
 </div>

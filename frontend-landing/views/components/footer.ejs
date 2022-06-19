@@ -18,11 +18,11 @@
                         href: "/tech",
                         name: "Technology"
                     }, {
-                        target: "_blank",
+                        target: "",
                         href: "https://docs.ardana.org/",
                         name: "Documentation"
                     }, {
-                        target: "_blank",
+                        target: "",
                         href: "https://docsend.com/view/ps9hsr88m834pj98",
                         name: "Pitch Deck"
                     }, {
@@ -62,11 +62,11 @@
                 <div class="section">
                     <span>Company</span>
                     <% let companies = [{
-                        target: "_blank",
+                        target: "",
                         href: "mailto:enquiries@ardana.org",
                         name: "Contact Us"
                     }, {
-                        target: "_blank",
+                        target: "",
                         href: "mailto:careers@ardana.org",
                         name: "Careers"
                     }
@@ -74,7 +74,7 @@
                     <% companies.forEach(function(item) { %>
                     <span><a
                         class="Typography-root Link-underlineHover Typography-colorPrimary footer-links-pointer"
-                         href="<%=item.href%>"><%=item.name%></a></span>
+                        href="<%=item.href%>"><%=item.name%></a></span>
                     <% }); %>
                 </div>
                 <div class="footer-socials">
