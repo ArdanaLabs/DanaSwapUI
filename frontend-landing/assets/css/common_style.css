@@ -34,7 +34,7 @@ body [style] {
 }
 body [style]::before {
     content: "✂️";
-  }
+}
 a[rel="noopener noreferrer"][href^="/"] {
     /* these don’t need this rel attribute */
     background: magenta !important;

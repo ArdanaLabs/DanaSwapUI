@@ -1,10 +1,10 @@
 .main-bg {
-    background: url(../../assets/backgrounds/pink-gradient.png) top -900px left -700px no-repeat, 
-        url(../../assets/backgrounds/cyan-gradient.png) top -500px left -900px no-repeat, 
-        url(../../assets/backgrounds/cyan-gradient.png) top 0px right -900px no-repeat, 
-        url(../../assets/backgrounds/pink-gradient.png) bottom -400px left -900px no-repeat, 
-        url(../../assets/backgrounds/cyan-gradient.png) bottom -900px right -900px no-repeat, 
-        linear-gradient(180deg, rgba(4, 13, 77, 0.7) -43.4%, rgba(50, 3, 111, 0.7) 222.51%), 
+    background: url(../../assets/backgrounds/pink-gradient.png) top -900px left -700px no-repeat,
+        url(../../assets/backgrounds/cyan-gradient.png) top -500px left -900px no-repeat,
+        url(../../assets/backgrounds/cyan-gradient.png) top 0px right -900px no-repeat,
+        url(../../assets/backgrounds/pink-gradient.png) bottom -400px left -900px no-repeat,
+        url(../../assets/backgrounds/cyan-gradient.png) bottom -900px right -900px no-repeat,
+        linear-gradient(180deg, rgba(4, 13, 77, 0.7) -43.4%, rgba(50, 3, 111, 0.7) 222.51%),
         url(../../assets/backgrounds/community-bg.png) top left no-repeat;
     background-size: cover;
 }
@@ -48,8 +48,8 @@
     }
 
     .main-bg {
-        background: url(../../assets/backgrounds/pink-gradient.png) top -1800px left -1400px no-repeat, 
-            linear-gradient(180deg, rgba(4, 13, 77, 0.7) -43.4%, rgba(50, 3, 111, 0.7) 222.51%), 
+        background: url(../../assets/backgrounds/pink-gradient.png) top -1800px left -1400px no-repeat,
+            linear-gradient(180deg, rgba(4, 13, 77, 0.7) -43.4%, rgba(50, 3, 111, 0.7) 222.51%),
             url(../../assets/backgrounds/community-bg-mobile.png) top left no-repeat;
         background-size: cover;
     }
