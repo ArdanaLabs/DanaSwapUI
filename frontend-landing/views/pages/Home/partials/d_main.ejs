@@ -51,7 +51,7 @@
                                             }
                                         ] %>
                                         <% cards.forEach(function(card){ %>
-                                        <div id="dana_<%=card.index%>" class="rec rec-carousel-item rec-carousel-item-<%=card.index%>">
+                                        <div aria-hidden="true" id="dana_<%=card.index%>" class="rec rec-carousel-item rec-carousel-item-<%=card.index%>">
                                             <div class="rec-carousel-item-pos rec dana-carousel-item">
                                                 <div class="home-main-carousel-item" onmouseover="onBorder('<%=card.index%>')" onmouseout="offBorder()">
                                                     <div class="home-main-carousel-img">
