@@ -46,7 +46,7 @@ const Landing: React.FC = () => {
         <CommunitySection />
         <NewsSection />
       </Box>
-      <RoadMapSection />
+      {/* <RoadMapSection /> */}
       <PartnerSection />
       <InvestorsSection />
     </Box>
