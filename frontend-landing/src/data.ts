@@ -32,11 +32,11 @@ export const Menus: NavInfoType[] = [
     label: "News",
     url: new URL("/news", document.baseURI),
   },
-  {
-    label: "Roadmap",
-    // to: "https://faceted-wash-97d.notion.site/cb0d147034e6439f8e70b2698ce199f2?v=fbf6185ab5f143eb9e22064fd9647814",
-    url: new URL("/roadmap", document.baseURI),
-  },
+  // {
+  //   label: "Roadmap",
+  //   // to: "https://faceted-wash-97d.notion.site/cb0d147034e6439f8e70b2698ce199f2?v=fbf6185ab5f143eb9e22064fd9647814",
+  //   url: new URL("/roadmap", document.baseURI),
+  // },
 ]
 
 export const ArdanaFeatures = [

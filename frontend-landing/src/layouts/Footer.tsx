@@ -115,6 +115,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 
   socials: {
     display: "flex",
+    marginTop: "15px",
     flexDirection: "column",
 
     [breakpoints.down("xs")]: {
