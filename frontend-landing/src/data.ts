@@ -1,3 +1,4 @@
+import { ProfileType } from "components/Box/ProfileBox"
 import { ReactComponent as TwitterIcon } from "assets/icons/twitter.svg"
 import { ReactComponent as DiscordIcon } from "assets/icons/discord.svg"
 import { ReactComponent as TelegramIcon } from "assets/icons/telegram.svg"
@@ -91,6 +92,264 @@ export const DanaSwapFeatures = [
     title: "Governance",
     content:
       "DANA token holders can participate in polling and voting to influence the development of Ardana.",
+  },
+]
+
+export const Members: ProfileType[] = [
+  {
+    avatar: require("assets/avatars/RyanMatovu.png").default,
+    name: "Ryan Matovu",
+    role: "Founder",
+    info: `Serial entrepreneur in B2B/B2C sales and e-commerce.\n\nLeadership positions in various Ethereum based projects.`,
+    socials: {
+      linkedin: "https://www.linkedin.com/in/ryan-matovu-517988203",
+      // twitter: "https://twitter.com/ryanmatovu",
+      twitter:
+        "https://twitter.com/infinit3booker?t=QBsb3CsDPsTNStkDIdlLgA&s=09",
+    },
+  },
+  {
+    avatar: require("assets/avatars/IssacShapira.png").default,
+    name: "Isaac Shapira",
+    role: "Chief Technology Officer",
+    info: `Founder of Platonic.Systems, a lead functional programming firm.\n\nSenior software developer roles at various leading tech firms.`,
+    socials: {
+      linkedin: "https://www.linkedin.com/in/isaacshapira/",
+      github: "https://github.com/Fresheyeball",
+    },
+  },
+  {
+    avatar: require("assets/avatars/DerekEvans.png").default,
+    name: "Derek Evans",
+    role: "Chief Operating Officer",
+    info: `20+ years in software leading business and government projects.\n\nPrivate trader and fund manager in the financial derivatives market.`,
+    socials: {},
+  },
+  {
+    avatar: require("assets/avatars/BassamAwad.png").default,
+    name: "Bassam Awad, PhD",
+    role: "Chief Economist",
+    info: `Senior Economist and Head of Risk at the <strong>Central Bank of Jordan.</strong>\n\nMultiple peer-reviewed papers on macro/computational economics.`,
+    socials: {
+      linkedin: "https://www.linkedin.com/in/bassamrawad/",
+    },
+  },
+  {
+    avatar: require("assets/avatars/ScottFranklin.png").default,
+    name: "Scott Franklin",
+    role: "Head of Strategy",
+    info: `20+ years experience in equity markets on Wall Street.\n\nCapital raising and advisor to multiple blockchain projects.`,
+    socials: {},
+  },
+  {
+    avatar: require("assets/avatars/NeilTionson.png").default,
+    name: "Neil Tionson",
+    role: "Head of Design",
+    info: `Marketing coordinator for Five Group Pty Ltd.\n\nWorked with brands such as Cadbury, San Remo.`,
+    socials: {
+      linkedin: "https://www.linkedin.com/in/neil-tiongson-a83535142/",
+      // github: "https://github.com",
+    },
+  },
+  {
+    avatar: require("assets/avatars/ChetanBafna.png").default,
+    name: "Chetan Bafna",
+    role: "Head of Outreach",
+    info: `Fundraising facilitator to multiple blockchain projects.\n\nLeadership positions in multiple philanthropic organisations.`,
+    socials: {
+      linkedin: "https://www.linkedin.com/in/chetanbafna",
+    },
+  },
+  {
+    avatar: require("assets/avatars/MorganThomas.png").default,
+    name: "Morgan Thomas",
+    role: "Blockchain Developer",
+    info: `Platonic Systems functional programming tech consultant.\n\nDeveloped algorithmic trading systems using Haskell.`,
+    socials: {
+      linkedin: "https://www.linkedin.com/in/morgan-thomas-29a923b7/",
+      github: "https://github.com/morganthomas",
+    },
+  },
+  {
+    avatar: require("assets/avatars/NicVanDenBroeck.png").default,
+    name: "Nick Van den Broeck",
+    role: "Blockchain Developer",
+    info: `Masters degree in Theoretical Physics and research intern at <strong>CERN</strong>.\n\nFounder of Tailer AI, bringing AI to the chemical/brewing industries.`,
+    socials: {
+      linkedin: "https://www.linkedin.com/in/nick-van-den-broeck-860861a3/",
+      github: "https://github.com/CSVdB/",
+    },
+  },
+  {
+    avatar: require("assets/avatars/GregorySantini.png").default,
+    name: "Gregory Santini",
+    role: "Front-end Developer",
+    info: `Senior front-end developer for <strong>Apple</strong> and Evernote.\n\nExperienced web developer and Solidity developer.`,
+    socials: {
+      linkedin: "https://www.linkedin.com/in/gregory-santini-28a51619a/",
+      github: "https://github.com/elite0226",
+    },
+  },
+  {
+    avatar: require("assets/avatars/MarcinBugaj.png").default,
+    name: "Marcin Bugaj",
+    role: "Blockchain Developer",
+    info: `Senior software developer for <strong>Logitech</strong> and Motorola Solutions.\n\nDesign and implementation of Robotic Process Automation (RPA).`,
+    socials: {
+      linkedin: "https://pl.linkedin.com/in/mmbugaj/",
+      github: "https://github.com/Josek-dev",
+    },
+  },
+  {
+    avatar: require("assets/avatars/JaimeCasoOnzain.png").default,
+    name: "Jamie Caso Onzain",
+    role: "Blockchain Developer",
+    info: `<strong>Cardano</strong> ambassador and Cardano stake pool operator.\n\nGenesis Founding Member and tester for <strong>Mina Protocol.</strong>`,
+    socials: {
+      linkedin: "https://www.linkedin.com/in/jaime-caso/",
+      github: "https://github.com/jimcase/",
+    },
+  },
+  {
+    avatar: require("assets/avatars/AndrzejSwatowski.png").default,
+    name: "Andrzej Swatowski",
+    role: "Blockchain Developer",
+    info: `Game developer in Unity working on AI,UI and gameplay elements.\n\nMasters Degree in Computer Science from the University of Warsaw.`,
+    socials: {
+      linkedin: "https://www.linkedin.com/in/andrzejswatowski",
+      github: "https://github.com/swtwsk/",
+    },
+  },
+  {
+    avatar: require("assets/avatars/OlegPrutz.png").default,
+    name: "Oleg Prutz",
+    role: "Blockchain Developer",
+    info: `Data Scientist for Genesys AI ‘Experience as a Service’ company.\n\nExperienced functional programmer and Kaggle competitor.`,
+    socials: {
+      // linkedin: "https://www.linkedin.com/",
+      github: "https://github.com/prutz1311",
+    },
+  },
+  {
+    avatar: require("assets/avatars/EmmaDwyer.png").default,
+    name: "Emma Dwyer",
+    role: "Writer",
+    info: `Risk analyst at <strong>Citi bank</strong> and AML analyst at <strong>State Street.</strong>\n\n7+ years experience in investment banking and wealth management.`,
+    socials: {
+      linkedin: "https://www.linkedin.com/in/emma-dwyer-169630a0/",
+      // github: "https://github.com/prutz1311",
+    },
+  },
+  {
+    avatar: require("assets/avatars/NoamDavidElbaz.png").default,
+    name: "Noam David Elbaz",
+    role: "Researcher",
+    info: `Crypto portfolio management and DeFi enthusiast.`,
+    socials: {},
+  },
+  {
+    avatar: require("assets/avatars/EdenOvadia.png").default,
+    name: "Eden Ovadia",
+    role: "Intern",
+    info: `Full stack software engineer for <strong>Microsoft.</strong>\n\nSoftware and programming, problems solving skills and attention to details.`,
+    socials: {
+      linkedin: "https://www.linkedin.com/in/eden-ben-ovadia-944053176/",
+      // github: "https://github.com/",
+    },
+  },
+  {
+    avatar: require("assets/avatars/GregNwosu.png").default,
+    name: "Greg Nwosu",
+    role: "Intern",
+    info: `Big Data and infrastructure engineer for <strong>Barclays</strong> and RBS.\n\nSenior Java developer for <strong>IG Index</strong> online exchange.`,
+    socials: {
+      linkedin: "https://www.linkedin.com/in/greg-nwosu/",
+      github: "https://github.com/gregnwosu",
+    },
+  },
+]
+
+export const Advisors: ProfileType[] = [
+  {
+    avatar: require("assets/avatars/JohnOConnor.png").default,
+    name: "John O'Connor",
+    role: "Cardano",
+    info: `Director of <strong>IOHK</strong> leading operations and projects in Africa.\n\nFormer Head of Strategy/Comms for <strong>Cardano Foundation.</strong>`,
+    socials: {
+      linkedin: "https://www.linkedin.com/in/jjtoconnor/",
+    },
+  },
+  {
+    avatar: require("assets/avatars/ShunsukeMurasaki.png").default,
+    name: "Shunsuke Murasaki",
+    role: "Emurgo",
+    info: `Chief executive officer for <strong>EMURGO</strong> Indonesia.\n\n7+ years experience in Asian markets in B2B overseas sales.`,
+    socials: {
+      linkedin: "https://www.linkedin.com/in/shunsuke-murasaki-942012ba/",
+    },
+  },
+  {
+    avatar: require("assets/avatars/DarrenCamas.png").default,
+    name: "Darren Camas",
+    role: "Cardano",
+    info: `Former senior advisor to <strong>Emurgo</strong> and strategy consultant for <strong>IOHK.</strong>\n\nFounder of IPOR Labs, blockchain based derivatives software.`,
+    socials: {
+      linkedin: "https://www.linkedin.com/in/dcamas/",
+    },
+  },
+  {
+    avatar: require("assets/avatars/PedroBatista.png").default,
+    name: "Pedro Batista",
+    role: "CBDC",
+    info: `<strong>UK Bank of England</strong> review for Central Bank Digital Currencies.\n\nGlobal Head of Payments/Banking for various financial institutions.`,
+    socials: {
+      linkedin: "https://www.linkedin.com/in/joaopedrobatista/",
+    },
+  },
+  {
+    avatar: require("assets/avatars/JoeriVanGeelen.png").default,
+    name: "Joeri Van Geelen",
+    role: "Economics",
+    info: `Business advisor at <strong>Prysm Group</strong> DLT economic consulting firm.\n\nBusiness Development advisor at Minterest cross-chain protocol.`,
+    socials: {
+      linkedin: "https://www.linkedin.com/in/joerivangeelen/",
+    },
+  },
+  // {
+  //   avatar: require("assets/avatars/YosefShaftal.png"),
+  //   name: "Yosef Shaftal",
+  //   role: "Business",
+  //   info: `Executive director of the <strong>Israeli Blockchain Association.</strong>\n\nStrategic advisor to startups, corporations and governments.`,
+  //   socials: {
+  //     linkedin: "https://www.linkedin.com",
+  //   },
+  // },
+  // {
+  //   avatar: require("assets/avatars/JDGagnon.png"),
+  //   name: "JD Gagnon",
+  //   role: "DeFi",
+  //   info: `Founder of <strong>Benqi</strong>, liquidity market protocol on Avalanche.\nDivision director at IG Wealth Management.`,
+  //   socials: {
+  //     linkedin: "https://www.linkedin.com",
+  //   },
+  // },
+  {
+    avatar: require("assets/avatars/CalEvans.png").default,
+    name: "Cal Evans",
+    role: "Legal",
+    info: `Cryptocurrency compliance expert with 50+ ICO/STO contributions.\n\n<strong>British Blockchain Association</strong> board member.`,
+    socials: {
+      linkedin: "https://www.linkedin.com/in/mrcalevans/",
+    },
+  },
+  {
+    avatar: require("assets/avatars/JoaoSantos.png").default,
+    name: "Joao Santos",
+    role: "Venture Capital",
+    info: `Senior Principal at Mustard Seed Maze venture capital fund.\n\nMentor at the Catolica Lisbon School of Business and Economics.`,
+    socials: {
+      linkedin: "https://www.linkedin.com/in/joao-ferrao-dos-santos/",
+    },
   },
 ]
 
@@ -224,6 +483,7 @@ export const externals: {
     Stablecoin: null,
   },
   Company: {
+    "Team": new URL("/team", document.baseURI),
     "Contact Us": new URL("mailto:enquiries@ardana.org"),
     "Careers": new URL("mailto:careers@ardana.org"),
   },

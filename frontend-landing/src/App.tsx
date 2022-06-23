@@ -19,6 +19,7 @@ import store from "./state"
 
 import {
   Landing,
+  TeamPage,
   MainLogoPage,
   BrandAssetsPage,
   TechPage,
@@ -58,6 +59,12 @@ const App: React.FC = () => {
         <Route exact path="/">
           <Layout>
             <Landing />
+          </Layout>
+        </Route>
+
+        <Route path="/team">
+          <Layout>
+            <TeamPage />
           </Layout>
         </Route>
 
