@@ -160,16 +160,16 @@ export const Members: ProfileType[] = [
       linkedin: "https://www.linkedin.com/in/chetanbafna",
     },
   },
-  {
-    avatar: require("assets/avatars/MorganThomas.png").default,
-    name: "Morgan Thomas",
-    role: "Blockchain Developer",
-    info: `Platonic Systems functional programming tech consultant.\n\nDeveloped algorithmic trading systems using Haskell.`,
-    socials: {
-      linkedin: "https://www.linkedin.com/in/morgan-thomas-29a923b7/",
-      github: "https://github.com/morganthomas",
-    },
-  },
+  // {
+  //   avatar: require("assets/avatars/MorganThomas.png").default,
+  //   name: "Morgan Thomas",
+  //   role: "Blockchain Developer",
+  //   info: `Platonic Systems functional programming tech consultant.\n\nDeveloped algorithmic trading systems using Haskell.`,
+  //   socials: {
+  //     linkedin: "https://www.linkedin.com/in/morgan-thomas-29a923b7/",
+  //     github: "https://github.com/morganthomas",
+  //   },
+  // },
   {
     avatar: require("assets/avatars/NicVanDenBroeck.png").default,
     name: "Nick Van den Broeck",
@@ -190,16 +190,16 @@ export const Members: ProfileType[] = [
       github: "https://github.com/elite0226",
     },
   },
-  {
-    avatar: require("assets/avatars/MarcinBugaj.png").default,
-    name: "Marcin Bugaj",
-    role: "Blockchain Developer",
-    info: `Senior software developer for <strong>Logitech</strong> and Motorola Solutions.\n\nDesign and implementation of Robotic Process Automation (RPA).`,
-    socials: {
-      linkedin: "https://pl.linkedin.com/in/mmbugaj/",
-      github: "https://github.com/Josek-dev",
-    },
-  },
+  // {
+  //   avatar: require("assets/avatars/MarcinBugaj.png").default,
+  //   name: "Marcin Bugaj",
+  //   role: "Blockchain Developer",
+  //   info: `Senior software developer for <strong>Logitech</strong> and Motorola Solutions.\n\nDesign and implementation of Robotic Process Automation (RPA).`,
+  //   socials: {
+  //     linkedin: "https://pl.linkedin.com/in/mmbugaj/",
+  //     github: "https://github.com/Josek-dev",
+  //   },
+  // },
   {
     avatar: require("assets/avatars/JaimeCasoOnzain.png").default,
     name: "Jamie Caso Onzain",
