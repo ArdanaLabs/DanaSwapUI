@@ -54,6 +54,10 @@
     font-weight: 900;
 }
 
+[role="button"] {
+    cursor: pointer;
+}
+
 #SVGDefs {
     visibility: hidden;
     height: 0;
@@ -1260,7 +1264,6 @@ body::backdrop {
 }
 
 .button-effect {
-    cursor: pointer;
     display: inline-block;
     z-index: 102;
     position: relative;
@@ -1427,10 +1430,8 @@ body::backdrop {
 
 .socialIconLink {
     color: #f5fcfe;
-    cursor: pointer;
 }
 .socialIconLink:hover path {
-    cursor: pointer;
     fill: #73d6f1;
     transition: all 0.2s;
 }
@@ -1553,7 +1554,6 @@ body::backdrop {
 }
 
 .nav-logo {
-    cursor: pointer;
     display: flex;
     align-items: center;
     padding-left: 10px;
@@ -1622,7 +1622,6 @@ body::backdrop {
 }
 
 .footer span {
-    cursor: pointer;
     font-size: 16px;
     font-family: Museo Sans;
     line-height: 24px;
