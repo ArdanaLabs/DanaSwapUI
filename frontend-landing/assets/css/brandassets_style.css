@@ -34,11 +34,11 @@
 
 .guideline-bg {
     padding: 100px 0;
-    background: #F6F6F6;
+    background: #f6f6f6;
 }
 
 .guideline_pressKit-title {
-    color: #202F9A;
+    color: #202f9a;
     font-size: 45px;
     font-family: Brandon Grotesque;
     font-weight: 700;
@@ -50,7 +50,11 @@
     border: none;
     height: 3px;
     margin: 30px 0;
-    background: linear-gradient(-90deg, rgba(115, 214, 241, 0) -5.46%, #73D6F1 101.08%);
+    background: linear-gradient(
+        -90deg,
+        rgba(115, 214, 241, 0) -5.46%,
+        #73d6f1 101.08%
+    );
     border-radius: 10px;
 }
 
@@ -63,7 +67,7 @@
 
 .guideline_pressKit-card {
     padding: 40px;
-    background: #1C2679;
+    background: #1c2679;
     border-radius: 20px;
 }
 
@@ -71,12 +75,12 @@
     margin-bottom: 15px;
 }
 
-.guideline-brand>img {
+.guideline-brand > img {
     height: 45px;
 }
 
 .guideline_pressKit-card-title {
-    color: #FFFFFF;
+    color: #ffffff;
     font-size: 30px;
     font-family: Brandon Grotesque;
     font-weight: 700;
@@ -85,7 +89,7 @@
 }
 
 .guideline_pressKit-card-content {
-    color: #FFFFFF;
+    color: #ffffff;
     font-size: 15px;
     font-family: Museo Sans;
     line-height: 22px;
@@ -93,12 +97,12 @@
 }
 
 .guideline_pressKit-card-btn {
-    color: #FFFFFF;
+    color: #ffffff;
     width: 100%;
     cursor: pointer;
     padding: 10px 0;
     font-size: 11px;
-    background: linear-gradient(90deg, #5F72FF 0%, #73D6F1 100%);
+    background: linear-gradient(90deg, #5f72ff 0%, #73d6f1 100%);
     text-align: center;
     font-family: Museo Sans;
     font-weight: 700;
@@ -108,7 +112,7 @@
 
 .pressKit-bg {
     padding: 100px 0;
-    background: #FFFFFF;
+    background: #ffffff;
 }
 
 @media (max-width: 599px) {

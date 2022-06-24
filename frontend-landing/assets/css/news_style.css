@@ -22,14 +22,14 @@
 }
 
 .news-medium-title span {
-    color: #73D6F1;
+    color: #73d6f1;
 }
 
 .news-badge {
     cursor: pointer;
     display: inline-flex !important;
     padding: 15px 30px;
-    background: linear-gradient(89.62deg, #72D2F2 0.3%, #6077FF 99.64%);
+    background: linear-gradient(89.62deg, #72d2f2 0.3%, #6077ff 99.64%);
     text-align: center;
     align-items: center;
     border-radius: 50px;
@@ -52,7 +52,7 @@
 
 .makeStyles-body-47 {
     padding: 20px 15px 0px;
-    border-left: 1px solid #72D2F3AA;
+    border-left: 1px solid #72d2f3aa;
 }
 
 .MuiBox-root-57 {
@@ -60,7 +60,7 @@
 }
 
 .makeStyles-date-48 {
-    color: #73D6F1;
+    color: #73d6f1;
 }
 
 .makeStyles-content-49 {
@@ -81,11 +81,11 @@
 }
 
 .news-twitter-title span {
-    color: #73D6F1;
+    color: #73d6f1;
 }
 
 .news-twitter-h3 > span {
-    color: #73D6F1;
+    color: #73d6f1;
 }
 
 .news-frame-padding {
@@ -110,7 +110,7 @@
 }
 
 .news-media-title span {
-    color: #73D6F1;
+    color: #73d6f1;
 }
 
 .makeStyles-root-210 {
@@ -120,7 +120,7 @@
 
 .makeStyles-body-211 {
     padding: 20px 15px 0px;
-    border-left: 1px solid #72D2F3AA;
+    border-left: 1px solid #72d2f3aa;
 }
 
 .makeStyles-content-213 {
@@ -136,7 +136,7 @@
 }
 
 .news-news-title span {
-    color: #73D6F1;
+    color: #73d6f1;
 }
 
 @media (max-width: 599px) {

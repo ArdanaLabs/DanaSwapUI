@@ -11,8 +11,10 @@
 /* home-header style */
 
 .home-bg {
-    background: url(../../assets/backgrounds/pink-gradient.png) top -700px right -700px no-repeat,
-        url(../../assets/backgrounds/cyan-gradient.png) top 50% left 50% no-repeat,
+    background: url(../../assets/backgrounds/pink-gradient.png) top -700px right -700px
+            no-repeat,
+        url(../../assets/backgrounds/cyan-gradient.png) top 50% left 50%
+            no-repeat,
         url(../../assets/backgrounds/wave-gradient.png) bottom left no-repeat;
     padding-top: 200px;
     padding-bottom: 200px;
@@ -40,7 +42,6 @@
     justify-content: space-between;
 }
 
-
 .home-listingLabel {
     color: #f5fcfe;
     font-size: 12px;
@@ -49,7 +50,6 @@
     line-height: 100%;
     text-transform: uppercase;
 }
-
 
 .home-subTitle {
     color: #f5fcfe;
@@ -143,9 +143,12 @@
     }
 
     .home-bg {
-        background: url(../../assets/backgrounds/pink-gradient.png) top -700px right -700px no-repeat,
-            url(../../assets/backgrounds/cyan-gradient.png) top 50% left 50% no-repeat,
-            url(../../assets/backgrounds/wave-mobile-gradient.png) bottom left no-repeat;
+        background: url(../../assets/backgrounds/pink-gradient.png) top -700px right -700px
+                no-repeat,
+            url(../../assets/backgrounds/cyan-gradient.png) top 50% left 50%
+                no-repeat,
+            url(../../assets/backgrounds/wave-mobile-gradient.png) bottom left
+                no-repeat;
         text-align: center;
         padding-bottom: 130px;
         background-size: auto, auto, 100%;
@@ -157,7 +160,8 @@
 .home-intro-bg {
     width: 100%;
     background: url(../../assets/backgrounds/about-bg.png) top left no-repeat,
-        url(../../assets/backgrounds/cyan-gradient.png) bottom -200px right -500px no-repeat;
+        url(../../assets/backgrounds/cyan-gradient.png) bottom -200px right -500px
+            no-repeat;
     padding-top: 120px;
     padding-bottom: 200px;
     background-size: contain;
@@ -180,17 +184,17 @@
     position: relative;
 }
 
-.home-intro-video>div {
+.home-intro-video > div {
     display: flex;
 }
 
-.home-intro-video>div>video,
+.home-intro-video > div > video,
 .home-intro-video .home-playerPreview,
 .home-intro-video iframe {
     border-radius: 10px;
 }
 
-.home-intro-video>div>video {
+.home-intro-video > div > video {
     object-fit: cover;
 }
 
@@ -208,7 +212,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url('../../assets/backgrounds/video-poster.png');
+    background-image: url("../../assets/backgrounds/video-poster.png");
 }
 
 .home-intro-playIcon {
@@ -218,7 +222,8 @@
     height: 100%;
     display: flex;
     position: absolute;
-    background: url(../../assets/backgrounds/video-poster.png) center center no-repeat;
+    background: url(../../assets/backgrounds/video-poster.png) center center
+        no-repeat;
     align-items: center;
     line-height: 0;
     border-radius: 10px;
@@ -265,7 +270,7 @@
     visibility: hidden;
 }
 
-.home-intro-card-video>div video {
+.home-intro-card-video > div video {
     transform: rotateY(180deg);
     object-fit: cover;
     border-radius: 10px;
@@ -365,7 +370,7 @@
     line-height: 0;
 }
 
-.home-coin-bg>img {
+.home-coin-bg > img {
     width: 100%;
     height: 600px;
 }
@@ -377,9 +382,11 @@
     height: 100%;
     display: flex;
     position: absolute;
-    background: linear-gradient(180deg,
-            rgba(4, 13, 77, 0.7) -43.4%,
-            rgba(50, 3, 111, 0.7) 222.51%);
+    background: linear-gradient(
+        180deg,
+        rgba(4, 13, 77, 0.7) -43.4%,
+        rgba(50, 3, 111, 0.7) 222.51%
+    );
     align-items: center;
 }
 
@@ -405,7 +412,7 @@
 }
 
 @media (max-width: 599.95px) {
-    .home-coin-bg>img {
+    .home-coin-bg > img {
         height: 600px;
     }
 
@@ -417,7 +424,8 @@
 /* home-main style */
 
 .home-main-bg {
-    background: url(../../assets/backgrounds/pink-gradient.png) top -200px left -700px no-repeat,
+    background: url(../../assets/backgrounds/pink-gradient.png) top -200px left -700px
+            no-repeat,
         url(../../assets/backgrounds/cyan-gradient.png) top 600px left -900px no-repeat,
         url(../../assets/backgrounds/pink-gradient.png) bottom 0px left -700px no-repeat;
 }
@@ -524,8 +532,10 @@
 .home-token-bg {
     height: 700px;
     display: flex;
-    background: url(../../assets/backgrounds/danatoken-left-bg.png) top left no-repeat,
-        url(../../assets/backgrounds/danatoken-right-bg.png) top 50% right no-repeat,
+    background: url(../../assets/backgrounds/danatoken-left-bg.png) top left
+            no-repeat,
+        url(../../assets/backgrounds/danatoken-right-bg.png) top 50% right
+            no-repeat,
         url(../../assets/backgrounds/cyan-gradient.png) top 50% right -200px no-repeat;
     text-align: center;
     align-items: center;
@@ -536,9 +546,12 @@
 @media (max-width: 599.95px) {
     .home-token-bg {
         padding: 0px 50px;
-        background: url(../../assets/backgrounds/danatoken-left-mobile-bg.png) top left no-repeat,
-            url(../../assets/backgrounds/danatoken-right-mobile-bg.png) bottom right no-repeat,
-            url(../../assets/backgrounds/cyan-gradient.png) bottom -300px right -300px no-repeat;
+        background: url(../../assets/backgrounds/danatoken-left-mobile-bg.png)
+                top left no-repeat,
+            url(../../assets/backgrounds/danatoken-right-mobile-bg.png) bottom
+                right no-repeat,
+            url(../../assets/backgrounds/cyan-gradient.png) bottom -300px right -300px
+                no-repeat;
         background-size: 50vw, 30vw, cover;
     }
 }
@@ -594,9 +607,11 @@
     height: 100%;
     display: flex;
     position: absolute;
-    background: linear-gradient(180deg,
-            rgba(4, 13, 77, 0.7) -43.4%,
-            rgba(50, 3, 111, 0.7) 222.51%);
+    background: linear-gradient(
+        180deg,
+        rgba(4, 13, 77, 0.7) -43.4%,
+        rgba(50, 3, 111, 0.7) 222.51%
+    );
     align-items: center;
 }
 

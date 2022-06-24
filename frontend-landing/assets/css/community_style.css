@@ -1,10 +1,18 @@
 .main-bg {
-    background: url(../../assets/backgrounds/pink-gradient.png) top -900px left -700px no-repeat,
-        url(../../assets/backgrounds/cyan-gradient.png) top -500px left -900px no-repeat,
+    background: url(../../assets/backgrounds/pink-gradient.png) top -900px left -700px
+            no-repeat,
+        url(../../assets/backgrounds/cyan-gradient.png) top -500px left -900px
+            no-repeat,
         url(../../assets/backgrounds/cyan-gradient.png) top 0px right -900px no-repeat,
-        url(../../assets/backgrounds/pink-gradient.png) bottom -400px left -900px no-repeat,
-        url(../../assets/backgrounds/cyan-gradient.png) bottom -900px right -900px no-repeat,
-        linear-gradient(180deg, rgba(4, 13, 77, 0.7) -43.4%, rgba(50, 3, 111, 0.7) 222.51%),
+        url(../../assets/backgrounds/pink-gradient.png) bottom -400px left -900px
+            no-repeat,
+        url(../../assets/backgrounds/cyan-gradient.png) bottom -900px right -900px
+            no-repeat,
+        linear-gradient(
+            180deg,
+            rgba(4, 13, 77, 0.7) -43.4%,
+            rgba(50, 3, 111, 0.7) 222.51%
+        ),
         url(../../assets/backgrounds/community-bg.png) top left no-repeat;
     background-size: cover;
 }
@@ -48,9 +56,15 @@
     }
 
     .main-bg {
-        background: url(../../assets/backgrounds/pink-gradient.png) top -1800px left -1400px no-repeat,
-            linear-gradient(180deg, rgba(4, 13, 77, 0.7) -43.4%, rgba(50, 3, 111, 0.7) 222.51%),
-            url(../../assets/backgrounds/community-bg-mobile.png) top left no-repeat;
+        background: url(../../assets/backgrounds/pink-gradient.png) top -1800px left -1400px
+                no-repeat,
+            linear-gradient(
+                180deg,
+                rgba(4, 13, 77, 0.7) -43.4%,
+                rgba(50, 3, 111, 0.7) 222.51%
+            ),
+            url(../../assets/backgrounds/community-bg-mobile.png) top left
+                no-repeat;
         background-size: cover;
     }
     .com-frame-padding {
@@ -70,7 +84,7 @@
 }
 
 .community-title {
-    color: #73D6F1;
+    color: #73d6f1;
 }
 
 .com-frame-padding {
@@ -89,7 +103,7 @@
     height: calc(100% - 140px);
     padding: 80px 30px 80px 30px;
     position: relative;
-    background: #1D277A;
+    background: #1d277a;
     margin-top: 110px;
     text-align: center;
     border-radius: 10px;
@@ -107,16 +121,16 @@
 
 .community-tel-bg {
     padding: 20px;
-    background: #1D277A;
+    background: #1d277a;
     border-radius: 10px;
 }
 
 .makeStyles-title-21 {
-    color: #73D6F1;
+    color: #73d6f1;
 }
 
 .community-tel-title > span {
-    color: #73D6F1;
+    color: #73d6f1;
 }
 
 .community-display {

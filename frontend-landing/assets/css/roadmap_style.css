@@ -14,13 +14,17 @@
     height: 100%;
     display: flex;
     position: absolute;
-    background: linear-gradient(180deg, rgba(4, 13, 77, 0.7) -43.4%, rgba(50, 3, 111, 0.7) 222.51%);
+    background: linear-gradient(
+        180deg,
+        rgba(4, 13, 77, 0.7) -43.4%,
+        rgba(50, 3, 111, 0.7) 222.51%
+    );
     align-items: center;
     justify-content: center;
 }
 
 .roadmap-roadmap-title {
-    color: #73D6F1;
+    color: #73d6f1;
     line-height: 100%;
 }
 
@@ -97,7 +101,7 @@
     margin: 15px 0px;
     padding: 10px;
     font-size: 15px;
-    background: #1D277A;
+    background: #1d277a;
     text-align: center;
     font-family: Brandon Grotesque;
     font-weight: 700;
@@ -128,7 +132,11 @@
         height: 100%;
         display: flex;
         position: absolute;
-        background: linear-gradient(180deg, rgba(4, 13, 77, 0.7) -43.4%, rgba(50, 3, 111, 0.7) 222.51%);
+        background: linear-gradient(
+            180deg,
+            rgba(4, 13, 77, 0.7) -43.4%,
+            rgba(50, 3, 111, 0.7) 222.51%
+        );
         align-items: center;
         justify-content: center;
     }
