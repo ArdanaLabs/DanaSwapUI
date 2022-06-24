@@ -1170,7 +1170,7 @@ body::backdrop {
 .svg-circle-41 rect {
     width: 35;
     height: 35;
-    rx: 17.5;
+    rx: 17.5px;
 }
 
 .rec-carousel-explore {
@@ -1837,7 +1837,7 @@ body::backdrop {
     .svg-circle-181 rect {
         width: 175;
         height: 175;
-        rx: 87.5;
+        rx: 87.5px;
     }
     .svg-circle-151 {
         width: 151;
@@ -1846,7 +1846,7 @@ body::backdrop {
     .svg-circle-151 rect {
         width: 145;
         height: 145;
-        rx: 72.5;
+        rx: 72.5px;
     }
     .svg-circle-127 {
         width: 127;
@@ -1855,7 +1855,7 @@ body::backdrop {
     .svg-circle-127 rect {
         width: 121;
         height: 121;
-        rx: 60.5;
+        rx: 60.5px;
     }
     .svg-circle-81 {
         width: 81;
@@ -1864,7 +1864,7 @@ body::backdrop {
     .svg-circle-81 rect {
         width: 75;
         height: 75;
-        rx: 37.5;
+        rx: 37.5px;
     }
     .svg-circle-156 {
         width: 156;
@@ -1873,7 +1873,7 @@ body::backdrop {
     .svg-circle-156 rect {
         width: 150;
         height: 150;
-        rx: 75;
+        rx: 75px;
     }
     .svg-circle-106 {
         width: 106;
@@ -1882,7 +1882,7 @@ body::backdrop {
     .svg-circle-106 rect {
         width: 100;
         height: 100;
-        rx: 50;
+        rx: 50px;
     }
     .roadmap-video {
         width: 100%;
@@ -1916,7 +1916,7 @@ body::backdrop {
     .svg-circle-106 rect {
         width: 75;
         height: 75;
-        rx: 37.5;
+        rx: 37.5px;
     }
     .svg-circle-156 {
         width: 106;
@@ -1925,7 +1925,7 @@ body::backdrop {
     .svg-circle-156 rect {
         width: 100;
         height: 100;
-        rx: 50;
+        rx: 50px;
     }
     .svg-circle-81 {
         width: 56;
@@ -1934,7 +1934,7 @@ body::backdrop {
     .svg-circle-81 rect {
         width: 50;
         height: 50;
-        rx: 25;
+        rx: 25px;
     }
     .svg-circle-127 {
         width: 87;
@@ -1943,7 +1943,7 @@ body::backdrop {
     .svg-circle-127 rect {
         width: 81;
         height: 81;
-        rx: 40.5;
+        rx: 40.5px;
     }
     .common-card-info-mt {
         margin-top: 10px !important;
@@ -1955,7 +1955,7 @@ body::backdrop {
     .svg-circle-181 rect {
         width: 100;
         height: 100;
-        rx: 50;
+        rx: 50px;
     }
     .svg-circle-151 {
         width: 87;
@@ -1964,7 +1964,7 @@ body::backdrop {
     .svg-circle-151 rect {
         width: 81;
         height: 81;
-        rx: 40.5;
+        rx: 40.5px;
     }
     .Grid-container {
         /* width: 100%; */
