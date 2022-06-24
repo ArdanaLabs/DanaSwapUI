@@ -1,6 +1,5 @@
 # consider moving to a config project
 semi: false
-tabWidth: 2
 bracketSpacing: true
 singleQuote: false
 quoteProps: consistent
