@@ -2,11 +2,6 @@
 
 /* /DELETE */
 
-
-
-
-
-
 @font-face {
     font-family: "Museo Sans";
     src: local("Museo Sans 300"),
@@ -38,22 +33,33 @@
 @font-face {
     font-family: "Brandon Grotesque";
     src: local("Brandon Grotesque Light"),
-        url(../../assets/fonts/Brandon-Grotesque-Font-Family/brandon-grotesque-light.woff2) format("woff2");
+        url(../../assets/fonts/Brandon-Grotesque-Font-Family/brandon-grotesque-light.woff2)
+            format("woff2");
     font-weight: 300;
 }
 
 @font-face {
     font-family: "Brandon Grotesque";
     src: local("Brandon Grotesque Bold"),
-        url(../../assets/fonts/brandon-Grotesque-Font-Family/brandon-grotesque-bold-regular.woff2) format("woff2");
+        url(../../assets/fonts/brandon-Grotesque-Font-Family/brandon-grotesque-bold-regular.woff2)
+            format("woff2");
     font-weight: 700;
 }
 
 @font-face {
     font-family: "Brandon Grotesque";
     src: local("Brandon Grotesque Black"),
-        url(../../assets/fonts/brandon-Grotesque-Font-Family/brandon-grotesque-black.woff2) format("woff2");
+        url(../../assets/fonts/brandon-Grotesque-Font-Family/brandon-grotesque-black.woff2)
+            format("woff2");
     font-weight: 900;
+}
+
+#SVGDefs {
+    visibility: hidden;
+    height: 0;
+    width: 0;
+    position: absolute;
+    z-index: -1;
 }
 
 div:empty {
@@ -93,7 +99,7 @@ div:empty {
     flex-direction: column;
 }
 
-.nav-dropBtn>div {
+.nav-dropBtn > div {
     height: 4px !important;
     border-radius: 5px;
     width: 30px !important;
@@ -171,7 +177,7 @@ div:empty {
     font-size: 13px;
     font-style: normal;
     text-align: center;
-    transition: all .2s;
+    transition: all 0.2s;
     font-family: Museo Sans;
     font-weight: 700;
     text-transform: uppercase;
@@ -489,7 +495,7 @@ body::backdrop {
     margin: -4px;
 }
 
-.Grid-spacing-xs-1>.Grid-item {
+.Grid-spacing-xs-1 > .Grid-item {
     padding: 4px;
 }
 
@@ -498,7 +504,7 @@ body::backdrop {
     margin: -8px;
 }
 
-.Grid-spacing-xs-2>.Grid-item {
+.Grid-spacing-xs-2 > .Grid-item {
     padding: 8px;
 }
 
@@ -507,7 +513,7 @@ body::backdrop {
     margin: -12px;
 }
 
-.Grid-spacing-xs-3>.Grid-item {
+.Grid-spacing-xs-3 > .Grid-item {
     padding: 12px;
 }
 
@@ -516,7 +522,7 @@ body::backdrop {
     margin: -16px;
 }
 
-.Grid-spacing-xs-4>.Grid-item {
+.Grid-spacing-xs-4 > .Grid-item {
     padding: 16px;
 }
 
@@ -525,7 +531,7 @@ body::backdrop {
     margin: -20px;
 }
 
-.Grid-spacing-xs-5>.Grid-item {
+.Grid-spacing-xs-5 > .Grid-item {
     padding: 20px;
 }
 
@@ -534,7 +540,7 @@ body::backdrop {
     margin: -24px;
 }
 
-.Grid-spacing-xs-6>.Grid-item {
+.Grid-spacing-xs-6 > .Grid-item {
     padding: 24px;
 }
 
@@ -543,7 +549,7 @@ body::backdrop {
     margin: -28px;
 }
 
-.Grid-spacing-xs-7>.Grid-item {
+.Grid-spacing-xs-7 > .Grid-item {
     padding: 28px;
 }
 
@@ -552,7 +558,7 @@ body::backdrop {
     margin: -32px;
 }
 
-.Grid-spacing-xs-8>.Grid-item {
+.Grid-spacing-xs-8 > .Grid-item {
     padding: 32px;
 }
 
@@ -561,7 +567,7 @@ body::backdrop {
     margin: -36px;
 }
 
-.Grid-spacing-xs-9>.Grid-item {
+.Grid-spacing-xs-9 > .Grid-item {
     padding: 36px;
 }
 
@@ -570,7 +576,7 @@ body::backdrop {
     margin: -40px;
 }
 
-.Grid-spacing-xs-10>.Grid-item {
+.Grid-spacing-xs-10 > .Grid-item {
     padding: 40px;
 }
 
@@ -1122,15 +1128,16 @@ body::backdrop {
 }
 
 .Paper-elevation16 {
-    box-shadow: 0px 8px 10px -5px rgb(0 0 0 / 20%), 0px 16px 24px 2px rgb(0 0 0 / 14%), 0px 6px 30px 5px rgb(0 0 0 / 12%);
+    box-shadow: 0px 8px 10px -5px rgb(0 0 0 / 20%),
+        0px 16px 24px 2px rgb(0 0 0 / 14%), 0px 6px 30px 5px rgb(0 0 0 / 12%);
     transform: none;
     transition: transform 225ms cubic-bezier(0, 0, 0.2, 1) 0ms;
 }
 
 .Paper-root {
-    color: #F5FCFE;
+    color: #f5fcfe;
     transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    background-color: #1D277A;
+    background-color: #1d277a;
 }
 
 .nav-menuItem {
@@ -1141,7 +1148,7 @@ body::backdrop {
     font-size: 13px;
     font-style: normal;
     text-align: center;
-    transition: all .2s;
+    transition: all 0.2s;
     font-family: Museo Sans;
     font-weight: 700;
     line-height: 100%;
@@ -1149,7 +1156,7 @@ body::backdrop {
 }
 
 .Typography-colorPrimary {
-    color: #F5FCFE;
+    color: #f5fcfe;
 }
 
 .svg-circle-41 {
@@ -1186,7 +1193,7 @@ body::backdrop {
 .rec.rec-carousel-item {
     width: 50%;
 }
-@media (max-width: 599.95px){
+@media (max-width: 599.95px) {
     .rec.rec-carousel-item {
         width: 100%;
     }
@@ -1214,7 +1221,7 @@ body::backdrop {
 }
 
 .button:hover .button-border {
-    background: rgba(255, 255, 255, 0.2) !important
+    background: rgba(255, 255, 255, 0.2) !important;
 }
 
 .common-card-info-mt {
@@ -1243,8 +1250,10 @@ body::backdrop {
 }
 
 .explore {
-    background: url(../../assets/backgrounds/pink-gradient.png) top -700px right -700px no-repeat,
-        url(../../assets/backgrounds/cyan-gradient.png) top -700px left -1000px no-repeat,
+    background: url(../../assets/backgrounds/pink-gradient.png) top -700px right -700px
+            no-repeat,
+        url(../../assets/backgrounds/cyan-gradient.png) top -700px left -1000px
+            no-repeat,
         url(../../assets/backgrounds/two-circle.png) top 100px left no-repeat;
     padding-top: 300px;
     background-size: auto, auto, auto calc(100% - 200px);
@@ -1275,7 +1284,7 @@ body::backdrop {
 }
 
 .news_card-media-label {
-    color: #73D6F1;
+    color: #73d6f1;
     font-weight: 900;
     text-transform: uppercase;
 }
@@ -1286,7 +1295,7 @@ body::backdrop {
 
 .emotion {
     font-size: 3em;
-    opacity: 0.25
+    opacity: 0.25;
 }
 
 .carousel-img-w {
@@ -1302,7 +1311,7 @@ body::backdrop {
     width: 100%;
 }
 
-.explore-carousel-bg>img {
+.explore-carousel-bg > img {
     border-radius: 10px;
 }
 
@@ -1425,7 +1434,7 @@ body::backdrop {
     fill: #73d6f1;
     transition: all 0.2s;
 }
-.socialIconBar>.socialIconLink svg {
+.socialIconBar > .socialIconLink svg {
     width: 22px;
 }
 
@@ -1468,7 +1477,8 @@ body::backdrop {
 }
 
 .explore-home {
-    background: url(../../assets/backgrounds/two-circle-rtl.png) top right no-repeat;
+    background: url(../../assets/backgrounds/two-circle-rtl.png) top right
+        no-repeat;
     padding-top: 200px;
     background-size: auto 100%;
 }
@@ -1588,7 +1598,7 @@ body::backdrop {
     top: 100%;
     left: 0;
     width: 100%;
-    height: 2.0px;
+    height: 2px;
     content: " ";
     position: absolute;
     background: linear-gradient(90deg, #5f72ff 0%, #73d6f1 100%);
@@ -1604,7 +1614,8 @@ body::backdrop {
 .footer {
     display: flex;
     padding: 150px 0px 60px;
-    background: url(../../assets/backgrounds/wave-gradient.png) top left no-repeat;
+    background: url(../../assets/backgrounds/wave-gradient.png) top left
+        no-repeat;
     align-items: flex-start;
     background-size: 100%;
     justify-content: space-between;
@@ -1619,7 +1630,8 @@ body::backdrop {
 
 @media (max-width: 599.95px) {
     .footer {
-        background: url(../../assets/backgrounds/wave-mobile180-bg.png) top -30px left no-repeat;
+        background: url(../../assets/backgrounds/wave-mobile180-bg.png) top -30px
+            left no-repeat;
         text-align: center;
         align-items: center;
         padding-left: 20px;
@@ -1638,7 +1650,7 @@ body::backdrop {
     margin-bottom: 12px;
 }
 
-.footer span>a {
+.footer span > a {
     color: #ffffff;
 }
 
@@ -1686,7 +1698,7 @@ body::backdrop {
     justify-content: center;
 }
 
-.footer-logo>img {
+.footer-logo > img {
     border-radius: 50%;
 }
 
@@ -1698,7 +1710,7 @@ body::backdrop {
 }
 
 @media (max-width: 599.95px) {
-    .footer-logo>img {
+    .footer-logo > img {
         width: 60px;
     }
 }
@@ -1727,7 +1739,7 @@ body::backdrop {
     justify-content: space-between;
 }
 
-.footer-guide>.section {
+.footer-guide > .section {
     display: flex;
     margin-bottom: 20px;
     flex-direction: column;
@@ -1741,7 +1753,7 @@ body::backdrop {
 }
 
 @media (max-width: 599.95px) {
-    .footer-guide>.section {
+    .footer-guide > .section {
         flex: 0 1 auto;
         min-width: 30%;
         justify-content: space-around;
@@ -1832,7 +1844,7 @@ body::backdrop {
         width: 151;
         height: 151;
     }
-    .svg-circle-151 rect{
+    .svg-circle-151 rect {
         width: 145;
         height: 145;
         rx: 72.5;
@@ -1841,7 +1853,7 @@ body::backdrop {
         width: 127;
         height: 127;
     }
-    .svg-circle-127 rect{
+    .svg-circle-127 rect {
         width: 121;
         height: 121;
         rx: 60.5;
@@ -1911,7 +1923,7 @@ body::backdrop {
         width: 106;
         height: 106;
     }
-    .svg-circle-156 rect{
+    .svg-circle-156 rect {
         width: 100;
         height: 100;
         rx: 50;
@@ -1929,7 +1941,7 @@ body::backdrop {
         width: 87;
         height: 87;
     }
-    .svg-circle-127 rect{
+    .svg-circle-127 rect {
         width: 81;
         height: 81;
         rx: 40.5;
