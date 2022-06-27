@@ -108,16 +108,16 @@ export const Members: ProfileType[] = [
         "https://twitter.com/infinit3booker?t=QBsb3CsDPsTNStkDIdlLgA&s=09",
     },
   },
-  {
-    avatar: require("assets/avatars/IssacShapira.png").default,
-    name: "Isaac Shapira",
-    role: "Chief Technology Officer",
-    info: `Founder of Platonic.Systems, a lead functional programming firm.\n\nSenior software developer roles at various leading tech firms.`,
-    socials: {
-      // linkedin: "https://www.linkedin.com/in/isaacshapira/",
-      github: "https://github.com/Fresheyeball",
-    },
-  },
+  // {
+  //   avatar: require("assets/avatars/IssacShapira.png").default,
+  //   name: "Isaac Shapira",
+  //   role: "Chief Technology Officer",
+  //   info: `Founder of Platonic.Systems, a lead functional programming firm.\n\nSenior software developer roles at various leading tech firms.`,
+  //   socials: {
+  //     // linkedin: "https://www.linkedin.com/in/isaacshapira/",
+  //     github: "https://github.com/Fresheyeball",
+  //   },
+  // },
   {
     avatar: require("assets/avatars/DerekEvans.png").default,
     name: "Derek Evans",
