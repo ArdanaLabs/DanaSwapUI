@@ -37,7 +37,7 @@
             let
               productionMessage = "${projectName} has been deployed for **production**";
               normalMessage = "${projectName} has been deployed for preview";
-              productionMentions = "<@558450198670475294>";
+              productionMentions = "<@591177767467614238>";
               normalMentions = "<@685818055544012885>";
               message = if (branch == "main") then productionMessage else normalMessage;
               mentions = if (branch == "main") then productionMentions else normalMentions;
