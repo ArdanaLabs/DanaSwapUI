@@ -105,7 +105,7 @@ export const Members: ProfileType[] = [
       // linkedin: "https://www.linkedin.com/in/ryan-matovu-517988203",
       // twitter: "https://twitter.com/ryanmatovu",
       twitter:
-        "https://twitter.com/infinit3booker?t=QBsb3CsDPsTNStkDIdlLgA&s=09",
+        "https://twitter.com/ryanmatovu",
     },
   },
   // {
