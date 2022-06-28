@@ -105,19 +105,19 @@ export const Members: ProfileType[] = [
       // linkedin: "https://www.linkedin.com/in/ryan-matovu-517988203",
       // twitter: "https://twitter.com/ryanmatovu",
       twitter:
-        "https://twitter.com/infinit3booker?t=QBsb3CsDPsTNStkDIdlLgA&s=09",
+        "https://twitter.com/ryanmatovu",
     },
   },
-  {
-    avatar: require("assets/avatars/IssacShapira.png").default,
-    name: "Isaac Shapira",
-    role: "Chief Technology Officer",
-    info: `Founder of Platonic.Systems, a lead functional programming firm.\n\nSenior software developer roles at various leading tech firms.`,
-    socials: {
-      // linkedin: "https://www.linkedin.com/in/isaacshapira/",
-      github: "https://github.com/Fresheyeball",
-    },
-  },
+  // {
+  //   avatar: require("assets/avatars/IssacShapira.png").default,
+  //   name: "Isaac Shapira",
+  //   role: "Chief Technology Officer",
+  //   info: `Founder of Platonic.Systems, a lead functional programming firm.\n\nSenior software developer roles at various leading tech firms.`,
+  //   socials: {
+  //     // linkedin: "https://www.linkedin.com/in/isaacshapira/",
+  //     github: "https://github.com/Fresheyeball",
+  //   },
+  // },
   {
     avatar: require("assets/avatars/DerekEvans.png").default,
     name: "Derek Evans",
