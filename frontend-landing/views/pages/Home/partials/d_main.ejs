@@ -80,12 +80,16 @@
                     <div class="home-main-carouselAction">
                         <%- include('../../../components/noscript.ejs'); %>
                         <div class="my-30 prev-next-btn" onclick="prev(danaCards)">
-                            <%- include('../../../components/circle_btn.ejs', {btn: 81}) %>
-                            <img class="common-photo-25" src="../../../../assets/icons/carousel-prev.svg" alt="prev" />
+                            <addr title="Show previous card">
+                                <%- include('../../../components/circle_btn.ejs', {btn: 81}) %>
+                            </addr>
+                            <img class="common-photo-25" src="../../../../assets/icons/carousel-prev.svg" alt="Show previous card" />
                         </div>
                         <div class="my-30 prev-next-btn" onclick="next(danaCards)">
-                            <%- include('../../../components/circle_btn.ejs', {btn: 81}) %>
-                            <img class="common-photo-25" src="../../../../assets/icons/carousel-next.svg" alt="next" />
+                            <addr title="Show next card">
+                                <%- include('../../../components/circle_btn.ejs', {btn: 81}) %>
+                            </addr>
+                            <img class="common-photo-25" src="../../../../assets/icons/carousel-next.svg" alt="Show next card" />
                         </div>
                     </div>
                 </div>
