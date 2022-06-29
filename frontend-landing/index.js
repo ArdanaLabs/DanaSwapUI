@@ -25,9 +25,9 @@ app.get("/news", function (req, res) {
   res.render("pages/News/index", {currentUrl : req.url});
 });
 
-app.get("/roadmap", function (req, res) {
-  res.render("pages/Roadmap/index", {currentUrl : req.url});
-});
+// app.get("/roadmap", function (req, res) {
+//   res.render("pages/Roadmap/index", {currentUrl : req.url});
+// });
 
 app.get("/brandassets", function (req, res) {
   res.render("pages/brandassets/index", {currentUrl : req.url});
