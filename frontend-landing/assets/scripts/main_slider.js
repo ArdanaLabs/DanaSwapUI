@@ -10,8 +10,12 @@ function offBorder() {
   removeCls[0].classList.remove("hover")
 }
 
-const danaCards = document.querySelectorAll(`[id^="dana_"]`)
-const exploreCards = document.querySelectorAll(`[id^="ex_"]`)
+const danaCards = document.querySelectorAll(
+  `[class*="rec-dana-carousel-item"]`
+)
+const exploreCards = document.querySelectorAll(
+  `[class*="rec-ex-carousel-item"]`
+)
 const cards = [danaCards, exploreCards]
 const tabletWidth = 600
 var currentWidth = window.innerWidth

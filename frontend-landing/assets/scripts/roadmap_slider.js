@@ -1,4 +1,6 @@
-const roadmap_items = document.querySelectorAll(`[id^="roadmap_"]`)
+const roadmap_items = document.querySelectorAll(
+  `[data-name*="rec-carousel-item-"]`
+)
 var current_width = window.innerWidth
 
 ;(function () {
