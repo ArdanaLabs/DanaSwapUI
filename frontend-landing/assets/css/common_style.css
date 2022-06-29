@@ -91,6 +91,10 @@ div:empty {
     line-height: 0;
 }
 
+.no-js:root .prev-next-btn {
+    display: none;
+}
+
 .flex {
     display: flex;
     justify-content: center;
