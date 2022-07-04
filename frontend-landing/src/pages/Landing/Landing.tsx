@@ -44,7 +44,7 @@ const Landing: React.FC = () => {
         <DanaTokenSection />
         <TechSection />
         <CommunitySection />
-        <NewsSection />
+        {/* <NewsSection /> */}
       </Box>
       {/* <RoadMapSection /> */}
       <PartnerSection />
