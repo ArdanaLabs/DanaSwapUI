@@ -1,3 +1,39 @@
+const danaCards = document.querySelectorAll(`[class*="rec-dana-carousel-item"]`)
+const exploreCards = document.querySelectorAll(`[class*="rec-ex-carousel-item"]`)
+const cards = [danaCards, exploreCards]
+const tabletWidth = 600
+var currentWidth = window.innerWidth
+
+const danaPrevBtn = document.getElementById("dana-prev-btn")
+const danaNextBtn = document.getElementById("dana-next-btn")
+const exPrevBtn = document.getElementById("explore-prev-btn")
+const exNextBtn = document.getElementById("explore-next-btn")
+if (danaPrevBtn) {
+  danaPrevBtn.addEventListener("click", function () {
+    prev(danaCards)
+  })
+  danaNextBtn.addEventListener("click", function () {
+    next(danaCards)
+  })
+}
+if (exPrevBtn) {
+  exPrevBtn.addEventListener("click", function () {
+    prev(exploreCards)
+  })
+  exNextBtn.addEventListener("click", function () {
+    next(exploreCards)
+  })
+}
+
+danaCards.forEach((danaCard, index) => {
+  danaCard.addEventListener("mouseover", function () {
+    onBorder(index)
+  })
+  danaCard.addEventListener("mouseout", function () {
+    offBorder()
+  })
+});
+
 function onBorder(index) {
   var setCls = document.getElementsByClassName("home-main-carousel-border")
   setCls[index].classList.add("hover")
@@ -10,15 +46,6 @@ function offBorder() {
   removeCls[0].classList.remove("hover")
 }
 
-const danaCards = document.querySelectorAll(
-  `[class*="rec-dana-carousel-item"]`
-)
-const exploreCards = document.querySelectorAll(
-  `[class*="rec-ex-carousel-item"]`
-)
-const cards = [danaCards, exploreCards]
-const tabletWidth = 600
-var currentWidth = window.innerWidth
 
 ;(function () {
   const nextItemIndex = currentWidth < tabletWidth ? 1 : 2

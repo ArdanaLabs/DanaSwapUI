@@ -51,9 +51,9 @@
                                             }
                                         ] %>
                                         <% cards.forEach(function(card){ %>
-                                        <div aria-hidden="true" id="dana_<%=card.index%>" class="rec rec-carousel-item rec-dana-carousel-item<%=card.index%>">
+                                        <div aria-hidden="true" class="rec rec-carousel-item rec-dana-carousel-item<%=card.index%>">
                                             <div class="rec-carousel-item-pos rec dana-carousel-item">
-                                                <div class="home-main-carousel-item" onmouseover="onBorder('<%=card.index%>')" onmouseout="offBorder()">
+                                                <div class="home-main-carousel-item">
                                                     <div class="home-main-carousel-img">
                                                         <%- include('../../../components/circle_btn.ejs', {btn: 127}) %>
                                                         <img class="common-photo carousel-img-w" src="<%=card.img_src%>" alt="" />
@@ -79,13 +79,13 @@
                     </div>
                     <div class="home-main-carouselAction">
                         <%- include('../../../components/noscript.ejs'); %>
-                        <div class="my-30 prev-next-btn" onclick="prev(danaCards)">
+                        <div id="dana-prev-btn" class="my-30 prev-next-btn" role="button">
                             <addr title="Show previous card">
                                 <%- include('../../../components/circle_btn.ejs', {btn: 81}) %>
                             </addr>
                             <img class="common-photo-25" src="../../../../assets/icons/carousel-prev.svg" alt="Show previous card" />
                         </div>
-                        <div class="my-30 prev-next-btn" onclick="next(danaCards)">
+                        <div id="dana-next-btn" class="my-30 prev-next-btn" role="button">
                             <addr title="Show next card">
                                 <%- include('../../../components/circle_btn.ejs', {btn: 81}) %>
                             </addr>

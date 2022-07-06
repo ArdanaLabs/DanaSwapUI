@@ -65,13 +65,13 @@
                 </div>
                 <%- include('../components/noscript.ejs'); %>
                 <div class="explore-carousel-action">
-                    <div class="prev-next-btn" onclick="prev(exploreCards)" role="button">
+                    <div id="explore-prev-btn" class="prev-next-btn" role="button">
                         <addr title="Show previous card">
                             <%- include('../components/circle_btn.ejs', {btn: 81}) %>
                         </addr>
                         <img class="common-photo-25" src="../../assets/icons/carousel-prev.svg" alt="Show previous card" />
                     </div>
-                    <div class="prev-next-btn" onclick="next(exploreCards)" role="button">
+                    <div id="explore-next-btn" class="prev-next-btn" role="button">
                         <addr title="Show next card">
                             <%- include('../components/circle_btn.ejs', {btn: 81}) %>
                         </addr>
