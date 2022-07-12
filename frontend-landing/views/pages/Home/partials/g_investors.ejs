@@ -8,48 +8,53 @@
                 {
                     href: "https://www.threearrowscap.com/select-investments/",
                     img_src: "../../../../assets/logos/three-arrow-capital.svg",
-                    img_alt: "investor"
+                    img_alt: "select investments"
                 }, {
                     href: "https://cfund.vc/",
                     img_src: "../../../../assets/logos/cfund.svg",
-                    img_alt: "investor"
+                    img_alt: "cfund"
                 }, {
                     href: "https://ascensiveassets.com/",
                     img_src: "../../../../assets/logos/ascentive-assets.svg",
-                    img_alt: "investor"
+                    img_alt: "ascensiveassets"
                 }, {
                     href: "https://kronosresearch.com/",
                     img_src: "../../../../assets/logos/kronos.svg",
-                    img_alt: "investor"
+                    img_alt: "kronosresearch"
                 }, {
                     href: "https://www.morningstar.ventures/",
                     img_src: "../../../../assets/logos/morning-star.svg",
-                    img_alt: "investor"
+                    img_alt: "morningstar ventures"
                 }, {
                     href: "https://www.mechanism.capital/",
                     img_src: "../../../../assets/logos/mechanism-capital.svg",
-                    img_alt: "investor"
+                    img_alt: "mechanism capital"
                 }, {
                     href: "https://qcp.capital/",
                     img_src: "../../../../assets/logos/QCP-capital.svg",
-                    img_alt: "investor"
+                    img_alt: "qcp capital"
                 }, {
                     href: "https://www.iangels.com/",
                     img_src: "../../../../assets/logos/angels.svg",
-                    img_alt: "investor"
+                    img_alt: "iangels"
                 }
             ] %>
             <% logos.forEach(function(logo){ %>
                 <%- include('../../../components/logo.ejs', {logo: logo}) %>
             <% }); %>
-            <% let srcs = [
-                "../../../../assets/logos/david-post.svg",
-                "../../../../assets/logos/taiyang-zhang.svg",
-                "../../../../assets/logos/justin-sun.svg"
-            ] %>
-            <% srcs.forEach(function(src){ %>
+            <% let posters = [{
+                src: "../../../../assets/logos/david-post.svg",
+                alt: "david post"
+            }, {
+                src: "../../../../assets/logos/taiyang-zhang.svg",
+                alt: "taiyang zhang"
+            }, {
+                src: "../../../../assets/logos/justin-sun.svg",
+                alt: "justin sun"
+            }] %>
+            <% posters.forEach(function(poster){ %>
                 <div class="brandLogo-flex">
-                    <img class="logo-img" src="<%=src%>" alt="" />
+                    <img class="logo-img" src="<%=poster.src%>" alt="<%=poster.alt%>" />
                 </div>
             <% }); %>
         </div>

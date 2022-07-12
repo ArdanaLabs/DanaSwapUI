@@ -37,15 +37,17 @@
                 <div class="home-listingItem-display home-listingItem">
                     <% let links = [{
                         href: "https://www.gate.io/trade/DANA_USDT",
-                        src: "../../../../assets/listings//gate.io.svg"
+                        src: "../../../../assets/listings//gate.io.svg",
+                        alt: "gate.io"
                     }, {
                         href: "https://www.mexc.com/exchange/DANA_USDT",
-                        src: "../../../../assets/listings/MEXC.svg"
+                        src: "../../../../assets/listings/MEXC.svg",
+                        alt: "MEXC"
                     }]
                     links.forEach(function(link) { %>
                     <a class="Typography-root Link-underlineNone Typography-colorPrimary"
                         href="<%=link.href%>" >
-                        <img src="<%=link.src%>" alt="listing item" />
+                        <img src="<%=link.src%>" alt="<%=link.alt%>" />
                     </a>
                     <% }) %>
                 </div>
