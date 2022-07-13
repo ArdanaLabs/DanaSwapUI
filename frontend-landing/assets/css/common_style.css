@@ -1893,6 +1893,7 @@ body::backdrop {
         height: 600px;
     }
     .logo-img {
+        text-transform: lowercase;
         height: 45px;
         max-width: max-content;
     }
