@@ -1610,10 +1610,11 @@ body::backdrop {
     justify-content: space-between;
 }
 
-.footer span {
+.footer dd {
     font-size: 16px;
     font-family: Museo Sans;
     line-height: 24px;
+    margin-left: 0px;
 }
 
 @media (max-width: 599.95px) {
@@ -1628,7 +1629,7 @@ body::backdrop {
     }
 }
 
-.footer span:first-child {
+.footer dt {
     color: #73d6f1;
     font-size: 20px;
     font-family: Brandon Grotesque;
@@ -1637,19 +1638,19 @@ body::backdrop {
     margin-bottom: 12px;
 }
 
-.footer span>a {
+.footer dd>a {
     color: #ffffff;
 }
 
 @media (max-width: 599.95px) {
-    .footer span {
+    .footer dd {
         font-size: 16px;
         line-height: 20px;
     }
 }
 
 @media (max-width: 599.95px) {
-    .footer span:first-child {
+    .footer dt {
         font-size: 20px;
         margin-bottom: 10px;
     }
@@ -1658,7 +1659,7 @@ body::backdrop {
 .footer-title {
     color: #73d6f1;
     font-size: 32px;
-    font-family: "Brandon Grotesque", "sans-serif", "serif", "monospace", "fantasy";
+    font-family: "Brandon Grotesque", "sans-serif";
     font-weight: 900;
     line-height: 100%;
 }
@@ -1726,7 +1727,7 @@ body::backdrop {
     justify-content: space-between;
 }
 
-.footer-guide>.section {
+.footer-guide>dl {
     display: flex;
     margin-bottom: 20px;
     flex-direction: column;

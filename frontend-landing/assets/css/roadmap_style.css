@@ -90,7 +90,7 @@
 .roadmap-todolist-carousel .title span {
     color: #ffffff;
     font-size: 20px;
-    font-family: "Brandon Grotesque", "sans-serif", "serif", "monospace", "fantasy";
+    font-family: "Brandon Grotesque", "sans-serif";
     font-weight: 700;
     line-height: 100%;
 }
@@ -103,7 +103,7 @@
     font-size: 15px;
     background: #1d277a;
     text-align: center;
-    font-family: "Brandon Grotesque", "sans-serif", "serif", "monospace", "fantasy";
+    font-family: "Brandon Grotesque", "sans-serif";
     font-weight: 700;
     line-height: 100%;
     border-radius: 10px;
@@ -113,7 +113,7 @@
     .roadmap-todolist-carousel .title span {
         color: #ffffff;
         font-size: 14px;
-        font-family: "Brandon Grotesque", "sans-serif", "serif", "monospace", "fantasy";
+        font-family: "Brandon Grotesque", "sans-serif";
         font-weight: 700;
         line-height: 100%;
     }

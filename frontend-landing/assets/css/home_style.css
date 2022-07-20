@@ -85,7 +85,8 @@
 }
 
 .home-header-title {
-    max-width: 500px;
+    max-width: 12ch;
+    text-align: center;
 }
 
 @media (min-width: 600px) {
@@ -104,10 +105,6 @@
         font-size: 16px;
         line-height: 18.4px;
         /* white-space: pre-line; */
-    }
-
-    .home-header-title {
-        max-width: 350px;
     }
 }
 
@@ -165,11 +162,6 @@
     .home-title {
         display: flex;
         justify-content: center;
-    }
-    
-    .home-header-title {
-        max-width: 300px;
-        text-align: center;
     }
 }
 

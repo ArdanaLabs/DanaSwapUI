@@ -11,8 +11,8 @@
                     alt="" />
             </div>
             <div class="footer-guide">
-                <div class="section">
-                    <span>Resources</span>
+                <dl>
+                    <dt>Resources</dt>
                     <% let resources = [{
                         href: "/tech",
                         name: "Technology"
@@ -28,13 +28,13 @@
                     }
                     ] %>
                     <% resources.forEach(function(item) { %>
-                    <span><a
+                    <dd><a
                         class="Typography-root Link-underlineHover Typography-colorPrimary footer-links-pointer"
-                        href="<%=item.href%>"><%=item.name%></a></span>
+                        href="<%=item.href%>"><%=item.name%></a></dd>
                     <% }); %>
-                </div>
-                <div class="section">
-                    <span>Products</span>
+                </dl>
+                <dl>
+                    <dt>Products</dt>
                     <% let products = [{
                         href: "#",
                         name: "Dashboard"
@@ -47,13 +47,13 @@
                     }
                     ] %>
                     <% products.forEach(function(item) { %>
-                    <span><a
+                    <dd><a
                         class="Typography-root Link-underlineHover Typography-colorPrimary footer-links-pointer"
-                        href="<%=item.href%>"><%=item.name%></a></span>
+                        href="<%=item.href%>"><%=item.name%></a></dd>
                     <% }); %>
-                </div>
-                <div class="section">
-                    <span>Company</span>
+                </dl>
+                <dl>
+                    <dt>Company</dt>
                     <% let companies = [{
                         href: "mailto:enquiries@ardana.org",
                         name: "Contact Us"
@@ -63,16 +63,16 @@
                     }
                     ] %>
                     <% companies.forEach(function(item) { %>
-                    <span><a
+                    <dd><a
                         class="Typography-root Link-underlineHover Typography-colorPrimary footer-links-pointer"
-                        href="<%=item.href%>"><%=item.name%></a></span>
+                        href="<%=item.href%>"><%=item.name%></a></dd>
                     <% }); %>
-                </div>
-                <div class="footer-socials">
-                    <span>Our Socials</span>
-                    <span class="mb-25">Follow us to hear about Ardana<br />news and events.</span>
+                </dl>
+                <dl class="footer-socials">
+                    <dt>Our Socials</dt>
+                    <dd class="mb-25">Follow us to hear about Ardana<br />news and events.</dd>
                     <%- include('../components/socialIcon_bar.ejs') %>
-                </div>
+                </dl>
             </div>
         </div>
     </div>

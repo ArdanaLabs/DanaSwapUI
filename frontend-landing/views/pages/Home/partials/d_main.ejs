@@ -24,34 +24,29 @@
                                     <div class="rec rec-swipable">
                                         <% let cards = [
                                             {
-                                                index: 0,
                                                 img_src: "../../../../assets/logos/ultra-low-slippage.png",
                                                 title: "Ultra-low Slippage",
                                                 info: "Swap between stablecoins and stable assets such as wrapped/synthetic Bitcoin with minimal slippage."
                                             }, {
-                                                index: 1,
                                                 img_src: "../../../../assets/logos/earn-trading-fees.png",
                                                 title: "Earn Trading Fees",
                                                 info: "Deposit your assets into a DanaSwap pool and earn a proportion of the market making fees."
                                             }, {
-                                                index: 2,
                                                 img_src: "../../../../assets/logos/foreign-exchange.png",
                                                 title: "Foreign Exchange",
                                                 info: "Swap between international stablecoins such as dUSD, dEUR, dGBP and more."
                                             }, {
-                                                index: 3,
                                                 img_src: "../../../../assets/logos/dana-token.png",
                                                 title: "DANA Token",
                                                 info: "The governance token rewarded to users for supporting the ecosystem through liquidity provision."
                                             }, {
-                                                index: 4,
                                                 img_src: "../../../../assets/logos/governance.png",
                                                 title: "Governance",
                                                 info: "DANA token holders can participate in polling and voting to influence the development of Ardana."
                                             }
                                         ] %>
                                         <% cards.forEach(function(card){ %>
-                                        <div aria-hidden="true" class="rec rec-carousel-item rec-dana-carousel-item<%=card.index%>">
+                                        <div aria-hidden="true" class="rec rec-carousel-item rec-dana-carousel-item">
                                             <div class="rec-carousel-item-pos rec dana-carousel-item">
                                                 <div class="home-main-carousel-item">
                                                     <div class="home-main-carousel-img">
