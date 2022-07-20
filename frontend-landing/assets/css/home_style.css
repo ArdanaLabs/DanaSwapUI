@@ -84,6 +84,10 @@
     pointer-events: none;
 }
 
+.home-header-title {
+    max-width: 500px;
+}
+
 @media (min-width: 600px) {
     .home-trading-btn {
         width: 280px;
@@ -100,6 +104,10 @@
         font-size: 16px;
         line-height: 18.4px;
         /* white-space: pre-line; */
+    }
+
+    .home-header-title {
+        max-width: 350px;
     }
 }
 
@@ -152,6 +160,16 @@
         text-align: center;
         padding-bottom: 130px;
         background-size: auto, auto, 100%;
+    }
+
+    .home-title {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .home-header-title {
+        max-width: 300px;
+        text-align: center;
     }
 }
 

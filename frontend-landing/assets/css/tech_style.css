@@ -1,8 +1,7 @@
 @media (max-width: 599px) {
     .explore {
         background: url(../../assets/backgrounds/cyan-gradient.png) top -700px left -1000px
-                no-repeat,
-            url(../../assets/backgrounds/two-circle.png) top 100px left -70px no-repeat;
+                no-repeat;
         text-align: center;
         padding-top: 180px;
         background-size: auto, auto 300px;

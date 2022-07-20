@@ -1,10 +1,5 @@
 <div class="Grid-item Grid-grid-xs-12 Grid-grid-md-4">
-    <% if (info) { %>
-    <div class="com-card-exInfo">
-    <% } %>
-    <% if (!info) { %>
-    <div class="com-card-noneInfo">
-    <% } %>
+    <div class="<%= info ? 'com-card-exInfo' : 'com-card-noneInfo' %>">
         <div class="com-card-img">
             <%- include('./circle_btn.ejs', {btn: 156}) %>
             <div class="common-children">

@@ -1,9 +1,4 @@
-<% if (currentUrl == '/') { %>
-<div class="explore-home">
-<% } %>
-<% if (currentUrl != '/') { %>
-<div class="explore">
-<% } %>
+<div class="<%= currentUrl == '/' ? 'explore-home' : 'explore' %>">
     <div class="Container-root Container-maxWidthLg">
         <div class="Grid-container Grid-align-items-xs-flex-start">
             <div class="Grid-item Grid-grid-xs-12 Grid-grid-sm-3 Grid-grid-md-4">
@@ -22,19 +17,17 @@
                             <div class="rec rec-slider-pos rec-slider-card rec-slider">
                                 <div class="rec rec-swipable">
                                     <% let carouselItems = [{
-                                        index: 0,
                                         img: "eUTXOModels.png",
                                         title: "eUTXO Models",
                                         href: "d2g9qajrb4w23eyq"
                                     }, {
-                                        index: 1,
                                         img: "DanaswapTechnicalPaper.png",
                                         title: "Danaswap Technical Paper",
                                         href: "v4w3muusi6im3ay2"
                                     }
                                     ] %>
-                                    <% carouselItems.forEach(function(item) { %>
-                                    <div aria-hidden="true" id="ex_<%=item.index%>" class="rec rec-carousel-item rec-ex-carousel-item<%=item.index%>">
+                                    <% carouselItems.forEach(function(item, index) { %>
+                                    <div aria-hidden="true" id="ex_<%=index%>" class="rec rec-carousel-item rec-ex-carousel-item<%=index%>">
                                         <div class="rec rec-carousel-item-pos explore-carousel-item">
                                             <div class="explore-carousel-position explore-carousel-w">
                                                 <div
@@ -66,15 +59,11 @@
                 <%- include('../components/noscript.ejs'); %>
                 <div class="explore-carousel-action">
                     <div id="explore-prev-btn" class="prev-next-btn" role="button">
-                        <addr title="Show previous card">
-                            <%- include('../components/circle_btn.ejs', {btn: 81}) %>
-                        </addr>
+                        <%- include('../components/circle_btn.ejs', {btn: 81}) %>
                         <img class="common-photo-25" src="../../assets/icons/carousel-prev.svg" alt="Show previous card" />
                     </div>
                     <div id="explore-next-btn" class="prev-next-btn" role="button">
-                        <addr title="Show next card">
-                            <%- include('../components/circle_btn.ejs', {btn: 81}) %>
-                        </addr>
+                        <%- include('../components/circle_btn.ejs', {btn: 81}) %>
                         <img class="common-photo-25" src="../../assets/icons/carousel-next.svg" alt="Show next card" />
                     </div>
                 </div>

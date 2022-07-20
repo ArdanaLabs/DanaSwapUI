@@ -1,56 +1,49 @@
-/* DELETE ME AFTER REVIEW */
-
-/* /DELETE */
-
 @font-face {
     font-family: "Museo Sans";
-    src: local("Museo Sans 300"),
+    src: local("Museo Sans 300"), local("Museo-Sans-300"),
         url(../../assets/fonts/Museo-Sans/MuseoSans_300.woff2) format("woff2");
     font-weight: 300;
 }
 
 @font-face {
     font-family: "Museo Sans";
-    src: local("Museo Sans 500"),
+    src: local("Museo Sans 500"), local("Museo-Sans-500"),
         url(../../assets/fonts/Museo-Sans/MuseoSans_500.woff2) format("woff2");
     font-weight: 500;
 }
 
 @font-face {
     font-family: "Museo Sans";
-    src: local("Museo Sans 700"),
+    src: local("Museo Sans 700"), local("Museo-Sans-700"),
         url(../../assets/fonts/Museo-Sans/MuseoSans_700.woff2) format("woff2");
     font-weight: 700;
 }
 
 @font-face {
     font-family: "Museo Sans";
-    src: local("Museo Sans 900"),
+    src: local("Museo Sans 900"), local("Museo-Sans-900"),
         url(../../assets/fonts/Museo-Sans/MuseoSans_900.woff2) format("woff2");
     font-weight: 900;
 }
 
 @font-face {
     font-family: "Brandon Grotesque";
-    src: local("Brandon Grotesque Light"),
-        url(../../assets/fonts/Brandon-Grotesque-Font-Family/brandon-grotesque-light.woff2)
-            format("woff2");
+    src: local("Brandon Grotesque Light"), local("Brandon-Grotesque-Light"),
+        url(../../assets/fonts/Brandon-Grotesque-Font-Family/brandon-grotesque-light.woff2) format("woff2");
     font-weight: 300;
 }
 
 @font-face {
     font-family: "Brandon Grotesque";
-    src: local("Brandon Grotesque Bold"),
-        url(../../assets/fonts/brandon-Grotesque-Font-Family/brandon-grotesque-bold-regular.woff2)
-            format("woff2");
+    src: local("Brandon Grotesque Bold"), local("Brandon-Grotesque-Bold"),
+        url(../../assets/fonts/brandon-Grotesque-Font-Family/brandon-grotesque-bold-regular.woff2) format("woff2");
     font-weight: 700;
 }
 
 @font-face {
     font-family: "Brandon Grotesque";
-    src: local("Brandon Grotesque Black"),
-        url(../../assets/fonts/brandon-Grotesque-Font-Family/brandon-grotesque-black.woff2)
-            format("woff2");
+    src: local("Brandon Grotesque Black"), local("Brandon-Grotesque-Black"),
+        url(../../assets/fonts/brandon-Grotesque-Font-Family/brandon-grotesque-black.woff2) format("woff2");
     font-weight: 900;
 }
 
@@ -66,8 +59,7 @@
     z-index: -1;
 }
 
-div:empty {
-}
+div:empty {}
 
 .text-left {
     text-align: left;
@@ -107,17 +99,16 @@ div:empty {
     flex-direction: column;
 }
 
-.nav-dropBtn > div {
-    height: 4px !important;
+.nav-dropBtn>div {
+    height: 4px;
     border-radius: 5px;
-    width: 30px !important;
-    background: linear-gradient(90deg, #5f72ff 0%, #73d6f1 100%) !important;
+    width: 30px;
+    left: -20px;
+    background: linear-gradient(90deg, #5f72ff 0%, #73d6f1 100%);
     cursor: pointer;
-    height: 48px;
     position: relative;
     transition: all 0.4s cubic-bezier(0, 0, 0, 1) 0s;
     user-select: none;
-    width: 48px;
     outline: none;
     transform: none;
 }
@@ -125,10 +116,8 @@ div:empty {
 .nav-dropBtn-bar1 {
     background: rgb(255, 255, 255);
     height: 2px;
-    left: 12px;
     position: absolute;
     width: 24px;
-    top: 15px;
     transition: all 0.4s cubic-bezier(0, 0, 0, 1) 0s;
     transform: none;
 }
@@ -136,10 +125,9 @@ div:empty {
 .nav-dropBtn-bar2 {
     background: rgb(255, 255, 255);
     height: 2px;
-    left: 12px;
     position: absolute;
     width: 24px;
-    top: 23px;
+    top: 5px;
     transition: all 0.4s cubic-bezier(0, 0, 0, 1) 0s;
     transform: none;
 }
@@ -147,10 +135,9 @@ div:empty {
 .nav-dropBtn-bar3 {
     background: rgb(255, 255, 255);
     height: 2px;
-    left: 12px;
     position: absolute;
     width: 24px;
-    top: 31px;
+    top: 10px;
     transition: all 0.4s cubic-bezier(0, 0, 0, 1) 0s;
     transform: none;
 }
@@ -176,6 +163,7 @@ div:empty {
     width: 100%;
     direction: ltr;
 }
+
 .nav-menuItem {
     color: white;
     cursor: pointer;
@@ -226,7 +214,7 @@ div:empty {
 
 .Typography-h2 {
     font-size: 3.75rem;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-family: "Roboto", "Helvetica", "Free Sans", sans-serif;
     font-weight: 300;
     line-height: 1.2;
     letter-spacing: -0.00833em;
@@ -277,7 +265,7 @@ div:empty {
 
 .Typography-h6 {
     font-size: 1.25rem;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-family: "Roboto", "Helvetica", "Free Sans", sans-serif;
     font-weight: 500;
     line-height: 1.6;
     letter-spacing: 0.0075em;
@@ -399,16 +387,11 @@ html {
     box-sizing: inherit;
 }
 
-strong,
-b {
-    font-weight: 700;
-}
-
 body {
     color: #f5fcfe !important;
     margin: 0;
     font-size: 0.875rem;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-family: sans-serif;
     font-weight: 400;
     line-height: 1.43;
     letter-spacing: 0.01071em;
@@ -503,7 +486,7 @@ body::backdrop {
     margin: -4px;
 }
 
-.Grid-spacing-xs-1 > .Grid-item {
+.Grid-spacing-xs-1>.Grid-item {
     padding: 4px;
 }
 
@@ -512,7 +495,7 @@ body::backdrop {
     margin: -8px;
 }
 
-.Grid-spacing-xs-2 > .Grid-item {
+.Grid-spacing-xs-2>.Grid-item {
     padding: 8px;
 }
 
@@ -521,7 +504,7 @@ body::backdrop {
     margin: -12px;
 }
 
-.Grid-spacing-xs-3 > .Grid-item {
+.Grid-spacing-xs-3>.Grid-item {
     padding: 12px;
 }
 
@@ -530,7 +513,7 @@ body::backdrop {
     margin: -16px;
 }
 
-.Grid-spacing-xs-4 > .Grid-item {
+.Grid-spacing-xs-4>.Grid-item {
     padding: 16px;
 }
 
@@ -539,7 +522,7 @@ body::backdrop {
     margin: -20px;
 }
 
-.Grid-spacing-xs-5 > .Grid-item {
+.Grid-spacing-xs-5>.Grid-item {
     padding: 20px;
 }
 
@@ -548,7 +531,7 @@ body::backdrop {
     margin: -24px;
 }
 
-.Grid-spacing-xs-6 > .Grid-item {
+.Grid-spacing-xs-6>.Grid-item {
     padding: 24px;
 }
 
@@ -557,7 +540,7 @@ body::backdrop {
     margin: -28px;
 }
 
-.Grid-spacing-xs-7 > .Grid-item {
+.Grid-spacing-xs-7>.Grid-item {
     padding: 28px;
 }
 
@@ -566,7 +549,7 @@ body::backdrop {
     margin: -32px;
 }
 
-.Grid-spacing-xs-8 > .Grid-item {
+.Grid-spacing-xs-8>.Grid-item {
     padding: 32px;
 }
 
@@ -575,7 +558,7 @@ body::backdrop {
     margin: -36px;
 }
 
-.Grid-spacing-xs-9 > .Grid-item {
+.Grid-spacing-xs-9>.Grid-item {
     padding: 36px;
 }
 
@@ -584,7 +567,7 @@ body::backdrop {
     margin: -40px;
 }
 
-.Grid-spacing-xs-10 > .Grid-item {
+.Grid-spacing-xs-10>.Grid-item {
     padding: 40px;
 }
 
@@ -1050,10 +1033,10 @@ body::backdrop {
     border-radius: 50%;
 }
 
-.IconButton-root:hover {
+/* .IconButton-root:hover {
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: 50%;
-}
+} */
 
 .ButtonBase-root {
     color: inherit;
@@ -1171,6 +1154,7 @@ body::backdrop {
     width: 41;
     height: 41;
 }
+
 .svg-circle-41 rect {
     width: 35;
     height: 35;
@@ -1201,6 +1185,7 @@ body::backdrop {
 .rec.rec-carousel-item {
     width: 50%;
 }
+
 @media (max-width: 599.95px) {
     .rec.rec-carousel-item {
         width: 100%;
@@ -1258,10 +1243,8 @@ body::backdrop {
 }
 
 .explore {
-    background: url(../../assets/backgrounds/pink-gradient.png) top -700px right -700px
-            no-repeat,
-        url(../../assets/backgrounds/cyan-gradient.png) top -700px left -1000px
-            no-repeat,
+    background: url(../../assets/backgrounds/pink-gradient.png) top -700px right -700px no-repeat,
+        url(../../assets/backgrounds/cyan-gradient.png) top -700px left -1000px no-repeat,
         url(../../assets/backgrounds/two-circle.png) top 100px left no-repeat;
     padding-top: 300px;
     background-size: auto, auto, auto calc(100% - 200px);
@@ -1308,6 +1291,7 @@ body::backdrop {
 .carousel-img-w {
     width: 80px;
 }
+
 @media (max-width: 599.95px) {
     .carousel-img-w {
         width: 60px;
@@ -1318,7 +1302,7 @@ body::backdrop {
     width: 100%;
 }
 
-.explore-carousel-bg > img {
+.explore-carousel-bg>img {
     border-radius: 10px;
 }
 
@@ -1435,11 +1419,13 @@ body::backdrop {
 .socialIconLink {
     color: #f5fcfe;
 }
+
 .socialIconLink:hover path {
     fill: #73d6f1;
     transition: all 0.2s;
 }
-.socialIconBar > .socialIconLink svg {
+
+.socialIconBar>.socialIconLink svg {
     width: 22px;
 }
 
@@ -1476,14 +1462,14 @@ body::backdrop {
 .title-color {
     color: #73d6f1;
 }
+
 .title-color-lh {
     color: #73d6f1;
     line-height: 100%;
 }
 
 .explore-home {
-    background: url(../../assets/backgrounds/two-circle-rtl.png) top right
-        no-repeat;
+    background: url(../../assets/backgrounds/two-circle-rtl.png) top right no-repeat;
     padding-top: 200px;
     background-size: auto 100%;
 }
@@ -1618,8 +1604,7 @@ body::backdrop {
 .footer {
     display: flex;
     padding: 150px 0px 60px;
-    background: url(../../assets/backgrounds/wave-gradient.png) top left
-        no-repeat;
+    background: url(../../assets/backgrounds/wave-gradient.png) top left no-repeat;
     align-items: flex-start;
     background-size: 100%;
     justify-content: space-between;
@@ -1633,8 +1618,7 @@ body::backdrop {
 
 @media (max-width: 599.95px) {
     .footer {
-        background: url(../../assets/backgrounds/wave-mobile180-bg.png) top -30px
-            left no-repeat;
+        background: url(../../assets/backgrounds/wave-mobile180-bg.png) top -30px left no-repeat;
         text-align: center;
         align-items: center;
         padding-left: 20px;
@@ -1653,7 +1637,7 @@ body::backdrop {
     margin-bottom: 12px;
 }
 
-.footer span > a {
+.footer span>a {
     color: #ffffff;
 }
 
@@ -1674,7 +1658,7 @@ body::backdrop {
 .footer-title {
     color: #73d6f1;
     font-size: 32px;
-    font-family: Brandon Grotesque;
+    font-family: "Brandon Grotesque", "sans-serif", "serif", "monospace", "fantasy";
     font-weight: 900;
     line-height: 100%;
 }
@@ -1701,7 +1685,7 @@ body::backdrop {
     justify-content: center;
 }
 
-.footer-logo > img {
+.footer-logo>img {
     border-radius: 50%;
 }
 
@@ -1713,7 +1697,7 @@ body::backdrop {
 }
 
 @media (max-width: 599.95px) {
-    .footer-logo > img {
+    .footer-logo>img {
         width: 60px;
     }
 }
@@ -1742,7 +1726,7 @@ body::backdrop {
     justify-content: space-between;
 }
 
-.footer-guide > .section {
+.footer-guide>.section {
     display: flex;
     margin-bottom: 20px;
     flex-direction: column;
@@ -1756,7 +1740,7 @@ body::backdrop {
 }
 
 @media (max-width: 599.95px) {
-    .footer-guide > .section {
+    .footer-guide>.section {
         flex: 0 1 auto;
         min-width: 30%;
         justify-content: space-around;
@@ -1838,60 +1822,73 @@ body::backdrop {
         width: 181;
         height: 181;
     }
+
     .svg-circle-181 rect {
         width: 175;
         height: 175;
         rx: 87.5px;
     }
+
     .svg-circle-151 {
         width: 151;
         height: 151;
     }
+
     .svg-circle-151 rect {
         width: 145;
         height: 145;
         rx: 72.5px;
     }
+
     .svg-circle-127 {
         width: 127;
         height: 127;
     }
+
     .svg-circle-127 rect {
         width: 121;
         height: 121;
         rx: 60.5px;
     }
+
     .svg-circle-81 {
         width: 81;
         height: 81;
     }
+
     .svg-circle-81 rect {
         width: 75;
         height: 75;
         rx: 37.5px;
     }
+
     .svg-circle-156 {
         width: 156;
         height: 156;
     }
+
     .svg-circle-156 rect {
         width: 150;
         height: 150;
         rx: 75px;
     }
+
     .svg-circle-106 {
         width: 106;
         height: 106;
     }
+
     .svg-circle-106 rect {
         width: 100;
         height: 100;
         rx: 50px;
     }
+
     .roadmap-video {
         width: 100%;
         height: 600px;
     }
+
     .logo-img {
         text-transform: lowercase;
         height: 45px;
@@ -1903,74 +1900,91 @@ body::backdrop {
     .brandLogo-flex {
         padding: 12px;
     }
+
     .logo-img {
         height: 25px;
         max-width: max-content;
     }
+
     .roadmap-video {
         width: unset;
         height: 400px;
     }
+
     .community-card-img {
         width: 80px;
     }
+
     .svg-circle-106 {
         width: 81;
         height: 81;
     }
+
     .svg-circle-106 rect {
         width: 75;
         height: 75;
         rx: 37.5px;
     }
+
     .svg-circle-156 {
         width: 106;
         height: 106;
     }
+
     .svg-circle-156 rect {
         width: 100;
         height: 100;
         rx: 50px;
     }
+
     .svg-circle-81 {
         width: 56;
         height: 56;
     }
+
     .svg-circle-81 rect {
         width: 50;
         height: 50;
         rx: 25px;
     }
+
     .svg-circle-127 {
         width: 87;
         height: 87;
     }
+
     .svg-circle-127 rect {
         width: 81;
         height: 81;
         rx: 40.5px;
     }
+
     .common-card-info-mt {
         margin-top: 10px !important;
     }
+
     .svg-circle-181 {
         width: 106;
         height: 106;
     }
+
     .svg-circle-181 rect {
         width: 100;
         height: 100;
         rx: 50px;
     }
+
     .svg-circle-151 {
         width: 87;
         height: 87;
     }
+
     .svg-circle-151 rect {
         width: 81;
         height: 81;
         rx: 40.5px;
     }
+
     .Grid-container {
         /* width: 100%; */
         display: flex;
@@ -1978,11 +1992,13 @@ body::backdrop {
         box-sizing: border-box;
         text-align-last: center;
     }
+
     .Grid-container .news_card-medium-label {
         padding: 20px 15px 0px;
         border-left: 1px solid #72d2f3aa;
         text-align-last: left;
     }
+
     .Grid-reverse {
         flex-direction: column-reverse;
     }
@@ -2001,9 +2017,11 @@ body::backdrop {
         line-height: 155%;
         text-transform: uppercase;
     }
+
     .rec-carousel-main {
         height: 310px !important;
     }
+
     .rec-carousel-explore {
         height: 336.938px !important;
     }

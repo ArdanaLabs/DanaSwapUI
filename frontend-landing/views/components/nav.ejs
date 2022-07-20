@@ -11,7 +11,7 @@
                     <!-- {url: "/roadmap" , name: "Roadmap" },  -->
                     ] %>
                 <% menus.forEach(function(menu) { %>
-                    <a class="<% if (currentUrl == menu.url) { %>active <% } %>Typography-root Link-underlineNone nav-menuItem Typography-colorPrimary"
+                    <a class="<%= currentUrl == menu.url ? 'active' : '' %> Typography-root Link-underlineNone nav-menuItem Typography-colorPrimary"
                         href="<%=menu.url%>">
                         <%=menu.name%>
                     </a>
@@ -33,7 +33,7 @@
     <div class="Drawer-root Drawer-modal nav-drawer dropdown-menu">
         <div class="Backdrop-root" aria-hidden="true"></div>
         <div tabindex="0" data-test="sentinelStart"></div>
-        <div class="Paper-root Drawer-paper Drawer-paperAnchorTop Paper-elevation16" tabindex="-1"><a
+        <div class="Paper-root Drawer-paper Drawer-paperAnchorTop Paper-elevation16"><a
                 class="Typography-root Link-underlineNone nav-menuItem Typography-colorPrimary" href="/">Home</a><a
                 class="Typography-root Link-underlineNone nav-menuItem Typography-colorPrimary"
                 href="/tech">Technology</a><a
