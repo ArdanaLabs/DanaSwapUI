@@ -1,88 +1,73 @@
 <div class="home-main-bg">
     <div class="home-main-container">
         <div class="Container-root Container-maxWidthLg">
-            <div class="Grid-container Grid-spacing-xs-3 Grid-align-items-xs-center">
-                <div class="Grid-item Grid-grid-xs-12 Grid-grid-sm-6">
-                    <h3 class="Typography-root title-color Typography-h3">
+            <!-- <div class="Grid-container Grid-spacing-xs-3 Grid-align-items-xs-center"> -->
+            <div class="Grid-spacing-xs-3 Grid-align-items-xs-center">
+                <!-- <div class="flex Grid-item Grid-grid-xs-12 Grid-grid-sm-6"> -->
+                <div class="flex Grid-item Grid-grid-xs-12">
+                    <h3 class="Typography-root title-color Typography-h3 common-display">
                         Danaswap
                     </h3>
-                    <p class="Typography-root home-main-content Typography-h4 home-btn-mt mt-20">
+                    <p class="Typography-root home-main-content Typography-h4 common-display home-btn-mt mt-20">
                         An automated market maker (AMM) decentralized exchange
                         for stable multi-asset pools. Danaswap is highly capital
                         efficient enabling swaps with minimal slippage while
                         providing low-risk yield opportunities for liquidity
                         providers.
                     </p>
+                </div>
+                <div class="danaswap-btn">
                     <% let main_btn = {width: 166, name: "Coming Soon"} %>
                     <%- include('../../../components/button.ejs', {btn: main_btn}) %>
                 </div>
-                <div class="Grid-item Grid-grid-xs-12 Grid-grid-sm-6">
-                    <div class="rec carousel">
-                        <div class="common-display rec rec-carousel-main">
-                            <div class="rec rec-slider rec-slider-container">
-                                <div class="rec-slider-pos rec-slider-card rec">
-                                    <div class="rec rec-swipable">
-                                        <% let cards = [
-                                            {
-                                                img_src: "../../../../assets/logos/ultra-low-slippage.png",
-                                                title: "Ultra-low Slippage",
-                                                info: "Swap between stablecoins and stable assets such as wrapped/synthetic Bitcoin with minimal slippage."
-                                            }, {
-                                                img_src: "../../../../assets/logos/earn-trading-fees.png",
-                                                title: "Earn Trading Fees",
-                                                info: "Deposit your assets into a DanaSwap pool and earn a proportion of the market making fees."
-                                            }, {
-                                                img_src: "../../../../assets/logos/foreign-exchange.png",
-                                                title: "Foreign Exchange",
-                                                info: "Swap between international stablecoins such as dUSD, dEUR, dGBP and more."
-                                            }, {
-                                                img_src: "../../../../assets/logos/dana-token.png",
-                                                title: "DANA Token",
-                                                info: "The governance token rewarded to users for supporting the ecosystem through liquidity provision."
-                                            }, {
-                                                img_src: "../../../../assets/logos/governance.png",
-                                                title: "Governance",
-                                                info: "DANA token holders can participate in polling and voting to influence the development of Ardana."
-                                            }
-                                        ] %>
-                                        <% cards.forEach(function(card){ %>
-                                        <div aria-hidden="true" class="rec rec-carousel-item rec-dana-carousel-item">
-                                            <div class="rec-carousel-item-pos rec dana-carousel-item">
-                                                <div class="home-main-carousel-item">
-                                                    <div class="home-main-carousel-img">
-                                                        <%- include('../../../components/circle_btn.ejs', {btn: 127}) %>
-                                                        <img class="common-photo carousel-img-w" src="<%=card.img_src%>" alt="" />
-                                                    </div>
-                                                    <p
-                                                        class="Typography-root home-main-carousel-title Typography-h5">
-                                                        <%=card.title%>
-                                                    </p>
-                                                    <p
-                                                        class="Typography-root home-main-carousel-content Typography-h4">
-                                                        <%=card.info%>
-                                                    </p>
-                                                    <div class="home-main-carousel-border">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <% }); %>
-                                    </div>
-                                </div>
+                <div class="Grid-container Grid-justify-content-xs-center Grid-item Grid-grid-xs-12 danaswap-list">
+                    <% let cards = [
+                        {
+                            img_src: "../../../../assets/logos/ultra-low-slippage.png",
+                            title: "Ultra-low Slippage",
+                            info: "Swap between stablecoins and stable assets such as wrapped/synthetic Bitcoin with minimal slippage."
+                        }, {
+                            img_src: "../../../../assets/logos/saving-account.png",
+                            title: "Savings Account",
+                            info: "Deposit Ardana stablecoins to earn passive income through interest payments."
+                        }, {
+                            img_src: "../../../../assets/logos/earn-trading-fees.png",
+                            title: "Earn Trading Fees",
+                            info: "Deposit your assets into a DanaSwap pool and earn a proportion of the market making fees."
+                        }, {
+                            img_src: "../../../../assets/logos/foreign-exchange.png",
+                            title: "Foreign Exchange",
+                            info: "Swap between international stablecoins such as dUSD, dEUR, dGBP and more."
+                        }, {
+                            img_src: "../../../../assets/logos/dana-token.png",
+                            title: "DANA Token",
+                            info: "The governance token rewarded to users for supporting the ecosystem through liquidity provision."
+                        }, {
+                            img_src: "../../../../assets/logos/governance.png",
+                            title: "Governance",
+                            info: "DANA token holders can participate in polling and voting to influence the development of Ardana."
+                        }
+                    ] %>
+                    <% cards.forEach(function(card){ %>
+                    <div class="rec-carousel-item-pos danaswap-item">
+                        <div class="home-main-carousel-item">
+                            <div class="home-main-carousel-img">
+                                <%- include('../../../components/circle_btn.ejs', {btn: 127}) %>
+                                <img class="common-photo carousel-img-w" src="<%=card.img_src%>" alt="" />
+                            </div>
+                            <p
+                                class="Typography-root home-main-carousel-title Typography-h5">
+                                <%=card.title%>
+                            </p>
+                            <p
+                                class="Typography-root home-main-carousel-content Typography-h4">
+                                <%=card.info%>
+                            </p>
+                            <div class="home-main-carousel-border">
                             </div>
                         </div>
                     </div>
-                    <div class="home-main-carouselAction">
-                        <%- include('../../../components/noscript.ejs'); %>
-                        <div id="dana-prev-btn" class="my-30 prev-next-btn" role="button">
-                                <%- include('../../../components/circle_btn.ejs', {btn: 81}) %>
-                            <img class="common-photo-25" src="../../../../assets/icons/carousel-prev.svg" alt="Show previous card" />
-                        </div>
-                        <div id="dana-next-btn" class="my-30 prev-next-btn" role="button">
-                                <%- include('../../../components/circle_btn.ejs', {btn: 81}) %>
-                            <img class="common-photo-25" src="../../../../assets/icons/carousel-next.svg" alt="Show next card" />
-                        </div>
-                    </div>
+                    <% }); %>
                 </div>
             </div>
         </div>

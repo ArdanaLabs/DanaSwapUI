@@ -2048,6 +2048,10 @@ body::backdrop {
     margin-top: 50px;
 }
 
+.mt-100 {
+    margin-top: 100px;
+}
+
 .mb-10 {
     margin-bottom: 10px;
 }

@@ -452,13 +452,28 @@
 }
 
 .home-main-content {
+    text-align: right;
     line-height: 26px;
 }
 
 @media (max-width: 599.95px) {
     .home-main-content {
+        text-align: center;
         line-height: 18.4px;
     }
+}
+
+.danaswap-btn {
+    padding-left: 12px;
+    margin-top: -50px;
+}
+
+.danaswap-item {
+    max-width: 300px;
+}
+
+.danaswap-list {
+    margin: 100px;
 }
 
 .home-main-carousel-item {
@@ -467,7 +482,6 @@
     height: 450px;
     padding: 30px 30px 30px 30px;
     position: relative;
-    background: #1d277a;
     text-align: center;
 }
 
