@@ -1,20 +1,20 @@
-<div class="Grid-item Grid-grid-xs-12 Grid-grid-sm-6 Grid-grid-md-4">
+<article class="Grid-item Grid-grid-xs-12 Grid-grid-sm-6 Grid-grid-md-4">
     <div class="my-30">
         <div class="news_card-img">
             <img src="../../assets/news/<%=card.img%>" alt="" width="100%" />
         </div>
         <div class="news_card-medium-label">
             <% if (!card.summary) { %>
-                <article class="Typography-root Typography-h5 news_card-medium-label-title news_card-label-gap">
-                    <small><%-card.title%></small>
-                </article>
+                <h5 class="Typography-root Typography-h5 news_card-medium-label-title news_card-label-gap">
+                    <%=card.title%>
+                </h5>
                 <p class="Typography-root news_card-date Typography-h4">
-                    <small><%=card.date%></small>
+                    <%=card.date%>
                 </p>
             <% } %>
             <% if (card.summary) { %>
-                <h4 class="Typography-root news_card-media-label Typography-h4 mb-15"><%=card.title%></h4>
-                <p class="Typography-root Typography-h5 news_card-media-sum"><small><%=card.summary%></small></p>
+            <h4 class="Typography-root news_card-media-label Typography-h4 mb-15"><%=card.title%></h4>
+            <p class="Typography-root Typography-h5 news_card-media-sum"><small><%=card.summary%></small></p>
             <% } %>
             <p class="Typography-root news_card-content Typography-h4 my-20">
                 <small><%=card.info%></small>
@@ -26,4 +26,4 @@
             </a>
         </div>
     </div>
-</div>
+</article>

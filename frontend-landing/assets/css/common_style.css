@@ -1399,16 +1399,6 @@ body::backdrop {
     -webkit-line-clamp: 3;
 }
 
-.noscript {
-    display: flex;
-    flex-flow: column nowrap;
-    gap: 1rem;
-    margin: auto;
-    padding: 2rem 1rem;
-    max-width: 54ex;
-    line-height: 1.5;
-}
-
 .socialIconBar {
     width: 280px;
     display: flex;
