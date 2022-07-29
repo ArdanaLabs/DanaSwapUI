@@ -4,18 +4,12 @@
             <img src="../../assets/news/<%=card.img%>" alt="" width="100%" />
         </div>
         <div class="news_card-medium-label">
-            <% if (!card.summary) { %>
-                <h5 class="Typography-root Typography-h5 news_card-medium-label-title news_card-label-gap">
-                    <%=card.title%>
-                </h5>
-                <p class="Typography-root news_card-date Typography-h4">
-                    <%=card.date%>
-                </p>
-            <% } %>
-            <% if (card.summary) { %>
-            <h4 class="Typography-root news_card-media-label Typography-h4 mb-15"><%=card.title%></h4>
-            <p class="Typography-root Typography-h5 news_card-media-sum"><small><%=card.summary%></small></p>
-            <% } %>
+            <h4 class="Typography-root <%= card.summary ? 'news_card-media-label Typography-h4 mb-15' : 'Typography-h5 news_card-medium-label-title news_card-label-gap' %>">
+                <%=card.title%>
+            </h4>
+            <p class="Typography-root <%= card.summary ? 'Typography-h5 news_card-media-sum' : 'news_card-date Typography-h4' %>">
+                <%= card.summary ? card.summary : card.date %>
+            </p>
             <p class="Typography-root news_card-content Typography-h4 my-20">
                 <small><%=card.info%></small>
             </p>
