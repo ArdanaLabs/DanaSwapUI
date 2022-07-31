@@ -476,6 +476,37 @@
     margin: 100px;
 }
 
+.home-dana-flex {
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 599.95px) {
+    .home-dana-flex {
+        display: block;
+    }
+
+    .danaswap-btn {
+        padding-left: 0px;
+        margin-top: 0px;
+    }
+
+    .danaswap-list {
+        margin: 0px;
+        margin-top: 100px;
+    }
+}
+
+.home-main-com {
+    margin-top: 100px;
+}
+
+@media (max-width: 599.95px) {
+    .home-main-com {
+        margin-top: 50px;
+    }
+}
+
 .home-main-carousel-item {
     width: 400px;
     cursor: pointer;

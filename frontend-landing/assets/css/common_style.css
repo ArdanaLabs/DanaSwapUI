@@ -1230,6 +1230,7 @@ body::backdrop {
     bottom: 30px;
     position: absolute;
     text-align-last: left;
+    max-width: 250px;
 }
 
 .news_card-label-gap {
@@ -1460,7 +1461,7 @@ body::backdrop {
 
 .explore-home {
     background: url(../../assets/backgrounds/two-circle-rtl.png) top right no-repeat;
-    padding-top: 200px;
+    padding-bottom: 50px;
     background-size: auto 100%;
 }
 
@@ -1468,7 +1469,8 @@ body::backdrop {
     .explore-home {
         background: none !important;
         text-align: center;
-        padding-top: 100px;
+        padding-top: 20px;
+        padding-bottom: 0px;
     }
 }
 
@@ -1482,6 +1484,16 @@ body::backdrop {
         padding: 0 50px 50px;
         margin-top: 15px;
         line-height: 18.4px;
+    }
+}
+
+.explore-list {
+    display: flex;
+}
+
+@media (max-width: 599.95px) {
+    .explore-list {
+        display: block;
     }
 }
 
@@ -1797,6 +1809,10 @@ body::backdrop {
 
 .common-display {
     display: flex;
+    width: 100%;
+}
+
+.w-full {
     width: 100%;
 }
 
