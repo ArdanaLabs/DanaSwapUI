@@ -59,8 +59,6 @@
     z-index: -1;
 }
 
-div:empty {}
-
 .text-left {
     text-align: left;
 }
@@ -71,10 +69,6 @@ div:empty {}
 
 .hidden {
     visibility: hidden;
-}
-
-.hide {
-    display: none !important;
 }
 
 .prev-next-btn {
@@ -174,7 +168,7 @@ div:empty {}
     font-style: normal;
     text-align: center;
     transition: all 0.2s;
-    font-family: Museo Sans;
+    font-family: Museo Sans, sans-serif;
     font-weight: 700;
     text-transform: uppercase;
     text-decoration: none;
@@ -188,7 +182,7 @@ div:empty {}
     color: #f5fcfe;
     font-size: 13px;
     font-style: normal;
-    font-family: Museo Sans;
+    font-family: Museo Sans, sans-serif;
     font-weight: 600;
     line-height: 100%;
     letter-spacing: 0.02857em;
@@ -199,7 +193,7 @@ div:empty {}
     color: #f5fcfe;
     font-size: 70px;
     font-style: normal;
-    font-family: Brandon Grotesque;
+    font-family: Brandon Grotesque, sans-serif;
     font-weight: 900;
     line-height: 1.167;
     /* white-space: pre-line; */
@@ -224,7 +218,7 @@ div:empty {}
     color: #f5fcfe;
     font-size: 60px;
     font-style: normal;
-    font-family: Brandon Grotesque;
+    font-family: Brandon Grotesque, sans-serif;
     font-weight: 900;
     line-height: 1.167;
     letter-spacing: 0em;
@@ -240,7 +234,7 @@ div:empty {}
     color: #f5fcfe;
     font-size: 16px;
     font-style: normal;
-    font-family: Museo Sans;
+    font-family: Museo Sans, sans-serif;
     font-weight: 300;
     line-height: 1.235;
     /* white-space: pre-line; */
@@ -251,7 +245,7 @@ div:empty {}
     color: #f5fcfe;
     font-size: 26px;
     font-style: normal;
-    font-family: Brandon Grotesque;
+    font-family: Brandon Grotesque, sans-serif;
     font-weight: 900;
     line-height: 1.334;
     letter-spacing: 0em;
@@ -378,7 +372,6 @@ div:empty {}
 html {
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 *,
@@ -391,7 +384,7 @@ body {
     color: #f5fcfe !important;
     margin: 0;
     font-size: 0.875rem;
-    font-family: sans-serif;
+    font-family: sans-serif, serif;
     font-weight: 400;
     line-height: 1.43;
     letter-spacing: 0.01071em;
@@ -1140,7 +1133,7 @@ body::backdrop {
     font-style: normal;
     text-align: center;
     transition: all 0.2s;
-    font-family: Museo Sans;
+    font-family: Museo Sans, sans-serif;
     font-weight: 700;
     line-height: 100%;
     text-transform: uppercase;
@@ -1267,7 +1260,7 @@ body::backdrop {
     position: absolute;
     font-size: 13px;
     align-items: center;
-    font-family: Museo Sans;
+    font-family: Museo Sans, sans-serif;
     font-weight: bold;
     /* white-space: break-spaces; */
     justify-content: center;
@@ -1310,7 +1303,7 @@ body::backdrop {
 .explore-carousel-title {
     color: #ffffff;
     font-size: 32px;
-    font-family: Brandon Grotesque;
+    font-family: Brandon Grotesque, sans-serif;
     font-weight: 700;
     line-height: 100%;
     white-space: pre-line;
@@ -1572,7 +1565,7 @@ body::backdrop {
     font-style: normal;
     text-align: center;
     transition: all 0.2s;
-    font-family: Museo Sans;
+    font-family: Museo Sans, sans-serif;
     font-weight: 700;
     line-height: 155%;
     text-transform: uppercase;
@@ -1614,7 +1607,7 @@ body::backdrop {
 
 .footer dd {
     font-size: 16px;
-    font-family: Museo Sans;
+    font-family: Museo Sans, sans-serif;
     line-height: 24px;
     margin-left: 0px;
 }
@@ -1634,7 +1627,7 @@ body::backdrop {
 .footer dt {
     color: #73d6f1;
     font-size: 20px;
-    font-family: Brandon Grotesque;
+    font-family: Brandon Grotesque, sans-serif;
     font-weight: 900;
     line-height: 36px;
     margin-bottom: 12px;
@@ -1661,7 +1654,7 @@ body::backdrop {
 .footer-title {
     color: #73d6f1;
     font-size: 32px;
-    font-family: "Brandon Grotesque", "sans-serif";
+    font-family: Brandon Grotesque, sans-serif;
     font-weight: 900;
     line-height: 100%;
 }
@@ -2019,7 +2012,7 @@ body::backdrop {
         font-style: normal;
         text-align: center;
         transition: all 0.2s;
-        font-family: Museo Sans;
+        font-family: Museo Sans, sans-serif;
         font-weight: 700;
         line-height: 155%;
         text-transform: uppercase;

@@ -40,7 +40,7 @@
 .guideline_pressKit-title {
     color: #202f9a;
     font-size: 45px;
-    font-family: Brandon Grotesque;
+    font-family: Brandon Grotesque, sans-serif;
     font-weight: 700;
     line-height: 120.5%;
 }
@@ -61,7 +61,7 @@
 .guideline_pressKit-content {
     color: #636060;
     font-size: 14px;
-    font-family: Museo Sans;
+    font-family: Museo Sans, sans-serif;
     line-height: 150%;
 }
 
@@ -82,7 +82,7 @@
 .guideline_pressKit-card-title {
     color: #ffffff;
     font-size: 30px;
-    font-family: Brandon Grotesque;
+    font-family: Brandon Grotesque, sans-serif;
     font-weight: 700;
     line-height: 110%;
     white-space: pre-line;
@@ -91,7 +91,7 @@
 .guideline_pressKit-card-content {
     color: #ffffff;
     font-size: 15px;
-    font-family: Museo Sans;
+    font-family: Museo Sans, sans-serif;
     line-height: 22px;
     white-space: pre-line;
 }
@@ -104,7 +104,7 @@
     font-size: 11px;
     background: linear-gradient(90deg, #5f72ff 0%, #73d6f1 100%);
     text-align: center;
-    font-family: Museo Sans;
+    font-family: Museo Sans, sans-serif;
     font-weight: 700;
     line-height: 100%;
     border-radius: 20px;

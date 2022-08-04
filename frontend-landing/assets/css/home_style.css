@@ -45,7 +45,7 @@
 .home-listingLabel {
     color: #f5fcfe;
     font-size: 12px;
-    font-family: Museo Sans;
+    font-family: Museo Sans, sans-serif;
     font-weight: 100;
     line-height: 100%;
     text-transform: uppercase;
@@ -55,7 +55,7 @@
     color: #f5fcfe;
     font-size: 20px;
     font-style: normal;
-    font-family: Museo Sans;
+    font-family: Museo Sans, sans-serif;
     font-weight: 300;
     line-height: 26px;
 }
