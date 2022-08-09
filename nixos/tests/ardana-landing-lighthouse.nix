@@ -1,6 +1,7 @@
 { nixosTest
-, ardana-landing
-, lighthouse
+, ardana-landing # The ardana-landing website
+, lighthouse # The lighthouse executable
+, categories ? { performance = 0.9; accessibility = 0.95; seo = 0.99; best-practices = 0.80; } # The minimal score that needs to be reached for each category
 }:
 let
   name = "ardana-landing-lighthouse";
@@ -45,9 +46,9 @@ nixosTest {
     with open("{}/lighthouse-report.json".format(os.environ["out"]), "r") as f:
       report = json.load(f)
       categories = report["categories"]
-      assert categories["performance"]["score"]    >= 0.90, "performance score should be at least 90%"
-      assert categories["accessibility"]["score"]  >= 0.95, "accessibility score should be at least 95%"
-      assert categories["seo"]["score"]            >= 0.99, "seo score should be at least 99%"
-      assert categories["best-practices"]["score"] >= 0.80, "best-practices score should be at least 80%"
+      assert categories["performance"]["score"]    >= ${toString categories.performance}, "performance score should be at least ${toString (categories.performance * 100)}%"
+      assert categories["accessibility"]["score"]  >= ${toString categories.accessibility}, "accessibility score should be at least ${toString (categories.accessibility * 100)}%"
+      assert categories["seo"]["score"]            >= ${toString categories.seo}, "seo score should be at least ${toString (categories.seo * 100)}%"
+      assert categories["best-practices"]["score"] >= ${toString categories.best-practices}, "best-practices score should be at least ${toString (categories.best-practices * 100)}%"
   '';
 }

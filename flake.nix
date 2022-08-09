@@ -92,6 +92,7 @@
         ardana-landing-lighthouse-test = pkgs.callPackage ./nixos/tests/ardana-landing-lighthouse.nix {
           inherit (self.packages.${system}) lighthouse;
           ardana-landing = "${self.packages.${system}.ardana-landing}/lib/node_modules/ardana-landing/build/";
+          categories = { performance = 0.1; accessibility = 0.1; seo = 0.1; best-practices = 0.1; };
         };
       });
 
