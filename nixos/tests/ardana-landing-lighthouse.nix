@@ -1,7 +1,7 @@
 { nixosTest
 , ardana-landing # The ardana-landing website
 , lighthouse # The lighthouse executable
-, categories ? { performance = 0.9; accessibility = 0.95; seo = 0.99; best-practices = 0.80; } # The minimal score that needs to be reached for each category
+, categories ? { performance = 0.99; accessibility = 0.99; seo = 0.99; best-practices = 0.99; } # The minimal score that needs to be reached for each category
 }:
 let
   name = "ardana-landing-lighthouse";
