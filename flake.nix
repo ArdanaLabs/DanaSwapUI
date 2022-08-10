@@ -88,6 +88,15 @@
         }).packages.${system}.lighthouse;
       });
 
+      checks = forAllSystems (system: pkgs: {
+        ardana-landing-lighthouse-test = pkgs.callPackage ./nixos/tests/ardana-landing-lighthouse.nix {
+          inherit (self.packages.${system}) lighthouse;
+          ardana-landing = "${self.packages.${system}.ardana-landing}/lib/node_modules/ardana-landing/build/";
+          # TODO these values need to be increased once the improvements were done
+          categories = { performance = 0.1; accessibility = 0.1; seo = 0.1; best-practices = 0.1; };
+        };
+      });
+
       devShell = forAllSystems (system: pkgs:
         pkgs.mkShell {
           name = "DanaSwapUI";
