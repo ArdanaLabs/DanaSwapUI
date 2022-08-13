@@ -1,10 +1,8 @@
-{
-  lib,
-  pkgs,
-
-  # dream2nix
-  satisfiesSemver,
-  ...
+{ lib
+, pkgs
+, # dream2nix
+  satisfiesSemver
+, ...
 }:
 let
   # The `dist` folder is not included with lighthouse when trying to compile it

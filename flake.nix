@@ -17,15 +17,19 @@
       supportedSystems = [ "x86_64-linux" ];
       forSystems = systems: f:
         nixpkgs.lib.genAttrs systems
-        (system: f system nixpkgs.legacyPackages.${system});
+          (system: f system nixpkgs.legacyPackages.${system});
       forAllSystems = forSystems supportedSystems;
-      dream2nix = inputs.dream2nix.lib2.init {
-        systems = supportedSystems;
-        config = {
-          projectRoot = ./.;
-          overridesDirs = [ "${inputs.dream2nix}/overrides" ./dream2nix-overrides ];
-        };
-      };
+      dream2nixAllSystems = forAllSystems (
+        system: pkgs:
+          inputs.dream2nix.lib.init {
+            inherit pkgs;
+            config = {
+              projectRoot = ./.;
+              overridesDirs = [ "${inputs.dream2nix}/overrides" ./dream2nix-overrides ];
+            };
+          }
+      );
+      dream2nixForSystem = system: dream2nixAllSystems.${system};
     in
     {
       effects = { branch, rev, ... }:
@@ -73,20 +77,24 @@
             "bdcb97a1-e22e-49b4-ac7f-0b45aa2c35da";
         };
 
-      packages = forAllSystems (system: pkgs: {
-        ardana-application = (dream2nix.makeFlakeOutputs {
-          source = ./frontend-dashboard;
-        }).packages.${system}.ardana-application;
-        ardana-landing = (dream2nix.makeFlakeOutputs {
-          source = ./frontend-landing;
-        }).packages.${system}.ardana-landing;
-        ardana-vault = (dream2nix.makeFlakeOutputs {
-          source = ./frontend-vault;
-        }).packages.${system}.ardana-vault;
-        lighthouse = (dream2nix.makeFlakeOutputs {
-          source = lighthouse-src;
-        }).packages.${system}.lighthouse;
-      });
+      packages = forAllSystems (
+        system: pkgs:
+          let
+            d2n = dream2nixForSystem system;
+            makePackage = name: src:
+              (d2n.makeOutputs { source = src; }).packages.${name};
+          in
+          {
+            ardana-application =
+              makePackage "ardana-application" ./frontend-dashboard;
+            ardana-landing =
+              makePackage "ardana-landing" ./frontend-landing;
+            ardana-vault =
+              makePackage "ardana-vault" ./frontend-vault;
+            lighthouse =
+              makePackage "lighthouse" lighthouse-src;
+          }
+      );
 
       devShell = forAllSystems (system: pkgs:
         pkgs.mkShell {
