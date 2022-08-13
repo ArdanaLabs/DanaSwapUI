@@ -9,7 +9,7 @@ import {
 } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
-import ReactPlayer from "react-player"
+// import ReactPlayer from "react-player"
 
 import { useIsDarkMode } from "state/user/hooks"
 
@@ -19,13 +19,13 @@ import BG_PURPLE_RADIAL from "assets/backgrounds/pink-gradient.png"
 import BG_BLUE_RADIAL from "assets/backgrounds/cyan-gradient.png"
 import BG_WAVE from "assets/backgrounds/wave-gradient.png"
 import BG_WAVE_MOBILE from "assets/backgrounds/wave-mobile-gradient.png"
+import BG_HERO from "assets/backgrounds/hero.png"
 import { ReactComponent as TwitterIcon } from "assets/icons/twitter.svg"
 import { ReactComponent as TelegramIcon } from "assets/icons/telegram.svg"
 
 import { Listings } from "data"
 
-const sphereVideo =
-  "https://background.sfo3.digitaloceanspaces.com/sphere/output.webm"
+// const sphereVideo = "https://youtu.be/k_OaqxJaQCw"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bg: {
@@ -47,9 +47,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   title: {
-    "lineHeight": "100%",
+    lineHeight: "100%",
 
-    "& span": {
+    [`& span`]: {
       color: palette.secondary.main,
     },
 
@@ -203,7 +203,7 @@ const MainSection: React.FC = () => {
             </Box>
           </Grid>
           <Grid item xs={12} sm={6} style={{ pointerEvents: "none" }}>
-            <ReactPlayer
+            {/* <ReactPlayer
               url={sphereVideo}
               playing
               loop={true}
@@ -211,7 +211,8 @@ const MainSection: React.FC = () => {
               width="100%"
               height="100%"
               playbackRate={0.2}
-            />
+            /> */}
+            <img src={BG_HERO} alt="" />
           </Grid>
         </Grid>
       </Container>
