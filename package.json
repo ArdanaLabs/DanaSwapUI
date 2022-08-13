@@ -1,0 +1,15 @@
+{
+  "name": "ardana-frontends",
+  "version": "0.0.1",
+  "license": "UNLICENSED",
+  "private": true,
+  "engines": {
+    "npm": ">=6"
+  },
+  "workspaces": [
+    "frontend-dashboard",
+    "frontend-landing",
+    "frontend-sale",
+    "frontend-vault"
+  ]
+}
