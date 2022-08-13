@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     dream2nix = {
       url = "github:davhau/dream2nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -82,7 +82,10 @@
           let
             d2n = dream2nixForSystem system;
             makePackage = name: src:
-              (d2n.makeOutputs { source = src; }).packages.${name};
+              (d2n.makeOutputs {
+                source = src;
+                settings = [ { subsystemInfo.nodejs = 18; } ];
+              }).packages.${name};
           in
           {
             ardana-application =
@@ -100,7 +103,7 @@
         pkgs.mkShell {
           name = "DanaSwapUI";
           buildInputs = with pkgs; [
-            nodejs-16_x
+            nodejs-18_x
           ];
           shellHook = ''
             export PATH="$PWD/node_modules/.bin/:$PATH"
