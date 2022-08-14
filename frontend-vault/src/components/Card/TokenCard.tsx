@@ -1,10 +1,10 @@
 import React from "react"
-import { Box, useMediaQuery } from "@material-ui/core"
-import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
-import { useIsDarkMode } from "state/user/hooks"
+import { Box, Theme, useTheme } from "@mui/material"
+import { makeStyles } from "@mui/styles"
+import { FontFamilies } from "theme"
 
-const useStyles = makeStyles(({ palette, breakpoints }) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
     borderRadius: "30px",
     padding: "20px",
@@ -14,12 +14,12 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     marginBottom: "35px",
   },
   typographyPrimary: {
-    fontFamily: "Brandon Grotesque",
+    fontFamily: FontFamilies.Brandon,
     fontStyle: "normal",
     fontWeight: 900,
   },
   typographySecondary: {
-    fontFamily: "Museo Sans",
+    fontFamily: FontFamilies.Museo,
     fontStyle: "normal",
     fontWeight: "normal",
   },
@@ -27,8 +27,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontSize: "18px",
     lineHeight: "115%",
     marginTop: "5px",
+    textTransform: "uppercase",
 
-    [breakpoints.down("xs")]: {
+    [theme.breakpoints.down("sm")]: {
       fontSize: "14px",
     },
   },
@@ -37,8 +38,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     lineHeight: "110%",
     marginTop: "25px",
     marginBottom: "55px",
+    textTransform: "uppercase",
 
-    [breakpoints.down("xs")]: {
+    [theme.breakpoints.down("sm")]: {
       fontSize: "30px",
       marginBottom: "35px",
     },
@@ -48,7 +50,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     lineHeight: "115%",
     opacity: "0.8",
 
-    [breakpoints.down("xs")]: {
+    [theme.breakpoints.down("sm")]: {
       "whiteSpace": "pre-line",
 
       "& > div": {
@@ -61,7 +63,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     right: "0px",
     top: "-50px",
 
-    [breakpoints.down("xs")]: {
+    [theme.breakpoints.down("sm")]: {
       "& img": {
         width: "160px",
       },
@@ -86,14 +88,12 @@ const TokenCard: React.FC<TokenCardProps> = ({
   ratio,
   background,
 }) => {
-  const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
-  const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const theme = useTheme()
+  const classes = useStyles(theme)
 
   return (
-    <Box className={cx(classes.root)} style={{ background: background }}>
-      <Box className={cx(classes.image)}>
+    <Box className={classes.root} style={{ background: background }}>
+      <Box className={classes.image}>
         <img src={image} alt="token" />
       </Box>
 

@@ -1,16 +1,37 @@
 import React, { useEffect, useState } from "react"
-import { Box, useMediaQuery, Container } from "@material-ui/core"
-import { makeStyles, useTheme } from "@material-ui/core/styles"
-import cx from "classnames"
 
-import { useIsDarkMode } from "state/user/hooks"
 import { useHistory } from "react-router-dom"
-import { ThemeSwitch, ConnectWallet } from "components"
+import Hamburger from "hamburger-react"
+
+import { ThemeSwitch, ConnectWallet, AddressCard } from "components"
+import { useWallet } from "state/wallet/hooks"
+
 import DUSD_LOGO_BLUE from "assets/image/DUSD-LOGO-BLUE.png"
 import DUSD_LOGO_WHITE from "assets/image/DUSD-LOGO-WHITE.png"
+import {
+  Box,
+  Container,
+  Drawer,
+  Theme,
+  Typography,
+  useMediaQuery,
+} from "@mui/material"
+import { useTheme } from "@mui/system"
+import { makeStyles } from "@mui/styles"
 
-const useStyles = makeStyles(({ palette, breakpoints }) => ({
-  root: {
+const MenuList = [
+  {
+    text: "Your vaults",
+    link: "/owner",
+  },
+  {
+    text: "Open a new vault",
+    link: "/vaults/list",
+  },
+]
+
+const useStyles = makeStyles((theme: Theme) => ({
+  self: {
     position: "fixed",
     top: 0,
     zIndex: 100,
@@ -28,14 +49,14 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   },
 
   logo: {
-    "paddingLeft": "10px",
-    "display": "flex",
-    "alignItems": "center",
-    "cursor": "pointer",
-    "& img": {
+    paddingLeft: "10px",
+    display: "flex",
+    alignItems: "center",
+    cursor: "pointer",
+    [`& img`]: {
       width: "60px",
 
-      [breakpoints.down("sm")]: {
+      [theme.breakpoints.down("sm")]: {
         width: "40px",
       },
     },
@@ -47,8 +68,33 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     justifyContent: "space-between",
     width: "265px",
 
-    [breakpoints.down("xs")]: {
+    [theme.breakpoints.down("sm")]: {
       width: "auto",
+    },
+  },
+
+  menubar: {
+    [`& .menu > div`]: {
+      cursor: "pointer",
+      margin: "5px 10px",
+      textTransform: "uppercase",
+      color: theme.palette.primary.main,
+    },
+  },
+
+  drawerContainer: {
+    [`& .MuiDrawer-paper`]: {
+      background: theme.palette.background.default,
+    },
+  },
+
+  drawer: {
+    textAlign: "center",
+    marginTop: "50px",
+
+    [`& h3`]: {
+      padding: "10px 20px",
+      color: theme.palette.primary.main,
     },
   },
 }))
@@ -56,10 +102,11 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 const Header: React.FC = () => {
   const theme = useTheme()
   const mobile = useMediaQuery(theme.breakpoints.down("sm"))
-  const dark = useIsDarkMode()
-  const classes = useStyles({ dark, mobile })
+  const classes = useStyles(theme)
   const history = useHistory()
+  const { address } = useWallet()
   const [bgColor, setBGColor] = useState("transparent")
+  const [openMenu, setOpenMenu] = useState(false)
 
   const handleScroll = () => {
     setBGColor(
@@ -75,23 +122,85 @@ const Header: React.FC = () => {
   }, [theme])
 
   return (
-    <Box className={cx(classes.root)} style={{ background: bgColor }}>
+    <Box className={classes.self} style={{ background: bgColor }}>
       <Container>
-        <Box className={cx(classes.container)}>
-          <Box className={cx(classes.logo)} onClick={() => history.push("/")}>
-            <img
-              src={
-                theme.palette.type === "dark" ? DUSD_LOGO_WHITE : DUSD_LOGO_BLUE
-              }
-              alt="DANA Logo"
-            />
+        <Box className={classes.container}>
+          <Box display={"flex"} alignItems={"center"}>
+            <Box
+              className={classes.logo}
+              onClick={() => history.push("/")}
+              mr={!mobile ? "30px" : "0px"}
+            >
+              <img
+                src={
+                  theme.palette.mode === "dark"
+                    ? DUSD_LOGO_WHITE
+                    : DUSD_LOGO_BLUE
+                }
+                alt="DANA"
+              />
+            </Box>
+            {address && !mobile && <ThemeSwitch />}
           </Box>
 
-          <Box className={cx(classes.toolbar)}>
-            {!mobile && <ThemeSwitch />}
-            <ConnectWallet />
-          </Box>
+          {!address && (
+            <Box className={classes.toolbar}>
+              {!mobile && <ThemeSwitch />}
+              <ConnectWallet />
+            </Box>
+          )}
+          {address && (
+            <Box
+              className={classes.menubar}
+              display={"flex"}
+              alignItems={"center"}
+            >
+              {!mobile && (
+                <Box className="menu" display={"flex"} alignItems={"center"}>
+                  {MenuList.map((item) => (
+                    <Box
+                      key={item.text}
+                      onClick={() => history.push(item.link)}
+                    >
+                      <Typography variant="h5" component="h5">
+                        {item.text}
+                      </Typography>
+                    </Box>
+                  ))}
+                </Box>
+              )}
+              <Box ml={"20px"}>
+                <AddressCard />
+              </Box>
+              {mobile && (
+                <Hamburger
+                  size={24}
+                  distance={"lg"}
+                  color={theme.palette.primary.main}
+                  toggled={openMenu}
+                  toggle={() => setOpenMenu(!openMenu)}
+                />
+              )}
+            </Box>
+          )}
         </Box>
+
+        <Drawer
+          className={classes.drawerContainer}
+          anchor={"left"}
+          open={openMenu}
+          onClose={() => setOpenMenu(false)}
+        >
+          <Box className={classes.drawer}>
+            {MenuList.map((item) => (
+              <Box key={item.text} onClick={() => history.push(item.link)}>
+                <Typography variant="h3" component="h3" key={item.text}>
+                  {item.text}
+                </Typography>
+              </Box>
+            ))}
+          </Box>
+        </Drawer>
       </Container>
     </Box>
   )

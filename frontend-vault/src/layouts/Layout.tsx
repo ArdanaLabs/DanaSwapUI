@@ -1,30 +1,32 @@
 import React from "react"
-import cx from "classnames"
-import { Box, makeStyles, useMediaQuery, useTheme } from "@material-ui/core"
-import { useIsDarkMode } from "state/user/hooks"
-import { Footer, Header } from "layouts"
+import { makeStyles } from "@mui/styles"
+import { Box, Theme, useMediaQuery, useTheme } from "@mui/material"
 
-const useStyles = makeStyles(({ palette }) => ({
+import { Footer, Header } from "layouts"
+import { ThemeSwitch } from "components"
+
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
-    background: palette.background.default,
+    background: theme.palette.background.default,
   },
 }))
 
-export interface LayoutProps {
-  children: any
-}
-
-const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const dark = useIsDarkMode()
-  const { breakpoints } = useTheme()
-  const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+const Layout: React.FC = ({ children }) => {
+  const theme = useTheme()
+  const mobile = useMediaQuery(theme.breakpoints.down("sm"))
+  const classes = useStyles(theme)
 
   return (
-    <Box className={cx(classes.root)}>
+    <Box className={classes.root}>
       <Header />
       <Box>{children}</Box>
       <Footer />
+
+      {mobile && (
+        <Box position="fixed" left={10} bottom={30}>
+          <ThemeSwitch />
+        </Box>
+      )}
     </Box>
   )
 }

@@ -1,38 +1,48 @@
-import React from "react"
-import { Box, useMediaQuery } from "@material-ui/core"
-import { makeStyles, useTheme } from "@material-ui/core/styles"
-import cx from "classnames"
-import { useIsDarkMode } from "state/user/hooks"
+import React, { ChangeEvent } from "react"
 
-const useStyles = makeStyles(({ palette }) => ({
+import { useTheme } from "@mui/system"
+import { makeStyles } from "@mui/styles"
+import { Theme, Box } from "@mui/material"
+
+import { ReactComponent as SearchIcon } from "assets/image/svgs/search.svg"
+
+const useStyles = makeStyles((theme: Theme) => ({
   input: {
-    "position": "relative",
-    "& > input": {
-      "background": "transparent",
-      "border": `1px solid ${palette.primary.main}`,
-      "borderRadius": "50px",
-      "padding": "10px 10px 10px 40px",
-      "color": palette.primary.main,
+    position: "relative",
+    color: theme.palette.primary.main,
 
-      "&:focus-visible": {
+    [`& > input`]: {
+      background: "transparent",
+      borderWidth: 1,
+      borderStyle: "solid",
+      boderColor: "currentColor",
+      borderRadius: "50px",
+      padding: "10px 10px 10px 40px",
+      color: "currentColor",
+
+      [`&:focus-visible`]: {
         outline: "unset",
       },
     },
-    "& > i": {
+    [`& > svg`]: {
       position: "absolute",
-      left: "20px",
-      top: "13px",
+      left: "25px",
+      top: "50%",
+      transform: "translate(-50%, -50%)",
       fontSize: "12px",
-      color: palette.primary.main,
+
+      [`& path`]: {
+        fill: "currentColor",
+      },
     },
   },
 }))
 
 export interface SearchInputProps {
-  value?: any
-  placeholder?: any
-  className?: any
-  onChange?: any
+  value?: string
+  placeholder?: string
+  className?: string
+  onChange?: (value: ChangeEvent<HTMLInputElement>) => void
 }
 
 const SearchInput: React.FC<SearchInputProps> = ({
@@ -41,14 +51,12 @@ const SearchInput: React.FC<SearchInputProps> = ({
   placeholder = "",
   onChange,
 }) => {
-  const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
-  const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const theme = useTheme()
+  const classes = useStyles(theme)
 
   return (
-    <Box className={cx(classes.input)}>
-      <i className="fa fa-search" aria-hidden="true"></i>
+    <Box className={classes.input}>
+      <SearchIcon />
       <input
         type="text"
         className={className}

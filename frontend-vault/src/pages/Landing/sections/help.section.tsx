@@ -1,25 +1,19 @@
 import React from "react"
-import { Box, Container, Grid, useMediaQuery } from "@material-ui/core"
-import { makeStyles, useTheme } from "@material-ui/core/styles"
-import cx from "classnames"
+
+import { useTheme, Box, Container, Grid, useMediaQuery } from "@mui/material"
 
 import { useIsDarkMode } from "state/user/hooks"
 import { HelpCard } from "components"
 
-const useStyles = makeStyles(({ palette, breakpoints }) => ({
-  root: {},
-}))
-
 const HelpSection: React.FC = () => {
-  const { breakpoints } = useTheme()
+  const theme = useTheme()
   const dark = useIsDarkMode()
-  const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const mobile = useMediaQuery(theme.breakpoints.down("sm"))
 
   return (
-    <Box className={cx(classes.root)}>
+    <Box>
       <Container>
-        <Grid container spacing={5} alignItems="stretch">
+        <Grid container spacing={!mobile ? 5 : 3} alignItems="stretch">
           <Grid item xs={12} sm={6}>
             <HelpCard
               title="Dana Coin"

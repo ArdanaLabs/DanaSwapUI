@@ -1,5 +1,5 @@
 import React from "react"
-import { Box, useMediaQuery, useTheme } from "@material-ui/core"
+import { Box, useMediaQuery, useTheme } from "@mui/material"
 import {
   AdSection,
   AssetSection,
@@ -8,22 +8,16 @@ import {
 } from "./sections"
 
 const Landing: React.FC = () => {
-  const { breakpoints } = useTheme()
-  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const theme = useTheme()
+  const mobile = useMediaQuery(theme.breakpoints.down("sm"))
 
   return (
-    <Box>
+    <Box display="flex" flexDirection="column" gap={!mobile ? "100px" : "70px"}>
       <AdSection />
-
-      <Box mt={!mobile ? "100px" : "70px"} />
 
       <FeatureSection />
 
-      <Box mt={"30px"} />
-
       <AssetSection />
-
-      <Box mt={!mobile ? "150px" : "100px"} />
 
       <HelpSection />
     </Box>

@@ -1,52 +1,56 @@
 import React from "react"
-import cx from "classnames"
-import { Box, useMediaQuery } from "@material-ui/core"
-import { makeStyles, useTheme } from "@material-ui/core/styles"
+import { makeStyles } from "@mui/styles"
+import { useTheme } from "@mui/system"
+import { Box, Theme } from "@mui/material"
 
-import { useDarkModeManager, useIsDarkMode } from "state/user/hooks"
+import { useDarkModeManager } from "state/user/hooks"
+import { ReactComponent as SunIcon } from "assets/image/svgs/sun.svg"
 
-import ICON_SUN from "assets/image/icons/sun.svg"
-import ICON_MOON from "assets/image/icons/moon.svg"
-
-const useStyles = makeStyles(({ palette, breakpoints }) => ({
-  root: {
+const useStyles = makeStyles((theme: Theme) => ({
+  self: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
     width: "75px",
     cursor: "pointer",
-    border: `2px solid ${palette.primary.main}`,
+    borderWidth: 3,
+    borderStyle: "solid",
+    borderColor: theme.palette.primary.main,
     filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
     borderRadius: "100px",
     padding: "5px",
+    color: theme.palette.primary.main,
+  },
+  preIcon: {
+    marginLeft: "5px",
+    width: "20px",
+
+    [`& path`]: {
+      fill: "currentcolor",
+    },
   },
   status: {
     width: "25px",
     height: "25px",
-    background: palette.info.light,
+    background: theme.palette.info.light,
     borderRadius: "100px",
     boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
   },
 }))
 
 const ThemeSwitch: React.FC = () => {
-  const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
+  const theme = useTheme()
   const [darkMode, setDarkMode] = useDarkModeManager()
-  const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const classes = useStyles(theme)
 
   const toggleMode = () => {
     setDarkMode(!darkMode)
   }
 
   return (
-    <Box
-      display="flex"
-      alignItems="center"
-      justifyContent="space-between"
-      className={cx(classes.root)}
-      onClick={toggleMode}
-    >
-      <img src={dark ? ICON_SUN : ICON_MOON} alt="theme" />
-      <Box className={cx(classes.status)} />
+    <Box className={classes.self} onClick={toggleMode}>
+      <SunIcon className={classes.preIcon} />
+      <Box className={classes.status} />
     </Box>
   )
 }

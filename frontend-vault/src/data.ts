@@ -1,9 +1,9 @@
-import { ReactComponent as TwitterIcon } from "assets/image/icons/twitter.svg"
-import { ReactComponent as DiscordIcon } from "assets/image/icons/discord.svg"
-import { ReactComponent as TelegramIcon } from "assets/image/icons/telegram.svg"
-import { ReactComponent as MediumIcon } from "assets/image/icons/medium.svg"
-import { ReactComponent as YoutubeIcon } from "assets/image/icons/youtube.svg"
-import { ReactComponent as LinkedinIcon } from "assets/image/icons/linkedin.svg"
+import { ReactComponent as TwitterIcon } from "assets/image/svgs/twitter.svg"
+import { ReactComponent as DiscordIcon } from "assets/image/svgs/discord.svg"
+import { ReactComponent as TelegramIcon } from "assets/image/svgs/telegram.svg"
+import { ReactComponent as MediumIcon } from "assets/image/svgs/medium.svg"
+import { ReactComponent as YoutubeIcon } from "assets/image/svgs/youtube.svg"
+import { ReactComponent as LinkedinIcon } from "assets/image/svgs/linkedin.svg"
 
 export const socials = [
   {

@@ -1,23 +1,31 @@
 import React from "react"
-import { Box, MenuItem, Select, useMediaQuery } from "@material-ui/core"
-import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
-import { useIsDarkMode } from "state/user/hooks"
 import { BootstrapInput, SearchInput } from "components"
+import { makeStyles } from "@mui/styles"
+import {
+  Box,
+  MenuItem,
+  Select,
+  useMediaQuery,
+  useTheme,
+  Theme,
+  SelectChangeEvent,
+} from "@mui/material"
+import { FontFamilies } from "theme"
 
-const useStyles = makeStyles(({ palette, breakpoints }) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
     display: "flex",
     justifyContent: "space-between",
     margin: "20px 0px",
   },
   typographyPrimary: {
-    fontFamily: "Brandon Grotesque",
+    fontFamily: FontFamilies.Brandon,
     fontStyle: "normal",
     fontWeight: 900,
   },
   typographySecondary: {
-    fontFamily: "Museo Sans",
+    fontFamily: FontFamilies.Museo,
     fontStyle: "normal",
     fontWeight: 100,
   },
@@ -25,38 +33,44 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     display: "flex",
   },
   filterItem: {
-    "border": "1px solid transparent",
-    "borderRadius": "20px",
-    "fontSize": "16px",
-    "lineHeight": "100%",
-    "display": "flex",
-    "alignItems": "center",
-    "background": "transparent",
-    "cursor": "pointer",
-    "color": palette.primary.main,
-    "padding": "5px 20px",
-    "marginRight": "20px",
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: "transparent",
+    borderRadius: "20px",
+    fontSize: "16px",
+    lineHeight: "100%",
+    display: "flex",
+    alignItems: "center",
+    background: "transparent",
+    cursor: "pointer",
+    color: theme.palette.primary.main,
+    padding: "5px 20px",
+    marginRight: "20px",
 
-    "&.active": {
-      background: palette.info.light,
-      color: palette.common.white,
+    [`&.active`]: {
+      background: theme.palette.info.light,
+      color: theme.palette.common.white,
     },
-    "&:hover": {
-      border: `1px solid ${palette.primary.main}`,
+    [`&:hover`]: {
+      borderColor: theme.palette.primary.main,
     },
   },
   searchBox: {
-    [breakpoints.down("xs")]: {
+    [theme.breakpoints.down("sm")]: {
       width: "100%",
     },
+  },
+  menuItem: {
+    color: theme.palette.primary.main,
   },
 }))
 
 export enum FilterType {
-  POPULAR = "Popular Assets",
-  ALL = "All Assets",
-  STABLECOINS = "Stablecoins",
-  LP = "LP Token",
+  Popular = "Popular Assets",
+  All = "All Assets",
+  Your = "Your Vaults",
+  Stablecoins = "Stablecoins",
+  LiquidityPool = "LP Token",
 }
 
 export interface FilterOption {
@@ -66,17 +80,18 @@ export interface FilterOption {
 
 export interface TokenAssetGridFilterProps {
   filterOption: FilterOption
+  avFilterTypes: FilterType[]
   handleFilterChange: (filterOption: FilterOption) => void
 }
 
 const TokenAssetGridFilter: React.FC<TokenAssetGridFilterProps> = ({
   filterOption,
+  avFilterTypes,
   handleFilterChange,
 }) => {
-  const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
-  const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+  const theme = useTheme()
+  const mobile = useMediaQuery(theme.breakpoints.down("sm"))
+  const classes = useStyles(theme)
   const { filterType, keyword } = filterOption
 
   const hanldeFilterTypeChange = (type: FilterType) => {
@@ -94,62 +109,42 @@ const TokenAssetGridFilter: React.FC<TokenAssetGridFilterProps> = ({
   }
 
   return (
-    <Box className={cx(classes.root)} flexDirection={mobile ? "column" : "row"}>
-      {!mobile && (
-        <Box className={cx(classes.filterType)}>
-          <Box
-            className={cx(classes.typographyPrimary, classes.filterItem, {
-              active: filterType === FilterType.POPULAR,
-            })}
-            onClick={() => hanldeFilterTypeChange(FilterType.POPULAR)}
-          >
-            {FilterType.POPULAR}
-          </Box>
-          <Box
-            className={cx(classes.typographyPrimary, classes.filterItem, {
-              active: filterType === FilterType.ALL,
-            })}
-            onClick={() => hanldeFilterTypeChange(FilterType.ALL)}
-          >
-            {FilterType.ALL}
-          </Box>
-          <Box
-            className={cx(classes.typographyPrimary, classes.filterItem, {
-              active: filterType === FilterType.STABLECOINS,
-            })}
-            onClick={() => hanldeFilterTypeChange(FilterType.STABLECOINS)}
-          >
-            {FilterType.STABLECOINS}
-          </Box>
-          <Box
-            className={cx(classes.typographyPrimary, classes.filterItem, {
-              active: filterType === FilterType.LP,
-            })}
-            onClick={() => hanldeFilterTypeChange(FilterType.LP)}
-          >
-            {FilterType.LP}
-          </Box>
-        </Box>
-      )}
-
-      {mobile && (
+    <Box className={classes.root} flexDirection={mobile ? "column" : "row"}>
+      {mobile ? (
         <Box mb="20px" width="100%">
           <Select
             labelId="Filter"
             id="Filter Select"
             value={filterOption.filterType}
-            onChange={(event: React.ChangeEvent<{ value: unknown }>) => {
+            onChange={(event: SelectChangeEvent<FilterType>) => {
               hanldeFilterTypeChange(event.target.value as FilterType)
             }}
             input={<BootstrapInput />}
           >
-            <MenuItem value={FilterType.POPULAR}>{FilterType.POPULAR}</MenuItem>
-            <MenuItem value={FilterType.ALL}>{FilterType.ALL}</MenuItem>
-            <MenuItem value={FilterType.STABLECOINS}>
-              {FilterType.STABLECOINS}
-            </MenuItem>
-            <MenuItem value={FilterType.LP}>{FilterType.LP}</MenuItem>
+            {avFilterTypes.map((avFilterType) => (
+              <MenuItem
+                value={avFilterType}
+                key={avFilterType}
+                className={cx(classes.menuItem)}
+              >
+                {avFilterType}
+              </MenuItem>
+            ))}
           </Select>
+        </Box>
+      ) : (
+        <Box className={classes.filterType}>
+          {avFilterTypes.map((avFilterType) => (
+            <Box
+              key={avFilterType}
+              className={cx(classes.typographyPrimary, classes.filterItem, {
+                active: filterType === avFilterType,
+              })}
+              onClick={() => hanldeFilterTypeChange(avFilterType)}
+            >
+              {avFilterType}
+            </Box>
+          ))}
         </Box>
       )}
 

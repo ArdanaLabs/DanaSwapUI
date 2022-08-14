@@ -1,28 +1,33 @@
 import React from "react"
-import { Box, useMediaQuery } from "@material-ui/core"
-import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
-import { useIsDarkMode } from "state/user/hooks"
-import { VaultButton } from "components"
+import { Box, useTheme, Theme, Typography } from "@mui/material"
+import { makeStyles } from "@mui/styles"
 
-const useStyles = makeStyles(({ palette, breakpoints }) => ({
+import { VaultButton } from "components"
+import { useUiModal } from "state/ui/hooks"
+import { VaultInfo } from "state/vault/types"
+import { numberFormatter, percentageFormatter } from "hooks"
+import { FontFamilies } from "theme"
+
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
-    border: `1px solid ${palette.primary.main}88`,
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: `${theme.palette.primary.main}88`,
     borderRadius: "30px",
     padding: "20px 20px",
-    color: palette.primary.main,
+    color: theme.palette.primary.main,
     marginBottom: "20px",
   },
   typographyPrimary: {
-    fontFamily: "Brandon Grotesque",
+    fontFamily: FontFamilies.Brandon,
     fontStyle: "normal",
     fontWeight: 900,
   },
   typographySecondary: {
-    fontFamily: "Museo Sans",
+    fontFamily: FontFamilies.Museo,
     fontStyle: "normal",
-    fontWeight: "normal",
-    opacity: "0.8",
+    fontWeight: 100,
   },
   row: {
     display: "flex",
@@ -33,85 +38,86 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontSize: "16px",
   },
   value: {
-    "display": "flex",
-    "alignItems": "center",
-    "fontSize": "16px",
-    "& > img": {
+    display: "flex",
+    alignItems: "center",
+    fontSize: "16px",
+    [`& > img`]: {
       width: "20px",
       marginRight: "10px",
     },
   },
+  vaultButton: {
+    textTransform: "uppercase",
+    color: theme.palette.common.white,
+    lineHeight: "100%",
+  },
 }))
 
 export interface TokenAssetCardProps {
-  id: number
-  asset: string
-  type: string
-  dUSD: string
-  stabilityFee: number
-  minColl: number
-  assetIcon: string
+  row: VaultInfo
 }
 
-const TokenAssetCard: React.FC<TokenAssetCardProps> = ({
-  id,
-  asset,
-  type,
-  dUSD,
-  stabilityFee,
-  minColl,
-  assetIcon,
-}) => {
-  const { breakpoints } = useTheme()
-  const dark = useIsDarkMode()
-  const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
+const TokenAssetCard: React.FC<TokenAssetCardProps> = ({ row }) => {
+  const theme = useTheme()
+  const classes = useStyles(theme)
+  const { toggleModal } = useUiModal()
+
+  const handleOpenVault = () => {
+    toggleModal({
+      open: true,
+      type: row.type,
+    })
+  }
 
   return (
-    <Box className={cx(classes.root)}>
-      <Box className={cx(classes.row)}>
+    <Box className={classes.root}>
+      <Box className={classes.row}>
         <Box className={cx(classes.property, classes.typographyPrimary)}>
           Asset
         </Box>
         <Box className={cx(classes.value, classes.typographySecondary)}>
-          <img src={assetIcon} alt="" />
-          {asset}
+          <img src={`assets/image/coins/${row.asset}.svg`} alt="" />
+          {row.asset}
         </Box>
       </Box>
-      <Box className={cx(classes.row)}>
+      <Box className={classes.row}>
         <Box className={cx(classes.property, classes.typographyPrimary)}>
           Type
         </Box>
         <Box className={cx(classes.value, classes.typographySecondary)}>
-          {type}
+          {row.type}
         </Box>
       </Box>
-      <Box className={cx(classes.row)}>
+      <Box className={classes.row}>
         <Box className={cx(classes.property, classes.typographyPrimary)}>
           dUSD Available
         </Box>
         <Box className={cx(classes.value, classes.typographySecondary)}>
-          {dUSD}
+          {numberFormatter(row.locked)}
         </Box>
       </Box>
-      <Box className={cx(classes.row)}>
+      <Box className={classes.row}>
         <Box className={cx(classes.property, classes.typographyPrimary)}>
           Stability Fee
         </Box>
         <Box className={cx(classes.value, classes.typographySecondary)}>
-          {stabilityFee.toFixed(2)}%
+          {percentageFormatter(row.stabilityFee)}
         </Box>
       </Box>
-      <Box className={cx(classes.row)}>
+      <Box className={classes.row}>
         <Box className={cx(classes.property, classes.typographyPrimary)}>
           Min Coll. Ratio
         </Box>
-        <Box className={cx(classes.value, classes.typographySecondary)}>
-          {minColl}%
+        <Box className={(classes.value, classes.typographySecondary)}>
+          {percentageFormatter(row.minCollRatio, 0)}
         </Box>
       </Box>
       <Box justifyContent="center" display="flex" mt="20px">
-        <VaultButton>Open Vault</VaultButton>
+        <VaultButton onClick={handleOpenVault}>
+          <Typography variant="h3" className={classes.vaultButton}>
+            Open Vault
+          </Typography>
+        </VaultButton>
       </Box>
     </Box>
   )

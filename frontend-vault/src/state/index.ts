@@ -1,12 +1,18 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit"
 import { save, load } from "redux-localstorage-simple"
 import user from "./user/reducer"
+import wallet from "./wallet/reducer"
+import vault from "./vault/reducer"
+import ui from "./ui/reducer"
 
 const PERSISTED_KEYS: string[] = ["user"]
 
 const store = configureStore({
   reducer: {
     user,
+    wallet,
+    vault,
+    ui,
   },
   middleware: [
     ...getDefaultMiddleware({

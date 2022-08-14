@@ -1,75 +1,92 @@
-import React, { Suspense, useState, useEffect } from "react"
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom"
-import { Provider as StateProvider } from "react-redux"
-import {
-  ThemeProvider as MuiThemeProvider,
-  CssBaseline,
-} from "@material-ui/core"
-import { ParallaxProvider } from "react-scroll-parallax"
-import { I18nextProvider } from "react-i18next"
-
-import i18n from "./i18n"
-import { useIsDarkMode } from "state/user/hooks"
-import { darkTheme, lightTheme } from "./theme"
-import store from "./state"
-
-import { Landing } from "./pages"
+import { CssBaseline } from "@mui/material"
+import { ThemeProvider as MuiThemeProvider } from "@mui/material/styles"
 import Layout from "layouts/Layout"
+import React, { Suspense } from "react"
+import { Provider as StateProvider } from "react-redux"
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom"
+import { ParallaxProvider } from "react-scroll-parallax"
+import UiUpdater from "state/ui/updater"
+import VaultUpdater from "state/vault/updater"
+import WalletUpdater from "state/wallet/updater"
+import { useIsDarkMode } from "state/user/hooks"
+import {
+  Landing,
+  MyVaults,
+  Vaults,
+  CreateVaultMultiply,
+  CreateVaultBorrow,
+} from "./pages"
+import store from "./state"
+import { darkTheme, lightTheme } from "./theme"
+
+const StateUpdaters: React.FC = () => (
+  <>
+    <UiUpdater />
+    <VaultUpdater />
+    <WalletUpdater />
+  </>
+)
 
 const ThemeProvider: React.FC = ({ children }) => {
-  // const location = useLocation();
   const darkMode = useIsDarkMode()
   let theme = darkMode ? darkTheme : lightTheme
 
-  // if (location.pathname.replace('/', '') === '') {
-  //   theme = darkTheme;
-  // }
+  console.log("theme ---->", theme)
 
   return <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>
 }
 
-const Providers: React.FC = ({ children }) => {
-  return (
-    <ParallaxProvider>
-      <BrowserRouter basename="/">
-        <Suspense fallback={null}>
-          <StateProvider store={store}>
-            <ThemeProvider>
-              <CssBaseline />
-              <I18nextProvider i18n={i18n}>{children}</I18nextProvider>
-            </ThemeProvider>
-          </StateProvider>
-        </Suspense>
-      </BrowserRouter>
-    </ParallaxProvider>
-  )
-}
+const Providers: React.FC = ({ children }) => (
+  <ParallaxProvider>
+    <BrowserRouter basename="/">
+      <Suspense fallback={null}>
+        <StateProvider store={store}>
+          <ThemeProvider>
+            <CssBaseline />
+            {children}
+            <StateUpdaters />
+          </ThemeProvider>
+        </StateProvider>
+      </Suspense>
+    </BrowserRouter>
+  </ParallaxProvider>
+)
 
-const App: React.FC = () => {
-  const [loading, setLoading] = useState(true)
+const App: React.FC = () => (
+  <Providers>
+    <Switch>
+      <Route exact path="/">
+        <Layout>
+          <Landing />
+        </Layout>
+      </Route>
+      <Route exact path="/owner">
+        <Layout>
+          <MyVaults />
+        </Layout>
+      </Route>
+      <Route exact path="/vaults/list">
+        <Layout>
+          <Vaults />
+        </Layout>
+      </Route>
 
-  useEffect(() => {
-    setLoading(false)
-  }, [])
+      <Route exact path="/vaults/open-multiply/:type">
+        <Layout>
+          <CreateVaultMultiply />
+        </Layout>
+      </Route>
 
-  if (loading) {
-    return null
-  }
+      <Route exact path="/vaults/open-borrow/:type">
+        <Layout>
+          <CreateVaultBorrow />
+        </Layout>
+      </Route>
 
-  return (
-    <Providers>
-      <Switch>
-        <Route path="/">
-          <Layout>
-            <Landing />
-          </Layout>
-        </Route>
-        <Route path="*">
-          <Redirect to="/" />
-        </Route>
-      </Switch>
-    </Providers>
-  )
-}
-
+      <Route path="*">
+        <Redirect to="/" />
+      </Route>
+    </Switch>
+  </Providers>
+)
 export default App

@@ -1,34 +1,25 @@
 import React from "react"
-import { Box, Container, Grid, useMediaQuery } from "@material-ui/core"
-import { makeStyles, useTheme } from "@material-ui/core/styles"
-import cx from "classnames"
 
-import { useIsDarkMode } from "state/user/hooks"
+import { Box, Container, Grid } from "@mui/material"
 
 import COIN_DANA from "assets/image/COIN-DANA-3D.png"
 import COIN_ETH from "assets/image/COIN-ETH-3D.png"
 import COIN_HUOBI from "assets/image/COIN-HUOBI-3D.png"
 
 import { TokenCard } from "components"
-
-const useStyles = makeStyles(({ palette, breakpoints }) => ({
-  root: {},
-}))
+import { useIsDarkMode } from "state/user/hooks"
 
 const AdSection: React.FC = () => {
-  const { breakpoints } = useTheme()
   const dark = useIsDarkMode()
-  const mobile = useMediaQuery(breakpoints.down("xs"))
-  const classes = useStyles({ dark, mobile })
 
   return (
-    <Box className={cx(classes.root)}>
+    <Box>
       <Container>
         <Grid container spacing={4}>
           <Grid item xs={12} sm={6} md={4}>
             <TokenCard
-              name="LINK-A"
-              label="NEW"
+              name="link-a"
+              label="New"
               stabilityFee={3}
               ratio={165}
               image={COIN_DANA}
@@ -41,8 +32,8 @@ const AdSection: React.FC = () => {
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
             <TokenCard
-              name="UNI-A"
-              label="MOST POPULAR"
+              name="uni-a"
+              label="Most Popular"
               stabilityFee={2}
               ratio={145}
               image={COIN_ETH}
@@ -55,8 +46,8 @@ const AdSection: React.FC = () => {
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
             <TokenCard
-              name="GUSD-A"
-              label="CHEAPEST"
+              name="gusd-a"
+              label="Cheapest"
               stabilityFee={0}
               ratio={101}
               image={COIN_HUOBI}
