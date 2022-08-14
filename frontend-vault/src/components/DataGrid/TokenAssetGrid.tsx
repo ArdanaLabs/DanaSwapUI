@@ -1,12 +1,13 @@
 import { DataGrid } from "@mui/x-data-grid"
 import { Theme } from "@mui/material"
 import { withStyles } from "@mui/styles"
+import { FontFamilies } from "theme"
 
 const StyledDataGrid = withStyles((theme: Theme) => ({
   root: {
     border: "unset !important",
     [`& .MuiDataGrid-columnHeaderTitle`]: {
-      fontFamily: "Brandon Grotesque",
+      fontFamily: FontFamilies.Brandon,
       fontStyle: "normal",
       fontWeight: 900,
       fontSize: "15px",
@@ -42,7 +43,7 @@ const StyledDataGrid = withStyles((theme: Theme) => ({
     border: "unset !important",
   },
   row: {
-    fontFamily: "Museo Sans",
+    fontFamily: FontFamilies.Museo,
     fontStyle: "normal",
     fontWeight: "normal",
     fontSize: "16px",

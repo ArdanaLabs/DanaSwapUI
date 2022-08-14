@@ -4,6 +4,7 @@ import { ReactComponent as ArrowRightIcon } from "assets/image/svgs/arrow-right.
 import { useWallet } from "state/wallet/hooks"
 import { Box, Theme, Typography } from "@mui/material"
 import { makeStyles } from "@mui/styles"
+import { FontFamilies } from "theme"
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -21,7 +22,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   label: {
     fontSize: "14px",
     fontWeight: 700,
-    fontFamily: "Brandon Grotesque",
+    fontFamily: FontFamilies.Brandon,
+    color: theme.palette.primary.main,
     textAlign: "center",
     lineHeight: "150%",
     textTransform: "uppercase",

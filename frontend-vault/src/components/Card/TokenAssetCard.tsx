@@ -7,6 +7,7 @@ import { VaultButton } from "components"
 import { useUiModal } from "state/ui/hooks"
 import { VaultInfo } from "state/vault/types"
 import { numberFormatter, percentageFormatter } from "hooks"
+import { FontFamilies } from "theme"
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -19,12 +20,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginBottom: "20px",
   },
   typographyPrimary: {
-    fontFamily: "Brandon Grotesque",
+    fontFamily: FontFamilies.Brandon,
     fontStyle: "normal",
     fontWeight: 900,
   },
   typographySecondary: {
-    fontFamily: "Museo Sans",
+    fontFamily: FontFamilies.Museo,
     fontStyle: "normal",
     fontWeight: 100,
   },
