@@ -2,6 +2,7 @@ import React from "react"
 import cx from "classnames"
 import { Box, Theme, useTheme } from "@mui/material"
 import { makeStyles } from "@mui/styles"
+import { FontFamilies } from "theme"
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -13,12 +14,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginBottom: "35px",
   },
   typographyPrimary: {
-    fontFamily: "Brandon Grotesque",
+    fontFamily: FontFamilies.Brandon,
     fontStyle: "normal",
     fontWeight: 900,
   },
   typographySecondary: {
-    fontFamily: "Museo Sans",
+    fontFamily: FontFamilies.Museo,
     fontStyle: "normal",
     fontWeight: "normal",
   },

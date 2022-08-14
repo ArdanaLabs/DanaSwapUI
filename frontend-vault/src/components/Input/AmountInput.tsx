@@ -4,6 +4,7 @@ import cx from "classnames"
 import { ReactComponent as SwapIcon } from "assets/image/svgs/swap.svg"
 import { Box, Theme, Typography, useTheme } from "@mui/material"
 import { makeStyles } from "@mui/styles"
+import { FontFamilies } from "theme"
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {},
@@ -19,7 +20,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       border: "none",
       outline: "none",
       background: "transparent",
-      fontFamily: "Brandon Grotesque",
+      fontFamily: FontFamilies.Brandon,
       fontStyle: "normal",
       fontWeight: 700,
       fontSize: 45,

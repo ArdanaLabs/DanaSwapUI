@@ -6,6 +6,7 @@ import { useUiModal } from "state/ui/hooks"
 import { MyVaultInfo } from "state/wallet/types"
 import { Box, Theme, Typography, useTheme } from "@mui/material"
 import { makeStyles } from "@mui/styles"
+import { FontFamilies } from "theme"
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -18,12 +19,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginBottom: "20px",
   },
   typographyPrimary: {
-    fontFamily: "Brandon Grotesque",
+    fontFamily: FontFamilies.Brandon,
     fontStyle: "normal",
     fontWeight: 900,
   },
   typographySecondary: {
-    fontFamily: "Museo Sans",
+    fontFamily: FontFamilies.Museo,
     fontStyle: "normal",
     fontWeight: 100,
   },

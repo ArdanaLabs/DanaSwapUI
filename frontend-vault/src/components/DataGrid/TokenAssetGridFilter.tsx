@@ -11,6 +11,7 @@ import {
   Theme,
   SelectChangeEvent,
 } from "@mui/material"
+import { FontFamilies } from "theme"
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -19,12 +20,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     margin: "20px 0px",
   },
   typographyPrimary: {
-    fontFamily: "Brandon Grotesque",
+    fontFamily: FontFamilies.Brandon,
     fontStyle: "normal",
     fontWeight: 900,
   },
   typographySecondary: {
-    fontFamily: "Museo Sans",
+    fontFamily: FontFamilies.Museo,
     fontStyle: "normal",
     fontWeight: 100,
   },
