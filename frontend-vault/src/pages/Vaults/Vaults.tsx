@@ -5,9 +5,8 @@ import { AssetSection } from "../Landing/sections"
 
 const Vaults: React.FC = () => {
   return (
-    <Box>
+    <Box display={"flex"} flexDirection={"column"} gap={"50px 0px"}>
       <HeroSection />
-      <Box mt={"50px"} />
       <AssetSection />
     </Box>
   )

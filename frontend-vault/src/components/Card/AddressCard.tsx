@@ -83,7 +83,7 @@ const AddressCard: React.FC = () => {
       </Typography>
       <Box className={classes.balance} display={"flex"} alignItems="center">
         <Box className="wallet">
-          <img src={WalletIcon} alt="wallet" width="80%" />
+          <img src={WalletIcon} alt="" width="80%" />
         </Box>
         <Typography variant="h6" component="h6" className="amount">
           {balance}

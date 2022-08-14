@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     cursor: "pointer",
     display: "flex",
     alignItems: "center",
+    color: theme.palette.primary.main,
     opacity: 1,
 
     [`&:hover`]: {
@@ -31,7 +32,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginLeft: "10px",
 
     [`& path`]: {
-      fill: theme.palette.primary.main,
+      fill: "currentColor",
     },
   },
 }))

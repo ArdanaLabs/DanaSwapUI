@@ -33,7 +33,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: "flex",
   },
   filterItem: {
-    border: "1px solid transparent",
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: "transparent",
     borderRadius: "20px",
     fontSize: "16px",
     lineHeight: "100%",
@@ -50,7 +52,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       color: theme.palette.common.white,
     },
     [`&:hover`]: {
-      border: `1px solid ${theme.palette.primary.main}`,
+      borderColor: theme.palette.primary.main,
     },
   },
   searchBox: {
@@ -64,11 +66,11 @@ const useStyles = makeStyles((theme: Theme) => ({
 }))
 
 export enum FilterType {
-  POPULAR = "Popular Assets",
-  ALL = "All Assets",
-  YOUR = "Your Vaults",
-  STABLECOINS = "Stablecoins",
-  LP = "LP Token",
+  Popular = "Popular Assets",
+  All = "All Assets",
+  Your = "Your Vaults",
+  Stablecoins = "Stablecoins",
+  LiquidityPool = "LP Token",
 }
 
 export interface FilterOption {
@@ -108,21 +110,7 @@ const TokenAssetGridFilter: React.FC<TokenAssetGridFilterProps> = ({
 
   return (
     <Box className={classes.root} flexDirection={mobile ? "column" : "row"}>
-      {!mobile ? (
-        <Box className={classes.filterType}>
-          {avFilterTypes.map((avFilterType) => (
-            <Box
-              key={avFilterType}
-              className={cx(classes.typographyPrimary, classes.filterItem, {
-                active: filterType === avFilterType,
-              })}
-              onClick={() => hanldeFilterTypeChange(avFilterType)}
-            >
-              {avFilterType}
-            </Box>
-          ))}
-        </Box>
-      ) : (
+      {mobile ? (
         <Box mb="20px" width="100%">
           <Select
             labelId="Filter"
@@ -143,6 +131,20 @@ const TokenAssetGridFilter: React.FC<TokenAssetGridFilterProps> = ({
               </MenuItem>
             ))}
           </Select>
+        </Box>
+      ) : (
+        <Box className={classes.filterType}>
+          {avFilterTypes.map((avFilterType) => (
+            <Box
+              key={avFilterType}
+              className={cx(classes.typographyPrimary, classes.filterItem, {
+                active: filterType === avFilterType,
+              })}
+              onClick={() => hanldeFilterTypeChange(avFilterType)}
+            >
+              {avFilterType}
+            </Box>
+          ))}
         </Box>
       )}
 

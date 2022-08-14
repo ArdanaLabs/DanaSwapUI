@@ -9,14 +9,16 @@ import { ReactComponent as SearchIcon } from "assets/image/svgs/search.svg"
 const useStyles = makeStyles((theme: Theme) => ({
   input: {
     position: "relative",
+    color: theme.palette.primary.main,
+
     [`& > input`]: {
       background: "transparent",
       borderWidth: 1,
       borderStyle: "solid",
-      boderColor: theme.palette.primary.main,
+      boderColor: "currentColor",
       borderRadius: "50px",
       padding: "10px 10px 10px 40px",
-      color: theme.palette.primary.main,
+      color: "currentColor",
 
       [`&:focus-visible`]: {
         outline: "unset",
@@ -30,7 +32,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       fontSize: "12px",
 
       [`& path`]: {
-        fill: theme.palette.primary.main,
+        fill: "currentColor",
       },
     },
   },

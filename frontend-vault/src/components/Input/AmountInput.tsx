@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react"
-import cx from "classnames"
 
 import { ReactComponent as SwapIcon } from "assets/image/svgs/swap.svg"
 import { Box, Theme, Typography, useTheme } from "@mui/material"
@@ -9,14 +8,17 @@ import { FontFamilies } from "theme"
 const useStyles = makeStyles((theme: Theme) => ({
   root: {},
   input: {
-    border: `2px solid ${theme.palette.info.dark}`,
+    borderWidth: 2,
+    borderStyle: "solid",
+    borderColor: theme.palette.info.dark,
     borderRadius: "10px",
     background: `${theme.palette.background.default}55`,
     padding: "10px 20px",
     position: "relative",
+    color: theme.palette.primary.main,
 
     [`& input`]: {
-      color: theme.palette.primary.main,
+      color: "currentColor",
       border: "none",
       outline: "none",
       background: "transparent",
@@ -44,7 +46,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       cursor: "pointer",
 
       [`& path`]: {
-        fill: theme.palette.primary.main,
+        fill: "currentColor",
       },
     },
   },
@@ -96,6 +98,7 @@ const AmountInput: React.FC<AmountInputProps> = ({ token, inputChange }) => {
         display="flex"
         justifyContent={"space-between"}
         alignItems={"center"}
+        mb="5px"
       >
         <Typography component="h5" variant="h5">
           <small style={{ textTransform: "uppercase" }}>Deposit {token}</small>
@@ -107,8 +110,7 @@ const AmountInput: React.FC<AmountInputProps> = ({ token, inputChange }) => {
           </small>
         </Typography>
       </Box>
-      <Box mb="5px" />
-      <Box className={cx(classes.input)}>
+      <Box className={classes.input}>
         <input
           type="number"
           step=".01"

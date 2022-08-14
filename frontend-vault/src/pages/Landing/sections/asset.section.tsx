@@ -1,5 +1,4 @@
 import React, { useMemo, useState } from "react"
-import _ from "lodash"
 import cx from "classnames"
 import {
   TokenAssetGrid,
@@ -51,7 +50,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     transform: "rotateX(180deg)",
   },
   vaultButton: {
-    color: theme.palette.primary.main,
+    color: theme.palette.common.white,
     textTransform: "uppercase",
     lineHeight: "100%",
   },
@@ -62,7 +61,7 @@ const AssetSection: React.FC = () => {
   const mobile = useMediaQuery(theme.breakpoints.down("sm"))
   const classes = useStyles(theme)
   const [filterOption, setFilterOption] = useState<FilterOption>({
-    filterType: FilterType.POPULAR,
+    filterType: FilterType.Popular,
     keyword: "",
   })
 
@@ -72,21 +71,21 @@ const AssetSection: React.FC = () => {
   const filteredVaults: VaultInfo[] = useMemo(() => {
     let filteredByKeyword: VaultInfo[] = vaults.filter(
       (vault: VaultInfo) =>
-        _.isEmpty(filterOption.keyword) ||
-        vault.asset.indexOf(filterOption.keyword) !== -1
+        filterOption.keyword !== "" ||
+        vault.asset.includes(filterOption.keyword)
     )
     switch (filterOption.filterType) {
-      case FilterType.POPULAR:
+      case FilterType.Popular:
         filteredByKeyword = filteredByKeyword.filter(
           (vault: VaultInfo) => vault.isPopular
         )
         break
-      case FilterType.STABLECOINS:
+      case FilterType.Stablecoins:
         filteredByKeyword = filteredByKeyword.filter(
           (vault: VaultInfo) => vault.isStableCoin
         )
         break
-      case FilterType.LP:
+      case FilterType.LiquidityPool:
         filteredByKeyword = filteredByKeyword.filter(
           (vault: VaultInfo) => vault.isLP
         )
@@ -205,10 +204,10 @@ const AssetSection: React.FC = () => {
           <TokenAssetGridFilter
             filterOption={filterOption}
             avFilterTypes={[
-              FilterType.POPULAR,
-              FilterType.ALL,
-              FilterType.STABLECOINS,
-              FilterType.LP,
+              FilterType.Popular,
+              FilterType.All,
+              FilterType.Stablecoins,
+              FilterType.LiquidityPool,
             ]}
             handleFilterChange={(newOption) => setFilterOption(newOption)}
           />

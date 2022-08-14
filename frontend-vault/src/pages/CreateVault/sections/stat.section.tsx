@@ -37,23 +37,26 @@ const useStyles = makeStyles((theme: Theme) => ({
     alignItems: "center",
     marginBottom: "10px",
     gap: "0 5px",
+    color: theme.palette.primary.main,
 
     [`& h5, & h6`]: {
-      color: theme.palette.primary.main,
+      color: "currentColor",
     },
 
     [`& path`]: {
-      fill: theme.palette.primary.main,
+      fill: "currentColor",
     },
     [`& rect`]: {
-      stroke: theme.palette.primary.main,
+      stroke: "currentColor",
     },
   },
 
-  border: {
+  isActiveBorder: {
     paddingRight: "20px",
     marginRight: "20px",
-    borderRight: `1px solid ${theme.palette.info.dark}`,
+    borderRightWidth: 1,
+    borderRightStyle: "solid",
+    borderRightColor: theme.palette.info.dark,
   },
 }))
 
@@ -73,11 +76,11 @@ const StatSection: React.FC = () => {
   const renderIndividual = (
     label: string,
     value: string,
-    border: boolean = true
+    hasBorder: boolean = true
   ): JSX.Element => (
     <Box
       className={cx(classes.individual, {
-        [classes.border]: border && !mobile,
+        [classes.isActiveBorder]: hasBorder && !mobile,
       })}
     >
       <Typography component="h6" variant="h6">

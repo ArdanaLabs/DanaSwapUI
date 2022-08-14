@@ -26,6 +26,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     [`& h1, & h5, & h6`]: {
       color: theme.palette.primary.main,
     },
+    [`& h1`]: {
+      marginTop: "20px",
+      marginBottom: "20px",
+    },
 
     [theme.breakpoints.down("sm")]: {
       textAlign: "left",
@@ -83,7 +87,7 @@ const VaultStatCard: React.FC<Props> = ({ vaultList }) => {
         alignItems={"center"}
         justifyContent={"center"}
       >
-        <img src={image} alt="name" />
+        <img src={image} alt="" />
       </Box>
       <Box display="flex" flexDirection={"column"}>
         <Typography variant="h5" component="h5" className="name">
@@ -102,31 +106,26 @@ const VaultStatCard: React.FC<Props> = ({ vaultList }) => {
         <Grid container>
           <Grid item xs={12} sm={6} md={3}>
             <Typography variant="h5" component="h5">
-              No. of vaults
+              <abbr title="Number">No.</abbr> of vaults
             </Typography>
-            <Box mb={"20px"} />
             <Typography variant="h1" component="h1">
               {vaultList.length}
             </Typography>
-            <Box mb={"20px"} />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
             <Typography variant="h5" component="h5">
               Total Locked
             </Typography>
-            <Box mb={"20px"} />
             <Typography variant="h1" component="h1">
               {`$${totalLockedUSD.toLocaleString()}`}
             </Typography>
-            <Box mb={"20px"} />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
             <Typography variant="h5" component="h5">
               Total Debt
             </Typography>
-            <Box mb={"20px"} />
             <Box display={"flex"} alignItems={"baseline"}>
               <Box>
                 <Typography variant="h1" component="h1">
@@ -139,26 +138,21 @@ const VaultStatCard: React.FC<Props> = ({ vaultList }) => {
                 </Typography>
               </Box>
             </Box>
-            <Box mb={"20px"} />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
             <Typography variant="h5" component="h5">
               Vaults at risk
             </Typography>
-            <Box mb={"20px"} />
             <Typography variant="h1" component="h1">
               {vaultList.filter((vault) => vault.risk).length}
             </Typography>
-            <Box mb={"20px"} />
           </Grid>
         </Grid>
 
         <Box className={classes.divider} />
 
-        <Box mb={"20px"} />
-
-        <Box display={"flex"}>
+        <Box display={"flex"} mt={"20px"}>
           {vaultList.map((vault) => {
             return renderVault(
               vault.asset,

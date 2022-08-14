@@ -37,12 +37,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: "100%",
     // margin: "5px",
     // minHeight: "180px",
+    color: theme.palette.primary.main,
 
     [`& h5`]: {
       textTransform: "uppercase",
     },
     [`& h1, & h3, & h5, & h6`]: {
-      color: theme.palette.primary.main,
+      color: "currentColor",
     },
   },
   badge: {
@@ -58,10 +59,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: "20px",
 
     [`& path`]: {
-      fill: theme.palette.primary.main,
+      fill: "currentColor",
     },
     [`& rect`]: {
-      stroke: theme.palette.primary.main,
+      stroke: "currentColor",
     },
   },
   highlight: {

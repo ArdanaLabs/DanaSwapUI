@@ -19,13 +19,14 @@ const useStyles = makeStyles((theme: Theme) => ({
     filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
     borderRadius: "100px",
     padding: "5px",
+    color: theme.palette.primary.main,
   },
   preIcon: {
     marginLeft: "5px",
     width: "20px",
 
     [`& path`]: {
-      fill: theme.palette.primary.main,
+      fill: "currentcolor",
     },
   },
   status: {
