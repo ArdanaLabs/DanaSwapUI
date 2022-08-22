@@ -1,89 +1,30 @@
 {
   "name": "ardana-vault",
-  "version": "0.1.0",
-  "homepage": "/",
-  "license": "UNLICENSED",
-  "private": true,
-  "engines": {
-    "node": "16",
-    "npm": ">=6"
-  },
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "react-scripts --max_old_space_size=4096 start",
-    "build": "react-scripts --max_old_space_size=4096 build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "format": "prettier --write \"**/*.{ts,tsx,json,md}\"",
-    "lint": "eslint src"
+    "start": "nodemon index.js",
+    "build": "node build.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "@material-ui/core": "^4.12.3",
-    "@material-ui/data-grid": "^4.0.0-alpha.37",
-    "@reduxjs/toolkit": "^1.6.2",
-    "animate.css": "^4.1.1",
-    "classnames": "^2.2.6",
-    "i18next": "^19.9.2",
-    "i18next-browser-languagedetector": "^6.0.1",
-    "i18next-xhr-backend": "^3.2.2",
-    "lodash": "^4.17.20",
-    "prettier": "^2.5.1",
-    "react": "^17.0.2",
-    "react-calendar": "^3.5.0",
-    "react-dom": "^17.0.1",
-    "react-i18next": "^11.14.3",
-    "react-redux": "^7.2.6",
-    "react-router-dom": "^5.3.0",
-    "react-scroll-parallax": "^2.4.0",
-    "redux-localstorage-simple": "^2.3.1",
-    "typescript": "^4.5.2",
-    "web-vitals": "^0.2.4"
-  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.15.0",
-    "@types/classnames": "^2.2.11",
-    "@types/lodash": "^4.14.177",
-    "@types/react": "^17.0.36",
-    "@types/react-redux": "^7.1.20",
-    "@types/react-router-dom": "^5.3.2",
-    "@typescript-eslint/eslint-plugin": "^5.6.0",
-    "@typescript-eslint/parser": "^5.5.0",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^8.4.1",
-    "eslint-config-react-app": "^7.0.0-next.102",
-    "eslint-import-resolver-typescript": "^2.5.0",
-    "eslint-plugin-flowtype": "^8.0.3",
-    "eslint-plugin-import": "^2.25.3",
-    "eslint-plugin-jest": "^25.3.0",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-react": "^7.27.1",
-    "eslint-plugin-react-hooks": "^4.3.0",
-    "eslint-plugin-testing-library": "^5.0.1",
-    "prettier": "^2.5.1",
-    "react-scripts": "^4.0.3",
-    "typescript": "^4.5.2",
-    "typescript-language-server": "^0.8.1"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ],
-    "settings": {
-      "import/resolver": {
-        "typescript": {}
-      }
-    }
+    "@esbuilder/html": "^0.0.5",
+    "autoprefixer": "^10.4.4",
+    "ejs": "^3.1.6",
+    "esbuild": "^0.14.36",
+    "esbuild-copy-static-files": "^0.1.0",
+    "express": "^4.17.3",
+    "html-minifier": "^4.0.0",
+    "nodemon": "^2.0.15",
+    "postcss": "^8.4.13",
+    "postcss-cli": "^9.1.0",
+    "postcss-csso": "^6.0.0",
+    "postcss-fail-on-warn": "^0.2.1",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-import": "^14.1.0"
   }
 }

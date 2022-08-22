@@ -1,0 +1,114 @@
+<div class="home-table container">
+  <div class="home-table-filter flex flex-row justify-between mt-20 mb-20">
+    <div class="flex">
+      <div class="filter-title-font filter-title-body active">
+        Popular Assets</div>
+      <div class="filter-title-font filter-title-body">
+        All Assets</div>
+      <div class="filter-title-font filter-title-body">
+        Stablecoins</div>
+      <div class="filter-title-font filter-title-body">
+        LP Token</div>
+    </div>
+    <div>
+      <div class="filter-search">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M12.9167 11.6667H12.2583L12.025 11.4417C12.8417 10.4917 13.3333 9.25833 13.3333 7.91667C13.3333 4.925 10.9083 2.5 7.91667 2.5C4.925 2.5 2.5 4.925 2.5 7.91667C2.5 10.9083 4.925 13.3333 7.91667 13.3333C9.25833 13.3333 10.4917 12.8417 11.4417 12.025L11.6667 12.2583V12.9167L15.8333 17.075L17.075 15.8333L12.9167 11.6667V11.6667ZM7.91667 11.6667C5.84167 11.6667 4.16667 9.99167 4.16667 7.91667C4.16667 5.84167 5.84167 4.16667 7.91667 4.16667C9.99167 4.16667 11.6667 5.84167 11.6667 7.91667C11.6667 9.99167 9.99167 11.6667 7.91667 11.6667Z"
+            fill="#FBFFFF"></path>
+        </svg>
+        <input type="text" class="filter-search-input" placeholder="" value="">
+      </div>
+    </div>
+  </div>
+  <div class="w-full">
+    <div class="table-body table-body-autoHeight table-body-box flex flex-col relative" role="grid" aria-colcount="6"
+      aria-rowcount="2" aria-multiselectable="false">
+      <div class="table-body-contents flex flex-col relative">
+        <div class="table-header absolute flex items-center">
+          <div class="table-header-contents" aria-rowindex="1" role="row">
+            <% let titles=[ { class: 'asset' , field: 'asset' , name: 'Asset' }, { class: 'type' , field: 'type' ,
+              name: 'Type' }, { class: 'dusd' , field: 'locked' , name: 'dUSD Available' }, { class: 'fee' ,
+              field: 'stabilityFee' , name: 'Stability Fee' }, { class: 'ratio' , field: 'minCollRatio' ,
+              name: 'Min Coll. Ratio' , }, { class: 'action' , field: 'action' , name: '' }, ] %>
+              <% titles.forEach(function(title, index) { %>
+                <div class="table-header-title title-<%=title.class%>" data-field="<%=title.field%>" role="columnheader"
+                  tabindex="0" aria-colindex="<%=index%>">
+                  <div class="table-header-title-container" draggable="false">
+                    <div class="table-header-title-contents">
+                      <div class="flex items-center overflow-hidden">
+                        <div class="table-header-title-font" aria-label="">
+                          <%=title.name%>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="table-header-title-sep table-header-title-sep-sideR absolute flex flex-col justify-center">
+                    <svg focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="SeparatorIcon">
+                      <path d="M11 19V5h2v14z"></path>
+                    </svg>
+                  </div>
+                </div>
+                <% }); %>
+          </div>
+        </div>
+        <div class="overflow-visible">
+          <div class="table-list table-body-virtualScroller">
+            <div class="table-body-virtualScrollerContent">
+              <div class="table-body-virtualScrollerRender absolute flex flex-col">
+                <% let tableItems=[ { asset: 'yifi1' , type: 'wbtc-2' , dusd: '13.79K' , fee: '2.00%' , ratio: '150%' },
+                  { asset: 'yifi2' , type: 'wbtc-3' , dusd: '13.79K' , fee: '3.00%' , ratio: '250%' } ] %>
+                  <% tableItems.forEach(function(item, index) { %>
+                    <div data-id="<%=index%>" data-rowindex="<%=index%>" role="row"
+                      class="table-list-item table-list-item-row flex" aria-rowindex="<%=index + 2%>"
+                      aria-selected="false">
+                      <div class="table-list-item-cell table-list-firstCell justify-start" role="cell"
+                        data-field="asset" data-colindex="0" aria-colindex="1" tabindex="-1">
+                        <div class="flex items-center"><img src="../../assets/img/coins/yifi1.svg" alt="">
+                          <div class="uppercase pl-15">
+                            <%=item.asset%>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="table-list-item-cell table-list-secondCell uppercase justify-start" role="cell"
+                        data-field="type" data-colindex="1" aria-colindex="2" tabindex="-1">
+                        <%=item.type%>
+                      </div>
+                      <div class="table-list-item-cell table-list-secondCell" role="cell" data-field="locked"
+                        data-colindex="2" aria-colindex="3" tabindex="-1">
+                        <div class="table-list-item-cellContent">
+                          <%=item.dusd%>
+                        </div>
+                      </div>
+                      <div class="table-list-item-cell table-list-secondCell" role="cell" data-field="stabilityFee"
+                        data-colindex="3" aria-colindex="4" tabindex="-1">
+                        <div class="table-list-item-cellContent">
+                          <%=item.fee%>
+                        </div>
+                      </div>
+                      <div class="table-list-item-cell table-list-secondCell" role="cell" data-field="minCollRatio"
+                        data-colindex="4" aria-colindex="5" tabindex="-1">
+                        <div class="table-list-item-cellContent">
+                          <%=item.ratio%>
+                        </div>
+                      </div>
+                      <div class="table-list-item-cell table-list-actionCell justify-center" role="cell"
+                        data-field="action" data-colindex="5" aria-colindex="6" tabindex="-1">
+                        <button class="table-list-item-actionBtn table-list-item-actionBtn-decor" tabindex="0"
+                          type="button">
+                          <h3 class="table-list-item-actionBtn-title uppercase table-list-item-actionBtn-font">
+                            Open Vault</h3>
+                          <!-- <span></span> -->
+                        </button>
+                      </div>
+                    </div>
+                    <% }); %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
