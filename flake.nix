@@ -108,12 +108,36 @@
           }
       );
 
+      checks = forAllSystems (
+        system: pkgs: {
+          eslint =
+            let
+              runEslint = package:
+                pkgs.writeScript "${package}-eslint-check" ''
+                  rm -rf ./*
+                  echo "checking ${package}"
+                  ln -sf ${self.packages.${system}.${package}}/lib/node_modules/${package}/* .
+                  eslint src
+                '';
+            in
+            pkgs.runCommand "run-eslint"
+              { buildInputs = [ pkgs.nodePackages.eslint ]; }
+              ''
+                touch $out
+                ${runEslint "ardana-vault"} | tee -a $out
+                ${runEslint "ardana-application"} | tee -a $out
+              '';
+        }
+      );
+
       devShells = forAllSystems (
         system: pkgs: {
-          default =  pkgs.mkShell {
+          default = pkgs.mkShell {
             name = "DanaSwapUI";
             buildInputs = with pkgs; [
               nodejs-16_x
+              nodePackages.eslint
+              nixpkgs-fmt
             ];
             shellHook = ''
               export PATH="$PWD/node_modules/.bin/:$PATH"
@@ -121,7 +145,7 @@
           };
         }
       );
-      
+
       devShell = forAllSystems (
         system: pkgs: self.devShells.${system}.default
       );
