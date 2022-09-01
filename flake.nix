@@ -30,6 +30,23 @@
           }
       );
       dream2nixForSystem = system: dream2nixAllSystems.${system};
+      projects = forAllSystems (
+        system: pkgs:
+          let
+            d2n = dream2nixForSystem system;
+            makeProject = src:
+              d2n.makeOutputs {
+                source = src;
+                settings = [{ subsystemInfo.nodejs = 16; }];
+              };
+          in
+          {
+            ardana-application = makeProject ./frontend-dashboard;
+            ardana-landing = makeProject ./frontend-landing;
+            ardana-vault = makeProject ./frontend-vault;
+            lighthouse = makeProject lighthouse-src;
+          }
+      );
     in
     {
       effects = { branch, rev, ... }:
@@ -80,31 +97,57 @@
       packages = forAllSystems (
         system: pkgs:
           let
-            d2n = dream2nixForSystem system;
-            makePackage = name: src:
-              (d2n.makeOutputs { source = src; }).packages.${name};
+            getPackage = name:
+              projects.${system}.${name}.packages.${name};
           in
           {
-            ardana-application =
-              makePackage "ardana-application" ./frontend-dashboard;
-            ardana-landing =
-              makePackage "ardana-landing" ./frontend-landing;
-            ardana-vault =
-              makePackage "ardana-vault" ./frontend-vault;
-            lighthouse =
-              makePackage "lighthouse" lighthouse-src;
+            ardana-application = getPackage "ardana-application";
+            ardana-landing = getPackage "ardana-landing";
+            ardana-vault = getPackage "ardana-vault";
+            lighthouse = getPackage "lighthouse";
           }
       );
 
-      devShell = forAllSystems (system: pkgs:
-        pkgs.mkShell {
-          name = "DanaSwapUI";
-          buildInputs = with pkgs; [
-            nodejs-16_x
-          ];
-          shellHook = ''
-            export PATH="$PWD/node_modules/.bin/:$PATH"
-          '';
-        });
+      checks = forAllSystems (
+        system: pkgs: {
+          eslint =
+            let
+              runEslint = package:
+                pkgs.writeScript "${package}-eslint-check" ''
+                  rm -rf ./*
+                  echo "checking ${package}"
+                  ln -sf ${self.packages.${system}.${package}}/lib/node_modules/${package}/* .
+                  eslint src
+                '';
+            in
+            pkgs.runCommand "run-eslint"
+              { buildInputs = [ pkgs.nodePackages.eslint ]; }
+              ''
+                touch $out
+                ${runEslint "ardana-vault"} | tee -a $out
+                ${runEslint "ardana-application"} | tee -a $out
+              '';
+        }
+      );
+
+      devShells = forAllSystems (
+        system: pkgs: {
+          default = pkgs.mkShell {
+            name = "DanaSwapUI";
+            buildInputs = with pkgs; [
+              nodejs-16_x
+              nodePackages.eslint
+              nixpkgs-fmt
+            ];
+            shellHook = ''
+              export PATH="$PWD/node_modules/.bin/:$PATH"
+            '';
+          };
+        }
+      );
+
+      devShell = forAllSystems (
+        system: pkgs: self.devShells.${system}.default
+      );
     };
 }
