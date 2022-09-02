@@ -1,32 +1,48 @@
 import React from "react"
 import { Box, useMediaQuery, Container, Link } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
-import cx from "classnames"
 
 import * as Theme from "Data/User/Theme"
 
 import { useUserTheme } from "state/user/hooks"
+import LogoLight from "assets/logo-light.png"
 
-import LOGO_White from "assets/logo_white.png"
-import LOGO_Text from "assets/logo_text.png"
+import SocialMediasIcon from "assets/imgs/social-medias.svg"
+
+const Socials = [
+  {
+    name: "twitter",
+    link: "https://twitter.com/ardanaproject",
+  },
+  {
+    name: "discord",
+    link: "https://discord.gg/c9skrZvsqH",
+  },
+  {
+    name: "telegram",
+    link: "https://t.me/ardanaofficial",
+  },
+  {
+    name: "medium",
+    link: "https://medium.com/ardana-hub",
+  },
+  {
+    name: "youtube",
+    link: "https://www.youtube.com/channel/UCuVtpKzlmsD6s0ZiC0hakkA",
+  },
+  {
+    name: "linkedin",
+    link: "https://www.linkedin.com/company/ardanalabs/",
+  },
+]
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
-  bg: {
-    background:
-      palette.type === "light"
-        ? "linear-gradient(90.19deg, #2F3DA0 27.19%, #73D6F1 99.87%)"
-        : palette.background.default,
-    marginTop: "50px",
-    padding: 10,
-  },
+  root: {
+    background: "#1F297B",
+    padding: 30,
 
-  logo: {
-    "paddingLeft": "10px",
-    "display": "flex",
-    "alignItems": "center",
-    "cursor": "pointer",
-    "& img": {
-      padding: "20px 10px",
+    [breakpoints.down("xs")]: {
+      padding: 50,
     },
   },
 
@@ -40,29 +56,30 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     },
   },
 
-  // TODO: change container to use `gap` instead of this `margin-right` hack
-  socialIconLink: {
-    "display": "inline-flex",
-    "height": "2.25em",
-    "width": "2.25em",
-    "alignItems": "center",
-    "justifyContent": "center",
-    "borderRadius": "50%",
-    "backgroundColor": "white",
-    "marginRight": "20px",
-    "cursor": "pointer",
-    "color": "gray",
-    "textAlign": "center",
-    "transition": "background .2s",
-    "fontFamily": "auto",
-
-    "& i": {
-      width: "16px",
-      height: "16px",
+  logo: {
+    [breakpoints.down("xs")]: {
+      paddingBottom: 20,
     },
+  },
 
-    "&:hover": {
-      backgroundColor: "lightgray",
+  socialLinks: {
+    width: "300px",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+
+    [`& a`]: {
+      lineHeight: 0,
+
+      [`& > .icon`]: {
+        width: 26,
+        height: 21,
+        fill: palette.common.white,
+
+        [`&:hover`]: {
+          fill: palette.secondary.main,
+        },
+      },
     },
   },
 }))
@@ -77,51 +94,25 @@ const Footer: React.FC = () => {
   })
 
   return (
-    <Box className={cx(classes.bg)}>
+    <Box className={classes.root}>
       <Container>
-        <Box className={cx(classes.container)}>
-          <Box className={cx(classes.logo)}>
-            {/* TODO: make this one image so the titles make sense; link to the homepage */}
-            <img src={LOGO_White} alt="Ardana" />
-            <img src={LOGO_Text} alt="" />
-          </Box>
-          {/* TODO: style this as flex or grid; aria labels; titles */}
-          <Box>
-            <Link
-              className={cx(classes.socialIconLink)}
-              href="#"
-              rel="noopener"
-            >
-              <i className="fab fa-twitter"></i>
-            </Link>
-            <Link
-              className={cx(classes.socialIconLink)}
-              href="#"
-              rel="noopener"
-            >
-              <i className="fab fa-instagram"></i>
-            </Link>
-            <Link
-              className={cx(classes.socialIconLink)}
-              href="#"
-              rel="noopener"
-            >
-              <i className="fab fa-medium"></i>
-            </Link>
-            <Link
-              className={cx(classes.socialIconLink)}
-              href="#"
-              rel="noopener"
-            >
-              <i className="fab fa-youtube"></i>
-            </Link>
-            <Link
-              className={cx(classes.socialIconLink)}
-              href="#"
-              rel="noopener"
-            >
-              <i className="fab fa-linkedin"></i>
-            </Link>
+        <Box className={classes.container}>
+          <Link href="/" className={classes.logo}>
+            <img src={LogoLight} alt="" height={"50px"} />
+          </Link>
+          <Box className={classes.socialLinks}>
+            {Socials.map((social) => (
+              <Link key={social.name} href={social.link} target="_blank">
+                {/* <social.icon /> */}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlnsXlink="http://www.w3.org/1999/xlink"
+                  className="icon"
+                >
+                  <use xlinkHref={`${SocialMediasIcon}#${social.name}`} />
+                </svg>
+              </Link>
+            ))}
           </Box>
         </Box>
       </Container>

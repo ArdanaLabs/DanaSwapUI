@@ -46,13 +46,8 @@ const StateUpdaters: React.FC = () => {
 }
 
 const ThemeProvider: React.FC = ({ children }) => {
-  // const location = useLocation();
   const userTheme: Theme.Theme = useUserTheme()
   const theme = getTheme(userTheme)
-
-  // if (location.pathname.replace('/', '') === '') {
-  //   theme = darkTheme;
-  // }
 
   return <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>
 }

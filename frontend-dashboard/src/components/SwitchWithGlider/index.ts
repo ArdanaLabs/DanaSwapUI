@@ -1,1 +1,1 @@
-export { default } from "./SwitchWithGlider"
+export { default as SwitchWithGlider } from "./SwitchWithGlider"

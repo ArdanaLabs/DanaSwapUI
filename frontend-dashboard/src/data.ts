@@ -1,5 +1,43 @@
-import LOGO_Ardana from "assets/logos/ardana.png"
-import LOGO_Cardano from "assets/logos/cardano.png"
+import LOGO_Ardana from "assets/coins/ardana.png"
+import LOGO_Cardano from "assets/coins/cardano.png"
+
+import { Currency } from "pages/Swap/Swap"
+
+export const FontFamilies = {
+  Brandon: "Brandon Grotesque, fantasy",
+  Museo: "Museo Sans, sans-serif",
+}
+
+export const navList = [
+  {
+    label: "Home",
+    link: "/home",
+  },
+  {
+    label: "Pools",
+    link: "/pools",
+  },
+  {
+    label: "Swap",
+    link: "/swap",
+  },
+  {
+    label: "Use Dana",
+    link: "/dana",
+  },
+  {
+    label: "Dashboard",
+    link: "/dashboard",
+  },
+  {
+    label: "Arem",
+    link: "/arem",
+  },
+  {
+    label: "Info",
+    link: "/info",
+  },
+]
 
 export const options = [
   {
@@ -32,43 +70,18 @@ export const options = [
   },
 ]
 
-export const navList = [
+export const Currencies: Currency[] = [
   {
-    label: "HOME",
-    link: "/home",
+    imageUrl: LOGO_Ardana,
+    denom: "DANA",
+    minimalDenom: "exDANA",
+    decimals: 6,
   },
   {
-    label: "POOLS",
-    link: "/pools",
-  },
-  {
-    label: "SWAP",
-    link: "/swap",
-  },
-  {
-    label: "USE DANA",
-    link: "/dana",
-  },
-  {
-    label: "ANALYTICS",
-    link: "/analytics",
-  },
-  {
-    label: "INFO",
-    link: "/info",
-  },
-]
-
-export const TokenList = [
-  {
-    src: LOGO_Ardana,
-    name: "DANA",
-    desc: "exDANA",
-  },
-  {
-    src: LOGO_Cardano,
-    name: "ADA",
-    desc: "exDANA",
+    imageUrl: LOGO_Cardano,
+    denom: "ADA",
+    minimalDenom: "exADA",
+    decimals: 6,
   },
 ]
 

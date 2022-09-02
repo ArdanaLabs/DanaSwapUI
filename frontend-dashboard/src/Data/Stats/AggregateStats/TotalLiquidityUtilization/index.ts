@@ -4,19 +4,21 @@ import * as IO from "io-ts"
 import * as Newtype from "newtype-ts"
 import { fromNewtype } from "io-ts-types"
 
+import * as USD from "Data/Unit/USD"
+
 /*
  * @category model
  */
 export interface TotalLiquidityUtilization
   extends Newtype.Newtype<
     { readonly TotalLiquidityUtilization: unique symbol },
-    number
+    USD.Type
   > {}
 
 export type Type = TotalLiquidityUtilization
 
-export const codec: IO.Type<TotalLiquidityUtilization, number> =
-  fromNewtype<TotalLiquidityUtilization>(IO.number)
+export const codec: IO.Type<TotalLiquidityUtilization, USD.Type> =
+  fromNewtype<TotalLiquidityUtilization>(USD.codec)
 
 export const iso = Newtype.iso<TotalLiquidityUtilization>()
 

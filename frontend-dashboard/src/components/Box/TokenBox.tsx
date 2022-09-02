@@ -1,133 +1,101 @@
-import React, { useState } from "react"
+import React, { ChangeEvent, useState } from "react"
 import cx from "classnames"
-import { Box, List, ListItem, useMediaQuery } from "@material-ui/core"
+import { Box, useMediaQuery, Typography } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 
+import { printCurrencyUSD } from "hooks"
+import { USD } from "Data/Unit"
+import { Currency } from "pages/Swap/Swap"
 import * as Theme from "Data/User/Theme"
-
 import { useUserTheme } from "state/user/hooks"
-import { TokenList } from "data"
-import { Dialog, DialogTitle } from "components/Dialog"
-import { Button } from "components/Button"
-import { SearchInput } from "components/Input"
-
-const FILTER_ALL = 0
-const FILTER_NATIVE = 1
-const FILTER_ERC20 = 2
-const FILTER_BEP2 = 3
+import { FontFamilies } from "data"
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
-  label: {
-    fontFamily: "Museo Sans",
-    fontStyle: "normal",
-    fontWeight: 600,
-    fontSize: "11px",
-    lineHeight: "100%",
-    color: palette.type === "light" ? palette.text.primary : palette.text.hint,
+  root: {
+    background: palette.type === "light" ? "transparent" : "#0A104599",
+    borderRadius: "5px",
+    padding: 15,
+    boxShadow:
+      palette.type === "light"
+        ? "2px 2px 10px rgba(0, 0, 0, 0.1)"
+        : "0px 4px 4px rgba(0, 0, 0, 0.25)",
   },
 
-  body: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
+  label: {
+    color: palette.secondary.main,
+    textTransform: "uppercase",
   },
 
   amount: {
-    fontFamily: "Museo Sans",
+    color: palette.primary.main,
+    fontFamily: FontFamilies.Museo,
     fontStyle: "normal",
-    fontWeight: 600,
-    fontSize: "16px",
-    lineHeight: "100%",
-    color: palette.secondary.main,
+    fontSize: "30px",
+    outline: "none",
+    border: "none",
+    background: "none",
+    width: "100%",
+
+    [`&::-webkit-outer-spin-button, &::-webkit-inner-spin-button`]: {
+      [`-webkit-appearance`]: "none",
+      margin: 0,
+    },
+
+    [breakpoints.down("xs")]: {
+      fontSize: 24,
+    },
   },
 
-  other: {
-    "display": "flex",
-    "alignItems": "center",
+  tokenAvatar: {
+    display: "flex",
+    alignItems: "center",
 
-    "& > div": {
+    [`& > div`]: {
       margin: "0 10px",
     },
   },
 
   maxButton: {
-    "background":
-      "linear-gradient(180deg, #73D6F1 0%, #5F72FF 99.99%, #2F3DA0 100%)",
-    "borderRadius": "5px",
-    "fontFamily": "Museo Sans",
-    "fontStyle": "normal",
-    "fontWeight": 500,
-    "fontSize": "10px",
-    "lineHeight": "100%",
-    "textAlign": "center",
-    "color": palette.common.white,
-    "padding": "5px 10px",
-    "cursor": "pointer",
-
-    "&:hover": {
-      color: "#0C1347",
-    },
+    background: `linear-gradient(90deg, ${palette.secondary.main} 0%, ${palette.secondary.dark} 100%)`,
+    borderRadius: "50px",
+    textAlign: "center",
+    color: palette.common.white,
+    padding: "5px 15px",
+    cursor: "pointer",
+    textTransform: "uppercase",
   },
 
   token: {
     display: "flex",
     alignItems: "center",
     cursor: "pointer",
+    width: "90px",
   },
 
-  tokenIcon: {
-    "background": palette.common.white,
-    "borderRadius": "50%",
-    "padding": "10px",
-    "display": "flex",
-    "justifyContent": "center",
-    "alignItems": "center",
-    "marginRight": "10px",
-
-    "& img": {
-      width: "30px",
-      height: "30px",
-    },
-  },
-  noTokenIcon: {
-    background: palette.common.white,
-    borderRadius: "50%",
-    padding: "10px",
+  tokenImage: {
     marginRight: "10px",
     width: "30px",
     height: "30px",
   },
 
-  tokenName: {
-    "fontFamily": "Museo Sans",
-    "fontStyle": "normal",
-    "lineHeight": "100%",
-    "color": palette.secondary.main,
-    "flexGrow": 2,
-
-    "& div:first-child": {
-      fontSize: "15px",
-      fontWeight: 500,
-    },
-
-    "& div:last-child": {
-      fontSize: "10px",
-      fontWeight: 500,
+  tokenDenom: {
+    color: palette.primary.main,
+    [`& h6`]: {
+      fontWeight: "normal",
     },
   },
 
   filterText: {
-    "background": palette.common.white,
-    "fontSize": "10px",
-    "fontWeight": 500,
-    "lineHeight": "100%",
-    "width": "100%",
-    "padding": "15px 20px",
-    "borderRadius": "10px",
-    "color":
-      palette.type === "light" ? palette.primary.main : palette.text.hint,
+    background: palette.common.white,
+    fontSize: "10px",
+    fontWeight: 500,
+    lineHeight: "100%",
+    width: "100%",
+    padding: "15px 20px",
+    borderRadius: "10px",
+    color: palette.type === "light" ? palette.primary.main : palette.text.hint,
 
-    "&::placeholder": {
+    [`&::placeholder`]: {
       color:
         palette.type === "light" ? palette.primary.main : palette.text.hint,
     },
@@ -157,21 +125,17 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
 export interface OverViewBoxProps {
   label: string
   amount: number
-  token: any
-  onMaxAmount: any
-  style?: object
-  className?: string
-  handleTokenSelect: any
+  token: Currency
+  handleOpenSelectAssetModal: () => void
+  handleAmountChange: (e: number) => void
 }
 
 const TokenBox: React.FC<OverViewBoxProps> = ({
   label,
   amount,
   token,
-  onMaxAmount,
-  handleTokenSelect,
-  style = {},
-  className,
+  handleAmountChange,
+  handleOpenSelectAssetModal,
 }) => {
   const { breakpoints } = useTheme()
   const userTheme: Theme.Theme = useUserTheme()
@@ -180,144 +144,54 @@ const TokenBox: React.FC<OverViewBoxProps> = ({
     dark: Theme.Eq.equals(userTheme, Theme.Theme.Dark),
     mobile,
   })
-  const [openTokenDlg, setOpenTokenDlg] = useState(false)
-
-  const [filter, setFilter] = useState({
-    text: "",
-    type: 0,
-  })
-
-  const onFilterChange = (event: any) => {
-    setFilter({ ...filter, ...event })
-  }
-
-  const handleClickOpen = () => {
-    setOpenTokenDlg(true)
-  }
-  const handleClose = () => {
-    setOpenTokenDlg(false)
-  }
-
-  const handleMenuItemClick = (token: any) => {
-    handleTokenSelect(token)
-    setOpenTokenDlg(false)
-  }
+  const [balance] = useState(100)
+  const [useRate] = useState(1.22)
 
   return (
-    <Box className={className} style={style}>
-      <Box className={cx(classes.label)}>
-        {label}&nbsp;(${(amount * 1.23).toFixed(2)})
-      </Box>
-      <Box className={cx(classes.body)}>
-        <Box className={cx(classes.amount)}>{amount}</Box>
-        <Box className={cx(classes.other)}>
+    <Box className={classes.root}>
+      <Typography variant="h4" component="h4" className={cx(classes.label)}>
+        {label}&nbsp;(
+        {printCurrencyUSD(USD.iso.wrap(amount * useRate), {
+          minimumFractionDigits: 2,
+        })}
+        )
+      </Typography>
+      <Box display="flex" justifyContent="between" alignItems="center">
+        <input
+          className={cx(classes.amount)}
+          type="number"
+          step={0.1}
+          min={0}
+          value={amount}
+          onChange={(e: ChangeEvent<HTMLInputElement>): void =>
+            handleAmountChange(Number(e.target.value))
+          }
+        />
+        <Box className={cx(classes.tokenAvatar)}>
           <Box
             id="max_button"
             className={cx(classes.maxButton)}
-            onClick={onMaxAmount}
+            onClick={(): void => handleAmountChange(balance)}
           >
-            MAX
+            <Typography variant="h6" component="h6">
+              Max
+            </Typography>
           </Box>
-          <Box className={cx(classes.token)} onClick={handleClickOpen}>
-            {!token.src && <Box className={cx(classes.noTokenIcon)}></Box>}
-            {token.src && (
-              <Box className={cx(classes.tokenIcon)}>
-                {token.src && <img src={token.src} alt="token icon" />}
-              </Box>
-            )}
-            {token.name && (
-              <Box className={cx(classes.tokenName)}>
-                <Box>{token.name}</Box>
-                <Box>{token.desc}</Box>
-              </Box>
-            )}
-          </Box>
-          <Dialog
-            onClose={handleClose}
-            aria-labelledby="simple-dialog-title"
-            open={openTokenDlg}
-          >
-            <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-              SELECT ASSET
-            </DialogTitle>
-
-            <Box>
-              <Button
-                variant="contained"
-                onClick={() => {
-                  onFilterChange({ type: FILTER_ALL })
-                }}
-                className={cx(classes.filterType, {
-                  [classes.active]: filter.type === FILTER_ALL,
-                })}
-              >
-                All
-              </Button>
-              <Button
-                variant="contained"
-                onClick={() => {
-                  onFilterChange({ type: FILTER_NATIVE })
-                }}
-                className={cx(classes.filterType, {
-                  [classes.active]: filter.type === FILTER_NATIVE,
-                })}
-              >
-                NATIVE
-              </Button>
-              <Button
-                variant="contained"
-                onClick={() => {
-                  onFilterChange({ type: FILTER_ERC20 })
-                }}
-                className={cx(classes.filterType, {
-                  [classes.active]: filter.type === FILTER_ERC20,
-                })}
-              >
-                ERC20
-              </Button>
-              <Button
-                variant="contained"
-                onClick={() => {
-                  onFilterChange({ type: FILTER_BEP2 })
-                }}
-                className={cx(classes.filterType, {
-                  [classes.active]: filter.type === FILTER_BEP2,
-                })}
-              >
-                BEP2
-              </Button>
-            </Box>
-
-            <SearchInput
-              className={cx(classes.filterText)}
-              value={filter.text}
-              placeholder="SEARCH..."
-              isIcon={true}
-              onChange={(e: any) => {
-                onFilterChange({ text: e.target.value })
-              }}
+          <Box className={classes.token} onClick={handleOpenSelectAssetModal}>
+            <img
+              className={classes.tokenImage}
+              src={token.imageUrl}
+              alt="token"
             />
-
-            <List>
-              {TokenList.map((item, index) => (
-                <ListItem
-                  button
-                  className={cx(classes.menuItem)}
-                  onClick={() => handleMenuItemClick(item)}
-                  key={index + 1}
-                >
-                  <Box className={cx(classes.tokenIcon)}>
-                    <img src={item.src} alt="token icon" />
-                  </Box>
-                  <Box className={cx(classes.tokenName)}>
-                    <Box>{item.name}</Box>
-                    <Box>{item.desc}</Box>
-                  </Box>
-                  <Box className={cx(classes.amount)}>0</Box>
-                </ListItem>
-              ))}
-            </List>
-          </Dialog>
+            <Box className={cx(classes.tokenDenom)}>
+              <Typography component="h4" variant="h4">
+                {token.denom}
+              </Typography>
+              <Typography component="h6" variant="h6">
+                {token.minimalDenom}
+              </Typography>
+            </Box>
+          </Box>
         </Box>
       </Box>
     </Box>

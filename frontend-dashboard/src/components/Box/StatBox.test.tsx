@@ -7,7 +7,7 @@ import * as O from "fp-ts/Option"
 
 import { UserState } from "state/user/reducer"
 import { StatBox } from "."
-import IMG_TVL from "assets/icons/tvl.png"
+import IMG_TVL from "assets/imgs/tvl.png"
 
 Enzyme.configure({ adapter: new Adapter() })
 

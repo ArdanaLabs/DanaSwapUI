@@ -1,52 +1,76 @@
 import React from "react"
-import { Box, makeStyles } from "@material-ui/core"
-import { Button } from "components/Button"
+import {
+  Box,
+  makeStyles,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@material-ui/core"
 import cx from "classnames"
+import { GradientBox } from "components"
+import { useUserTheme } from "state/user/hooks"
+import * as Theme from "Data/User/Theme"
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(({ palette }) => ({
   root: {
-    "display": "inline-flex",
-    "alignItems": "center",
-    "margin": "0px -5px",
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "0 10px",
+  },
+  text: {
+    textTransform: "uppercase",
+    fontWeight: 900,
+    whiteSpace: "pre",
+    lineHeight: "100%",
+    color: palette.primary.main,
 
-    "& > button": {
-      margin: "0px 5px",
+    [`&.isActive`]: {
+      color: palette.common.white,
     },
   },
 }))
 
 export interface SwitchWithGliderProps {
-  elements: any[]
-  vertical?: boolean
-  normalClass: any
-  activeClass: any
+  elements: string[]
   activeIndex: number
-  handleSwitch: any
+  customClassName?: string
+  handleSwitch: (index: number) => void
 }
 
 const SwitchWithGlider: React.FC<SwitchWithGliderProps> = ({
   elements,
-  vertical,
-  normalClass,
-  activeClass,
   activeIndex,
+  customClassName = "",
   handleSwitch,
 }) => {
-  const classes = useStyles()
+  const { breakpoints } = useTheme()
+  const userTheme: Theme.Theme = useUserTheme()
+  const mobile = useMediaQuery(breakpoints.down("xs"))
+  const classes = useStyles({
+    dark: Theme.Eq.equals(userTheme, Theme.Theme.Dark),
+    mobile,
+  })
+
   return (
     <Box className={cx(classes.root)}>
       {elements &&
-        elements.map((element: any, i: number) => (
-          <Button
-            key={i}
-            variant="contained"
-            onClick={() => handleSwitch(i)}
-            className={cx(normalClass, {
-              [activeClass]: activeIndex === i,
-            })}
+        elements.map((element: string, index: number) => (
+          <GradientBox
+            key={element}
+            glow={false}
+            fill={activeIndex === index}
+            onClick={() => handleSwitch(index)}
           >
-            {element}
-          </Button>
+            <Typography
+              variant="h6"
+              component="span"
+              className={cx(classes.text, customClassName, {
+                isActive: activeIndex === index,
+              })}
+            >
+              {element}
+            </Typography>
+          </GradientBox>
         ))}
     </Box>
   )

@@ -11,10 +11,7 @@ import {
   CssBaseline,
 } from "@material-ui/core"
 // import { useIsDarkMode } from "state/user/hooks"
-import {
-  darkTheme,
-  // lightTheme
-} from "./theme"
+import { darkTheme } from "./theme"
 import store from "./state"
 
 import {
@@ -30,8 +27,6 @@ import {
 import Layout from "layouts/Layout"
 
 const ThemeProvider: React.FC = ({ children }) => {
-  // const darkMode = useIsDarkMode()
-  // let theme = darkMode ? darkTheme : lightTheme
   const theme = darkTheme
 
   return <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>

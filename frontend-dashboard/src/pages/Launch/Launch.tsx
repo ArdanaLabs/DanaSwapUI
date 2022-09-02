@@ -8,7 +8,8 @@ import * as Theme from "Data/User/Theme"
 import { useUserTheme } from "state/user/hooks"
 import { LaunchTotalStats, LaunchHeader, LaunchPartialStats } from "./sections"
 
-import IMG_ScrollDown from "assets/icons/scroll-down.png"
+import IMG_ScrollDown from "assets/imgs/scroll-down.png"
+import { FontFamilies } from "data"
 
 const useStyles = makeStyles(({ palette }) => ({
   root: {},
@@ -18,7 +19,7 @@ const useStyles = makeStyles(({ palette }) => ({
     left: "calc(50vw - 30px)",
     cursor: "pointer",
 
-    fontFamily: "Brandon Grotesque",
+    fontFamily: FontFamilies.Brandon,
     fontStyle: "normal",
     fontWeight: 300,
     fontSize: "13px",

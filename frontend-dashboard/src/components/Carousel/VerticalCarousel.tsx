@@ -5,6 +5,7 @@ import { makeStyles, useMediaQuery, useTheme } from "@material-ui/core"
 import * as Theme from "Data/User/Theme"
 
 import { useUserTheme } from "state/user/hooks"
+import { FontFamilies } from "data"
 
 /*
  * Read the blog post here:
@@ -27,7 +28,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     opacity: 1,
     top: "112px",
     transition: "transform 0.4s ease, opacity 0.4s ease",
-    fontFamily: "'Brandon Grotesque'",
+    fontFamily: FontFamilies.Brandon,
     fontStyle: "normal",
     fontWeight: 100,
     fontSize: "28px",

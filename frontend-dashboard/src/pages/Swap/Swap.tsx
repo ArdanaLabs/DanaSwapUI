@@ -1,11 +1,11 @@
-import React, { useState } from "react"
+import React, { useState, ChangeEvent } from "react"
 import {
   Box,
-  Collapse,
+  Container,
   Fade,
-  Grid,
   Mark,
   useMediaQuery,
+  Typography,
 } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 
@@ -15,28 +15,46 @@ import * as Theme from "Data/User/Theme"
 
 import { useUserTheme } from "state/user/hooks"
 import { TokenBox } from "components/Box"
-import { Slider } from "components"
-import { Radio, SwapButton } from "components/Button"
-import { options } from "data"
+import {
+  SelectAssetModal,
+  Slider,
+  SwapDetailBox,
+  SwapButton,
+  SwapAdvancedOptionsBox,
+} from "components"
+import { Currencies } from "data"
 
-import ICO_Info_dark from "assets/svg/info_dark.svg"
+import CyanBG from "assets/backgrounds/cyan.svg"
+import PinkBG from "assets/backgrounds/pink.svg"
+import {
+  FilterOptionType,
+  GasPriceOptionType,
+} from "components/Box/SwapAdvancedOptionsBox"
 
-import LOGO_Ardana from "assets/logos/ardana.png"
-import LOGO_Cardano from "assets/logos/cardano.png"
+const useStyles = makeStyles(({ palette, breakpoints }) => ({
+  root: {
+    background: `url(${PinkBG}) right -600px top -600px no-repeat,
+                  url(${CyanBG}) left -800px top -200px no-repeat`,
+    paddingTop: "180px",
+    paddingBottom: "50px",
 
-const useStyles = makeStyles(({ palette }) => ({
-  self: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
   },
 
+  container: {
+    display: "flex",
+    justifyContent: "center",
+
+    [breakpoints.down("xs")]: {
+      display: "block",
+    },
+  },
+
   panel: {
-    width: "500px",
-    background:
-      palette.type === "light"
-        ? palette.common.white
-        : "linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #0C1347 100%)",
+    maxWidth: "500px",
+    background: `linear-gradient(126.33deg, ${palette.background.paper} 9.83%, #00000000 96.44%);`,
     boxShadow: "inset 0px 4px 4px rgba(0, 0, 0, 0.25)",
     backdropFilter: "blur(4px)",
     borderRadius: "10px",
@@ -45,22 +63,20 @@ const useStyles = makeStyles(({ palette }) => ({
   panelHeader: {
     position: "relative",
     width: "100%",
-    background:
-      palette.type === "light"
-        ? "linear-gradient(180deg, #FFFFFF 42.71%, #E9E9E9 100%)"
-        : "linear-gradient(180deg, rgba(19, 27, 89, 0) 0%, #131B59 100%)",
+    background: `linear-gradient(126.33deg, ${palette.background.paper} 9.83%, #00000000 96.44%);`,
     borderRadius: "5px",
     boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-
-    fontFamily: "Museo Sans",
-    fontStyle: "normal",
-    fontWeight: 500,
-    fontSize: "15px",
-    lineHeight: "100%",
-    color: palette.secondary.main,
-
     padding: "20px",
     textAlign: "center",
+
+    [`& h2`]: {
+      textTransform: "uppercase",
+      color: palette.primary.main,
+    },
+  },
+
+  panelBody: {
+    padding: "20px 15px",
   },
 
   leftBorder: {
@@ -68,23 +84,9 @@ const useStyles = makeStyles(({ palette }) => ({
     left: 0,
     top: 0,
     bottom: 0,
+    width: "5px",
     height: "100%",
-    background: palette.info.dark,
-    borderRadius: "5px",
-    fontFamily: "auto",
-  },
-
-  panelBody: {
-    padding: "20px 10px",
-  },
-
-  box: {
-    background: palette.type === "light" ? palette.common.white : "#0C1347",
-    borderRadius: "5px",
-    boxShadow:
-      palette.type === "light"
-        ? "2px 2px 10px rgba(0, 0, 0, 0.1)"
-        : "0px 4px 4px rgba(0, 0, 0, 0.25)",
+    background: `linear-gradient(180deg, ${palette.secondary.main} 0%, ${palette.secondary.dark} 100%)`,
   },
 
   slider: {
@@ -93,49 +95,34 @@ const useStyles = makeStyles(({ palette }) => ({
     margin: "10px 0px 10px 10px",
   },
 
-  info: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    fontFamily: "Museo Sans",
-    fontStyle: "normal",
-    fontWeight: 500,
-    fontSize: "15px",
-    lineGeight: "100%",
-    color: palette.secondary.main,
-  },
-
-  optionTitle: {
-    fontFamily: "Museo Sans",
-    fontStyle: "normal",
-    fontWeight: 500,
-    fontSize: "16px",
-    lineHeight: "24px",
-    color: palette.type === "light" ? palette.text.primary : palette.text.hint,
-    display: "flex",
-    alignItems: "center",
+  submit: {
+    textTransform: "uppercase",
+    background: `linear-gradient(90deg, ${palette.secondary.dark} 0%, ${palette.secondary.main} 100%)`,
+    borderRadius: "50px",
+    width: "250px",
+    textAlign: "center",
+    color: palette.common.white,
+    padding: "10px",
     cursor: "pointer",
   },
-
-  submit: {
-    "background": "linear-gradient(90deg, #5F72FF 0%, #73D6F1 100%)",
-    "borderRadius": "20px",
-    "width": "250px",
-    "fontFamily": "Museo Sans",
-    "fontStyle": "normal",
-    "fontWeight": "bold",
-    "fontSize": "24px",
-    "lineHeight": "100%",
-    "textAlign": "center",
-    "color": palette.common.white,
-    "padding": "15px",
-    "cursor": "pointer",
-
-    "&:hover": {
-      background: "linear-gradient(-90deg, #5F72FF 0%, #73D6F1 100%)",
-    },
-  },
 }))
+
+const sliderMarks: Mark[] = [
+  {
+    value: 0,
+    label: "0%",
+  },
+  {
+    value: 100,
+    label: "100%",
+  },
+]
+export interface Currency {
+  denom: string
+  minimalDenom: string
+  decimals: number
+  imageUrl: string
+}
 
 const Swap: React.FC = () => {
   const { breakpoints } = useTheme()
@@ -149,158 +136,126 @@ const Swap: React.FC = () => {
   const [fromAmount, setFromAmount] = useState(0)
   const [toAmount, setToAmount] = useState(0)
 
-  const [fromToken, setFromToken] = useState({
-    src: LOGO_Ardana,
-    name: "DANA",
-    desc: "exDANA",
-  })
-  const [toToken, setToToken] = useState({
-    src: LOGO_Cardano,
-    name: "ADA",
-    desc: "exDANA",
-  })
-  const [isOptionOpen, setIsOptionOpen] = useState(false)
+  const [fromToken, setFromToken] = useState<Currency>(Currencies[0])
+  const [toToken, setToToken] = useState<Currency>(Currencies[1])
+  const [selectAssetModalOpen, setSelectAssetModalOpen] = useState(0) //  0: close , 1: fromToken , 2: toToken
+  const [filterOption, setFilterOption] = useState<FilterOptionType>(
+    FilterOptionType.Insert
+  )
+  const [slippage, setSlippage] = useState<number>(0.5)
+  const [gasPriceOption, setGasPriceOption] = useState<GasPriceOptionType>(
+    GasPriceOptionType.Fast
+  )
 
-  const onToggleOptions = () => {
-    setIsOptionOpen((prev) => !prev)
-  }
-
-  const marks: Mark[] = [
-    {
-      value: 0,
-      label: "0%",
-    },
-    {
-      value: 100,
-      label: "100%",
-    },
-  ]
-
-  const onAmountChange = (e: any, newValue: any) => {
-    setFromAmount(newValue)
-  }
-
-  const onSwapButtonClick = (e: any) => {
-    setFromAmount(toAmount)
-    setToAmount(fromAmount)
+  const handleSwapTokens = () => {
     setFromToken(toToken)
     setToToken(fromToken)
+
+    setFromAmount(toAmount)
+    setToAmount(fromAmount)
   }
+
+  const renderPanelHeader = (): JSX.Element => (
+    <Box className={cx(classes.panelHeader)}>
+      <Box className={cx(classes.leftBorder)} />
+      <Typography component="h2" variant="h2">
+        Swap using all Ardana pools
+      </Typography>
+    </Box>
+  )
+
+  const renderPanelBody = (): JSX.Element => (
+    <Box className={cx(classes.panelBody)}>
+      <TokenBox
+        label="Send"
+        token={fromToken}
+        amount={fromAmount}
+        handleAmountChange={(e) => {
+          setFromAmount(e)
+        }}
+        handleOpenSelectAssetModal={() => setSelectAssetModalOpen(1)}
+      />
+      <Box className={cx(classes.slider)}>
+        <Slider
+          min={0}
+          max={100}
+          defaultValue={0}
+          value={typeof fromAmount === "number" ? fromAmount : 0}
+          onChange={(e: ChangeEvent<{}>, value: number | number[]): void => {
+            setFromAmount(value as number)
+          }}
+          step={1}
+          marks={sliderMarks}
+        />
+        <Box margin={"0 20px"}>
+          <SwapButton handleClick={handleSwapTokens} />
+        </Box>
+      </Box>
+      <TokenBox
+        label="Receive"
+        token={toToken}
+        amount={toAmount}
+        handleAmountChange={(e) => {
+          setToAmount(e)
+        }}
+        handleOpenSelectAssetModal={() => setSelectAssetModalOpen(2)}
+      />
+
+      <Box mt={3}>
+        <SwapDetailBox
+          fromTokenDenom={fromToken.denom}
+          toTokenDenom={toToken.denom}
+          fee={1.005}
+          slip={0.01}
+          tradeRoute={"exDANA"}
+        />
+      </Box>
+
+      <Box mt={3}>
+        <SwapAdvancedOptionsBox
+          filterOption={filterOption}
+          slippage={slippage}
+          gasPriceOption={gasPriceOption}
+          handleFilterOptionChange={(value: FilterOptionType) => {
+            setFilterOption(value)
+          }}
+          handleSlippageChange={(value: number) => {
+            setSlippage(value)
+          }}
+          handleGasPriceOptionChange={(value: GasPriceOptionType) => {
+            setGasPriceOption(value)
+          }}
+        />
+      </Box>
+      <Box display="flex" justifyContent="center" my={3}>
+        <Typography variant="h2" component="span" className={classes.submit}>
+          Swap
+        </Typography>
+      </Box>
+    </Box>
+  )
 
   return (
     <Fade in={true}>
-      <Box className={cx(classes.self)}>
-        <Box className={cx(classes.panel)}>
-          <Box className={cx(classes.panelHeader)}>
-            <Box className={cx(classes.leftBorder)}>&nbsp;&nbsp;</Box>
-            <Box>Swap using all Ardana pools</Box>
+      <Box className={classes.root}>
+        <Container className={classes.container}>
+          <Box className={classes.panel}>
+            {renderPanelHeader()}
+            {renderPanelBody()}
           </Box>
-          <Box className={cx(classes.panelBody)}>
-            <TokenBox
-              label="SEND"
-              token={fromToken}
-              amount={fromAmount}
-              onMaxAmount={() => {
-                setFromAmount(100)
-              }}
-              handleTokenSelect={(token: any) => {
-                setFromToken(token)
-              }}
-              className={cx(classes.box)}
-              style={{ padding: 10 }}
-            />
-
-            <Box className={cx(classes.slider)}>
-              <Slider
-                min={0}
-                max={100}
-                defaultValue={0}
-                value={typeof fromAmount === "number" ? fromAmount : 0}
-                onChange={onAmountChange}
-                step={1}
-                marks={marks}
-              />
-              <SwapButton
-                style={{ margin: "0 40px" }}
-                onButtonClick={onSwapButtonClick}
-              />
-            </Box>
-
-            <TokenBox
-              label="RECEIVE"
-              token={toToken}
-              amount={toAmount}
-              onMaxAmount={() => {
-                setToAmount(100)
-              }}
-              handleTokenSelect={(token: any) => {
-                setToToken(token)
-              }}
-              className={cx(classes.box)}
-              style={{ padding: 10 }}
-            />
-
-            <Box mt={"50px"}></Box>
-
-            <Box className={cx(classes.box)} style={{ padding: "30px 20px" }}>
-              <Box className={cx(classes.info)}>
-                <Box>Rate DANA/ANA (including fees):</Box>
-                <Box display="flex" alignItems="center" lineHeight="1">
-                  1.005&nbsp;
-                  <img src={ICO_Info_dark} width="13px" alt="info" />
-                </Box>
-              </Box>
-              <Box className={cx(classes.info)}>
-                <Box>Slip:</Box>
-                <Box display="flex" alignItems="center" lineHeight="1">
-                  1%&nbsp;
-                  <img src={ICO_Info_dark} width="13px" alt="info" />
-                </Box>
-              </Box>
-              <Box className={cx(classes.info)}>
-                <Box>Trade routed through:</Box>
-                <Box display="flex" alignItems="center" lineHeight="1">
-                  exDANA&nbsp;
-                  <img src={ICO_Info_dark} width="13px" alt="info" />
-                </Box>
-              </Box>
-            </Box>
-
-            <Box mt={"50px"}></Box>
-
-            <Box padding="10px">
-              <Box
-                className={cx(classes.optionTitle)}
-                onClick={onToggleOptions}
-              >
-                <Box mr={"7px"}>Advanced Options</Box>
-                <i
-                  className={`fa fa-chevron-${!isOptionOpen ? "up" : "down"}`}
-                  aria-hidden="true"
-                ></i>
-              </Box>
-              <Collapse in={isOptionOpen}>
-                <Grid
-                  container
-                  spacing={mobile ? 1 : 2}
-                  style={{ marginTop: "10px" }}
-                >
-                  {options.map((option, i) => (
-                    <Grid container item xs={4} key={i}>
-                      <Radio option={option} value={option.data[0].value} />
-                    </Grid>
-                  ))}
-                </Grid>
-              </Collapse>
-            </Box>
-
-            <Box mt="50px"></Box>
-
-            <Box display="flex" justifyContent="center">
-              <Box className={cx(classes.submit)}>SWAP</Box>
-            </Box>
-          </Box>
-        </Box>
+        </Container>
+        <SelectAssetModal
+          open={selectAssetModalOpen}
+          handleClose={() => setSelectAssetModalOpen(0)}
+          handleTokenChanged={(newToken) => {
+            if (selectAssetModalOpen === 1) {
+              setFromToken(newToken)
+            } else if (selectAssetModalOpen === 2) {
+              setToToken(newToken)
+            }
+            setSelectAssetModalOpen(0)
+          }}
+        />
       </Box>
     </Fade>
   )

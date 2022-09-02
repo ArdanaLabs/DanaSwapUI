@@ -1,24 +1,27 @@
 import { Slider } from "@material-ui/core"
 import { withStyles } from "@material-ui/core/styles"
+import { FontFamilies } from "data"
 
 const StyledSlider = withStyles((theme) => ({
-  root: {},
+  root: {
+    maxWidth: "270px",
+  },
   track: {
-    height: 6,
+    height: 3,
     borderRadius: 2,
     color: "transparent",
   },
   thumb: {
-    height: 24,
-    width: 24,
-    marginTop: -9,
-    marginLeft: -10,
-    color: "#73D6F1",
+    height: 16,
+    width: 16,
+    marginTop: 1.5,
+    marginLeft: 0,
+    color: theme.palette.secondary.main,
+    transform: "translate(-50%, -50%)",
   },
   rail: {
-    height: "6px",
-    background:
-      "linear-gradient(-90deg, #2F3DA0 16.67%, #73D6F1 99.98%, #5F72FF 99.99%)",
+    height: 3,
+    background: `linear-gradient(-90deg, ${theme.palette.secondary.dark} 16.67%, ${theme.palette.secondary.main} 99.98%, ${theme.palette.secondary.dark} 99.99%)`,
     opacity: 1,
     borderRadius: 10,
   },
@@ -28,11 +31,17 @@ const StyledSlider = withStyles((theme) => ({
   markLabel: {
     paddingTop: "5px",
     color: theme.palette.primary.main,
-    fontFamily: "Museo Sans",
+    fontFamily: FontFamilies.Museo,
     fontStyle: "normal",
     fontWeight: 300,
-    fontSize: "14px",
+    fontSize: "16px",
     lineHeight: "100%",
+    [`&[data-index="0"]`]: {
+      transform: "translateX(0%)",
+    },
+    [`&[data-index="1"]`]: {
+      transform: "translateX(-100%)",
+    },
   },
 }))(Slider)
 

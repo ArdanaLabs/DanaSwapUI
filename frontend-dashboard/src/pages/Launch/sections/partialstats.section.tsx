@@ -15,12 +15,13 @@ import * as Theme from "Data/User/Theme"
 import { StatBox } from "components/Box"
 import { useUserTheme } from "state/user/hooks"
 
-import IMG_TVL from "assets/icons/tvl.png"
-import IMG_Worth from "assets/icons/worth.png"
-import IMG_Ratio from "assets/icons/ratio.png"
+import IMG_TVL from "assets/imgs/tvl.png"
+import IMG_Worth from "assets/imgs/worth.png"
+import IMG_Ratio from "assets/imgs/ratio.png"
 import VerticalCarousel from "components/Carousel"
 import { useTotalStats } from "state/home/hooks"
 import { printCurrencyUSD } from "hooks"
+import { FontFamilies } from "data"
 
 const useStyles = makeStyles(({ palette }) => ({
   root: {
@@ -37,7 +38,7 @@ const useStyles = makeStyles(({ palette }) => ({
   carousel: {
     "display": "flex",
     "flexDirection": "column",
-    "fontFamily": "Brandon Grotesque",
+    "fontFamily": FontFamilies.Brandon,
     "fontStyle": "normal",
     "lineHeight": "120.5%",
     "cursor": "pointer",

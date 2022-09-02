@@ -5,22 +5,21 @@ import {
   withStyles,
 } from "@material-ui/core/styles"
 import MuiDialogTitle from "@material-ui/core/DialogTitle"
-import { IconButton, Typography } from "@material-ui/core"
+import { IconButton } from "@material-ui/core"
 import CloseIcon from "@material-ui/icons/Close"
+import { FontFamilies } from "data"
 
 const styles = (theme: Theme) =>
   createStyles({
     root: {
-      "width": "450px",
-      "margin": 0,
-      "padding": "10px 0px",
-      "color":
-        theme.palette.type === "light"
-          ? theme.palette.primary.main
-          : theme.palette.text.hint,
+      width: "450px",
+      textTransform: "uppercase",
+      margin: 0,
+      padding: "10px 0px",
+      color: theme.palette.primary.main,
 
-      "& h6": {
-        fontFamily: "Brandon Grotesque",
+      [`& h6`]: {
+        fontFamily: FontFamilies.Brandon,
         fontStyle: "normal",
         fontWeight: 900,
         fontSize: "15px",
@@ -44,8 +43,8 @@ export interface DialogTitleProps extends WithStyles<typeof styles> {
 const DialogTitle = withStyles(styles)((props: DialogTitleProps) => {
   const { children, classes, onClose, ...other } = props
   return (
-    <MuiDialogTitle disableTypography className={classes.root} {...other}>
-      <Typography variant="h6">{children}</Typography>
+    <MuiDialogTitle className={classes.root} {...other}>
+      {children}
       {onClose ? (
         <IconButton
           aria-label="close"

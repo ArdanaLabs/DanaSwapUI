@@ -1,6 +1,6 @@
 import React from "react"
 import cx from "classnames"
-import { Box } from "@material-ui/core"
+import { Box, Typography } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 
 import * as O from "fp-ts/Option"
@@ -10,45 +10,27 @@ import * as Theme from "Data/User/Theme"
 
 import { useUserThemeManager } from "state/user/hooks"
 
-import ICO_Dark from "assets/svg/moon.svg"
-import ICO_Light from "assets/svg/sun.svg"
+import ICO_Light from "assets/imgs/sun.svg"
 
 // If the theme list goes beyond 2 styles, this toggler will no longer work
 
 const useStyles = makeStyles(({ palette }) => ({
-  self: {
+  root: {
     margin: "0 10px",
-    padding: 5,
+    padding: "10px 20px",
     cursor: "pointer",
     borderRadius: "100px",
     display: "flex",
     alignItems: "center",
-    width: "175px",
-    background: palette.primary.light,
+    background: `linear-gradient(90deg, ${palette.secondary.main} 0%, ${palette.secondary.dark} 100%)`,
   },
   switchIcon: {
-    "borderRadius": "50%",
-    "background": "#FFFFFF",
-    "padding": 5,
-    "width": 28,
-    "height": 28,
-    "display": "flex",
-    "justifyContent": "center",
-    "alignItems": "center",
-
-    "& img": {
-      width: "14px",
-      height: "14px",
-    },
+    lineHeight: "0",
   },
   switchLabel: {
-    fontSize: "12px",
-    fontWeight: 700,
-    fontFamily: "Museo Sans",
-    lineHeight: "16px",
-    color: "#FFFFFF",
-    flexGrow: 5,
+    color: palette.common.white,
     textAlign: "center",
+    marginRight: 10,
     textTransform: "uppercase",
   },
 }))
@@ -70,16 +52,16 @@ const ThemeSwitch: React.FC = () => {
   }
 
   return (
-    <Box
-      className={cx(classes.self)}
-      flexDirection={isLightTheme ? "row" : "row-reverse"}
-      onClick={toggleMode}
-    >
-      <Box className={cx(classes.switchLabel)}>
-        {isLightTheme ? "Dark" : "Light"} mode
-      </Box>
+    <Box className={cx(classes.root)} onClick={toggleMode}>
+      <Typography
+        variant="h6"
+        component="span"
+        className={cx(classes.switchLabel)}
+      >
+        {isLightTheme ? "DarkMode" : "LightMode"}
+      </Typography>
       <Box className={cx(classes.switchIcon)}>
-        <img src={isLightTheme ? ICO_Dark : ICO_Light} alt="" />
+        <img src={ICO_Light} alt="" />
       </Box>
     </Box>
   )

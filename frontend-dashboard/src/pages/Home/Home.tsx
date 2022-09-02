@@ -1,6 +1,5 @@
 import React from "react"
-import cx from "classnames"
-import { Box, Fade, useMediaQuery } from "@material-ui/core"
+import { Box, Fade, useMediaQuery, Container } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 
 import * as Theme from "Data/User/Theme"
@@ -13,8 +12,23 @@ import {
   StatsSection,
 } from "./sections"
 
+import CyanBG from "assets/backgrounds/cyan.svg"
+import PinkBG from "assets/backgrounds/pink.svg"
+
 const useStyles = makeStyles(({ palette }) => ({
-  self: {},
+  root: {
+    background: `url(${PinkBG}) right -600px top -600px no-repeat,
+                  url(${CyanBG}) left -800px top -500px no-repeat,
+                  url(${CyanBG}) right -600px top 500px no-repeat,
+                  url(${PinkBG}) left -800px top 500px no-repeat`,
+    paddingTop: "180px",
+    paddingBottom: "50px",
+  },
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "70px 0",
+  },
 }))
 
 const Home: React.FC = () => {
@@ -28,23 +42,13 @@ const Home: React.FC = () => {
 
   return (
     <Fade in={true}>
-      <Box className={cx(classes.self)}>
-        <OverViewSection />
-
-        {/* TODO: don’t use <div>s for spacing; use padding, gap, etc. */}
-        <Box mt="30px" />
-
-        <ChartSection />
-
-        {/* TODO: don’t use <div>s for spacing; use padding, gap, etc. */}
-        <Box mt="50px" />
-
-        <PoolsSection />
-
-        {/* TODO: don’t use <div>s for spacing; use padding, gap, etc. */}
-        <Box mt="50px" />
-
-        <StatsSection />
+      <Box className={classes.root}>
+        <Container className={classes.container}>
+          <OverViewSection />
+          <ChartSection />
+          <PoolsSection />
+          <StatsSection />
+        </Container>
       </Box>
     </Fade>
   )

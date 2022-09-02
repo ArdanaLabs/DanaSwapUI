@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react"
-import { Box, CircularProgress, Grid, useMediaQuery } from "@material-ui/core"
+import {
+  Box,
+  CircularProgress,
+  Grid,
+  useMediaQuery,
+  Typography,
+} from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
 import Chart from "react-apexcharts"
@@ -14,54 +20,100 @@ import * as Volume from "Data/Volume"
 import { LiquidityChart, VolumeChart } from "Data/Chart"
 import { Granularity } from "Data/Chart/Granularity"
 import { USD } from "Data/Unit"
+import { TransactionType } from "Data/Chart/TransactionType"
 import * as Theme from "Data/User/Theme"
 
 import { useUserTheme } from "state/user/hooks"
 import { ApexOptions } from "apexcharts"
 import { useAggVolume, useAggLiquidity } from "state/chart/hooks"
 import { extractDateAxis, printCurrencyUSD, printDate } from "hooks"
+import { FontFamilies } from "data"
 
-const useStyles = makeStyles(({ palette }) => ({
-  self: {
+const useStyles = makeStyles(({ palette, breakpoints }) => ({
+  root: {
     background: "unset",
   },
 
   title: {
-    color: palette.text.primary,
-    fontFamily: "Brandon Grotesque",
-    fontStyle: "normal",
-    fontWeight: 900,
-    fontSize: "28px",
-    lineHeight: "110%",
+    color: palette.primary.main,
+    marginBottom: 50,
+    [breakpoints.down("sm")]: { marginBottom: 30 },
   },
 
   panel: {
-    background: palette.background.paper,
+    background: `linear-gradient(126.33deg, ${palette.background.paper} 9.83%, #00000000 96.44%);`,
     borderRadius: "10px",
-    padding: "30px 20px",
+    padding: "30px 20px 0px",
     filter: "drop-shadow(2px 2px 10px rgba(0, 0, 0, 0.1))",
-  },
 
-  panelFilter: {
-    "display": "flex",
-    "justifyContent": "space-between",
-    "color": palette.text.hint,
-    "fontFamily": "Museo Sans",
-    "fontStyle": "normal",
-    "fontWeight": 500,
-    "fontSize": "11px",
-    "lineHeight": "100%",
-    "paddingBottom": "30px",
-
-    "& span": {
-      padding: "10px",
-      cursor: "pointer",
+    [breakpoints.down("sm")]: {
+      padding: "15px 10px 0px",
+      marginBottom: 30,
     },
   },
 
-  panelFilterByType: {},
+  panelFilter: {
+    display: "flex",
+    alignItems: "center",
+    color: palette.primary.main,
+    paddingBottom: "30px",
 
-  panelFilterByDate: {},
+    [`& h6`]: {
+      padding: "10px",
+      cursor: "pointer",
+      textTransform: "uppercase",
+
+      [breakpoints.down("sm")]: {
+        padding: "5px",
+        fontSize: 8,
+      },
+    },
+
+    [breakpoints.down("sm")]: {
+      paddingBottom: "10px",
+    },
+  },
+
+  panelFilterByType: {
+    display: "flex",
+    [`& .isActive`]: {
+      color: palette.secondary.main,
+    },
+  },
+
+  panelFilterByDate: {
+    display: "flex",
+    [`& h6`]: {
+      background: "transparent",
+      borderRadius: "25px",
+      padding: "6px 15px",
+
+      [`&.isActive`]: {
+        background: `linear-gradient(90deg, ${palette.secondary.dark} 0%, ${palette.secondary.main} 100%)`,
+        color: palette.common.white,
+      },
+
+      [breakpoints.down("sm")]: {
+        padding: "4px 10px",
+      },
+    },
+  },
+
+  chartXaxis: {
+    fontSize: "13px",
+
+    [breakpoints.down("xs")]: {
+      fontSize: "8px",
+    },
+  },
+
+  chartYaxis: {
+    fontSize: "16px",
+
+    [breakpoints.down("xs")]: {
+      fontSize: "10px",
+    },
+  },
 }))
 
 const ChartSection: React.FC = () => {
@@ -71,14 +123,26 @@ const ChartSection: React.FC = () => {
   const mobile = useMediaQuery(breakpoints.down("xs"))
   const classes = useStyles({ dark: isDarkTheme, mobile })
 
-  let options: ApexOptions = {
+  const [volumeChartFilter, setVolumeChartFilter] = useState({
+    type: TransactionType.Any,
+    date: Granularity.OneMonth,
+  })
+
+  const [liquidityChartFilter, setLiquidityChartFilter] = useState({
+    date: Granularity.OneMonth,
+  })
+
+  const options: ApexOptions = {
     chart: {
       id: "basic-bar",
       zoom: {
         enabled: false,
       },
       toolbar: {
-        show: false,
+        show: true,
+        tools: {
+          download: false,
+        },
       },
     },
     stroke: {
@@ -86,38 +150,42 @@ const ChartSection: React.FC = () => {
       curve: "smooth",
     },
     xaxis: {
-      /* TODO: text-transform: uppercase */
       /* TODO: Intl.DateFormat */
-      categories: ["APR 20", "MAY 15", "JUN 02"],
+      categories: ["Apr 20", "May 15", "Jun 02"],
       labels: {
-        show: false,
+        show: true,
         style: {
-          colors: palette.text.hint,
-          fontSize: "11px",
-          fontFamily: "Museo Sans",
-          fontWeight: 500,
+          colors: palette.secondary.main,
+          fontFamily: FontFamilies.Museo,
+          fontWeight: 600,
+          cssClass: classes.chartXaxis,
         },
+        // formatter: (n) => printDate(n),
       },
       tickPlacement: "between",
       axisTicks: {
         show: false,
       },
       axisBorder: {
-        show: false,
+        show: true,
+        color: palette.secondary.main,
       },
     },
     yaxis: {
       labels: {
-        show: false,
+        show: true,
         align: "left",
         style: {
-          colors: palette.secondary.main,
-          fontFamily: "Museo Sans",
-          fontWeight: "bold",
-          fontSize: "16px",
-          cssClass: "apexcharts-yaxis-label",
+          colors: palette.primary.main,
+          fontFamily: FontFamilies.Museo,
+          fontWeight: 600,
+          cssClass: classes.chartYaxis,
         },
         formatter: (n) => printCurrencyUSD(USD.iso.wrap(n)),
+      },
+      axisBorder: {
+        show: true,
+        color: palette.secondary.main,
       },
     },
     grid: {
@@ -125,10 +193,10 @@ const ChartSection: React.FC = () => {
     },
     fill: {
       type: "gradient",
-      colors: [isDarkTheme ? "#73d6f1" : "#202F9A"],
+      colors: [palette.secondary.main],
       gradient: {
         type: "vertical", // The gradient in the horizontal direction
-        gradientToColors: [isDarkTheme ? "#73D6F1" : "#5F72FF"], // The color at the end of the gradient
+        gradientToColors: [palette.secondary.main], // The color at the end of the gradient
         opacityFrom: 1, // transparency
         opacityTo: 0.3,
         stops: [0, 1200],
@@ -182,30 +250,11 @@ const ChartSection: React.FC = () => {
           (agls: NEA.NonEmptyArray<LiquidityChart.Item.Type>): void => {
             setLiquidityOptions({
               ...liquidityOptions,
-              chart: {
-                id: "chart-agg-liquidity",
-              },
               xaxis: {
+                ...liquidityOptions.xaxis,
                 categories: extractDateAxis(agls).map((d: Date): string =>
                   printDate(d)
                 ),
-                labels: {
-                  show: true,
-                },
-              },
-              yaxis: {
-                labels: {
-                  show: true,
-                  align: "left",
-                  style: {
-                    colors: palette.secondary.main,
-                    fontFamily: "Museo Sans",
-                    fontWeight: "bold",
-                    fontSize: "16px",
-                    cssClass: "apexcharts-yaxis-label",
-                  },
-                  formatter: (usd: any): string => printCurrencyUSD(usd),
-                },
               },
             })
             setLiquiditySeries([
@@ -236,30 +285,11 @@ const ChartSection: React.FC = () => {
           (agvs: NEA.NonEmptyArray<VolumeChart.Item.Type>): void => {
             setVolumeOptions({
               ...volumeOptions,
-              chart: {
-                id: "chart-agg-volume",
-              },
               xaxis: {
+                ...volumeOptions.xaxis,
                 categories: extractDateAxis(agvs).map((d: Date): string =>
                   printDate(d)
                 ),
-                labels: {
-                  show: true,
-                },
-              },
-              yaxis: {
-                labels: {
-                  show: true,
-                  align: "left",
-                  style: {
-                    colors: palette.secondary.main,
-                    fontFamily: "Museo Sans",
-                    fontWeight: "bold",
-                    fontSize: "16px",
-                    cssClass: "apexcharts-yaxis-label",
-                  },
-                  formatter: (usd: any): string => printCurrencyUSD(usd),
-                },
               },
             })
             setVolumeSeries([
@@ -284,73 +314,20 @@ const ChartSection: React.FC = () => {
 
   useEffect(() => {
     setVolumeOptions({
-      ...volumeOptions,
-      chart: {
-        id: "chart-agg-volume",
-      },
-      xaxis: {
-        labels: {
-          style: {
-            colors: palette.text.hint,
-          },
-        },
-      },
-      yaxis: {
-        labels: {
-          show: true,
-          align: "left",
-          style: {
-            colors: palette.secondary.main,
-            fontFamily: "Museo Sans",
-            fontWeight: "bold",
-            fontSize: "16px",
-            cssClass: "apexcharts-yaxis-label",
-          },
-          formatter: (n: number): string => printCurrencyUSD(USD.iso.wrap(n)),
-        },
-      },
-      fill: {
-        colors: [isDarkTheme ? "#73d6f1" : "#202F9A"],
-        gradient: {
-          gradientToColors: [isDarkTheme ? "#73D6F1" : "#5F72FF"],
-        },
-      },
+      ...options,
     })
     setLiquidityOptions({
-      ...liquidityOptions,
-      chart: {
-        id: "chart-agg-liquidity",
-      },
-      xaxis: {
-        labels: {
-          style: {
-            colors: palette.text.hint,
-          },
-        },
-      },
-      yaxis: {
-        labels: {
-          show: true,
-          align: "left",
-          style: {
-            colors: palette.secondary.main,
-            fontFamily: "Museo Sans",
-            fontWeight: "bold",
-            fontSize: "16px",
-            cssClass: "apexcharts-yaxis-label",
-          },
-          formatter: (n: number): string => printCurrencyUSD(USD.iso.wrap(n)),
-        },
-      },
-      fill: {
-        colors: [isDarkTheme ? "#73d6f1" : "#202F9A"],
-        gradient: {
-          gradientToColors: [isDarkTheme ? "#73D6F1" : "#5F72FF"],
-        },
-      },
+      ...options,
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isDarkTheme])
+  }, [palette, mobile])
+
+  const handleVolumeChartFilterChange = (event: object) => {
+    setVolumeChartFilter({ ...volumeChartFilter, ...event })
+  }
+  const handleLiquidityChartFilterChange = (event: object) => {
+    setLiquidityChartFilter({ ...liquidityChartFilter, ...event })
+  }
 
   function renderAggVolumeChart(
     agv: RemoteData.RemoteData<FetchDecodeError, VolumeChart.Type>
@@ -368,11 +345,7 @@ const ChartSection: React.FC = () => {
       case "Pending":
         return (
           <Box
-            position="absolute"
-            top={0}
-            left={0}
-            width="100%"
-            height="100%"
+            padding={"100px"}
             display="flex"
             justifyContent="center"
             alignItems="center"
@@ -406,11 +379,7 @@ const ChartSection: React.FC = () => {
       case "Pending":
         return (
           <Box
-            position="absolute"
-            top={0}
-            left={0}
-            width="100%"
-            height="100%"
+            padding={"100px"}
             display="flex"
             justifyContent="center"
             alignItems="center"
@@ -429,44 +398,88 @@ const ChartSection: React.FC = () => {
   }
 
   return (
-    <Box className={cx(classes.self)}>
-      <Grid container spacing={3}>
+    <Box className={cx(classes.root)}>
+      <Grid container spacing={!mobile ? 5 : 2}>
         <Grid item sm={12} md={6} style={{ width: "100%" }}>
-          <Box className={cx(classes.title)}>Volume</Box>
-          <Box mt="20px" />
+          <Typography variant="h1" component="h1" className={cx(classes.title)}>
+            Volume
+          </Typography>
           <Box className={cx(classes.panel)}>
-            <Box className={cx(classes.panelFilter)}>
+            <Box
+              className={cx(classes.panelFilter)}
+              justifyContent="space-between"
+            >
               <Box className={cx(classes.panelFilterByType)}>
-                {/* TODO: text-transform: uppercase */}
-                <Box component="span">TOTAL</Box>
-                <Box component="span">SWAP</Box>
-                <Box component="span">ADD</Box>
-                <Box component="span">WITHDRAW</Box>
+                {[
+                  [TransactionType.Any, "Total"],
+                  [TransactionType.Trade, "Swap"],
+                  [TransactionType.Deposit, "Add"],
+                  [TransactionType.Withdrawal, "Withdraw"],
+                ].map(([transactionType, label]) => (
+                  <Typography
+                    variant="h6"
+                    component="h6"
+                    key={label}
+                    onClick={() =>
+                      handleVolumeChartFilterChange({ type: transactionType })
+                    }
+                    className={cx({
+                      isActive: volumeChartFilter.type === transactionType,
+                    })}
+                  >
+                    {label}
+                  </Typography>
+                ))}
               </Box>
               <Box className={cx(classes.panelFilterByDate)}>
-                {/* TODO: text-transform: uppercase */}
-                <Box component="span">WEEK</Box>
-                <Box component="span">ALL</Box>
+                {[
+                  [Granularity.OneWeek, "Week"],
+                  [Granularity.OneMonth, "All"],
+                ].map(([granularity, label]) => (
+                  <Typography
+                    variant="h6"
+                    component="h6"
+                    key={label}
+                    onClick={() =>
+                      handleVolumeChartFilterChange({ date: granularity })
+                    }
+                    className={cx({
+                      isActive: volumeChartFilter.date === granularity,
+                    })}
+                  >
+                    {label}
+                  </Typography>
+                ))}
               </Box>
             </Box>
             <Box position="relative">{renderAggVolumeChart(aggVolume)}</Box>
           </Box>
         </Grid>
         <Grid item sm={12} md={6} style={{ width: "100%" }}>
-          <Box className={cx(classes.title)}>Liquidity</Box>
-          <Box mt="20px" />
+          <Typography variant="h1" component="h1" className={cx(classes.title)}>
+            Liquidity
+          </Typography>
           <Box className={cx(classes.panel)}>
-            <Box className={cx(classes.panelFilter)}>
-              <Box className={cx(classes.panelFilterByType)}>
-                {/* TODO: text-transform: uppercase */}
-                <Box component="span">LIQUIDITY</Box>
-                <Box component="span">LP EARNING</Box>
-                <Box component="span">BOND EARNING</Box>
-                <Box component="span">$RUNE PRICE</Box>
-              </Box>
+            <Box className={cx(classes.panelFilter)} justifyContent="flex-end">
               <Box className={cx(classes.panelFilterByDate)}>
-                <Box component="span">WEEK</Box>
-                <Box component="span">ALL</Box>
+                {[
+                  [Granularity.OneWeek, "Week"],
+                  [Granularity.OneMonth, "All"],
+                ].map(([granularity, label]) => (
+                  <Typography
+                    variant="h6"
+                    component="h6"
+                    key={label}
+                    onClick={() =>
+                      handleLiquidityChartFilterChange({ date: granularity })
+                    }
+                    className={cx({
+                      isActive: liquidityChartFilter.date === granularity,
+                    })}
+                  >
+                    {label}
+                  </Typography>
+                ))}
               </Box>
             </Box>
             <Box position="relative">

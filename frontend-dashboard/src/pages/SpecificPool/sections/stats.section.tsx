@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react"
-import { Box, Grid, useMediaQuery } from "@material-ui/core"
+import React, { useEffect, useMemo, useState } from "react"
+import { Box, Grid, Typography, useMediaQuery } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import cx from "classnames"
 import Chart from "react-apexcharts"
@@ -22,132 +22,136 @@ import { useUserTheme } from "state/user/hooks"
 import { extractDateAxis, printCurrencyUSD, printDate } from "hooks"
 import { usePoolVolume, usePoolLiquidity } from "state/chart/hooks"
 
+import { ReactComponent as ArrowDown } from "assets/imgs/arrow-down.svg"
 import { SwitchWithGlider } from "components"
+import { FontFamilies } from "data"
 
-const useStyles = makeStyles(({ palette }) => ({
-  root: {},
-  panelbg: {
-    background: palette.background.paper,
-    padding: "20px",
-    borderRadius: "10px",
-    boxShadow: "2px 2px 10px rgba(0, 0, 0, 0.1)",
-    height: "100%",
+const useStyles = makeStyles(({ palette, breakpoints }) => ({
+  root: {
+    marginBottom: 50,
   },
   title: {
-    fontFamily: "Brandon Grotesque",
-    fontStyle: "normal",
+    color: palette.primary.main,
     fontWeight: 900,
-    fontSize: "18px",
-    lineHeight: "110%",
+    marginBottom: 30,
+  },
+
+  typo1: {
+    fontSize: 16,
+    color: palette.secondary.main,
+  },
+
+  typo2: {
     color: palette.primary.main,
   },
 
-  token: {
-    "display": "flex",
-    "justifyContent": "space-between",
-    "alignItems": "center",
-    "padding": "10px 0px",
+  totalTokensLocked: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "20px 0",
+  },
 
-    "fontFamily": "Museo Sans",
-    "fontStyle": "normal",
-    "fontWeight": 900,
-    "lineHeight": "115%",
-    "color": palette.secondary.main,
+  balancePanel: {
+    background: `linear-gradient(126.33deg, ${palette.info.dark} 9.83%, rgba(37, 48, 130, 0) 96.44%)`,
+    borderRadius: 5,
+    padding: 25,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    gap: 20,
+    height: 150,
 
-    "& > img": {
-      width: "35px",
-      height: "35px",
-    },
-
-    "& > span:first-of-type": {
-      paddingLeft: "10px",
-      fontSize: "12px",
-      flexGrow: 5,
-    },
-    "& > span:last-of-type": {
-      fontSize: "11px",
+    [`& .asset-logo`]: {
+      width: 30,
+      height: 30,
+      marginRight: 10,
     },
   },
 
-  statsBoxBg: {
-    background: palette.type === "light" ? "#F5F5F5" : "#25308280",
-    boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-    borderRadius: "10px",
-  },
-  statsBox: {
-    "position": "relative",
-    "padding": "10px 30px",
-    "margin": "20px 0px",
+  tvlPanel: {
+    position: "relative",
+    padding: "15px 25px",
+    borderTopRightRadius: 8,
+    borderBottomRightRadius: 8,
+    background: `linear-gradient(126.33deg, ${palette.info.dark} 9.83%, rgba(37, 48, 130, 0) 96.44%)`,
+    display: "flex",
+    flexDirection: "column",
 
-    "display": "flex",
-    "flexDirection": "column",
-    "fontFamily": "Museo Sans",
-    "fontStyle": "normal",
-    "lineHeight": "100%",
+    [`&::before`]: {
+      content: '""',
+      position: "absolute",
+      left: 0,
+      top: 0,
+      width: 5,
+      height: "100%",
+      background: `linear-gradient(180deg, ${palette.secondary.main} 0%, ${palette.secondary.dark} 100%)`,
+      borderRadius: "10px",
+    },
 
-    "& > span:nth-of-type(1)": {
-      color: palette.text.hint,
-      fontSize: "11px",
-      fontWeight: 300,
+    [`& svg`]: {
+      marginRight: 3,
+      [`&.inc`]: {
+        transform: "rotateZ(180deg)",
+        [`& > path`]: {
+          stroke: palette.success.main,
+        },
+        [`& > rect`]: {
+          fill: palette.success.main,
+        },
+      },
+      [`&.dec`]: {
+        [`& > path`]: {
+          color: palette.error.main,
+        },
+        [`& > rect`]: {
+          color: palette.error.main,
+        },
+      },
     },
-    "& > span:nth-of-type(2)": {
-      color: palette.secondary.main,
-      fontSize: "17px",
-      margin: "10px 0px",
-      fontWeight: 500,
+
+    [`& .change`]: {
+      lineHeight: "100%",
+      [`&.inc`]: {
+        color: palette.success.main,
+      },
+      [`&.dec`]: {
+        color: palette.error.main,
+      },
     },
-    "& > span:nth-of-type(3)": {
-      fontWeight: 300,
-      fontSize: "14px",
+
+    [`& span`]: {
+      textTransform: "uppercase",
     },
   },
-  leftBorder: {
-    position: "absolute",
-    left: 0,
-    top: 0,
-    bottom: 0,
+
+  liquidityPanel: {
+    background: `linear-gradient(126.33deg, ${palette.info.dark} 9.83%, rgba(37, 48, 130, 0) 96.44%)`,
     height: "100%",
-    background: palette.info.dark,
-    borderRadius: "10px",
-    fontFamily: "auto",
+    maxHeight: "100%",
+    borderRadius: 10,
+    padding: 25,
+    display: "flex",
+    flexDirection: "column",
   },
 
-  filterNormal: {
-    border: "1px solid #FFFFFF",
-    boxSizing: "border-box",
-    borderRadius: "20px",
-    padding: "10px 20px",
-    background: palette.type === "light" ? "#A5A5A5" : "#010730",
-    textTransform: "uppercase",
-
-    fontFamily: "Museo Sans",
-    fontStyle: "normal",
-    fontWeight: "bold",
-    fontSize: "9px",
-    lineHeight: "100%",
-    textAlign: "center",
-    color: palette.common.white,
+  filterGroup: {
+    display: "flex",
+    justifyContent: "flex-end",
   },
 
-  filterActive: {
-    border: "unset",
-    background:
-      palette.type === "light"
-        ? "linear-gradient(89.62deg, #000A4F 0.3%, #3C4DC5 99.64%)"
-        : "linear-gradient(90deg, #5F72FF 0%, rgba(115, 214, 241, 0) 100%)",
+  chartXaxis: {
+    fontSize: "13px",
+
+    [breakpoints.down("xs")]: {
+      fontSize: "8px",
+    },
   },
 
-  currentRatio: {
-    "fontFamily": "Museo Sans",
-    "fontStyle": "normal",
-    "fontWeight": 500,
-    "fontSize": "13px",
-    "lineHeight": "100%",
-    "color": palette.text.secondary,
+  chartYaxis: {
+    fontSize: "16px",
 
-    "& > span": {
-      fontWeight: 700,
-      fontSize: "11px",
+    [breakpoints.down("xs")]: {
+      fontSize: "10px",
     },
   },
 }))
@@ -190,92 +194,223 @@ const StatsSection: React.FC<Props> = ({ poolSet, poolStats }: Props) => {
   const { poolVolume, fetchPoolVolume } = usePoolVolume()
   const { poolLiquidity, fetchPoolLiquidity } = usePoolLiquidity()
 
-  let options: ApexOptions = {
-    chart: {
-      id: "chart-trade-volume",
-      zoom: {
-        enabled: false,
+  const lockedTokens = useMemo(
+    () => [
+      {
+        asset: Asset.iso.wrap("BTC"),
+        amount: USD.iso.wrap(22_620_000),
       },
-      toolbar: {
-        show: false,
+      {
+        asset: Asset.iso.wrap("ARD"),
+        amount: USD.iso.wrap(22_630_000),
       },
-    },
-    stroke: {
-      width: 0,
-      curve: "smooth",
-    },
-    xaxis: {
-      categories: [],
-      labels: {
-        style: {
-          colors: palette.text.hint,
-          fontSize: "11px",
-          fontFamily: "Museo Sans",
-          fontWeight: 500,
+    ],
+    []
+  )
+  const [activeChart, setActiveChart] = useState<ChartType>(ChartType.Volume)
+
+  const poolVolumeChartOptions = useMemo(() => {
+    let xCategories: any[] = []
+    switch (poolVolume._tag) {
+      case "Success":
+        O.fold(
+          (): void => {},
+          (pvs: NEA.NonEmptyArray<VolumeChart.Item.Type>): void => {
+            xCategories = extractDateAxis(pvs).map((d: Date) => printDate(d))
+          }
+        )(NEA.fromArray(poolVolume.success))
+        break
+      case "Pending":
+      case "Failure":
+        break
+    }
+    return xCategories
+  }, [poolVolume])
+
+  const poolLiquidityChartOptions = useMemo(() => {
+    let xCategories: any[] = []
+    switch (poolLiquidity._tag) {
+      case "Success":
+        O.fold(
+          (): void => {},
+          (pls: NEA.NonEmptyArray<LiquidityChart.Item.Type>) => {
+            xCategories = extractDateAxis(pls).map((d: Date) => printDate(d))
+          }
+        )(NEA.fromArray(poolLiquidity.success))
+        break
+      case "Pending":
+      case "Failure":
+        break
+    }
+    return xCategories
+  }, [poolLiquidity])
+
+  const chartOptions: ApexOptions = useMemo(() => {
+    let xCategories: any[] = []
+
+    switch (activeChart) {
+      case ChartType.Volume:
+        xCategories = poolVolumeChartOptions
+        break
+      case ChartType.TVL:
+        xCategories = poolVolumeChartOptions
+        break
+      case ChartType.Liquidity:
+        xCategories = poolLiquidityChartOptions
+        break
+      default:
+        break
+    }
+
+    return {
+      chart: {
+        id: `basic-bar-${ChartType.Volume}`,
+        width: "100%",
+        height: "100%",
+        zoom: {
+          enabled: false,
+        },
+        toolbar: {
+          show: true,
+          tools: {
+            download: false,
+          },
+        },
+        events: {
+          mounted: (chart) => {
+            chart.windowResizeHandler()
+          },
         },
       },
-      tickPlacement: "between",
-      axisTicks: {
+      stroke: {
+        width: 0,
+        curve: "smooth",
+      },
+      xaxis: {
+        categories: xCategories,
+        labels: {
+          show: true,
+          style: {
+            colors: palette.secondary.main,
+            fontFamily: FontFamilies.Museo,
+            fontWeight: 600,
+            cssClass: classes.chartXaxis,
+          },
+          // formatter: (n) => printDate(n),
+        },
+        tickPlacement: "between",
+        axisTicks: {
+          show: false,
+        },
+        axisBorder: {
+          show: true,
+          color: palette.secondary.main,
+        },
+      },
+      yaxis: {
+        labels: {
+          show: true,
+          align: "left",
+          style: {
+            colors: palette.primary.main,
+            fontFamily: FontFamilies.Museo,
+            fontWeight: 600,
+            cssClass: classes.chartYaxis,
+          },
+          formatter: (n) => printCurrencyUSD(USD.iso.wrap(n)),
+        },
+        axisBorder: {
+          show: true,
+          color: palette.secondary.main,
+        },
+      },
+      grid: {
         show: false,
       },
-      axisBorder: {
-        show: false,
+      fill: {
+        type: "gradient",
+        colors: [palette.secondary.main],
+        gradient: {
+          type: "vertical", // The gradient in the horizontal direction
+          gradientToColors: [palette.secondary.main], // The color at the end of the gradient
+          opacityFrom: 1, // transparency
+          opacityTo: 0.3,
+          stops: [0, 1200],
+        },
       },
-    },
-    yaxis: {
-      labels: {
-        show: false,
+      plotOptions: {
+        bar: {
+          borderRadius: 5,
+        },
       },
-    },
-    grid: {
-      show: false,
-    },
-    fill: {
-      type: "gradient",
-      colors: [isDarkTheme ? "#73d6f1" : "#202F9A"],
-      gradient: {
-        type: "vertical", // The gradient in the horizontal direction
-        gradientToColors: [isDarkTheme ? "#73D6F1" : "#5F72FF"], // The color at the end of the gradient
-        opacityFrom: 1, // transparency
-        opacityTo: 0.3,
-        stops: [0, 1200],
+      dataLabels: {
+        enabled: false,
       },
-    },
-    plotOptions: {
-      bar: {
-        borderRadius: 5,
+      tooltip: {
+        enabled: false,
       },
-    },
-    dataLabels: {
-      enabled: false,
-    },
-    tooltip: {
-      enabled: false,
-    },
-  }
+    }
+  }, [
+    palette,
+    classes,
+    activeChart,
+    poolVolumeChartOptions,
+    poolLiquidityChartOptions,
+  ])
 
-  const series = [
-    {
-      name: "series-1",
-      data: [10],
-    },
-  ]
+  const poolVolumeChartSeries = useMemo(() => {
+    let series: any[] = []
+    switch (poolVolume._tag) {
+      case "Success":
+        O.fold(
+          (): void => {},
+          (pvs: NEA.NonEmptyArray<VolumeChart.Item.Type>): void => {
+            series = pvs.map(([, v]: VolumeChart.Item.Type): number =>
+              USD.iso.unwrap(Volume.iso.unwrap(v.total))
+            )
+          }
+        )(NEA.fromArray(poolVolume.success))
+        break
+      case "Pending":
+      case "Failure":
+        break
+    }
+    return series
+  }, [poolVolume])
 
-  const lockedTokenList = [
-    {
-      asset: Asset.iso.wrap("BTC"),
-      amount: USD.iso.wrap(22_620_000),
-    },
-    {
-      asset: Asset.iso.wrap("ARD"),
-      amount: USD.iso.wrap(22_630_000),
-    },
-  ]
+  const poolLiquidityChartSeries: ApexAxisChartSeries = useMemo(() => {
+    let series: any[] = []
+    switch (poolLiquidity._tag) {
+      case "Success":
+        O.fold(
+          (): void => {},
+          (pls: NEA.NonEmptyArray<LiquidityChart.Item.Type>) => {
+            series = pls.map(
+              ([, l]: LiquidityChart.Item.Type): USD.Type =>
+                LiquidityTokenPrice.iso.unwrap(l)
+            )
+          }
+        )(NEA.fromArray(poolLiquidity.success))
+        break
+      case "Pending":
+      case "Failure":
+        break
+    }
+    return series
+  }, [poolLiquidity])
 
-  const [chartOptions, setChartOptions] = useState<ApexOptions>(options)
-  const [chartSeries, setChartSeries] = useState<any[]>(series)
-
-  const [activeChart, setActiveChart] = useState<ChartType>(ChartType.Volume)
+  const chartSeries: ApexAxisChartSeries = useMemo(() => {
+    switch (activeChart) {
+      case ChartType.Volume:
+        return [{ name: "Volume", data: poolVolumeChartSeries }]
+      case ChartType.TVL:
+        return [{ name: "TVL", data: poolVolumeChartSeries }]
+      case ChartType.Liquidity:
+        return [{ name: "Liquidity", data: poolLiquidityChartSeries }]
+      default:
+        return []
+    }
+  }, [activeChart, poolVolumeChartSeries, poolLiquidityChartSeries])
 
   useEffect(() => {
     fetchPoolVolume(
@@ -291,302 +426,152 @@ const StatsSection: React.FC<Props> = ({ poolSet, poolStats }: Props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  useEffect(() => {
-    switch (poolVolume._tag) {
-      case "Success":
-        O.fold(
-          (): void => {},
-          (pvs: NEA.NonEmptyArray<VolumeChart.Item.Type>): void => {
-            setChartOptions({
-              ...chartOptions,
-              xaxis: {
-                categories: extractDateAxis(pvs).map((d: Date) => printDate(d)),
-                labels: {
-                  style: {
-                    colors: palette.text.hint,
-                  },
-                },
-                axisTicks: {
-                  show: false,
-                },
-                axisBorder: {
-                  show: false,
-                },
-              },
-              fill: {
-                type: "gradient",
-                colors: [isDarkTheme ? "#73d6f1" : "#202F9A"],
-                gradient: {
-                  type: "vertical", // The gradient in the horizontal direction
-                  gradientToColors: [isDarkTheme ? "#73D6F1" : "#5F72FF"], // The color at the end of the gradient
-                  opacityFrom: 1, // transparency
-                  opacityTo: 0.3,
-                  stops: [0, 1200],
-                },
-              },
-            })
-            setChartSeries([
-              {
-                name: "Volume",
-                data: pvs.map(([, v]: VolumeChart.Item.Type): number =>
-                  USD.iso.unwrap(Volume.iso.unwrap(v.total))
-                ),
-              },
-            ])
-          }
-        )(NEA.fromArray(poolVolume.success))
-        break
-      case "Pending":
-        break
-      case "Failure":
-        break
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [palette, poolVolume])
+  function renderTotalTokensLocked(): JSX.Element {
+    return (
+      <Box className={classes.totalTokensLocked}>
+        <Box className={classes.balancePanel}>
+          {lockedTokens.map(
+            (token: { amount: USD.Type; asset: Asset.Type }) => {
+              const assetStr: string = Asset.iso.unwrap(token.asset)
+              let icon
+              try {
+                icon = require(`assets/coins/${assetStr}.svg`).default
+              } catch (e) {
+                icon = require(`assets/coins/BTC.svg`).default
+              }
+              return (
+                <Box
+                  key={assetStr}
+                  display="flex"
+                  justifyContent={"space-between"}
+                  alignItems={"center"}
+                >
+                  <Box display={"flex"} alignItems="center">
+                    <img src={icon} alt={assetStr} className="asset-logo" />
+                    <Typography
+                      variant="h4"
+                      component="span"
+                      className={classes.typo1}
+                    >
+                      {assetStr}
+                    </Typography>
+                  </Box>
+                  <Typography
+                    variant="h4"
+                    component="span"
+                    className={classes.typo2}
+                  >
+                    {printCurrencyUSD(token.amount, {
+                      minimumFractionDigits: 4,
+                    })}
+                  </Typography>
+                </Box>
+              )
+            }
+          )}
+        </Box>
+        <Box className={classes.tvlPanel}>
+          <Typography variant="h4" component="span" className={classes.typo1}>
+            TVL
+          </Typography>
+          <Box display={"flex"} alignItems="center">
+            <Typography variant="h4" component="span" className={classes.typo2}>
+              {printCurrencyUSD(USD.iso.wrap(242_900_000))}
+            </Typography>
+            <Box display={"flex"} alignItems="baseline" ml={3}>
+              <ArrowDown className={cx({ dec: true })} />
+              <Typography
+                variant="h6"
+                component="span"
+                className={cx("change", { dec: true })}
+              >
+                2.05%
+              </Typography>
+            </Box>
+          </Box>
+        </Box>
+        <Box className={classes.tvlPanel}>
+          <Typography variant="h4" component="span" className={classes.typo1}>
+            TVL
+          </Typography>
+          <Box display={"flex"} alignItems="center">
+            <Typography variant="h4" component="span" className={classes.typo2}>
+              {printCurrencyUSD(USD.iso.wrap(83_900_000))}
+            </Typography>
+            <Box display={"flex"} alignItems="baseline" ml={3}>
+              <ArrowDown className={cx({ inc: true })} />
+              <Typography
+                variant="h6"
+                component="span"
+                className={cx("change", { inc: true })}
+              >
+                36.12%
+              </Typography>
+            </Box>
+          </Box>
+        </Box>
+        <Box className={classes.tvlPanel}>
+          <Typography variant="h4" component="span" className={classes.typo1}>
+            24h Fees
+          </Typography>
+          <Box display={"flex"} alignItems="center">
+            <Typography variant="h4" component="span" className={classes.typo2}>
+              {printCurrencyUSD(USD.iso.wrap(264_890))}
+            </Typography>
+          </Box>
+        </Box>
+      </Box>
+    )
+  }
 
-  const handleSwitch = (index: ChartType) => {
-    setActiveChart(index)
-    switch (index) {
-      case ChartType.Volume:
-        switch (poolVolume._tag) {
-          case "Success":
-            O.fold(
-              (): void => {},
-              (pvs: NEA.NonEmptyArray<VolumeChart.Item.Type>): void => {
-                setChartOptions({
-                  ...chartOptions,
-                  xaxis: {
-                    categories: extractDateAxis(pvs).map((d: Date) =>
-                      printDate(d)
-                    ),
-                    labels: {
-                      style: {
-                        colors: palette.text.hint,
-                      },
-                    },
-                    axisTicks: {
-                      show: false,
-                    },
-                    axisBorder: {
-                      show: false,
-                    },
-                  },
-                  fill: {
-                    type: "gradient",
-                    colors: [isDarkTheme ? "#73d6f1" : "#202F9A"],
-                    gradient: {
-                      type: "vertical", // The gradient in the horizontal direction
-                      gradientToColors: [isDarkTheme ? "#73D6F1" : "#5F72FF"], // The color at the end of the gradient
-                      opacityFrom: 1, // transparency
-                      opacityTo: 0.3,
-                      stops: [0, 1200],
-                    },
-                  },
-                })
-                setChartSeries([
-                  {
-                    name: "Volume",
-                    data: pvs.map(([, v]: VolumeChart.Item.Type): number =>
-                      USD.iso.unwrap(Volume.iso.unwrap(v.total))
-                    ),
-                  },
-                ])
-              }
-            )(NEA.fromArray(poolVolume.success))
-            break
-          case "Pending":
-            break
-          case "Failure":
-            break
-        }
-        break
-      case ChartType.TVL:
-      case ChartType.Liquidity:
-        switch (poolLiquidity._tag) {
-          case "Success":
-            O.fold(
-              (): void => {},
-              (pls: NEA.NonEmptyArray<LiquidityChart.Item.Type>) => {
-                setChartOptions({
-                  ...chartOptions,
-                  xaxis: {
-                    categories: extractDateAxis(pls).map((d: Date) =>
-                      printDate(d)
-                    ),
-                    labels: {
-                      style: {
-                        colors: palette.text.hint,
-                      },
-                      formatter: (usd: any): string => printCurrencyUSD(usd),
-                    },
-                    axisTicks: {
-                      show: false,
-                    },
-                    axisBorder: {
-                      show: false,
-                    },
-                  },
-                  fill: {
-                    type: "gradient",
-                    colors: [isDarkTheme ? "#73d6f1" : "#202F9A"],
-                    gradient: {
-                      type: "vertical", // The gradient in the horizontal direction
-                      gradientToColors: [isDarkTheme ? "#73D6F1" : "#5F72FF"], // The color at the end of the gradient
-                      opacityFrom: 1, // transparency
-                      opacityTo: 0.3,
-                      stops: [0, 1200],
-                    },
-                  },
-                })
-                setChartSeries([
-                  {
-                    name: "Liquidity",
-                    data: pls.map(
-                      ([, l]: LiquidityChart.Item.Type): USD.Type =>
-                        LiquidityTokenPrice.iso.unwrap(l)
-                    ),
-                  },
-                ])
-              }
-            )(NEA.fromArray(poolLiquidity.success))
-            break
-          case "Pending":
-            break
-          case "Failure":
-            break
-        }
-        break
-    }
+  function renderLiquidityChart(): JSX.Element {
+    return (
+      <Box className={classes.liquidityPanel}>
+        <Box className={classes.filterGroup}>
+          <SwitchWithGlider
+            elements={allChartTypes.map(chartTypeLabel)}
+            activeIndex={activeChart}
+            handleSwitch={(index: ChartType) => setActiveChart(index)}
+          />
+        </Box>
+        <Box height={"100%"}>
+          <Chart
+            options={chartOptions}
+            series={chartSeries}
+            type={activeChart === 1 ? "area" : "bar"}
+            height={"100%"}
+            width={"100%"}
+          />
+        </Box>
+      </Box>
+    )
   }
 
   return (
     <Box className={cx(classes.root)}>
-      <Grid container spacing={3}>
+      <Grid container spacing={3} alignItems={"stretch"}>
         <Grid item xs={12} sm={4}>
-          <Box className={cx(classes.title)}>Total Tokens Locked</Box>
-        </Grid>
-        <Grid item xs={12} sm={8}>
-          <Box className={cx(classes.title)}>Trade Volume Graph</Box>
-        </Grid>
-      </Grid>
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={4}>
-          <Box className={cx(classes.panelbg)}>
-            <Box
-              className={cx(classes.statsBoxBg)}
-              paddingX="25px"
-              paddingY="15px"
+          <Box display={"flex"} flexDirection="column" height={"100%"}>
+            <Typography
+              variant="h1"
+              component="h1"
+              className={cx(classes.title)}
             >
-              {lockedTokenList.map(
-                (token: { asset: Asset.Type; amount: USD.Type }, i: number) => {
-                  // TODO: make this an SVG sprite rather than PNG
-                  const assetStr: string = Asset.iso.unwrap(token.asset)
-                  const icon = require(`assets/coins/${assetStr}.png`).default
-                  return (
-                    <Box className={cx(classes.token)} key={i}>
-                      <img src={icon} alt="" />
-                      <span>{assetStr}</span>
-                      <span>
-                        {printCurrencyUSD(token.amount, {
-                          minimumFractionDigits: 4,
-                        })}
-                      </span>
-                    </Box>
-                  )
-                }
-              )}
-            </Box>
-            <Box className={cx(classes.statsBox, classes.statsBoxBg)}>
-              {/* TODO: don’t use div/Box for spacing */}
-              <Box className={cx(classes.leftBorder)}>&nbsp;&nbsp;</Box>
-              {/* TODO: text-transform: uppercase */}
-              {/* TODO: what is the abbreviation?? */}
-              <span>
-                <abbr title="TODO">TVL</abbr>
-              </span>
-              <span>{printCurrencyUSD(USD.iso.wrap(242_900_000))}</span>
-              <Box style={{ color: "red" }}>
-                <i className="fal fa-long-arrow-down"></i>&nbsp;
-                <span>2.05%</span>
-              </Box>
-            </Box>
-
-            <Box className={cx(classes.statsBox, classes.statsBoxBg)}>
-              <Box className={cx(classes.leftBorder)}>&nbsp;&nbsp;</Box>
-              {/* TODO: text-transform: uppercase */}
-              <span>VOLUME 24H</span>
-              <span>
-                {printCurrencyUSD(
-                  O.getOrElse(() => USD.iso.wrap(0))(
-                    poolStats.recentDailyVolumeUSD.trade
-                  ),
-                  { minimumFractionDigits: 2 }
-                )}
-              </span>
-              {/* TODO: use class, use function */}
-              <Box style={{ color: "green" }}>
-                <i className="fal fa-long-arrow-up"></i>&nbsp;
-                <span>36.12%</span>
-              </Box>
-            </Box>
-
-            <Box className={cx(classes.statsBox, classes.statsBoxBg)}>
-              {/* TODO: don’t use div/Box for spacing */}
-              <Box className={cx(classes.leftBorder)}>&nbsp;&nbsp;</Box>
-              {/* TODO: text-transform: uppercase */}
-              <span>24H FEES</span>
-              <span>
-                {printCurrencyUSD(
-                  O.getOrElse(() => USD.iso.wrap(0))(
-                    poolStats.dailyFeeVolumeUSD
-                  ),
-                  { minimumFractionDigits: 2 }
-                )}
-              </span>
-              {/* TODO: use class, use function */}
-              <span style={{ color: "red" }}>&nbsp;</span>
-            </Box>
+              Total Tokens Locked
+            </Typography>
+            {renderTotalTokensLocked()}
           </Box>
         </Grid>
         <Grid item xs={12} sm={8}>
-          <Box className={cx(classes.panelbg)}>
-            <Box textAlign="right">
-              <SwitchWithGlider
-                elements={allChartTypes.map(chartTypeLabel)}
-                normalClass={classes.filterNormal}
-                activeClass={classes.filterActive}
-                activeIndex={activeChart}
-                handleSwitch={handleSwitch}
-              />
-            </Box>
-            {activeChart !== 1 && (
-              <Chart
-                options={chartOptions}
-                series={chartSeries}
-                type="bar"
-                width="100%"
-              />
-            )}
-            {activeChart === 1 && (
-              <Chart
-                options={chartOptions}
-                series={chartSeries}
-                type="area"
-                width="100%"
-              />
-            )}
-            {activeChart === 2 && (
-              <Box className={cx(classes.currentRatio)}>
-                {/* TODO: text-transform: uppercase */}
-                {/* TODO: remove the breaks for proper padding/gaps */}
-                CURRENT PRICE
-                <br />
-                <br />
-                <span>1 USDC = 0.0004 ETH</span>
-                <br />
-                <span>1 ETH = 2,359.0502 USDC</span>
-              </Box>
-            )}
+          <Box display={"flex"} flexDirection="column" height={"100%"}>
+            <Typography
+              variant="h1"
+              component="h1"
+              className={cx(classes.title)}
+            >
+              Liquidity
+            </Typography>
+            {renderLiquidityChart()}
           </Box>
         </Grid>
       </Grid>

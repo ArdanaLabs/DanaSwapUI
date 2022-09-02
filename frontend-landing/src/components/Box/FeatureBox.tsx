@@ -6,8 +6,7 @@ import { makeStyles, useTheme } from "@material-ui/core/styles"
 import { useIsDarkMode } from "state/user/hooks"
 import { GradientButton } from "components/Button"
 
-const heroVideo =
-  "https://background.sfo3.digitaloceanspaces.com/stablecoin/output.m3u8"
+const heroVideo = "https://youtu.be/9lMoZ0APtTQ"
 
 export interface FeatureBoxProps {
   image?: any

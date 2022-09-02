@@ -1,23 +1,20 @@
 import React from "react"
 import cx from "classnames"
-import { Box, useMediaQuery } from "@material-ui/core"
+import { Box, useMediaQuery, Typography } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 
 import * as Theme from "Data/User/Theme"
 
 import { useUserTheme } from "state/user/hooks"
 
-import ICO_Info_light from "assets/svg/info_light.svg"
-import ICO_Info_dark from "assets/svg/info_dark.svg"
+import CircleInfoCyanIcon from "assets/imgs/circle-info-cyan.svg"
+import CircleInfoDarkBlueIcon from "assets/imgs/circle-info-darkblue.svg"
 
 const useStyles = makeStyles(({ palette }) => ({
-  self: {
-    margin: "10px",
-  },
-  bg: {
+  root: {
     width: "100%",
     position: "relative",
-    background: palette.info.main,
+    background: palette.background.paper,
     borderRadius: "10px",
     height: 100,
   },
@@ -27,9 +24,8 @@ const useStyles = makeStyles(({ palette }) => ({
     top: 0,
     bottom: 0,
     height: "100%",
-    background: palette.info.dark,
+    background: `linear-gradient(180deg, ${palette.secondary.main} 0%, ${palette.secondary.dark} 100%)`,
     borderRadius: "10px",
-    fontFamily: "auto",
   },
   info: {
     position: "absolute",
@@ -37,34 +33,27 @@ const useStyles = makeStyles(({ palette }) => ({
     right: 10,
   },
   display: {
-    "padding": "12px 0px 10px 30px",
+    padding: "25px 0px 10px 20px",
 
-    "& p:first-child": {
-      fontWeight: 300,
-      fontStyle: "normal",
-      fontSize: "11px",
-      lineHeight: "13px",
-      color: palette.text.hint,
+    [`& p:first-child`]: {
+      color: palette.secondary.main,
       whiteSpace: "pre-line",
+      textTransform: "uppercase",
+      lineHeight: "100%",
+      marginBottom: "10px",
     },
-    "& p:last-child": {
-      fontWeight: 700,
-      fontStyle: "normal",
-      fontSize: "16px",
-      lineHeight: "18px",
-      color: palette.text.secondary,
-      fontFamily: "Museo Sans",
+    [`& p:last-child`]: {
+      color: palette.primary.main,
     },
   },
 }))
 
 export interface OverViewBoxProps {
   label: string
-  content: any
-  info?: string
+  content: string
 }
 
-const OverViewBox: React.FC<OverViewBoxProps> = ({ label, content, info }) => {
+const OverViewBox: React.FC<OverViewBoxProps> = ({ label, content }) => {
   const { breakpoints } = useTheme()
   const userTheme: Theme.Theme = useUserTheme()
   const mobile = useMediaQuery(breakpoints.down("xs"))
@@ -72,28 +61,22 @@ const OverViewBox: React.FC<OverViewBoxProps> = ({ label, content, info }) => {
   const classes = useStyles({ dark: isDarkTheme, mobile })
 
   return (
-    <Box className={cx(classes.self)}>
-      <Box
-        className={cx(classes.bg)}
-        style={
-          isDarkTheme
-            ? {
-                boxShadow: "0px 4px 4px #E5E5E5",
-              }
-            : {
-                boxShadow: "unset",
-              }
-        }
-      >
-        <Box className={cx(classes.leftBorder)}>&nbsp;&nbsp;</Box>
-        <Box className={cx(classes.info)}>
-          <img src={isDarkTheme ? ICO_Info_dark : ICO_Info_light} alt="" />
-        </Box>
+    <Box className={cx(classes.root)}>
+      <Box className={cx(classes.leftBorder)}>&nbsp;&nbsp;</Box>
+      <Box className={cx(classes.info)}>
+        <img
+          src={isDarkTheme ? CircleInfoCyanIcon : CircleInfoDarkBlueIcon}
+          alt="info"
+        />
+      </Box>
 
-        <Box className={cx(classes.display)}>
-          <Box component="p">{label}</Box>
-          <Box component="p">{content}</Box>
-        </Box>
+      <Box className={cx(classes.display)}>
+        <Typography variant="body2" component="p">
+          {label}
+        </Typography>
+        <Typography variant="subtitle2" component="p">
+          {content}
+        </Typography>
       </Box>
     </Box>
   )
