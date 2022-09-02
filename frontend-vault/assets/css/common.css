@@ -419,7 +419,7 @@
   border-radius: 50px;
 }
 
-.filter-search>svg {
+.filter-search>img {
   top: 50%;
   left: 25px;
   position: absolute;
@@ -427,7 +427,7 @@
   transform: translate(-50%, -50%);
 }
 
-.filter-search>svg path {
+.filter-search>img path {
   fill: currentColor;
 }
 
@@ -613,7 +613,7 @@
   white-space: pre-line;
 }
 
-.home-hero-desc>h4 {
+.home-hero-desc>p {
   color: #FFFFFF;
   white-space: pre-line;
 }
@@ -1179,18 +1179,6 @@ body::backdrop {
 
 .table-body-virtualScrollerRender {
   transform: translate3d(0px, 0px, 0px);
-}
-
-.table-list-item-actionBtn span {
-  overflow: hidden;
-  pointer-events: none;
-  position: absolute;
-  z-index: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  border-radius: inherit;
 }
 
 .pl-15 {

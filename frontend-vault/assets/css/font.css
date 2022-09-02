@@ -1,48 +1,48 @@
 @font-face {
   font-family: "Museo Sans";
-  src: local("Museo Sans 300"),
+  src: local("Museo Sans 300"), local("Museo-Sans-300"),
     url("../fonts/Museo Sans/MuseoSans_300.woff2") format("woff2");
   font-weight: 300;
 }
 
 @font-face {
   font-family: "Museo Sans";
-  src: local("Museo Sans 500"),
+  src: local("Museo Sans 500"), local("Museo-Sans-500"),
     url("../fonts/Museo Sans/MuseoSans_500.woff2") format("woff2");
   font-weight: 500;
 }
 
 @font-face {
   font-family: "Museo Sans";
-  src: local("Museo Sans 700"),
+  src: local("Museo Sans 700"), local("Museo-Sans-700"),
     url("../fonts/Museo Sans/MuseoSans_700.woff2") format("woff2");
   font-weight: 700;
 }
 
 @font-face {
   font-family: "Museo Sans";
-  src: local("Museo Sans 900"),
+  src: local("Museo Sans 900"), local("Museo-Sans-900"),
     url("../fonts/Museo Sans/MuseoSans_900.woff2") format("woff2");
   font-weight: 900;
 }
 
 @font-face {
   font-family: "Brandon Grotesque";
-  src: local("Brandon Grotesque Black"),
+  src: local("Brandon Grotesque Black"), local("Brandon-Grotesque-Black"),
     url("../fonts/Brandon-Grotesque-Font-Family/brandon-grotesque-black.woff2") format("woff2");
   font-weight: 900;
 }
 
 @font-face {
   font-family: "Brandon Grotesque";
-  src: local("Brandon Grotesque Bold"),
+  src: local("Brandon Grotesque Bold"), local("Brandon-Grotesque-Bold"),
     url("../fonts/Brandon-Grotesque-Font-Family/brandon-grotesque-bold-regular.woff2") format("woff2");
   font-weight: 700;
 }
 
 @font-face {
   font-family: "Brandon Grotesque";
-  src: local("Brandon Grotesque Light"),
+  src: local("Brandon Grotesque Light"), local("Brandon-Grotesque-Light"),
     url("../fonts/Brandon-Grotesque-Font-Family/brandon-grotesque-light.woff2") format("woff2");
   font-weight: 300;
 }

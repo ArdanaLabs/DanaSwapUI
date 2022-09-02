@@ -8,14 +8,14 @@
         <div class="dana-card flex-row dana-card-set">
           <div class="dana-card-item relative text-left <%=card.bg%>">
             <div class="dana-card-img-pos absolute">
-              <img src="../../assets/img/<%=card.img%>" alt="token">
+              <img src="../../assets/img/<%=card.img%>" alt="" loading="lazy" decoding="async">
             </div>
-            <p class="dana-card-label dana-card-label-font uppercase">
+            <h4 class="dana-card-label dana-card-label-font uppercase">
               <%=card.label%>
-            </p>
-            <p class="dana-card-name dana-card-label-font uppercase">
+            </h4>
+            <h3 class="dana-card-name dana-card-label-font uppercase">
               <%=card.name%>
-            </p>
+            </h3>
             <div class="flex justify-between dana-card-desc-font dana-card-desc-stat">
               <div>Stability Fee
                 <%=card.fee%>

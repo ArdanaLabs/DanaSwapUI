@@ -7,24 +7,22 @@
             <h1 class="home-hero-title">
               Collateral assets can be leveraged
               to mint Ardana Stablecoins.</h1>
-            <h4 class="home-hero-desc-content">
+            <p class="home-hero-desc-content">
               Open a Ardana Stablecoin Vault, deposit your
-              collateral, and generate dUSD against it.</h4>
+              collateral, and generate dUSD against it.</p>
           </div>
           <div class="cardano-bar mt-30 mb-20">
-            <img src="../../assets/img/coins/cardano.png" alt="">
-            <img src="../../assets/img/coins/cardano.png" alt="">
-            <img src="../../assets/img/coins/cardano.png" alt="">
-            <img src="../../assets/img/coins/cardano.png" alt="">
-            <img src="../../assets/img/coins/cardano.png" alt="">
-            <img src="../../assets/img/coins/cardano.png" alt="">
-            <img src="../../assets/img/coins/cardano.png" alt="">
+            <% let images = ['cardano', 'cardano', 'cardano', 'cardano', 'cardano', 'cardano', 'cardano'] %>
+            <% images.forEach(function(image) { %>
+            <img src="../../assets/img/coins/<%=image%>.png" alt="" loading="lazy" decoding="async">
+            <% }); %>
           </div>
         </div>
       </div>
       <div class="contents-box">
-        <div class="flex justify-center"><img src="../../assets/img/backgrounds/BG-GRAPHIC.png" alt="graphic"
-            width="100%">
+        <div class="flex justify-center">
+          <img src="../../assets/img/backgrounds/BG-GRAPHIC.png" alt=""
+          loading="lazy" decoding="async" width="100%">
         </div>
       </div>
     </div>
