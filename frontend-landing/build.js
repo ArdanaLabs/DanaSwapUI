@@ -11,51 +11,57 @@ const minifyHTML = require("./plugins/minify-html")
 const outdir = "build"
 
 ;(async () => {
-    await esbuild
+  await esbuild
     .build({
-        entryPoints: ["views/pages/Home/index.ejs"],
-        outdir: outdir,
-        minify: true,
-        sourcemap: false,
-        bundle: true,
-        write: false,
-        loader: { ".ejs": "file" },
-        plugins: [
+      entryPoints: ["views/pages/Home/index.ejs"],
+      outdir: outdir,
+      minify: true,
+      sourcemap: false,
+      bundle: true,
+      write: false,
+      loader: { ".ejs": "file" },
+      plugins: [
         compileEJSToHTML({
-            dest: `${outdir}`,
+          dest: `${outdir}`,
         }),
         minifyHTML({
-            src: `${outdir}`,
-            dest: `${outdir}`,
+          src: `${outdir}`,
+          dest: `${outdir}`,
         }),
         copyStaticFiles({
-            src: "assets",
-            dest: `${outdir}/assets`,
+          src: "assets",
+          dest: `${outdir}/assets`,
         }),
         processCSS({
-            src: "assets/css",
-            dest: `${outdir}/assets/css`,
+          src: "assets/css",
+          dest: `${outdir}/assets/css`,
         }),
-        ],
-        assetNames: "[name]",
+      ],
+      assetNames: "[name]",
     })
     .catch((e) => {
-        console.error(e)
-        process.exit(1)
+      console.error(e)
+      process.exit(1)
     })
-    await esbuild
+  await esbuild
     .build({
-        entryPoints: [`${outdir}/index.html`],
-        outdir: outdir,
-        minify: true,
-        sourcemap: false,
-        bundle: true,
-        write: false,
-        plugins: [html()],
-        assetNames: "[name]",
+      entryPoints: [`${outdir}/index.html`],
+      outdir: outdir,
+      minify: true,
+      sourcemap: false,
+      bundle: true,
+      write: false,
+      plugins: [
+        html(),
+        copyStaticFiles({
+          src: `${outdir}/index.html`,
+          dest: `${outdir}/404.html`,
+        }),
+      ],
+      assetNames: "[name]",
     })
     .catch((e) => {
-        console.error(e)
-        process.exit(1)
+      console.error(e)
+      process.exit(1)
     })
 })()
