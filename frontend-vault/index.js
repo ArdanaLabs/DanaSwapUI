@@ -13,6 +13,11 @@ app.get("/", function (req, res) {
   res.render("pages/Home/index", {currentUrl : req.url});
 });
 
+// myVault page
+app.get("/myVaults", function (req, res) {
+  res.render("pages/MyVault/index", {currentUrl : req.url});
+});
+
 // about page
 
 app.listen(4000);

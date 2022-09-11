@@ -1,0 +1,74 @@
+.myvault-hero {
+  background: url(/assets/img/backgrounds/hero-bg-dark.png) right bottom no-repeat;
+  padding-top: 150px;
+  padding-bottom: 150px;
+  background-size: cover;
+  border-bottom-right-radius: 100px;
+}
+
+@media (max-width:599.95px) {
+  .myvault-hero {
+    background: url(/assets/img/backgrounds/hero-bg-dark.png) right bottom no-repeat;
+    text-align: center;
+    padding-bottom: 30px;
+    border-bottom-right-radius: 75px;
+  }
+}
+
+@media (max-width:599.95px) {
+  .myvault-hero-desc {
+    text-align: center;
+  }
+}
+
+.myvault-hero-desc {
+  width: 660px;
+  position: relative;
+}
+
+.myvault-hero-desc>h1 {
+  color: #FFFFFF;
+}
+
+@media (max-width:599.95px) {
+  .myvault-hero-desc {
+    width: auto;
+  }
+}
+
+.myvault-hero-title {
+  margin: 0;
+  font-family: Brandon Grotesque, fantasy;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 2.0625rem;
+  line-height: 1.167;
+}
+
+@media (min-width:600px) {
+  .myvault-hero-title {
+    font-size: 2.5707rem;
+  }
+}
+
+@media (min-width:900px) {
+  .myvault-hero-title {
+    font-size: 2.7849rem;
+  }
+}
+
+@media (min-width:1200px) {
+  .myvault-hero-title {
+    font-size: 3.2134rem;
+  }
+}
+
+.vault-box {
+  margin-top: -150px;
+}
+
+.vault-box-bg {
+  padding: 30px;
+  background: #2F3F9D;
+  border-radius: 20px;
+}
