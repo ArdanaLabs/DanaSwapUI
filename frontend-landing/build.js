@@ -8,12 +8,15 @@ const compileEJSToHTML = require("./plugins/compile-ejs-to-html")
 const processCSS = require("./plugins/process-css")
 const minifyHTML = require("./plugins/minify-html")
 
+const routes = require("./routes.json")
+
 const outdir = "build"
+const entryPoints = routes.map(({ dir }) => `views/${dir}`)
 
 ;(async () => {
   await esbuild
     .build({
-      entryPoints: ["views/pages/Home/index.ejs"],
+      entryPoints: entryPoints,
       outdir: outdir,
       minify: true,
       sourcemap: false,
@@ -37,28 +40,7 @@ const outdir = "build"
           dest: `${outdir}/assets/css`,
         }),
       ],
-      assetNames: "[name]",
-    })
-    .catch((e) => {
-      console.error(e)
-      process.exit(1)
-    })
-  await esbuild
-    .build({
-      entryPoints: [`${outdir}/index.html`],
-      outdir: outdir,
-      minify: true,
-      sourcemap: false,
-      bundle: true,
-      write: false,
-      plugins: [
-        html(),
-        copyStaticFiles({
-          src: `${outdir}/index.html`,
-          dest: `${outdir}/404.html`,
-        }),
-      ],
-      assetNames: "[name]",
+      assetNames: "[dir]/[name]",
     })
     .catch((e) => {
       console.error(e)

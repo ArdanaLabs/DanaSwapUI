@@ -9,9 +9,9 @@
     <%- include('../../components/svg-defs'); %>
     <div id="root">
         <div class="commonStyle-self">
-            <%- include('../../components/nav.ejs'); %>
+            <%- include('../../components/nav.ejs', {currentUrl: '/tech'}); %>
             <div class="Main-container">
-                <%- include('../../components/explore.ejs'); %>
+                <%- include('../../components/explore.ejs', {currentUrl: '/tech'}); %>
             </div>
             <%- include('../../components/footer'); %>
         </div>

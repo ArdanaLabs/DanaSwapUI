@@ -1,4 +1,5 @@
 var express = require("express");
+var routes = require("./routes.json");
 var app = express();
 
 app.use(express.static(__dirname));
@@ -9,29 +10,13 @@ app.set("view engine", "ejs");
 // use res.render to load up an ejs view file
 
 // index page
-app.get("/", function (req, res) {
-  res.render("pages/Home/index", {currentUrl : req.url});
-});
 
-app.get("/tech", function (req, res) {
-  res.render("pages/Technology/index", {currentUrl : req.url});
-});
-
-app.get("/community", function (req, res) {
-  res.render("pages/Community/index", {currentUrl : req.url});
-});
-
-app.get("/news", function (req, res) {
-  res.render("pages/News/index", {currentUrl : req.url});
-});
-
-// app.get("/roadmap", function (req, res) {
-//   res.render("pages/Roadmap/index", {currentUrl : req.url});
-// });
-
-app.get("/brandassets", function (req, res) {
-  res.render("pages/brandassets/index", {currentUrl : req.url});
-});
+routes.forEach((route) => {
+  const { path, dir } = route
+  app.get(path, function (req, res) {
+    res.render(dir, { currentUrl: req.url })
+  })
+})
 
 // about page
 

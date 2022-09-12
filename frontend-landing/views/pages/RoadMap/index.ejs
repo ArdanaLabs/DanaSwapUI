@@ -10,7 +10,7 @@
     <%- include('../../components/svg-defs'); %>
     <div id="root">
         <div class="commonStyle-self">
-            <%- include('../../components/nav.ejs'); %>
+            <%- include('../../components/nav.ejs', {currentUrl: '/roadmap' }); %>
             <div class="MuiBox-root">
                 <%- include('./partials/roadmap.ejs'); %>
                 <%- include('./partials/todolist.ejs'); %>
