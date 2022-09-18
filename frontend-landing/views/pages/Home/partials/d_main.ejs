@@ -52,7 +52,8 @@
                     <div class="rec-carousel-item-pos danaswap-item">
                         <div class="home-main-carousel-item">
                             <div class="home-main-carousel-img">
-                                <%- include('../../../components/circle_btn.ejs', {btn: 127}) %>
+                                <% let btn={size: 127, rx: 60.5} %>
+                                <%- include('../../../components/circle_btn.ejs', {btn: btn}) %>
                                 <img class="common-photo carousel-img-w" src="<%=card.img_src%>" alt="" />
                             </div>
                             <p

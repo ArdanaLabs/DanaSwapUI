@@ -32,7 +32,8 @@
                             alt="<%=channel.language%>"><a
                             class="Typography-root Link-underlineHover Typography-colorPrimary"
                             href="/">
-                                <%- include('../../../components/circle_btn.ejs', {btn: 41}); %>
+                                <% let btn={size: 41, rx: 17.5} %>
+                                <%- include('../../../components/circle_btn.ejs', {btn: btn}); %>
                             <img class="community-tel-photo" src="../../../../assets/icon/carousel-next.svg" alt="Select this channel" width="10px">
                         </a>
                     </div>

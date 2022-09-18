@@ -1,7 +1,8 @@
 <div class="Grid-item Grid-grid-xs-12 Grid-grid-md-4">
     <div class="<%= info ? 'com-card-exInfo' : 'com-card-noneInfo' %>">
         <div class="com-card-img">
-            <%- include('./circle_btn.ejs', {btn: 156}) %>
+            <% let btn={size: 156, rx: 75} %>
+            <%- include('./circle_btn.ejs', {btn: btn}) %>
             <div class="common-children">
                 <img class="community-card-img" src="<%=card.img_src%>"
                     alt="" width="auto" />

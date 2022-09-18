@@ -19,7 +19,8 @@
                             <div class="rec-carousel-item-pos rec rec-item-wrapper">
                                 <div class="roadmap-todolist-carousel">
                                     <div class="text-center title">
-                                        <%- include('../../../components/circle_btn.ejs', {btn: 106}) %>
+                                        <% let btn={size: 106, rx: 50} %>
+                                        <%- include('../../../components/circle_btn.ejs', {btn: btn}) %>
                                         <div class="common-children">
                                             <span><%=quarter%></span>
                                         </div>

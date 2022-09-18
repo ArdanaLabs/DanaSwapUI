@@ -17,7 +17,8 @@
                         <div class="home-playerPreview intro-player" tabindex="0">
                             <div class="home-intro-playIcon">
                                 <addr title="playIcon">
-                                    <%- include('../../../components/circle_btn.ejs', {btn: 151}); %>
+                                    <% let btn = {size: 151, rx: 72.5} %>
+                                    <%- include('../../../components/circle_btn.ejs', {btn: btn}); %>
                                 </addr>
                                 <img class="home-intro-photo" src="../../../../assets/icon/video-play.svg" alt="play intro video" width="100px" />
                             </div>
@@ -61,7 +62,8 @@
                     </div>
                     <div class="home-intro-card-bg">
                         <div class="home-intro-card-img">
-                            <%- include('../../../components/circle_btn.ejs', {btn: 151}); %>
+                            <% let btn={size: 151, rx: 72.5} %>
+                            <%- include('../../../components/circle_btn.ejs', {btn: btn}); %>
                             <img class="common-photo"
                                 src="<%=card.img_src%>"
                                 alt="" />

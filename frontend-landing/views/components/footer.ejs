@@ -5,7 +5,8 @@
                 Ardana is the leading stablecoin and stableswap DEX on Cardano
             </div>
             <div class="my-30 footer-logo">
-                <%- include('../components/circle_btn.ejs', {btn: 181}) %>
+                <% let btn={size: 181, rx: 87.5} %>
+                <%- include('../components/circle_btn.ejs', {btn: btn}) %>
                 <img class="common-photo"
                     src="../../assets/logo_blue.png"
                     alt="" />
