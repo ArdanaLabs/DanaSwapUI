@@ -136,6 +136,10 @@
     transform: none;
 }
 
+.unveil.responsive {
+    overflow-y: hidden;
+}
+
 .drop-menu {
     display: none;
 }
