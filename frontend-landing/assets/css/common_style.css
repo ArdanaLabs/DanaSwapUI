@@ -137,7 +137,7 @@
 }
 
 .unveil.responsive {
-    overflow-y: hidden;
+    overflow: hidden !important;
 }
 
 .drop-menu {
