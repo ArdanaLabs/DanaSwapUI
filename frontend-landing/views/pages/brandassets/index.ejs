@@ -9,7 +9,7 @@
     <%- include('../../components/svg-defs'); %>
     <div id="root">
         <div class="commonStyle-self">
-            <%- include('../../components/nav.ejs'); %>
+            <%- include('../../components/nav.ejs', {currentUrl: '/brandassets'}); %>
             <div class="Main-container main-bg">
                 <%- include('./partials/brandassets.ejs'); %>
                 <%- include('./partials/guidelines.ejs'); %>
