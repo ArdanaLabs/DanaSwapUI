@@ -1048,18 +1048,25 @@ body::backdrop {
     user-select: none;
     border-radius: 0;
     vertical-align: middle;
-    -moz-appearance: none;
     justify-content: center;
     text-decoration: none;
     background-color: transparent;
-    -webkit-appearance: none;
-    -webkit-tap-highlight-color: transparent;
 }
 
 @media only screen and (min-width: 600px) {
     .IconButton-root {
         display: none;
     }
+}
+
+#closeBtn {
+    justify-content: end;
+    padding-right: 20px;
+    padding-top: 10px;
+}
+
+#closeBtn img {
+    width: 30px;
 }
 
 .no-js:root .IconButton-root {

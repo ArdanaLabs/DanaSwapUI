@@ -7,8 +7,7 @@
             <div class="nav-menu">
                 <% let menus=[ {url: "/" , name: "Home" }, {url: "/tech" , name: "Technology" },
                     {url: "https://docs.ardana.org/" , name: "Documentation" }, {url: "/community" , name: "Community"
-                    }, {url: "/news" , name: "News" }, 
-                    <!-- {url: "/roadmap" , name: "Roadmap" },  -->
+                    }, {url: "/news" , name: "News" }, <!-- {url: "/roadmap" , name: "Roadmap" }, -->
                     ] %>
                 <% menus.forEach(function(menu) { %>
                     <a class="<%= currentUrl == menu.url ? 'active' : '' %> Typography-root Link-underlineNone nav-menuItem Typography-colorPrimary"
@@ -18,13 +17,7 @@
                 <% }); %>
             </div>
             <button id="dropBtn" class="ButtonBase-root IconButton-root" data-bs-toggle="dropdown" tabindex="0"
-                type="button"><span class="IconButton-label">
-                    <div class="nav-dropBtn" aria-expanded="false" tabindex="0">
-                        <div class="nav-dropBtn-bar1"></div>
-                        <div class="nav-dropBtn-bar2"></div>
-                        <div class="nav-dropBtn-bar3"></div>
-                    </div>
-                </span><span class="TouchRipple-root"></span>
+                type="button"><img src="../../assets/icon/navIcon.svg">
             </button>
         </div>
     </div>
@@ -33,20 +26,21 @@
     <div class="Drawer-root Drawer-modal nav-drawer dropdown-menu">
         <div class="Backdrop-root" aria-hidden="true"></div>
         <div tabindex="0" data-test="sentinelStart"></div>
-        <div class="Paper-root Drawer-paper Drawer-paperAnchorTop Paper-elevation16"><a
-                class="Typography-root Link-underlineNone nav-menuItem Typography-colorPrimary" href="/">Home</a><a
-                class="Typography-root Link-underlineNone nav-menuItem Typography-colorPrimary"
+        <div class="Paper-root Drawer-paper Drawer-paperAnchorTop Paper-elevation16">
+            <button id="closeBtn" class="ButtonBase-root IconButton-root" data-bs-toggle="dropdown" tabindex="0"
+                type="button"><img src="../../assets/icon/X-icon.png">
+            </button><a class="Typography-root Link-underlineNone nav-menuItem Typography-colorPrimary"
+                href="/">Home</a><a class="Typography-root Link-underlineNone nav-menuItem Typography-colorPrimary"
                 href="/tech">Technology</a><a
                 class="Typography-root Link-underlineNone nav-menuItem Typography-colorPrimary"
                 href="https://docs.ardana.org/">Documentation</a><a
                 class="Typography-root Link-underlineNone nav-menuItem Typography-colorPrimary"
                 href="/community">Community</a><a
-                class="Typography-root Link-underlineNone nav-menuItem Typography-colorPrimary" 
-                href="/news">News</a>
-                <!-- <a
+                class="Typography-root Link-underlineNone nav-menuItem Typography-colorPrimary" href="/news">News</a>
+            <!-- <a
                 class="Typography-root Link-underlineNone nav-menuItem Typography-colorPrimary"
                 href="/roadmap">Roadmap</a> -->
-            </div>
+        </div>
         <div tabindex="0" data-test="sentinelEnd"></div>
     </div>
 </div>
