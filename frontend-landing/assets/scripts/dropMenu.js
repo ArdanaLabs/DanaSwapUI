@@ -26,4 +26,10 @@ function closeMenu() {
   } else {
     drawer.className = "drop-menu"
   }
+  var veil = document.getElementById("body")
+  if (veil.className === "unveil") {
+    veil.className += " responsive"
+  } else {
+    veil.className = "unveil"
+  }
 }
