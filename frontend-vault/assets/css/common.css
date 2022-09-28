@@ -622,6 +622,10 @@ body::backdrop {
   }
 }
 
+.mr-20 {
+  margin-right: 20px;
+}
+
 .mr-30 {
   margin-right: 30px;
 }

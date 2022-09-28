@@ -42,7 +42,7 @@
   font-style: normal;
   font-weight: 700;
   font-size: 2.0625rem;
-  line-height: 1.167;
+  line-height: 1.5;
 }
 
 @media (min-width:600px) {
@@ -64,11 +64,32 @@
 }
 
 .vault-box {
-  margin-top: -150px;
+  margin-top: -230px;
 }
 
 .vault-box-bg {
   padding: 30px;
   background: #2F3F9D;
   border-radius: 20px;
+}
+
+.vault-box table {
+  text-align: left;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+table span {
+  font-size: 14px;
+}
+
+tbody {
+  border-bottom: 1px solid #ddd;
+}
+
+.table-border {
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, #72D2F2 0%, #6077FF 100%);
+  border-radius: 55px;
 }
