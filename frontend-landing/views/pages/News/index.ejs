@@ -1,0 +1,24 @@
+<html lang="en-US" class="no-js">
+
+<head>
+    <%- include('../../components/head'); %>
+    <link href="../../../assets/css/news_style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body id="body" class="unveil">
+    <%- include('../../components/svg-defs'); %>
+    <div id="root">
+        <div class="commonStyle-self">
+            <%- include('../../components/nav.ejs', {currentUrl: '/news'}); %>
+            <div class="Main-container main-bg">
+                <%- include('./partials/news.ejs'); %>
+                <%- include('./partials/medium.ejs'); %>
+                <%- include('./partials/twitter.ejs'); %>
+                <%- include('./partials/media.ejs'); %>
+            </div>
+            <%- include('../../components/footer'); %>
+        </div>
+    </div>
+</body>
+
+</html>

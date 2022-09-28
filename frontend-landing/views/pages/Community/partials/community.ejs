@@ -1,0 +1,29 @@
+<div class="com-frame-padding">
+    <div class="Container-root Container-maxWidthLg">
+        <div class="Grid-container Grid-justify-content-xs-center">
+            <div class="Grid-item Grid-grid-xs-12 Grid-grid-md-9">
+                <div class="Grid-container Grid-reverse Grid-spacing-xs-3">
+                    <div class="Grid-container Grid-item Grid-grid-xs-12 Grid-grid-md-6">
+                        <div class="community-display">
+                            <h3 class="Typography-root community-title Typography-h3 mb-10">Community</h3>
+                            <p class="Typography-root Typography-h4 mb-30">Get involved with our expansive community
+                                connecting you with Ardana followers all throughout the globe.</p>
+                            <div class="socialBar-padding">
+                                <%- include('../../../components/socialIcon_bar.ejs') %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="Grid-item Grid-grid-xs-12 Grid-grid-md-6">
+                        <div class="text-center"><img src="../../../../assets/logos/community-hero.png" alt=""
+                                width="100%"></div>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="Grid-container Grid-spacing-xs-3 Grid-item Grid-grid-xs-12 Grid-grid-md-9">
+                <% let info = true; %>
+                <%- include('../../../components/community_cards.ejs', {info:info}) %>
+            </div>
+        </div>
+    </div>
+</div>

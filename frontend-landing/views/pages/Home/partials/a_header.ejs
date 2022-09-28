@@ -1,0 +1,60 @@
+<div class="mb-10 home-bg">
+    <div class="Container-root Container-maxWidthLg">
+        <div class="Grid-container Grid-reverse Grid-align-items-xs-center">
+            <div class="Grid-item Grid-grid-xs-12 Grid-grid-sm-6">
+                <div class="text-left home-title">
+                    <h1 class="Typography-root Typography-h1 home-header-title">
+                        Mint, Trade, Stake and <span>Store Value</span>
+                    </h1>
+                </div>
+                <div class="home-subTitle mt-20 home-subTitle-mb">
+                    The First All-in-One Stablecoin Ecosystem Built on Cardano
+                </div>
+                <div class="home-trading-btn">
+                    <% let btn = {width: 166, name: "Trading Now"} %>
+                    <%- include('../../../components/button.ejs', {btn: btn}) %>
+                    <div class="home-social">
+                        <% let icons = [{
+                            href: "https://t.me/ardanaofficial",
+                            width: 26,
+                            height: 22,
+                            path_d: "M9.86767 14.2321L9.45413 20.0488C10.0458 20.0488 10.302 19.7946 10.6093 19.4894L13.3833 16.8383L19.1312 21.0477C20.1854 21.6352 20.9281 21.3258 21.2125 20.0779L24.9854 2.39876L24.9864 2.39772C25.3208 0.839387 24.4229 0.230012 23.3958 0.612304L1.21871 9.10293C-0.294834 9.69043 -0.271918 10.5342 0.961416 10.9165L6.63121 12.68L19.801 4.43939C20.4208 4.02897 20.9843 4.25605 20.5208 4.66647L9.86767 14.2321Z"
+                        }, {
+                            href: "https://twitter.com/ardanaproject",
+                            width: 26,
+                            height: 21,
+                            path_d: "M25.5 2.40469C24.5703 2.8125 23.5797 3.08281 22.5469 3.21406C23.6094 2.57969 24.4203 1.58281 24.8016 0.38125C23.8109 0.971875 22.7172 1.38906 21.5516 1.62188C20.6109 0.620313 19.2703 0 17.8078 0C14.9703 0 12.6859 2.30313 12.6859 5.12656C12.6859 5.53281 12.7203 5.92344 12.8047 6.29531C8.54375 6.0875 4.77344 4.04531 2.24062 0.934375C1.79844 1.70156 1.53906 2.57969 1.53906 3.525C1.53906 5.3 2.45312 6.87344 3.81562 7.78437C2.99219 7.76875 2.18438 7.52969 1.5 7.15313C1.5 7.16875 1.5 7.18906 1.5 7.20937C1.5 9.7 3.27656 11.7688 5.60625 12.2453C5.18906 12.3594 4.73438 12.4141 4.2625 12.4141C3.93438 12.4141 3.60312 12.3953 3.29219 12.3266C3.95625 14.3563 5.84063 15.8484 8.08125 15.8969C6.3375 17.2609 4.12344 18.0828 1.72656 18.0828C1.30625 18.0828 0.903125 18.0641 0.5 18.0125C2.77031 19.4766 5.46094 20.3125 8.3625 20.3125C17.7938 20.3125 22.95 12.5 22.95 5.72812C22.95 5.50156 22.9422 5.28281 22.9312 5.06563C23.9484 4.34375 24.8031 3.44219 25.5 2.40469Z"
+                        }
+                        ]
+                        icons.forEach(function(icon) { %>
+                        <%- include('../../../components/social_icon.ejs', {icon: icon}) %>
+                        <% }); %>
+                    </div>
+                </div>
+                <div class="home-listingLabel home-socialIcon-m">
+                    Listed On:
+                </div>
+                <div class="home-listingItem-display home-listingItem">
+                    <% let links = [{
+                        href: "https://www.gate.io/trade/DANA_USDT",
+                        src: "../../../../assets/listings//gate.io.svg",
+                        alt: "gate.io"
+                    }, {
+                        href: "https://www.mexc.com/exchange/DANA_USDT",
+                        src: "../../../../assets/listings/MEXC.svg",
+                        alt: "MEXC"
+                    }]
+                    links.forEach(function(link) { %>
+                    <a class="Typography-root Link-underlineNone Typography-colorPrimary"
+                        href="<%=link.href%>" >
+                        <img src="<%=link.src%>" alt="<%=link.alt%>" />
+                    </a>
+                    <% }) %>
+                </div>
+            </div>
+            <div class="Grid-item Grid-grid-xs-12 Grid-grid-sm-6 home-header-video">
+                <img class="common-display" src="../../../../assets/backgrounds/bubble.png" alt=""/>
+            </div>
+        </div>
+    </div>
+</div>

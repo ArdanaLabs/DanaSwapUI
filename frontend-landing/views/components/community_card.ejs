@@ -1,0 +1,22 @@
+<div class="Grid-item Grid-grid-xs-12 Grid-grid-md-4">
+    <div class="<%= info ? 'com-card-exInfo' : 'com-card-noneInfo' %>">
+        <div class="com-card-img">
+            <% let btn={size: 156, rx: 75} %>
+            <%- include('./circle_btn.ejs', {btn: btn}) %>
+            <div class="common-children">
+                <img class="community-card-img" src="<%=card.img_src%>"
+                    alt="" width="auto" />
+            </div>
+        </div>
+        <p class="Typography-root Typography-h5 mb-20">
+            <%=card.title%>
+        </p>
+        <% if (card.info) { %>
+        <p class="Typography-root Typography-h4 mb-30"><%=card.info%></p>
+        <% } %>
+        <a class="Typography-root Link-underlineHover com-card-cta Typography-colorPrimary"
+            href="<%=card.href%>">
+            <%- include('./button.ejs', {btn: card.btn}) %>
+        </a>
+    </div>
+</div>

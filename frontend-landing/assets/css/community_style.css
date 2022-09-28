@@ -1,0 +1,152 @@
+.main-bg {
+    background: url(../../assets/backgrounds/pink-gradient.png) top -900px left -700px
+            no-repeat,
+        url(../../assets/backgrounds/cyan-gradient.png) top -500px left -900px
+            no-repeat,
+        url(../../assets/backgrounds/cyan-gradient.png) top 0px right -900px no-repeat,
+        url(../../assets/backgrounds/pink-gradient.png) bottom -400px left -900px
+            no-repeat,
+        url(../../assets/backgrounds/cyan-gradient.png) bottom -900px right -900px
+            no-repeat,
+        linear-gradient(
+            180deg,
+            rgba(4, 13, 77, 0.7) -43.4%,
+            rgba(50, 3, 111, 0.7) 222.51%
+        ),
+        url(../../assets/backgrounds/community-bg.png) top left no-repeat;
+    background-size: cover;
+}
+
+.com-card-exInfo {
+    height: 350px;
+    padding: 80px 40px 80px 40px;
+    position: relative;
+    background: #1d277a;
+    margin-top: 110px;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.community-tel-photo {
+    display: inline-flex;
+    position: absolute;
+    transform: translate(-250%, 70%);
+    align-items: center;
+    border-radius: 50%;
+    justify-content: center;
+}
+
+@media (max-width: 960px) {
+    .com-card-exInfo {
+        height: 260px;
+        padding: 80px 30px 80px 30px;
+        position: relative;
+        background: #1d277a;
+        margin-top: 110px;
+        text-align: center;
+        border-radius: 10px;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 599.95px) {
+    .makeStyles-title-409 {
+        text-align-last: left;
+    }
+
+    .main-bg {
+        background: url(../../assets/backgrounds/pink-gradient.png) top -1800px left -1400px
+                no-repeat,
+            linear-gradient(
+                180deg,
+                rgba(4, 13, 77, 0.7) -43.4%,
+                rgba(50, 3, 111, 0.7) 222.51%
+            ),
+            url(../../assets/backgrounds/community-bg-mobile.png) top left
+                no-repeat;
+        background-size: cover;
+    }
+    .com-frame-padding {
+        padding-top: 100px !important;
+        padding-bottom: 100px !important;
+    }
+    .socialBar-padding {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .com-card-exInfo {
+        height: 250px;
+        margin-top: 80px;
+        padding-top: 50px;
+        margin-bottom: 0px;
+    }
+}
+
+.community-title {
+    color: #73d6f1;
+}
+
+.com-frame-padding {
+    padding-top: 150px;
+    padding-bottom: 150px;
+}
+
+.makeStyles-root-32 {
+    width: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.makeStyles-root-37 {
+    height: calc(100% - 140px);
+    padding: 80px 30px 80px 30px;
+    position: relative;
+    background: #1d277a;
+    margin-top: 110px;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.makeStyles-root-45 {
+    width: fit-content;
+    cursor: pointer;
+    display: inline-block;
+    z-index: 102;
+    position: relative;
+    line-height: 0px;
+}
+
+.community-tel-bg {
+    padding: 20px;
+    background: #1d277a;
+    border-radius: 10px;
+}
+
+.makeStyles-title-21 {
+    color: #73d6f1;
+}
+
+.community-tel-title > span {
+    color: #73d6f1;
+}
+
+.community-display {
+    display: flex;
+    text-align: start;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.community-tel-img {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.link {
+    color: #83d7ee;
+    cursor: pointer;
+}

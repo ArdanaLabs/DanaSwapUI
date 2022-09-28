@@ -1,0 +1,23 @@
+<html lang="en-US" class="no-js">
+
+<head>
+    <%- include('../../components/head'); %>
+    <link href="../../../assets/css/brandassets_style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body id="body" class="unveil">
+    <%- include('../../components/svg-defs'); %>
+    <div id="root">
+        <div class="commonStyle-self">
+            <%- include('../../components/nav.ejs', {currentUrl: '/brandassets'}); %>
+            <div class="Main-container main-bg">
+                <%- include('./partials/brandassets.ejs'); %>
+                <%- include('./partials/guidelines.ejs'); %>
+                <%- include('./partials/pressKit.ejs'); %>
+            </div>
+            <%- include('../../components/footer'); %>
+        </div>
+    </div>
+</body>
+
+</html>
