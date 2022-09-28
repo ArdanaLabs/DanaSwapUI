@@ -12,10 +12,6 @@
     "dir": "pages/Community/index.ejs"
   },
   {
-    "path": "/news",
-    "dir": "pages/News/index.ejs"
-  },
-  {
     "path": "/brandassets",
     "dir": "pages/brandassets/index.ejs"
   }
