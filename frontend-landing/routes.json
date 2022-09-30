@@ -1,0 +1,18 @@
+[
+  {
+    "path": "/",
+    "dir": "pages/Home/index.ejs"
+  },
+  {
+    "path": "/tech",
+    "dir": "pages/Technology/index.ejs"
+  },
+  {
+    "path": "/community",
+    "dir": "pages/Community/index.ejs"
+  },
+  {
+    "path": "/brandassets",
+    "dir": "pages/brandassets/index.ejs"
+  }
+]

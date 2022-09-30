@@ -1,0 +1,50 @@
+<div class="<%= currentUrl == '/' ? 'explore-home' : 'explore' %>">
+    <div class="Container-root Container-maxWidthLg">
+        <div class="Grid-container Grid-align-items-xs-flex-start">
+            <div class="Grid-item Grid-grid-xs-12 Grid-grid-sm-3 Grid-grid-md-4">
+                <h3 class="Typography-root title-color-lh Typography-h3">
+                    Explore
+                </h3>
+                <p class="Typography-root explore-content Typography-h4">
+                    Browse through our technical papers to learn more about
+                    the Ardana ecosystem.
+                </p>
+            </div>
+            <div class="Grid-item Grid-justify-content-xs-center Grid-item Grid-grid-xs-12 Grid-grid-sm-9 Grid-grid-md-8 explore-list">
+                <% let carouselItems = [{
+                    img: "eUTXOModels.png",
+                    title: "eUTXO Models",
+                    href: "d2g9qajrb4w23eyq"
+                }, {
+                    img: "DanaswapTechnicalPaper.png",
+                    title: "Danaswap Technical Paper",
+                    href: "v4w3muusi6im3ay2"
+                }
+                ] %>
+                <% carouselItems.forEach(function(item) { %>
+                <div class="rec rec-carousel-item-pos explore-carousel-item mb-30">
+                    <div class="explore-carousel-position explore-carousel-w">
+                        <div
+                            class="explore-carousel-bg">
+                            <img src="../../assets/papers/<%=item.img%>" alt=""
+                                width="100%" />
+                        </div>
+                        <div class="explore-carousel-content">
+                            <div class="explore-carousel-title">
+                                <%=item.title%>
+                            </div>
+                            <div class="explore-carousel-cta mt-20">
+                                <a class="Typography-root Link-underlineNone Typography-colorPrimary"
+                                    href="https://docsend.com/view/<%=item.href%>">
+                                    <% let exploreBtn = {width: 151, name: "Learn More"} %>
+                                    <%- include('../components/button.ejs', {btn: exploreBtn}) %>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% }); %>
+            </div>
+        </div>
+    </div>
+</div>

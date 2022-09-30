@@ -1,0 +1,83 @@
+<div class="home-intro-bg">
+    <div class="Container-root Container-maxWidthLg">
+        <div class="Grid-container Grid-spacing-xs-3 Grid-align-items-xs-center">
+            <div class="Grid-item Grid-grid-xs-12 Grid-grid-sm-6">
+                <h3 class="Typography-root home-intro-title Typography-h3">
+                    What is <span>Ardana</span>?
+                </h3>
+                <p class="Typography-root home-intro-content Typography-h4">
+                    Ardana is a decentralized stablecoin hub which will bring
+                    the necessary <abbr title="Decentralized Finance">DeFi</abbr> primitives needed to bootstrap &amp;
+                    maintain any economy to Cardano.
+                </p>
+            </div>
+            <div class="Grid-item Grid-grid-xs-12 Grid-grid-sm-6">
+                <div class="home-intro-video">
+                    <div class="home-intro-screen">
+                        <div class="home-playerPreview intro-player" tabindex="0">
+                            <div class="home-intro-playIcon">
+                                <abbr title="playIcon">
+                                    <% let btn = {size: 151, rx: 72.5} %>
+                                    <%- include('../../../components/circle_btn.ejs', {btn: btn}); %>
+                                </abbr>
+                                <img class="home-intro-photo" src="../../../../assets/icon/video-play.svg" alt="play intro video" width="100px" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <dl class="Grid-container Grid-spacing-xs-3 home-intro-card-mt">
+            <% let cards = [
+                {
+                    video_src: "blob:http://localhost:3000/42533347-fbc0-4a45-9a48-9bf2da27b331",
+                    img_src: "../../../../assets/logos/fully-decentralized.png",
+                    title: "Fully Decentralized",
+                    info: "Unbiased, collateral backed and pegged to the US Dollar."
+                },
+                {
+                    video_src: "blob:http://localhost:3000/5d839433-e0c0-4105-bff2-32c1677ad55c",
+                    img_src: "../../../../assets/logos/borrowing.png",
+                    title: "Borrowing",
+                    info: "Allows users to borrow stablecoins against locked collateral."
+                },
+                {
+                    video_src: "blob:http://localhost:3000/c0971a0b-82d9-4345-918b-68b877b3cfd7",
+                    img_src: "../../../../assets/logos/store-of-value.png",
+                    title: "Store of Value",
+                    info: "Secure store of value preserving value even in volatile markets."
+                },
+                {
+                    video_src: "blob:http://localhost:3000/4bab74fd-bb21-4273-a914-7da8d49fce97",
+                    img_src: "../../../../assets/logos/powered-by-cardano.png",
+                    title: "Powered by Cardano",
+                    info: "Built utilizing Cardano’s speed, scalability and security."
+                }
+            ] %>
+            <% cards.forEach(function(card){ %>
+            <div class="Grid-item Grid-grid-xs-12 Grid-grid-sm-6 Grid-grid-md-3 home-intro-card">
+                <div class="home-intro-card-logo">
+                    <div class="home-intro-card-video">
+                        <video preload="auto" loop="" src="<%=card.video_src%>"></video>
+                    </div>
+                    <div class="home-intro-card-bg">
+                        <div class="home-intro-card-img">
+                            <% let btn={size: 151, rx: 72.5} %>
+                            <%- include('../../../components/circle_btn.ejs', {btn: btn}); %>
+                            <img class="common-photo"
+                                src="<%=card.img_src%>"
+                                alt="" />
+                        </div>
+                        <h4 class="Typography-root Typography-h5 home-intro-card-title">
+                            <%=card.title%>
+                        </h4>
+                        <p class="Typography-root Typography-h4 mb-30">
+                            <%=card.info%>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <% }); %>
+        </dl>
+    </div>
+</div>

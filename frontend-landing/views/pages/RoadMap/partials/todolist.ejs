@@ -1,0 +1,83 @@
+<div class="roadmap-todolist">
+    <div class="rec">
+        <div class="common-display rec rec-carousel roadmap-todolist-height">
+            <div class="sc-dkzDqf rec-slider rec rec-slider-container">
+                <div class="rec-slider-pos rec-slider-card rec rec-slider">
+                    <div class="rec rec-swipable">
+                        <% let quarter = "Q1 2021";
+                            for (let i = 0; i < 9; i++) {
+                                if (i == 1) quarter = "Q2 2021";
+                                if (i == 2) quarter = "Q3 2021";
+                                if (i == 3) quarter = "Q4 2021";
+                                if (i == 4) quarter = "Q1 2022";
+                                if (i == 5) quarter = "Q2 2022";
+                                if (i == 6) quarter = "Q3 2022";
+                                if (i == 7) quarter = "Q4 2022";
+                                if (i == 8) quarter = "2023+";
+                        %>
+                        <div aria-hidden="true" id="roadmap_<%=i%>" class="rec rec-carousel-item rec-carousel-item-<%=i%>">
+                            <div class="rec-carousel-item-pos rec rec-item-wrapper">
+                                <div class="roadmap-todolist-carousel">
+                                    <div class="text-center title">
+                                        <% let btn={size: 106, rx: 50} %>
+                                        <%- include('../../../components/circle_btn.ejs', {btn: btn}) %>
+                                        <div class="common-children">
+                                            <span><%=quarter%></span>
+                                        </div>
+                                    </div>
+                                    <% if (i == 0) { %>
+                                        <div class="plan">Project Conception</div>
+                                        <div class="plan">Danaswap Development</div>
+                                    <% } %>
+                                    <% if (i == 1) { %>
+                                        <div class="plan">Stablecoin Development</div>
+                                        <div class="plan">Seed Sale</div>
+                                        <div class="plan">Whitepaper Release</div>
+                                    <% } %>
+                                    <% if (i == 2) { %>
+                                        <div class="plan">Plutus Contract Audits</div>
+                                        <div class="plan">Private Sale</div>
+                                        <div class="plan">AREM Development</div>
+                                    <% } %>
+                                    <% if (i == 3) { %>
+                                        <div class="plan">Public Sale</div>
+                                        <div class="plan">Token Generation Event</div>
+                                        <div class="plan">CEX Listing</div>
+                                    <% } %>
+                                    <% if (i == 4) { %>
+                                        <div class="plan">Futher Wallet Integration</div>
+                                        <div class="plan">Ardana Academy Opening</div>
+                                    <% } %>
+                                    <% if (i == 5) { %>
+                                        <div class="plan">Community Ambassador Program</div>
+                                        <div class="plan">Governance Transition</div>
+                                    <% } %>
+                                    <% if (i == 6) { %>
+                                        <div class="plan">Third Party </div>
+                                        <div class="plan">Partnership Project Integrations</div>
+                                        <div class="plan">Stablecoin Release</div>
+                                        <div class="plan">Danaswap Release</div>
+                                    <% } %>
+                                    <% if (i == 7) { %>
+                                        <div class="plan">Danaswap Foreign Exchange</div>
+                                        <div class="plan">Danaswap V2 Release</div>
+                                    <% } %>
+                                    <% if (i == 8) { %>
+                                        <div class="plan">Tokenized Asset Vaults</div>
+                                        <div class="plan">Alternative Stablecoin Currency Vaults</div>
+                                        <div class="plan">Mobile Application</div>
+                                        <div class="plan">Real World Asset Vaults</div>
+                                        <div class="plan">Fiat Gateways</div>
+                                        <div class="plan">Institutional Platform Development</div>
+                                        <div class="plan">Liquidity Incentives Program</div>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

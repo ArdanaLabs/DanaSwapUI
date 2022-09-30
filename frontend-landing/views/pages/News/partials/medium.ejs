@@ -1,0 +1,88 @@
+<div class="py-50">
+    <div class="Container-root Container-maxWidthLg">
+        <div class="Grid-container">
+            <div class="Grid-item Grid-grid-xs-12">
+                <div class="news-title-display">
+                    <h3 class="Typography-root news-medium-title Typography-h3"><small>Ardana on
+                            <span>Medium</span></small></h3>
+                    <div class="display-status-960">
+                        <a
+                            class="Typography-root Link-underlineNone news-badge Typography-colorPrimary"
+                            href="https://medium.com/ardana-hub" target="href">
+                            <div class="Typography-root Typography-button">Follow Ardana Hub On Medium</div>
+                            <div class="news-badge-position"><svg width="26" height="21" viewBox="0 0 26 21"
+                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M3.04507 4.58166C3.07656 4.272 2.95795 3.96654 2.72701 3.75869L0.375677 0.924495V0.501465H7.67951L13.3248 12.8827L18.2878 0.501465H25.2505V0.924495L23.2393 2.8528C23.0661 2.98506 22.98 3.20235 23.0157 3.41754V17.5864C22.98 17.8006 23.0661 18.0179 23.2393 18.1501L25.2033 20.0784V20.5015H15.3235V20.0784L17.3588 18.1029C17.5583 17.9034 17.5583 17.8447 17.5583 17.5392V6.08694L11.9014 20.4553H11.1372L4.55035 6.08694V15.7169C4.49576 16.1211 4.63013 16.5294 4.9146 16.8212L7.5609 20.0312V20.4553H0.0576172V20.0312L2.70392 16.8212C2.98734 16.5283 3.1133 16.1179 3.04507 15.7169V4.58166Z"
+                                        fill="#F5FCFE"></path>
+                                </svg></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="Grid-container Grid-spacing-xs-3">
+            <% let cards = [{
+                    img: "medium/ASPA_PARTNER_FOCUS_8.png",
+                    title: "ASPA Partner Focus #8—Announcing the Latest Stake Pool Operators Partnering with Ardana",
+                    date: "December 16, 2021",
+                    info: "Welcome to the eighth edition of our ASPA Partner Focus series. We have interviewed the latest new joiners and would like to share their mission and Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum",
+                    href: "https://medium.com/ardana-hub/aspa-partner-focus-8-announcing-the-latest-stake-pool-operators-partnering-with-ardana-1f4f8f3ca45a?source=collection_home---4------1-----------------------"
+                }, {
+                    img: "medium/ASPA_PARTNER_FOCUS_7.png",
+                    title: "ASPA Partner Focus #7—Announcing the Latest Stake Pool Operators Partnering with Ardana",
+                    date: "December 9, 2021",
+                    info: "In the seventh edition of our ASPA Partner Focus series, we welcome the latest ASPA joiners to Ardana! ASPA applications are now closed! We sat down and Lorem Lorem Lorem",
+                    href: "https://medium.com/ardana-hub/aspa-partner-focus-7-announcing-the-latest-stake-pool-operators-partnering-with-ardana-23bff202860f?source=collection_home---4------2-----------------------"
+                }, {
+                    img: "medium/ASPA_PARTNER_FOCUS_6.png",
+                    title: "ASPA Partner Focus #6—Announcing the Latest Stake Pool Operators Partnering with Ardana",
+                    date: "December 5, 2021",
+                    info: "Please join us in welcoming the latest ASPA joiners to Ardana! We sat down and interviewed each stake pool to find out their mission and goals, who they are as Lorem Lorem Lorem Lorem Lorem Lorem",
+                    href: "https://medium.com/ardana-hub/aspa-partner-focus-6-announcing-the-latest-stake-pool-operators-partnering-with-ardana-1f4f8f3ca45a?source=collection_home---4------3-----------------------"
+                }
+            ]
+            cards.forEach(function(card) { %>
+                <%- include('../../../components/news_card.ejs', {card: card}) %>
+            <% }); %>
+            <div class="Grid-container Grid-spacing-xs-3 display-status-960">
+                <% cards = [{
+                    img: "medium/NEAR_PROTOCOL.png",
+                    title: "Ardana is Partnering with NEAR Protocol",
+                    date: "November 23, 2021",
+                    info: "Today, we at Ardana are excited to announce our latest strategic partnership with NEAR, a decentralized application platform (dApp) that focuses on both developer and user experience. Through this partnership with NEAR, which includes a grant",
+                    href: "https://medium.com/ardana-hub/ardana-is-partnering-with-near-protocol-281a6e64e031?source=collection_home---4------4-----------------------"
+                }, {
+                    img: "medium/DANA_TOKEN.png",
+                    title: "DANA Token Going Live on Gate, Bitmart and MEXC!",
+                    date: "November 17, 2021",
+                    info: "The growing community around Ardana has been eagerly awaiting the token launch since the project began. Today, we are thrilled to announce that the token launch will take place on Monday, 22nd...",
+                    href: "https://medium.com/ardana-hub/dana-token-going-live-on-gate-bitmart-and-mxec-72ed54702527?source=collection_home---4------5-----------------------"
+                }, {
+                    img: "medium/ARDANA_QCP.png",
+                    title: "Crypto Options leader QCP Capital Makes a Strategic Investment in Ardana",
+                    date: "December 5, 2021",
+                    info: "Today, we are very pleased to announce that QCP Capital has made a strategic investment in Ardana. We are excited to be supported by QCP Capital, who has a strong presence in the Asian markets as we",
+                    href: "https://medium.com/ardana-hub/crypto-options-leader-qcp-capital-makes-a-strategic-investment-in-ardana-e51de7397e35?source=collection_home---4------6-----------------------"
+                }]
+                cards.forEach(function(card) { %>
+                    <%- include('../../../components/news_card.ejs', {card: card}) %>
+                <% }); %>
+            </div>
+        </div>
+        <div class="display-status-600">
+            <a
+                class="Typography-root Link-underlineNone news-badge Typography-colorPrimary"
+                href="https://medium.com/ardana-hub" target="href">
+                <div class="Typography-root Typography-button">Follow Ardana Hub On Medium</div>
+                <div class="news-badge-position"><svg width="26" height="21" viewBox="0 0 26 21"
+                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M3.04507 4.58166C3.07656 4.272 2.95795 3.96654 2.72701 3.75869L0.375677 0.924495V0.501465H7.67951L13.3248 12.8827L18.2878 0.501465H25.2505V0.924495L23.2393 2.8528C23.0661 2.98506 22.98 3.20235 23.0157 3.41754V17.5864C22.98 17.8006 23.0661 18.0179 23.2393 18.1501L25.2033 20.0784V20.5015H15.3235V20.0784L17.3588 18.1029C17.5583 17.9034 17.5583 17.8447 17.5583 17.5392V6.08694L11.9014 20.4553H11.1372L4.55035 6.08694V15.7169C4.49576 16.1211 4.63013 16.5294 4.9146 16.8212L7.5609 20.0312V20.4553H0.0576172V20.0312L2.70392 16.8212C2.98734 16.5283 3.1133 16.1179 3.04507 15.7169V4.58166Z"
+                            fill="#F5FCFE"></path>
+                    </svg>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

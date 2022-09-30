@@ -1,0 +1,23 @@
+<article class="Grid-item Grid-grid-xs-12 Grid-grid-sm-6 Grid-grid-md-4">
+    <div class="my-30">
+        <div class="news_card-img">
+            <img src="../../assets/news/<%=card.img%>" alt="" width="100%" />
+        </div>
+        <div class="news_card-medium-label">
+            <h4 class="Typography-root <%= card.summary ? 'news_card-media-label Typography-h4 mb-15' : 'Typography-h5 news_card-medium-label-title news_card-label-gap' %>">
+                <%=card.title%>
+            </h4>
+            <p class="Typography-root <%= card.summary ? 'Typography-h5 news_card-media-sum' : 'news_card-date Typography-h4' %>">
+                <%= card.summary ? card.summary : card.date %>
+            </p>
+            <p class="Typography-root news_card-content Typography-h4 my-20">
+                <small><%=card.info%></small>
+            </p>
+            <a class="Typography-root Link-underlineHover Typography-colorPrimary"
+                href="<%=card.href%>">
+                <% let btn = {width: 146, name: "Read More"} %>
+                <%- include('../components/button.ejs', {btn: btn}) %>
+            </a>
+        </div>
+    </div>
+</article>

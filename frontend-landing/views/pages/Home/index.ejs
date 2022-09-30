@@ -1,0 +1,27 @@
+<html lang="en-US" class="no-js">
+
+<head>
+    <%- include('../../components/head'); %>
+    <link href="../../../assets/css/home_style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body id="body" class="unveil">
+    <%- include('../../components/svg-defs'); %>
+    <div id="root">
+        <div class="Home commonStyle-self">
+        <%- include('../../components/nav.ejs', {currentUrl: '/' }); %>
+            <div class="Main-container">
+                <%- include('./partials/a_header.ejs'); %>
+                <%- include('./partials/b_intro.ejs'); %>
+                <%- include('./partials/c_stablecoin.ejs'); %>
+                <%- include('./partials/d_main.ejs'); %>
+                <!-- <%- include('./partials/e_roadmap.ejs'); %> -->
+                <%- include('./partials/f_partners.ejs'); %>
+                <%- include('./partials/g_investors.ejs'); %>
+            </div>
+            <%- include('../../components/footer'); %>
+        </div>
+    </div>
+</body>
+
+</html>

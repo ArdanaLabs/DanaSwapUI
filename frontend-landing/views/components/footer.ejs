@@ -1,0 +1,80 @@
+<div class="footer">
+    <div class="Container-root Container-maxWidthMd">
+        <div class="col-center">
+            <div class="footer-title">
+                Ardana is the leading stablecoin and stableswap DEX on Cardano
+            </div>
+            <div class="my-30 footer-logo">
+                <% let btn={size: 181, rx: 87.5} %>
+                <%- include('../components/circle_btn.ejs', {btn: btn}) %>
+                <img class="common-photo"
+                    src="../../assets/logo_blue.png"
+                    alt="" />
+            </div>
+            <div class="footer-guide">
+                <dl>
+                    <dt>Resources</dt>
+                    <% let resources = [{
+                        href: "/tech",
+                        name: "Technology"
+                    }, {
+                        href: "https://docs.ardana.org/",
+                        name: "Documentation"
+                    }, {
+                        href: "https://docsend.com/view/ps9hsr88m834pj98",
+                        name: "Pitch Deck"
+                    }, {
+                        href: "/brandassets",
+                        name: "Brand Assets"
+                    }
+                    ] %>
+                    <% resources.forEach(function(item) { %>
+                    <dd><a
+                        class="Typography-root Link-underlineHover Typography-colorPrimary footer-links-pointer"
+                        href="<%=item.href%>"><%=item.name%></a></dd>
+                    <% }); %>
+                </dl>
+                <dl>
+                    <dt>Products</dt>
+                    <% let products = [{
+                        href: "#",
+                        name: "Dashboard"
+                    }, {
+                        href: "#",
+                        name: "DEX"
+                    }, {
+                        href: "#",
+                        name: "Stablecoin"
+                    }
+                    ] %>
+                    <% products.forEach(function(item) { %>
+                    <dd><a
+                        class="Typography-root Link-underlineHover Typography-colorPrimary footer-links-pointer"
+                        href="<%=item.href%>"><%=item.name%></a></dd>
+                    <% }); %>
+                </dl>
+                <dl>
+                    <dt>Company</dt>
+                    <% let companies = [{
+                        href: "mailto:enquiries@ardana.org",
+                        name: "Contact Us"
+                    }, {
+                        href: "mailto:careers@ardana.org",
+                        name: "Careers"
+                    }
+                    ] %>
+                    <% companies.forEach(function(item) { %>
+                    <dd><a
+                        class="Typography-root Link-underlineHover Typography-colorPrimary footer-links-pointer"
+                        href="<%=item.href%>"><%=item.name%></a></dd>
+                    <% }); %>
+                </dl>
+                <dl class="footer-socials">
+                    <dt>Our Socials</dt>
+                    <dd class="mb-25">Follow us to hear about Ardana<br />news and events.</dd>
+                    <%- include('../components/socialIcon_bar.ejs') %>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>

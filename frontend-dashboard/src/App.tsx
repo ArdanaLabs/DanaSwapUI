@@ -1,5 +1,5 @@
 import React, { Suspense, useState, useEffect } from "react"
-import { HashRouter as BrowserRouter, Switch, Route, Redirect } from "react-router-dom"
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom"
 import { Provider as StateProvider } from "react-redux"
 import {
   ThemeProvider as MuiThemeProvider,

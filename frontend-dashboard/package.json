@@ -57,7 +57,6 @@
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.3",
     "babel-eslint": "^10.1.0",
     "enzyme": "^3.11.0",
-    "eslint": "^8.4.1",
     "eslint-config-react-app": "^7.0.0-next.102",
     "eslint-import-resolver-typescript": "^2.5.0",
     "eslint-plugin-flowtype": "^8.0.3",
