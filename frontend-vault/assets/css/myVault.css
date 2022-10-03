@@ -42,7 +42,7 @@
   font-style: normal;
   font-weight: 700;
   font-size: 2.0625rem;
-  line-height: 1.5;
+  line-height: 1.167;
 }
 
 @media (min-width:600px) {
@@ -64,7 +64,27 @@
 }
 
 .vault-box {
-  margin-top: -230px;
+  margin-top: -180px;
+}
+
+.vault-box p {
+  margin: 0;
+  font-family: Brandon Grotesque, fantasy;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  line-height: 1.167;
+}
+
+.vault-box span {
+  margin: 0;
+  font-family: Brandon Grotesque, fantasy;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  line-height: 1.167;
 }
 
 .vault-box-bg {
@@ -73,23 +93,82 @@
   border-radius: 20px;
 }
 
-.vault-box table {
-  text-align: left;
-  text-transform: uppercase;
-  width: 100%;
+.vault-list {
+  margin: 0;
+  flex-direction: row;
 }
 
-table span {
-  font-size: 14px;
+.vault-list-debt {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
-tbody {
-  border-bottom: 1px solid #ddd;
+@media (min-width:600px) {
+  .vault-list {
+    flex-basis: 25%;
+    flex-grow: 0;
+    max-width: 25%;
+  }
+
+  .vault-list-debt p{
+    font-size: 2.5707rem;
+  }
 }
 
-.table-border {
+@media (min-width:900px) {
+  .vault-list {
+    flex-basis: 25%;
+    flex-grow: 0;
+    max-width: 25%;
+  }
+
+  .vault-list-debt p{
+    font-size: 2.7849rem;
+  }
+}
+
+@media (min-width:1200px) {
+  .vault-list {
+    flex-basis: 25%;
+    flex-grow: 0;
+    max-width: 25%;
+  }
+
+  .vault-list-debt p{
+    font-size: 3.2134rem;
+  }
+}
+
+.vault-list-debt {
+  display: flex;
+  align-items: baseline;
+}
+
+.vault-list-debt span {
+  margin-left: 10px;
+  line-height: 1.334;
+}
+
+.vault-box-border {
   width: 100%;
   height: 5px;
   background: linear-gradient(90deg, #72D2F2 0%, #6077FF 100%);
   border-radius: 55px;
+}
+
+.vault-image {
+  width: 35px;
+  height: 35px;
+  background: white;
+  border-radius: 100%;
+}
+
+.vault-spec p {
+  line-height: 1.334;
+}
+
+.vault-spec span {
+  font-family: Museo Sans, sans-serif;
+  line-height: 1.6;
+  font-weight: normal;
 }

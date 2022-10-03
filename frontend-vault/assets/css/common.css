@@ -622,6 +622,10 @@ body::backdrop {
   }
 }
 
+.mr-10 {
+  margin-right: 10px;
+}
+
 .mr-20 {
   margin-right: 20px;
 }
@@ -645,6 +649,14 @@ body::backdrop {
 
 .flex-col {
   flex-direction: column;
+}
+
+.gap-30 {
+  gap: 30px;
+}
+
+.gap-50 {
+  gap: 50px;
 }
 
 .gap-100 {
@@ -748,12 +760,20 @@ body::backdrop {
   }
 }
 
-.mt-30 {
-  margin-top: 30px;
+.mt-10 {
+  margin-top: 10px;
 }
 
 .mt-20 {
   margin-top: 20px;
+}
+
+.mt-30 {
+  margin-top: 30px;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
 }
 
 .mb-20 {
@@ -1210,4 +1230,12 @@ body::backdrop {
 .contract-trigger:before {
   width: 200%;
   height: 200%;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: block;
 }

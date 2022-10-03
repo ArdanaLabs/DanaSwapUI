@@ -14,8 +14,12 @@ app.get("/", function (req, res) {
 });
 
 // myVault page
-app.get("/myVaults", function (req, res) {
+app.get("/owner", function (req, res) {
   res.render("pages/MyVault/index", {currentUrl : req.url});
+});
+
+app.get("/vaults/list", function (req, res) {
+  res.render("pages/NewVault/index", {currentUrl : req.url});
 });
 
 // about page
