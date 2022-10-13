@@ -1,0 +1,31 @@
+<div class="home-dana container">
+  <div class="flex flex-wrap flex-row w-full home-danaCard">
+    <% let danaCards=[ { bg: "dana-card-item-bg1" , img: "COIN-DANA-3D.png" , label: "New" , name: "link-a" ,
+      fee: "3.00%" , ratio: "165%" }, { bg: "dana-card-item-bg2" , img: "COIN-ETH-3D.png" , label: "Most Popular" ,
+      name: "uni-a" , fee: "2.00%" , ratio: "145%" }, { bg: "dana-card-item-bg3" , img: "COIN-HUOBI-3D.png" ,
+      label: "Cheapest" , name: "gusd-a" , fee: "0.00%" , ratio: "101%" } ] %>
+      <% danaCards.forEach(function(card) { %>
+        <div class="dana-card flex-row dana-card-set">
+          <div class="dana-card-item relative text-left <%=card.bg%>">
+            <div class="dana-card-img-pos absolute">
+              <img src="../../assets/img/<%=card.img%>" alt="" loading="lazy" decoding="async">
+            </div>
+            <h4 class="dana-card-label dana-card-label-font uppercase">
+              <%=card.label%>
+            </h4>
+            <h3 class="dana-card-name dana-card-label-font uppercase">
+              <%=card.name%>
+            </h3>
+            <div class="flex justify-between dana-card-desc-font dana-card-desc-stat">
+              <div>Stability Fee
+                <%=card.fee%>
+              </div>
+              <div>Min Coll. Ratio
+                <%=card.ratio%>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% }); %>
+  </div>
+</div>

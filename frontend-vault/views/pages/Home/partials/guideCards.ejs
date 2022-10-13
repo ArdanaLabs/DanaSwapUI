@@ -1,0 +1,27 @@
+<div class="home-guideCard">
+  <div class="container">
+    <div class="flex flex-wrap flex-row w-full items-stretch home-guideCard">
+      <% let cards=[ { class: 'firstBg' , name: 'Dana Coin' ,
+        desc: 'Buy, send and manage your Dana Coin all in one place. Grow your Dana, and access plenty of providers.' },
+        { class: 'secondBg' , name: 'Got questions?' ,
+        desc: 'Learn more about Dana Coin, Danaswap and Stablecoin Vaults by visiting our FAQs page.' } ] %>
+        <% cards.forEach(function(card) { %>
+          <div class="guide-card contents-box">
+            <div class="guide-card-item guide-card-item-<%=card.class%>">
+              <div class="guide-card-item-content flex flex-col">
+                <h1 class="mb-20 guide-card-title">
+                  <%=card.name%>
+                </h1>
+                <p class="guide-card-desc">
+                  <%=card.desc%>
+                </p>
+              </div>
+              <div class="guide-card-arrowBtn">
+                <img src="../../assets/img/svgs/arrow-right-circle.svg" alt="" loading="lazy" decoding="async">
+              </div>
+            </div>
+          </div>
+          <% }); %>
+    </div>
+  </div>
+</div>

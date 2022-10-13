@@ -1,0 +1,174 @@
+.myvault-hero {
+  background: url(/assets/img/backgrounds/hero-bg-dark.png) right bottom no-repeat;
+  padding-top: 150px;
+  padding-bottom: 150px;
+  background-size: cover;
+  border-bottom-right-radius: 100px;
+}
+
+@media (max-width:599.95px) {
+  .myvault-hero {
+    background: url(/assets/img/backgrounds/hero-bg-dark.png) right bottom no-repeat;
+    text-align: center;
+    padding-bottom: 30px;
+    border-bottom-right-radius: 75px;
+  }
+}
+
+@media (max-width:599.95px) {
+  .myvault-hero-desc {
+    text-align: center;
+  }
+}
+
+.myvault-hero-desc {
+  width: 660px;
+  position: relative;
+}
+
+.myvault-hero-desc>h1 {
+  color: #FFFFFF;
+}
+
+@media (max-width:599.95px) {
+  .myvault-hero-desc {
+    width: auto;
+  }
+}
+
+.myvault-hero-title {
+  margin: 0;
+  font-family: Brandon Grotesque, fantasy;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 2.0625rem;
+  line-height: 1.167;
+}
+
+@media (min-width:600px) {
+  .myvault-hero-title {
+    font-size: 2.5707rem;
+  }
+}
+
+@media (min-width:900px) {
+  .myvault-hero-title {
+    font-size: 2.7849rem;
+  }
+}
+
+@media (min-width:1200px) {
+  .myvault-hero-title {
+    font-size: 3.2134rem;
+  }
+}
+
+.vault-box {
+  margin-top: -180px;
+}
+
+.vault-box p {
+  margin: 0;
+  font-family: Brandon Grotesque, fantasy;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  line-height: 1.167;
+}
+
+.vault-box span {
+  margin: 0;
+  font-family: Brandon Grotesque, fantasy;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  line-height: 1.167;
+}
+
+.vault-box-bg {
+  padding: 30px;
+  background: #2F3F9D;
+  border-radius: 20px;
+}
+
+.vault-list {
+  margin: 0;
+  flex-direction: row;
+}
+
+.vault-list-debt {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+@media (min-width:600px) {
+  .vault-list {
+    flex-basis: 25%;
+    flex-grow: 0;
+    max-width: 25%;
+  }
+
+  .vault-list-debt p{
+    font-size: 2.5707rem;
+  }
+}
+
+@media (min-width:900px) {
+  .vault-list {
+    flex-basis: 25%;
+    flex-grow: 0;
+    max-width: 25%;
+  }
+
+  .vault-list-debt p{
+    font-size: 2.7849rem;
+  }
+}
+
+@media (min-width:1200px) {
+  .vault-list {
+    flex-basis: 25%;
+    flex-grow: 0;
+    max-width: 25%;
+  }
+
+  .vault-list-debt p{
+    font-size: 3.2134rem;
+  }
+}
+
+.vault-list-debt {
+  display: flex;
+  align-items: baseline;
+}
+
+.vault-list-debt span {
+  margin-left: 10px;
+  line-height: 1.334;
+}
+
+.vault-box-border {
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, #72D2F2 0%, #6077FF 100%);
+  border-radius: 55px;
+}
+
+.vault-image {
+  width: 35px;
+  height: 35px;
+  background: white;
+  border-radius: 100%;
+}
+
+.vault-spec p {
+  line-height: 1.334;
+}
+
+.vault-spec span {
+  font-family: Museo Sans, sans-serif;
+  line-height: 1.6;
+  font-weight: normal;
+}

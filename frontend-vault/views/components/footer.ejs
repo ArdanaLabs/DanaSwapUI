@@ -1,0 +1,24 @@
+<div class="footer">
+  <div class="container">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <img src="../../assets/img/DUSD-LOGO-WHITE.png" alt="" loading="lazy" decoding="async">
+      </div>
+      <div class="footer-socials flex items-center justify-between">
+        <% let socialIcons = [
+          { href: 'https://twitter.com/ardanaproject', img: 'twitter' },
+          { href: 'https://discord.gg/c9skrZvsqH', img: 'discord' },
+          { href: 'https://t.me/ardanaofficial', img: 'telegram' },
+          { href: 'https://medium.com/ardana-hub', img: 'medium' },
+          { href: 'https://www.youtube.com/channel/UCuVtpKzlmsD6s0ZiC0hakkA', img: 'youtube' },
+          { href: 'https://www.linkedin.com/company/ardanalabs/', img: 'linkedin' }
+        ] %>
+        <% socialIcons.forEach(function(icon) { %>
+        <a class="link footer-socials-icon" href="<%=icon.href%>" rel="noopener noreferrer">
+          <img src="../../assets/img/svgs/<%=icon.img%>.svg" alt="" loading="lazy" decoding="async">
+        </a>
+        <% }); %>
+      </div>
+    </div>
+  </div>
+</div>

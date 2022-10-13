@@ -1,0 +1,72 @@
+.newvault-hero {
+  height: 500px;
+  background: url(/assets/img/backgrounds/hero-bg-dark.png) right bottom no-repeat;
+  padding-top: 100px;
+  padding-bottom: 50px;
+  background-size: cover;
+  border-bottom-right-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width:599.95px) {
+  .newvault-hero {
+    background: url(/assets/img/backgrounds/hero-bg-dark.png) right bottom no-repeat;
+    text-align: center;
+    padding-bottom: 30px;
+    border-bottom-right-radius: 75px;
+  }
+}
+
+@media (max-width:599.95px) {
+  .newvault-hero-desc {
+    text-align: center;
+  }
+}
+
+.newvault-hero-desc {
+  text-align: center;
+  position: relative;
+}
+
+.newvault-hero .hero-title {
+  max-width: 1000px;
+}
+
+.newvault-hero-desc>h1 {
+  color: #FFFFFF;
+}
+
+@media (max-width:599.95px) {
+  .newvault-hero-desc {
+    width: auto;
+  }
+}
+
+.newvault-hero-title {
+  margin: 0;
+  font-family: Brandon Grotesque, fantasy;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 2.0625rem;
+  line-height: 1.167;
+}
+
+@media (min-width:600px) {
+  .newvault-hero-title {
+    font-size: 2.5707rem;
+  }
+}
+
+@media (min-width:900px) {
+  .newvault-hero-title {
+    font-size: 2.7849rem;
+  }
+}
+
+@media (min-width:1200px) {
+  .newvault-hero-title {
+    font-size: 3.2134rem;
+  }
+}

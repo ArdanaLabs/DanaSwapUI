@@ -1,0 +1,47 @@
+<div class="vault-box">
+  <div class="container">
+    <div class="vault-box-bg">
+      <div class="container">
+        <div class="flex flex-wrap w-full flex-row">
+          <% let lists=[ { name: " of vaults" , value: "2" }, { name: "total locked" , value: "$15,588.36" }, {
+            name: "total debt" , value: "6,165.18" }, { name: "vaults at risk", value: "0"} ] %>
+          <% lists.forEach(function(list) { %>
+          <div class="vault-list">
+            <p>
+              <% if (list.name === " of vaults") { %>
+                <abbr title="Number">No.</abbr>
+              <% } %>
+              <%=list.name%>
+            </p>
+            <div class="vault-list-debt">
+              <p><%=list.value%></p>
+              <% if (list.name==="total debt" ) { %>
+              <span>Dai</span>
+              <% } %>
+            </div>
+          </div>
+          <% }); %>
+        </div>
+        <div class="vault-box-border"></div>
+        <div class="flex mt-20">
+          <% let vault_items=[ { title: "yifi1" , ratio: "88.49%" }, { title: "yifi2" , ratio: "11.51%" } ] %>
+          <% vault_items.forEach(function(item) { %>
+          <div class="vault-item flex items-center mr-20">
+            <div class="vault-image flex items-center justify-center mr-10">
+              <img src="../../assets/img/coins/dusd.svg" alt="" loading="lazy" decoding="async">
+            </div>
+            <div class="vault-spec uppercase flex flex-col">
+              <p>
+                <%=item.title%>
+              </p>
+              <span>
+                <%=item.ratio%>
+              </span>
+            </div>
+          </div>
+          <% }); %>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
