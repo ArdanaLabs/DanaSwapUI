@@ -11,7 +11,7 @@
   
   <div id="root">
     <div class="commonStyle-self">
-      <%- include('../../components/nav.ejs'); %>
+      <%- include('../../components/nav.ejs', {currentUrl: '/team' }); %>
         <div class="Main-container main-bg">
           <%- include('./partials/intro.ejs'); %>
           <%- include('./partials/members.ejs'); %>
