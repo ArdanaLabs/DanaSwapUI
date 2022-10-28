@@ -7,15 +7,15 @@
             <div class="nav-menu">
                 <% let menus=[ {url: "/" , name: "Home" }, {url: "/tech" , name: "Technology" },
                     {url: "https://docs.ardana.org/" , name: "Documentation" }, {url: "/community" , name: "Community"
-                    }, { url: "https://github.com/ArdanaLabs", name: "Github" },
-                    <!-- {url: "/news" , name: "News" }, {url: "/roadmap" , name: "Roadmap" }, -->
+                    }, {url: "/roadmap" , name: "Roadmap" }, { url: "https://github.com/ArdanaLabs" , name: "Github" },
+                    <!-- {url: "/news" , name: "News" }, -->
                     ] %>
-                <% menus.forEach(function(menu) { %>
-                    <a class="<%= currentUrl == menu.url ? 'active' : '' %> Typography-root Link-underlineNone nav-menuItem Typography-colorPrimary"
-                        href="<%=menu.url%>">
-                        <%=menu.name%>
-                    </a>
-                <% }); %>
+                    <% menus.forEach(function(menu) { %>
+                        <a class="<%= currentUrl == menu.url ? 'active' : '' %> Typography-root Link-underlineNone nav-menuItem Typography-colorPrimary"
+                            href="<%=menu.url%>">
+                            <%=menu.name%>
+                        </a>
+                        <% }); %>
             </div>
             <button id="dropBtn" class="ButtonBase-root IconButton-root" data-bs-toggle="dropdown" tabindex="0"
                 type="button"><img src="../../assets/icon/navIcon.svg">
@@ -37,13 +37,11 @@
                 href="https://docs.ardana.org/">Documentation</a><a
                 class="Typography-root Link-underlineNone nav-menuItem Typography-colorPrimary"
                 href="/community">Community</a>
+                <a class="Typography-root Link-underlineNone nav-menuItem Typography-colorPrimary" href="/roadmap">Roadmap</a>
                 <a class="Typography-root Link-underlineNone nav-menuItem Typography-colorPrimary"
-                    href="https://github.com/ArdanaLabs">Github</a>
-                <!-- <a
-                class="Typography-root Link-underlineNone nav-menuItem Typography-colorPrimary" href="/news">News</a> -->
+                href="https://github.com/ArdanaLabs">Github</a>
             <!-- <a
-                class="Typography-root Link-underlineNone nav-menuItem Typography-colorPrimary"
-                href="/roadmap">Roadmap</a> -->
+                class="Typography-root Link-underlineNone nav-menuItem Typography-colorPrimary" href="/news">News</a> -->
         </div>
         <div tabindex="0" data-test="sentinelEnd"></div>
     </div>
