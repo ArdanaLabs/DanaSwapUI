@@ -13,28 +13,5 @@
     <div class="team_card-role">
       <%=card.role%>
     </div>
-    <div id="team_card-info-<%=card.index%>" class="team_card-info">
-      <%-card.info%>
-    </div>
-    <div id="team_card-socials-<%=card.index%>" class="team_card-socials">
-      <% if(card.socials.linkedin){ %>
-        <a class="Typography-root Link-underlineHover Typography-colorPrimary" href="<%=card.socials.linkedin%>">
-          <img src="../assets/icon/linkedin.svg" alt="linkedin"></a>
-      <% } %>
-        <% if(card.socials.twitter){ %>
-          <a class="Typography-root Link-underlineHover Typography-colorPrimary" href="<%=card.socials.twitter%>">
-            <img src="../assets/icon/twitter.svg" alt="twitter"></a>
-        <% } %>
-        <% if(card.socials.github){ %>
-          <a class="Typography-root Link-underlineHover Typography-colorPrimary" href="<%=card.socials.github%>">
-            <img src="../assets/icon/github.svg" alt="github"></a>
-        <% } %>
-    </div>
-    <div id="expansion-<%=card.index%>" class="team_card-expansionBtn" onclick="expand('<%=card.index%>')">
-      <img src="../assets/icon/expand.svg" alt="expand">
-    </div>
-    <div id="collapse-<%=card.index%>" class="team_card-collapseBtn hide" onclick="collap('<%=card.index%>')">
-      <img src="../assets/icon/collapse.svg" alt="collapse">
-    </div>
   </div>
 </div>

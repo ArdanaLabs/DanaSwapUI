@@ -45,7 +45,7 @@
 }
 
 .team_card-bg {
-  height: 400px;
+  height: 200px;
   padding: 90px 20px 50px;
   position: relative;
   background: #1D277A;
@@ -207,6 +207,7 @@
   }
 
   .team_card-bg {
+    height: 150px;
     padding: 50px 10px 40px;
     transition: all .2s;
   }
