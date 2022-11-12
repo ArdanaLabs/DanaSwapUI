@@ -2,8 +2,7 @@
 
 <head>
   <%- include('../../components/head'); %>
-    <link href="../../assets/css/team_style.css" rel="stylesheet" type="text/css" />
-    <script src="../assets/scripts/expansion-card.js" defer></script>
+  <link href="../../assets/css/team_style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body id="body" class="unveil">
@@ -12,12 +11,12 @@
   <div id="root">
     <div class="commonStyle-self">
       <%- include('../../components/nav.ejs', {currentUrl: '/team' }); %>
-        <div class="Main-container main-bg">
-          <%- include('./partials/intro.ejs'); %>
-          <%- include('./partials/members.ejs'); %>
-          <%- include('./partials/advisors.ejs'); %>
-        </div>
-        <%- include('../../components/footer'); %>
+      <div class="Main-container main-bg">
+        <%- include('./partials/intro.ejs'); %>
+        <%- include('./partials/members.ejs'); %>
+        <%- include('./partials/advisors.ejs'); %>
+      </div>
+      <%- include('../../components/footer'); %>
     </div>
   </div>
 </body>
