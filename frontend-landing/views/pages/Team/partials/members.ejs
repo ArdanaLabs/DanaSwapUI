@@ -1,0 +1,102 @@
+<div class="team-member-bg">
+  <div class="Container-root Container-maxWidthLg">
+    <div class="Grid-container Grid-spacing-xs-5">
+      <% let members=[ 
+        { 
+          index: 0,
+          avatar: "../../../../assets/avatars/RyanMatovu.png",
+          name: "Ryan Matovu",
+          role: "Founder",
+          info: "Serial entrepreneur in B2B/B2C sales and e-commerce.\n\nLeadership positions in various Ethereum based projects.", 
+          socials: { linkedin: "https://www.linkedin.com/in/ryan-matovu-517988203", twitter: "https://twitter.com/infinit3booker" }
+        }, { 
+          index: 1,
+          avatar: "../../../../assets/avatars/DerekEvans.png",
+          name: "Derek Evans",
+          role: "Chief Operating Officer",
+          info: "20+ years in software leading business and government projects.\n\nPrivate trader and fund manager in the financial derivatives market.", 
+          socials: {}
+        }, { 
+          index: 2,
+          avatar: "../../../../assets/avatars/BassamAwad.png",
+          name: "Bassam Awad, PhD",
+          role: "Chief Economist",
+          info: "Senior Economist and Head of Risk at the <strong>Central Bank of Jordan.</strong>\n\nMultiple peer-reviewed papers on macro/computational economics.", 
+          socials: { linkedin: "https://www.linkedin.com/in/bassamrawad/" }
+        }, { 
+          index: 3,
+          avatar: "../../../../assets/avatars/ScottFranklin.png",
+          name: "Scott Franklin",
+          role: "Head of Strategy",
+          info: "20+ years experience in equity markets on Wall Street.\n\nCapital raising and advisor to multiple blockchain projects.", 
+          socials: {}
+        }, { 
+          index: 4,
+          avatar: "../../../../assets/avatars/NeilTionson.png",
+          name: "Neil Tionson",
+          role: "Head of Design",
+          info: "Marketing coordinator for Five Group Pty Ltd.\n\nWorked with brands such as Cadbury, San Remo.",
+          socials: { linkedin: "https://www.linkedin.com/in/neil-tiongson-a83535142/" }
+        }, { 
+          index: 5,
+          avatar: "../../../../assets/avatars/ChetanBafna.png",
+          name: "Chetan Bafna",
+          role: "Head of Outreach",
+          info: "Fundraising facilitator to multiple blockchain projects.\n\nLeadership positions in multiple philanthropic organisations.", 
+          socials: { linkedin: "https://www.linkedin.com/in/chetanbafna" }
+        }, { 
+          index: 6,
+          avatar: "../../../../assets/avatars/NicVanDenBroeck.png",
+          name: "Nick Van den Broeck",
+          role: "Lead Developer",
+          info: "Masters degree in Theoretical Physics and research intern at <strong>CERN</strong>.\n\nFounder of Tailer AI, bringing AI to the chemical/brewing industries.", 
+          socials: { linkedin: "https://www.linkedin.com/in/nick-van-den-broeck-860861a3/", github: "https://github.com/CSVdB/" }
+        }, {
+          index: 7,
+          avatar: "../../../../assets/avatars/Marijan.png",
+          name: "Marijan Petričević",
+          role: "Blockchain Developer",
+          info: "Software Engineer who lays a great emphasis on software design and testing.",
+          socials: { linkedin: "https://www.linkedin.com/in/marijanp" }
+        }, { 
+          index: 8,
+          avatar: "../../../../assets/avatars/evan.png", 
+          name: "Evan Piro",
+          role: "Blockchain Developer",
+          info: "Seasoned technologist with experience planning, building, and launching new things.", 
+          socials: { linkedin: "https://www.linkedin.com/in/evan-piro-7688a8192" }
+        }, { 
+          index: 9,
+          avatar: "../../../../assets/avatars/brian.png", 
+          name: "Brian Kuhns",
+          role: "Blockchain Developer",
+          info: "", 
+          socials: { linkedin: "https://www.linkedin.com/in/brian-kuhns-a3a270127/", github: "https://github.com/Geometer1729" }
+        }, { 
+          index: 10,
+          avatar: "../../../../assets/avatars/GregorySantini.png", 
+          name: "Gregory Santini",
+          role: "Front-end Developer",
+          info: "Senior front-end developer for <strong>Apple</strong> and Evernote.\n\nExperienced web developer and Solidity developer.", 
+          socials: { linkedin: "https://www.linkedin.com/in/gregory-santini-28a51619a/", github: "https://github.com/elite0226" }
+        }, {
+          index: 11,
+          avatar: "../../../../assets/avatars/Hao.png",
+          name: "Hao Liu",
+          role: "Front-end Developer",
+          info: "", 
+          socials: { linkedin: "https://www.linkedin.com/in/leomayleomay" }
+        }, { 
+          index: 12,
+          avatar: "../../../../assets/avatars/NoamDavidElbaz.png",
+          name: "Noam David Elbaz",
+          role: "Business Development",
+          info: "Crypto portfolio management and DeFi enthusiast.",
+          socials: {}
+        }, 
+        ].forEach(function(member){ %>
+        <%- include('../../../components/team_card.ejs', {card: member}) %>
+      <% }); %>
+    </div>
+  </div>
+</div>
