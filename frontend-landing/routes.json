@@ -12,6 +12,14 @@
     "dir": "pages/Community/index.ejs"
   },
   {
+    "path": "/team",
+    "dir": "pages/Team/index.ejs"
+  },
+  {
+    "path": "/roadmap",
+    "dir": "pages/RoadMap/index.ejs"
+  },
+  {
     "path": "/brandassets",
     "dir": "pages/brandassets/index.ejs"
   }
